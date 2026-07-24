@@ -1,0 +1,241 @@
+[data-dobra="vitrine-grelha-hover"]{
+      --d: 700ms;
+      --e: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+[data-dobra="vitrine-grelha-hover"] *{
+      box-sizing: border-box;
+    }
+[data-dobra="vitrine-grelha-hover"],[data-dobra="vitrine-grelha-hover"]{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+[data-dobra="vitrine-grelha-hover"]{
+      display: grid;
+      place-items: center;
+      background-color: var(--base-600);
+      background-image: radial-gradient(circle at center, var(--base-500) 0%, var(--base-600) 100%);
+      min-height: 100vh;
+      color: var(--base-100);
+      font-family: var(--fonte-corpo);
+    }
+[data-dobra="vitrine-grelha-hover"] .container{
+      width: 100%;
+      max-width: 1100px;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+[data-dobra="vitrine-grelha-hover"] .header{
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+[data-dobra="vitrine-grelha-hover"] .header h1{
+      font-family: var(--fonte-corpo);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.05rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--base-100);
+    }
+[data-dobra="vitrine-grelha-hover"] .header p{
+      font-family: var(--fonte-corpo);
+      font-style: italic;
+      color: var(--base-300);
+      margin: 0;
+      font-size: 1.1rem;
+    }
+[data-dobra="vitrine-grelha-hover"] .page-content{
+      display: grid;
+      grid-gap: 1.5rem;
+      padding: 0;
+      width: 100%;
+      margin: 0 auto;
+    }
+@media (min-width: 600px){[data-dobra="vitrine-grelha-hover"] .page-content{
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+@media (min-width: 800px){[data-dobra="vitrine-grelha-hover"] .page-content{
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+    }
+[data-dobra="vitrine-grelha-hover"] .card{
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 1rem;
+      width: 100%;
+      height: 380px; 
+      text-align: center;
+      color: whitesmoke;
+      background-color: whitesmoke;
+      border-radius: 12px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.2), 
+                  0 2px 2px rgba(0,0,0,0.2), 
+                  0 4px 4px rgba(0,0,0,0.2), 
+                  0 8px 8px rgba(0,0,0,0.2),
+                  0 16px 16px rgba(0,0,0,0.2);
+    }
+@media (min-width: 600px){[data-dobra="vitrine-grelha-hover"] .card{
+        height: 350px;
+      }
+
+    }
+/* REVISÃO MANUAL (a esteira apanhou isto e avisou: não deu para automatizar).
+ * A origem prendia a foto de cada cartão a `:nth-child(N):before{background-image:url(...)}`,
+ * ou seja, a QUARTA foto era sempre a quarta, fixa no CSS, sem nenhum atributo no HTML para
+ * substituir. Um cliente com mais ou menos de 4 produtos não tinha como usar esta dobra.
+ * A correção: uma custom property por cartão (`--img`, definida inline no elemento), porque
+ * pseudo-elemento NÃO lê `style` do elemento real, mas HERDA custom properties dele. */
+[data-dobra="vitrine-grelha-hover"] .card:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110%;
+      background-image: var(--img);
+      background-size: cover;
+      background-position: center center;
+      transition: transform calc(var(--d) * 1.5) var(--e);
+      pointer-events: none;
+      z-index: 0;
+    }
+[data-dobra="vitrine-grelha-hover"] .card:after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 200%;
+      pointer-events: none;
+      background-image: linear-gradient(
+        to bottom,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 0.009) 11.7%,
+        hsla(0, 0%, 0%, 0.034) 22.1%,
+        hsla(0, 0%, 0%, 0.072) 31.2%,
+        hsla(0, 0%, 0%, 0.123) 39.4%,
+        hsla(0, 0%, 0%, 0.182) 46.6%,
+        hsla(0, 0%, 0%, 0.249) 53.1%,
+        hsla(0, 0%, 0%, 0.320) 58.9%,
+        hsla(0, 0%, 0%, 0.394) 64.3%,
+        hsla(0, 0%, 0%, 0.468) 69.3%,
+        hsla(0, 0%, 0%, 0.540) 74.1%,
+        hsla(0, 0%, 0%, 0.607) 78.8%,
+        hsla(0, 0%, 0%, 0.668) 83.6%,
+        hsla(0, 0%, 0%, 0.721) 88.7%,
+        hsla(0, 0%, 0%, 0.762) 94.1%,
+        hsla(0, 0%, 0%, 0.790) 100%
+      );
+      transform: translateY(-50%);
+      transition: transform calc(var(--d) * 2) var(--e);
+      z-index: 1;
+    }
+[data-dobra="vitrine-grelha-hover"] .content{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 1.5rem 1rem;
+      transition: transform var(--d) var(--e);
+      z-index: 2;
+    }
+[data-dobra="vitrine-grelha-hover"] .content > * + *{
+      margin-top: 1rem;
+    }
+[data-dobra="vitrine-grelha-hover"] .title{
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+[data-dobra="vitrine-grelha-hover"] .copy{
+      font-family: var(--fonte-corpo);
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.4;
+      margin: 0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+[data-dobra="vitrine-grelha-hover"] .btn{
+      cursor: pointer;
+      margin-top: 1.25rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--fonte-corpo);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05rem;
+      text-transform: uppercase;
+      color: white;
+      background-color: black;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+[data-dobra="vitrine-grelha-hover"] .btn:hover{
+      background-color: var(--base-600);
+      transform: scale(1.05);
+    }
+[data-dobra="vitrine-grelha-hover"] .btn:focus{
+      outline: 2px dashed var(--acento);
+      outline-offset: 3px;
+    }
+@media (hover: hover) and (min-width: 600px){[data-dobra="vitrine-grelha-hover"] .card:after{
+        transform: translateY(0);
+      }
+[data-dobra="vitrine-grelha-hover"] .content{
+        transform: translateY(calc(100% - 4.5rem));
+      }
+[data-dobra="vitrine-grelha-hover"] .content > *:not(.title){
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+      }
+[data-dobra="vitrine-grelha-hover"] .card:hover,[data-dobra="vitrine-grelha-hover"] .card:focus-within{
+        align-items: center;
+      }
+[data-dobra="vitrine-grelha-hover"] .card:hover:before,[data-dobra="vitrine-grelha-hover"] .card:focus-within:before{
+        transform: translateY(-4%);
+      }
+[data-dobra="vitrine-grelha-hover"] .card:hover:after,[data-dobra="vitrine-grelha-hover"] .card:focus-within:after{
+        transform: translateY(-50%);
+      }
+[data-dobra="vitrine-grelha-hover"] .card:hover .content,[data-dobra="vitrine-grelha-hover"] .card:focus-within .content{
+        transform: translateY(0);
+      }
+[data-dobra="vitrine-grelha-hover"] .card:hover .content > *:not(.title),[data-dobra="vitrine-grelha-hover"] .card:focus-within .content > *:not(.title){
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: calc(var(--d) / 8);
+      }
+
+    }
+@media (hover: hover) and (min-width: 600px){[data-dobra="vitrine-grelha-hover"] .card:focus-within:before,[data-dobra="vitrine-grelha-hover"] .card:focus-within:after,[data-dobra="vitrine-grelha-hover"] .card:focus-within .content,[data-dobra="vitrine-grelha-hover"] .card:focus-within .content > *:not(.title){
+        transition-duration: 0s;
+      }
+
+    }
+@media (hover: none){[data-dobra="vitrine-grelha-hover"] .card:after{
+        transform: translateY(-30%);
+      }
+[data-dobra="vitrine-grelha-hover"] .content{
+        transform: translateY(0);
+      }
+[data-dobra="vitrine-grelha-hover"] .content > *:not(.title){
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+  

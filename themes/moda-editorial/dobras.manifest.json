@@ -1,0 +1,7 @@
+{
+  "dobras": [
+    { "slot": "botao", "nome": "brilho", "estado": "aprovada" },
+    { "slot": "botao", "nome": "vidro", "estado": "aprovada" },
+    { "slot": "vitrine", "nome": "grelha-hover", "estado": "aprovada" }
+  ]
+}

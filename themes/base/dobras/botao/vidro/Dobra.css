@@ -1,0 +1,85 @@
+/* REMOVIDO na revisão: a origem era uma página de demonstração inteira (o botão
+   centrado num viewport de 100vh, com fundo próprio). Este é um botão embutido, não uma
+   dobra de página inteira — quem o usa já tem o próprio layout.
+   CORRIGIDO também: a esteira só remapeia cor em formato #hex, nunca rgba() —
+   "--button-shadow" da origem era rgba(198,40,40,...), o vermelho da marca ORIGINAL do
+   componente, e sobrevivia sem tradução nenhuma pra qualquer cliente. Trocado por
+   --acento com alpha. Removido "-webkit-box-reflect": o reflexo espelhado borrado do
+   botão embaixo dele lia como mancha estranha, não como efeito premium (achado ao vivo,
+   Vaninha Fashion). */
+[data-dobra="botao-vidro"]{
+            display: inline-block;
+            --primary-gradient: radial-gradient(67.54% 100.03% at 50% 0%, var(--base-100) 0%, var(--base-100) 25.48%, var(--base-200) 62.5%, var(--acento) 100%);
+            --button-shadow: 0 6px 23px 0 color-mix(in srgb, var(--acento) 20%, transparent), 0 14px 54px 0 color-mix(in srgb, var(--acento) 50%, transparent);
+            --font-family: var(--fonte-corpo);
+        }
+[data-dobra="botao-vidro"] .reflection-wrapper{
+            position: relative;
+            display: inline-block;
+        }
+[data-dobra="botao-vidro"] .botao-mvm{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            
+            padding: 20px 60px;
+            background: var(--primary-gradient);
+            border: 1.196px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15.623px;
+            box-shadow: var(--button-shadow);
+            color: var(--base-100);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), filter 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            cursor: pointer;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+[data-dobra="botao-vidro"] .botao-mvm::before{
+            content: "";
+            height: 100%;
+            width: 100px;
+            position: absolute;
+            top: 0;
+            left: -150px;
+            opacity: 0;
+            background: var(--base-100);
+            box-shadow: 0 0 30px 20px var(--base-100);
+            transform: skewX(-20deg);
+            mix-blend-mode: plus-lighter;
+            pointer-events: none;
+            animation: brilho 3s linear infinite;
+        }
+[data-dobra="botao-vidro"] .botao-mvm .elementor-button-text{
+            transition: transform 0.5s ease;
+        }
+[data-dobra="botao-vidro"] .botao-mvm:hover{
+            filter: brightness(1.1) saturate(1.2);
+            
+            transform: translateY(-8px);
+        }
+[data-dobra="botao-vidro"] .botao-mvm:active{
+            transform: scale(0.95) translateY(-2px);
+        }
+[data-dobra="botao-vidro"] .botao-mvm:hover .elementor-button-text{
+            transform: scale(1.05);
+        }
+@keyframes brilho{
+            0% { opacity: 0; left: -150px; }
+            20% { opacity: 0.4; }
+            50% { opacity: 0.6; left: 50%; }
+            80% { opacity: 0.4; }
+            100% { opacity: 0; left: 150%; }
+        }
+@media(max-width: 600px){[data-dobra="botao-vidro"] .botao-mvm{
+                font-size: 16px;
+                padding: 15px 45px;
+            }
+
+        }
+
+    

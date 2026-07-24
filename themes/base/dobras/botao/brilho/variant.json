@@ -1,0 +1,37 @@
+{
+  "slot": "botao",
+  "nome": "brilho",
+  "scope": "botao-brilho",
+  "origem": "bank/_componentes/botoes/shiny-button",
+  "registo": "cinematografico",
+  "estado": "aprovada",
+  "libs": [],
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Shiny Button"
+    },
+    {
+      "nome": "href",
+      "tipo": "texto",
+      "exemplo": "/contacto",
+      "obrigatorio": true,
+      "_nota": "sem isto o botão aponta pra \"#\" de propósito, pra falhar visível"
+    },
+    {
+      "nome": "onClick",
+      "tipo": "funcao",
+      "exemplo": null,
+      "_nota": "opcional — pra rolagem suave (Lenis) ou navegação client-side em vez de link puro"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "cor de brilho (rosa vibrante da origem) mapeada por luminância pra var(--base-300): confirmar no ecrã que o brilho continua lendo como \"acento\", não como neutro",
+    "LIMITAÇÃO CONHECIDA da esteira (não corrigida, achada aqui): a deteção de acento por saturação HSV pura pode escolher uma cor quase-preta como 'acento' porque saturação numérica alta não implica cor vibrante quando o valor/brilho é muito baixo — mesma família do bug já corrigido em tools/tema/identidade.mjs (área sem croma). Não afetou o resultado final aqui porque a cor candidata a acento errada só existia no bloco de página de demonstração, removido na revisão manual — mas o algoritmo em si continua com a falha.",
+    "esta dobra usa `&::before`/`&:active` (CSS nesting nativo) em vez de seletores planos — funciona em browsers atuais (Chrome 112+, Firefox 117+, Safari 16.4+), mas é a 1ª dobra do kit que depende disso; confirmar que o gate/passe visual não têm problema com a sintaxe.",
+    "achado e corrigido à mão nesta revisão: o escopador da esteira injetou o prefixo [data-dobra] DENTRO de um :is(:hover, :focus-visible) em vez de só no seletor externo, produzindo seletor quebrado — não corrigido na ferramenta, só nesta dobra."
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs, revisto à mão em 2026-07-24: removida a página de demonstração inteira (mesmo padrão do botão-irmão 'vidro'), corrigido seletor :is() quebrado, e href/onClick viraram slots reais em vez de botão sem destino."
+}

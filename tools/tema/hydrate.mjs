@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 import { resolver, relatorio } from './schema.mjs';
 import { gerarTokens } from './tokens.mjs';
 import { gerarFontes } from './fonts.mjs';
+import { materializarDobras } from './dobras-manifest.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
@@ -52,6 +53,9 @@ export function hidratar(slug, temaNome) {
     const de = join(dirTema, item);
     if (existsSync(de)) cpSync(de, join(obra, item), { recursive: true });
   }
+  // Dependências de interface declaradas pelo tema, sempre a partir da fonte
+  // canónica em `themes/base/dobras` e apenas se já foram promovidas.
+  materializarDobras({ root: ROOT, dirTema, obra });
 
   /* 3. conteúdo resolvido ------------------------------------------------ */
   writeFileSync(join(obra, 'content', 'cliente.json'), JSON.stringify(res.cliente, null, 2), 'utf8');

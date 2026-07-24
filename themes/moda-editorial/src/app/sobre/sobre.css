@@ -1,0 +1,68 @@
+.sobre-hero {
+  position: relative;
+  width: 100%;
+  height: 250vh;
+  overflow: hidden;
+  background-color: var(--base-500);
+}
+
+.sobre-hero-pin {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
+  padding: 2.5rem;
+}
+
+.hero-heading {
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-heading h1 {
+  font-size: clamp(4rem, 10vw, 20rem);
+  will-change: transform;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 0.35rem;
+  aspect-ratio: 16 / 9;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.hero-image img {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.sobre-info {
+  padding: 2rem 0 8rem 0;
+  background-color: var(--base-500);
+}
+
+.sobre-info .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sobre-info .container p,
+.sobre-info .container h3 {
+  margin-bottom: 2rem;
+}
+
+/* O template usa line-height 0.85, desenhado para ingles (sem acentos sobre
+   maiusculas). Em PT o til e os agudos batiam na linha de cima e cortavam.
+   Estes h3 sao corpo longo multi-linha: precisam de respirar. */
+.sobre-info .container h3 {
+  line-height: 1.15;
+}

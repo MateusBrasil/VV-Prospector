@@ -1,0 +1,34 @@
+{
+  "slot": "botao",
+  "nome": "vidro",
+  "scope": "botao-vidro",
+  "origem": "bank/_componentes/botoes/glass-button-red",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": [],
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Glass Button"
+    },
+    {
+      "nome": "href",
+      "tipo": "texto",
+      "exemplo": "/contacto",
+      "obrigatorio": true,
+      "_nota": "sem isto o botão aponta pra \"#\" de propósito, pra falhar visível"
+    },
+    {
+      "nome": "onClick",
+      "tipo": "funcao",
+      "exemplo": null,
+      "_nota": "opcional — pra rolagem suave (Lenis) ou navegação client-side em vez de link puro"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância (acento da origem #c62828 → var(--acento)): confirmar no ecrã que o contraste se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs, revisto à mão em 2026-07-24: removida a página de demonstração inteira (100vh/fundo próprio), e href/onClick viraram slots reais em vez de \"#\" cravado. Achados 2 bugs reais na PRÓPRIA ferramenta ao processar este componente, já corrigidos em tools/tema/esteira.mjs: (1) hex com canal alfa (#ffffffaa) sendo corrompido pela troca por substring do hex sem alfa processado antes; (2) mapeamento de cor sensível a maiúsculas/minúsculas — o CSS de origem misturava \"#FFEBEE\" e \"#ffffff\", e as variantes maiúsculas nunca batiam na substituição, caindo todas no fallback de emergência (um único token fixo), o que colapsava a cor do TEXTO e a cor do FUNDO no mesmo token — o botão saía com texto invisível sobre o próprio fundo. Esta dobra foi regenerada do zero depois da correção; o resultado atual já reflete o gradiente correto (4 tons distintos + acento)."
+}

@@ -1,0 +1,15 @@
+/* Este ficheiro é reescrito em cada build. O que está aqui nunca chega a um site.
+ *
+ * O `tools/tema/hydrate.mjs` escreve, na obra, um globals.css com três partes, nesta ordem:
+ *   1. os `@import` das fontes por URL (têm de vir primeiro: a regra do CSS é que `@import`
+ *      só é válido antes de qualquer outra declaração)
+ *   2. `@import "./tokens.generated.css"`, os valores da marca deste cliente
+ *   3. o conteúdo de `themes/base/sistema/estrutura.css`, a estrutura, sem um único valor
+ *
+ * Antes tinha a paleta e a escala do Kasablanca cravadas. Ficou vazio de propósito, e não deve
+ * ganhar regras: um valor escrito aqui aplicar-se-ia a TODOS os clientes deste tema sem ninguém
+ * dar por isso, que é precisamente o tipo de acoplamento que o motor existe para eliminar.
+ *
+ * Para mudar a ESTRUTURA: `themes/base/sistema/estrutura.css`.
+ * Para mudar um VALOR: a secção `design` do `cliente.json`.
+ */

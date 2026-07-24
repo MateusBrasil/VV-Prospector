@@ -1,0 +1,35 @@
+{
+  "slot": "vitrine",
+  "nome": "grelha-hover",
+  "scope": "vitrine-grelha-hover",
+  "origem": "bank/_componentes/cards/card-grid-hover-effect",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": [],
+  "slots": [
+    { "nome": "titulo", "tipo": "texto", "exemplo": "Wanderlust Destinations" },
+    { "nome": "texto", "tipo": "texto", "exemplo": "Choose your next great adventure below" },
+    { "nome": "imagem", "tipo": "imagem", "exemplo": "produto 1 (revisto à mão, ver _nota)" },
+    { "nome": "titulo2", "tipo": "texto", "exemplo": "Mountain View" },
+    { "nome": "texto2", "tipo": "texto", "exemplo": "Check out all of these gorgeous mountain trips" },
+    { "nome": "acao", "tipo": "texto", "exemplo": "View Trips" },
+    { "nome": "imagem2", "tipo": "imagem", "exemplo": "produto 2 (revisto à mão, ver _nota)" },
+    { "nome": "titulo3", "tipo": "texto", "exemplo": "To The Beach" },
+    { "nome": "texto3", "tipo": "texto", "exemplo": "Plan your next beach trip" },
+    { "nome": "acao2", "tipo": "texto", "exemplo": "View Trips" },
+    { "nome": "imagem3", "tipo": "imagem", "exemplo": "produto 3 (revisto à mão, ver _nota)" },
+    { "nome": "titulo4", "tipo": "texto", "exemplo": "Desert Destinations" },
+    { "nome": "texto4", "tipo": "texto", "exemplo": "It's the desert you've always dreamed of" },
+    { "nome": "acao3", "tipo": "texto", "exemplo": "Book Now" },
+    { "nome": "imagem4", "tipo": "imagem", "exemplo": "produto 4 (revisto à mão, ver _nota)" },
+    { "nome": "titulo5", "tipo": "texto", "exemplo": "Explore The Galaxy" },
+    { "nome": "texto5", "tipo": "texto", "exemplo": "straight up, just blast off into outer space today" },
+    { "nome": "acao4", "tipo": "texto", "exemplo": "Book Now" }
+  ],
+  "precondicoes": { "imagensMin": 4 },
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #ffeb3b → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "fonte(s) de origem descartadas (o sistema fornece): 2"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs, com acabamento MANUAL: a origem prendia a foto de cada cartão a `.card:nth-child(N):before{background-image}` no CSS, sem atributo nenhum no HTML para trocar (0 slot de imagem mecanizável, a esteira avisou corretamente). Convertido para 4 slots de imagem de verdade via custom property `--img` (Dobra.jsx/Dobra.css), porque pseudo-elemento não lê `style` do elemento mas herda custom properties dele. Fica fixo em 4 produtos: para N variável seria preciso reescrever a grelha CSS, fora do escopo desta correção."
+}

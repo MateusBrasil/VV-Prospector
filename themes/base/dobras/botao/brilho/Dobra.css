@@ -1,0 +1,90 @@
+/* REMOVIDO na revisão: @import de fonte Inter via Google Fonts CDN (E8 fonte-cdn). A
+   fonte já sai tokenizada (var(--fonte-corpo)) — este import externo era da origem e
+   ficou morto, nem chegava a ser usado depois da tokenização. */
+    :root{
+      --shiny-cta-bg: var(--base-600);
+      --shiny-cta-bg-subtle: var(--base-600);
+      --shiny-cta-fg: var(--base-100);
+      --shiny-cta-highlight: var(--base-300);
+      --shiny-cta-highlight-subtle: var(--base-300);
+    }
+@property --gradient-angle{
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+@property --gradient-angle-offset{
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+@property --gradient-percent{
+      syntax: "<percentage>";
+      initial-value: 5%;
+      inherits: false;
+    }
+@property --gradient-shine{
+      syntax: "<color>";
+      initial-value: white;
+      inherits: false;
+    }
+/* SIMPLIFICADO na revisão (achado ao vivo, Vaninha Fashion): a origem tinha 2 camadas de
+   brilho decorativo por baixo do texto (um padrão de pontinhos via ::before, uma faixa de
+   glow quadrada via ::after — a `aspect-ratio:1` dela é literalmente um quadrado, com
+   z-index negativo pra ficar atrás do fundo do botão). Numa combinação de navegador/GPU
+   isso renderizava como um quadrado escuro visível em vez do brilho sutil pretendido —
+   reprovado ao vivo ("quadradão preto", "parece uma sombra"). Removidas as duas camadas;
+   fica só a borda cônica animada (o "shiny" real do componente) + o texto. */
+[data-dobra="botao-brilho"] .shiny-cta{
+      --animation: gradient-angle linear infinite;
+      --duration: 3s;
+      isolation: isolate;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      outline-offset: 4px;
+      padding: 1.25rem 2.5rem;
+      font-family: var(--fonte-corpo);
+      font-size: 1.125rem;
+      line-height: 1.2;
+      border: 1px solid transparent;
+      border-radius: 360px;
+      color: var(--shiny-cta-fg);
+      background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
+          padding-box,
+        conic-gradient(
+            from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+            transparent,
+            var(--shiny-cta-highlight) var(--gradient-percent),
+            var(--gradient-shine) calc(var(--gradient-percent) * 2),
+            var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+            transparent calc(var(--gradient-percent) * 4)
+          )
+          border-box;
+      box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+      transition: var(--transition, 800ms cubic-bezier(0.19, 1, 0.22, 1));
+      transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+      animation: var(--animation) var(--duration),
+        var(--animation) calc(var(--duration) / 0.4) reverse paused;
+      animation-composition: add;
+
+      &:active {
+        translate: 0 1px;
+      }
+    }
+[data-dobra="botao-brilho"] .shiny-cta:is(:hover, :focus-visible){
+      --gradient-percent: 20%;
+      --gradient-angle-offset: 95deg;
+      --gradient-shine: var(--shiny-cta-highlight-subtle);
+      animation-play-state: running;
+    }
+@keyframes gradient-angle{
+      to {
+        --gradient-angle: 360deg;
+      }
+    }
+/* REMOVIDO na revisão: a origem era uma página de demonstração inteira (body a 100%
+   com display:grid;place-items:center pra centrar o botão sozinho no ecrã, com fundo
+   próprio) — mesmo padrão do botão "vidro", ver a nota lá. Sem isto, o próprio elemento
+   da dobra herdava altura/fundo/centralização de PÁGINA, quebrando qualquer layout que
+   o consumisse como botão embutido. */

@@ -1,0 +1,179 @@
+/**
+ * SISTEMA, estrutura invariante.
+ *
+ * REGRA DURA: este ficheiro não pode conter um único valor concreto de marca.
+ * Nenhum hex, nenhum nome de fonte, nenhum tamanho de display. Só estrutura e `var()`.
+ * Os valores vivem em `tokens.generated.css`, escrito por `tools/tema/tokens.mjs` a partir
+ * de `cliente.json → design`. Isto torna a violação `C3 hex-fora-de-token` do gate
+ * estruturalmente impossível: não há onde escrever um hex.
+ *
+ * O QUE É SISTEMA E O QUE É TOKEN
+ *   sistema  = o reset, a hierarquia, o ritmo do container, as correções de LÍNGUA,
+ *              o comportamento no breakpoint. Igual para todo cliente, para sempre.
+ *   token    = cor, família de fonte, peso, escala, tracking, caixa. Muda por cliente.
+ *
+ * As correções de português abaixo são SISTEMA, não gosto: o template de origem foi
+ * desenhado para inglês, que não tem acento sobre maiúscula. Elas viajam com o tema.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+::-webkit-scrollbar { display: none; }
+
+body {
+  overflow-x: hidden;
+  background-color: var(--cor-fundo);
+  font-family: var(--fonte-corpo);
+  color: var(--cor-texto);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Display ---------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-display);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh);
+  text-transform: var(--display-caixa);
+}
+
+/* CORREÇÃO DE LÍNGUA (sistema, não gosto).
+   A `--display-lh` é apertada de propósito: é o que faz o bloco virar massa gráfica.
+   Mas o h1 é wordmark curto de uma linha, enquanto h2..h6 correm em várias, e aí o til
+   e o agudo do português batem na linha de cima e são cortados. Estes ganham a folga
+   mínima que o acento exige, sem perder a compressão do h1. */
+h2, h3, h4, h5, h6 { line-height: var(--display-lh-multilinha); }
+
+h1 { font-size: var(--h1); }
+h2 { font-size: var(--h2); }
+h3 { font-size: var(--h3); }
+h4 { font-size: var(--h4); }
+h5 { font-size: var(--h5); }
+h6 { font-size: var(--h6); }
+
+/* ---------- Corpo ---------- */
+
+p {
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-tamanho);
+  font-weight: var(--corpo-peso);
+  line-height: var(--corpo-lh);
+  letter-spacing: var(--corpo-tracking);
+  color: var(--cor-texto-suave);
+}
+
+p.sm { font-size: var(--corpo-sm); }
+p.md { font-size: var(--corpo-md); letter-spacing: var(--corpo-md-tracking); }
+p.lg { font-size: var(--corpo-lg); letter-spacing: var(--corpo-lg-tracking); }
+
+p.mono {
+  font-family: var(--fonte-mono);
+  font-size: var(--mono-tamanho);
+  font-weight: var(--mono-peso);
+  /* CORREÇÃO DE LÍNGUA: estes blocos são morada e horário, correm em duas linhas
+     e são caixa alta. A 0.9 do original inglês, GUIMARÃES perde o til. */
+  line-height: var(--mono-lh);
+  text-transform: var(--mono-caixa);
+  color: var(--cor-texto-tenue);
+}
+
+a[href^="tel"], a[href^="mailto"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Foco de teclado visível em todos os temas, inclusive em dobras novas. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+/* ---------- Ritmo ---------- */
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: var(--largura-max);
+  height: 100%;
+  padding: var(--respiro);
+  margin: 0 auto;
+}
+
+.section-footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--largura-max);
+  padding: var(--respiro);
+  transform: translateX(-50%);
+}
+
+.section-footer p { color: var(--cor-texto); }
+
+/* ---------- Transição de página ---------- */
+
+::view-transition-old(root),
+::view-transition-new(root) { animation: none !important; }
+
+::view-transition-group(root) { z-index: auto !important; }
+
+::view-transition-image-pair(root) {
+  z-index: 1;
+  isolation: isolate;
+  will-change: transform, opacity, clip-path;
+}
+
+::view-transition-old(root) { z-index: 1; animation: none !important; }
+::view-transition-new(root) { z-index: 10000; animation: none !important; }
+
+/* ---------- Movimento reduzido ---------- */
+
+/* O site aprovado que serviu de base NÃO tinha isto, em lado nenhum, e é um site inteiro
+ * construído sobre GSAP. Quem tem sensibilidade vestibular (enxaqueca, vertigem, epilepsia
+ * fotossensível) leva o scroll com pin, o parallax e os reveals todos na cara, sem escapatória.
+ * Não é detalhe de conformidade: para essas pessoas, o site premium é o site que as põe
+ * indispostas. Entra no SISTEMA e não na dobra, para que nenhuma dobra futura se possa
+ * esquecer dele.
+ *
+ * `!important` aqui é dos poucos usos legítimos: o objetivo é precisamente vencer qualquer
+ * declaração de qualquer dobra, incluindo as que a esteira ainda vai trazer.
+ *
+ * ⚠ Isto cobre a camada CSS. As animações de GSAP são JS e ignoram esta regra: têm de ser
+ * tratadas com `gsap.matchMedia()` no client-layout, e é o passo seguinte. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Compacto ---------- */
+
+@media (max-width: 1000px) {
+  .container,
+  .section-footer { padding: var(--respiro-compacto); }
+
+  p { font-size: var(--corpo-tamanho-compacto); }
+  p.sm { font-size: var(--corpo-sm-compacto); }
+  p.md { font-size: var(--corpo-md-compacto); letter-spacing: var(--corpo-md-tracking); }
+  p.lg { font-size: var(--corpo-lg-compacto); letter-spacing: var(--corpo-lg-tracking); }
+}
