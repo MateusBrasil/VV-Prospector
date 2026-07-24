@@ -25,6 +25,8 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, cpSync
 import { join, resolve, dirname, basename, extname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { estadoInicialDobra } from './dobras.mjs';
+import { tokenizarCss as tokenizarCssPuro, mapearCores as mapearCoresPuras } from './lib/css.mjs';
+import { acharImagensPresasAoCss as acharImagensPresasAoCssPuro, sugerirPrecondicoes as sugerirPrecondicoesPuras } from './lib/metadata.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
@@ -439,7 +441,7 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   const destino = join(ROOT, 'themes', 'base', 'dobras', slot, nome);
   mkdirSync(destino, { recursive: true });
 
-  const { css, relatorio: relCss } = tokenizarCss(partes.css, scope);
+  const { css, relatorio: relCss } = tokenizarCssPuro(partes.css, scope);
   // ACHADO REAL (lote de ~500 componentes, 2026-07-24): hex também aparece em
   // `style="background: #ff4d8c"` INLINE no próprio HTML de origem (não só no CSS
   // externo) — 95 das dobras já processadas tinham isto e a tokenização nunca alcançava
@@ -449,7 +451,7 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   // transformação — os mesmos hexes que aparecerem depois no CSS externo já saem
   // mapeados aos MESMOS tokens (a função é determinística por brilho/saturação), então
   // não há risco de o inline e o externo divergirem em qual token cada cor vira.
-  const { css: htmlComCorMapeada, mapeadas: coresInlineMapeadas } = mapearCores(partes.html);
+  const { css: htmlComCorMapeada, mapeadas: coresInlineMapeadas } = mapearCoresPuras(partes.html);
   if (coresInlineMapeadas) relCss.coresMapeadas += coresInlineMapeadas;
   // A imagem de background-image inline tem de ser marcada ANTES de htmlParaJsx converter o
   // atributo style para objeto, senão a URL fica presa dentro de uma string JS sem aspas
@@ -457,7 +459,7 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   const { html: htmlMarcado, slots: slotsEstilo } = marcarImagensDeEstiloInline(htmlComCorMapeada);
   const { jsx: jsxBruto, notas } = htmlParaJsx(htmlMarcado);
   const { jsx, slots } = extrairSlots(jsxBruto, slotsEstilo);
-  const presasAoCss = acharImagensPresasAoCss(partes.css);
+  const presasAoCss = acharImagensPresasAoCssPuro(partes.css);
 
   // assets locais viajam com a dobra; os externos são apontados para revisão
   const dirAssets = join(destino, 'assets');
@@ -550,7 +552,7 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     estado: estadoInicialDobra(pontosRever),
     libs: partes.libs,
     slots: slots.map(({ nome, tipo, exemplo }) => ({ nome, tipo, exemplo })),
-    precondicoes: sugerirPrecondicoes(slots),
+    precondicoes: sugerirPrecondicoesPuras(slots),
     _rever: pontosRever,
     _nota: 'Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao.',
   };
