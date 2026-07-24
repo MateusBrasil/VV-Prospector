@@ -30,6 +30,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, cpSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { aplicarSlotsSeguro, cssExtraSeguro, cssVarsSeguras, escaparHtml, urlSegura } from './lib/composicao-segura.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..');
@@ -73,6 +74,9 @@ const avisos = [];   // slots não encontrados, leftovers suspeitos — reportad
 const MARCAS_ALHEIAS = /\b(Curology|Yourspace|Lumin|AGENCY|Salle Blanche|Codegrid|MWT by|Le Cercle|Marbella|Lorem Ipsum|Lennox Montgomery|Zaire Dorwart|Alfonso Lubin|Hanna Siphron|Ashlynn Curtis|Martin Dorwart|Nolan Bergson)\b/i;
 
 for (const b of plano.blocos) {
+  if (!/^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)+$/i.test(b.ref || '')) {
+    avisos.push(`ref de bloco inválida: ${String(b.ref)}`); continue;
+  }
   const blkDir = join(BLOCKS, b.ref);
   if (!existsSync(blkDir)) { console.error(`✗ bloco não normalizado: ${b.ref} (corre blockify.mjs)`); continue; }
   const meta = JSON.parse(readFileSync(join(blkDir, 'block.json'), 'utf8'));
@@ -82,11 +86,9 @@ for (const b of plano.blocos) {
 
   // 1. HTML: aplicar slots (find-replace) e reescrever assets para blocos/<scope>/
   let html = readFileSync(join(blkDir, 'block.html'), 'utf8');
-  for (const [de, para] of Object.entries(b.slots || {})) {
-    const antes = html;
-    html = html.split(de).join(para);
-    if (html === antes) avisos.push(`⚠ SLOT NÃO ENCONTRADO em ${b.ref}: "${de.slice(0, 60)}${de.length > 60 ? '…' : ''}" — nada foi substituído (0 ocorrências)`);
-  }
+  const slotsAplicados = aplicarSlotsSeguro(html, b.slots, { markup: b.markup });
+  html = slotsAplicados.html;
+  for (const aviso of slotsAplicados.avisos) avisos.push(`⚠ ${aviso} em ${b.ref}`);
   html = html.replace(/(src|href)=(["'])assets\//gi, `$1=$2blocos/${scope}/assets/`)
              .replace(/url\((['"]?)assets\//gi, `url($1blocos/${scope}/assets/`);
   // E6 mecânico: se sobrou nome de marca alheia conhecida DEPOIS dos slots, o plano esqueceu de
@@ -109,12 +111,16 @@ for (const b of plano.blocos) {
            .replace(/!important/gi, '');
   cssParts.push(`/* ${b.ref} (${tipo}) */\n${css}`);
   if (b.vars && Object.keys(b.vars).length) {
-    const decls = Object.entries(b.vars).map(([k, v]) => `  ${k}: ${v};`).join('\n');
+    const varsSeguras = cssVarsSeguras(b.vars);
+    for (const aviso of varsSeguras.avisos) avisos.push(`⚠ ${aviso} em ${b.ref}`);
+    const decls = Object.entries(varsSeguras.vars).map(([k, v]) => `  ${k}: ${v};`).join('\n');
     cssParts.push(`/* ${b.ref} — vars da marca */\n[data-blk="${scope}"]{\n${decls}\n}`);
   }
   if (b.estilo) {
     // reescreve o token {blk} pelo seletor de scope, para o autor do plano não repetir o data-blk
-    cssParts.push(`/* ${b.ref} — re-skin */\n${b.estilo.split('{blk}').join(`[data-blk="${scope}"]`)}`);
+    const estilo = cssExtraSeguro(b.estilo);
+    if (estilo.erro) avisos.push(`⚠ ${estilo.erro} em ${b.ref}`);
+    else cssParts.push(`/* ${b.ref} — re-skin */\n${estilo.css.split('{blk}').join(`[data-blk="${scope}"]`)}`);
   }
 
   // 3. JS
@@ -158,7 +164,9 @@ for (const lib of libsOrdenadas) {
 // nenhuma das duas var() definidas herdava a font-family do <body> do browser (geralmente
 // serifada), o oposto do que "uniformizar" deveria garantir.
 const tokensDefault = { '--font-heading': "'Georgia', serif", '--font-body': "system-ui, -apple-system, sans-serif" };
-const tokensFinais = { ...tokensDefault, ...(plano.tokens || {}) };
+const tokensSeguros = cssVarsSeguras(plano.tokens || {});
+for (const aviso of tokensSeguros.avisos) avisos.push(`⚠ ${aviso} nos tokens do plano`);
+const tokensFinais = { ...tokensDefault, ...tokensSeguros.vars };
 const tokens = `:root{\n${Object.entries(tokensFinais).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}`;
 
 /* ---------- CSS do motor: o tratamento por tipo (a correção da Fase A) ---------- */
@@ -179,17 +187,18 @@ h1,h2,h3,h4,h5,h6,.display,.headline{font-family:var(--font-heading)}
 `;
 
 /* ---------- fontes ---------- */
-const fonteMarca = plano.fontes ? `<link rel="stylesheet" href="${plano.fontes}">` : '';
+const fonteSegura = plano.fontes ? urlSegura(plano.fontes, { atributo: 'href' }) : '';
+if (plano.fontes && fonteSegura !== String(plano.fontes).trim()) avisos.push('⚠ URL de fonte bloqueada');
+const fonteMarca = fonteSegura && fonteSegura !== '#' ? `<link rel="stylesheet" href="${escaparHtml(fonteSegura)}">` : '';
 
 /* ---------- shell ---------- */
-const esc = s => String(s ?? '').replace(/[<>&"]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c]));
 const doc = `<!doctype html>
-<html lang="${plano.lang || 'pt-PT'}" class="js">
+<html lang="${escaparHtml(plano.lang || 'pt-PT')}" class="js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(plano.titulo)}</title>
-<meta name="description" content="${esc(plano.descricao)}">
+<title>${escaparHtml(plano.titulo)}</title>
+<meta name="description" content="${escaparHtml(plano.descricao)}">
 ${fonteMarca}
 <style>
 ${tokens}
