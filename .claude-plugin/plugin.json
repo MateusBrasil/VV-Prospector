@@ -1,0 +1,16 @@
+{
+  "name": "prospector-de-sites",
+  "version": "2.1.0",
+  "description": "COMECE PELO /setup (2 min, uma vez só). Prospecção semi-automática de negócios locais: encontra negócios bem avaliados com sites fracos no Google Maps, monta o site novo com o motor próprio (Lei de Estética mecânica, padrão premium, motor de temas ou banco de blocos Code Eagle), publica na Vercel (com página-capa antes/depois e HTTPS verificado) e prepara proposta anti-spam por e-mail, com follow-up. Funil e estado numa CLI (`tools/crm.mjs`) sobre `prospector.db` (SQLite), sem painel web.",
+  "author": {
+    "name": "Helio Arreche (fork: Mateus Brasil)"
+  },
+  "keywords": [
+    "prospeccao",
+    "landing-page",
+    "redesign",
+    "vercel",
+    "google-maps",
+    "portugal"
+  ]
+}

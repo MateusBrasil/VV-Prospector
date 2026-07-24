@@ -1,0 +1,18 @@
+{
+  "name": "prospector-premium",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "dependencies": {},
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  },
+  "scripts": {
+    "ciclo": "node tools/run.mjs",
+    "verificar": "node tools/verificar.mjs",
+    "tema": "node tools/tema.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "_nota_dependencies_vazio": "Fica vazio de propósito e deve continuar assim. A regra 'zero dependências' do projeto é sobre o ARTEFACTO VENDIDO: nada em sites/ importa nada, os sites são HTML + assets e continuam a sê-lo. O Playwright entra em devDependencies porque é ferramenta de fábrica, não peça do produto.",
+  "_nota_porque_existe": "Sem isto, o passe visual depende de um `npm i -g playwright` que alguém correu uma vez nesta máquina e que não está registado em lado nenhum. Noutra máquina (ou no amigo a testar) o QA visual desaparece EM SILÊNCIO — o pior modo de falha possível para o gate mais importante do sistema, porque não avisa que não correu, só deixa de correr.",
+  "_nota_sem_campo_type": "O campo 'type' é omitido de propósito. Pô-lo a 'module' mudaria a semântica de todo .js em subdiretório sem package.json próprio, e há .js CommonJS de terceiros em bank/ e blocks-ce/. Os nossos tools são .mjs, que é sempre ESM independentemente deste campo."
+}

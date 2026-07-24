@@ -1,0 +1,112 @@
+{
+  "_comentario": "CONTRATO DO MOTOR. O LLM produz SÓ este ficheiro (~3k tokens). O assemble.mjs monta o HTML a partir dos blocos escritos à mão. Nunca peça HTML ao LLM.",
+  "slug": "exemplo-clinica",
+  "lang": "pt-PT",
+  "arquetipo": "consultorio-sereno",
+  "seed": 481723,
+  "cliente": {
+    "nome": "Clínica Exemplo",
+    "morada": "Rua de Exemplo 100, 4810-000 Guimarães",
+    "telefone": "253 000 000",
+    "telefoneRaw": "+351253000000",
+    "email": "geral@exemplo.pt",
+    "nota": "4,9",
+    "avaliacoes": "127",
+    "ctaHref": "tel:+351253000000",
+    "ctaLabel": "Marcar consulta",
+    "registo": "ERS n.º 00000"
+  },
+  "tokens": {
+    "brand": "oklch(0.55 0.09 195)",
+    "brand-ink": "oklch(0.37 0.07 195)",
+    "brand-cta": "oklch(0.55 0.13 195)",
+    "cta-ink": "#fff",
+    "canvas": "#fbfaf8",
+    "surface": "#f5f3f0",
+    "ink": "#1a1c1a",
+    "ink-muted": "#5f6461",
+    "hairline": "rgba(26,28,26,.12)",
+    "radius": "12px",
+    "font-display": "'Sentient', Georgia, serif",
+    "font-body": "'Switzer', system-ui, sans-serif"
+  },
+  "fontes": {
+    "url": "https://api.fontshare.com/v2/css?f[]=sentient@500&f[]=switzer@400,500,600&display=swap",
+    "preconnect": "https://api.fontshare.com"
+  },
+  "seo": {
+    "title": "Clínica Exemplo — Medicina dentária em Guimarães",
+    "description": "Consultas de medicina dentária em Guimarães. 4,9 no Google em 127 avaliações. Marcação por telefone, seg a sex."
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Clínica Exemplo",
+    "telephone": "+351253000000",
+    "address": { "@type": "PostalAddress", "streetAddress": "Rua de Exemplo 100", "addressLocality": "Guimarães", "postalCode": "4810-000", "addressCountry": "PT" }
+  },
+  "blocos": [
+    {
+      "tipo": "hero",
+      "variante": "split-55-45",
+      "slots": {
+        "kicker": "Medicina dentária · Guimarães",
+        "headline": "A sua consulta dura 50 minutos. Sem pressa.",
+        "subheadline": "Atendimento sem lista de espera, com plano de tratamento explicado antes de começar.",
+        "fotoHero": "https://images.example.pt/fachada.jpg",
+        "fotoHeroAlt": "Receção da Clínica Exemplo na Rua de Exemplo, Guimarães"
+      }
+    },
+    {
+      "tipo": "credibilidade",
+      "variante": "faixa-numeros",
+      "slots": {
+        "numeros": "<div><p class=\"cred__num\">4,9</p><p class=\"cred__lbl\">Google · 127 avaliações</p></div><div><p class=\"cred__num\">2011</p><p class=\"cred__lbl\">Desde, em Guimarães</p></div><div><p class=\"cred__num\">50 min</p><p class=\"cred__lbl\">Duração da consulta</p></div>"
+      }
+    },
+    {
+      "tipo": "servicos",
+      "variante": "lista-hairline",
+      "slots": {
+        "titulo": "O que fazemos",
+        "intro": "Só o que consta do site original — nada inventado.",
+        "itens": "<li class=\"svc__item\"><a class=\"svc__link\" href=\"tel:+351253000000\"><span class=\"svc__nome\">Implantologia</span><span class=\"svc__desc\">Colocação de implantes com plano e orçamento antes de iniciar.</span><span class=\"svc__seta\">Marcar &rarr;</span></a></li><li class=\"svc__item\"><a class=\"svc__link\" href=\"tel:+351253000000\"><span class=\"svc__nome\">Ortodontia</span><span class=\"svc__desc\">Aparelho fixo e alinhadores, adultos e crianças a partir dos 6 anos.</span><span class=\"svc__seta\">Marcar &rarr;</span></a></li><li class=\"svc__item\"><a class=\"svc__link\" href=\"tel:+351253000000\"><span class=\"svc__nome\">Branqueamento</span><span class=\"svc__desc\">Sessão em consultório, com avaliação prévia do esmalte.</span><span class=\"svc__seta\">Marcar &rarr;</span></a></li>"
+      }
+    },
+    {
+      "tipo": "sobre",
+      "variante": "foto-texto",
+      "slots": {
+        "titulo": "Quem o vai atender",
+        "foto": "https://images.example.pt/equipa.jpg",
+        "fotoAlt": "Dra. Exemplo no consultório da clínica",
+        "paragrafos": "<p>A clínica abriu em 2011 e mantém a mesma equipa clínica desde 2016.</p><p>Cada primeira consulta inclui avaliação, raio-x e plano de tratamento por escrito.</p>",
+        "credenciais": "<li>Ordem dos Médicos Dentistas n.º 0000</li><li>Licença ERS n.º 00000</li>"
+      }
+    },
+    {
+      "tipo": "faq",
+      "variante": "details",
+      "slots": {
+        "titulo": "Perguntas frequentes",
+        "itens": "<div data-acc-item><button aria-expanded=\"false\"><span>Aceitam seguros de saúde?</span><span class=\"faq__ico\" aria-hidden=\"true\">+</span></button><div class=\"faq__resp\"><div><p>Sim — Multicare, Médis e Advancecare. Confirme a cobertura ao marcar.</p></div></div></div><div data-acc-item><button aria-expanded=\"false\"><span>Qual é o horário?</span><span class=\"faq__ico\" aria-hidden=\"true\">+</span></button><div class=\"faq__resp\"><div><p>Segunda a sexta, das 9h às 19h. Sábado até às 13h.</p></div></div></div>"
+      }
+    },
+    {
+      "tipo": "local",
+      "variante": "mapa-contacto",
+      "slots": {
+        "titulo": "Onde estamos",
+        "horario": "Seg a sex, 9h–19h · Sáb até 13h",
+        "mapaSrc": "https://www.google.com/maps?q=Guimaraes&output=embed"
+      }
+    },
+    {
+      "tipo": "rodape",
+      "variante": "simples",
+      "slots": {
+        "links": "<a href=\"#servicos\">Serviços</a><a href=\"#sobre\">Sobre</a><a href=\"#contacto\">Contacto</a>"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "_leia": "Copia para prospector-config.json e preenche. Estes dados são TEUS (quem envia), nunca do cliente. Portugal: o canal é EMAIL + TELEFONE — não há campo de WhatsApp de propósito.",
+  "assinatura": {
+    "nome": "Mateus Brasil",
+    "apresentacao": "faço sites para negócios locais",
+    "email": "tu@odominio.pt",
+    "telefone": "+351 900 000 000",
+    "telefoneRaw": "+351900000000"
+  },
+  "dominio": "odominio.pt"
+}

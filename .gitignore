@@ -1,0 +1,35 @@
+# Dependências e resultados reprodutíveis
+node_modules/
+**/node_modules/
+.next/
+**/.next/
+out/
+**/out/
+themes/*/.obras/
+
+# Artefatos locais de montagem, ensaio e QA
+build/
+sites/
+ensaio/
+baseline/
+test-results/
+playwright-report/
+screenshots/
+*.log
+npm-debug.log*
+
+# Estado operacional e configuração real (podem conter PII, contactos ou credenciais)
+prospector.db
+prospector.db-*
+prospector-config.json
+.env
+.env.*
+!.env.example
+briefs/
+planos/
+clientes/*/cliente.json
+
+# Ferramentas locais de deploy/cache e backups transitórios
+.vercel/
+.cache/
+_bkp_teste/
