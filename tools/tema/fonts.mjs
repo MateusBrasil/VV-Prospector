@@ -36,10 +36,11 @@ const varDe = familia => '--fonte-' + familia.toLowerCase().replace(/\s+/g, '-')
 /* Defaults = as fontes do Kasablanca. Ver tokens.mjs para o porquê de os defaults serem
  * exatamente o site aprovado: é o que mantém o teste de regressão honesto. */
 const PADRAO = {
-  display: { origem: 'url', familia: 'Roslindale Variable',
-             url: 'https://fonts.cdnfonts.com/css/roslindale', fallback: 'sans-serif' },
-  corpo: { origem: 'google', familia: 'Host Grotesk' },
-  mono: { origem: 'google', familia: 'DM Mono' },
+  // Sem CDN por omissão: a obra tem de renderizar também em QA isolado e offline.
+  // Um cliente pode declarar uma fonte local em assets/fonts quando direção de arte exigir.
+  display: { origem: 'system', familia: 'Georgia', fallback: 'serif' },
+  corpo: { origem: 'system', familia: 'Arial', fallback: 'sans-serif' },
+  mono: { origem: 'system', familia: 'Courier New', fallback: 'monospace' },
 };
 
 /**
@@ -77,6 +78,9 @@ export function gerarFontes(fontes = {}) {
       });
       valores[papel] = `var(${variavel}), ${generico}`;
 
+    } else if (d.origem === 'system') {
+      valores[papel] = `"${d.familia || 'serif'}", ${generico}`;
+
     } else if (d.origem === 'url') {
       if (!d.url) { erros.push(`design.fontes.${papel}.url em falta (origem "url")`); continue; }
       cssImports.push(`@import url("${d.url}");`);
@@ -92,7 +96,7 @@ export function gerarFontes(fontes = {}) {
       valores[papel] = `var(${variavel}), ${generico}`;
 
     } else {
-      erros.push(`design.fontes.${papel}.origem inválida: "${d.origem}" (google | url | local)`);
+      erros.push(`design.fontes.${papel}.origem inválida: "${d.origem}" (google | system | url | local)`);
     }
   }
 

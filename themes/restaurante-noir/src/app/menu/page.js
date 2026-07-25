@@ -63,7 +63,7 @@ export default function Menu() {
       <section className="menu-hero">
         <div className="container">
           <Copy type="words" animateOnScroll={false} delay={0.85}>
-            <h2>{paginas.menu.titulo}</h2>
+            <h1>{paginas.menu.titulo}</h1>
           </Copy>
         </div>
 

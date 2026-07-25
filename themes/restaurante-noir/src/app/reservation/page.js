@@ -185,7 +185,7 @@ export default function Reservation() {
       <section className="reservation-hero" ref={heroSectionRef}>
         <div className="container">
           <Copy type="words" animateOnScroll={false} delay={0.85}>
-            <h2>{paginas.reserva.titulo}</h2>
+            <h1>{paginas.reserva.titulo}</h1>
           </Copy>
 
           <Copy type="lines" animateOnScroll={false} delay={1.35}>

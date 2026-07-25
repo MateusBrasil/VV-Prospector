@@ -126,9 +126,11 @@ export default function About() {
         <div className="about-hero-pin">
           <div className="hero-heading">
             <Copy animateOnScroll={false} delay={0.85}>
-              <h1 className="heading-line-1">{identidade.wordmark[0]}</h1>
-              <h1 className="heading-line-2">{identidade.wordmark[1]}</h1>
-              <h1 className="heading-line-3">{paginas.sobre.heroLinha3}</h1>
+              <h1>
+                <span className="heading-line-1">{identidade.wordmark[0]}</span>
+                <span className="heading-line-2">{identidade.wordmark[1]}</span>
+                <span className="heading-line-3">{paginas.sobre.heroLinha3}</span>
+              </h1>
             </Copy>
           </div>
 

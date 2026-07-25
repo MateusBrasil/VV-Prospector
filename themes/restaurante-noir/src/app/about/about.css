@@ -29,6 +29,10 @@
   will-change: transform;
 }
 
+.hero-heading h1 span {
+  display: block;
+}
+
 .hero-image {
   position: relative;
   width: 100%;

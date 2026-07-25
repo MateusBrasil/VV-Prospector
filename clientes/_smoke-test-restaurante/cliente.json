@@ -10,7 +10,8 @@
     "localidadeCurta": "Ambiente de Teste, PT"
   },
   "contactos": {
-    "telefone": "+351 000 000 000"
+    "telefone": "Contacto indisponível neste teste",
+    "reservaUrl": "#reserva-teste"
   },
   "morada": {
     "linhas": ["Rua de Exemplo, 0", "0000-000 Ambiente de Teste"],
@@ -21,7 +22,9 @@
     "description": "Dados sintéticos para validar o tema restaurante-noir; não é um negócio real."
   },
   "imagens": {
-    "hero": "/assets/hero.svg"
+    "hero": "/assets/hero.svg",
+    "logo": "/assets/hero.svg",
+    "diningMenu": "/assets/hero.svg"
   },
   "blocos": {
     "nav": {

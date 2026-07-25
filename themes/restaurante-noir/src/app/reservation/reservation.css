@@ -14,7 +14,7 @@
   text-align: center;
 }
 
-.reservation-hero h2 {
+.reservation-hero h1 {
   width: 65%;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .reservation-btn span {
-  font-family: var(--font-host-grotesk), sans-serif;
+  font-family: var(--fonte-corpo);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--base-500);
