@@ -114,9 +114,12 @@ Para testar o motor de temas sem tocar num cliente, use a obra fictícia:
 ```bash
 node tools/tema/hydrate.mjs _smoke-test-moda
 cd themes/moda-editorial/.obras/_smoke-test-moda && npm.cmd run build
+
+node tools/tema/hydrate.mjs _smoke-test-restaurante
+cd themes/restaurante-noir/.obras/_smoke-test-restaurante && npm.cmd run build
 ```
 
-`clientes/<slug>/cliente.json`, `prospector.db`, briefs, rascunhos de email, screenshots e obras geradas podem conter contactos, moradas, fotos e outros dados pessoais. Não os adicione indiscriminadamente ao Git. Mantenha backup cifrado separado do CRM/dados operacionais, aplique retenção mínima e use apenas o repositório de código para ferramentas, temas-fonte, schemas, testes e documentação.
+`clientes/<slug>/cliente.json`, `prospector.db`, briefs, rascunhos de email, screenshots e obras geradas podem conter contactos, moradas, fotos e outros dados pessoais. Todos os diretórios de clientes ficam ignorados por padrão; a única exceção versionável é `clientes/_smoke-test-restaurante/`, uma fixture explicitamente sintética para validação. Mantenha backup cifrado separado do CRM/dados operacionais, aplique retenção mínima e use apenas o repositório de código para ferramentas, temas-fonte, schemas, testes e documentação.
 
 ## Diferenças vs. o upstream (plugin do Helio Arreche)
 

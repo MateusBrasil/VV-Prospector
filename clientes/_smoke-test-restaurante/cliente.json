@@ -1,0 +1,84 @@
+{
+  "_smoke_test": true,
+  "_aviso": "Fixture sintética para provar hydrate/build do tema restaurante-noir. Não representa cliente, morada, contacto ou avaliação real.",
+  "slug": "_smoke-test-restaurante",
+  "tema": "restaurante-noir@1",
+  "locale": "pt-PT",
+  "identidade": {
+    "nome": "Mesa de Ensaio",
+    "tagline": "Cozinha fictícia para validação técnica",
+    "localidadeCurta": "Ambiente de Teste, PT"
+  },
+  "contactos": {
+    "telefone": "+351 000 000 000"
+  },
+  "morada": {
+    "linhas": ["Rua de Exemplo, 0", "0000-000 Ambiente de Teste"],
+    "cidade": "Ambiente de Teste"
+  },
+  "seo": {
+    "title": "Mesa de Ensaio | Fixture técnica",
+    "description": "Dados sintéticos para validar o tema restaurante-noir; não é um negócio real."
+  },
+  "imagens": {
+    "hero": "/assets/hero.svg"
+  },
+  "blocos": {
+    "nav": {
+      "links": [
+        { "label": "Início", "imagem": "/assets/hero.svg" },
+        { "label": "Sobre", "imagem": "/assets/hero.svg" },
+        { "label": "Contacto", "imagem": "/assets/hero.svg" }
+      ]
+    },
+    "footer": {
+      "titulo": "Validação técnica concluída",
+      "botao": "Contactar teste"
+    },
+    "diningMenu": {
+      "titulo": "Carta sintética"
+    }
+  },
+  "paginas": {
+    "home": {
+      "sobre": {
+        "titulo": "Texto sintético mínimo para confirmar que a Home do tema renderiza sem conteúdo de cliente.",
+        "etiquetas": ["Teste local", "Dados fictícios"]
+      }
+    },
+    "sobre": {
+      "heroLinha3": "Fictícia",
+      "kicker": "Ambiente de teste",
+      "paragrafos": [
+        "Primeiro parágrafo sintético para a rota Sobre.",
+        "Segundo parágrafo sintético para a rota Sobre.",
+        "Terceiro parágrafo sintético para a rota Sobre."
+      ]
+    },
+    "menu": {
+      "titulo": "Menu de teste",
+      "etiqueta": "Sem produtos reais"
+    },
+    "reserva": {
+      "titulo": "Reserva de teste",
+      "lead": "Esta rota existe apenas para validar a exportação estática.",
+      "botao": "Continuar teste",
+      "cards": [
+        {
+          "icone": "relampago",
+          "titulo": "Informação sintética",
+          "descricao": "Cartão mínimo de prova.",
+          "itens": ["Sem dados reais"]
+        }
+      ]
+    }
+  },
+  "menu": [
+    {
+      "categoria": "Teste",
+      "itens": [
+        { "nome": "Item sintético", "preco": "0 €", "descricao": "Apenas para validar a rota." }
+      ]
+    }
+  ]
+}

@@ -27,7 +27,9 @@ prospector-config.json
 !.env.example
 briefs/
 planos/
-clientes/*/cliente.json
+clientes/*/
+!clientes/_smoke-test-restaurante/
+!clientes/_smoke-test-restaurante/**
 
 # Ferramentas locais de deploy/cache e backups transitórios
 .vercel/
