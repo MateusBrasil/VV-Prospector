@@ -99,6 +99,25 @@ Para operação normal, use `node tools/run.mjs briefs/<slug>.json`: basta o bri
 - **O deploy exige `--deploy`.** Por omissão não se publica nada.
 - **O passe visual.** O gate cobre só o que é grep-able; screenshot a 375px e 1440px continua a ser trabalho de olho.
 
+## Operação local e proteção de dados
+
+Antes de mexer em ferramentas ou temas, execute o gate local completo:
+
+```bash
+npm.cmd run check
+```
+
+Ele executa testes, sintaxe, acessibilidade estática e o orçamento local de performance. O último mede apenas `themes/<tema>/src` e `public`: ignora `node_modules`, `.next` e `.obras`, não usa rede e falha se código, payload público, asset individual ou quantidade de ficheiros ultrapassarem os limites. Para inspecionar apenas um tema: `node tools/orcamento-performance.mjs moda-editorial`.
+
+Para testar o motor de temas sem tocar num cliente, use a obra fictícia:
+
+```bash
+node tools/tema/hydrate.mjs _smoke-test-moda
+cd themes/moda-editorial/.obras/_smoke-test-moda && npm.cmd run build
+```
+
+`clientes/<slug>/cliente.json`, `prospector.db`, briefs, rascunhos de email, screenshots e obras geradas podem conter contactos, moradas, fotos e outros dados pessoais. Não os adicione indiscriminadamente ao Git. Mantenha backup cifrado separado do CRM/dados operacionais, aplique retenção mínima e use apenas o repositório de código para ferramentas, temas-fonte, schemas, testes e documentação.
+
 ## Diferenças vs. o upstream (plugin do Helio Arreche)
 
 | | Upstream | Aqui |

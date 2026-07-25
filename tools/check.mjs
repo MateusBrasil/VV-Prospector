@@ -9,6 +9,7 @@ const passos = [
   ['testes', ['--test', 'test/*.test.mjs']],
   ['sintaxe', ['tools/check-syntax.mjs']],
   ['a11y estática', ['tools/a11y-estatico.mjs']],
+  ['orçamento de performance', ['tools/orcamento-performance.mjs']],
 ];
 
 for (const [nome, args] of passos) {
