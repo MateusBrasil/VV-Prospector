@@ -1,0 +1,246 @@
+{
+  "_smoke_test": true,
+  "_aviso": "Fixture sintética para provar hydrate/build do tema clinica-estetica. Não representa clínica, morada, contacto, profissional, resultado clínico ou avaliação real. Os nomes, os casos e os testemunhos são inventados.",
+  "slug": "_smoke-test-clinica-estetica",
+  "tema": "clinica-estetica@1",
+  "direcao": "clinica-estetica",
+  "locale": "pt-PT",
+
+  "identidade": {
+    "nome": "Clínica Aurora Ensaio",
+    "tagline": "Estética avançada fictícia para validação técnica",
+    "localidadeCurta": "Ambiente de Teste, PT"
+  },
+
+  "contactos": {
+    "telefone": "Contacto indisponível neste teste",
+    "telefoneLink": "/contacto/",
+    "email": "teste@exemplo.pt",
+    "reservaUrl": "/contacto/"
+  },
+
+  "morada": {
+    "linhas": ["Rua de Exemplo, 0", "0000-000 Ambiente de Teste"],
+    "cidade": "Ambiente de Teste"
+  },
+
+  "seo": {
+    "title": "Clínica Aurora Ensaio | Fixture técnica",
+    "description": "Dados sintéticos para validar o tema clinica-estetica; não é uma clínica real."
+  },
+
+  "imagens": {
+    "hero": "/assets/hero.svg",
+    "galeria": [
+      "/assets/retrato-1.svg",
+      "/assets/retrato-2.svg",
+      "/assets/retrato-3.svg",
+      "/assets/retrato-4.svg",
+      "/assets/retrato-5.svg"
+    ]
+  },
+
+  "horarios": [
+    { "dias": "Segunda a sexta", "horas": "10h00 às 20h00" },
+    { "dias": "Sábado", "horas": "10h00 às 14h00" }
+  ],
+
+  "blocos": {
+    "nav": {
+      "inicio": "Início",
+      "sobre": "A clínica",
+      "contacto": "Contactos",
+      "acao": "Marcar avaliação",
+      "rotuloMenu": "Navegação principal"
+    },
+
+    "hero": {
+      "rotulo": "Ambiente de teste",
+      "titulo": "Título sintético do hero para validação do tema",
+      "acao": "Marcar avaliação"
+    },
+
+    "lead": {
+      "rotulo": "Sobre"
+    },
+
+    "servicos": {
+      "rotulo": "Tratamentos",
+      "titulo": "Secção de tratamentos sintética",
+      "itens": [
+        {
+          "titulo": "Primeiro tratamento de teste",
+          "texto": "Descrição sintética para confirmar que o cartão renderiza com dados do cliente.",
+          "acao": "Saber mais",
+          "destino": "/contacto/"
+        },
+        {
+          "titulo": "Segundo tratamento de teste",
+          "texto": "Segunda descrição sintética, para confirmar que a fila não está presa a três cartões.",
+          "acao": "Saber mais",
+          "destino": "/contacto/"
+        },
+        {
+          "titulo": "Terceiro tratamento de teste",
+          "texto": "Terceira descrição sintética. A dobra de origem só permitia três cartões fixos.",
+          "acao": "Saber mais",
+          "destino": "/contacto/"
+        },
+        {
+          "titulo": "Quarto tratamento de teste",
+          "texto": "Quarta descrição sintética, que é a que prova que o número deixou de ser fixo.",
+          "acao": "Saber mais",
+          "destino": "/contacto/"
+        }
+      ]
+    },
+
+    "vitrine": {
+      "rotulo": "Resultados",
+      "titulo": "Vitrine sintética de antes e depois",
+      "texto": "Bloco de teste. As duas comparações abaixo são formas abstratas, não são fotografias de pessoas nem resultados clínicos.",
+      "rotuloControlo": "Arraste ou use as setas para comparar antes e depois",
+      "itens": [
+        {
+          "antes": "/assets/caso-1-antes.svg",
+          "antesAlt": "Forma abstrata de teste, estado inicial",
+          "depois": "/assets/caso-1-depois.svg",
+          "depoisAlt": "Forma abstrata de teste, estado final",
+          "rotuloAntes": "Antes",
+          "rotuloDepois": "Depois",
+          "titulo": "Primeiro caso sintético",
+          "texto": "Legenda sintética do primeiro caso, apenas para validar a comparação."
+        },
+        {
+          "antes": "/assets/caso-2-antes.svg",
+          "antesAlt": "Forma abstrata de teste, estado inicial",
+          "depois": "/assets/caso-2-depois.svg",
+          "depoisAlt": "Forma abstrata de teste, estado final",
+          "rotuloAntes": "Antes",
+          "rotuloDepois": "Depois",
+          "titulo": "Segundo caso sintético",
+          "texto": "Legenda sintética do segundo caso, para confirmar que a grelha aceita mais do que um."
+        }
+      ]
+    },
+
+    "prova": {
+      "rotulo": "Testemunhos",
+      "titulo": "Secção de prova social sintética",
+      "nota": "Testemunhos inventados para ambiente de teste; não correspondem a pessoas reais.",
+      "itens": [
+        {
+          "nome": "Nome Fictício A",
+          "funcao": "Perfil de teste",
+          "imagem": "/assets/pessoa-1.svg",
+          "imagemAlt": "Retrato abstrato de teste",
+          "texto": "Primeiro depoimento sintético, escrito com comprimento suficiente para confirmar que o corpo do cartão respira e que a linha de leitura não fica curta demais.",
+          "sintese": "Frase-síntese sintética do primeiro cartão."
+        },
+        {
+          "nome": "Nome Fictício B",
+          "funcao": "Perfil de teste",
+          "imagem": "/assets/pessoa-2.svg",
+          "imagemAlt": "Retrato abstrato de teste",
+          "texto": "Segundo depoimento sintético, para confirmar que a grelha não está presa a dois cartões e que o alinhamento da frase final aguenta textos de tamanhos diferentes.",
+          "sintese": "Frase-síntese sintética do segundo cartão."
+        },
+        {
+          "nome": "Nome Fictício C",
+          "funcao": "Perfil de teste",
+          "imagem": "/assets/pessoa-3.svg",
+          "imagemAlt": "Retrato abstrato de teste",
+          "texto": "Terceiro depoimento sintético, mais curto de propósito.",
+          "sintese": "Frase-síntese sintética do terceiro cartão."
+        }
+      ]
+    },
+
+    "contacto": {
+      "rotulo": "Contactos",
+      "titulo": "Secção de contacto sintética",
+      "rotuloTelefone": "Telefone",
+      "rotuloEmail": "Email",
+      "rotuloMorada": "Morada",
+      "tituloPainel": "Horário",
+      "nota": "Linha final sintética; não corresponde a nenhum serviço real.",
+      "acoes": [
+        { "rotulo": "Ver contactos", "destino": "/contacto/", "icone": "telefone" },
+        { "rotulo": "Ver no mapa", "destino": "https://www.openstreetmap.org/", "icone": "mapa" }
+      ]
+    },
+
+    "footer": {
+      "titulo": "Convite final sintético",
+      "botao": "Contactar teste",
+      "rotuloMorada": "Morada",
+      "rotuloContacto": "Contacto",
+      "rotuloHorario": "Horário"
+    }
+  },
+
+  "paginas": {
+    "home": {
+      "sobre": {
+        "titulo": "Texto sintético mínimo para confirmar que a Home do tema renderiza sem conteúdo de cliente real.",
+        "etiquetas": ["Teste local", "Dados fictícios"]
+      }
+    },
+    "sobre": {
+      "kicker": "Ambiente de teste",
+      "titulo": "Página sobre sintética",
+      "paragrafos": [
+        "Primeiro parágrafo sintético para a rota Sobre.",
+        "Segundo parágrafo sintético para a rota Sobre.",
+        "Terceiro parágrafo sintético para a rota Sobre."
+      ]
+    }
+  },
+
+  "design": {
+    "_fonte": "themes/base/direcoes.json → clinica-estetica. Copiado tal e qual, sem sobreposição do cliente: uma fixture de teste não faz direção de arte própria.",
+    "cores": {
+      "base100": "#fcfaf8",
+      "base200": "#eee7e1",
+      "base300": "#a2938a",
+      "base400": "#6b5d55",
+      "base500": "#4a3f39",
+      "base600": "#1a1512",
+      "acento": "#8c6a4f",
+      "fundo": "#fcfaf8"
+    },
+    "papeis": { "texto": "base600", "textoSuave": "base500", "textoTenue": "base400" },
+    "display": {
+      "peso": 300,
+      "lh": "1.0",
+      "lhMultilinha": "1.1",
+      "caixa": "none",
+      "escala": {
+        "h1": "clamp(3rem, 7vw, 7rem)",
+        "h2": "clamp(2.25rem, 5vw, 4.5rem)",
+        "h3": "clamp(1.75rem, 3.5vw, 3rem)",
+        "h4": "clamp(1.4rem, 2.4vw, 2rem)",
+        "h5": "clamp(1.2rem, 1.8vw, 1.5rem)",
+        "h6": "clamp(1.05rem, 1.4vw, 1.25rem)"
+      }
+    },
+    "corpo": {
+      "tamanho": "1.0625rem",
+      "peso": 350,
+      "lh": "1.55",
+      "tracking": "0.005rem",
+      "sm": "0.9375rem",
+      "md": "1.25rem",
+      "mdTracking": "0",
+      "lg": "1.5rem",
+      "lgTracking": "-0.01rem",
+      "compacto": { "tamanho": "1rem", "sm": "0.875rem", "md": "1.15rem", "lg": "1.35rem" }
+    },
+    "ritmo": { "larguraMax": "1440px", "respiro": "7rem", "respiroCompacto": "4rem" },
+    "fontes": {
+      "display": { "familia": "Cormorant Garamond", "origem": "google", "pesos": ["300"] },
+      "corpo": { "familia": "Jost", "origem": "google" },
+      "mono": { "familia": "Jost", "origem": "google" }
+    }
+  }
+}

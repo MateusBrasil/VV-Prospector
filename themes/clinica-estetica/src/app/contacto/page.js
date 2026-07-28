@@ -19,7 +19,7 @@ import "./contacto.css";
 export default function ContactoPagina() {
   return (
     <div className="pagina-contacto">
-      <Contacto slots={slotsContacto} />
+      <Contacto slots={slotsContacto} headingLevel="h1" />
     </div>
   );
 }

@@ -45,18 +45,19 @@ function Icone({ nome }) {
   );
 }
 
-export default function Dobra({ slots: s = {}, id }) {
+export default function Dobra({ slots: s = {}, id, headingLevel = 'h2' }) {
   const informacoes = (Array.isArray(s.informacoes) ? s.informacoes : []).filter(i => i && i.valor);
   const horarios = Array.isArray(s.horarios) ? s.horarios : [];
   const acoes = (Array.isArray(s.acoes) ? s.acoes : []).filter(a => a && a.rotulo && a.destino);
 
+  const Titulo = headingLevel === 'h1' ? 'h1' : 'h2';
   return (
     <section className="dobra" data-dobra="contacto-secao-89" id={id}>
       <div className="contacto">
         {(s.rotulo || s.titulo) && (
           <header className="contacto__header">
             {s.rotulo && <p className="contacto__kicker sm">{s.rotulo}</p>}
-            {s.titulo && <h2>{s.titulo}</h2>}
+            {s.titulo && <Titulo>{s.titulo}</Titulo>}
           </header>
         )}
 

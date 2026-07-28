@@ -90,6 +90,9 @@
 }
 
 [data-dobra="contacto-secao-89"] a.ficha__valor {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   border-bottom: 1px solid transparent;
   align-self: flex-start;
   transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);

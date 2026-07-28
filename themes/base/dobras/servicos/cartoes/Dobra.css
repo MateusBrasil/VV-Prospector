@@ -123,6 +123,7 @@
 [data-dobra="servicos-cartoes"] .cartao__link {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.5rem;
