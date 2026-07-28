@@ -1,0 +1,24 @@
+{
+  "_smoke_test": true,
+  "_aviso": "Brief sintético: liga a fixture local ao ciclo de temas. Nunca usar para prospecção, deploy ou contacto.",
+  "slug": "_smoke-test-restaurante",
+  "tema": "restaurante-noir@1",
+  "lang": "pt-PT",
+  "nicho": "restaurante",
+  "semSite": true,
+  "cliente": {
+    "nome": "Mesa de Ensaio",
+    "nomeCurto": "Mesa de Ensaio",
+    "morada": "Rua de Exemplo, 0, 0000-000 Ambiente de Teste",
+    "telefone": "Contacto indisponível neste teste",
+    "telefoneRaw": "",
+    "ctaHref": "#reserva-teste",
+    "ctaLabel": "Continuar teste"
+  },
+  "seo": {
+    "title": "Mesa de Ensaio | Fixture técnica",
+    "description": "Dados sintéticos para validar o ciclo do tema restaurante-noir; não é um negócio real."
+  },
+  "schema": { "tipo": "Restaurant", "url": "" },
+  "_montagem": "Modo tema: tools/run.mjs chama hydrate + next build. Este brief não contém conteúdo do site; esse conteúdo vive em clientes/_smoke-test-restaurante/cliente.json."
+}

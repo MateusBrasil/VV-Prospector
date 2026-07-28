@@ -32,6 +32,7 @@ import { spawnSync, spawn } from 'node:child_process';
 import { join, dirname, resolve, basename, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
+import { eSmokeRestaurante, validarExecucaoSmoke, validarRelatorioSmokeQa } from './run-smoke.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..');
@@ -243,6 +244,13 @@ async function ciclo(briefPath) {
 
   const slug = brief.slug;
   if (!slug) return { slug: briefPath, ok: false, passos: [], razao: 'brief sem "slug"', ms: 0 };
+  const smoke = eSmokeRestaurante({ root: ROOT, briefPath: abs, brief });
+  // Exceções do smoke servem somente para provar a fábrica local. Um deploy dessa fixture seria
+  // uma publicação de conteúdo falso, por isso falha ANTES de CRM, build ou qualquer escrita.
+  const permissaoSmoke = validarExecucaoSmoke({ smoke, deploy: DEPLOY });
+  if (!permissaoSmoke.ok) {
+    return { slug, ok: false, passos: [], razao: permissaoSmoke.err, ms: 0 };
+  }
 
   // `let` e não `const`: o motor de TEMAS produz a pasta publicável dentro do próprio tema
   // (`themes/<tema>/.obras/<slug>/out`), e reaponta estas duas no passo de montagem. Todos os
@@ -257,7 +265,7 @@ async function ciclo(briefPath) {
   let publicadoSemPasseVisual = false;   // marca a escotilha usada de verdade, para o passo 10 gravar no CRM
 
   console.log(`\n╭─ ${brief.cliente?.nome || slug}  ·  ${briefPath}`);
-  console.log(`│  ${DEPLOY ? (PROD ? 'DEPLOY REAL — PRODUÇÃO' : 'DEPLOY REAL — preview') : 'ensaio (sem publicar)'}`);
+  console.log(`│  ${smoke ? 'SMOKE estrito (sem publicar, email saltado, QA obrigatório)' : DEPLOY ? (PROD ? 'DEPLOY REAL — PRODUÇÃO' : 'DEPLOY REAL — preview') : 'ensaio (sem publicar)'}`);
 
   /** Executa um passo, cronometra, imprime e trava o ciclo se falhar. */
   const passo = async (nome, fn) => {
@@ -391,8 +399,14 @@ async function ciclo(briefPath) {
     // Sem --json de propósito: a saída humana do verificar.mjs já tem "❌ N FAIL"/"🔴"/"🟡" —
     // exactamente o formato que razaoDe() e linhasUteis() sabem ler para o relatório do ciclo.
     const r = correTool('verificar.mjs', [outDir]);
-    if (r.status === 0) return r;
+    if (r.status === 0) {
+      if (!smoke) return r;
+      const qa = validarRelatorioSmokeQa(outAbs);
+      if (!qa.ok) return { ...r, ok: false, err: qa.err };
+      return { ...r, out: `${r.out}\n· QA smoke confirmado: ${relative(ROOT, qa.caminho)}` };
+    }
     if (r.status === 2) {
+      if (smoke) return { ...r, ok: false, err: 'passe visual smoke não conseguiu medir (exit 2) — a fixture exige QA real' };
       if (!DEPLOY) return { ...r, ok: true, out: `${r.out}\n⚠ não consegui medir (exit 2) — aviso, ensaio continua` };
       if (SEM_VISUAL) {
         publicadoSemPasseVisual = true;
@@ -474,6 +488,7 @@ async function ciclo(briefPath) {
 
   /* 9. Email — rascunho, com o checklist anti-spam bloqueante. NÃO envia. */
   await passo('Email (rascunho)', () => {
+    if (smoke) return { saltado: true, nota: 'fixture sintética: email não é gerado nem enviado' };
     // Em ensaio o link é falso: escrever para sites/<slug>/email.txt poria um link morto por cima
     // do rascunho bom — e um rascunho pronto a enviar com link morto é o pior artefacto do repo.
     const dir = DEPLOY ? outDir : join('ensaio', slug);

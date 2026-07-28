@@ -25,7 +25,8 @@ prospector-config.json
 .env
 .env.*
 !.env.example
-briefs/
+briefs/*
+!briefs/_smoke-test-restaurante.json
 planos/
 clientes/*/
 !clientes/_smoke-test-restaurante/

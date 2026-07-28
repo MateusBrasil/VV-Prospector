@@ -119,6 +119,14 @@ node tools/tema/hydrate.mjs _smoke-test-restaurante
 cd themes/restaurante-noir/.obras/_smoke-test-restaurante && npm.cmd run build
 ```
 
+O brief sintético correspondente em `briefs/_smoke-test-restaurante.json` existe para provar o
+encadeamento do ciclo de temas. O teste automatizado valida a relação entre brief e
+`cliente.json` sem criar CRM, obra, deploy ou qualquer artefacto operacional. Para ensaiar o
+ciclo completo localmente (ele cria estado de ensaio no CRM), use
+`node tools/run.mjs briefs/_smoke-test-restaurante.json` e nunca acrescente `--deploy`.
+Esse é um smoke estrito: o email é explicitamente saltado e o ciclo falha se o QA não produzir
+`out/_qa/relatorio.json` com veredicto OK nos breakpoints 375 e 1440.
+
 `clientes/<slug>/cliente.json`, `prospector.db`, briefs, rascunhos de email, screenshots e obras geradas podem conter contactos, moradas, fotos e outros dados pessoais. Todos os diretórios de clientes ficam ignorados por padrão; a única exceção versionável é `clientes/_smoke-test-restaurante/`, uma fixture explicitamente sintética para validação. Mantenha backup cifrado separado do CRM/dados operacionais, aplique retenção mínima e use apenas o repositório de código para ferramentas, temas-fonte, schemas, testes e documentação.
 
 ## Diferenças vs. o upstream (plugin do Helio Arreche)
