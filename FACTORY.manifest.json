@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "name": "Prospector Premium Factory",
+  "runtime": {
+    "node": ">=22",
+    "packageManager": "npm",
+    "rootLockfile": "package-lock.json",
+    "qaBrowser": "Playwright Chromium"
+  },
+  "entrypoints": {
+    "diagnostic": "npm run fabrica",
+    "quality": "npm run check",
+    "catalog": "node tools/catalogo-lock.mjs",
+    "cycle": "node tools/run.mjs briefs/<slug>.json",
+    "hydrate": "node tools/tema/hydrate.mjs <slug>"
+  },
+  "bundledSkills": [
+    { "name": "curador-componentes", "path": "skills/curador-componentes/SKILL.md", "requiredFor": ["curadoria", "nova-dobra"] },
+    { "name": "prospeccao-maps", "path": "skills/prospeccao-maps/SKILL.md", "requiredFor": ["prospeccao-assistida"] },
+    { "name": "proposta-email", "path": "skills/proposta-email/SKILL.md", "requiredFor": ["proposta"] },
+    { "name": "contrato-servico", "path": "skills/contrato-servico/SKILL.md", "requiredFor": ["contrato"] }
+  ],
+  "externalAssistants": [
+    { "name": "frontend-squad", "purpose": "portar/adaptar dobras React/Next", "required": false, "fallback": "motor e AGENTS.md" },
+    { "name": "landing-forge", "purpose": "direção e composição de landing pages", "required": false, "fallback": "tema, receitas e curador-componentes" },
+    { "name": "dev-squad", "purpose": "mudanças estruturais de arquitetura", "required": false, "fallback": "mudança manual revisada, com testes e QA" },
+    { "name": "vibe-squad", "purpose": "exploração visual complementar", "required": false, "fallback": "não necessário para gerar ou publicar obra" }
+  ],
+  "commercialCatalog": {
+    "path": "bank/_componentes",
+    "lockfile": "catalogo.lock.json",
+    "verification": "node tools/catalogo-lock.mjs",
+    "policy": "O banco só pode ser copiado por quem tiver licença. Ausência permite usar temas/dobras promovidos; divergência bloqueia curadoria ou importação de peças novas."
+  },
+  "kits": {
+    "registry": "themes/base/kits.json",
+    "modes": {
+      "kit-existente": "Usa tema e dobras aprovadas do registro; é o caminho de criação de cliente.",
+      "kit-completo": "Amplia tema/dobras somente com catálogo conferido, esteira, testes, gate, QA visual e promoção explícita."
+    }
+  },
+  "qualityGates": [
+    "npm run check",
+    "node tools/tema/hydrate.mjs <slug>",
+    "build da obra materializada",
+    "tools/gate.mjs",
+    "tools/verificar.mjs em 375 e 1440 px",
+    "revisão humana de conteúdo, CTA, contactos e fotos"
+  ],
+  "secretsAndData": {
+    "localOnly": ["prospector-config.json", "prospector.db", "briefs reais", "clientes reais", "assets de clientes", "obras materializadas"],
+    "versioned": ["tools", "themes fonte", "skills", "schemas", "fixtures sintéticas", "catalogo.lock.json", "documentação"]
+  }
+}

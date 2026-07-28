@@ -14,7 +14,8 @@
     "syntax": "node tools/check-syntax.mjs",
     "a11y": "node tools/a11y-estatico.mjs",
     "orcamento": "node tools/orcamento-performance.mjs",
-    "check": "node tools/check.mjs"
+    "check": "node tools/check.mjs",
+    "fabrica": "node tools/fabrica.mjs"
   },
   "_nota_dependencies_vazio": "Fica vazio de propósito e deve continuar assim. A regra 'zero dependências' do projeto é sobre o ARTEFACTO VENDIDO: nada em sites/ importa nada, os sites são HTML + assets e continuam a sê-lo. O Playwright entra em devDependencies porque é ferramenta de fábrica, não peça do produto.",
   "_nota_porque_existe": "Sem isto, o passe visual depende de um `npm i -g playwright` que alguém correu uma vez nesta máquina e que não está registado em lado nenhum. Noutra máquina (ou no amigo a testar) o QA visual desaparece EM SILÊNCIO — o pior modo de falha possível para o gate mais importante do sistema, porque não avisa que não correu, só deixa de correr.",

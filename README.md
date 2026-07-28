@@ -59,7 +59,7 @@ node tools/tema/kits.mjs
 node tools/tema/kits.mjs --nicho restaurante --json
 ```
 
-`restaurante` está marcado como `mvp-pronto` porque o tema `restaurante-noir` já entrega o fluxo completo. `clinica-estetica` e `clinica-dentaria` estão apenas `em-curadoria`: listam estrutura e candidatas, mas não podem ser tratadas como produção. A ferramenta falha se um kit `mvp-pronto` declarar uma dobra que não esteja promovida no respetivo `variant.json`.
+O registro em `themes/base/kits.json` é a fonte de verdade sobre quais kits estão liberados. Antes de criar um cliente, consulte `node tools/tema/kits.mjs`; um kit só é utilizável em produção quando estiver `mvp-pronto` e todas as suas dobras estiverem promovidas no respetivo `variant.json`. Os temas iniciais são `restaurante-noir`, `odontologia` e `clinica-estetica`; a existência de uma pasta de tema não substitui a consulta ao registro.
 
 **Facto verificado**: o site do Kasablanca inteiro (`clientes/kasablanca/cliente.json` + `themes/restaurante-noir/`) foi regenerado a partir deste único ficheiro, e `tools/tema/regress.mjs --comparar` contra o baseline em `baseline/kasablanca/` só acusa as divergências intencionais da migração.
 
@@ -107,6 +107,22 @@ Para operação normal, use `node tools/run.mjs briefs/<slug>.json`: basta o bri
 - **O envio do email fica em rascunho.** Revisão humana antes de qualquer envio, 1 a 1, da conta pessoal. Nunca em massa.
 - **O deploy exige `--deploy`.** Por omissão não se publica nada.
 - **O passe visual.** O gate cobre só o que é grep-able; screenshot a 375px e 1440px continua a ser trabalho de olho.
+
+## Instalação reproduzível e fábrica
+
+Uma cópia do projeto pode reproduzir o motor, os temas, os gates e a curadoria sem depender da configuração pessoal desta máquina. Comece por [INSTALL.md](INSTALL.md), siga o [WORKFLOW.md](WORKFLOW.md) e trate [AGENTS.md](AGENTS.md) como o contrato operacional de qualquer agente.
+
+```bash
+npm ci
+npm run fabrica -- --install
+npm run fabrica
+node tools/catalogo-lock.mjs
+npm run check
+```
+
+`FACTORY.manifest.json` lista o que acompanha o repositório e o que é externo/opcional. As skills em `skills/` são portáveis; squads disponíveis no Codex/Claude não são pré-requisitos silenciosos. O catálogo comercial é conferido por `catalogo.lock.json`: sem ele ainda se usam temas e dobras já promovidos; se ele divergir, não se curam nem se importam novas peças.
+
+O runtime do motor é reproduzível pelo `package-lock.json` da raiz. Cada tema Next ainda deve ganhar o seu próprio lockfile antes de uma instalação ser tratada como bit-a-bit reproduzível; veja o procedimento e a limitação explícita em [INSTALL.md](INSTALL.md).
 
 ## Operação local e proteção de dados
 

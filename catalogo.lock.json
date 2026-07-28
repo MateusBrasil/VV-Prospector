@@ -1,0 +1,31 @@
+{
+  "_porque": "Impressão digital do catálogo de origem. O banco é licença comercial e não viaja no Git; isto garante que outra máquina tem as MESMAS peças disponíveis, senão a fábrica produziria um site diferente em silêncio.",
+  "total": 615,
+  "categorias": {
+    "animacoes": 21,
+    "animacoes-de-grid": 12,
+    "animacoes-de-rolagem": 22,
+    "animacoes-svg": 14,
+    "backgrounds": 4,
+    "botoes": 35,
+    "cards": 7,
+    "carrossel": 17,
+    "checkbox": 2,
+    "cursor": 26,
+    "efeitos-3d": 22,
+    "efeitos-mouse": 1,
+    "hero-section": 25,
+    "loaders": 6,
+    "menu": 31,
+    "navegacao-menu": 1,
+    "parallax": 15,
+    "physics": 10,
+    "scroll": 57,
+    "secoes": 200,
+    "textos": 24,
+    "transicoes-de-pagina": 23,
+    "ui-effects": 19,
+    "webgl-threejs": 21
+  },
+  "hash": "1a6f5269a0ed45b1"
+}
