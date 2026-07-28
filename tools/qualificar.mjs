@@ -22,7 +22,7 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { resolve4, resolve6 } from 'node:dns/promises';
+import { resolve4, resolve6, lookup } from 'node:dns/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -109,7 +109,14 @@ export function validarUrlDestino(valor) {
 /** Resolve A e AAAA. Separar isto do curl permite testar a política sem rede. */
 export async function resolverPadrao(host) {
   const respostas = await Promise.allSettled([resolve4(host), resolve6(host)]);
-  const ips = respostas.flatMap(resultado => resultado.status === 'fulfilled' ? resultado.value : []);
+  let ips = respostas.flatMap(resultado => resultado.status === 'fulfilled' ? resultado.value : []);
+  // Alguns ambientes bloqueiam consultas DNS diretas (resolve4/resolve6) mas o resolvedor
+  // do sistema continua funcional. Sem este fallback, sites acessíveis por curl viravam
+  // VERIFICAR_MANUALMENTE em massa.
+  if (!ips.length) {
+    try { ips = (await lookup(host, { all: true, verbatim: true })).map(r => r.address); }
+    catch { /* mantém o erro acionável abaixo */ }
+  }
   if (!ips.length) throw new Error('DNS não devolveu endereços A/AAAA');
   return ips;
 }
@@ -220,12 +227,14 @@ export async function auditar(url, opcoes) {
 
   const html = r.html || '';
   const low = html.toLowerCase();
-  const head = html.slice(0, 4000);
+  // Metadados podem vir depois de CSS/JS inline muito grandes. Procurar o <head> inteiro
+  // evita vender um falso "sem viewport/description" para um site que os declara.
+  const head = (html.match(/<head\b[^>]*>([\s\S]*?)<\/head\s*>/i) || [null, html])[1];
 
   // ── É site próprio ou diretório/rede social? ─────────────────────────────
   const host = (r.finalUrl || url).replace(/^https?:\/\//, '').split('/')[0].toLowerCase();
   const alheio = ['facebook.com', 'instagram.com', 'linktr.ee', 'wixsite.com', 'business.site',
-    'negocio.site', 'pai.pt', 'paginasamarelas.pt', 'sites.google.com', 'blogspot.', 'wordpress.com'];
+    'negocio.site', 'pai.pt', 'paginasamarelas.pt', 'sites.google.com', 'blogspot.', 'wordpress.com', 'webnode.'];
   const donoAlheio = alheio.find(a => host.includes(a));
   if (donoAlheio) {
     return {

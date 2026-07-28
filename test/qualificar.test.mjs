@@ -75,3 +75,22 @@ test('URL bloqueada não é tratada como lead sem site nem executa curl', async 
   assert.equal(resultado.tem_site, null);
   assert.equal(chamada, false);
 });
+
+test('lê viewport e description no head inteiro, mesmo depois de CSS inline longo', async () => {
+  const html = `<html><head><style>${'x'.repeat(5000)}</style><meta name="viewport" content="width=device-width"><meta name="description" content="descrição real"><title>Empresa Exemplo</title></head><body><a href="tel:+351211234567">Ligar</a></body></html>`;
+  const r = await auditar('https://empresa.example/', {
+    resolver: resolverPublico,
+    executarCurl: () => `${html}\n---META---\n200|123|https://empresa.example/|text/html|`,
+  });
+  assert.equal(r.defeitos.some(d => d.k === 'sem_viewport'), false);
+  assert.equal(r.defeitos.some(d => d.k === 'sem_description'), false);
+});
+
+test('Webnode é tratado como plataforma de terceiro, não como site próprio', async () => {
+  const r = await auditar('https://marisqueira.webnode.pt/', {
+    resolver: resolverPublico,
+    executarCurl: () => '<html><head><title>Primavera</title></head><body></body></html>\n---META---\n200|10|https://marisqueira.webnode.pt/|text/html|',
+  });
+  assert.equal(r.veredito, 'QUALIFICA_SEM_SITE');
+  assert.equal(r.tipo, 'plataforma_alheia');
+});
