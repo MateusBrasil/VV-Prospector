@@ -1,0 +1,209 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-10",
+  "scope": "destaque-txt-animacao-texto-10",
+  "origem": "bank/_componentes/textos/animacao-texto-10",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Hexts"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Lorets"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Framer"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Webflow"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "GSAP"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Three.js"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Vercel"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Next.js"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Stripe"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Linear"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Apple"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Figma"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Notion"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Supabase"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "OpenAI"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Midjourney"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Adobe"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "After Edit"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "Tailwind"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "React"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "Vue"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "Angular"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "Shopify"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "WordPress"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "Bitbucket"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "Awwwards"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "Dribbble"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "Behance"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "CodePen"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "Netflix"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "Tesla"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "Google"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "Meta"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://images.pexels.com/photos/4903005/pexels-photo-4903005.jpeg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://images.pexels.com/photos/6730563/pexels-photo-6730563.jpeg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.pexels.com/photos/4903005/pexels-photo-4903005.jpeg https://images.pexels.com/photos/6730563/pexels-photo-6730563.jpeg)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

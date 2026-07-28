@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel 3D com GSAP</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+        }
+
+        div {
+            position: absolute;
+            user-select: none;
+        }
+
+        #container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #scrollDist {
+            top: 0;
+            width: 100%;  
+            height: 400%; /* Define a altura para permitir o scroll */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scrollDist"></div>
+    <div id="container"></div>
+
+    <!-- Importação do GSAP e do ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Registra o plugin ScrollTrigger (necessário na versão 3 do GSAP)
+        gsap.registerPlugin(ScrollTrigger);
+
+        var c = document.getElementById('container'),
+            boxes = [];
+
+        makeBoxes(30);
+
+        function makeBoxes(n){
+            for (var i=0; i<n; i++){
+                var b = document.createElement('div');
+                boxes.push(b);
+                c.appendChild(b);
+            }
+        }
+
+        // Sintaxe atualizada para o GSAP 3
+        gsap.to(c, {duration: 0.4, perspective: 200, backgroundColor: '#fff'});
+
+        for (var i=0; i<boxes.length; i++){
+            var b = boxes[i];
+            
+            // Verifica se é a primeira ou a segunda imagem
+            var isPrimeiraImagem = (i % 2 === 0);
+            
+            var imageUrl = isPrimeiraImagem 
+                ? 'https://i.postimg.cc/SQ14MFcN/1-1.png' 
+                : 'https://i.postimg.cc/GhBCP7jp/1-1-2.png';
+            
+            // Armazena a URL no elemento para facilitar o uso no evento de click
+            b.dataset.url = imageUrl;
+
+            // Adiciona um stroke (border) minimalista apenas na segunda imagem
+            var estiloBorda = isPrimeiraImagem ? 'none' : '2px solid rgba(0, 0, 0, 0.4)';
+
+            gsap.set(b, {
+                left: '50%',
+                top: '50%',
+                margin: -150,
+                width: 300,
+                height: 300,
+                borderRadius: '20%',
+                backgroundImage: 'url(' + imageUrl + ')',
+                backgroundSize: 'cover',
+                border: estiloBorda,
+                clearProps: 'transform',
+                backfaceVisibility: 'hidden',
+                cursor: 'pointer'
+            });
+
+            b.tl = gsap.timeline({paused: true, defaults: {immediateRender: true}})
+                .fromTo(b, {
+                    scale: 0.3,    
+                    rotationX: i / boxes.length * 360,
+                    transformOrigin: "50% 50% -500px" // px adicionado para melhor compatibilidade entre navegadores
+                }, {
+                    rotationX: '+=360',
+                    ease: 'none'
+                })
+                .timeScale(0.05);
+            
+            b.addEventListener('mouseover', (e) => { gsap.to(e.currentTarget, {opacity: 0.5, scale: 0.36, duration: 0.4, ease: 'expo'}) });
+            b.addEventListener('mouseout', (e) => { gsap.to(e.currentTarget, {opacity: 1, scale: 0.3, duration: 0.2, ease: 'back.out(3)', overwrite: 'auto'}) });
+            
+            // Uso do data-url para abrir o link com segurança, substituindo o slice
+            b.addEventListener('click', (e) => { window.open(e.currentTarget.dataset.url, '_blank') });
+        }
+
+        ScrollTrigger.create({ 
+            trigger: '#scrollDist',
+            start: "top top",
+            end: "bottom bottom",
+            onRefresh: self => {
+                boxes.forEach((b) => { gsap.set(b.tl, {progress: self.progress}); })
+            },
+            onUpdate: self => { 
+                boxes.forEach((b) => { gsap.to(b.tl, {progress: self.progress}); })
+            }
+        });  
+    </script>
+</body>
+</html>

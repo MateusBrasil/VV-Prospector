@@ -1,0 +1,160 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-17",
+  "scope": "destaque-scroll-17",
+  "origem": "bank/_componentes/scroll/scroll-17",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Project 1"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "judgement."
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Behold the boundless dance of yin and yang, where all is flux and nothing holds its shape but for a fleeting breath. The mountain's might, though seeming steadf"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Project 2"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "detours"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "and dance"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "In this dance, even the stars, those ancient sentinels of the night sky, are not stationary but in perpetual motion, tracing their arcs in the fabric of the cos"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Project 3"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "As we delve deeper into the mysteries of the cosmos, we encounter the profound realization that the universe itself breathes in a rhythm of creation and dissolu"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Project 4"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "peaks"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "clouds,"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "echoes,"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "In this grand scheme, our human concerns, our joys and sorrows, ambitions and fears, are but echoes of the universal patterns of change and continuity. The Dao "
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Project 5"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "This perspective imbues our lives with a sense of wonder and humility, urging us to live with intention, to cherish each moment as a precious thread in the intr"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

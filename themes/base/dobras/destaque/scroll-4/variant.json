@@ -1,0 +1,100 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-4",
+  "scope": "destaque-scroll-4",
+  "origem": "bank/_componentes/scroll/scroll-4",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/2.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/3.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/1.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/demo1/1.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://ty3"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "http://tyfects/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Fullscreen Clip Animation"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Demos:"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Moduluxe"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Toggle effect"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "14 cor(es) mapeadas para tokens por luminância (acento da origem #548a96 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://ty3 http://tyfects/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

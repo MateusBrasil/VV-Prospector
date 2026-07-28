@@ -1,0 +1,107 @@
+{
+  "slot": "destaque",
+  "nome": "word-scroll-effect",
+  "scope": "destaque-word-scroll-effect",
+  "origem": "bank/_componentes/parallax/word-scroll-effect",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Eagle features&nbsp;"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Eagle features high-end Awwwards-level components."
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "WebGL interactions."
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "smooth scroll effects."
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "physics-based animations."
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "custom cursor concepts."
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "kinetic typography."
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "seamless page transitions."
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "creative hover states."
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "infinite WebGL sliders."
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "complex parallax sections."
+    },
+    {
+      "nome": "item10",
+      "tipo": "texto",
+      "exemplo": "immersive 3D worlds."
+    },
+    {
+      "nome": "item11",
+      "tipo": "texto",
+      "exemplo": "advanced custom shaders."
+    },
+    {
+      "nome": "item12",
+      "tipo": "texto",
+      "exemplo": "dark mode architectures."
+    },
+    {
+      "nome": "item13",
+      "tipo": "texto",
+      "exemplo": "premium UI kits."
+    },
+    {
+      "nome": "item14",
+      "tipo": "texto",
+      "exemplo": "award-winning layouts."
+    },
+    {
+      "nome": "item15",
+      "tipo": "texto",
+      "exemplo": "Awwwards-level components."
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância (acento da origem #fc016e → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

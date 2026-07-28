@@ -1,0 +1,607 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.csHero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.csHero__inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2.1875em;            /* 35px — derived from Figma 1176 - 577 - 564 */
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 3.25rem;          /* 52px on all sides */
+  flex: 1;
+}
+
+/* Left column — heading/copy at top, stats at bottom. Stretches to the
+   full inner height so `space-between` distributes the cascade across
+   the whole hero, not just its content height. */
+.csHero__text {
+  flex: 0 1 36.0625em;       /* 577px */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5em;
+  padding-block: 2rem;        /* 32px Y — breathing room above heading and below stats */
+  min-width: 0;
+}
+
+.csHero__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;                /* 40px */
+}
+
+.csHero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;                  /* 16px */
+}
+
+.csHero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 0.5em;
+}
+
+.csHero__labelDot {
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.csHero__labelText {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-text-white-soft);
+}
+
+.csHero__heading {
+  font-family: var(--font-heading);
+  font-size: 4.25em;         /* 68px */
+  font-weight: 400;
+  line-height: 1.147;        /* 78/68 */
+  letter-spacing: -0.06em;   /* -4.08px on 68px — em scales with breakpoint overrides */
+  color: var(--color-text-purple);
+  margin: 0;
+}
+
+.csHero__subheading {
+  font-family: var(--font-body);
+  font-size: 1em;            /* 16px */
+  font-weight: 400;
+  line-height: 1.5;          /* 24/16 */
+  letter-spacing: -0.128px;
+  color: var(--color-text-secondary-dark);
+  max-width: 36.0625em;      /* 577px */
+  margin: 0;
+}
+
+/* Stats row — 3 equal columns */
+.csHero__stats {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.csHero__stat {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625em;              /* 10px */
+}
+
+.csHero__statValue {
+  font-family: var(--font-heading);
+  font-size: 2.25em;         /* 36px */
+  font-weight: 400;
+  line-height: 1.222;        /* 44/36 */
+  letter-spacing: -2.16px;
+  color: var(--color-text-white);
+  margin: 0;
+}
+
+.csHero__statLabel {
+  font-family: var(--font-body);
+  font-size: 1em;            /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-secondary-dark);
+  margin: 0;
+}
+
+/* Right column — image card. Container queries let the inner image
+   stay anchored at the top of the wrap while the curtain reveal grows
+   the reveal wrapper's height during the entrance. Same pattern as
+   `Hero` and `ServicesHero`. */
+.csHero__imageCard {
+  flex: 0 1 35.25em;         /* 564px */
+  align-self: stretch;        /* fill the full inner-row height */
+  background-color: transparent;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  container-type: size;
+  container-name: csHeroImage;
+}
+
+.csHero__imageReveal {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.csHero__image {
+  display: block;
+  width: 100cqw;
+  height: 100cqh;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .csHero__inner {
+    flex-direction: column;
+    align-items: center;       /* horizontally center the stacked column */
+    justify-content: center;   /* vertically center within the 100vh frame */
+    gap: 3em;
+    padding-block: 2rem;       /* 32px Y at tablet */
+    padding-inline: var(--container-padding);
+  }
+
+  .csHero__text {
+    flex: 0 0 auto;
+    padding-block: 0;
+    gap: 2.5em;
+    width: 100%;
+    max-width: 32rem;          /* 512px cap on the text/stats column */
+    align-items: center;        /* center children horizontally inside the column */
+    text-align: center;
+  }
+
+  .csHero__top {
+    align-items: center;        /* keep the CTA centered with the copy */
+  }
+
+  /* Center the eyebrow label within the column at tablet+. The default
+     `display: inline-flex` of `.csHero__label` sits flush-left because
+     the parent `.csHero__copy` is a flex column with default cross-axis
+     stretch — `align-items: center` on the column lays it on the same
+     vertical axis as the centered heading. */
+  .csHero__copy {
+    align-items: center;
+  }
+
+  .csHero__heading {
+    font-size: 3.5em;        /* 56px */
+    letter-spacing: -0.05em;
+  }
+
+  .csHero__subheading {
+    max-width: none;
+  }
+
+  /* Stats — center horizontally, allow wrapping so a label that doesn't
+     fit on one line drops to a centered second row instead of breaking
+     inside the label. Each stat shrinks to its natural content width. */
+  .csHero__stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25em 2.5em;
+  }
+
+  .csHero__stat {
+    flex: 0 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .csHero__statLabel {
+    white-space: nowrap;
+  }
+
+  .csHero__imageCard {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;      /* horizontal at tablet */
+  }
+
+  .csHero__image {
+    object-position: center 18%; /* anchor higher so the subject's head isn't clipped */
+  }
+
+  .csHero__statValue {
+    font-size: 2em;          /* 32px */
+    letter-spacing: -1.6px;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Padding Y matches the lateral padding (var(--container-padding) =
+     1em at landscape) for a balanced inset around the column. The
+     earlier `padding-top: 5em` was inflating the spacing way beyond
+     what the rest of the layout uses. Vertical centering inside 100vh
+     handles the visual breathing room. */
+  .csHero__inner {
+    padding-block: var(--container-padding);
+    gap: 2.5em;
+  }
+
+  .csHero__top {
+    gap: 1.5em;
+  }
+
+  .csHero__heading {
+    font-size: 2.75em;       /* 44px */
+    letter-spacing: -0.04em;
+  }
+
+  /* Stats keep the horizontal wrap-and-center behaviour from tablet — if a
+     stat doesn't fit, it drops to a new row centered alongside the
+     remaining items instead of stacking one-per-row. */
+  .csHero__stats {
+    gap: 1.25em 2em;
+  }
+
+  .csHero__statValue {
+    font-size: 1.75em;       /* 28px */
+    letter-spacing: -1.2px;
+  }
+
+  .csHero__imageCard {
+    aspect-ratio: 5 / 6;
+  }
+}
+
+@media (max-width: 479px) {
+  .csHero__heading {
+    font-size: 2.25em;       /* 36px */
+    letter-spacing: -0.03em;
+  }
+
+  .csHero__statValue {
+    font-size: 1.5em;        /* 24px */
+    letter-spacing: -0.96px;
+  }
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────────── */
+/* Inlined from Template-Acelia/src/components/Navbar.astro <style> block. */
+
+.navbar {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-dark);
+}
+
+.navbar--light {
+  background-color: var(--color-bg-white);
+}
+
+.navbar--light .navbar__link {
+  color: var(--color-text-body-dark);
+}
+
+.navbar--light .navbar__link:focus-visible {
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 992px) {
+  .navbar--light .navbar__link:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.navbar__cta {
+  height: 3rem;
+  min-height: 3rem;
+}
+
+.navbar--light .navbar__toggle {
+  background-color: rgba(0, 29, 33, 0.06);
+  border-color: rgba(0, 29, 33, 0.12);
+  color: var(--color-text-primary);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.navbar--light .navbar__toggle:focus-visible,
+.navbar--light .navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(0, 29, 33, 0.10);
+  color: var(--color-text-primary);
+}
+
+.navbar--light .navbar__drawer {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 29, 33, 0.10);
+}
+
+.navbar--light .navbar__drawerLink {
+  color: var(--color-text-body-dark);
+}
+
+.navbar--light .navbar__drawerLink:focus-visible {
+  background-color: rgba(0, 29, 33, 0.05);
+  color: var(--color-text-primary);
+  outline-color: rgba(0, 29, 33, 0.12);
+}
+
+.navbar--light .navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(0, 29, 33, 0.08);
+  color: var(--color-text-primary);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 1em var(--container-padding);
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  color: var(--color-text-white);
+}
+
+.navbar__logo {
+  height: 2rem;
+  width: auto;
+  aspect-ratio: 114 / 40;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  padding: 0.75em;
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.navbar__link:focus-visible {
+  color: var(--color-text-white);
+}
+
+@media (min-width: 992px) {
+  .navbar__link:hover {
+    color: var(--color-text-white);
+  }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--color-text-white-soft);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__toggle:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+}
+
+.navbar__toggleBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.375em;
+  height: 2px;
+  margin-left: -0.6875em;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 280ms ease, opacity 200ms ease;
+}
+
+.navbar__toggleBar:nth-child(1) { transform: translateY(-0.4375em); }
+.navbar__toggleBar:nth-child(2) { transform: translateY(0); }
+.navbar__toggleBar:nth-child(3) { transform: translateY(0.4375em); }
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.navbar__drawer {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: var(--container-padding);
+  left: var(--container-padding);
+  z-index: 50;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 32px 64px -24px rgba(0, 0, 0, 0.55),
+    0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 320ms;
+}
+
+.navbar__drawer[hidden] { display: block; }
+
+.navbar__drawer.is-open {
+  max-height: 80vh;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 0s;
+}
+
+.navbar__drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1rem;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar__drawerCtaItem {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.navbar__drawerCta {
+  width: 100%;
+}
+
+.navbar__drawerLinks li {
+  margin: 0;
+}
+
+.navbar__drawerLink {
+  display: block;
+  padding: 0.5em 0.75em;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  background-color: transparent;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__drawerLink:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(205, 203, 255, 0.10);
+  color: var(--color-accent);
+}
+
+@media (max-width: 991px) {
+  .navbar__inner {
+    padding: 0.75em var(--container-padding);
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__left {
+    gap: 1em;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar__drawerLinks {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__drawerCtaItem {
+    display: list-item;
+  }
+}

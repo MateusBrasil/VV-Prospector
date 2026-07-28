@@ -1,0 +1,74 @@
+[data-dobra="transicao-transicao-pagina-11"] *{
+	padding: 0rem;
+	margin: 0rem;
+	border: 0rem;
+}
+[data-dobra="transicao-transicao-pagina-11"]{
+  min-width: 20rem;
+  color: var(--base-600);
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+}
+[data-dobra="transicao-transicao-pagina-11"] a{
+  text-decoration: none;
+  color: var(--base-600);
+  font-size: 1rem;
+  font-weight: 500;
+}
+[data-dobra="transicao-transicao-pagina-11"] nav{
+ 
+ width: 100%;
+   max-width: 1200px;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  margin: 0 auto;
+}
+[data-dobra="transicao-transicao-pagina-11"] .nav-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+[data-dobra="transicao-transicao-pagina-11"] .hero{
+  position: absolute;
+  top: 47.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+[data-dobra="transicao-transicao-pagina-11"] .hero h1{
+  font-size: 15vw;
+  line-height: 90%;
+}
+[data-dobra="transicao-transicao-pagina-11"] .transition{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-11"] .transition-row{
+  flex: 1;
+  display: flex;
+}
+[data-dobra="transicao-transicao-pagina-11"] .transition-row.row-1 .block{
+  transform-origin: top;
+}
+[data-dobra="transicao-transicao-pagina-11"] .transition-row.row-2 .block{
+  transform-origin: bottom;
+}
+[data-dobra="transicao-transicao-pagina-11"] .block{
+  flex: 1;
+  background-color: var(--acento);
+  transform: scaleY(1);
+  will-change: transform;
+  visibility: visible;
+}
+

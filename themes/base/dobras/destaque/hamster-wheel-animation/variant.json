@@ -1,0 +1,18 @@
+{
+  "slot": "destaque",
+  "nome": "hamster-wheel-animation",
+  "scope": "destaque-hamster-wheel-animation",
+  "origem": "bank/_componentes/ui-effects/hamster-wheel-animation",
+  "registo": "editorial",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

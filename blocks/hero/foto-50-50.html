@@ -1,0 +1,40 @@
+<style>
+.heroF{padding-block:var(--space-5) var(--space-6);overflow:clip}
+.heroF__grid{display:grid;gap:var(--space-4);align-items:center}
+@media (min-width:900px){.heroF__grid{grid-template-columns:1fr 1fr;gap:var(--space-5)}}
+.heroF__kicker{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--brand-ink);
+  background:var(--brand-wash);padding:.4rem .8rem;border-radius:999px;margin-bottom:var(--space-3)}
+.heroF h1{margin-bottom:var(--space-2)}
+.heroF__sub{font-size:var(--step-1);color:var(--ink-muted);line-height:1.45;margin-bottom:var(--space-3)}
+.heroF__acoes{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;margin-bottom:var(--space-3)}
+.heroF__tel{font-weight:600;text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:2px}
+.heroF__tel:hover{border-color:var(--brand-cta)}
+.heroF__prova{display:flex;align-items:center;gap:.6rem;font-size:var(--step--1);color:var(--ink-muted)}
+.heroF__estrelas{color:var(--brand-ink);font-weight:700;letter-spacing:.02em}
+.heroF__media{position:relative;border-radius:var(--radius-lg);overflow:hidden}
+.heroF__media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+@media (min-width:900px){.heroF__media img{aspect-ratio:1/1}}
+</style>
+<section class="heroF" data-hero>
+  <div class="wrap heroF__grid">
+    <div>
+      {{#kicker}}<p class="heroF__kicker">{{kicker}}</p>{{/kicker}}
+      <h1 data-motion="linhas">{{headline}}</h1>
+      <p class="heroF__sub">{{subheadline}}</p>
+      <div class="heroF__acoes">
+        <a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a>
+        {{#telefone}}<a class="heroF__tel" href="tel:{{telefoneRaw}}">{{telefone}}</a>{{/telefone}}
+      </div>
+      {{#nota}}
+      <p class="heroF__prova">
+        <span class="heroF__estrelas" aria-hidden="true">&#9733; {{nota}}</span>
+        <span>{{avaliacoes}} avaliações no Google, nas nossas clínicas</span>
+      </p>
+      {{/nota}}
+    </div>
+    <figure class="heroF__media">
+      <img class="foto" src="{{fotoHero}}" alt="{{fotoHeroAlt}}" width="900" height="900" fetchpriority="high">
+    </figure>
+  </div>
+</section>

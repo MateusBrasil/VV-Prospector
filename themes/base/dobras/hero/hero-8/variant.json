@@ -1,0 +1,87 @@
+{
+  "slot": "hero",
+  "nome": "hero-8",
+  "scope": "hero-hero-8",
+  "origem": "bank/_componentes/hero-section/hero-8",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Loading"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Logo"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "(Photographer, creative director, filmmaker)"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Howard"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./img/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./img/img6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./img/img7.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 7
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância (acento da origem #ebdc0b → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"hero\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

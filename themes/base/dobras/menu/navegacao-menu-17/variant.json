@@ -1,0 +1,184 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-17",
+  "scope": "menu-navegacao-menu-17",
+  "origem": "bank/_componentes/menu/navegacao-menu-17",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Break"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Story"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Projects"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Releases"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Connect"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Break"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Break"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Contact Us"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Ocean City"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Rhythmic Sound"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "2000 Coastal Hwy"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Ocean City, MD 21842"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Instagram"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Youtube"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Spotify"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Mixcloud"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Email"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Vice City"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Echo Beats"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "933 South View Ave"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "Vice City, VC 3270"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/logo.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/hero.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/hero.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img/hero.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./img/hero.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./img/logo.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

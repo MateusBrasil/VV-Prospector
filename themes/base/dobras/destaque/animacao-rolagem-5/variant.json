@@ -1,0 +1,59 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-5",
+  "scope": "destaque-animacao-rolagem-5",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-5",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "∅1"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Awakening Abyss"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Eldritch Emergence"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Archived VHS footage"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "captures the moment."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://assets.codepen.io/7558/horror-01.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://assets.codepen.io/7558/horror-01.jpg)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://assets.codepen.io/7558/PPNeueMontreal-Variable.woff2 https://assets.codepen.io/7558/PPSupplyMono-Variable.woff2)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

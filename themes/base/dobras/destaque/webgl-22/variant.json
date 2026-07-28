@@ -1,0 +1,79 @@
+{
+  "slot": "destaque",
+  "nome": "webgl-22",
+  "scope": "destaque-webgl-22",
+  "origem": "bank/_componentes/webgl-threejs/webgl-22",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/GridRevealEffects/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=38413"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/akella/fake3d"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Fake 3D Effect with Shaders"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "demo 4"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "11 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/Development/GridRevealEffects/ https://tympanus.net/codrops/?p=38413)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

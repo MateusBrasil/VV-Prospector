@@ -1,0 +1,9 @@
+/* hirely-contact-faq — local overrides only. The shared /hirely/styles.css
+   carries the section_faq, faq_grid (light variant), accordion, button_wrap and
+   token styles. This file only adds a minimal body reset so the standalone doc
+   has no default margin. All layout/animation lives in the shared sheet + the
+   accordion.js / scroll-reveal.js engine scripts. */
+
+body {
+  margin: 0;
+}

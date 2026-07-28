@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Aura Button - Refined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Animações */
+        @keyframes rotate-gradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes borderBeamRotation {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes shinery {
+            0%, 100% { left: -20%; opacity: 0; }
+            20% { opacity: 0.4; }
+            48% { left: 120%; opacity: 0.4; }
+            51% { opacity: 0; }
+        }
+
+        /* Fix para overflow em bordas arredondadas no Safari/Chrome */
+        .overflow-fix {
+            mask-image: -webkit-radial-gradient(white, black);
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+
+        .animate-rotate-gradient {
+            animation: rotate-gradient var(--speed, 4s) linear infinite;
+        }
+
+        /* Efeito da Onda (Shimmer-onda) - Ajustado para enquadramento */
+        .shimmer-onda {
+            background: linear-gradient(10deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+            mix-blend-mode: overlay;
+            width: 80px;
+            height: 100%;
+            position: absolute;
+            top: 0; 
+            transform: skew(-25deg);
+            pointer-events: none;
+            animation: shinery 5s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        /* Revelação de Fundo no Hover */
+        .fundo-revelador {
+            position: absolute;
+            left: 5px;
+            width: 0%;
+            height: calc(100% - 10px);
+            background: #ffffff;
+            border-radius: 100px;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 6;
+            opacity: 0;
+        }
+
+        .group:hover .fundo-revelador {
+            width: calc(100% - 10px);
+            opacity: 1;
+        }
+
+        /* Lógica de deslizamento */
+        .wrapper-avatar {
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 20;
+        }
+        .group:hover .wrapper-avatar {
+            transform: translateX(175px); 
+        }
+
+        .texto-principal {
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 10;
+        }
+        .group:hover .texto-principal {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        .texto-hover {
+            position: absolute;
+            left: 45%;
+            top: 50%;
+            transform: translate(-50%, -50%) translateX(30px);
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            color: #000000; 
+            font-weight: 600;
+            z-index: 10;
+            white-space: nowrap;
+        }
+        .group:hover .texto-hover {
+            opacity: 1;
+            transform: translate(-50%, -50%) translateX(-15px);
+        }
+    </style>
+</head>
+<body class="bg-[#05060f] flex items-center justify-center min-h-screen p-4 font-['Sora']">
+
+    <a href="#"
+       class="group isolate inline-flex items-center min-w-[260px] h-[64px] cursor-pointer overflow-hidden overflow-fix transition-all duration-300 hover:scale(105) rounded-full relative"
+       style="--spread: 90deg; --shimmer-color: rgba(255,255,255,0.6); --speed: 4s;">
+        
+        <!-- Camada de Shimmer Rotativo Externo (Aura) -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-[-200%] w-[400%] h-[400%] animate-rotate-gradient">
+                <div class="absolute inset-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]">
+                </div>
+            </div>
+        </div>
+
+        <!-- Camada de Onda (Shimmer-onda) -->
+        <div class="shimmer-onda"></div>
+
+        <!-- Borda de brilho suave (Border Beam) -->
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
+            <div style="position: absolute; width: 150%; height: 150%; background: linear-gradient(90deg, transparent, #ffffff, transparent); animation: borderBeamRotation 4s infinite linear; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        </div>
+
+        <!-- Fundo Escuro Base -->
+        <div class="absolute inset-[1.5px] bg-[#0a0b14] rounded-full z-1"></div>
+
+        <!-- Fundo Branco de Hover -->
+        <div class="fundo-revelador"></div>
+
+        <!-- Conteúdo do Botão -->
+        <div class="z-10 flex w-full h-full px-5 items-center relative" style="border-radius: 9999px;">
+            
+            <!-- Wrapper da Bolinha Preta Degradê (Sliding) -->
+            <div class="wrapper-avatar flex items-center gap-2 relative">
+                <div class="ring-2 ring-white/10 w-9 h-9 rounded-full relative bg-gradient-to-br from-neutral-700 via-neutral-900 to-black shadow-inner group-hover:ring-neutral-200 transition-all">
+                    <div class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1),transparent)]"></div>
+                </div>
+                
+                <!-- Ícone Wand Sparkles -->
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -right-8">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-900">
+                        <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path>
+                        <path d="m14 7 3 3"></path>
+                        <path d="M5 6v4"></path>
+                        <path d="M19 14v4"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Textos com Swap Atualizados -->
+            <div class="flex-1 flex justify-center items-center">
+                <span class="texto-principal text-white whitespace-nowrap font-medium tracking-wide">
+                    Aura Black
+                </span>
+
+                <span class="texto-hover">
+                    Botton
+                </span>
+            </div>
+        </div>
+    </a>
+
+</body>
+</html>

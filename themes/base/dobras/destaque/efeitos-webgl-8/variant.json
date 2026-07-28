@@ -1,0 +1,99 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-8",
+  "scope": "destaque-efeitos-webgl-8",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-8",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympaffffnus.nflopment/ColumnScroll/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tyf/?p=58318"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://gftedPixels"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Pixel Distortion"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "with Three.js"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "demo 4"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "We distort realities"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "9 cor(es) mapeadas para tokens por luminância (acento da origem #064cb5 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympaffffnus.nflopment/ColumnScroll/ https://tyf/?p=58318)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

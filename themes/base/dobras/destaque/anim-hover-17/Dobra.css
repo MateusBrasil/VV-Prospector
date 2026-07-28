@@ -1,0 +1,16 @@
+[data-dobra="destaque-anim-hover-17"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="destaque-anim-hover-17"] .inversion-lens{
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+}
+[data-dobra="destaque-anim-hover-17"] .inversion-lens img{
+  display: none;
+}
+
+

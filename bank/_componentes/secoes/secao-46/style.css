@@ -1,0 +1,8 @@
+/* vetic-cta — local overrides only. The real styles for .section_cta, .cta_wrap,
+   .cta_images, .cta_img and the button live in the shared /vetic/styles.css.
+   The curtain/view/button reveals are driven by /vetic/scripts/scroll-reveal.js. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

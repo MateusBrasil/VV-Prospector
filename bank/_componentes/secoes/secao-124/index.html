@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congra — Home Hero</title>
+
+  <!-- Gate de animaciones: .anim en <html> pre-pinta los reveals (opacity:0)
+       solo cuando el visitante permite motion. Igual que el BaseLayout del template. -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+    <script src="navbar.js" defer=""></script>
+  </head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (congra-navbar) -->
+    <div class="navbar w-nav" data-collapse="medium" role="banner" data-nav="">
+          <div class="padding-global is-navbar">
+            <div class="container-large">
+              <div class="navbar_content">
+                <a href="/" aria-current="page" class="navbar_logo-link w-nav-brand">
+                  <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/congra/images/congra.svg" alt="Congra" class="navbar_logo">
+                </a>
+                <div class="nav_wrap">
+                  <nav role="navigation" class="nav_mobile w-nav-menu" data-nav-menu="">
+                    <div class="navbar_list">
+                      <a href="/" aria-current="page" class="link w-inline-block w--current" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">Home</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">Home</div>
+                        </div>
+                      </a>
+                      <a href="/#about" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">about us</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">about us</div>
+                        </div>
+                      </a>
+                      <a href="/#pricing" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">pricing</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">pricing</div>
+                        </div>
+                      </a>
+                      <a href="/#contact" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">contact</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">contact</div>
+                        </div>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+                <div class="nav_buttons-wrap">
+                  <div class="login-wrap hide-mobile-landscape">
+                    <a data-wf--button--variant="secondary" href="/#pricing" class="button w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d w-inline-block">
+                      <div class="button_left w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d">
+                        <div class="clip_intro">
+                          <div class="button_banner-text">
+                            <div class="button_text">get a ticket</div>
+                          </div>
+                          <div class="button_banner-text is-bottom">
+                            <div class="button_text text-color-primary w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d">get a ticket</div>
+                          </div>
+                        </div>
+                        <div class="button_cover w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d"></div>
+                      </div>
+                    </a>
+                  </div>
+                  <button type="button" class="menu-button w-nav-button" aria-label="Open menu" aria-expanded="false" data-nav-toggle="">
+                    <div class="nav-button_component">
+                      <div class="nav-button_line is-first"></div>
+                      <div class="nav-button_line is-second"></div>
+                      <div class="nav-button_line is-third"></div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar_gradient"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <main class="main-wrapper">
+      <section class="section_hero">
+        <div class="spacer">
+          <div style="height: 40rem" class="spacer-desktop"></div>
+          <div style="padding-top: 60%" class="spacer-tablet"></div>
+          <div style="height: 20rem" class="spacer-mobile"></div>
+        </div>
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="hero_layout">
+              <div class="hero_title">
+                <div class="max-title is-25rem">
+                  <h1 animation="first">Tech Nexus</h1>
+                </div>
+                <div animation="second" id="w-node-_3c19de9b-bec3-1d90-3194-1776143a4dad-6300f68f" class="h1 text-align-right">Summit 2025</div>
+              </div>
+              <div class="spacer">
+                <div style="height: 7.5rem" class="spacer-desktop"></div>
+                <div style="height: 3rem" class="spacer-tablet"></div>
+                <div style="height: 2rem" class="spacer-mobile"></div>
+              </div>
+              <div class="hero_content">
+                <div class="hero_left">
+                  <div class="slide-left">
+                    <div class="text-2xl">Ready to be part of it?</div>
+                  </div>
+                  <div class="text-color-secondary slide-left">Don't miss out on the premier IT event of the year! Get your tickets now and be part of the future of technology!</div>
+                  <div class="slide-left">
+                    <div class="spacer-large"></div>
+                    <a data-wf--button--variant="base" href="/#pricing" class="button w-inline-block">
+                      <div class="button_left">
+                        <div class="clip_intro">
+                          <div class="button_banner-text">
+                            <div class="button_text">get a ticket</div>
+                          </div>
+                          <div class="button_banner-text is-bottom">
+                            <div class="button_text text-color-primary">get a ticket</div>
+                          </div>
+                        </div>
+                        <div class="button_cover"></div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="hero_block">
+                  <div class="block slide-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.262 22.134C11.262 22.134 4 16.018 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10C20 16.018 12.738 22.134 12.738 22.134C12.334 22.506 11.669 22.502 11.262 22.134ZM12 13.5C12.4596 13.5 12.9148 13.4095 13.3394 13.2336C13.764 13.0577 14.1499 12.7999 14.4749 12.4749C14.7999 12.1499 15.0577 11.764 15.2336 11.3394C15.4095 10.9148 15.5 10.4596 15.5 10C15.5 9.54037 15.4095 9.08525 15.2336 8.66061C15.0577 8.23597 14.7999 7.85013 14.4749 7.52513C14.1499 7.20012 13.764 6.94231 13.3394 6.76642C12.9148 6.59053 12.4596 6.5 12 6.5C11.0717 6.5 10.1815 6.86875 9.52513 7.52513C8.86875 8.1815 8.5 9.07174 8.5 10C8.5 10.9283 8.86875 11.8185 9.52513 12.4749C10.1815 13.1313 11.0717 13.5 12 13.5Z" fill="white"></path>
+                    </svg>
+                    <div>Los Angeles</div>
+                  </div>
+                  <div class="block slide-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                      <path d="M6 1.5V4H2V9H22V4H18V1.5H16V4H8V1.5H6ZM22 22V11H2V22H22Z" fill="white"></path>
+                    </svg>
+                    <div>september 10, 2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero_gradient"></div>
+        <div class="hero_img"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

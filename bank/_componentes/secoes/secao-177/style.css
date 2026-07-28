@@ -1,0 +1,6 @@
+body { margin: 0; min-height: 100svh; }
+
+/* The shared /upmind/styles.css already defines section_team, team_grid, the
+   team_card hover (dual arrows), the section_title eyebrow, the responsive
+   grid→slider gate, and the .arrow-group prev/next styling. No section-specific
+   overrides are needed here. */

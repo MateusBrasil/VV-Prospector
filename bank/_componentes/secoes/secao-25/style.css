@@ -1,0 +1,6 @@
+/* hirekit-faq — overrides locales. Estructura/estilo en /hirekit/styles.css. */
+body { margin: 0; min-height: 100svh; }
+
+/* Centrado en preview standalone: la sección llena el viewport y centra su contenido
+   (safe center = si es más alta que el viewport, top-alinea sin cortar). */
+.faqs_section { min-height: 100svh; display: flex; flex-direction: column; justify-content: safe center; }

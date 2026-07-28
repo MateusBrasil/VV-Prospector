@@ -1,0 +1,4 @@
+/* Congra — Event
+   Sin overrides locales. Todo el styling (incl. el gradiente de fondo de
+   .section_event, el grid .event_grid 4→1 columnas y los estados ocultos
+   .anim .slide-left/.slide-right/.slide_down) vive en /congra/styles.css. */

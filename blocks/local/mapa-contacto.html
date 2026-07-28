@@ -1,0 +1,53 @@
+<style>
+/* local — contactos com ícones de linha (anti-emoji: SVG stroke, cor da marca) e o
+   mapa com a moldura deslocada do hero. Secção em surface: degrau de profundidade
+   a caminho do rodapé escuro (canvas → surface → dusk). */
+.local{background:var(--surface);border-top:1px solid var(--hairline)}
+.local__kicker{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:var(--space-2)}
+.local__kicker svg{flex:none}
+.local__grid{display:grid;gap:var(--space-4)}
+@media (min-width:900px){.local__grid{grid-template-columns:1fr 1fr;gap:var(--space-5)}}
+.local__quadro{position:relative}
+.local__quadro::before{content:"";position:absolute;inset:var(--space-2) calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2);
+  border:1px solid color-mix(in srgb, var(--brand) 45%, transparent);border-radius:var(--radius-lg);pointer-events:none}
+.local__mapa{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--ring);
+  min-height:320px;height:100%;background:var(--canvas)}
+.local__mapa iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+.local dl{display:grid;gap:var(--space-3);margin:var(--space-3) 0 0}
+.local dt{display:flex;align-items:center;gap:.5rem;font-size:var(--step--1);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-muted);margin-bottom:.25rem}
+.local dt svg{color:var(--brand-ink);flex:none}
+.local dd{margin:0;font-weight:500}
+.local dd a{text-decoration:none;border-bottom:1px solid var(--hairline)}
+.local dd a:hover{border-color:var(--brand-ink)}
+.local__dir{font-size:var(--step--1);font-weight:600;text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:2px}
+.local__dir:hover{border-color:var(--brand-cta)}
+.local__dir:focus-visible{outline:2px solid var(--brand-cta);outline-offset:3px}
+.local__acoes{margin-top:var(--space-3);display:flex;gap:var(--space-2) var(--space-3);flex-wrap:wrap;align-items:center}
+</style>
+<section class="local" id="contacto">
+  <div class="wrap local__grid">
+    <div class="reveal">
+      {{#kicker}}<p class="local__kicker"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>{{kicker}}</p>{{/kicker}}
+      <h2>{{titulo}}</h2>
+      <dl>
+        <div><dt><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.4-7-11a7 7 0 1 1 14 0c0 5.6-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Morada</dt><dd>{{morada}}</dd></div>
+        {{#horario}}<div><dt><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Horário</dt><dd>{{horario}}</dd></div>{{/horario}}
+        {{#telefone}}<div><dt><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Telefone</dt><dd><a href="tel:{{telefoneRaw}}">{{telefone}}</a></dd></div>{{/telefone}}
+        {{#email}}<div><dt><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Email</dt><dd><a href="mailto:{{email}}">{{email}}</a></dd></div>{{/email}}
+      </dl>
+      <p class="local__acoes">
+        <a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a>
+        {{#direcoes}}<a class="local__dir" href="{{direcoes}}" target="_blank" rel="noopener">Ver direções no Google Maps</a>{{/direcoes}}
+      </p>
+    </div>
+    <div class="local__quadro reveal">
+      <div class="local__mapa">
+        <!-- sem loading="lazy": o iframe lazy nunca carrega em captura full-page e o
+             mapa aparece como caixa vazia (primo do bug lazy-fantasma). OSM é leve. -->
+        <iframe src="{{mapaSrc}}" referrerpolicy="no-referrer-when-downgrade" title="Mapa — {{nome}}"></iframe>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{
+  "slot": "contacto",
+  "nome": "secao-83",
+  "scope": "contacto-secao-83",
+  "origem": "bank/_componentes/secoes/secao-83",
+  "registo": "sobrio",
+  "estado": "aprovada",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    { "nome": "rotulo", "tipo": "texto", "exemplo": "Contactos" },
+    { "nome": "titulo", "tipo": "texto", "exemplo": "Onde estamos e como falar connosco" },
+    { "nome": "informacoes", "tipo": "lista", "exemplo": "[{rotulo, valor, destino?}] — telefone, email, morada" },
+    { "nome": "rotuloSociais", "tipo": "texto", "exemplo": "Redes" },
+    { "nome": "sociais", "tipo": "lista", "exemplo": "[{rotulo, destino}] — sem destino não é renderizado" },
+    { "nome": "tituloPainel", "tipo": "texto", "exemplo": "Horário" },
+    { "nome": "horarios", "tipo": "lista", "exemplo": "[{dias, horas}]" },
+    { "nome": "acoes", "tipo": "lista", "exemplo": "[{rotulo, destino, icone}] — icone: telefone | mapa" },
+    { "nome": "nota", "tipo": "texto", "exemplo": "uma linha final, ex. urgências" }
+  ],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "PORTADA À MÃO em 2026-07-28 para o tema odontologia. Revisão humana feita; estado promovido de `revisar` para `aprovada`. ESCOLHA: o selecionar-24 aponta `contacto/secao-110` e `contacto/secao-149` como os únicos sóbrios do slot, mas nenhuma das duas é uma secção de contacto — são a mesma barra de navegação da marca Pipely seguida de um hero. Erro de slot, o simétrico do que o receitas.json já registou em `servicos`. Portes: (1) o formulário inteiro saiu, porque a obra é exportação estática e um botão Send Message sem servidor é um clicável sem destino real, que já foi reprovado ao vivo por cliente; em vez dele, painel com horários e dois botões que fazem alguma coisa (ligar, abrir mapa), que numa clínica é o canal certo; (2) saíram os literais de negócio que estavam no HTML e não em slots (Advisora@gmail.com, (123) 1221 2323, a morada em San Francisco, e os rótulos Email:/Phone:/Address:/Follow Us em inglês); (3) os 4 ícones sociais fixos apontavam para o site da agência de origem, agora a lista é do cliente e sem destino não renderiza; (4) o <h1> da secção passou a <h2>, a página já tem um. CSS: as 1026 linhas da origem foram substituídas. Motivo, com quatro provas: um `@font-face` GLOBAL com `font-family: var(--fonte-corpo)` e a fonte de ícones do Webflow em base64 (o tokenizador substituiu o NOME da família dentro de um @font-face, que é onde tem de ser literal); `--brand--soft-white: var(--base-100)c;` com um `c` perdido de um hex de 8 dígitos mal cortado; `--border-color--border-alternate: white` e `--link-color--link-alternate: white`, cor crua fora de token; e uma background-image de CDN externo (cloudfront) no .button.is-primary::before. Os nomes de classe da origem mantêm-se."
+}

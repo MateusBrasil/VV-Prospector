@@ -1,0 +1,113 @@
+{
+  "slot": "hero",
+  "nome": "hero-26",
+  "scope": "hero-hero-26",
+  "origem": "bank/_componentes/hero-section/hero-26",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "splittext"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Archive"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Archive"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Index"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Collection"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Material"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Process"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Info"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Archive"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Permanence"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Craftsmanship"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Expression"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "/img6.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

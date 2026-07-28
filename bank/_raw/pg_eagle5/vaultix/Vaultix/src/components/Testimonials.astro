@@ -1,0 +1,426 @@
+---
+const depoimentos = [
+  {
+    quote:
+      '"Eagle cut our pipeline debugging time by 80%. We shipped our ML model to production in days, not months."',
+    name: "Priya Mehta",
+    role: "Staff Engineer, Arcline",
+    avatar: "/depoimentos/priya.webp",
+  },
+  {
+    quote:
+      '"The anomaly detection alone saved us 20 hours per week. Nossa on-call engineers can sleep again."',
+    name: "Kadin Korsgaard",
+    role: "VP Engenharia, Lumen Labs",
+    avatar: "/depoimentos/kadin.webp",
+  },
+  {
+    quote:
+      '"Finally, infrastructure that scales with us. We went from 10K to 2M daily events without a single config change."',
+    name: "Dulce Baptista",
+    role: "ML Platform Lead, Cipher Stack",
+    avatar: "/depoimentos/dulce.webp",
+  },
+  {
+    quote:
+      '"We replaced four disconnected tools with Eagle. Less context-switching, better signal — and a single place to debug when something breaks."',
+    name: "Jaxson George",
+    role: "Head of Data, Northwind AI",
+    avatar: "/depoimentos/jaxson.webp",
+  },
+];
+
+const leftCol = [depoimentos[0], depoimentos[1]];
+const rightCol = [depoimentos[2], depoimentos[3]];
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("test-pre-anim");
+  }
+</script>
+
+<section
+  class="bg-[var(--color-bg)] py-12 md:py-[6rem]"
+  data-test-section
+>
+  <div class="mx-auto w-full max-w-[68rem] px-4">
+    <div
+      class="grid grid-cols-1 gap-x-[2rem] gap-y-4 md:grid-cols-2 md:gap-y-[2rem] lg:gap-x-[3.75rem] lg:gap-y-[3.75rem]"
+    >
+      {/* Left column: Header + 2 cards */}
+      <div class="flex flex-col gap-y-4 md:gap-y-[2rem] lg:gap-y-[3.75rem]">
+        <div
+          class="flex flex-col gap-4 font-mono font-normal uppercase md:gap-[0.75rem]"
+        >
+          <p
+            class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[var(--color-accent)]"
+            data-test-eyebrow
+          >
+            [ Depoimentos ]
+          </p>
+          <h2
+            class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[2.5rem] md:tracking-[4.8px]"
+            data-test-headline
+          >
+            What engineering teams say
+          </h2>
+          <p
+            class="text-[0.875rem] leading-[1.2857] text-white/60"
+            data-test-subhead
+          >
+            Trusted by teams shipping AI products at scale.
+          </p>
+        </div>
+
+        {
+          leftCol.map((t) => (
+            <article
+              class="relative flex flex-col items-comeca justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]"
+              data-test-card
+            >
+              <p
+                class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white"
+                data-test-quote
+              >
+                {t.quote}
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author>
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover"
+                />
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">{t.name}</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner />
+            </article>
+          ))
+        }
+      </div>
+
+      {/* Right column: 2 cards */}
+      <div class="flex flex-col gap-y-4 md:gap-y-[2rem] lg:gap-y-[3.75rem]">
+        {
+          rightCol.map((t) => (
+            <article
+              class="relative flex flex-col items-comeca justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]"
+              data-test-card
+            >
+              <p
+                class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white"
+                data-test-quote
+              >
+                {t.quote}
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author>
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover"
+                />
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">{t.name}</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner />
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner />
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Pre-anim FOUC protection */
+  .test-pre-anim [data-test-eyebrow],
+  .test-pre-anim [data-test-headline],
+  .test-pre-anim [data-test-subhead] {
+    visibility: hidden;
+  }
+  .test-pre-anim [data-test-card] {
+    visibility: hidden;
+  }
+
+  .corner-marker {
+    position: absolute;
+    width: 0.53rem;
+    height: 0.4375rem;
+    pointer-events: none;
+  }
+  .corner-marker::before,
+  .corner-marker::after {
+    content: "";
+    position: absolute;
+    background: #d9d9d9;
+  }
+  /* ┌ */
+  .corner-tl {
+    top: 0;
+    left: 0;
+  }
+  .corner-tl::before {
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+  }
+  .corner-tl::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+  /* ┐ */
+  .corner-tr {
+    top: 0;
+    right: 0;
+  }
+  .corner-tr::before {
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+  }
+  .corner-tr::after {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+  }
+  /* └ */
+  .corner-bl {
+    bottom: 0;
+    left: 0;
+  }
+  .corner-bl::before {
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+  }
+  .corner-bl::after {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+  /* ┘ */
+  .corner-br {
+    bottom: 0;
+    right: 0;
+  }
+  .corner-br::before {
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+  }
+  .corner-br::after {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      document.documentElement.classList.remove("test-pre-anim");
+      return;
+    }
+
+    const section = document.querySelector<HTMLElement>("[data-test-section]");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-test-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-test-headline]");
+    const subhead = section.querySelector<HTMLElement>("[data-test-subhead]");
+    const cards = gsap.utils.toArray<HTMLElement>("[data-test-card]", section);
+
+    const eyebrowSplit = eyebrow
+      ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+      : null;
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+    const subheadSplit = subhead
+      ? new SplitText(subhead, { type: "lines", mask: "lines" })
+      : null;
+
+    type CardParts = {
+      el: HTMLElement;
+      quoteSplit: SplitText | null;
+      author: HTMLElement | null;
+      corners: HTMLElement[];
+    };
+    const cardParts: CardParts[] = cards.map((el) => {
+      const quoteEl = el.querySelector<HTMLElement>("[data-test-quote]");
+      return {
+        el,
+        quoteSplit: quoteEl
+          ? new SplitText(quoteEl, { type: "lines", mask: "lines" })
+          : null,
+        author: el.querySelector<HTMLElement>("[data-test-author]"),
+        corners: gsap.utils.toArray<HTMLElement>("[data-test-corner]", el),
+      };
+    });
+
+    // ---- Pre-anim states ----
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+
+    cardParts.forEach(({ el, quoteSplit, author, corners }) => {
+      gsap.set(el, { opacity: 0, y: 24 });
+      if (quoteSplit) gsap.set(quoteSplit.lines, { yPercent: 110 });
+      if (author) gsap.set(author, { opacity: 0, y: 8 });
+      gsap.set(corners, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+    });
+
+    document.documentElement.classList.remove("test-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        comeca: "top 80%",
+        once: true,
+      },
+    });
+
+    // 1. Heading revelar
+    if (eyebrowSplit) {
+      tl.to(
+        eyebrowSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0
+      );
+    }
+    if (headlineSplit) {
+      tl.to(
+        headlineSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.85,
+          ease: "eagleReveal",
+          stagger: 0.1,
+        },
+        0.15
+      );
+    }
+    if (subheadSplit) {
+      tl.to(
+        subheadSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.55,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.4
+      );
+    }
+
+    // 2. Cards stagger — each one revelars its container, quote, author, corners
+    cardParts.forEach(({ el, quoteSplit, author, corners }, idx) => {
+      const cStart = 0.55 + idx * 0.13;
+
+      tl.to(
+        el,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          ease: "eagleReveal",
+        },
+        cStart
+      );
+
+      if (quoteSplit) {
+        tl.to(
+          quoteSplit.lines,
+          {
+            yPercent: 0,
+            duration: 0.65,
+            ease: "eagleReveal",
+            stagger: 0.06,
+          },
+          cStart + 0.1
+        );
+      }
+
+      if (author) {
+        tl.to(
+          author,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "eagleReveal",
+          },
+          cStart + 0.3
+        );
+      }
+
+      if (corners.length) {
+        tl.to(
+          corners,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.35,
+            ease: "eagleDecor",
+            stagger: 0.04,
+          },
+          cStart + 0.4
+        );
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

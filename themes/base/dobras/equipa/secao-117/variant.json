@@ -1,0 +1,570 @@
+{
+  "slot": "equipa",
+  "nome": "secao-117",
+  "scope": "equipa-secao-117",
+  "origem": "bank/_componentes/secoes/secao-117",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "About Us"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Ready to grow your team?"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Run your business with confidence."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/navLogo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/heroIconOne.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/section-1_1section-1.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/heroIconThree.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/buttonArrow.svg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/buttonArrow.svg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem76",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem77",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem78",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem79",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem80",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem81",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem82",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem83",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem84",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem85",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem86",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    },
+    {
+      "nome": "imagem87",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop01.webp"
+    },
+    {
+      "nome": "imagem88",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag01.png"
+    },
+    {
+      "nome": "imagem89",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop02.webp"
+    },
+    {
+      "nome": "imagem90",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag02.png"
+    },
+    {
+      "nome": "imagem91",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop03.webp"
+    },
+    {
+      "nome": "imagem92",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag03.png"
+    },
+    {
+      "nome": "imagem93",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop04.webp"
+    },
+    {
+      "nome": "imagem94",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag04.png"
+    },
+    {
+      "nome": "imagem95",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop05.webp"
+    },
+    {
+      "nome": "imagem96",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag05.png"
+    },
+    {
+      "nome": "imagem97",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop06.webp"
+    },
+    {
+      "nome": "imagem98",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag06.png"
+    },
+    {
+      "nome": "imagem99",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop07.webp"
+    },
+    {
+      "nome": "imagem100",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag07.png"
+    },
+    {
+      "nome": "imagem101",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/startedLoop08.webp"
+    },
+    {
+      "nome": "imagem102",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirekit/images/cms/flag08.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 102
+  },
+  "_rever": [
+    "84 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "102 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/hirekit/images/navLogo.svg https://d173woph5zl366.cloudfront.net/hirekit/images/heroIconOne.webp)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/hirekit/images/404-image.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

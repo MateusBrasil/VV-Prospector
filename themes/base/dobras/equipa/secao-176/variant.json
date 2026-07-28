@@ -1,0 +1,95 @@
+{
+  "slot": "equipa",
+  "nome": "secao-176",
+  "scope": "equipa-secao-176",
+  "origem": "bank/_componentes/secoes/secao-176",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Meet the Financer team"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-one_1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-two_1.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-three_1.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-four_1.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-five_1.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-six_1.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "40 cor(es) mapeadas para tokens por luminância (acento da origem #0158ff → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "12 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.temlis.com/ https://www.temlis.com/)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,73 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-2",
+  "scope": "destaque-3d-animacao-3d-2",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-2",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "SCROLL DOWN"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Designing"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Motion"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Crafting"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Depth"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Into"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Living"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Worlds"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\n\t\t\t\t\t\teiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\n\t\t\t\t\t\teiusmod tempor."
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

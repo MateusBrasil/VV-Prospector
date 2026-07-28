@@ -1,0 +1,1270 @@
+{
+  "slot": "destaque",
+  "nome": "on-scroll-3d-grid-animations",
+  "scope": "destaque-on-scroll-3d-grid-animations",
+  "origem": "bank/_componentes/parallax/on-scroll-3d-grid-animations",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/800"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/800"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/800"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/800"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/800"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/800"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/800"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/800"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/600/800"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/600/800"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/600/800"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/600/800"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/600/800"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/600/800"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/600/800"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/600/800"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/600/800"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/600/800"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/600/800"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/600/800"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/31/600/800"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/32/600/800"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/33/600/800"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/34/600/800"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/35/600/800"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/36/600/800"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/37/600/800"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/38/600/800"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/39/600/800"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/40/600/800"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/41/600/800"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/42/600/800"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/43/600/800"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/44/600/800"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/45/600/800"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/46/600/800"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/47/600/800"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/48/600/800"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/800"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/800"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/800"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/800"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/800"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/800"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/800"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/800"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/600/800"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/600/800"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/600/800"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/600/800"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/600/800"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/600/800"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/600/800"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/600/800"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/600/800"
+    },
+    {
+      "nome": "imagem76",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/600/800"
+    },
+    {
+      "nome": "imagem77",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/600/800"
+    },
+    {
+      "nome": "imagem78",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/600/800"
+    },
+    {
+      "nome": "imagem79",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/31/600/800"
+    },
+    {
+      "nome": "imagem80",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/32/600/800"
+    },
+    {
+      "nome": "imagem81",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/33/600/800"
+    },
+    {
+      "nome": "imagem82",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/34/600/800"
+    },
+    {
+      "nome": "imagem83",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/35/600/800"
+    },
+    {
+      "nome": "imagem84",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/36/600/800"
+    },
+    {
+      "nome": "imagem85",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/37/600/800"
+    },
+    {
+      "nome": "imagem86",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/38/600/800"
+    },
+    {
+      "nome": "imagem87",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/39/600/800"
+    },
+    {
+      "nome": "imagem88",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/40/600/800"
+    },
+    {
+      "nome": "imagem89",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/41/600/800"
+    },
+    {
+      "nome": "imagem90",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/42/600/800"
+    },
+    {
+      "nome": "imagem91",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/43/600/800"
+    },
+    {
+      "nome": "imagem92",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/44/600/800"
+    },
+    {
+      "nome": "imagem93",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/45/600/800"
+    },
+    {
+      "nome": "imagem94",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/46/600/800"
+    },
+    {
+      "nome": "imagem95",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/47/600/800"
+    },
+    {
+      "nome": "imagem96",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/48/600/800"
+    },
+    {
+      "nome": "imagem97",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem98",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/600/800"
+    },
+    {
+      "nome": "imagem99",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem100",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/37/600/800"
+    },
+    {
+      "nome": "imagem101",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/600/800"
+    },
+    {
+      "nome": "imagem102",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/32/600/800"
+    },
+    {
+      "nome": "imagem103",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/41/600/800"
+    },
+    {
+      "nome": "imagem104",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem105",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem106",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/800"
+    },
+    {
+      "nome": "imagem107",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/600/800"
+    },
+    {
+      "nome": "imagem108",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/800"
+    },
+    {
+      "nome": "imagem109",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/46/600/800"
+    },
+    {
+      "nome": "imagem110",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/35/600/800"
+    },
+    {
+      "nome": "imagem111",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/600/800"
+    },
+    {
+      "nome": "imagem112",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/39/600/800"
+    },
+    {
+      "nome": "imagem113",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem114",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/600/800"
+    },
+    {
+      "nome": "imagem115",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/800"
+    },
+    {
+      "nome": "imagem116",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/44/600/800"
+    },
+    {
+      "nome": "imagem117",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/43/600/800"
+    },
+    {
+      "nome": "imagem118",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/600/800"
+    },
+    {
+      "nome": "imagem119",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/600/800"
+    },
+    {
+      "nome": "imagem120",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/800"
+    },
+    {
+      "nome": "imagem121",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem122",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/800"
+    },
+    {
+      "nome": "imagem123",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/33/600/800"
+    },
+    {
+      "nome": "imagem124",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/600/800"
+    },
+    {
+      "nome": "imagem125",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem126",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem127",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/600/800"
+    },
+    {
+      "nome": "imagem128",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/31/600/800"
+    },
+    {
+      "nome": "imagem129",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/600/800"
+    },
+    {
+      "nome": "imagem130",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/36/600/800"
+    },
+    {
+      "nome": "imagem131",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/42/600/800"
+    },
+    {
+      "nome": "imagem132",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/800"
+    },
+    {
+      "nome": "imagem133",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/38/600/800"
+    },
+    {
+      "nome": "imagem134",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/800"
+    },
+    {
+      "nome": "imagem135",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/800"
+    },
+    {
+      "nome": "imagem136",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/40/600/800"
+    },
+    {
+      "nome": "imagem137",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/600/800"
+    },
+    {
+      "nome": "imagem138",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/600/800"
+    },
+    {
+      "nome": "imagem139",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/34/600/800"
+    },
+    {
+      "nome": "imagem140",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem141",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem142",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/47/600/800"
+    },
+    {
+      "nome": "imagem143",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/45/600/800"
+    },
+    {
+      "nome": "imagem144",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/48/600/800"
+    },
+    {
+      "nome": "imagem145",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/800"
+    },
+    {
+      "nome": "imagem146",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem147",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/600/800"
+    },
+    {
+      "nome": "imagem148",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/600/800"
+    },
+    {
+      "nome": "imagem149",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/800"
+    },
+    {
+      "nome": "imagem150",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/800"
+    },
+    {
+      "nome": "imagem151",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/600/800"
+    },
+    {
+      "nome": "imagem152",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem153",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem154",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem155",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/600/800"
+    },
+    {
+      "nome": "imagem156",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem157",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem158",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem159",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/800"
+    },
+    {
+      "nome": "imagem160",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem161",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/800"
+    },
+    {
+      "nome": "imagem162",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/800"
+    },
+    {
+      "nome": "imagem163",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/800"
+    },
+    {
+      "nome": "imagem164",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/600/800"
+    },
+    {
+      "nome": "imagem165",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem166",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem167",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/600/800"
+    },
+    {
+      "nome": "imagem168",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/800"
+    },
+    {
+      "nome": "imagem169",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem170",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/600/800"
+    },
+    {
+      "nome": "imagem171",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem172",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/37/600/800"
+    },
+    {
+      "nome": "imagem173",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/600/800"
+    },
+    {
+      "nome": "imagem174",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/32/600/800"
+    },
+    {
+      "nome": "imagem175",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/41/600/800"
+    },
+    {
+      "nome": "imagem176",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem177",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem178",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/800"
+    },
+    {
+      "nome": "imagem179",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/600/800"
+    },
+    {
+      "nome": "imagem180",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/800"
+    },
+    {
+      "nome": "imagem181",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/46/600/800"
+    },
+    {
+      "nome": "imagem182",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/35/600/800"
+    },
+    {
+      "nome": "imagem183",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/600/800"
+    },
+    {
+      "nome": "imagem184",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/39/600/800"
+    },
+    {
+      "nome": "imagem185",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem186",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/600/800"
+    },
+    {
+      "nome": "imagem187",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/800"
+    },
+    {
+      "nome": "imagem188",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/44/600/800"
+    },
+    {
+      "nome": "imagem189",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/43/600/800"
+    },
+    {
+      "nome": "imagem190",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/600/800"
+    },
+    {
+      "nome": "imagem191",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/600/800"
+    },
+    {
+      "nome": "imagem192",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/800"
+    },
+    {
+      "nome": "imagem193",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem194",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/800"
+    },
+    {
+      "nome": "imagem195",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/33/600/800"
+    },
+    {
+      "nome": "imagem196",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/600/800"
+    },
+    {
+      "nome": "imagem197",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem198",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem199",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/600/800"
+    },
+    {
+      "nome": "imagem200",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/31/600/800"
+    },
+    {
+      "nome": "imagem201",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/600/800"
+    },
+    {
+      "nome": "imagem202",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/36/600/800"
+    },
+    {
+      "nome": "imagem203",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/42/600/800"
+    },
+    {
+      "nome": "imagem204",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/800"
+    },
+    {
+      "nome": "imagem205",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/38/600/800"
+    },
+    {
+      "nome": "imagem206",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/800"
+    },
+    {
+      "nome": "imagem207",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/800"
+    },
+    {
+      "nome": "imagem208",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/40/600/800"
+    },
+    {
+      "nome": "imagem209",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/600/800"
+    },
+    {
+      "nome": "imagem210",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/600/800"
+    },
+    {
+      "nome": "imagem211",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/34/600/800"
+    },
+    {
+      "nome": "imagem212",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem213",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem214",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/47/600/800"
+    },
+    {
+      "nome": "imagem215",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/45/600/800"
+    },
+    {
+      "nome": "imagem216",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/48/600/800"
+    },
+    {
+      "nome": "imagem217",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/600/800"
+    },
+    {
+      "nome": "imagem218",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/800"
+    },
+    {
+      "nome": "imagem219",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/800"
+    },
+    {
+      "nome": "imagem220",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/43/600/800"
+    },
+    {
+      "nome": "imagem221",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/34/600/800"
+    },
+    {
+      "nome": "imagem222",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/600/800"
+    },
+    {
+      "nome": "imagem223",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/39/600/800"
+    },
+    {
+      "nome": "imagem224",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/800"
+    },
+    {
+      "nome": "imagem225",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/600/800"
+    },
+    {
+      "nome": "imagem226",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/47/600/800"
+    },
+    {
+      "nome": "imagem227",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/800"
+    },
+    {
+      "nome": "imagem228",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/45/600/800"
+    },
+    {
+      "nome": "imagem229",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/600/800"
+    },
+    {
+      "nome": "imagem230",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/31/600/800"
+    },
+    {
+      "nome": "imagem231",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/600/800"
+    },
+    {
+      "nome": "imagem232",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/600/800"
+    },
+    {
+      "nome": "imagem233",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/36/600/800"
+    },
+    {
+      "nome": "imagem234",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/600/800"
+    },
+    {
+      "nome": "imagem235",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/600/800"
+    },
+    {
+      "nome": "imagem236",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/35/600/800"
+    },
+    {
+      "nome": "imagem237",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/600/800"
+    },
+    {
+      "nome": "imagem238",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/a/400/300"
+    },
+    {
+      "nome": "imagem239",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/b/400/300"
+    },
+    {
+      "nome": "imagem240",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/c/400/300"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Scroll-Driven"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Immersive 3D Galleries"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Take your time and scroll to explore the dimensions"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Discover More Experiences"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Scroll-Based Layout Animations"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Dynamic Filter Effects"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Animating Shapes on Scroll"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Created with passion"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 240
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #907030 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "240 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/1/600/800 https://picsum.photos/seed/2/600/800)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

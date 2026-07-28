@@ -1,0 +1,247 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-2",
+  "scope": "destaque-scroll-2",
+  "origem": "bank/_componentes/scroll/scroll-2",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2023/08/OnScrollColumns.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2023/08/onscroll3dgrid.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2023/07/onscrollfilter_feat-2.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/OnScrollColumnsRows/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/OnScrollColumnsRows/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/Scroll3DGrid/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/Scroll3DGrid/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/OnScrollFilter/"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/OnScrollFilter/"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Heart of adversity"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "In the heart of adversity, the patient dragon reveals the alchemy of strength: to endure the fiercest storms with unwavering calm, for within the crucible of pa"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Caverns of introspection"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Seasons change"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "As the seasons change, so does the patient dragon adapt, its scales reflecting the myriad hues of nature's cycle. It imparts the lesson that, in embracing the e"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Mist-shrouded valleys"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Through the mist-shrouded valleys, the patient dragon soars, leaving ephemeral trails of wisdom in its wake. It reveals that, like the ever-shifting mists, the "
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "The world below"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "High atop the cliffs, the patient dragon observes the world below with eyes that mirror the vastness of the cosmos. From this celestial vantage point, it impart"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Serene sanctuary"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "In the serene sanctuary of the Patient Dragon, where ancient whispers met the modern hum, Liúlóng embraced tranquility amidst the chaos. Opting for a path less "
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Calm scales"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "With calm scales, it soared into a digital realm echoing the patient strength found in interconnected communities, a sanctuary far from the clamor of mainstream"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Ancient willow"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Beside the ancient willow, the patient dragon weaves tales of resilience, its wings brushing against the wisps of time. It teaches that, much like the willow be"
+    },
+    {
+      "nome": "subtitulo9",
+      "tipo": "texto",
+      "exemplo": "Silent narrative"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "In the silent narrative woven by the patient dragon, a reminder emerges—that the hands of experience, marked by the passage of time, sculpt the spirit into a ve"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "More you might like"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Column & Row Animations"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Perspective Grid Animations"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "On-Scroll SVG Filter Effect"
+    },
+    {
+      "nome": "video",
+      "tipo": "video",
+      "exemplo": "img/dragon.webm"
+    },
+    {
+      "nome": "video2",
+      "tipo": "video",
+      "exemplo": "img/dragon.mp4"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 14
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #e8a53c → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "9 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/codrops/wp-content/uploads/2023/08/OnScrollColumns.jpg https://tympanus.net/codrops/wp-content/uploads/2023/08/onscroll3dgrid.jpg)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

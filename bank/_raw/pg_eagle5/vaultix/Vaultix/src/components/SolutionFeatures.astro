@@ -1,0 +1,1424 @@
+---
+import HalftoneCanvas from "./HalftoneCanvas.astro";
+
+const features = [
+  {
+    id: "pipelines",
+    icon: "/solution-icons/pipelines.svg",
+    title: "Confiabilidade pensada para streaming",
+    desc1:
+      "Detect and recover from failures in real time.",
+    desc2: "No more silent breaks. No more 3am pages.",
+  },
+  {
+    id: "observability",
+    icon: "/solution-icons/observability.svg",
+    title: "Visao unificada",
+    desc1:
+      "Every log, metric, and event in one view.",
+    desc2: "See your stack at a glance — without context-switching between tools.",
+  },
+  {
+    id: "scaling",
+    icon: "/solution-icons/scaling.svg",
+    title: "Elasticidade por padrao",
+    desc1:
+      "Escale from 1K to 1M+ requests automatically.",
+    desc2: "No rebuilds, no panic — just performance that grows with you.",
+  },
+];
+
+// Chart data for the Live System bar chart (tab 1)
+const days = [
+  { name: "SUN", total: 17, filled: 10 },
+  { name: "MON", total: 17, filled: 10 },
+  { name: "TUE", total: 17, filled: 14 },
+  { name: "WED", total: 8, filled: 4 },
+  { name: "THU", total: 13, filled: 6 },
+  { name: "FRI", total: 18, filled: 18 },
+  { name: "SAT", total: 17, filled: 9 },
+];
+
+const barColor = "#B5D2FF";
+const barEmptyColor = "#343434";
+const barGlow =
+  "0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15)";
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("solution-pre-anim");
+  }
+</script>
+
+<section class="relative bg-[var(--color-bg)] pb-[8rem]" data-solution-section>
+  <div
+    class="relative mx-auto w-full max-w-[70.5rem]"
+  >
+    {/* Top/bottom horizontal lines passing through T markers */}
+    <div
+      class="pointer-events-none absolute left-1/2 top-0 hidden h-px w-screen bg-[var(--color-border)] lg:block"
+      data-solution-hline
+      data-pos="top"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen bg-[var(--color-border)] lg:block"
+      data-solution-hline
+      data-pos="bottom"
+    >
+    </div>
+
+    {/* Left/right vertical frame lines */}
+    <div
+      class="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-solution-vline
+      data-pos="left"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute right-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-solution-vline
+      data-pos="right"
+    >
+    </div>
+
+    {/* 4 T corner markers */}
+    <svg
+      class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-solution-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-solution-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute bottom-[calc(-0.5rem_+_0.5px)] left-[calc(-0.5rem_-_1px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-solution-tmark
+    >
+      <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 bottom-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-solution-tmark
+    >
+      <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+    </svg>
+
+    {/* Header */}
+    <div
+      class="flex flex-col items-center gap-4 px-8 pt-20 pb-12 text-center font-mono font-normal uppercase md:gap-3 lg:pb-20"
+    >
+      <span
+        class="text-[0.875rem] leading-[1.125rem] tracking-[0.105rem]"
+        style={{ color: "#B5D2FF" }}
+        data-solution-eyebrow
+      >
+        [ The Solution ]
+      </span>
+      <h2
+        class="text-[2.5rem] leading-none tracking-[0.3rem] text-white md:max-w-[42.9375rem] md:text-[3rem] md:tracking-[0.36rem]"
+        data-solution-headline
+      >
+        Everything your AI team needs
+      </h2>
+      <p
+        class="max-w-[26.625rem] text-[0.875rem] leading-[1.125rem] text-white/60"
+        data-solution-subhead
+      >
+        Powerful infrastructure designed for ML engineers, not just data
+        analysts.
+      </p>
+    </div>
+
+    {/* Grid 2-col: left tabs + right panels.
+        Mobile: 1-col, panel column hidden — tabs become a vertical card list. */}
+    <div
+      class="grid grid-cols-1 gap-6 pb-12 md:px-[33px] md:pb-[4.25rem] md:grid-cols-2"
+      data-solution-root
+    >
+      {/* Left: tab buttons. Mobile: horizontal snap-scroll slider (full-viewport per tab).
+          Desktop: vertical stack. */}
+      <div
+        class="solution-tabs flex snap-x snap-mandatory overflow-x-auto px-[10vw] scroll-px-[10vw] gap-4 md:flex-col md:gap-6 md:overflow-visible md:px-0 md:scroll-px-0"
+        data-solution-tabs-track
+        role="tablist"
+        aria-label="Recursos da solucao"
+      >
+        {
+          features.map((f, i) => (
+            <button
+              type="button"
+              role="tab"
+              id={`solution-tab-${f.id}`}
+              aria-controls={`solution-panel-${f.id}`}
+              aria-selected={i === 0 ? "true" : "false"}
+              data-tab={f.id}
+              data-solution-tab
+              class:list={[
+                "solution-tab group relative flex w-[80vw] shrink-0 snap-center items-center justify-center gap-4 px-6 py-4 text-center cursor-pointer md:w-auto md:shrink md:snap-align-none md:items-comeca md:justify-comeca md:gap-6 md:px-8 md:py-11 md:text-left",
+              ]}
+            >
+              {/* Border lines (drawn in by GSAP) */}
+              <span class="tab-line tab-line--top" data-tab-line="top" aria-hidden="true" />
+              <span class="tab-line tab-line--right" data-tab-line="right" aria-hidden="true" />
+              <span class="tab-line tab-line--bottom" data-tab-line="bottom" aria-hidden="true" />
+              <span class="tab-line tab-line--left" data-tab-line="left" aria-hidden="true" />
+
+              {/* Active marker — yellow vertical line on left edge when selected */}
+              <span
+                class="tab-active-marker"
+                aria-hidden="true"
+                data-tab-marker
+              />
+
+              <span
+                class="corner-dot tab-dot-pulse absolute left-2 top-2 hidden size-1 bg-[var(--color-border)] md:block"
+                data-tab-dot
+              />
+              <span
+                class="corner-dot absolute right-2 top-2 hidden size-1 bg-[var(--color-border)] md:block"
+                data-tab-dot
+              />
+              <span
+                class="corner-dot absolute bottom-2 left-2 hidden size-1 bg-[var(--color-border)] md:block"
+                data-tab-dot
+              />
+              <span
+                class="corner-dot absolute bottom-2 right-2 hidden size-1 bg-[var(--color-border)] md:block"
+                data-tab-dot
+              />
+
+              <img
+                src={f.icon}
+                alt=""
+                class="hidden size-7 shrink-0 md:block"
+                loading="lazy"
+                decoding="async"
+                data-tab-icon
+              />
+
+              <div class="flex w-full flex-col gap-6 font-mono font-normal uppercase">
+                <h3
+                  class="text-[1.125rem] leading-[1.5rem] tracking-[0.13rem] text-white md:text-[1.25rem] md:leading-[1.75rem] md:tracking-[0.15rem]"
+                  data-tab-title
+                >
+                  {f.title}
+                </h3>
+                <div
+                  class="hidden flex-col gap-0 text-[0.875rem] leading-[1.125rem] text-white/60 lg:flex"
+                  data-tab-descs
+                >
+                  <p>{f.desc1}</p>
+                  <p>{f.desc2}</p>
+                </div>
+              </div>
+            </button>
+          ))
+        }
+      </div>
+
+      {/* Right: panels — single stable wrapper with halftone bg + swappable assets.
+          Mobile: hidden. Tabs on the left become standalone vertical cards. */}
+      <div
+        class="relative mx-4 flex flex-col border border-[var(--color-border)] bg-[#141414] overflow-hidden md:mx-0"
+        data-solution-stage
+      >
+        <HalftoneCanvas />
+
+        {/* Mobile: panels live inside a horizontal snap-scroll track that
+            mirrors the tabs slider. Desktop (md+): wrapper becomes
+            display:contents so panels behave like before (absolute swap). */}
+        <div
+          class="solution-panels-track relative z-10 flex flex-1 overflow-x-auto snap-x snap-mandatory md:contents"
+          data-solution-panels-track
+        >
+
+        {/* Panel 1: Real-time Pipelines — LIVE SYSTEM bar chart */}
+        <div
+          role="tabpanel"
+          id="solution-panel-pipelines"
+          aria-labelledby="solution-tab-pipelines"
+          data-panel="pipelines"
+          data-solution-panel
+          class="relative z-10 flex h-full flex-1 items-center justify-center p-6"
+        >
+          <div
+            class="flex aspect-square w-full max-w-[378px] flex-col justify-between border border-[var(--color-border)] bg-[#010101] p-3"
+          >
+            <div class="flex items-center">
+              <span
+                class="font-mono text-[0.875rem] leading-[1.125rem] tracking-[0.105rem] text-white/60 uppercase"
+                data-chart-title
+              >
+                Live System
+              </span>
+            </div>
+
+            <div
+              class="flex items-center justify-between font-mono font-normal uppercase"
+            >
+              <span
+                class="text-[2rem] leading-[1.1] tracking-[0.24rem] text-white"
+                data-chart-counter
+                data-counter-target="1240"
+              >
+                1,240
+              </span>
+              <span
+                class="text-[0.625rem] leading-[0.875rem] tracking-[0.075rem] text-[var(--color-accent)]"
+                data-chart-badge
+                data-badge-target="70"
+              >
+                +70%
+              </span>
+            </div>
+
+            <div class="flex w-full flex-col gap-2">
+              <div class="flex items-end justify-between gap-1">
+                {
+                  days.map((d) => (
+                    <div class="flex flex-1 flex-col gap-1 items-stretch" data-chart-day>
+                      {Array.from({ length: d.total }).map((_, i) => {
+                        const isFilled = i >= d.total - d.filled;
+                        return (
+                          <span
+                            class="h-2 w-full"
+                            data-chart-bar
+                            data-bar-state={isFilled ? "filled" : "empty"}
+                            style={{
+                              backgroundColor: isFilled ? barColor : barEmptyColor,
+                              boxShadow: isFilled ? barGlow : "none",
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))
+                }
+              </div>
+
+              <div
+                class="flex items-comeca justify-between font-mono text-center text-[0.5rem] leading-[0.72rem] tracking-[0.06rem] text-[#616161] uppercase"
+              >
+                {days.map((d) => <span class="flex-1" data-chart-label>{d.name}</span>)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Panel 2: Unified Observability — vertical bars */}
+        <div
+          role="tabpanel"
+          id="solution-panel-observability"
+          aria-labelledby="solution-tab-observability"
+          data-panel="observability"
+          data-solution-panel
+          hidden
+          class="relative z-10 flex h-full flex-1 items-center justify-center p-6"
+        >
+          <div
+            class="relative flex aspect-square w-full max-w-[378px] flex-col border border-[var(--color-border)] bg-[#010101] p-4 font-mono font-normal uppercase"
+            data-asset-observability
+          >
+            {/* Headline */}
+            <div class="flex items-baseline justify-between">
+              <div class="flex items-baseline gap-2">
+                <span
+                  class="text-[2rem] leading-none tracking-[0.16rem] text-white"
+                  data-obs-num
+                  data-obs-num-target="12"
+                >
+                  +12%
+                </span>
+                <span class="text-[0.75rem] leading-none tracking-[0.09rem] text-white">
+                  RECONCILED
+                </span>
+              </div>
+              <span class="text-[0.625rem] leading-none tracking-[0.075rem] text-white/60">
+                (GROWTH)
+              </span>
+            </div>
+
+            {/* Body: 4 vertical bars aligned at bottom */}
+            <div class="mt-4 flex flex-1 items-end gap-2">
+              <div data-obs-bar class="h-[70px] flex-1 bg-[#474747]"></div>
+              <div data-obs-bar class="h-[22px] flex-1 bg-[#313131]"></div>
+              <div data-obs-bar class="h-[120px] flex-1 bg-[#474747]"></div>
+              <div
+                data-obs-vbar
+                class="h-[240px] flex-1 bg-[#B5D2FF]"
+                style="box-shadow: 0 0 8px rgba(95,92,255,0.78), 0 0 16px rgba(95,92,255,0.5), 0 0 32px rgba(95,92,255,0.3);"
+              ></div>
+            </div>
+
+            {/* Day labels */}
+            <div class="mt-2 flex justify-between text-[0.5rem] leading-none tracking-[0.06rem] text-[#616161]">
+              <span data-obs-day>SUN</span>
+              <span data-obs-day>MON</span>
+              <span data-obs-day>TUE</span>
+              <span data-obs-day>WED</span>
+              <span data-obs-day>THU</span>
+              <span data-obs-day>FRI</span>
+              <span data-obs-day>SAT</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Panel 3: Elastic Scaling — stats + progress bars */}
+        <div
+          role="tabpanel"
+          id="solution-panel-scaling"
+          aria-labelledby="solution-tab-scaling"
+          data-panel="scaling"
+          data-solution-panel
+          hidden
+          class="relative z-10 flex h-full flex-1 items-center justify-center p-6"
+        >
+          <div
+            class="relative flex aspect-square w-full max-w-[378px] flex-col gap-3 border border-[var(--color-border)] bg-[#010101] p-4 font-mono font-normal uppercase"
+            data-asset-scaling
+          >
+            {/* Header */}
+            <span
+              class="text-[0.625rem] leading-none tracking-[0.105rem] text-white/60"
+              data-scl-header
+            >
+              Request Processing Summary
+            </span>
+
+            {/* Stats grid 2x2 — fills available vertical space */}
+            <div class="grid flex-1 grid-cols-2 gap-2">
+              <div data-scl-card class="flex h-full flex-col justify-between bg-[#1C1C1C] p-3">
+                <span class="text-[0.5rem] leading-none tracking-[0.06rem] text-white/60" data-scl-card-label>
+                  Capacity
+                </span>
+                <span
+                  class="text-[1.5rem] leading-none tracking-[0.12rem] text-[#FFFF00]"
+                  data-scl-card-num
+                  data-scl-num-target="1500"
+                >
+                  1,500
+                </span>
+              </div>
+              <div data-scl-card class="flex h-full flex-col justify-between bg-[#1C1C1C] p-3">
+                <span class="text-[0.5rem] leading-none tracking-[0.06rem] text-white/60" data-scl-card-label>
+                  Throughput
+                </span>
+                <span
+                  class="text-[1.5rem] leading-none tracking-[0.12rem] text-[#FFFF00]"
+                  data-scl-card-num
+                  data-scl-num-target="1240"
+                >
+                  1,240
+                </span>
+              </div>
+              <div data-scl-card class="flex h-full flex-col justify-between bg-[#1C1C1C] p-3">
+                <span class="text-[0.5rem] leading-none tracking-[0.06rem] text-white/60" data-scl-card-label>
+                  Latency
+                </span>
+                <span
+                  class="text-[1.5rem] leading-none tracking-[0.12rem] text-[#FFFF00]"
+                  data-scl-card-num
+                  data-scl-num-target="47"
+                  data-scl-num-suffix="ms"
+                >
+                  47ms
+                </span>
+              </div>
+              <div data-scl-card class="flex h-full flex-col justify-between bg-[#1C1C1C] p-3">
+                <span class="text-[0.5rem] leading-none tracking-[0.06rem] text-white/60" data-scl-card-label>
+                  Availability
+                </span>
+                <span
+                  class="text-[1.5rem] leading-none tracking-[0.12rem] text-[#FFFF00]"
+                  data-scl-card-num
+                  data-scl-num-target="99.9"
+                  data-scl-num-decimals="1"
+                  data-scl-num-suffix="%"
+                >
+                  99.9%
+                </span>
+              </div>
+            </div>
+
+            {/* Progress bars — full-width style with embedded label + marker + percentage */}
+            <div class="flex flex-col gap-1">
+              <div class="relative flex h-6 items-center bg-[#1C1C1C]" data-scl-bar>
+                <div
+                  data-scl-bar-fill
+                  data-scl-fill-target="79"
+                  class="absolute left-0 top-0 h-full bg-[#B5D2FF]"
+                  style="width: 79%; box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15);"
+                ></div>
+                <span
+                  class="relative z-[1] px-3 text-[0.625rem] tracking-[0.075rem] text-[#010101]"
+                  data-scl-bar-label
+                >
+                  CPU
+                </span>
+                <span
+                  class="absolute top-0 h-full w-[3px] bg-[#B5D2FF]"
+                  style="left: calc(79% + 4px); box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 12px rgba(95,92,255,0.5);"
+                  data-scl-bar-marker
+                ></span>
+                <span
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-[0.625rem] tracking-[0.075rem] text-[#B5D2FF]"
+                  data-scl-bar-pct
+                  data-scl-pct-target="79"
+                >
+                  79%
+                </span>
+              </div>
+              <div class="relative flex h-6 items-center bg-[#1C1C1C]" data-scl-bar>
+                <div
+                  data-scl-bar-fill
+                  data-scl-fill-target="86"
+                  class="absolute left-0 top-0 h-full bg-[#B5D2FF]"
+                  style="width: 86%; box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15);"
+                ></div>
+                <span class="relative z-[1] px-3 text-[0.625rem] tracking-[0.075rem] text-[#010101]" data-scl-bar-label>
+                  Memory
+                </span>
+                <span class="absolute top-0 h-full w-[3px] bg-[#B5D2FF]" style="left: calc(86% + 4px); box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 12px rgba(95,92,255,0.5);" data-scl-bar-marker></span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[0.625rem] tracking-[0.075rem] text-[#B5D2FF]" data-scl-bar-pct data-scl-pct-target="86">86%</span>
+              </div>
+              <div class="relative flex h-6 items-center bg-[#1C1C1C]" data-scl-bar>
+                <div
+                  data-scl-bar-fill
+                  data-scl-fill-target="29"
+                  class="absolute left-0 top-0 h-full bg-[#B5D2FF]"
+                  style="width: 29%; box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15);"
+                ></div>
+                <span class="relative z-[1] px-3 text-[0.625rem] tracking-[0.075rem] text-[#010101]" data-scl-bar-label>
+                  Disk
+                </span>
+                <span class="absolute top-0 h-full w-[3px] bg-[#B5D2FF]" style="left: calc(29% + 4px); box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 12px rgba(95,92,255,0.5);" data-scl-bar-marker></span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[0.625rem] tracking-[0.075rem] text-[#B5D2FF]" data-scl-bar-pct data-scl-pct-target="29">29%</span>
+              </div>
+              <div class="relative flex h-6 items-center bg-[#1C1C1C]" data-scl-bar>
+                <div
+                  data-scl-bar-fill
+                  data-scl-fill-target="84"
+                  class="absolute left-0 top-0 h-full bg-[#B5D2FF]"
+                  style="width: 84%; box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15);"
+                ></div>
+                <span class="relative z-[1] px-3 text-[0.625rem] tracking-[0.075rem] text-[#010101]" data-scl-bar-label>
+                  Network
+                </span>
+                <span class="absolute top-0 h-full w-[3px] bg-[#B5D2FF]" style="left: calc(84% + 4px); box-shadow: 0 0 6px rgba(95,92,255,0.9), 0 0 12px rgba(95,92,255,0.5);" data-scl-bar-marker></span>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[0.625rem] tracking-[0.075rem] text-[#B5D2FF]" data-scl-bar-pct data-scl-pct-target="84">84%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+        {/* /solution-panels-track */}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tab states — default / hover / selected */
+  .solution-tab {
+    /* No CSS border — drawn by .tab-line spans */
+    background-color: transparent;
+    transition: background-color 0.18s ease;
+  }
+  .solution-tab:hover:not([aria-selected="true"]) {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+  .solution-tab:hover:not([aria-selected="true"]) .corner-dot {
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+  .solution-tab[aria-selected="true"] {
+    background-color: #141414;
+  }
+  .solution-tab[aria-selected="true"] .corner-dot {
+    background-color: var(--color-accent);
+    box-shadow:
+      0 0 4px 0 rgba(253, 255, 34, 0.85),
+      0 0 10px 0 rgba(253, 255, 34, 0.4),
+      0 0 18px 0 rgba(253, 255, 34, 0.15);
+  }
+
+  /* Active marker — vertical yellow strip on left edge of selected tab */
+  .tab-active-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--color-accent);
+    pointer-events: none;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.7, 0, 0.2, 1);
+    box-shadow:
+      0 0 6px 0 rgba(253, 255, 34, 0.55),
+      0 0 14px 0 rgba(253, 255, 34, 0.25);
+  }
+  .solution-tab[aria-selected="true"] .tab-active-marker {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  /* Tab icon — gray default / blue hover / blue + glow when selected */
+  .solution-tab [data-tab-icon] {
+    filter: grayscale(1) brightness(0.55);
+    transition: filter 0.22s ease;
+  }
+  .solution-tab:hover:not([aria-selected="true"]) [data-tab-icon] {
+    filter: grayscale(0) brightness(1);
+  }
+  .solution-tab[aria-selected="true"] [data-tab-icon] {
+    filter:
+      drop-shadow(0 0 4px rgba(95, 92, 255, 0.9))
+      drop-shadow(0 0 10px rgba(95, 92, 255, 0.55))
+      drop-shadow(0 0 18px rgba(95, 92, 255, 0.25));
+  }
+
+  /* Pulse on the top-left corner dot when selected — intensifies the base glow */
+  @keyframes tabDotPulse {
+    0%,
+    100% {
+      box-shadow:
+        0 0 4px 0 rgba(253, 255, 34, 0.85),
+        0 0 10px 0 rgba(253, 255, 34, 0.4),
+        0 0 18px 0 rgba(253, 255, 34, 0.15);
+    }
+    50% {
+      box-shadow:
+        0 0 6px 0 rgba(253, 255, 34, 1),
+        0 0 14px 0 rgba(253, 255, 34, 0.75),
+        0 0 26px 0 rgba(253, 255, 34, 0.35);
+    }
+  }
+  .solution-tab[aria-selected="true"] .tab-dot-pulse {
+    animation: tabDotPulse 1.6s ease-in-out infinite;
+  }
+  .tab-line {
+    position: absolute;
+    background: var(--color-border);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .tab-line--top,
+  .tab-line--bottom {
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+  .tab-line--top {
+    top: 0;
+    transform-origin: left center;
+  }
+  .tab-line--bottom {
+    bottom: 0;
+    transform-origin: right center;
+  }
+  .tab-line--left,
+  .tab-line--right {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+  .tab-line--right {
+    right: 0;
+    transform-origin: center top;
+  }
+  .tab-line--left {
+    left: 0;
+    transform-origin: center bottom;
+  }
+
+  /* Mobile: drop the periwinkle glow on the active tab icon — at small pixel
+     sizes the drop-shadow halo looks fuzzy/dirty. Keep the icon clean. */
+  @media (max-width: 767px) {
+    .solution-tab[aria-selected="true"] [data-tab-icon] {
+      filter: none;
+    }
+  }
+
+  /* Mobile: hide horizontal scrollbar of the tabs slider + panels slider */
+  .solution-tabs::-webkit-scrollbar,
+  .solution-panels-track::-webkit-scrollbar { display: none; }
+  .solution-tabs,
+  .solution-panels-track { scrollbar-width: none; -ms-overflow-style: none; }
+
+  /* Force snap stop on each tab so a fast flick still lands on the next one,
+     not skipping several. */
+  .solution-tabs > * { scroll-snap-stop: always; }
+
+  /* Mobile-only panel slider behavior */
+  @media (max-width: 767px) {
+    [data-solution-panels-track] [data-solution-panel] {
+      flex: 0 0 100%;
+      min-width: 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+    /* Override the [hidden] HTML attribute so all 3 panels are visible
+       inline as siblings of the slider track (sync handled in JS). */
+    [data-solution-panels-track] [data-solution-panel][hidden] {
+      display: flex !important;
+    }
+  }
+
+  /* Pre-anim hide: prevents FOUC before GSAP sets initial state */
+  .solution-pre-anim [data-solution-eyebrow],
+  .solution-pre-anim [data-solution-headline],
+  .solution-pre-anim [data-solution-subhead],
+  .solution-pre-anim [data-solution-tmark],
+  .solution-pre-anim [data-solution-tab],
+  .solution-pre-anim [data-solution-stage],
+  .solution-pre-anim [data-solution-panel] {
+    visibility: hidden;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const section = document.querySelector<HTMLElement>("[data-solution-section]");
+
+  // Reset Panel 1 chart elements + add tweens to a timeline at given position.
+  // Used by both the initial scroll-triggered entrance and per-tab clicks.
+  const revelarPanel1Chart = (tl: gsap.core.Timeline, position: number) => {
+    if (!section) return;
+    const panel = section.querySelector<HTMLElement>('[data-panel="pipelines"]');
+    const counter = section.querySelector<HTMLElement>("[data-chart-counter]");
+    const badge = section.querySelector<HTMLElement>("[data-chart-badge]");
+    const title = section.querySelector<HTMLElement>("[data-chart-title]");
+    const days = gsap.utils.toArray<HTMLElement>("[data-chart-day]", section);
+    const labels = gsap.utils.toArray<HTMLElement>("[data-chart-label]", section);
+
+    // Reset state
+    if (panel) gsap.set(panel, { clipPath: "inset(0 0 100% 0)" });
+    if (title) gsap.set(title, { opacity: 0, y: -4 });
+    if (counter) {
+      gsap.set(counter, { opacity: 0 });
+      counter.textContent = "0";
+    }
+    if (badge) {
+      gsap.set(badge, { opacity: 0 });
+      badge.textContent = "+0%";
+    }
+    // Hide every block — they will appear one-by-one bottom→up per column (loader-style)
+    days.forEach((day) => {
+      const bars = day.querySelectorAll<HTMLElement>("[data-chart-bar]");
+      if (bars.length) gsap.set(bars, { opacity: 0 });
+    });
+    if (labels.length) gsap.set(labels, { opacity: 0, y: 4 });
+
+    // Animate
+    if (panel) {
+      tl.to(panel, {
+        clipPath: "inset(0 0 0 0)",
+        duration: 0.6,
+        ease: "eagleStructure",
+      }, position);
+    }
+    if (title) {
+      tl.to(title, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "eagleReveal",
+      }, position + 0.15);
+    }
+    if (counter) {
+      const target = parseInt(counter.dataset.counterTarget || "1240", 10);
+      const proxy = { val: 0 };
+      tl.to(counter, { opacity: 1, duration: 0.2, ease: "eagleReveal" }, position + 0.25);
+      tl.to(proxy, {
+        val: target,
+        duration: 1.0,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          counter.textContent = proxy.val.toLocaleString("en-US");
+        },
+      }, position + 0.25);
+    }
+    if (badge) {
+      const badgeTarget = parseInt(badge.dataset.badgeTarget || "70", 10);
+      const badgeProxy = { val: 0 };
+      tl.to(badge, { opacity: 1, duration: 0.2, ease: "eagleReveal" }, position + 0.5);
+      tl.to(badgeProxy, {
+        val: badgeTarget,
+        duration: 0.85,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          badge.textContent = `+${badgeProxy.val}%`;
+        },
+      }, position + 0.5);
+    }
+
+    // Bars appear block-by-block from the bottom of each column, columns stagger left→right
+    days.forEach((day, dayIdx) => {
+      const bars = day.querySelectorAll<HTMLElement>("[data-chart-bar]");
+      if (!bars.length) return;
+      const dayStart = position + 0.4 + dayIdx * 0.07;
+      tl.to(bars, {
+        opacity: 1,
+        duration: 0.05,
+        ease: "none",
+        stagger: { from: "end", each: 0.025 },
+      }, dayStart);
+    });
+
+    if (labels.length) {
+      tl.to(labels, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "eagleReveal",
+        stagger: 0.045,
+      }, position + 1.15);
+    }
+  };
+
+  // Panel 2 — Observability: 4 vertical bars grow from bottom + headline count-up + day labels.
+  const revelarAssetObservability = (tl: gsap.core.Timeline, position: number) => {
+    if (!section) return;
+    const panel = section.querySelector<HTMLElement>('[data-panel="observability"]');
+    if (!panel) return;
+    const num = panel.querySelector<HTMLElement>("[data-obs-num]");
+    const headlineRow = panel.querySelector<HTMLElement>("[data-asset-observability] > div:first-child");
+    const bars = gsap.utils.toArray<HTMLElement>("[data-obs-bar]", panel);
+    const vbar = panel.querySelector<HTMLElement>("[data-obs-vbar]");
+    const days = gsap.utils.toArray<HTMLElement>("[data-obs-day]", panel);
+
+    gsap.set(panel, { clipPath: "inset(0 0 100% 0)" });
+    if (headlineRow) gsap.set(headlineRow, { opacity: 0 });
+    if (num) num.textContent = "+0%";
+    if (bars.length) gsap.set(bars, { scaleY: 0, transformOrigin: "center bottom" });
+    if (vbar) gsap.set(vbar, { scaleY: 0, transformOrigin: "center bottom" });
+    if (days.length) gsap.set(days, { opacity: 0, y: 3 });
+
+    tl.to(panel, {
+      clipPath: "inset(0 0 0 0)",
+      duration: 0.55,
+      ease: "eagleStructure",
+    }, position);
+
+    if (headlineRow) {
+      tl.to(headlineRow, { opacity: 1, duration: 0.4, ease: "eagleReveal" }, position + 0.15);
+    }
+    if (num) {
+      const target = parseInt(num.dataset.obsNumTarget || "12", 10);
+      const proxy = { val: 0 };
+      tl.to(proxy, {
+        val: target,
+        duration: 0.85,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          num.textContent = `+${proxy.val}%`;
+        },
+      }, position + 0.25);
+    }
+
+    // 3 gray bars grow bottom-up, staggered left→right
+    if (bars.length) {
+      tl.to(bars, {
+        scaleY: 1,
+        duration: 0.7,
+        ease: "eagleStructure",
+        stagger: 0.08,
+      }, position + 0.4);
+    }
+    // Big highlight bar grows last (the protagonist)
+    if (vbar) {
+      tl.to(vbar, {
+        scaleY: 1,
+        duration: 0.95,
+        ease: "eagleStructure",
+      }, position + 0.65);
+    }
+    if (days.length) {
+      tl.to(days, {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "eagleReveal",
+        stagger: 0.045,
+      }, position + 1.25);
+    }
+  };
+
+  // Format helper for numeric count-ups (decimals + suffix + thousands separator)
+  const formatCount = (val: number, decimals: number, suffix: string) => {
+    const n = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString("en-US");
+    return `${n}${suffix}`;
+  };
+
+  // Panel 3 — Scaling: 4 stat cards fade + count-up + 4 progress bars fill left→right + percentage count-up.
+  const revelarAssetScaling = (tl: gsap.core.Timeline, position: number) => {
+    if (!section) return;
+    const panel = section.querySelector<HTMLElement>('[data-panel="scaling"]');
+    if (!panel) return;
+    const header = panel.querySelector<HTMLElement>("[data-scl-header]");
+    const cards = gsap.utils.toArray<HTMLElement>("[data-scl-card]", panel);
+    const labels = gsap.utils.toArray<HTMLElement>("[data-scl-card-label]", panel);
+    const nums = gsap.utils.toArray<HTMLElement>("[data-scl-card-num]", panel);
+    const bars = gsap.utils.toArray<HTMLElement>("[data-scl-bar]", panel);
+    const barFills = gsap.utils.toArray<HTMLElement>("[data-scl-bar-fill]", panel);
+    const barLabels = gsap.utils.toArray<HTMLElement>("[data-scl-bar-label]", panel);
+    const barPcts = gsap.utils.toArray<HTMLElement>("[data-scl-bar-pct]", panel);
+
+    const barMarkers = gsap.utils.toArray<HTMLElement>("[data-scl-bar-marker]", panel);
+
+    gsap.set(panel, { clipPath: "inset(0 0 100% 0)" });
+    if (header) gsap.set(header, { opacity: 0 });
+    if (cards.length) gsap.set(cards, { opacity: 0, y: 6 });
+    if (labels.length) gsap.set(labels, { opacity: 0 });
+    if (nums.length) {
+      gsap.set(nums, { opacity: 0 });
+      nums.forEach((el) => {
+        const suffix = el.dataset.sclNumSuffix || "";
+        el.textContent = `0${suffix}`;
+      });
+    }
+    if (bars.length) gsap.set(bars, { opacity: 0 });
+    // Fill grows left→right via scaleX (label and marker are siblings, not children — no distortion)
+    if (barFills.length) gsap.set(barFills, { scaleX: 0, transformOrigin: "left center" });
+    if (barLabels.length) gsap.set(barLabels, { opacity: 0 });
+    if (barMarkers.length) gsap.set(barMarkers, { opacity: 0, x: -6 });
+    if (barPcts.length) {
+      barPcts.forEach((el) => { el.textContent = "0%"; });
+    }
+
+    tl.to(panel, {
+      clipPath: "inset(0 0 0 0)",
+      duration: 0.55,
+      ease: "eagleStructure",
+    }, position);
+
+    if (header) {
+      tl.to(header, { opacity: 1, duration: 0.4, ease: "eagleReveal" }, position + 0.1);
+    }
+
+    // Cards: fade + slight rise, staggered
+    if (cards.length) {
+      tl.to(cards, {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "eagleReveal",
+        stagger: 0.08,
+      }, position + 0.2);
+    }
+    if (labels.length) {
+      tl.to(labels, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "eagleReveal",
+        stagger: 0.06,
+      }, position + 0.3);
+    }
+
+    // Yellow numbers: count-up real, staggered
+    nums.forEach((el, idx) => {
+      const target = parseFloat(el.dataset.sclNumTarget || "0");
+      const decimals = parseInt(el.dataset.sclNumDecimals || "0", 10);
+      const suffix = el.dataset.sclNumSuffix || "";
+      const proxy = { val: 0 };
+      const numStart = position + 0.4 + idx * 0.08;
+      tl.to(el, { opacity: 1, duration: 0.25, ease: "eagleReveal" }, numStart);
+      tl.to(proxy, {
+        val: target,
+        duration: 0.95,
+        ease: "eagleReveal",
+        snap: decimals > 0 ? { val: Math.pow(10, -decimals) } : { val: 1 },
+        onUpdate: () => {
+          el.textContent = formatCount(proxy.val, decimals, suffix);
+        },
+      }, numStart);
+    });
+
+    // Bars: fade row + clip-path fill + label fade + marker fade + percentage count-up (synced per row)
+    bars.forEach((row, idx) => {
+      const fill = row.querySelector<HTMLElement>("[data-scl-bar-fill]");
+      const label = row.querySelector<HTMLElement>("[data-scl-bar-label]");
+      const marker = row.querySelector<HTMLElement>("[data-scl-bar-marker]");
+      const pct = row.querySelector<HTMLElement>("[data-scl-bar-pct]");
+      const rowStart = position + 0.85 + idx * 0.1;
+
+      tl.to(row, { opacity: 1, duration: 0.3, ease: "eagleReveal" }, rowStart);
+
+      if (fill) {
+        tl.to(fill, {
+          scaleX: 1,
+          duration: 0.75,
+          ease: "eagleStructure",
+        }, rowStart);
+      }
+      if (label) {
+        tl.to(label, { opacity: 1, duration: 0.3, ease: "eagleReveal" }, rowStart + 0.2);
+      }
+      if (marker) {
+        tl.to(marker, { opacity: 1, x: 0, duration: 0.35, ease: "eagleDecor" }, rowStart + 0.7);
+      }
+      if (pct) {
+        const target = parseFloat(pct.dataset.sclPctTarget || "0");
+        const proxy = { val: 0 };
+        tl.to(proxy, {
+          val: target,
+          duration: 0.75,
+          ease: "eagleReveal",
+          snap: { val: 1 },
+          onUpdate: () => {
+            pct.textContent = `${Math.round(proxy.val)}%`;
+          },
+        }, rowStart);
+      }
+    });
+  };
+
+  // Standalone playback for tab clicks.
+  const playPanelAnim = (panelId: string) => {
+    if (!section || reduceMotion) return;
+    const panel = section.querySelector<HTMLElement>(`[data-panel="${panelId}"]`);
+    if (!panel) return;
+
+    const tl = gsap.timeline();
+    if (panelId === "pipelines") {
+      revelarPanel1Chart(tl, 0);
+    } else if (panelId === "observability") {
+      revelarAssetObservability(tl, 0);
+    } else if (panelId === "scaling") {
+      revelarAssetScaling(tl, 0);
+    }
+  };
+
+  // Tab switching — toggle aria/hidden + replay panel anim.
+  const root = document.querySelector("[data-solution-root]");
+  if (root) {
+    const tabs = root.querySelectorAll<HTMLButtonElement>("[data-tab]");
+    const panels = root.querySelectorAll<HTMLElement>("[data-panel]");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const id = tab.getAttribute("data-tab");
+        if (!id) return;
+        tabs.forEach((t) => {
+          const isNewSelected = t.getAttribute("data-tab") === id;
+          t.setAttribute("aria-selected", isNewSelected ? "true" : "false");
+
+          // Clear GSAP-injected inline styles from the entrance so the
+          // CSS rules tied to [aria-selected] take over predictably.
+          const marker = t.querySelector<HTMLElement>("[data-tab-marker]");
+          if (marker) {
+            if (isNewSelected) {
+              gsap.to(marker, {
+                scaleY: 1,
+                opacity: 1,
+                duration: 0.35,
+                ease: "eagleStructure",
+              });
+            } else {
+              gsap.to(marker, {
+                scaleY: 0,
+                opacity: 0,
+                duration: 0.25,
+                ease: "eagleReveal",
+              });
+            }
+          }
+          gsap.to(t, {
+            backgroundColor: isNewSelected ? "#141414" : "rgba(0,0,0,0)",
+            duration: 0.3,
+            ease: "eagleReveal",
+          });
+        });
+        // Desktop: only the active panel is visible (hidden toggle).
+        // Mobile: all 3 panels live in a horizontal slider; never toggle hidden.
+        const isMobileNow = window.matchMedia("(max-width: 767px)").matches;
+        panels.forEach((p) => {
+          if (isMobileNow) {
+            p.hidden = false;
+          } else {
+            p.hidden = p.getAttribute("data-panel") !== id;
+          }
+        });
+        // On mobile, panels are already visible in the slider — skipping
+        // playPanelAnim avoids the "asset disappears + replays animation" flash
+        // every time the user slides between tabs. Panels show their final
+        // state (counters/bars rendered with hardcoded final values).
+        if (!isMobileNow) playPanelAnim(id);
+      });
+    });
+  }
+
+  const init = () => {
+    // Mobile: tabs become a static vertical card list, no scroll-pinned tab
+    // swapping, no panel choreography. Skip the entire setup.
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (reduceMotion || isMobile) {
+      document.documentElement.classList.remove("solution-pre-anim");
+      return;
+    }
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-solution-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-solution-headline]");
+    const subhead = section.querySelector<HTMLElement>("[data-solution-subhead]");
+    const hLines = gsap.utils.toArray<HTMLElement>("[data-solution-hline]", section);
+    const vLines = gsap.utils.toArray<HTMLElement>("[data-solution-vline]", section);
+    const tMarks = gsap.utils.toArray<HTMLElement>("[data-solution-tmark]", section);
+    const tabs = gsap.utils.toArray<HTMLElement>("[data-solution-tab]", section);
+    const visiblePanel = section.querySelector<HTMLElement>(
+      '[data-panel="pipelines"]'
+    );
+    const hiddenPanels = gsap.utils.toArray<HTMLElement>(
+      '[data-solution-panel]:not([data-panel="pipelines"])',
+      section
+    );
+
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+    const subheadSplit = subhead
+      ? new SplitText(subhead, { type: "lines", mask: "lines" })
+      : null;
+
+    type TabParts = {
+      el: HTMLElement;
+      lines: HTMLElement[];
+      dots: HTMLElement[];
+      icon: HTMLElement | null;
+      marker: HTMLElement | null;
+      titleSplit: SplitText | null;
+      descsSplit: SplitText | null;
+      isSelected: boolean;
+    };
+
+    const tabParts: TabParts[] = tabs.map((tab) => {
+      const titleEl = tab.querySelector<HTMLElement>("[data-tab-title]");
+      const descsEl = tab.querySelector<HTMLElement>("[data-tab-descs]");
+      return {
+        el: tab,
+        lines: gsap.utils.toArray<HTMLElement>("[data-tab-line]", tab),
+        dots: gsap.utils.toArray<HTMLElement>("[data-tab-dot]", tab),
+        icon: tab.querySelector<HTMLElement>("[data-tab-icon]"),
+        marker: tab.querySelector<HTMLElement>("[data-tab-marker]"),
+        titleSplit: titleEl
+          ? new SplitText(titleEl, { type: "lines", mask: "lines" })
+          : null,
+        descsSplit: descsEl
+          ? new SplitText(descsEl, { type: "lines", mask: "lines" })
+          : null,
+        isSelected: tab.getAttribute("aria-selected") === "true",
+      };
+    });
+
+    // ---- Pre-anim state ----
+    if (eyebrow) gsap.set(eyebrow, { y: -8, opacity: 0 });
+    if (headline) gsap.set(headline, { opacity: 1 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    if (subhead) gsap.set(subhead, { opacity: 1 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+
+    // Horizontal lines: keep centered via xPercent (replaces -translate-x-1/2)
+    gsap.set(hLines, { xPercent: -50, scaleX: 0, transformOrigin: "center center" });
+    // Vertical lines: collapse from top, draw down
+    gsap.set(vLines, { scaleY: 0, transformOrigin: "center top" });
+    gsap.set(tMarks, { scale: 0.6, opacity: 0, transformOrigin: "center" });
+
+    tabParts.forEach(({ el, lines, dots, icon, marker, titleSplit, descsSplit, isSelected }) => {
+      gsap.set(el, { opacity: 1 });
+      lines.forEach((line) => {
+        const side = line.dataset.tabLine;
+        const isHorizontal = side === "top" || side === "bottom";
+        gsap.set(line, isHorizontal ? { scaleX: 0 } : { scaleY: 0 });
+      });
+      gsap.set(dots, { scale: 0, opacity: 0, transformOrigin: "center" });
+      if (icon) gsap.set(icon, { opacity: 0, scale: 0.8, transformOrigin: "center" });
+      if (titleSplit) gsap.set(titleSplit.lines, { yPercent: 110 });
+      if (descsSplit) gsap.set(descsSplit.lines, { yPercent: 110 });
+      // Hide selected-tab decorations until tab entrance reaches them
+      if (isSelected) {
+        gsap.set(el, { backgroundColor: "transparent" });
+        if (marker) gsap.set(marker, { scaleY: 0, opacity: 0, transformOrigin: "center bottom" });
+      }
+    });
+
+    // Stage wrapper — revelar top→bottom along with the rest of the section
+    const stage = section.querySelector<HTMLElement>("[data-solution-stage]");
+    if (stage) gsap.set(stage, { clipPath: "inset(0 0 100% 0)" });
+
+    if (visiblePanel) gsap.set(visiblePanel, { opacity: 1 });
+    // Panels ocultos: dejar visibles para que clip-path tome efecto cuando se haga click
+    hiddenPanels.forEach((p) => gsap.set(p, { opacity: 1 }));
+
+    document.documentElement.classList.remove("solution-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        comeca: "top 75%",
+        once: true,
+      },
+    });
+
+    // ---- Frame: horizontal lines + vertical lines + T marks ----
+    tl.to(hLines, {
+      scaleX: 1,
+      duration: 0.7,
+      ease: "eagleStructure",
+      stagger: 0.08,
+    }, 0);
+    tl.to(vLines, {
+      scaleY: 1,
+      duration: 0.75,
+      ease: "eagleStructure",
+      stagger: 0.08,
+    }, 0.05);
+    tl.to(tMarks, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.45,
+      ease: "eagleDecor",
+      stagger: 0.05,
+    }, 0.3);
+
+    // ---- Stage wrapper revelars top→bottom (alongside tabs entrance) ----
+    if (stage) {
+      tl.to(stage, {
+        clipPath: "inset(0 0 0 0)",
+        duration: 0.7,
+        ease: "eagleStructure",
+      }, 0.4);
+    }
+
+    // ---- Header ----
+    if (eyebrow) {
+      tl.to(eyebrow, {
+        y: 0,
+        opacity: 1,
+        duration: 0.45,
+        ease: "eagleDecor",
+      }, 0.2);
+    }
+    if (headlineSplit) {
+      tl.to(headlineSplit.lines, {
+        yPercent: 0,
+        duration: 0.85,
+        ease: "eagleReveal",
+        stagger: 0.1,
+      }, 0.25);
+    }
+    if (subheadSplit) {
+      tl.to(subheadSplit.lines, {
+        yPercent: 0,
+        duration: 0.6,
+        ease: "eagleReveal",
+        stagger: 0.06,
+      }, 0.6);
+    }
+
+    // ---- Tabs (staggered) ----
+    tabParts.forEach(({ el, lines, dots, icon, marker, titleSplit, descsSplit, isSelected }, idx) => {
+      const tabStart = 0.5 + idx * 0.12;
+
+      lines.forEach((line, lineIdx) => {
+        const side = line.dataset.tabLine;
+        const isHorizontal = side === "top" || side === "bottom";
+        tl.to(line, {
+          [isHorizontal ? "scaleX" : "scaleY"]: 1,
+          duration: 0.3,
+          ease: "eagleStructure",
+        }, tabStart + lineIdx * 0.08);
+      });
+
+      tl.to(dots, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: "eagleDecor",
+        stagger: 0.04,
+      }, tabStart + 0.4);
+
+      if (icon) {
+        tl.to(icon, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: "eagleDecor",
+        }, tabStart + 0.45);
+      }
+      if (titleSplit) {
+        tl.to(titleSplit.lines, {
+          yPercent: 0,
+          duration: 0.55,
+          ease: "eagleReveal",
+          stagger: 0.06,
+        }, tabStart + 0.5);
+      }
+      if (descsSplit) {
+        tl.to(descsSplit.lines, {
+          yPercent: 0,
+          duration: 0.5,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        }, tabStart + 0.6);
+      }
+      // Selected tab finale: bg fades in + active marker grows from bottom
+      if (isSelected) {
+        tl.to(el, {
+          backgroundColor: "#141414",
+          duration: 0.45,
+          ease: "eagleStructure",
+        }, tabStart + 0.4);
+        if (marker) {
+          tl.to(marker, {
+            scaleY: 1,
+            opacity: 1,
+            duration: 0.55,
+            ease: "eagleStructure",
+          }, tabStart + 0.7);
+        }
+      }
+    });
+
+    // ---- Panel 1 revelar + chart anim (delegated to revelarPanel1Chart) ----
+    revelarPanel1Chart(tl, 1.25);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Mobile slider sync — bidirectional:
+  //   - User scrolls tabs slider → simulate click on centered tab + scroll panels
+  //   - User scrolls panels slider → simulate click on matching tab + scroll tabs
+  // A short suppression flag prevents feedback loops when one slider drives the other.
+  const setupMobileSliderSync = () => {
+    const tabsTrack = document.querySelector<HTMLElement>("[data-solution-tabs-track]");
+    const panelsTrack = document.querySelector<HTMLElement>("[data-solution-panels-track]");
+    if (!tabsTrack) return;
+    const tabs = Array.from(tabsTrack.querySelectorAll<HTMLButtonElement>("[data-tab]"));
+    if (!tabs.length) return;
+    const panels = panelsTrack
+      ? Array.from(panelsTrack.querySelectorAll<HTMLElement>("[data-solution-panel]"))
+      : [];
+
+    let lastActive = -1;
+    let rafTabs = 0;
+    let rafPanels = 0;
+    let suppressUntil = 0;
+
+    const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+
+    // On mobile, all 3 panels must be visible inline as siblings of the slider track.
+    // Remove the [hidden] attribute that the desktop click handler sets.
+    if (isMobile()) {
+      panels.forEach((p) => { p.hidden = false; });
+    }
+
+    const indexOfCentered = (track: HTMLElement, items: HTMLElement[]) => {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      items.forEach((el, i) => {
+        const c = el.offsetLeft + el.offsetWidth / 2;
+        const d = Math.abs(c - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
+    };
+
+    const scrollTrackToIndex = (track: HTMLElement, items: HTMLElement[], idx: number) => {
+      if (!items[idx]) return;
+      const target = items[idx];
+      const left = target.offsetLeft + target.offsetWidth / 2 - track.clientWidth / 2;
+      track.scrollTo({ left, behavior: "smooth" });
+    };
+
+    const onTabsScroll = () => {
+      cancelAnimationFrame(rafTabs);
+      rafTabs = requestAnimationFrame(() => {
+        if (!isMobile()) return;
+        if (Data.now() < suppressUntil) return;
+        if (tabsTrack.scrollWidth <= tabsTrack.clientWidth + 4) return;
+        const idx = indexOfCentered(tabsTrack, tabs);
+        if (idx !== lastActive) {
+          lastActive = idx;
+          tabs[idx].click();
+          if (panelsTrack && panels.length) {
+            suppressUntil = Data.now() + 350;
+            scrollTrackToIndex(panelsTrack, panels, idx);
+          }
+        }
+      });
+    };
+
+    const onPanelsScroll = () => {
+      cancelAnimationFrame(rafPanels);
+      rafPanels = requestAnimationFrame(() => {
+        if (!isMobile() || !panelsTrack || !panels.length) return;
+        if (Data.now() < suppressUntil) return;
+        if (panelsTrack.scrollWidth <= panelsTrack.clientWidth + 4) return;
+        const idx = indexOfCentered(panelsTrack, panels);
+        if (idx !== lastActive) {
+          lastActive = idx;
+          tabs[idx].click();
+          suppressUntil = Data.now() + 350;
+          scrollTrackToIndex(tabsTrack, tabs, idx);
+        }
+      });
+    };
+
+    tabsTrack.addEventListener("scroll", onTabsScroll, { passive: true });
+    if (panelsTrack) panelsTrack.addEventListener("scroll", onPanelsScroll, { passive: true });
+
+    // When user clicks a tab directly (e.g. tap), keep both sliders in sync
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => {
+        if (!isMobile()) return;
+        if (Data.now() < suppressUntil) return;
+        suppressUntil = Data.now() + 350;
+        scrollTrackToIndex(tabsTrack, tabs, i);
+        if (panelsTrack && panels.length) scrollTrackToIndex(panelsTrack, panels, i);
+        lastActive = i;
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobileSliderSync);
+  } else {
+    setupMobileSliderSync();
+  }
+</script>

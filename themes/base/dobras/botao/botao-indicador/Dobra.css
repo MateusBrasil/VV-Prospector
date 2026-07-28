@@ -1,0 +1,133 @@
+[data-dobra="botao-botao-indicador"] .bookmarkBtn{
+      width: auto;
+      min-width: 120px;
+      height: 40px;
+      border-radius: 40px;
+      
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      background-color: rgb(12, 12, 12);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      transition-duration: 0.3s;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn::before{
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(14, 165, 233, 0.2) 25%, 
+        rgba(255, 255, 255, 0.9) 50%, 
+        rgba(14, 165, 233, 0.2) 75%, 
+        transparent 100%);
+      background-size: 200% 100%;
+      -webkit-mask: linear-gradient(var(--base-100) 0 0) content-box, linear-gradient(var(--base-100) 0 0);
+      mask: linear-gradient(var(--base-100) 0 0) content-box, linear-gradient(var(--base-100) 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 5;
+      transition: opacity 0.3s;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:hover::before{
+      opacity: 1;
+      animation: shinerySync 2s infinite ease-in-out;
+    }
+[data-dobra="botao-botao-indicador"] .IconContainer{
+      width: 30px;
+      height: 30px;
+      
+      background: linear-gradient(to bottom, var(--base-200), var(--acento));
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      z-index: 2;
+      transition-duration: 0.3s;
+      flex-shrink: 0;
+      margin-left: 5px;
+      position: relative;
+    }
+[data-dobra="botao-botao-indicador"] .IconContainer::after{
+      content: '';
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0) 20%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 0) 80%, 
+        transparent 100%);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -110%;
+      transform: skewX(-25deg);
+      user-select: none;
+      pointer-events: none;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:hover .IconContainer::after{
+      animation: internalShinerySync 2s infinite ease-in-out;
+    }
+@keyframes shinerySync{
+      0% { background-position: 150% 0; }
+      100% { background-position: -150% 0; }
+    }
+@keyframes internalShinerySync{
+      0% { left: -110%; }
+      100% { left: 110%; }
+    }
+[data-dobra="botao-botao-indicador"] .icon{
+      border-radius: 1px;
+      transition-duration: 0.3s;
+      z-index: 3;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:hover .icon{
+      animation: arrowNudge 1s infinite ease-in-out;
+    }
+@keyframes arrowNudge{
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+[data-dobra="botao-botao-indicador"] .text{
+      height: 100%;
+      width: auto;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      z-index: 1;
+      transition-duration: 0.3s;
+      font-size: 0.9em;
+      margin: 0;
+      margin-left: 8px;
+      margin-right: 8px;
+      opacity: 1;
+      transform: translateX(0);
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:hover .IconContainer{
+      width: calc(100% - 10px);
+      border-radius: 35px;
+      margin-left: 5px;
+      transition-duration: 0.3s;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:hover .text{
+      opacity: 0;
+      transform: translateX(30px);
+      transition-duration: 0.3s;
+    }
+[data-dobra="botao-botao-indicador"] .bookmarkBtn:active{
+      transform: scale(0.95);
+      transition-duration: 0.3s;
+    }
+
+  

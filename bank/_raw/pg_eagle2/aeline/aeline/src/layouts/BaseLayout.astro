@@ -1,0 +1,111 @@
+---
+// BaseLayout — CSS cascade order: fonts → normalize → tokens → webflow → global-styles → components.
+// global-styles is loaded after webflow so its !important rules win.
+import "../styles/fonts.css";
+import "../styles/normalize.css";
+import "../styles/tokens.css";
+import "../styles/webflow.css";
+import "../styles/global-styles.css";
+import "../styles/hamburger-nav.css";
+import "../styles/components.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  /** Extra JSON-LD schema object(s) for this page (Article/Service/Person/Breadcrumb…). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = "/images/og-default.webp",
+  ogType = "website",
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
+
+// --- Structured data (JSON-LD) ---
+const siteUrl = (Astro.site?.toString() ?? "").replace(/\/$/, "");
+const orgLogo = new URL("/images/eagle.-black.svg", Astro.site).toString();
+
+// Emitted on every page; per-page schemas reference these by @id.
+const baseSchema: Record<string, unknown>[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    name: "Eagle",
+    url: `${siteUrl}/`,
+    logo: orgLogo,
+    description:
+      "AI consulting and automation firm helping organizations unlock growth and efficiency through data-driven strategy and intelligent automation.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "Eagle",
+    url: `${siteUrl}/`,
+    publisher: { "@id": `${siteUrl}/#organization` },
+  },
+];
+
+const extraSchema = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const schemas = [...baseSchema, ...extraSchema];
+// Escape `<` so a JSON string value can never break out of the <script> tag.
+const ld = (obj: Record<string, unknown>) =>
+  JSON.stringify(obj).replace(/</g, "\\u003c");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="theme-color" content="#d6fd70" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Eagle" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Structured data -->
+    {schemas.map((s) => <script type="application/ld+json" set:html={ld(s)} />)}
+  </head>
+  <body>
+    <!-- page-wrapper: webflow.css applies overflow:clip here -->
+    <div class="page-wrapper">
+      <slot />
+    </div>
+    <!-- Animation layer: data-anim engine + hero/revelars + marquee + counters + Swiper. -->
+    <script>
+      import "../scripts/animations.ts";
+      import "../scripts/swiper-init.ts";
+    </script>
+  </body>
+</html>

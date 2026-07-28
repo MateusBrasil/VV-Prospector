@@ -1,0 +1,30 @@
+{
+  "slot": "hero",
+  "nome": "hero-9",
+  "scope": "hero-hero-9",
+  "origem": "bank/_componentes/hero-section/hero-9",
+  "registo": "sobrio",
+  "estado": "aprovada",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    { "nome": "rotulo", "tipo": "texto", "exemplo": "Clínica dentária em Guimarães" },
+    { "nome": "titulo", "tipo": "texto", "exemplo": "Cuidar dos dentes sem pressa e sem medo" },
+    { "nome": "acao", "tipo": "texto", "exemplo": "Marcar consulta" },
+    { "nome": "destino", "tipo": "link", "exemplo": "tel:+351253000000" },
+    { "nome": "imagem", "tipo": "imagem", "exemplo": "fotografia real do consultório" },
+    { "nome": "imagemAlt", "tipo": "texto", "exemplo": "descrição da fotografia para leitor de ecrã" },
+    { "nome": "texto", "tipo": "texto", "exemplo": "primeira informação rápida (morada)" },
+    { "nome": "texto2", "tipo": "texto", "exemplo": "segunda informação rápida (horário)" },
+    { "nome": "texto3", "tipo": "texto", "exemplo": "terceira informação rápida (telefone)" }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [],
+  "_nota": "PORTADA À MÃO em 2026-07-28 para o tema odontologia. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Cinco correções, todas visíveis no diff: (1) `.preloader-counter` removido, preloader está proibido no motor; (2) `<nav>` interno com 5 links `href=#` removido, o tema tem Nav próprio e link sem destino real já foi reprovado ao vivo por cliente; (3) `.progress-bar` removida, media o preloader que já não existe; (4) o `useGSAP` inteiro removido: era a timeline do preloader, 9 segundos até o h1 aparecer, e com ela caiu a dependência de gsap desta dobra; (5) na CSS, uma linha 1 partida (metade de um @import de Google Fonts) e um bloco `:root` GLOBAL que reescrevia --base-200 e --base-300 do documento inteiro. Esse `:root` é o achado mais grave: bastava usar esta dobra para a cor de bordadura e de texto ténue de TODO o site mudarem. Vale procurar o mesmo padrão nas restantes dobras da esteira. O h1 passou a ler `var(--h1)` em vez de clamp(5rem,18.5vw,20rem): a escala é decisão de direção de arte do nicho, não da dobra. O registo baixou de `editorial` para `sobrio` porque a peça deixou de ter timeline: sobra uma transição CSS de 0,7 s que o prefers-reduced-motion do sistema já trava."
+}

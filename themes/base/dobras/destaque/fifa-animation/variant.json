@@ -1,0 +1,28 @@
+{
+  "slot": "destaque",
+  "nome": "fifa-animation",
+  "scope": "destaque-fifa-animation",
+  "origem": "bank/_componentes/ui-effects/fifa-animation",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "FA"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "2 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

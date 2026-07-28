@@ -1,0 +1,168 @@
+{
+  "slot": "hero",
+  "nome": "tipografico",
+  "scope": "hero-tipografico",
+  "origem": "bank/_componentes/hero-section/hero-13",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "matter"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tyf48939"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://fsAnimation/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Rapid image layers animation"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Click the middle menu item to see the effect."
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Underground"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Hey, dreamypie, wake up!"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Commotion"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Yo, sleepyhead! What's up?"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Interrogation"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Ho ho, honey! What's the matter?"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 16
+  },
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #88524a → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tyf48939 https://fsAnimation/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,201 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-27",
+  "scope": "destaque-scroll-27",
+  "origem": "bank/_componentes/scroll/scroll-27",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Animating SVG Text on a Path"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "A NOVA space project"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "months"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "days left"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Updates"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Careers"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Terraforming"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Discover our mission"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "One man, one mission"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Daedalus in the meantime, hating Crete and his long exile\n\t\t\t\t\tand having been touched by the love of his birthplace,\n\t\t\t\t\thad been closed in by the sea. He say"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Geode planning"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "He spoke and sends down his mind into unknown arts\n\t\t\t\t\tand changes his nature. For he puts feathers in a row\n\t\t\t\t\tbeginning with the small ones, and the shorte"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Disaster management"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Then he binds the middle ones with thread and the last feathers with wax\n\t\t\t\t\tand then bends what he has created by a small curvature as\n\t\t\t\t\tto mimic real bird"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Impact theory"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "After the finishing touch had been placed\n\t\t\t\t\ton the work, the craftsman balanced his body\n\t\t\t\t\ton the twin wings and suspended his body in the open air;\n\t\t\t\t\t"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Incubation assertion"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "With me leading, seize the way! \n\t\t\t\t\tHe hands over at the same time the rules of flying\n\t\t\t\t\tand fits the unknown wings on his shoulders.\n\t\t\t\t\tBetween the work"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Hyperdrive vessel"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Just as a bird\n\t\t\t\t\twho has led forth a tender offspring from a high nest into the air,\n\t\t\t\t\tand encourages him to follow and instructs him in the destructive a"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Icarian Engine"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "And now Juno's Samos was on the left\n\t\t\t\t\t\tside for Delos and Paros had been left behind\n\t\t\t\t\t\tand on the right was Lebynthos and Kalymnos rich in honey,\n\t\t\t\t\t\t"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Neutrospace Accelerator"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "The vicinity of the sun\n\t\t\t\t\t\tsoftens the fragrant wax, the chains of the feathers;\n\t\t\t\t\t\tthe wax melted: he shook his bare arms\n\t\t\t\t\t\tand lacking oarage he tak"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/big1.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/big2.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #0a0104 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

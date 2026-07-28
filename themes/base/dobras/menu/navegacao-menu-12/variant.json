@@ -1,0 +1,111 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-12",
+  "scope": "menu-navegacao-menu-12",
+  "origem": "bank/_componentes/menu/navegacao-menu-12",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "xhatch"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Open"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "XHATCH"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "JOURNAL"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "CONTACT"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "xhatch"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #d6ff47 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

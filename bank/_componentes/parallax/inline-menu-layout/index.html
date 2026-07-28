@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Inline Menu Layout with Page Animation</title>
+	<meta name="description" content="An inline menu layout with a playful hover animation and a gallery content preview panel." />
+	
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://use.typekit.net/zkq2mjw.css">
+	
+	<!-- Splitting CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+	<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+
+	<style>
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+
+		:root {
+			font-size: 15px;
+		}
+
+		body {
+			margin: 0;
+			--color-text: #000;
+			--color-bg: #D5D7CE;
+			--color-link: #000;
+			--color-link-hover: #000;
+			--color-menuItem-hover: #e63811;
+			color: var(--color-text);
+			background-color: var(--color-bg);
+			font-family: soleil, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			--cursor-stroke: #000;
+			--cursor-fill: none;
+			--cursor-stroke-width: 1px;
+		}
+
+		/* Page Loader */
+		.js .loading::before,
+		.js .loading::after {
+			content: '';
+			position: fixed;
+			z-index: 1000;
+		}
+
+		.js .loading::before {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--color-bg);
+		}
+
+		.js .loading::after {
+			top: 50%;
+			left: 50%;
+			width: 60px;
+			height: 60px;
+			margin: -30px 0 0 -30px;
+			border-radius: 50%;
+			opacity: 0.4;
+			background: var(--color-link);
+			animation: loaderAnim 0.7s linear infinite alternate forwards;
+		}
+
+		@keyframes loaderAnim {
+			to {
+				opacity: 1;
+				transform: scale3d(0.5,0.5,1);
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: var(--color-link);
+			outline: none;
+		}
+
+		a:hover,
+		a:focus {
+			color: var(--color-link-hover);
+			outline: none;
+		}
+
+		main {
+			min-height: 100vh;
+			padding: 1.5rem 3rem;
+			display: grid;
+			grid-template-rows: auto 1fr auto;
+			grid-auto-columns: 100%;
+			grid-template-areas: 'header'
+								 'content'
+								 'footer';
+			align-items: center;
+			grid-row-gap: 6rem;
+			overflow: hidden;
+		}
+
+		.frame {
+			text-align: center;
+			position: relative;
+			z-index: 1000;
+		}
+
+		.frame--header {
+			grid-area: header;
+		}
+
+		.frame--footer {
+			grid-area: footer;
+		}
+
+		.frame a {
+			text-decoration: underline;
+		}
+
+		.frame a:hover,
+		.frame a:focus {
+			text-decoration: none;
+		}
+
+		.frame__title {
+			font-size: 1rem;
+			margin: 0 0 1rem;
+			font-weight: normal;
+			color: #e63811;
+		}
+
+		.frame__links {
+			display: inline;
+		}
+
+		.frame__links a:not(:last-child) {
+			margin-right: 1rem;
+		}
+
+		.frame__menu {
+			font: inherit;
+			background: none;
+			border: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			cursor: not-allowed;
+		}
+
+		.menu {
+			grid-area: content;
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+			justify-content: flex-start;
+			align-content: center;
+			max-width: 1050px;
+		}
+
+		.menu__item {
+			font-family: ivypresto-headline, serif;
+			font-size: 5vw;
+			font-size: clamp(2rem,8vw,4.75rem);
+			text-transform: lowercase;
+			line-height: 1;
+			cursor: pointer;
+			margin-right: 2rem;
+			display: flex;
+			align-items: flex-start;
+			flex: none;
+			position: relative;
+		}
+
+		.menu__item:hover,
+		.menu__item:focus {
+			color: var(--color-menuItem-hover);
+		}
+
+		.menu__item-inner-wrap {
+			overflow: hidden;
+			position: relative;
+		}
+
+		.menu__item-inner {
+			display: inline-block;
+			margin-bottom: 1.5rem;
+			will-change: transform, opacity;
+		}
+
+		.menu__item-number {
+			font-size: 1.5vw;
+			font-family: soleil, sans-serif;
+		}
+
+		.hover-reveal {
+			position: absolute;
+			z-index: -1;
+			width: 150px;
+			height: 200px;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			opacity: 0;
+			will-change: transform;
+		}
+
+		.hover-reveal__inner {
+			overflow: hidden;
+		}
+
+		.hover-reveal__inner,
+		.hover-reveal__img {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			will-change: transform;
+		}
+
+		.hover-reveal__img {
+			background-size: cover;
+			background-position: 50% 50%;
+			transform-origin: 50% 100%;
+		}
+
+		.cursor {
+			display: none;
+		}
+
+		.content-wrap {
+			grid-area: content;
+			position: relative;
+		}
+
+		.content {
+			height: 0;
+			overflow: hidden;
+			position: absolute;
+			opacity: 0;
+			top: 0;
+			pointer-events: none;
+		}
+
+		.content--current {
+			height: auto;
+			overflow: visible;
+			position: relative;
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		.content__title {
+			display: flex;
+			align-items: flex-start;
+			font-weight: normal;
+			line-height: 1;
+			margin: 30px 0 5vh 0;
+		}
+
+		.content__title-wrap {
+			overflow: hidden;
+			position: relative;
+		}
+
+		.content__title-inner {
+			display: block;
+			line-height: 1.3;
+			font-family: ivypresto-headline, serif;
+			font-size: 5vw;
+			font-size: clamp(3rem,9vw,6rem);
+			text-transform: lowercase;
+		}
+
+		.content__title-number {
+			margin-top: 1rem;
+			font-size: 1.5vw;
+			font-size: clamp(1rem,1.5vw,1.75rem);
+			font-family: soleil, sans-serif;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+			grid-gap: 2.5rem;
+		}
+
+		.gallery__item {
+			flex: none;
+			margin: 0;
+		}
+
+		.gallery__item-img {
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+			will-change: transform;
+		}
+
+		.gallery__item-imginner {
+			background-size: cover;
+			background-position: 50% 0;
+			width: 100%;
+			padding-bottom: 151%;
+			will-change: transform;
+		}
+
+		.gallery__item-caption {
+			display: grid;
+			grid-template-areas: 'caption-title caption-more' 'caption-meta caption-meta';
+		}
+
+		.gallery__item-title {
+			line-height: 1;
+			font-family: ivypresto-headline, serif;
+			font-size: 1.5rem;
+			text-transform: lowercase;
+			font-weight: normal;
+			grid-area: caption-title;
+			margin: 1rem 0;
+		}
+
+		.gallery__item-meta {
+			margin: 0;
+			grid-area: caption-meta;
+		}
+
+		.gallery__item-more {
+			grid-area: caption-more;
+			align-self: center;
+			justify-self: end;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			border: 0;
+			padding: 0;
+			margin: 0;
+			background: none;
+			cursor: pointer;
+			position: relative;
+		}
+
+		.gallery__item-more::after {
+			content: '';
+			position: absolute;
+			width: 300%;
+			height: 200%;
+			left: -100%;
+			top: -50%;
+		}
+
+		.content__title-inner,
+		.content__title-number,
+		.gallery__item-imginner,
+		.gallery__item-title,
+		.gallery__item-meta,
+		.gallery__item-more {
+			will-change: transform, opacity;
+		}
+
+		.gallery__item-more:focus,
+		.gallery__item-more:hover {
+			opacity: 0.7;
+			outline: none;
+		}
+
+		.back {
+			position: absolute;
+			background: none;
+			border: 0;
+			padding: 0;
+			margin: 0;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			pointer-events: none;
+			fill: #afb1a8;
+		}
+
+		.back:hover,
+		.back:focus {
+			fill: var(--color-menuItem-hover);
+			outline: none;
+		}
+
+		@media screen and (min-width: 53em) {
+			html, body {
+				height: 100vh;
+				overflow: hidden;
+			}
+			main {
+				grid-row-gap: 0;
+			}
+			.frame {
+				text-align: left;
+				display: grid;
+				align-content: space-between;
+				width: 100%;
+				grid-template-columns: auto auto 1fr;
+			}
+			.frame--header {
+				grid-template-areas: 'title links menu';
+			}
+			.frame--footer {
+				grid-template-areas: 'author ... credits';
+			}
+			.frame__title {
+				grid-area: title;
+				margin: 0;
+			}
+			.frame__links {
+				grid-area: links;
+				padding: 0;
+				margin-left: 10vw;
+				justify-self: end;
+			}
+			.frame__author {
+				align-self: end;
+				grid-area: author;
+			}
+			.frame__menu {
+				justify-self: end;
+				align-self: start;
+				grid-area: menu;
+				display: inline-block;
+			}
+			.frame__credits {
+				justify-self: end;
+				grid-area: credits;
+				color: #e63811;
+				margin: 0;
+			}
+			.hover-reveal {
+				width: 300px;
+				height: 400px;
+			}
+			.gallery {
+				grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+				grid-auto-columns: 175px;
+				grid-auto-flow: column;
+				grid-template-rows: auto;
+			}
+		}
+
+		@media (any-pointer: fine) {
+			.cursor {
+				position: fixed;
+				top: 0;
+				left: 0;
+				display: block;
+				pointer-events: none;
+				z-index: 9999;
+			}
+			.cursor__inner {
+				fill: var(--cursor-fill);
+				stroke: var(--cursor-stroke);
+				stroke-width: var(--cursor-stroke-width);
+				opacity: 1;
+			}
+			.no-js .cursor {
+				display: none;
+			}
+		}
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+	<script>
+	document.documentElement.className = "js";
+	var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
+	supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+	</script>
+</head>
+
+<body class="demo-1 loading">
+	<main>
+		<div class="frame frame--header">
+			<h1 class="frame__title">Galeria Interativa</h1>
+		</div>
+		
+		<nav class="menu">
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=1"><span class="menu__item-inner-wrap"><span class="menu__item-inner">natureza</span></span><sup class="menu__item-number">(5)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=6"><span class="menu__item-inner-wrap"><span class="menu__item-inner">espaço</span></span><sup class="menu__item-number">(4)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=10"><span class="menu__item-inner-wrap"><span class="menu__item-inner">oceanos</span></span><sup class="menu__item-number">(3)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=13"><span class="menu__item-inner-wrap"><span class="menu__item-inner">animais</span></span><sup class="menu__item-number">(4)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=17"><span class="menu__item-inner-wrap"><span class="menu__item-inner">cidades</span></span><sup class="menu__item-number">(4)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=21"><span class="menu__item-inner-wrap"><span class="menu__item-inner">aventura</span></span><sup class="menu__item-number">(5)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=26"><span class="menu__item-inner-wrap"><span class="menu__item-inner">ciência</span></span><sup class="menu__item-number">(6)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=32"><span class="menu__item-inner-wrap"><span class="menu__item-inner">esportes</span></span><sup class="menu__item-number">(3)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=35"><span class="menu__item-inner-wrap"><span class="menu__item-inner">música</span></span><sup class="menu__item-number">(4)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=39"><span class="menu__item-inner-wrap"><span class="menu__item-inner">comida</span></span><sup class="menu__item-number">(5)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=4"><span class="menu__item-inner-wrap"><span class="menu__item-inner">viagem</span></span><sup class="menu__item-number">(3)</sup></a>
+			<a class="menu__item" data-img="https://picsum.photos/400/600?random=7"><span class="menu__item-inner-wrap"><span class="menu__item-inner">arte</span></span><sup class="menu__item-number">(4)</sup></a>
+		</nav>
+		
+		<section class="content-wrap">
+			<!-- natureza -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">natureza</span></span>
+					<sup class="content__title-number">(5)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=1)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Floresta Verde</h3>
+							<p class="gallery__item-meta">2021, Amazônia</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=2)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Montanhas</h3>
+							<p class="gallery__item-meta">2022, Andes</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=3)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Cachoeira</h3>
+							<p class="gallery__item-meta">2020, Iguaçu</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=4)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Folhas de Outono</h3>
+							<p class="gallery__item-meta">2019, Região Sul</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=5)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Deserto</h3>
+							<p class="gallery__item-meta">2023, Atacama</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- espaço -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">espaço</span></span>
+					<sup class="content__title-number">(4)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=6)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Via Láctea</h3>
+							<p class="gallery__item-meta">2020, Telescópio</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=7)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Planeta Vermelho</h3>
+							<p class="gallery__item-meta">2021, Sonda Espacial</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=8)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Nebulosa</h3>
+							<p class="gallery__item-meta">2018, Hubble</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=9)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>A Lua</h3>
+							<p class="gallery__item-meta">2023, Observatório</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- oceanos -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">oceanos</span></span>
+					<sup class="content__title-number">(3)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=10)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Corais</h3>
+							<p class="gallery__item-meta">2019, Austrália</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=11)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Onda Gigante</h3>
+							<p class="gallery__item-meta">2021, Havaí</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=12)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Fundo do Mar</h3>
+							<p class="gallery__item-meta">2022, Caribe</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- animais -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">animais</span></span>
+					<sup class="content__title-number">(4)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=13)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Tigre</h3>
+							<p class="gallery__item-meta">2020, Ásia</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=14)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Arara</h3>
+							<p class="gallery__item-meta">2021, Brasil</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=15)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Tartaruga</h3>
+							<p class="gallery__item-meta">2018, Galápagos</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=16)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Lobo</h3>
+							<p class="gallery__item-meta">2022, Canadá</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- cidades -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">cidades</span></span>
+					<sup class="content__title-number">(4)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=17)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Luzes Noturnas</h3>
+							<p class="gallery__item-meta">2022, São Paulo</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=18)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Ruas Movimentadas</h3>
+							<p class="gallery__item-meta">2019, Tóquio</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=19)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Arranha-céus</h3>
+							<p class="gallery__item-meta">2021, Nova York</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=20)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Ponte Antiga</h3>
+							<p class="gallery__item-meta">2020, Paris</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- aventura -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">aventura</span></span>
+					<sup class="content__title-number">(5)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=21)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Trilha na Selva</h3>
+							<p class="gallery__item-meta">2021, Montanha</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=22)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Caiaque</h3>
+							<p class="gallery__item-meta">2020, Rio Corrente</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=23)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Escalada</h3>
+							<p class="gallery__item-meta">2022, Rocha Alta</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=24)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Acampamento</h3>
+							<p class="gallery__item-meta">2019, Floresta Fria</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=25)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Voo Livre</h3>
+							<p class="gallery__item-meta">2023, Céu Aberto</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- ciência -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">ciência</span></span>
+					<sup class="content__title-number">(6)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=26)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Química</h3>
+							<p class="gallery__item-meta">2020, Laboratório</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=27)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Física</h3>
+							<p class="gallery__item-meta">2021, Faculdade</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=28)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Biologia</h3>
+							<p class="gallery__item-meta">2019, Pesquisa</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=29)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Astronomia</h3>
+							<p class="gallery__item-meta">2022, Cúpula</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=30)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Robótica</h3>
+							<p class="gallery__item-meta">2023, Feira de Ciência</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=31)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Geologia</h3>
+							<p class="gallery__item-meta">2018, Caverna</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- esportes -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">esportes</span></span>
+					<sup class="content__title-number">(3)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=32)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Futebol</h3>
+							<p class="gallery__item-meta">2022, Estádio</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=33)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Basquete</h3>
+							<p class="gallery__item-meta">2021, Quadra</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=34)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Corrida</h3>
+							<p class="gallery__item-meta">2020, Pista</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- música -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">música</span></span>
+					<sup class="content__title-number">(4)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=35)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Violão</h3>
+							<p class="gallery__item-meta">2019, Palco</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=36)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Bateria</h3>
+							<p class="gallery__item-meta">2021, Estúdio</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=37)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Piano</h3>
+							<p class="gallery__item-meta">2020, Teatro</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=38)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Canto</h3>
+							<p class="gallery__item-meta">2022, Show Ao Vivo</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- comida -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">comida</span></span>
+					<sup class="content__title-number">(5)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=39)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Pizza</h3>
+							<p class="gallery__item-meta">2021, Pizzaria</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=40)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Hambúrguer</h3>
+							<p class="gallery__item-meta">2020, Lanchonete</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=1)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Salada Fresca</h3>
+							<p class="gallery__item-meta">2022, Restaurante</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=2)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Sorvete</h3>
+							<p class="gallery__item-meta">2019, Praça</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=3)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Suco Natural</h3>
+							<p class="gallery__item-meta">2023, Praia</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- viagem -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">viagem</span></span>
+					<sup class="content__title-number">(3)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=4)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Mapa Antigo</h3>
+							<p class="gallery__item-meta">2020, Biblioteca</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=5)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Avião</h3>
+							<p class="gallery__item-meta">2021, Aeroporto</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=6)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Bagagem</h3>
+							<p class="gallery__item-meta">2022, Hotel</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<!-- arte -->
+			<div class="content">
+				<h2 class="content__title">
+					<span class="content__title-wrap"><span class="content__title-inner">arte</span></span>
+					<sup class="content__title-number">(4)</sup>
+				</h2>
+				<div class="gallery">
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=7)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Pintura em Tela</h3>
+							<p class="gallery__item-meta">2019, Museu</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=8)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Escultura</h3>
+							<p class="gallery__item-meta">2020, Praça</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=9)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Desenho</h3>
+							<p class="gallery__item-meta">2021, Estúdio</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+					<figure class="gallery__item">
+						<div class="gallery__item-img">
+							<div class="gallery__item-imginner" style="background-image:url(https://picsum.photos/400/600?random=10)"></div>
+						</div>
+						<figcaption class="gallery__item-caption">
+							<h3 class="gallery__item-title" data-splitting>Grafite</h3>
+							<p class="gallery__item-meta">2022, Rua da Arte</p>
+							<button class="gallery__item-more">+</button>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+			
+			<button class="back"><svg viewBox="0 0 60 34" width="30" height="17"><path d="M60 15.066H7.235L19.128 3.173 16.456.5 0 16.956 16.456 33.41l2.672-2.672L7.235 18.846H60z"/></svg></button>
+		</section>
+		
+		<div class="frame frame--footer">
+			<p class="frame__credits">Galeria de imagens variadas para explorar e aprender.</p>
+		</div>
+	</main>
+	
+	<svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
+		<circle class="cursor__inner" cx="15" cy="15" r="7.5" />
+	</svg>
+
+	<!-- External Scripts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+	<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+	<!-- Main Script Logic -->
+	<script>
+		// ==========================================
+		// UTILS
+		// ==========================================
+		const map = (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c;
+		const clamp = (num, min, max) => num <= min ? min : num >= max ? max : num;
+		const lerp = (a, b, n) => (1 - n) * a + n * b;
+
+		const getMousePos = e => {
+			return { x: e.clientX, y: e.clientY };
+		};
+
+		const preloadImages = (selector = 'img') => {
+			return new Promise((resolve) => {
+				imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
+			});
+		};
+
+		const preloadFonts = (id) => {
+			return new Promise((resolve) => {
+				WebFont.load({
+					typekit: { id: id },
+					active: resolve,
+					inactive: resolve // Resolve even if fonts fail to load
+				});
+			});
+		};
+
+		// ==========================================
+		// PRELOADER
+		// ==========================================
+		const preloader = selector => {
+			return new Promise(resolve => {
+				const body = document.body;
+				const imgwrap = document.createElement('div');
+				imgwrap.style.visibility = 'hidden';
+				body.appendChild(imgwrap);
+				
+				[...document.querySelectorAll(selector)].forEach(el => {
+					const imgEl = document.createElement('img');
+					imgEl.style.width = 0;
+					imgEl.src = el.dataset.img;
+					imgEl.className = 'preload';
+					imgwrap.appendChild(imgEl);
+				});
+
+				imagesLoaded(document.querySelectorAll('.preload'), () => {
+					body.classList.remove('loading');
+					resolve();
+				});
+			});
+		};
+
+		// ==========================================
+		// GLOBAL MOUSE STATE
+		// ==========================================
+		let mousepos = {x: 0, y: 0};
+		let mousePosCache = {x: 0, y: 0};
+		let direction = {x: 0, y: 0};
+		window.addEventListener('mousemove', ev => mousepos = getMousePos(ev));
+
+		// ==========================================
+		// CURSOR
+		// ==========================================
+		class Cursor {
+			constructor(el) {
+				this.DOM = {el: el};
+				this.DOM.el.style.opacity = 0;
+				
+				this.bounds = this.DOM.el.getBoundingClientRect();
+				
+				this.renderedStyles = {
+					tx: {previous: 0, current: 0, amt: 0.2},
+					ty: {previous: 0, current: 0, amt: 0.2},
+					scale: {previous: 1, current: 1, amt: 0.2},
+					opacity: {previous: 1, current: 1, amt: 0.2}
+				};
+
+				this.onMouseMoveEv = () => {
+					this.renderedStyles.tx.previous = this.renderedStyles.tx.current = mousepos.x - this.bounds.width/2;
+					this.renderedStyles.ty.previous = this.renderedStyles.ty.current = mousepos.y - this.bounds.height/2;
+					gsap.to(this.DOM.el, {duration: 0.9, ease: 'power3.out', opacity: 1});
+					requestAnimationFrame(() => this.render());
+					window.removeEventListener('mousemove', this.onMouseMoveEv);
+				};
+				window.addEventListener('mousemove', this.onMouseMoveEv);
+			}
+			enter() {
+				this.renderedStyles['scale'].current = 2;
+				this.renderedStyles['opacity'].current = 0.3;
+			}
+			leave() {
+				this.renderedStyles['scale'].current = 1;
+				this.renderedStyles['opacity'].current = 1;
+			}
+			render() {
+				this.renderedStyles['tx'].current = mousepos.x - this.bounds.width/2;
+				this.renderedStyles['ty'].current = mousepos.y - this.bounds.height/2;
+
+				for (const key in this.renderedStyles ) {
+					this.renderedStyles[key].previous = lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+				}
+									
+				this.DOM.el.style.transform = `translateX(${(this.renderedStyles['tx'].previous)}px) translateY(${this.renderedStyles['ty'].previous}px) scale(${this.renderedStyles['scale'].previous})`;
+				this.DOM.el.style.opacity = this.renderedStyles['opacity'].previous;
+
+				requestAnimationFrame(() => this.render());
+			}
+		}
+
+		// ==========================================
+		// CONTENT ITEM
+		// ==========================================
+		class ContentItem {
+			constructor(el) {
+				this.DOM = {el: el};
+
+				Splitting({ target: el.querySelectorAll('[data-splitting]') });
+
+				this.DOM.title = this.DOM.el.querySelector('.content__title-inner');
+				this.DOM.number = this.DOM.el.querySelector('.content__title-number');
+				this.DOM.imgs = [...this.DOM.el.querySelectorAll('.gallery__item-imginner')];
+				this.DOM.caption = {
+					title: this.DOM.el.querySelectorAll('.gallery__item-caption > .gallery__item-title'),
+					meta: this.DOM.el.querySelectorAll('.gallery__item-caption > .gallery__item-meta'),
+					more: this.DOM.el.querySelectorAll('.gallery__item-caption > .gallery__item-more')
+				};
+
+				this.initEvents();
+			}
+			
+			initEvents() {
+				this.DOM.caption.more.forEach((more, pos) => {
+					const img = this.DOM.imgs[pos];
+					const chars = this.DOM.caption.title[pos].querySelectorAll('.char');
+
+					more.addEventListener('mouseenter', () => {
+						gsap.killTweensOf([img, chars]);
+						gsap.timeline({
+							defaults: {
+								duration: 1, 
+								ease: 'expo',
+							}
+						})
+						.to(img, {scale: 0.95})
+						.to(chars, {x: pos => pos*2}, 0);
+					});
+					more.addEventListener('mouseleave', () => {
+						gsap.killTweensOf([img, chars]);
+						gsap.timeline({
+							defaults: {
+								duration: 0.5, 
+								ease: 'expo',
+							}
+						})
+						.to(img, {scale: 1})
+						.to(chars, {x: 0}, 0);
+					});
+				});
+			}
+		}
+
+		// ==========================================
+		// MENU ITEM
+		// ==========================================
+		class MenuItem {
+			constructor(el, animatableProperties) {
+				this.DOM = {el: el};
+				this.DOM.inner = this.DOM.el.querySelector('.menu__item-inner');
+				this.DOM.number = this.DOM.el.querySelector('.menu__item-number');
+				this.animatableProperties = animatableProperties;
+				this.layout();
+				this.initEvents();
+			}
+			
+			layout() {
+				this.DOM.reveal = document.createElement('div');
+				this.DOM.reveal.className = 'hover-reveal';
+				this.DOM.reveal.style.transformOrigin = '0% 0%';
+				
+				this.DOM.revealInner = document.createElement('div');
+				this.DOM.revealInner.className = 'hover-reveal__inner';
+				
+				this.DOM.revealImage = document.createElement('div');
+				this.DOM.revealImage.className = 'hover-reveal__img';
+				
+				// Apply the image URL embedded in the data-img attribute
+				this.DOM.revealImage.style.backgroundImage = `url(${this.DOM.el.dataset.img})`;
+				
+				this.DOM.revealInner.appendChild(this.DOM.revealImage);
+				this.DOM.reveal.appendChild(this.DOM.revealInner);
+				this.DOM.el.appendChild(this.DOM.reveal);
+			}
+			
+			initEvents() {
+				this.mouseenterFn = () => {
+					this.showImage();
+					this.firstRAFCycle = true;
+					this.loopRender();
+				};
+
+				this.mouseleaveFn = () => {
+					this.stopRendering();
+					this.hideImage();
+				};
+				
+				this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
+				this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
+			}
+			
+			calcBounds() {
+				this.bounds = {
+					el: this.DOM.el.getBoundingClientRect(),
+					reveal: this.DOM.reveal.getBoundingClientRect()
+				};
+			}
+			
+			showImage() {
+				gsap.killTweensOf(this.DOM.revealInner);
+				gsap.killTweensOf(this.DOM.revealImage);
+				gsap.timeline({
+					defaults: {duration: 0.8, ease: 'power4.out'},
+					onStart: () => {
+						this.DOM.reveal.style.opacity = this.DOM.revealInner.style.opacity = 1;
+						gsap.set(this.DOM.el, {zIndex: 100});
+					}
+				})
+				.to(this.DOM.revealInner, {
+					startAt: {x: '-50%', y: '150%', rotation: 10},
+					x: '0%',
+					y: '0%',
+				}, 0)
+				.to(this.DOM.revealInner, {
+					duration: 1, 
+					ease: 'expo',
+					startAt: {scale: 0.2},
+					scale: 1
+				}, 0)
+				.to(this.DOM.revealImage, {
+					duration: 1, 
+					ease: 'expo',
+					startAt: {scale: 1.8},
+					scale: 1
+				}, 0);
+			}
+			
+			hideImage() {
+				return new Promise(resolve => {
+					gsap.killTweensOf(this.DOM.revealInner);
+					gsap.killTweensOf(this.DOM.revealImage);
+					gsap.timeline({
+						defaults: {duration: 0.8, ease: 'power4.out'},
+						onStart: () => {
+							gsap.set(this.DOM.el, {zIndex: 1});
+						},
+						onComplete: () => {
+							gsap.set(this.DOM.reveal, {opacity: 0});
+							resolve();
+						}
+					})
+					.to(this.DOM.revealInner, {
+						scale: 0.8,
+						x: '50%',
+						y: '-150%',
+						opacity: 0,
+					})
+					.to(this.DOM.revealImage, {
+						scale: 1.8
+					}, 0);
+				});
+			}
+			
+			loopRender() {
+				if ( !this.requestId ) {
+					this.requestId = requestAnimationFrame(() => this.render());
+				}
+			}
+			
+			stopRendering() {
+				if ( this.requestId ) {
+					window.cancelAnimationFrame(this.requestId);
+					this.requestId = undefined;
+				}
+			}
+			
+			render() {
+				this.requestId = undefined;
+
+				if ( this.firstRAFCycle ) {
+					this.calcBounds();
+				}
+				
+				const mouseDistanceX = clamp(Math.abs(mousePosCache.x - mousepos.x), 0, 100);
+				direction = {x: mousePosCache.x-mousepos.x, y: mousePosCache.y-mousepos.y};
+				mousePosCache = {x: mousepos.x, y: mousepos.y};
+
+				this.animatableProperties.tx.current = Math.abs(mousepos.x - this.bounds.el.left) - this.bounds.reveal.width/2;
+				this.animatableProperties.ty.current = Math.abs(mousepos.y - this.bounds.el.top) - this.bounds.reveal.height/2;
+				this.animatableProperties.rotation.current = this.firstRAFCycle ? 0 : map(mouseDistanceX,0,200,0,direction.x < 0 ? -100 : 100);
+				
+				this.animatableProperties.tx.previous = this.firstRAFCycle ? this.animatableProperties.tx.current : lerp(this.animatableProperties.tx.previous, this.animatableProperties.tx.current, this.animatableProperties.tx.amt);
+				this.animatableProperties.ty.previous = this.firstRAFCycle ? this.animatableProperties.ty.current : lerp(this.animatableProperties.ty.previous, this.animatableProperties.ty.current, this.animatableProperties.ty.amt);
+				this.animatableProperties.rotation.previous = this.firstRAFCycle ? this.animatableProperties.rotation.current : lerp(this.animatableProperties.rotation.previous, this.animatableProperties.rotation.current, this.animatableProperties.rotation.amt);
+				
+				gsap.set(this.DOM.reveal, {
+					x: this.animatableProperties.tx.previous,
+					y: this.animatableProperties.ty.previous,
+					rotation: this.animatableProperties.rotation.previous
+				});
+
+				this.firstRAFCycle = false;
+				this.loopRender();
+			}
+		}
+
+		// ==========================================
+		// MENU CONTROLLER
+		// ==========================================
+		class MenuController {
+			constructor(menuEl) {
+				this.DOM = {menu: menuEl};
+				this.DOM.menuItems = [...this.DOM.menu.querySelectorAll('.menu__item')];
+				this.animatableProperties = {
+					tx: {previous: 0, current: 0, amt: 0.08},
+					ty: {previous: 0, current: 0, amt: 0.08},
+					rotation: {previous: 0, current: 0, amt: 0.05}
+				};
+				
+				this.menuItems = [];
+				this.DOM.menuItems.forEach(menuItemEl => this.menuItems.push(new MenuItem(menuItemEl, this.animatableProperties)));
+				
+				this.contentItems = [];
+				[...document.querySelectorAll('.content-wrap .content')].forEach(contentItemEl => this.contentItems.push(new ContentItem(contentItemEl)));
+
+				this.DOM.backCtrl = document.querySelector('.back');
+				this.initEvents();
+			}
+			
+			initEvents() {
+				this.DOM.menuItems.forEach((menuItemEl, position) => {
+					menuItemEl.addEventListener('click', () => this.onMenuItemClick(position));
+				});
+				this.DOM.backCtrl.addEventListener('click', () => this.onBackCtrlClick());
+			}
+			
+			getCurrentData(position) {
+				return {
+					menuItem: this.menuItems[position],
+					texts: this.menuItems.map(t => t.DOM.inner),
+					numbers: this.menuItems.map(t => t.DOM.number),
+					contentItem: this.contentItems[position]
+				};
+			}
+			
+			onMenuItemClick(position) {
+				this.currentItemIndex = position;
+				const {menuItem, texts, numbers, contentItem} = this.getCurrentData(position);
+				
+				this.DOM.menu.style.pointerEvents = 'none';
+				menuItem.DOM.el.style.pointerEvents = 'auto';
+				menuItem.hideImage().then(() => menuItem.DOM.el.style.pointerEvents = 'none');
+
+				gsap.timeline({
+					defaults: {duration: 1, ease: 'expo'}
+				})
+				.addLabel('hideMenu', 0)
+				.set([texts, contentItem.DOM.title], {transformOrigin: '50% 100%'}, 'hideMenu')
+				.set(contentItem.DOM.title, {
+					opacity: 0,
+					y: '101%'
+				}, 'hideMenu')
+				.set(contentItem.DOM.number, {
+					scale: 0
+				}, 'hideMenu')
+				.set(contentItem.DOM.imgs, {
+					y: '101%'
+				}, 'hideMenu')
+				.set([contentItem.DOM.caption.title, contentItem.DOM.caption.meta, contentItem.DOM.caption.more], {
+					opacity: 0
+				}, 'hideMenu')
+				.to(numbers, {
+					duration: 0.3,
+					ease: 'sine',
+					scale: 0,
+					opacity: 0,
+					stagger: {from: position, each: 0.01}
+				}, 'hideMenu')
+				.to(texts, {
+					duration: 0.1,
+					ease: 'power2.in',
+					scaleY: 1.5,
+					stagger: {from: position, each: 0.01}
+				}, 'hideMenu')
+				.to(texts, {
+					duration: 0.8,
+					ease: 'expo',
+					scaleY: 1,
+					y: '-100%',
+					opacity: 0,
+					stagger: {from: position, each: 0.01}
+				}, 'hideMenu+=0.1')
+				.addLabel('showContent', 0.3)
+				.add(() => {
+					contentItem.DOM.el.classList.add('content--current');
+				}, 'showContent')
+				.set(this.DOM.backCtrl, {pointerEvents: 'auto'}, 'showContent')
+				.to(this.DOM.backCtrl, {
+					startAt: {x: '-100%'},
+					opacity: 1,
+					x: '0%'
+				}, 'showContent')
+				.to(contentItem.DOM.title, {
+					duration: 0.1,
+					ease: 'power2.in',
+					scaleY: 1.5,
+					opacity: 1
+				}, 'showContent')
+				.to(contentItem.DOM.title, {
+					duration: 0.8,
+					ease: 'expo',
+					scaleY: 1,
+					startAt: {y: '100%'},
+					y: '0%'
+				}, 'showContent+=0.1')
+				.to(contentItem.DOM.number, {
+					scale: 1
+				}, 'showContent')
+				.to(contentItem.DOM.imgs, {
+					y: '0%',
+					stagger: 0.02
+				}, 'showContent+=0.1')
+				.to([contentItem.DOM.caption.title, contentItem.DOM.caption.meta], {
+					startAt: {y: '100%'},
+					y: '0%',
+					opacity: 1,
+					stagger: 0.02
+				}, 'showContent+=0.2')
+				.to(contentItem.DOM.caption.more, {
+					startAt: {scale: 0},
+					scale: 1,
+					opacity: 1,
+					stagger: 0.02
+				}, 'showContent+=0.2');
+			}
+			
+			onBackCtrlClick() {
+				const {menuItem, texts, numbers, contentItem} = this.getCurrentData(this.currentItemIndex);
+				
+				gsap.timeline({
+					defaults: {duration: 0.4, ease: 'power3.in'}
+				})
+				.addLabel('hideContent', 0)
+				.set([texts, contentItem.DOM.title], {transformOrigin: '50% 0%'}, 'hideContent')
+				.set(this.DOM.backCtrl, {pointerEvents: 'none'}, 'hideContent')
+				.to(this.DOM.backCtrl, {
+					opacity: 0,
+					x: '-100%'
+				}, 'hideContent')
+				.to([contentItem.DOM.caption.meta, contentItem.DOM.caption.title], {
+					y: '100%',
+					opacity: 0,
+					stagger: 0.02
+				}, 'hideContent')
+				.to(contentItem.DOM.caption.more, {
+					scale: 0,
+					opacity: 0,
+					stagger: 0.02
+				}, 'hideContent')
+				.to(contentItem.DOM.imgs, {
+					y: '101%',
+					stagger: 0.02
+				}, 'hideContent+=0.1')
+				.to(contentItem.DOM.number, {
+					scale: 0
+				}, 'hideContent+=0.1')
+				.to(contentItem.DOM.title, {
+					y: '100%',
+					opacity: 1
+				}, 'hideContent+=0.1')
+				.addLabel('showMenu', 0.6)
+				.add(() => {
+					contentItem.DOM.el.classList.remove('content--current');
+				}, 'showMenu')
+				.add(() => {
+					this.DOM.menu.style.pointerEvents = '';
+					menuItem.DOM.el.style.pointerEvents = '';
+				}, 'showMenu')
+				.to(numbers, {
+					duration: 0.3,
+					ease: 'sine',
+					scale: 1,
+					opacity: 1,
+					stagger: {from: this.currentItemIndex, each: 0.01}
+				}, 'showMenu')
+				.to(texts, {
+					duration: 0.1,
+					ease: 'power2.in',
+					scaleY: 1.5,
+					opacity: 1,
+					stagger: {from: this.currentItemIndex, each: 0.01}
+				}, 'showMenu')
+				.to(texts, {
+					duration: 0.8,
+					ease: 'expo',
+					scaleY: 1,
+					y: '0%',
+					stagger: {from: this.currentItemIndex, each: 0.01}
+				}, 'showMenu+=0.1')
+			}
+		}
+
+		// ==========================================
+		// INITIALIZATION
+		// ==========================================
+		Promise.all([
+			preloader('.menu__item'), 
+			preloadImages('.gallery__item-imginner'), 
+			preloadFonts('zkq2mjw')
+		]).then(() => {
+			document.body.classList.remove('loading');
+
+			const cursor = new Cursor(document.querySelector('.cursor'));
+			new MenuController(document.querySelector('.menu'));
+
+			[...document.querySelectorAll('a, .gallery__item-more, .back')].forEach(link => {
+				link.addEventListener('mouseenter', () => cursor.enter());
+				link.addEventListener('mouseleave', () => cursor.leave());
+			});
+		});
+	</script>
+</body>
+</html>

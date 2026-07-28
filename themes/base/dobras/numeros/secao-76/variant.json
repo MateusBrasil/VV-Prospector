@@ -1,0 +1,100 @@
+{
+  "slot": "numeros",
+  "nome": "secao-76",
+  "scope": "numeros-secao-76",
+  "origem": "bank/_componentes/secoes/secao-76",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "About Acelia"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "With over 15 years of experience, we specialize in delivering tailored solutions that drive success across industries like finance, technology, and operations. "
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "95%"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Complete customer satisfaction"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "10+"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Innovation and valuable insight"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "$10m"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Highly efficient financial strategies"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "50m"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Users worldwide, providing them with"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-1.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-2.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-3.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-4.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-1.svg https://d173woph5zl366.cloudfront.net/acelia/assets/images/about-logo-2.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

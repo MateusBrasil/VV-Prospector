@@ -1,0 +1,320 @@
+[data-dobra="transicao-transicao-pagina-20"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="transicao-transicao-pagina-20"],[data-dobra="transicao-transicao-pagina-20"]{
+  background: var(--base-100);
+  width: 100%;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="transicao-transicao-pagina-20"] #preloader{
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--base-100);
+}
+[data-dobra="transicao-transicao-pagina-20"] .preloader-count{
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--base-600);
+  font-variant-numeric: tabular-nums;
+}
+[data-dobra="transicao-transicao-pagina-20"] #cursor{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: 1px solid var(--base-600);
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition:
+    width 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    height 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    border-radius 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+[data-dobra="transicao-transicao-pagina-20"] #cursor::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--base-600);
+  border-radius: 0;
+  opacity: 0;
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  transition:
+    opacity 0.35s cubic-bezier(0.65, 0, 0.35, 1),
+    transform 0.35s cubic-bezier(0.65, 0, 0.35, 1),
+    border-radius 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #cursor.is-hover{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+[data-dobra="transicao-transicao-pagina-20"] #cursor.is-hover::after{
+  border-radius: 50%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+@media (hover: none){[data-dobra="transicao-transicao-pagina-20"] #cursor{
+    display: none;
+  }
+
+}
+[data-dobra="transicao-transicao-pagina-20"] html::-webkit-scrollbar,[data-dobra="transicao-transicao-pagina-20"] body::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  display: none;
+}
+[data-dobra="transicao-transicao-pagina-20"]{
+  color: var(--base-600);
+}
+[data-dobra="transicao-transicao-pagina-20"] html.js #nav a,[data-dobra="transicao-transicao-pagina-20"] html.js #footer a{
+  opacity: 0;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav{
+  position: fixed;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 200;
+  display: flex;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav a:not(:last-child)::after{
+  content: ",";
+  margin-left: 0.05rem;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-title{
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 10;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--base-600);
+  opacity: 0.5;
+  pointer-events: none;
+  margin: 0;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav a{
+  position: relative;
+  color: var(--base-600);
+  text-decoration: none;
+  pointer-events: auto;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav a::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav a:hover::before,[data-dobra="transicao-transicao-pagina-20"] #nav a.is-active::before{
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+[data-dobra="transicao-transicao-pagina-20"] .inner-fact{
+  position: fixed;
+  top: 10rem;
+  left: 1.5rem;
+  z-index: 10;
+  max-width: 16rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--base-600);
+  pointer-events: none;
+  margin: 0;
+}
+[data-dobra="transicao-transicao-pagina-20"] #nav a:hover,[data-dobra="transicao-transicao-pagina-20"] #nav a.is-active{
+  opacity: 1;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer{
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer a{
+  position: relative;
+  color: var(--base-600);
+  text-decoration: none;
+  pointer-events: auto;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer a::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer a:hover::before{
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer a:hover{
+  opacity: 1;
+}
+[data-dobra="transicao-transicao-pagina-20"] #footer div a:not(:last-child)::after{
+  content: ",";
+  margin-left: 0.05rem;
+}
+[data-dobra="transicao-transicao-pagina-20"] #gpu-canvas{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: block;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] #app{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 23vw;
+  display: block;
+  pointer-events: auto;
+  will-change: transform;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot figure{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-caption{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding-top: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--base-600);
+  opacity: 0.5;
+  pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-0{
+  aspect-ratio: 4907 / 7360;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-1{
+  aspect-ratio: 6000 / 4000;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-2{
+  aspect-ratio: 3634 / 5998;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-3{
+  aspect-ratio: 3769 / 5025;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-main .slot-4{
+  aspect-ratio: 6804 / 4104;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner .stack{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  padding-top: calc((100vh - var(--cell-h)) / 2);
+  padding-bottom: calc((100vh - var(--cell-h)) / 2);
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner .slot{
+  width: 23vw;
+  display: block;
+  flex-shrink: 0;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner .slot figure{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="0"] .slot{
+  aspect-ratio: 4907 / 7360;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="1"] .slot{
+  aspect-ratio: 6000 / 4000;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="2"] .slot{
+  aspect-ratio: 3634 / 5998;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="3"] .slot{
+  aspect-ratio: 3769 / 5025;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="4"] .slot{
+  aspect-ratio: 6804 / 4104;
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="0"]{
+  --cell-h: calc(23vw * 7360 / 4907);
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="1"]{
+  --cell-h: calc(23vw * 4000 / 6000);
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="2"]{
+  --cell-h: calc(23vw * 5998 / 3634);
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="3"]{
+  --cell-h: calc(23vw * 5025 / 3769);
+}
+[data-dobra="transicao-transicao-pagina-20"] .page-inner[data-image="4"]{
+  --cell-h: calc(23vw * 4104 / 6804);
+}
+
+

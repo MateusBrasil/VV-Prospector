@@ -1,0 +1,19 @@
+[data-dobra="destaque-3d-4"]{
+        font-family: var(--fonte-corpo);
+        background-color: var(--base-100);
+        color: var(--base-600);
+        overflow-x: hidden;
+      }
+[data-dobra="destaque-3d-4"] .perspective-container{
+        perspective: 1200px;
+        transform-style: preserve-3d;
+      }
+[data-dobra="destaque-3d-4"] .preserve-3d{
+        transform-style: preserve-3d;
+      }
+[data-dobra="destaque-3d-4"] ::-webkit-scrollbar{
+        width: 0px;
+        background: transparent;
+      }
+
+    

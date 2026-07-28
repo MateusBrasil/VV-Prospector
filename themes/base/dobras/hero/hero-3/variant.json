@@ -1,0 +1,69 @@
+{
+  "slot": "hero",
+  "nome": "hero-3",
+  "scope": "hero-hero-3",
+  "origem": "bank/_componentes/hero-section/hero-3",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "OpyX"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "BECOME"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/c1/c16ef7461f4516485a2bcb65266bad09.jpeg?w=1470&r=0.5625&f=webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/7d/7d6a4a9f3e8164b73cea8846dd4a3c30.jpeg?w=1470&r=0.5625&f=webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/3c/3c9619511d4a733559048959720f2c77.jpeg?w=1470&r=0.5625&f=webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/83/83725dce185930edfaf2013f354483c5.jpeg?w=1470&r=0.5625&f=webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/62/62b329c1545e36fcb5a419eb5ca862b5.jpeg?w=1470&r=0.5625&f=webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://wallpaper.forfun.com/fetch/37/3731f6f754bc0f19ea2dc16ef070735b.jpeg?w=1470&r=0.5625&f=webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://wallpaper.forfun.com/fetch/c1/c16ef7461f4516485a2bcb65266bad09.jpeg?w=1470&r=0.5625&f=webp https://wallpaper.forfun.com/fetch/7d/7d6a4a9f3e8164b73cea8846dd4a3c30.jpeg?w=1470&r=0.5625&f=webp)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"hero\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

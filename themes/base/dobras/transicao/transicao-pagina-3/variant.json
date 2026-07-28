@@ -1,0 +1,80 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-3",
+  "scope": "transicao-transicao-pagina-3",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-3",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Layers Animation with Clip-path"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Variations:"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "act( )rs"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "bre@the"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #f07547 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"transicao\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

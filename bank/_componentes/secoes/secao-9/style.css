@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+/* ── Section wrapper (light scaffold so the story blocks aren't crammed
+   to the viewport edge in the standalone preview) ───────────────────── */
+.case-study-section {
+  padding-block: 6rem;
+}
+.container {
+  width: 100%;
+  max-width: 75rem; /* 1200px */
+  margin-inline: auto;
+}
+.container--padded {
+  padding-inline: 1.5rem;
+}
+.case-study__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem; /* 96px between story blocks */
+}
+
+/* ── Story block ─────────────────────────────────────────────────────── */
+.case-study-story {
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* 48px — Figma desktop gutter */
+  width: 100%;
+}
+/* Variant: image on right. row-reverse swaps visual order without
+   touching DOM order — landscape stacking still works the same way. */
+.case-study-story--image-right {
+  flex-direction: row-reverse;
+}
+
+/* Image and text use proportional flex-grow matching Figma's 503:577
+   ratio. With `basis: 0` both items grow from 0 according to the ratio,
+   so together they fill 100% of the available row width (minus the gap)
+   while preserving the design's slight image-narrower-than-text feel. */
+.case-study-story__media {
+  flex: 503 1 0;
+  height: 33.3125rem; /* 533px from Figma */
+  position: relative;
+  border-radius: 0.75rem; /* 12px */
+  overflow: clip;
+  min-width: 0;
+}
+.case-study-story__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.case-study-story__text {
+  flex: 577 1 0;
+  height: 33.3125rem; /* 533px — matches image card height (Acelia) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem; /* 16px between heading and body */
+  padding: 2rem 0; /* 32px py */
+  min-width: 0;
+}
+.case-study-story__heading {
+  color: var(--color-text-primary);
+  max-width: 36rem; /* 576px reading-width cap */
+}
+.case-study-story__body {
+  font-family: var(--font-body);
+  /* OPT-OUT: story body */
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--color-text-placeholder);
+  max-width: 36rem; /* 576px reading-width cap */
+}
+
+/* ── Tablet ≤991: equal-share columns, image becomes aspect-ratio box ── */
+@media (max-width: 991px) {
+  .case-study-story {
+    gap: 1.5rem; /* 24px */
+    align-items: center;
+  }
+  .case-study-story__media {
+    flex: 1 1 0;
+    height: auto;
+    aspect-ratio: 503 / 533;
+  }
+  .case-study-story__text {
+    flex: 1 1 0;
+    height: auto;
+    padding-block: 0;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+}
+
+/* ── Landscape ≤767: stack TEXT above IMAGE (column-reverse).
+     Image becomes 16/9 horizontal so it doesn't dominate the stack.
+     Same direction applies to --image-right (once stacked the swap is
+     irrelevant — Acelia pattern). All children center along the
+     vertical axis. ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .case-study-story,
+  .case-study-story--image-right {
+    flex-direction: column-reverse;
+    gap: 1.5rem; /* 24px */
+    align-items: center;
+  }
+  .case-study-story__media {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .case-study-story__text {
+    flex: 0 0 auto;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+/* ── Portrait ≤479: tighten title↔body gap (image stays 24px above). */
+@media (max-width: 479px) {
+  .case-study-story__text {
+    gap: 1rem; /* 16px */
+  }
+  .case-study-section {
+    padding-block: 4rem;
+  }
+  .case-study__card {
+    gap: 4rem;
+  }
+}

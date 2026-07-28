@@ -1,0 +1,31 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-15",
+  "scope": "destaque-scroll-15",
+  "origem": "bank/_componentes/scroll/scroll-15/containeranimation-splittext/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "splittext"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "The containerAnimation property allows us to create ScrollTriggered animations within a container that's animated horizontally. It's like having nested ScrollTr"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

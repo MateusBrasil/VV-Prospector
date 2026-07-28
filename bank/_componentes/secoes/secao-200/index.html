@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stayli — Testimonials</title>
+
+  <!-- Fonts: Inter (replaces the template's @fontsource/inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Flag the document before first paint so scroll-reveal start states only
+       apply when scripting is on (fail-safe: hidden state only under
+       html.reveal-js + prefers-reduced-motion:no-preference). -->
+  <script>document.documentElement.classList.add("reveal-js");</script>
+
+  <!-- Swiper bundle CSS BEFORE style.css (Rule #6 — vendor reset must lose to
+       link order, never override the component layout). The bundle includes
+       EffectFade for the crossFade testimonial transition. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <section class="section_testimonials">
+      <div class="padding-global padding-section-medium">
+        <div class="container-large">
+          <div class="testimonials_content" data-reveal>
+            <div class="testimonials_slider swiper" data-testi-swiper>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="testimonials_item">
+                    <div class="testimonials_item-content">
+                      <h3 class="heading-style-h3">“Absolutely loved our stay! The place was perfect, even better than expected. Great location, and the host was fantastic. Highly recommend!”</h3>
+                      <div class="testimonials_item-author_wrap">
+                        <div class="author_wrap">
+                          <img src="https://d173woph5zl366.cloudfront.net/stayli/images/author-img.jpg" loading="lazy" alt="Emily Johnson" />
+                        </div>
+                        <div class="vertical-space is-testimonials">
+                          <div class="text-2xl">Emily Johnson</div>
+                          <div class="text-base text-color-grey">Travel Blogger</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="testimonials_item-img_wrap">
+                      <div class="testimonials_item-img_inner-wrap">
+                        <img src="https://d173woph5zl366.cloudfront.net/stayli/images/testimonial-img_1testimonial-img.webp" loading="lazy" srcset="https://d173woph5zl366.cloudfront.net/stayli/images/testimonial-img_1testimonial-img.webp 500w, https://d173woph5zl366.cloudfront.net/stayli/images/testimonial-img_1testimonial-img.webp 752w" sizes="(max-width: 752px) 100vw, 752px" alt="" class="img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonials_item">
+                    <div class="testimonials_item-content">
+                      <h3 class="heading-style-h3">“Our experience was amazing from start to finish. The property was beautifully designed, and close to everything we needed. We’d definitely book again!”</h3>
+                      <div class="testimonials_item-author_wrap">
+                        <div class="author_wrap">
+                          <img src="https://d173woph5zl366.cloudfront.net/stayli/images/Frame-2147223583-31_1Frame-2147223583-31.webp" loading="lazy" alt="Michael Chen" />
+                        </div>
+                        <div class="vertical-space is-testimonials">
+                          <div class="text-2xl">Michael Chen</div>
+                          <div class="text-base text-color-grey">Frequent Traveler</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="testimonials_item-img_wrap">
+                      <div class="testimonials_item-img_inner-wrap">
+                        <img src="https://d173woph5zl366.cloudfront.net/stayli/images/contact-3_1.webp" loading="lazy" srcset="https://d173woph5zl366.cloudfront.net/stayli/images/contact-3_1contact-3.webp 500w, https://d173woph5zl366.cloudfront.net/stayli/images/contact-3_1contact-3.webp 800w, https://d173woph5zl366.cloudfront.net/stayli/images/contact-3_1contact-3.webp 1080w, https://d173woph5zl366.cloudfront.net/stayli/images/contact-3_1.webp 1152w" sizes="(max-width: 752px) 100vw, 752px" alt="" class="img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonials_nav">
+              <button type="button" class="arrow is-testimonial" data-testi-prev aria-label="Previous testimonial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium"><path d="M10 16L6 12M6 12L10 8M6 12H18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+              <button type="button" class="arrow is-testimonial" data-testi-next aria-label="Next testimonial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium is-reverse"><path d="M10 16L6 12M6 12L10 8M6 12H18" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Swiper bundle JS BEFORE the engine + section scripts. -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

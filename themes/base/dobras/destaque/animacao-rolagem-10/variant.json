@@ -1,0 +1,31 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-10",
+  "scope": "destaque-animacao-rolagem-10",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-10",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "DRAG TO EXPLORE"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #ffe600 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "2 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://img.freepik.com/premium-photo/white-dust-scratches-black-background_279525-2.jpg?w=640 https://assets.iceable.com/img/noise-transparent.png)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,20 @@
+<style>
+.urg{background:var(--brand);color:var(--on-brand);padding-block:var(--space-4)}
+.urg__in{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3)}
+.urg__txt{flex:1 1 22ch}
+.urg h2{font-size:var(--step-2);margin-bottom:.35rem;color:var(--on-brand)}
+.urg p{color:color-mix(in srgb,var(--on-brand) 75%,transparent);max-width:52ch}
+.urg .cta{background:var(--on-brand);color:var(--brand)}
+.urg__badge{font-size:var(--step--1);font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid color-mix(in srgb,var(--on-brand) 35%,transparent);padding:.35rem .7rem;border-radius:999px}
+</style>
+<section class="urg">
+  <div class="wrap urg__in">
+    <span class="urg__badge">{{badge}}</span>
+    <div class="urg__txt">
+      <h2>{{titulo}}</h2>
+      <p>{{texto}}</p>
+    </div>
+    <a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+/* Coverly — FAQ
+   Component-scoped overrides only. The shared Coverly stylesheet
+   (/coverly/styles.css) provides tokens, layout primitives and the
+   accordion expand/collapse + icon rotation rules for `.w--open`. */
+
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #fbfbf9);
+  color: var(--text-color--text-primary, #000);
+  font-family: var(--_typography---font-family--secondary, Inter, sans-serif);
+  min-height: 100svh;
+}

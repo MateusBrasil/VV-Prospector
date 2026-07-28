@@ -1,0 +1,86 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-8",
+  "scope": "destaque-animacao-rolagem-8",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-8",
+  "registo": "editorial",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Vertex Studio"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Showreel"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Ava Sinclair Ava Sinclair Ava Sinclair"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Liam Archer Liam Archer Liam Archer"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Zoe Clementine Zoe Clementine Zoe Clementine"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Ethan Hawthorne Ethan Hawthorne Ethan Hawthorne"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Ava Sinclair"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Creative Director"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/team-1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/team-2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/team-3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/team-4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/team-5.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5
+  },
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,6 @@
+/* Luzen — About Intro
+   Sin overrides locales. Todo el styling (layout .section_about, .about_heading,
+   .about_content-layout, columnas .about_data is-left/is-right, imágenes parallax
+   .img-bg/.img-wrap, spacers y estados ocultos [data-reveal]) vive en el cascade
+   compartido /luzen/styles.css. */
+body { margin: 0; min-height: 100svh; }

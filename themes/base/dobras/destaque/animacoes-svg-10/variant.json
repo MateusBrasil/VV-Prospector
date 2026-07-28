@@ -1,0 +1,127 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-svg-10",
+  "scope": "destaque-animacoes-svg-10",
+  "origem": "bank/_componentes/animacoes-svg/animacoes-svg-10",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanftatedRevealers/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympffaf?p=39952"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.fvigation"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Observatory"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Research"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Events"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Members"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Underwater Navigation"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Click on the menu icon"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "April 2048"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Read more"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #cf5500 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanftatedRevealers/ https://tympffaf?p=39952)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

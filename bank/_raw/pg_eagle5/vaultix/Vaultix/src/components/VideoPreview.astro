@@ -1,0 +1,463 @@
+---
+const VIDEO_ID = "A6oW7SnNq2g";
+const THUMBNAIL = `https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`;
+const EMBED_URL = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+const NAME = "showreel";
+---
+
+<!-- Lightbox shell — sits in DOM, only visible when active -->
+<div
+  class="reel-lightbox"
+  data-mini-showreel-lightbox={NAME}
+  data-mini-showreel-status="not-active"
+  aria-hidden="true"
+>
+  <div class="reel-lightbox__dark" data-mini-showreel-close={NAME}></div>
+  <div class="reel-lightbox__safearea" data-mini-showreel-safearea>
+    <div class="reel-lightbox__target" data-mini-showreel-target></div>
+  </div>
+</div>
+
+<!-- Player card — Flip moves THIS into the lightbox target on open -->
+<div
+  class="reel-card group relative block w-full overflow-hidden border border-[var(--color-border)] bg-[#0a0a0f]"
+  data-mini-showreel-player={NAME}
+  data-mini-showreel-status="not-active"
+>
+  <div class="reel-card__media relative w-full" style="aspect-ratio: 16 / 9;">
+    <img
+      src={THUMBNAIL}
+      alt="Reproduzir video"
+      class="reel-card__thumb absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-500 group-hover:opacity-100"
+    />
+    <iframe
+      class="reel-card__iframe absolute inset-0 h-full w-full"
+      data-reel-iframe
+      data-reel-embed-url={EMBED_URL}
+      title="Reproduzir video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <div
+      class="reel-card__gradient absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent"
+    >
+    </div>
+
+    <span class="reel-corner absolute left-1 top-1 h-[0.375rem] w-[0.375rem] border-l border-t border-white/30"></span>
+    <span class="reel-corner absolute right-1 top-1 h-[0.375rem] w-[0.375rem] border-r border-t border-white/30"></span>
+    <span class="reel-corner absolute bottom-1 left-1 h-[0.375rem] w-[0.375rem] border-b border-l border-white/30"></span>
+    <span class="reel-corner absolute bottom-1 right-1 h-[0.375rem] w-[0.375rem] border-b border-r border-white/30"></span>
+  </div>
+
+  <div
+    class="reel-card__info flex items-center justify-between border-t border-[var(--color-border)] px-[0.625rem] py-2"
+  >
+    <span
+      class="reel-label font-mono text-[0.625rem] uppercase tracking-[0.075rem] text-[var(--color-accent)]"
+    >
+      Play Showreel
+    </span>
+    <div
+      class="reel-play-btn flex h-4 w-4 items-center justify-center rounded-full bg-[var(--color-accent)]"
+    >
+      <svg width="7" height="7" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M6 3L17 10L6 17V3Z" fill="#11130e"></path>
+      </svg>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="reel-card__click absolute inset-0 z-[2] block w-full cursor-pointer"
+    data-mini-showreel-open={NAME}
+    aria-label="Reproduzir video"
+  ></button>
+</div>
+
+<style>
+  /* ------------------ Lightbox shell ------------------ */
+  .reel-lightbox {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    overflow: hidden;
+    z-index: 999;
+  }
+  .reel-lightbox__safearea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .reel-lightbox__target {
+    width: 100%;
+    max-width: 64em;
+    aspect-ratio: 16 / 9;
+  }
+  .reel-lightbox__dark {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 5, 5, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: auto;
+    cursor: pointer;
+    transition:
+      opacity 1s cubic-bezier(0.87, 0, 0.13, 1),
+      visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
+  }
+  [data-mini-showreel-status="active"].reel-lightbox .reel-lightbox__dark {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ------------------ Card states ------------------ */
+  /* Click overlay disabled when active (so iframe receives clicks) */
+  [data-mini-showreel-status="active"] .reel-card__click {
+    display: none;
+  }
+  /* Iframe hidden by default, shown when active */
+  .reel-card__iframe {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  [data-mini-showreel-status="active"] .reel-card__iframe {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Decorative overlays — never block clicks (so YouTube controls stay clickable) */
+  .reel-card__gradient,
+  .reel-corner {
+    pointer-events: none;
+  }
+  /* Hide decorative chrome when active (gradient + corners) */
+  [data-mini-showreel-status="active"] .reel-card__gradient,
+  [data-mini-showreel-status="active"] .reel-corner {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  /* When active, hide info bar entirely so it doesn't cover YouTube controls */
+  .reel-card__info {
+    transition: opacity 0.35s ease;
+  }
+  [data-mini-showreel-status="active"] .reel-card__info {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ------------------ Card hover (default state) ------------------ */
+  /* Card border itself stays neutral on hover — only corners/label/btn react */
+
+  .reel-corner {
+    transition:
+      border-color 0.25s ease,
+      filter 0.25s ease,
+      opacity 0.4s ease;
+  }
+  .reel-card:hover .reel-corner {
+    border-color: var(--color-accent);
+    filter:
+      drop-shadow(0 0 3px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 8px rgba(253, 255, 34, 0.4));
+  }
+
+  .reel-label {
+    transition: text-shadow 0.25s ease;
+  }
+  .reel-card:hover .reel-label {
+    text-shadow:
+      0 0 6px rgba(253, 255, 34, 0.65),
+      0 0 14px rgba(253, 255, 34, 0.3);
+  }
+
+  .reel-play-btn {
+    animation: reelBtnPulse 1.8s ease-in-out infinite;
+  }
+  .reel-card:hover .reel-play-btn {
+    animation: reelBtnPulseStrong 1.2s ease-in-out infinite;
+  }
+  @keyframes reelBtnPulse {
+    0%,
+    100% {
+      box-shadow:
+        0 0 4px 0 rgba(253, 255, 34, 0.55),
+        0 0 10px 0 rgba(253, 255, 34, 0.25);
+    }
+    50% {
+      box-shadow:
+        0 0 8px 0 rgba(253, 255, 34, 0.95),
+        0 0 18px 0 rgba(253, 255, 34, 0.5),
+        0 0 30px 0 rgba(253, 255, 34, 0.18);
+    }
+  }
+  @keyframes reelBtnPulseStrong {
+    0%,
+    100% {
+      box-shadow:
+        0 0 8px 0 rgba(253, 255, 34, 0.85),
+        0 0 18px 0 rgba(253, 255, 34, 0.45),
+        0 0 30px 0 rgba(253, 255, 34, 0.2);
+    }
+    50% {
+      box-shadow:
+        0 0 12px 0 rgba(253, 255, 34, 1),
+        0 0 26px 0 rgba(253, 255, 34, 0.7),
+        0 0 44px 0 rgba(253, 255, 34, 0.3);
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { Flip } from "gsap/Flip";
+
+  gsap.registerPlugin(Flip);
+
+  const DURATION = 0.9;
+  const EASE = "expo.inOut";
+  const Z_INDEX = 999;
+
+  type ReelState = {
+    name: string;
+    isOpen: boolean;
+    lb: HTMLElement | null;
+    pw: HTMLElement | null;
+    tg: HTMLElement | null;
+    pwCss: string;
+    lbZ: string;
+    pwZ: string;
+    pwOrigParent: HTMLElement | null;
+    pwOrigNextSibling: ChildNode | null;
+  };
+
+  const state: ReelState = {
+    name: "",
+    isOpen: false,
+    lb: null,
+    pw: null,
+    tg: null,
+    pwCss: "",
+    lbZ: "",
+    pwZ: "",
+    pwOrigParent: null,
+    pwOrigNextSibling: null,
+  };
+
+  const q = <T extends Element>(sel: string, root: Element | Document = document): T | null =>
+    root.querySelector<T>(sel);
+
+  const getLB = (name: string) =>
+    q<HTMLElement>(`[data-mini-showreel-lightbox="${name}"]`);
+  const getPW = (name: string) =>
+    q<HTMLElement>(`[data-mini-showreel-player="${name}"]`);
+
+  const safe = (t: HTMLElement) =>
+    (t.closest("[data-mini-showreel-safearea]") as HTMLElement | null) ||
+    (q<HTMLElement>("[data-mini-showreel-safearea]", t)) ||
+    t;
+
+  const fit = (b: DOMRect, a: number) => {
+    let w = b.width;
+    let h = w / a;
+    if (h > b.height) {
+      h = b.height;
+      w = h * a;
+    }
+    return {
+      left: b.left + (b.width - w) / 2,
+      top: b.top + (b.height - h) / 2,
+      width: w,
+      height: h,
+    };
+  };
+
+  const rectFor = (t: HTMLElement) => {
+    const b = safe(t).getBoundingClientRect();
+    const r = t.getBoundingClientRect();
+    const a = r.width > 0 && r.height > 0 ? r.width / r.height : 16 / 9;
+    return fit(b, a);
+  };
+
+  const place = (el: HTMLElement, r: { left: number; top: number; width: number; height: number }) =>
+    gsap.set(el, {
+      position: "fixed",
+      left: r.left,
+      top: r.top,
+      width: r.width,
+      height: r.height,
+      margin: 0,
+      x: 0,
+      y: 0,
+    });
+
+  function setStatus(name: string, status: "active" | "not-active") {
+    document
+      .querySelectorAll(
+        `[data-mini-showreel-lightbox="${name}"], [data-mini-showreel-player="${name}"]`
+      )
+      .forEach((el) => el.setAttribute("data-mini-showreel-status", status));
+  }
+
+  function zOn() {
+    state.lbZ = state.lb?.style.zIndex || "";
+    state.pwZ = state.pw?.style.zIndex || "";
+    if (state.lb) state.lb.style.zIndex = String(Z_INDEX);
+    if (state.pw) state.pw.style.zIndex = String(Z_INDEX);
+  }
+  function zOff() {
+    if (state.lb) state.lb.style.zIndex = state.lbZ;
+    if (state.pw) state.pw.style.zIndex = state.pwZ;
+  }
+
+  function setIframeSrc(pw: HTMLElement, src: string) {
+    const iframe = pw.querySelector<HTMLIFrameElement>("[data-reel-iframe]");
+    if (!iframe) return;
+    iframe.src = src;
+  }
+
+  function clearIframeSrc(pw: HTMLElement) {
+    const iframe = pw.querySelector<HTMLIFrameElement>("[data-reel-iframe]");
+    if (!iframe) return;
+    iframe.src = "";
+  }
+
+  function openBy(name: string) {
+    if (!name || state.isOpen) return;
+
+    const lb = getLB(name);
+    const pw = getPW(name);
+    if (!lb || !pw) return;
+
+    const tg = q<HTMLElement>("[data-mini-showreel-target]", lb);
+    if (!tg) return;
+
+    state.name = name;
+    state.isOpen = true;
+    state.lb = lb;
+    state.pw = pw;
+    state.tg = tg;
+    state.pwCss = pw.style.cssText || "";
+    state.pwOrigParent = pw.parentElement;
+    state.pwOrigNextSibling = pw.nextSibling;
+
+    zOn();
+    setStatus(name, "active");
+
+    // Start the embed (autoplay)
+    const embedUrl = pw.querySelector<HTMLIFrameElement>("[data-reel-iframe]")?.dataset.reelEmbedUrl;
+    if (embedUrl) setIframeSrc(pw, embedUrl);
+
+    const flipState = Flip.getState(pw);
+    // Move the player to <body> so position:fixed escapes any transformed ancestor.
+    document.body.appendChild(pw);
+    place(pw, rectFor(tg));
+
+    Flip.from(flipState, {
+      duration: DURATION,
+      ease: EASE,
+      absolute: true,
+      scale: false,
+    });
+  }
+
+  function closeBy(nameOrEmpty: string) {
+    if (!state.isOpen || !state.pw) return;
+    if (nameOrEmpty && nameOrEmpty !== state.name) return;
+
+    const closingPw = state.pw;
+    const closingLb = state.lb;
+    const savedCss = state.pwCss;
+    const origParent = state.pwOrigParent;
+    const origNext = state.pwOrigNextSibling;
+
+    setStatus(state.name, "not-active");
+
+    const flipState = Flip.getState(closingPw);
+
+    // Move back to original parent and restaurar original CSS
+    if (origParent) {
+      if (origNext && origNext.parentNode === origParent) {
+        origParent.insertBefore(closingPw, origNext);
+      } else {
+        origParent.appendChild(closingPw);
+      }
+    }
+    closingPw.style.cssText = savedCss;
+    if (closingLb) closingLb.style.zIndex = String(Z_INDEX);
+    if (closingPw) closingPw.style.zIndex = String(Z_INDEX);
+
+    Flip.from(flipState, {
+      duration: DURATION,
+      ease: EASE,
+      absolute: true,
+      scale: false,
+      onComplete: () => {
+        zOff();
+        clearIframeSrc(closingPw);
+        state.name = "";
+        state.isOpen = false;
+        state.lb = null;
+        state.pw = null;
+        state.tg = null;
+        state.pwCss = "";
+        state.lbZ = "";
+        state.pwZ = "";
+        state.pwOrigParent = null;
+        state.pwOrigNextSibling = null;
+      },
+    });
+  }
+
+  function onResize() {
+    if (!state.isOpen || !state.pw || !state.tg) return;
+    place(state.pw, rectFor(state.tg));
+  }
+
+  function init() {
+    // Move every lightbox shell to <body> so position:fixed escapes any
+    // transformed ancestor (e.g. Hero GSAP transforms). Without this, fixed
+    // positioning anchors to the nearest transformed ancestor and the lightbox
+    // collapses to the player's local size.
+    document.querySelectorAll<HTMLElement>("[data-mini-showreel-lightbox]").forEach((lb) => {
+      if (lb.parentElement !== document.body) document.body.appendChild(lb);
+    });
+
+    const openBtns = document.querySelectorAll<HTMLElement>("[data-mini-showreel-open]");
+    if (!openBtns.length) return;
+
+    openBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        openBy(btn.getAttribute("data-mini-showreel-open") || "");
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const closeBtn = (e.target as HTMLElement)?.closest<HTMLElement>("[data-mini-showreel-close]");
+      if (!closeBtn) return;
+      e.preventDefault();
+      closeBy(closeBtn.getAttribute("data-mini-showreel-close") || "");
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeBy("");
+    });
+
+    window.addEventListener("resize", onResize);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

@@ -1,0 +1,27 @@
+[data-dobra="destaque-worried-man"]{
+      background-color: var(--base-600);
+      overflow: hidden;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+[data-dobra="destaque-worried-man"],[data-dobra="destaque-worried-man"]{
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+[data-dobra="destaque-worried-man"] svg{
+      max-width: 100%;
+      height: 100%;
+      visibility: visible;
+    }
+[data-dobra="destaque-worried-man"] .bush{
+      opacity: 0.2;
+    }
+
+  

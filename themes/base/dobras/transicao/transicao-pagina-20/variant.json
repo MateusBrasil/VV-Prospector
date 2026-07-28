@@ -1,0 +1,81 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-20",
+  "scope": "transicao-transicao-pagina-20",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-20",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://benpaine.com"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=116944"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/bnpne/page-transitions-with-webgpu-vanilla-js"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "0%"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Selected"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Index"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "BNPNE"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Tutorial"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Source"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://benpaine.com https://tympanus.net/codrops/?p=116944)",
+    "4 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,89 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-40",
+  "scope": "destaque-scroll-40",
+  "origem": "bank/_componentes/scroll/scroll-40",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Every idea begins as a single image"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Three pillars with one purpose"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "( 01 )"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Interactive Web Experiences"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "( 02 )"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Thoughtful Design Language"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "( 03 )"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Visual Design Systems"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Every transition leaves a trace"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/card_cover_1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/card_cover_2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/card_cover_3.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #ce2017 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

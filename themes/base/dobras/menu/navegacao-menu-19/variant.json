@@ -1,0 +1,104 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-19",
+  "scope": "menu-navegacao-menu-19",
+  "origem": "bank/_componentes/menu/navegacao-menu-19",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "splittext"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Index"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Portfolio"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Studio"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Journal"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Connect"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Web Animations"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Interactive Media"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Motion Craft"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Toronto, Canada"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "+1 437 555 0199"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "hello@nullspace.studio"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Modern design system made that looks timeless"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/logo.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/menu-media.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

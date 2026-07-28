@@ -1,0 +1,88 @@
+{
+  "slot": "destaque",
+  "nome": "prism-worlds",
+  "scope": "destaque-prism-worlds",
+  "origem": "bank/_componentes/parallax/prism-worlds",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p1/400/600"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p2/400/600"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p3/400/600"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p4/400/600"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p5/400/600"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p6/400/600"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p7/400/600"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/p8/400/600"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "3D Image Transition System"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Prism"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Worlds"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "A Multidimensional Journey"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "8 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/p1/400/600 https://picsum.photos/seed/p2/400/600)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

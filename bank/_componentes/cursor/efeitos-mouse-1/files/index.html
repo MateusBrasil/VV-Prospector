@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Mouse Image Distortion</title>
+
+   <link rel="stylesheet" href="style.css" />
+
+   <!-- Three.js is now ES-module-only (UMD removed in r160).
+        importmap lets us write `import * as THREE from 'three'`
+        without a bundler. -->
+   <script type="importmap">
+      {
+         "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"
+         }
+      }
+   </script>
+</head>
+
+<body>
+
+   <div class="spacer"></div>
+
+   <!-- Project list, mix-blend-difference -->
+   <div class="projects" id="js-projects">
+      <ul class="projects__list">
+         <li class="project" data-i="0"><p>Richard Gaston</p></li>
+         <li class="project" data-i="1"><p>KangHee Kim</p></li>
+         <li class="project" data-i="2"><p>Inka and Niclas</p></li>
+         <li class="project" data-i="3"><p>Arch McLeish</p></li>
+         <li class="project" data-i="4"><p>Nadir Bucan</p></li>
+         <li class="project" data-i="5"><p>Chandler Bondurant</p></li>
+         <li class="project" data-i="6"><p>Arianna Lago</p></li>
+      </ul>
+   </div>
+
+   <!-- WebGL host -->
+   <div class="scene" id="js-scene"></div>
+
+   <div class="spacer"></div>
+
+   <!-- GSAP + Lenis stay as classic scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+   <!-- Our scene as ES module -->
+   <script type="module" src="script.js"></script>
+</body>
+
+</html>

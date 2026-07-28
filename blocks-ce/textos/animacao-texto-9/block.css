@@ -1,0 +1,12 @@
+[data-blk="textos-animacao-texto-9"]{
+  width:100%;
+  height:100vh;
+  margin:0;
+  padding:0;
+  background:#0e100f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}[data-blk="textos-animacao-texto-9"] svg{  
+  max-width:1200px;
+}

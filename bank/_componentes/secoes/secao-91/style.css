@@ -1,0 +1,5 @@
+/* Fondo de la página en vista aislada. El grueso de los estilos de la sección
+   (.section_locations, .locations_wrapper, .locations_card, .button, .scroll-into-view,
+   etc.) vive en la hoja compartida /firmo/styles.css. Esta sección no importa ningún
+   sub-componente con <style> scoped propio, así que no hay nada más que inlinear. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }

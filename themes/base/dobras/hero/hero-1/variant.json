@@ -1,0 +1,27 @@
+{
+  "slot": "hero",
+  "nome": "hero-1",
+  "scope": "hero-hero-1",
+  "origem": "bank/_componentes/hero-section/hero-1",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": [],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    { "nome": "rotulo", "tipo": "texto", "exemplo": "Clínica de estética avançada em Guimarães" },
+    { "nome": "titulo", "tipo": "texto", "exemplo": "O resultado que se vê ao espelho, não no folheto" },
+    { "nome": "acao", "tipo": "texto", "exemplo": "Marcar avaliação" },
+    { "nome": "destino", "tipo": "link", "exemplo": "/contacto/" },
+    { "nome": "imagens", "tipo": "lista", "exemplo": "[{ src, alt }] — a tira de retratos; 3 a 7 fotografias reais" },
+    { "nome": "texto", "tipo": "texto", "exemplo": "linha de rodapé do palco (morada ou horário)" }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [],
+  "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Verificada primeiro contra a regra do preloader: esta dobra NÃO tem ecrã de carregamento nem botão de \"entrar\" (foi por isso que hero-5, hero-15, hero-16, hero-20, hero-21 e hero-1-2 foram descartadas, todas recomendadas pelo seletor por custo baixo). Cinco correções, todas visíveis no diff: (1) `<header class=topbar>` com dois links `href=#` removido, o tema tem Nav próprio; (2) o `useGSAP` comentado removido por inteiro, era `global-duro` a registar DOMContentLoaded e a reescrever o textContent do h1; com ele caiu a dependência de gsap; (3) os cinco <figure> fixos deram lugar à lista `s.imagens`, para uma clínica com três fotografias reais mostrar três em vez de repetir; (4) na CSS, linha 1 partida (metade de um @import do Google Fonts) e um bloco `:root` GLOBAL que declarava duas famílias de fonte literais no documento inteiro; (5) `color: red` no título e `z-index: 9999` no palco, que punha o hero por cima do Nav do tema. O h1 passou a ler --h1/--display-peso/--display-caixa em vez de 15vw/700/uppercase fixos. O registo mantém-se `editorial`: sobra uma transição CSS de 0,8 s, que o prefers-reduced-motion do sistema já trava."
+}

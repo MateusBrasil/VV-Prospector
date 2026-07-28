@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button: anthe</title>
+<!--
+  Button style extracted from Codrops "Button Hover Styles" (MIT)
+  https://github.com/codrops/ButtonHoverStyles
+  Copyright (c) 2009-2021 Codrops - https://tympanus.net/codrops
+-->
+<style>
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+    }
+
+    :root {
+        font-size: 18px;
+    }
+
+    body {
+        margin: 0;
+        --color-text: #111;
+        --color-bg: #fff;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        font-family: 'tenon', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        
+        /* A centralizar o conteúdo no ecrã */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .button {
+        pointer-events: auto;
+        cursor: pointer;
+        background: #e7e7e7;
+        border: none;
+        padding: 1.5rem 3rem;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        position: relative;
+        display: inline-block;
+    }
+
+    .button::before,
+    .button::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .button--anthe {
+        font-family: 'bely-display', sans-serif;
+        color: #fff;
+        background: none;
+    }
+
+    .button--anthe::before {
+        content: '';
+        background: #000;
+        /* Estado inicial do polígono (retângulo normal) */
+        -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+        transition: clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1), -webkit-clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+
+    .button--anthe:hover::before {
+        background: #000;
+        /* Estado final do polígono ao passar o rato (formato de seta) */
+        -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    }
+
+    .button--anthe span {
+        display: block;
+        mix-blend-mode: difference;
+        transition: transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+
+    .button--anthe:hover span {
+        /* Move o texto ligeiramente para a esquerda para acompanhar o corte */
+        transform: translate3d(-10px, 0, 0);
+    }
+</style>
+</head>
+<body>
+
+    <button class="button button--anthe">
+        <span>Anthe</span>
+    </button>
+
+</body>
+</html>

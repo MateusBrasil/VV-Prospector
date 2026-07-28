@@ -1,0 +1,10 @@
+/* stayli-our-mission — local overrides only. All structure/styling for the
+   mission block (title-wrap, images grid, paragraph span, reveals) lives in the
+   shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css). The #w-node grid-area id is preserved in the markup because
+   the shared stylesheet keys the paragraph's 2-column span off it. */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: var(--bg-color--bg-primary, #fcfcfc);
+}

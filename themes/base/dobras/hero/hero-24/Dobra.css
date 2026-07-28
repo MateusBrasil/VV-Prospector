@@ -1,0 +1,210 @@
+[data-dobra="hero-hero-24"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="hero-hero-24"]{
+  font-family: var(--fonte-corpo);
+  background-color: var(--base-100);
+}
+[data-dobra="hero-hero-24"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="hero-hero-24"] p{
+  text-transform: uppercase;
+  font-family: var(--fonte-mono);
+  font-size: 0.7rem;
+}
+[data-dobra="hero-hero-24"] a{
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: var(--fonte-mono);
+  font-size: 0.7rem;
+  color: var(--base-600);
+}
+[data-dobra="hero-hero-24"] .overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  padding: 2em;
+  background-color: var(--base-600);
+  color: var(--base-100);
+  display: flex;
+  gap: 2em;
+  overflow: hidden;
+}
+[data-dobra="hero-hero-24"] .projects,[data-dobra="hero-hero-24"] .loader,[data-dobra="hero-hero-24"] .locations{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+[data-dobra="hero-hero-24"] .loader{
+  align-items: center;
+  gap: 0;
+}
+[data-dobra="hero-hero-24"] .loader h1{
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--fonte-corpo);
+  font-size: 2.5rem;
+  font-style: italic;
+  line-height: 0.9;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(0deg, var(--base-500), var(--base-500) 50%, var(--base-100) 0);
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  color: var(--base-500);
+}
+[data-dobra="hero-hero-24"] .projects-header,[data-dobra="hero-hero-24"] .project-item,[data-dobra="hero-hero-24"] .locations-header,[data-dobra="hero-hero-24"] .location-item{
+  display: flex;
+  gap: 2em;
+  opacity: 0;
+}
+[data-dobra="hero-hero-24"] .projects-header > *,[data-dobra="hero-hero-24"] .project-item > *{
+  flex: 1;
+}
+[data-dobra="hero-hero-24"] .locations{
+  align-items: center;
+}
+[data-dobra="hero-hero-24"] .locations-header,[data-dobra="hero-hero-24"] .location-item{
+  width: 50%;
+}
+[data-dobra="hero-hero-24"] .project-item,[data-dobra="hero-hero-24"] .location-item{
+  color: var(--base-400);
+}
+[data-dobra="hero-hero-24"] .image-grid{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 2;
+}
+[data-dobra="hero-hero-24"] .grid-row{
+  width: 100%;
+  display: flex;
+  gap: 1em;
+}
+[data-dobra="hero-hero-24"] .img{
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+[data-dobra="hero-hero-24"] nav{
+  position: fixed;
+  width: 100vw;
+  padding: 1em;
+  display: flex;
+  gap: 2em;
+}
+[data-dobra="hero-hero-24"] nav > *{
+  flex: 1;
+}
+[data-dobra="hero-hero-24"] .links{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+[data-dobra="hero-hero-24"] .nav-logo{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+[data-dobra="hero-hero-24"] .nav-logo a{
+  font-family: var(--fonte-corpo);
+  font-size: 1.75rem;
+  font-weight: bolder;
+  font-style: italic;
+  line-height: 0.9;
+}
+[data-dobra="hero-hero-24"] .banner-img{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 20%;
+  aspect-ratio: 4/5;
+}
+[data-dobra="hero-hero-24"] .intro-copy{
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding: 0 8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+[data-dobra="hero-hero-24"] .title{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+[data-dobra="hero-hero-24"] .intro-copy h3,[data-dobra="hero-hero-24"] .title h1{
+  position: relative;
+  text-transform: uppercase;
+  color: var(--base-600);
+  font-family: var(--fonte-corpo);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 0.9;
+}
+[data-dobra="hero-hero-24"] .title h1{
+  font-size: 3.5rem;
+}
+[data-dobra="hero-hero-24"] .intro-copy h3{
+  font-size: 1.5rem;
+}
+[data-dobra="hero-hero-24"] .intro-copy h3,[data-dobra="hero-hero-24"] .title h1{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+[data-dobra="hero-hero-24"] .intro-copy h3 .word,[data-dobra="hero-hero-24"] .title h1 .word{
+  display: inline-block;
+  position: relative;
+  will-change: transform;
+  margin-right: 0.1rem;
+}
+@media (max-width: 900px){[data-dobra="hero-hero-24"] .loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+[data-dobra="hero-hero-24"] .projects,[data-dobra="hero-hero-24"] .locations,[data-dobra="hero-hero-24"] .intro-copy,[data-dobra="hero-hero-24"] .banner-img{
+    display: none;
+  }
+[data-dobra="hero-hero-24"] .title{
+    width: 100%;
+    bottom: 20%;
+    display: flex;
+    justify-content: center;
+  }
+[data-dobra="hero-hero-24"] .title h1{
+    font-size: 2.5rem;
+  }
+[data-dobra="hero-hero-24"] .image-grid{
+    width: 75%;
+    gap: 0.5em;
+  }
+[data-dobra="hero-hero-24"] .grid-row{
+    width: 95%;
+    justify-content: space-around;
+    gap: 0.5em;
+  }
+
+}
+
+

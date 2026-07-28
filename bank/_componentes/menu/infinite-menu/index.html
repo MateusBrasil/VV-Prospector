@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Immersive Menu Experience | Showcase</title>
+  <link rel="stylesheet" href="https://use.typekit.net/iqd6ozy.css">
+  <style>
+    *, :after, :before {
+      box-sizing: border-box;
+    }
+    :root {
+      font-size: 15px;
+    }
+    body {
+      --color-text: #000;
+      --color-text-alt: #3e4843;
+      --color-heading-main: #000;
+      --color-heading-main-alt: #fff;
+      --color-heading-sub: #374b41;
+      --color-menu: #7ec59d;
+      --color-menu-hover: #128b47;
+      --color-bg: #4f6c5e;
+      --color-bg-menu: #000;
+      --color-link: #000;
+      --color-link-alt: #3e4843;
+      --color-link-hover: #000;
+      --color-link-alt-hover: #fff;
+      --color-button-menu: #000;
+      --color-button-menu-hover: #79a18a;
+      --color-button-close: #fff;
+      --color-button-close-hover: #79a18a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: meno-banner, serif;
+      margin: 0;
+      overflow: hidden;
+    }
+    .js .loading:after, .js .loading:before {
+      content: "";
+      position: fixed;
+      z-index: 1000;
+    }
+    .js .loading:before {
+      background: var(--color-bg);
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+    .js .loading:after {
+      animation: loaderAnim .7s linear infinite alternate forwards;
+      background: var(--color-link);
+      border-radius: 50%;
+      height: 60px;
+      left: 50%;
+      margin: -30px 0 0 -30px;
+      opacity: .4;
+      top: 50%;
+      width: 60px;
+    }
+    @keyframes loaderAnim {
+      to {
+        opacity: 1;
+        transform: scale3d(.5, .5, 1);
+      }
+    }
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+    }
+    a, a:hover {
+      outline: none;
+    }
+    a:hover {
+      color: var(--color-link-hover);
+    }
+    a:focus {
+      background: #d3d3d3;
+      outline: none;
+    }
+    a:focus:not(:focus-visible) {
+      background: transparent;
+    }
+    a:focus-visible {
+      background: transparent;
+      outline: 2px solid #fff;
+    }
+    .unbutton {
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      margin: 0;
+      padding: 0;
+    }
+    .unbutton:focus {
+      outline: none;
+    }
+    .hover-line {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+    .hover-line:before {
+      background: currentColor;
+      content: "";
+      height: 1px;
+      position: absolute;
+      top: 92%;
+      transform-origin: 0 50%;
+      transition: transform .3s;
+      width: 100%;
+    }
+    .hover-line:hover:before {
+      transform: scaleX(0);
+      transform-origin: 100% 50%;
+    }
+    main {
+      grid-template-columns: 100%;
+      grid-template-rows: 100vh;
+    }
+    .frame, main {
+      display: grid;
+    }
+    .frame {
+      align-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      grid-area: 1/1/2/2;
+      grid-template-areas: "author heading heading button" "... ... ... ..." "links links links links" "title title title title";
+      grid-template-columns: repeat(4, 25%);
+      grid-template-rows: auto auto 1fr auto;
+      height: 100vh;
+      padding: 1rem 1rem .5rem;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .frame--menu-open {
+      --color-link: var(--color-link-alt);
+      --color-link-hover: (--color-link-hover-alt);
+      --color-heading-main: var(--color-heading-main-alt);
+      color: var(--color-text-alt);
+    }
+    .frame__title {
+      font-size: inherit;
+      font-weight: 400;
+      grid-area: title;
+      justify-self: center;
+      margin: .5rem 0 0;
+    }
+    .frame__links {
+      align-self: end;
+      display: flex;
+      flex-wrap: wrap;
+      grid-area: links;
+      justify-self: center;
+    }
+    .frame__links a {
+      margin: 0 .5rem;
+    }
+    .frame__author {
+      grid-area: author;
+      margin: 0;
+    }
+    .frame__button {
+      grid-area: button;
+      justify-self: end;
+    }
+    .frame--menu-open .frame__author {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .frame__heading {
+      display: flex;
+      flex-direction: column;
+      grid-area: heading;
+      justify-self: center;
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .frame__heading-main {
+      color: var(--color-heading-main);
+      display: block;
+      font-size: 1.5rem;
+      line-height: .8;
+    }
+    .frame__heading-sub {
+      color: var(--color-heading-sub);
+      font-size: .75rem;
+      line-height: 1;
+    }
+    .frame--menu-open .frame__heading-sub {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .frame a, .frame button {
+      pointer-events: auto;
+    }
+    .button-menu {
+      fill: var(--color-button-menu);
+      border: 1px solid var(--color-button-menu);
+      border-radius: 50%;
+      display: inline-grid;
+      height: 64px;
+      place-items: center;
+      width: 64px;
+    }
+    .button-menu svg {
+      transition: transform .5s ease;
+    }
+    .button-menu:focus-visible, .button-menu:hover {
+      fill: var(--color-button-menu-hover);
+      border-color: var(--color-button-menu-hover);
+    }
+    .button-menu:hover svg {
+      transform: scale(1.1);
+    }
+    .frame--menu-open .button-menu {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .content {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      grid-area: 1/1/2/2;
+      height: 100vh;
+      justify-content: center;
+      position: relative;
+      width: 100vw;
+    }
+    .content__title {
+      cursor: default;
+      font-size: 7.5vw;
+      font-weight: 400;
+      line-height: .75;
+      margin: 10vh 0 0;
+      text-align: center;
+    }
+    .content__title-main {
+      font-size: 23vw;
+    }
+    .content__title-main, .content__title-sub {
+      display: block;
+      will-change: opacity, transform;
+    }
+    .button-enter {
+      cursor: not-allowed;
+      margin-top: 4vh;
+      transition: transform .5s ease;
+    }
+    .button-enter:hover {
+      transform: translateX(15px) rotate(-40deg);
+    }
+    .menu-wrap {
+      background: var(--color-bg-menu);
+      display: grid;
+      grid-area: 1/1/2/2;
+      grid-template-columns: 100%;
+      grid-template-rows: 100vh;
+      opacity: 0;
+      pointer-events: none;
+      position: relative;
+    }
+    .menu-wrap.menu-wrap--open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .overlay {
+      pointer-events: none;
+      width: 100%;
+      z-index: 1000;
+    }
+    .menu, .overlay {
+      grid-area: 1/1/2/2;
+      height: 100%;
+      position: relative;
+    }
+    .menu {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .menu__item {
+      color: #fff;
+      cursor: pointer;
+      font-size: 9vw;
+      font-weight: 300;
+      line-height: 1;
+      position: relative;
+      text-align: right;
+      will-change: opacity, transform;
+    }
+    .menu__item:hover .menu__item-tiny {
+      color: #fff;
+    }
+    .menu__item-tiny {
+      font-size: 1rem;
+    }
+    .menu__item:nth-child(odd) {
+      margin-left: -10vw;
+    }
+    .menu__item-text {
+      color: var(--color-menu);
+    }
+    .menu__item:hover .menu__item-text {
+      color: var(--color-menu-hover);
+    }
+    .tiles {
+      display: flex;
+      flex-direction: column;
+      height: 150vh;
+      justify-content: center;
+      left: 50%;
+      opacity: .5;
+      position: absolute;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0) rotate(22.5deg);
+    }
+    .tiles__line {
+      animation: runner 10s linear infinite;
+      display: flex;
+      transform: translateX(25%);
+    }
+    .tiles__line:nth-child(2) {
+      animation-duration: 16s;
+    }
+    .tiles__line:nth-child(3) {
+      animation-duration: 22s;
+    }
+    @keyframes runner {
+      to {
+        transform: translateX(-25%);
+      }
+    }
+    .tiles__line-img {
+      --tile-margin: 3vw;
+      background-position: 50% 50%;
+      background-size: cover;
+      border-radius: 50%;
+      flex: none;
+      height: 30vh;
+      margin: var(--tile-margin);
+      width: 30vh;
+    }
+    .tiles__line-img--large {
+      border-radius: 20vh;
+      width: 100vh;
+    }
+    .button-close {
+      stroke: var(--color-button-close);
+      fill: none;
+      margin: 2rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .button-close:focus-visible, .button-close:hover {
+      stroke: var(--color-button-close-hover);
+    }
+    @media screen and (min-width: 53em) {
+      .frame {
+        font-size: 1.5rem;
+        grid-template-areas: "author heading button" "... ... ..." "title links links";
+        grid-template-columns: 390px 1fr 390px;
+      }
+      .frame__title {
+        align-self: end;
+        justify-self: start;
+        margin: 0 3rem 0 0;
+      }
+      .frame__links {
+        display: flex;
+        justify-self: start;
+        padding: 0;
+      }
+      .frame__links a:not(:last-child) {
+        margin-right: .5rem;
+      }
+      .frame__heading-main {
+        font-size: 2.15rem;
+      }
+      .frame__heading-sub {
+        font-size: 1rem;
+      }
+      .menu__item-tiny {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body class="loading">
+  <main>
+    <div class="frame">
+      <div class="frame__button">
+        <button class="button-menu unbutton" aria-label="Open menu">
+          <svg width="19" height="12" viewBox="0 0 19 12">
+            <path d="m.742 3.26.485.874c.043-.024.13-.07.26-.136.22-.11.476-.233.765-.361A22.92 22.92 0 0 1 4.997 2.62c4.476-1.34 8.75-1.219 12.241 1.1.18.12.357.245.531.376l.6-.8a12.46 12.46 0 0 0-.578-.408C14.008.375 9.443.246 4.71 1.663c-1.037.31-2 .675-2.865 1.06a18.83 18.83 0 0 0-1.103.536Z"></path>
+            <path d="m.742 6.748.485.874c.043-.023.13-.07.26-.135.22-.111.476-.233.765-.362A22.92 22.92 0 0 1 4.997 6.11c4.476-1.34 8.75-1.22 12.241 1.1.18.12.357.245.531.375l.6-.8a12.46 12.46 0 0 0-.578-.408C14.008 3.864 9.443 3.735 4.71 5.152c-1.037.31-2 .675-2.865 1.06a18.83 18.83 0 0 0-1.103.536Z"></path>
+            <path d="m.742 10.237.485.874c.043-.024.13-.07.26-.136.22-.11.476-.232.765-.36a22.92 22.92 0 0 1 2.745-1.016c4.476-1.34 8.75-1.22 12.241 1.1.18.12.357.244.531.375l.6-.8a12.46 12.46 0 0 0-.578-.408C14.008 7.353 9.443 7.224 4.71 8.64c-1.037.31-2 .674-2.865 1.06a18.83 18.83 0 0 0-1.103.536Z"></path>
+          </svg>
+        </button>
+      </div>
+      <h1 class="frame__title">Immersive Menu Experience</h1>
+      <div class="frame__heading">
+        <span class="frame__heading-main">Tokyo 2026</span>
+        <span class="frame__heading-sub">autumn / winter catalog</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2 class="content__title">
+        <span class="content__title-main">Lumina</span>
+        <span class="content__title-sub">Chronicles</span>
+      </h2>
+      <button class="button-enter unbutton" disabled aria-label="Enter the site">
+        <svg width="64" height="51" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#000" fill="none" fill-rule="evenodd">
+            <path stroke-linecap="square" d="m55.766 32.528-5.125-1.865M52.677 36.938l3.1-4.618"></path>
+            <path d="M8.773 10.587S-.693 49.485 56.13 32.3"></path>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <div class="menu-wrap">
+      <div class="tiles">
+        <!-- Replaced local images with placeholder background images from unsplash -->
+        <div class="tiles__line">
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80)"></div>
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80)"></div>
+        </div>
+        <div class="tiles__line">
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1511497584788-876760111969?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1444464666168-49b62d85b5cb?w=400&q=80)"></div>
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1511497584788-876760111969?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1444464666168-49b62d85b5cb?w=400&q=80)"></div>
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80)"></div>
+        </div>
+        <div class="tiles__line">
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80)"></div>
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80)"></div>
+          <div class="tiles__line-img tiles__line-img--large" style="background-image:url(https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&q=80)"></div>
+          <div class="tiles__line-img" style="background-image:url(https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80)"></div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu__item">
+          <span class="menu__item-tiny">discover</span>
+          <span class="menu__item-text">nature</span>
+        </a>
+        <a class="menu__item">
+          <span class="menu__item-text">urban</span>
+          <span class="menu__item-tiny">lifestyle</span>
+        </a>
+        <a class="menu__item">
+          <span class="menu__item-tiny">creative</span>
+          <span class="menu__item-text">vision</span>
+        </a>
+        <a class="menu__item">
+          <span class="menu__item-text">deep</span>
+          <span class="menu__item-tiny">emotions</span>
+        </a>
+      </nav>
+
+      <button class="button-close unbutton">
+        <svg width="25" height="16" viewBox="0 0 25 16">
+          <path d="M2.238 7.079h2.727M2.482 9.496l-.666-2.7"></path>
+          <path d="M23.753 5.403s-1.87 16.88-22.03 1.785"></path>
+        </svg>
+      </button>
+    </div>
+
+    <svg class="overlay" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path class="overlay__path" vector-effect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z"></path>
+    </svg>
+  </main>
+
+  <script>
+    // Remove loading class when the window finishes loading
+    window.addEventListener('load', () => {
+      document.body.classList.remove('loading');
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // DOM Elements
+      const frame = document.querySelector('.frame');
+      const overlayPath = document.querySelector('.overlay__path');
+      const menuWrap = document.querySelector('.menu-wrap');
+      const menuItems = menuWrap.querySelectorAll('.menu__item');
+      const btnMenu = document.querySelector('button.button-menu');
+      const btnClose = menuWrap.querySelector('.button-close');
+      const titleMain = document.querySelector('.content__title-main');
+      const titleSub = document.querySelector('.content__title-sub');
+
+      let isAnimating = false;
+
+      // Open Menu Event
+      btnMenu.addEventListener('click', () => {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        gsap.timeline({ onComplete: () => isAnimating = false })
+          // Set initial overlay path
+          .set(overlayPath, { attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' } })
+          
+          // Animate overlay up
+          .to(overlayPath, { duration: 0.8, ease: 'power4.in', attr: { d: 'M 0 100 V 50 Q 50 0 100 50 V 100 z' } }, 0)
+          
+          // Flatten overlay at the top
+          .to(overlayPath, { duration: 0.3, ease: 'power2', attr: { d: 'M 0 100 V 0 Q 50 0 100 0 V 100 z' }, onComplete: () => {
+              // Add classes to show menu wrapper
+              frame.classList.add('frame--menu-open');
+              menuWrap.classList.add('menu-wrap--open');
+          }})
+          
+          // Animate out the main title
+          .to([titleMain, titleSub], { duration: 0.8, ease: 'power3.in', y: -200, stagger: 0.05 }, 0.2)
+          
+          // Prepare menu items
+          .set(menuItems, { opacity: 0 })
+          
+          // Reset overlay path to slide down and reveal menu
+          .set(overlayPath, { attr: { d: 'M 0 0 V 100 Q 50 100 100 100 V 0 z' } })
+          
+          // Animate overlay moving down
+          .to(overlayPath, { duration: 0.3, ease: 'power2.in', attr: { d: 'M 0 0 V 50 Q 50 0 100 50 V 0 z' } })
+          
+          // Flatten overlay at the bottom
+          .to(overlayPath, { duration: 0.8, ease: 'power4', attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' } })
+          
+          // Animate in the menu items
+          .to(menuItems, { duration: 1.1, ease: 'power4', startAt: { y: 150 }, y: 0, opacity: 1, stagger: 0.05 }, '>-=1.1');
+      });
+
+      // Close Menu Event
+      btnClose.addEventListener('click', () => {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        gsap.timeline({ onComplete: () => isAnimating = false })
+          // Set initial overlay path
+          .set(overlayPath, { attr: { d: 'M 0 0 V 0 Q 50 0 100 0 V 0 z' } })
+          
+          // Animate overlay up to cover screen
+          .to(overlayPath, { duration: 0.8, ease: 'power4.in', attr: { d: 'M 0 0 V 50 Q 50 100 100 50 V 0 z' } }, 0)
+          
+          // Flatten overlay at the top
+          .to(overlayPath, { duration: 0.3, ease: 'power2', attr: { d: 'M 0 0 V 100 Q 50 100 100 100 V 0 z' }, onComplete: () => {
+              // Remove classes to hide menu wrapper
+              frame.classList.remove('frame--menu-open');
+              menuWrap.classList.remove('menu-wrap--open');
+          }})
+          
+          // Reset overlay path to slide down and reveal main content
+          .set(overlayPath, { attr: { d: 'M 0 100 V 0 Q 50 0 100 0 V 100 z' } })
+          
+          // Animate overlay moving down
+          .to(overlayPath, { duration: 0.3, ease: 'power2.in', attr: { d: 'M 0 100 V 50 Q 50 100 100 50 V 100 z' } })
+          
+          // Flatten overlay at the bottom
+          .to(overlayPath, { duration: 0.8, ease: 'power4', attr: { d: 'M 0 100 V 100 Q 50 100 100 100 V 100 z' } })
+          
+          // Animate in the main title
+          .to([titleMain, titleSub], { duration: 1.1, ease: 'power4', y: 0, stagger: -0.05 }, '>-=1.1')
+          
+          // Animate out the menu items
+          .to(menuItems, { duration: 0.8, ease: 'power2.in', y: 100, opacity: 0, stagger: -0.05 }, 0);
+      });
+    });
+  </script>
+</body>
+</html>

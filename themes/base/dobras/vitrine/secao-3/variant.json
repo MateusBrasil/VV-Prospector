@@ -1,0 +1,106 @@
+{
+  "slot": "vitrine",
+  "nome": "secao-3",
+  "scope": "vitrine-secao-3",
+  "origem": "bank/_componentes/secoes/secao-3",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Portfolio"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Our Success Stories"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Real Results, Real Impact"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Northwind Retail Rebrand"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A full identity overhaul for a 42-store chain — new wordmark,\n                  in-store wayfinding, and packaging system that lifted average\n                  "
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Halden Bank Digital Platform"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Replatformed a regional bank's web and mobile experience onto\n                  a single design system. Onboarding time dropped from 14\n                  minute"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Mantle Coffee Packaging"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Specialty roaster packaging that tells the origin story on\n                  every bag. Won a Dieline award and helped Mantle secure\n                  shelf-spa"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Verge Outdoor Campaign"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "A spring-summer campaign across print, OOH, and social that\n                  drove a 61% lift in direct-to-consumer revenue and earned\n                  Verge "
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-1-main.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-main.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-3-main.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-4-main.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-1-main.avif https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-main.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

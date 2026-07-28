@@ -1,0 +1,15 @@
+{
+  "ref": "animacoes-de-rolagem/animacao-rolagem-3",
+  "scope": "animacoes-de-rolagem-animacao-rolagem-3",
+  "libs": [
+    "gsap",
+    "splittext"
+  ],
+  "fontesCdn": [
+    "https://fonts.googleapis.com",
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap"
+  ],
+  "tem_js": true,
+  "n_assets": 0,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

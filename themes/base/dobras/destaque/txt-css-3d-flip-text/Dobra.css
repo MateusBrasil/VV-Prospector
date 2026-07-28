@@ -1,0 +1,72 @@
+[data-dobra="destaque-txt-css-3d-flip-text"]{
+            background-color: var(--base-100); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--fonte-corpo);
+        }
+[data-dobra="destaque-txt-css-3d-flip-text"] .selector{
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            width: 350px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            
+            mask: linear-gradient(to top, transparent 5%, black 25%, black 85%, transparent 95%);
+            -webkit-mask: linear-gradient(to top, transparent 5%, black 25%, black 85%, transparent 95%);
+        }
+[data-dobra="destaque-txt-css-3d-flip-text"] .selector:after{
+            font-family: var(--fonte-corpo);
+            color: var(--acento); 
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            content: "EAGLE CODE"; 
+            pointer-events: none;
+            
+            
+            transform: translate(-50%, 50%) perspective(900px) rotatex(100deg);
+            left: 50%;
+            top: 50%;
+            z-index: 99;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+        }
+[data-dobra="destaque-txt-css-3d-flip-text"] .selector:hover .elementor-heading-title{
+            
+            transform: translatey(-100%) perspective(900px) rotatex(-100deg);
+            transition: 1s;
+            opacity: 0; 
+        }
+[data-dobra="destaque-txt-css-3d-flip-text"] .selector .elementor-heading-title{
+            color: var(--base-600); 
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+            transition: 1s;
+            line-height: 1.5em;
+            
+            
+            transform: translatey(0%) perspective(900px) rotatex(0deg);
+        }
+[data-dobra="destaque-txt-css-3d-flip-text"] .selector:hover:after{
+            
+            transform: translate(-50%, -50%) perspective(900px) rotatex(0deg);
+            transition: 1s;
+        }
+
+    

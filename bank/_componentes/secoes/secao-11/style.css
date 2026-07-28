@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #efeeeb);
+  color: var(--text-color--text-primary, #000);
+  font-family: Inter, sans-serif;
+  min-height: 100svh;
+}

@@ -1,0 +1,114 @@
+{
+  "slot": "vitrine",
+  "nome": "scroll-16",
+  "scope": "vitrine-scroll-16",
+  "origem": "bank/_componentes/scroll/scroll-16/sticky-grid-scroll-main/src",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tym424"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Sticky Grid Scroll"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A structured scroll-driven image grid where movement unfolds progressively within a sticky layout."
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Read the tutorial"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "../8.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "../1.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "../2.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "../3.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "../4.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "../5.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "../6.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "../7.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "../8.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "../9.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "../10.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "../11.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "../12.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 13
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tym424)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

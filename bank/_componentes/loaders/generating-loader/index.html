@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader Animado - Uiverse.io</title>
+  
+  <!-- Importando a fonte Inter do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilos extras para centralizar o loader e dar um fundo escuro */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff; /* Fundo branco */
+    }
+
+    /* CSS original do Uiverse.io (com caracteres invisíveis limpos) */
+    .loader-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      height: 180px;
+      font-family: "Inter", sans-serif;
+      font-size: 1.2em;
+      font-weight: 300;
+      color: #333333; /* Texto escuro para aparecer no fundo branco */
+      border-radius: 50%;
+      background-color: transparent;
+      user-select: none;
+    }
+
+    .loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-color: transparent;
+      animation: loader-rotate 2s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes loader-rotate {
+      0% {
+        transform: rotate(90deg);
+        box-shadow:
+          0 10px 20px 0 #fce0ea inset,
+          0 20px 30px 0 #FC016E inset,
+          0 60px 60px 0 #a30046 inset;
+      }
+      50% {
+        transform: rotate(270deg);
+        box-shadow:
+          0 10px 20px 0 #fce0ea inset,
+          0 20px 10px 0 #ff338c inset,
+          0 40px 60px 0 #FC016E inset;
+      }
+      100% {
+        transform: rotate(450deg);
+        box-shadow:
+          0 10px 20px 0 #fce0ea inset,
+          0 20px 30px 0 #FC016E inset,
+          0 60px 60px 0 #a30046 inset;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Apenas o anel animado, sem o texto -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+</body>
+</html>

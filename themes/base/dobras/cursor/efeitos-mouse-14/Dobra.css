@@ -1,0 +1,29 @@
+[data-dobra="cursor-efeitos-mouse-14"],[data-dobra="cursor-efeitos-mouse-14"]{
+    padding: 0;
+    margin: 0;
+	 overscroll-behavior: none;
+	 overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-14"] .links{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 18px;
+    font-family: var(--fonte-corpo);
+	 background-color: white;
+	 padding: 10px;
+}
+[data-dobra="cursor-efeitos-mouse-14"] a{
+    text-decoration: none;
+    color: black;
+    margin-left: 1em;
+}
+[data-dobra="cursor-efeitos-mouse-14"] a:hover{
+    text-decoration: underline;
+}
+[data-dobra="cursor-efeitos-mouse-14"] a img.icon{
+    display: inline-block;
+    height: 1em;
+    margin: 0 0 -0.1em 0.3em;
+}
+

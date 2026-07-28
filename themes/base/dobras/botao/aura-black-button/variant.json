@@ -1,0 +1,31 @@
+{
+  "slot": "botao",
+  "nome": "aura-black-button",
+  "scope": "botao-aura-black-button",
+  "origem": "bank/_componentes/botoes/aura-black-button",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Aura Black"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Botton"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

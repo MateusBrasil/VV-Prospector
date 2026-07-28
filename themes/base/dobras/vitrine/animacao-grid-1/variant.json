@@ -1,0 +1,213 @@
+{
+  "slot": "vitrine",
+  "nome": "animacao-grid-1",
+  "scope": "vitrine-animacao-grid-1",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-1",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "flip",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "public/1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "public/2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "public/3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "public/4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "public/5.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "public/6.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "public/7.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "public/8.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "public/9.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "public/10.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "public/11.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "public/12.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "public/13.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "public/14.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "public/15.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "public/16.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "public/17.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "public/18.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "public/19.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "public/20.webp"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "public/21.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "public/22.webp"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "public/23.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "public/24.webp"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "public/25.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "public/26.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "public/27.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "public/28.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "public/29.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "public/30.webp"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Default"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Filter + Stagger"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "50%"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "75%"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "100%"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "125%"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "150%"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 30
+  },
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

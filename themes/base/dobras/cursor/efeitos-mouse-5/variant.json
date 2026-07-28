@@ -1,0 +1,18 @@
+{
+  "slot": "cursor",
+  "nome": "efeitos-mouse-5",
+  "scope": "cursor-efeitos-mouse-5",
+  "origem": "bank/_componentes/cursor/efeitos-mouse-5",
+  "registo": "sobrio",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

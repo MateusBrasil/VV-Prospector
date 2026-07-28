@@ -1,0 +1,434 @@
+---
+function pattern(cols: number, rows: number, density: number, seed: number) {
+  const total = cols * rows;
+  const target = Math.round(total * density);
+  const arr = new Array<boolean>(total).fill(false);
+  let s = seed;
+  let filled = 0;
+  for (let i = 0; i < total * 4 && filled < target; i++) {
+    s = (s * 9301 + 49297) % 233280;
+    const idx = s % total;
+    if (!arr[idx]) {
+      arr[idx] = true;
+      filled++;
+    }
+  }
+  return arr;
+}
+
+const january = pattern(22, 4, 0.7, 17);
+const february = pattern(22, 4, 0.84, 43);
+const march = pattern(22, 4, 0.9, 91);
+
+const reportingBlocks = [
+  { label: "Jan 2026", value: "+47.2K", grid: january },
+  { label: "Feb 2026", value: "+38.9K", grid: february },
+  { label: "Mar 2026", value: "+52.4K", grid: march },
+];
+
+const anomalyTabs = ["7d", "30d", "1m", "6m"];
+const anomalyDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+const anomalyPoints = [0.18, 0.32, 0.22, 0.85, 0.42, 0.68, 0.31];
+const anomalySpikes = [3, 5];
+
+const lockRows = [
+  "000000011110000000",
+  "000000110011000000",
+  "000001100001100000",
+  "000011000000110000",
+  "000110000000011000",
+  "000110000000011000",
+  "000110000000011000",
+  "011111111111111110",
+  "111111111111111111",
+  "111111100001111111",
+  "111111100001111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111111111111111",
+  "011111111111111110",
+];
+const lockGrid = lockRows.flatMap((r) => r.split("").map((c) => c === "1"));
+
+const trustRow1 = [
+  "SOC 2 Type II",
+  "256-bit Encryption",
+  "Zero Trust",
+  "GDPR Compliant",
+  "ISO 27001",
+];
+const trustRow2 = [
+  "End-to-End Encrypted",
+  "Audit-ready",
+  "Data Residency",
+  "mTLS Identity",
+  "HIPAA Aligned",
+];
+
+interface Props {
+  variant: "reporting" | "anomaly" | "trust";
+}
+const { variant } = Astro.props;
+---
+
+<div class="fhc-anchor">
+  <div class:list={["chart", `chart-${variant}`]}>
+    {variant === "reporting" && (
+      <>
+        <span class="chart-eyebrow">Reporting · Pipeline Throughput</span>
+        {reportingBlocks.map((b) => (
+          <div class="reporting-block">
+            <div class="reporting-header">
+              <span class="reporting-label">{b.label}</span>
+              <span class="reporting-value">{b.value}</span>
+            </div>
+            <div class="reporting-matrix">
+              {b.grid.map((on) => (
+                <span class:list={["rcell", on && "is-lit"]} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </>
+    )}
+
+    {variant === "anomaly" && (
+      <>
+        <div class="anomaly-header">
+          <span class="ls-label">Live Detection</span>
+          <div class="ls-tabs">
+            {anomalyTabs.map((t, i) => (
+              <span class:list={["ls-tab", i === 0 && "is-active"]}>{t}</span>
+            ))}
+          </div>
+        </div>
+        <div class="anomaly-stat">
+          <span>124</span>
+          <span class="anomaly-stat-lbl">Events / 7d</span>
+        </div>
+        <div class="anomaly-bars">
+          {anomalyPoints.map((p, i) => (
+            <div
+              class:list={["ano-bar", anomalySpikes.includes(i) && "is-spike"]}
+              style={`height: ${(p * 100).toFixed(2)}%`}
+            />
+          ))}
+        </div>
+        <div class="anomaly-axis">
+          {anomalyDays.map((d) => <span>{d}</span>)}
+        </div>
+      </>
+    )}
+
+    {variant === "trust" && (
+      <>
+        <div class="lock-wrap">
+          <div class="lock-grid">
+            {lockGrid.map((on) => (
+              <span class:list={["lock-cell", on && "on"]} />
+            ))}
+          </div>
+        </div>
+        <div class="trust-marquees">
+          <div class="trust-marquee">
+            <div class="trust-track">
+              {[...trustRow1, ...trustRow1].map((b) => (
+                <span class="trust-badge">
+                  <span class="trust-dot" />
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="trust-marquee">
+            <div class="trust-track trust-track-reverse">
+              {[...trustRow2, ...trustRow2].map((b) => (
+                <span class="trust-badge">
+                  <span class="trust-dot" />
+                  {b}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+</div>
+
+<style>
+  /* Anchor: position-only wrapper. The visible card IS the .chart inside,
+     scaled down as a single unit (box + content juntas). */
+  .fhc-anchor {
+    --periwinkle: #b5d2ff;
+    --chart-bg: #141414;
+    --chart-border: #343434;
+    --fhc-scale: 0.32;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-mono);
+  }
+  @media (min-width: 1024px) {
+    .fhc-anchor { --fhc-scale: 0.62; }
+  }
+  @media (min-width: 1280px) {
+    .fhc-anchor { --fhc-scale: 0.75; }
+  }
+
+  .fhc-anchor > .chart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(var(--fhc-scale));
+    transform-origin: center center;
+  }
+
+  .chart {
+    width: 26.8125rem;
+    height: 26.8125rem;
+    background: var(--chart-bg);
+    border: 1px solid var(--chart-border);
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* === Chart eyebrow === */
+  .chart-eyebrow {
+    font-size: 0.7093rem;
+    line-height: 1.4;
+    letter-spacing: 1.36px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* === Reporting (forced 26.8rem square, centered content) === */
+  .chart-reporting {
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .reporting-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .reporting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7093rem;
+    line-height: 1.4;
+    letter-spacing: 1.36px;
+    text-transform: uppercase;
+  }
+  .reporting-label { color: rgba(255, 255, 255, 0.6); }
+  .reporting-value {
+    color: var(--color-accent);
+    text-shadow:
+      0 0 4px rgba(253, 255, 34, 0.9),
+      0 0 10px rgba(253, 255, 34, 0.45),
+      0 0 18px rgba(253, 255, 34, 0.18);
+  }
+  .reporting-matrix {
+    display: grid;
+    grid-template-columns: repeat(22, 0.851rem);
+    grid-auto-rows: 0.851rem;
+    gap: 0.2838rem;
+    width: fit-content;
+  }
+  .reporting-matrix .rcell {
+    aspect-ratio: 1 / 1;
+    background: var(--chart-border);
+  }
+  .reporting-matrix .rcell.is-lit {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 6px rgba(95, 92, 255, 0.95),
+      0 0 14px rgba(95, 92, 255, 0.6),
+      0 0 28px rgba(95, 92, 255, 0.35),
+      0 0 50px rgba(95, 92, 255, 0.15);
+  }
+
+  /* === Anomaly === */
+  .chart-anomaly {
+    justify-content: flex-comeca;
+    gap: 0.75rem;
+  }
+  .anomaly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ls-label {
+    font-size: 0.9931rem;
+    line-height: 1.286;
+    letter-spacing: 1.91px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+  }
+  .ls-tabs { display: flex; }
+  .ls-tab {
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    padding: 0.36rem 0.72rem;
+    border: 1px solid var(--chart-border);
+    background: var(--chart-bg);
+  }
+  .ls-tab.is-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow:
+      0 0 4px rgba(253, 255, 34, 0.55),
+      0 0 10px rgba(253, 255, 34, 0.25);
+  }
+  .anomaly-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    margin-top: 0.25rem;
+  }
+  .anomaly-stat span:first-child {
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: 4.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .anomaly-stat-lbl {
+    font-size: 0.6346rem;
+    line-height: 1.2;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+  }
+  .anomaly-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex: 1;
+    min-height: 11rem;
+    width: 100%;
+    gap: 0.65rem;
+    padding: 0 0.25rem;
+  }
+  .ano-bar {
+    flex: 1;
+    background: var(--chart-border);
+    transform-origin: bottom;
+  }
+  .ano-bar.is-spike {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 6px rgba(95, 92, 255, 0.95),
+      0 0 14px rgba(95, 92, 255, 0.6),
+      0 0 28px rgba(95, 92, 255, 0.35),
+      0 0 50px rgba(95, 92, 255, 0.15);
+  }
+  .anomaly-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    color: #616161;
+    text-transform: uppercase;
+    padding: 0 0.25rem;
+  }
+
+  /* === Trust === */
+  .chart-trust {
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .lock-wrap {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 0.5rem 0;
+  }
+  .lock-grid {
+    width: 9.5rem;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    gap: 0.14rem;
+  }
+  .lock-cell {
+    aspect-ratio: 1 / 1;
+    background: transparent;
+  }
+  .lock-cell.on {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 8px rgba(95, 92, 255, 1),
+      0 0 18px rgba(95, 92, 255, 0.8),
+      0 0 36px rgba(95, 92, 255, 0.5),
+      0 0 64px rgba(95, 92, 255, 0.25),
+      0 0 100px rgba(95, 92, 255, 0.1);
+  }
+  .trust-marquees {
+    display: flex;
+    flex-direction: column;
+    gap: 0.57rem;
+    padding-bottom: 1.25rem;
+  }
+  .trust-marquee { overflow: hidden; }
+  .trust-track {
+    display: flex;
+    gap: 0.57rem;
+    width: max-content;
+    animation: fhc-trust-scroll 22s linear infinite;
+  }
+  .trust-track-reverse { animation-direction: reverse; }
+  @keyframes fhc-trust-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.57rem;
+    padding: 0.57rem 1.13rem;
+    background: #050505;
+    border: 1px solid var(--chart-border);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .trust-dot {
+    width: 0.32rem;
+    height: 0.32rem;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    box-shadow:
+      0 0 4px rgba(253, 255, 34, 0.85),
+      0 0 10px rgba(253, 255, 34, 0.4);
+    animation: fhc-trust-dot 1.8s ease-in-out infinite;
+  }
+  @keyframes fhc-trust-dot {
+    0%, 100% { box-shadow: 0 0 3px rgba(253, 255, 34, 0.6), 0 0 8px rgba(253, 255, 34, 0.25); }
+    50% { box-shadow: 0 0 5px rgba(253, 255, 34, 1), 0 0 12px rgba(253, 255, 34, 0.55), 0 0 22px rgba(253, 255, 34, 0.25); }
+  }
+</style>

@@ -1,0 +1,9 @@
+{
+  "ref": "footer/footer-01",
+  "scope": "footer-footer-01",
+  "libs": [],
+  "fontesCdn": [],
+  "tem_js": false,
+  "n_assets": 0,
+  "_nota": "Bloco criado manualmente (não existe candidato no catálogo de 613). Footer completo: marca, contacto, redes sociais, institucional, copyright. Usa var(--color-*, fallback) para casar com os tokens injetados pelo compor.mjs."
+}

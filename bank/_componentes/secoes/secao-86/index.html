@@ -1,0 +1,1554 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clayo — Contact Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="./style.css">
+
+    <style data-bundled-from="/clayo/styles.css">
+/* Clayo bundled styles — cascade order; /images/ -> /clayo/images/ */
+
+/* ===== normalize.css ===== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+section {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+button,
+html input[type="button"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+
+
+/* ===== tokens.css ===== */
+/* Clayo design tokens — extracted verbatim from clayo.webflow.css :root block */
+/* DO NOT modify values here — modify in Webflow source and re-export. */
+
+/* Note: 4 soft-deleted Webflow variables were stripped (artifacts from deleted workspace vars). */
+
+:root {
+  --text-color--text-primary: #131313;
+  --text-color--text-secondary: var(--brand--neutral-light);
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --bg-color--bg-primary: var(--brand--white);
+  --text-color--text-tertiary: var(--brand--neutral-lighter);
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-dark: #131313;
+  --bg-color--bg-secondary: var(--brand--gray-lighter);
+  --border-color--border-secondary: #d4d4d8;
+  --brand--white: #fff;
+  --brand--gray-light: #d7d7d7;
+  --brand--gray-lighter: #f3f4f2;
+  --brand--secondary: #5f58ff;
+  --brand--secondary-light: #5f58ff4d;
+  --brand--neutral-lighter: #afafaf;
+  --brand--tertiary-light: #43595b;
+  --brand--tertiary: #142f32;
+  --brand--tertiary-lighter: #e6e8e3;
+  --new-base---black: #050505;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---border-default: #ffffff14;
+  --brand--black: #000;
+  --brand--neutral-light: #4e4e4e;
+  --brand--neutral: #2c2626;
+  --bg-color--bg-alternate: var(--brand--white);
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: var(--brand--white);
+}
+
+
+/* ===== webflow.css ===== */
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
+h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h1 {
+  font-size: 38px;
+  line-height: 44px;
+  margin-top: 20px;
+}
+button,
+[type='button'] {
+  border: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+.w-form {
+  margin: 0 0 15px;
+}
+.w-form-done {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}
+.w-form-fail {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.w-input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+.w-input::placeholder {
+  color: #999;
+}
+.w-input:focus,
+.w-select:focus {
+  border-color: #3898EC;
+  outline: 0;
+}
+textarea.w-input {
+  height: auto;
+}
+.w-slider-dot:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+.w-slider-dot:focus.w-active {
+  box-shadow: none;
+}
+.w-slider-arrow-left:focus,
+.w-slider-arrow-right:focus {
+  outline: 0;
+}
+.w-dropdown-toggle:focus {
+  outline: 0;
+}
+.w-dropdown-link:focus {
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {
+  /* .w-lightbox-content */
+  .w-lightbox-control:hover {
+    opacity: 1;
+  }
+}
+
+.w-lightbox-inactive:hover {
+  opacity: 0;
+}
+[data-nav-menu-open] {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}
+.w--nav-link-open {
+  display: block;
+  position: relative;
+}
+.w-nav-button:focus {
+  outline: 0;
+}
+.w--nav-dropdown-open {
+  display: block;
+}
+.w--nav-dropdown-toggle-open {
+  display: block;
+}
+.w--nav-dropdown-list-open {
+  position: static;
+}
+/**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus {
+  outline: 0;
+}
+.w--tab-active {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.w-layout-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+:root {
+  --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  --new-base---base--black\<deleted\|variable-8aad47e4-6dcf-c440-8596-f84083fecf8a\>: #1d1d1d;
+  --text-color--text-primary: #131313;
+  --text-color--text-secondary: var(--brand--neutral-light);
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --bg-color--bg-primary: var(--brand--white);
+  --text-color--text-tertiary: var(--brand--neutral-lighter);
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-dark: #131313;
+  --bg-color--bg-secondary: var(--brand--gray-lighter);
+  --border-color--border-secondary: #d4d4d8;
+  --brand--white: #fff;
+  --brand--gray-light: #d7d7d7;
+  --brand--gray-lighter: #f3f4f2;
+  --brand--secondary: #5f58ff;
+  --brand--secondary-light: #5f58ff4d;
+  --brand--neutral-lighter: #afafaf;
+  --brand--tertiary-light: #43595b;
+  --brand--tertiary: #142f32;
+  --brand--tertiary-lighter: #e6e8e3;
+  --new-base---black: #050505;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---border-default: #ffffff14;
+  --brand--black: #000;
+  --brand--neutral-light: #4e4e4e;
+  --brand--neutral: #2c2626;
+  --bg-color--bg-alternate: var(--brand--white);
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: var(--brand--white);
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+}
+
+.w-layout-grid {
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.new-base--t-button-secondary:hover {
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}
+
+.new-base--t-button:hover {
+  transform: scale(.95);
+}
+
+body {
+  color: var(--text-color--text-primary);
+  overscroll-behavior: none;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  letter-spacing: -.06em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 4.25rem;
+  font-weight: 400;
+  line-height: 1.14;
+}
+
+a {
+  color: inherit;
+  font-size: .88rem;
+  text-decoration: none;
+}
+
+label {
+  margin-bottom: .25rem;
+  font-weight: 500;
+}
+
+.text-color-secondary {
+  color: var(--text-color--text-secondary);
+}
+
+.padding-global {
+  padding-left: 3.25rem;
+  padding-right: 3.25rem;
+}
+
+.padding-global.is-navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.text-xl {
+  letter-spacing: -.03em;
+  font-size: 1.25rem;
+}
+
+.form_input:hover {
+  background-color: #eaebe9;
+}
+
+.form_input:focus {
+  border-color: var(--border-color--border-secondary);
+  background-color: #eaebe9;
+}
+
+.padding-section-large {
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
+.page-wrapper {
+  overflow: clip;
+}
+
+.container-large {
+  width: 100%;
+  max-width: 73.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  background-color: var(--bg-color--bg-tertiary);
+  min-height: 3.25rem;
+  color: var(--brand--white);
+  text-align: center;
+  letter-spacing: -.008em;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: transform .4s cubic-bezier(.25, .46, .45, .94);
+  display: flex;
+  position: relative;
+  overflow: clip;
+}
+
+.button:hover {
+  transform: scale(.97);
+}
+
+.button.is-form-submit {
+  border-radius: .75rem;
+  width: 100%;
+  height: 2.725rem;
+  padding: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color .2s;
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.button.is-outline {
+  border: 1px solid var(--brand--gray-light);
+  color: var(--text-color--text-primary);
+  background-color: #0000;
+  transition: color .4s cubic-bezier(.25, .46, .45, .94), background-color .4s cubic-bezier(.25, .46, .45, .94), transform .4s cubic-bezier(.25, .46, .45, .94);
+}
+
+.button.is-outline:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.button.is-icon {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+}
+
+.button.is-secondary {
+  background-color: var(--brand--white);
+  color: var(--text-color--text-primary);
+}
+
+.button.is-form {
+  cursor: pointer;
+}
+
+.button.is-form:hover {
+  transform: scale(1);
+}
+
+.text-6xl {
+  letter-spacing: -.06em;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.nav-button_component:hover {
+  opacity: 1;
+}
+
+.button-wrapper {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: stretch;
+  display: flex;
+}
+
+.custom:hover {
+  background-color: #f2f2f2;
+}
+
+.temlis {
+  grid-column-gap: 1.37rem;
+  grid-row-gap: 1.37rem;
+  color: #fff;
+  background-color: #0158ff;
+  border: 1px solid #126df299;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25rem 1.25rem;
+  transition: background-color .2s;
+  display: flex;
+}
+
+.temlis:hover {
+  background-color: #0b64e6;
+}
+
+.nav_links:hover {
+  opacity: 1;
+  color: var(--text-color--text-primary);
+}
+
+.nav_dropdown-link:hover {
+  opacity: 100;
+  color: var(--text-color--text-primary);
+}
+
+.button-background {
+  aspect-ratio: 1;
+  background-color: var(--brand--secondary);
+  border-radius: 99rem;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  inset: 0%;
+  transform: scale(0)translate(0%);
+}
+
+.button-background.is-secondary {
+  background-color: var(--brand--secondary-light);
+}
+
+.button-text {
+  position: relative;
+}
+
+.testimoniasl_arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-lighter);
+}
+
+.testimoniasl_arrow.is-right:hover {
+  transform: translate(120%);
+}
+
+.footer_link:hover {
+  color: var(--brand--white);
+}
+
+.footer_social:hover {
+  border-color: var(--brand--secondary-light);
+  background-color: var(--brand--secondary);
+}
+
+.blogs_arrow:hover {
+  background-color: var(--brand--secondary);
+}
+
+.blogs_arrow.is-right:hover {
+  transform-origin: 50%;
+  transform: translate(120%);
+}
+
+.dashboard_arrow:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-light);
+}
+
+.testimoniasl-three_arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-lighter);
+}
+
+.testimoniasl-three_arrow.is-right:hover {
+  transform: scale(.97)translate(60%);
+}
+
+.features-four_blogs-arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.features-four_blogs-arrow.is-right:hover {
+  transform-origin: 50%;
+  transform: translate(120%);
+}
+
+.features-four_blogs-arrow.is-right:hover {
+  transform: translate(60%);
+}
+
+.about-three_arrow:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.contact-one_grid {
+  grid-column-gap: 4.5rem;
+  grid-row-gap: 4.5rem;
+  grid-template-rows: auto;
+}
+
+.contact-one_grid.is-contact-three {
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+}
+
+.contact-one_content {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  flex-flow: column;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: flex;
+}
+
+.contact_info-wrapper, .contact_media-wrapper {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.contact_media-content {
+  grid-column-gap: .75rem;
+  grid-row-gap: .75rem;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.contact_media {
+  background-color: var(--bg-color--bg-tertiary);
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--brand--white);
+  border-radius: 99rem;
+  padding: .5rem;
+}
+
+.contact_form-block {
+  margin-bottom: 0;
+}
+
+.contact_form-block.is-contact-three {
+  flex: 1;
+}
+
+.contact_form {
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  flex-flow: column;
+  height: 100%;
+  display: flex;
+}
+
+.contact_form.is-contact-two, .contact_form.is-contact-three {
+  align-items: flex-start;
+}
+
+.cotact_form-grid {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  flex: 1;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.cotact_form-grid.is-contact-two {
+  width: 100%;
+}
+
+.cotact_form-grid.is-contact-three {
+  flex-flow: column;
+  width: 100%;
+  display: flex;
+}
+
+.contact_form-input-wrapper {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.contact_form-input-wrapper.is-contact-three {
+  flex: 1;
+}
+
+.contact_form-label {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.contact_form-input {
+  background-color: var(--bg-color--bg-secondary);
+  height: 3.5rem;
+  color: var(--text-color--text-primary);
+  border: 0 solid #000;
+  border-radius: 1rem;
+  margin-bottom: 0;
+  padding: .25rem 1.5rem;
+}
+
+.contact_form-input::placeholder {
+  color: var(--text-color--text-secondary);
+}
+
+.contact_form-input.is-textarea {
+  resize: none;
+  flex: 1;
+  height: 10rem;
+  padding: 1.5rem;
+}
+
+.contact_form-input.is-textarea.is-contact-two {
+  flex: 0 auto;
+  height: 14rem;
+}
+
+.contact_form-input.is-textarea.is-contact-three {
+  flex: 1;
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  }
+
+  .padding-global {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .padding-global.is-navbar {
+    padding-bottom: 1rem;
+  }
+
+  .text-xl.is-contact-two {
+    font-size: 1rem;
+  }
+
+  .padding-section-large {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .button {
+    min-height: 3rem;
+  }
+
+  .text-6xl {
+    font-size: 3.5rem;
+  }
+
+  .text-6xl.is-about, .text-6xl.is-about-three, .text-6xl.is-contact-three {
+    font-size: 3rem;
+  }
+
+  .contact-one_grid, .contact-one_grid.is-contact-three {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .contact-one_content {
+    grid-column-gap: 1.25rem;
+    grid-row-gap: 1.25rem;
+  }
+
+  .contact_form {
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+  }
+
+  .cotact_form-grid {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .contact_form-input-wrapper {
+    grid-column-gap: .75rem;
+    grid-row-gap: .75rem;
+  }
+
+  .contact_form-input-wrapper.is-contact-three, .contact_form-input.is-textarea.is-contact-three {
+    flex: 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .padding-global {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .padding-global.is-navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .text-xl.is-contact, .text-xl.is-contact-two {
+    font-size: 1rem;
+  }
+
+  .padding-section-large {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .button {
+    min-height: 3rem;
+  }
+
+  .text-6xl {
+    font-size: 3.25rem;
+  }
+
+  .text-6xl.is-about {
+    font-size: 2.75rem;
+  }
+
+  .testimoniasl_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .blogs_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .dashboard_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .features-four_blogs-arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .contact-one_grid {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-one_content {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .cotact_form-grid {
+    grid-column-gap: 1.25rem;
+    grid-row-gap: 1.25rem;
+  }
+
+  .contact_form-input {
+    height: 3.25rem;
+  }
+
+  .contact_form-input.is-textarea {
+    flex: 0 auto;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  }
+
+  .padding-section-large {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .container-large {
+    max-width: 100%;
+  }
+
+  .text-6xl {
+    font-size: 2.75rem;
+  }
+
+  .text-6xl.is-about {
+    font-size: 2.5rem;
+  }
+
+  .text-6xl.is-about-three {
+    font-size: 2.75rem;
+  }
+
+  .text-6xl.is-contact-three {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.75rem;
+  }
+
+  .button-wrapper {
+    align-items: stretch;
+  }
+
+  .contact-one_grid {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 2.5rem;
+  }
+
+  .contact_info-wrapper {
+    order: 1;
+  }
+
+  .contact_info-wrapper.is-one {
+    order: 4;
+  }
+
+  .contact_info-wrapper.is-two {
+    order: 3;
+  }
+
+  .contact_form.is-contact-two, .contact_form.is-contact-three {
+    align-items: stretch;
+  }
+
+  .cotact_form-grid {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .contact_form-input {
+    border-radius: .75rem;
+  }
+
+  .contact_form-input.is-textarea {
+    height: 8rem;
+  }
+}
+
+#w-node-_29965187-ac1a-426a-8c6b-59787d2c0a9b-7d410edf {
+  grid-area: span 1 / span 2 / span 1 / span 2;
+}
+
+@media screen and (max-width: 991px) {
+
+  #w-node-_29965187-ac1a-426a-8c6b-59787d2c0a9b-7d410edf {
+    grid-column: span 1 / span 1;
+  }
+}
+
+
+
+
+/* ===== global-styles.css ===== */
+/* global-styles.w-embed extracted verbatim from index.html (Rule 13 — 3rd CSS source) */
+/* This file MUST load AFTER webflow.css in BaseLayout cascade. */
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Focus state style for keyboard navigation for the focusable elements */
+
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+/* Set color style to inherit */
+/* Get rid of top margin on first element in any rich text element */
+/* Get rid of bottom margin on last element in any rich text element */
+/* Make sure containers never lose their center alignment */
+ .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+/* Apply "..." after 3 lines of text */
+/* Apply "..." after 2 lines of text */
+/* Adds inline flex display */
+/* These classes are never overwritten */
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+
+/* ===== utilities.css ===== */
+/* Clayo cross-section utilities — extracted verbatim from clayo.webflow.css */
+/* Decisions: COMBO_CLASSES.json — 6 bases extracted as reusable utilities. */
+/* v2 2026-05-27: Fixed @media wrappers (Phase 2 extraction bug — H1 was rendering at tablet size on desktop) */
+
+/* ============================================================
+ * Desktop+ (default — no @media)
+ * ============================================================ */
+
+.button {
+  background-color: var(--bg-color--bg-tertiary);
+  min-height: 3.25rem;
+  color: var(--brand--white);
+  text-align: center;
+  letter-spacing: -.008em;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: transform .4s cubic-bezier(.25, .46, .45, .94);
+  display: flex;
+  position: relative;
+  overflow: clip;
+}
+
+.button.is-form {
+  cursor: pointer;
+}
+
+.button.is-form:hover {
+  transform: scale(1);
+}
+
+.button.is-form-submit {
+  border-radius: .75rem;
+  width: 100%;
+  height: 2.725rem;
+  padding: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color .2s;
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.button.is-icon {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+}
+
+.button.is-outline {
+  border: 1px solid var(--brand--gray-light);
+  color: var(--text-color--text-primary);
+  background-color: #0000;
+  transition: color .4s cubic-bezier(.25, .46, .45, .94), background-color .4s cubic-bezier(.25, .46, .45, .94), transform .4s cubic-bezier(.25, .46, .45, .94);
+}
+
+.button.is-outline:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.button.is-secondary {
+  background-color: var(--brand--white);
+  color: var(--text-color--text-primary);
+}
+
+.text-6xl {
+  letter-spacing: -.06em;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.padding-global {
+  padding-left: 3.25rem;
+  padding-right: 3.25rem;
+}
+
+.padding-global.is-navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+
+/* ============================================================
+ * @media screen and (max-width: 991px) {
+ * ============================================================ */
+
+@media screen and (max-width: 991px) {
+  .button {
+      min-height: 3rem;
+    }
+
+  .text-6xl {
+      font-size: 3.5rem;
+    }
+
+  .text-6xl.is-about, .text-6xl.is-about-three, .text-6xl.is-contact-three {
+      font-size: 3rem;
+    }
+
+  .text-6xl.is-about-three, .text-6xl.is-contact-three {
+      font-size: 3rem;
+    }
+
+  .text-6xl.is-contact-three {
+      font-size: 3rem;
+    }
+
+  .padding-global {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+  .padding-global.is-navbar {
+      padding-bottom: 1rem;
+    }
+
+}
+
+/* ============================================================
+ * @media screen and (max-width: 767px) {
+ * ============================================================ */
+
+@media screen and (max-width: 767px) {
+  .button {
+      min-height: 3rem;
+    }
+
+  .text-6xl {
+      font-size: 3.25rem;
+    }
+
+  .text-6xl.is-about {
+      font-size: 2.75rem;
+    }
+
+  .padding-global {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+  .padding-global.is-navbar {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+}
+
+/* ============================================================
+ * @media screen and (max-width: 479px) {
+ * ============================================================ */
+
+@media screen and (max-width: 479px) {
+
+  .text-6xl {
+      font-size: 2.75rem;
+    }
+
+  .text-6xl.is-about {
+      font-size: 2.5rem;
+    }
+
+  .text-6xl.is-about-three {
+      font-size: 2.75rem;
+    }
+
+  .text-6xl.is-contact-three {
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 2.75rem;
+    }
+
+}
+
+
+/* ===== Navbar.astro scoped styles (inlined navbar support) ===== */
+/* Body scroll-lock when mobile menu is open */
+
+/* On mobile (data-collapse=medium kicks in ≤991px), webflow.css hides .w-nav-menu
+   with `display: none`. We need to flip it back to block when our toggle adds .w--nav-menu-open. */
+
+    </style>
+  </head>
+<body>
+  <div class="page-wrapper">
+    <section class="section_contact">
+      <div class="padding-global padding-section-large">
+        <div class="container-large">
+          <div class="w-layout-grid contact-one_grid">
+            <div class="contact-one_content">
+              <h1 data-w-id="5025130e-c58f-31b2-127e-6b18f0a11483" class="text-6xl" data-reveal="0.1">Get in touch</h1>
+              <div data-w-id="506ba3c3-5ad3-e382-7d60-949a4b940b25" class="contact_info-wrapper" data-reveal="0.2">
+                <div class="text-color-secondary">Email:</div>
+                <div class="text-xl is-contact">Moneta@gmail.com</div>
+              </div>
+              <div data-w-id="6959d431-f7b3-d8b7-1bad-5bc4f67fc253" class="contact_info-wrapper" data-reveal="0.3">
+                <div class="text-color-secondary">Phone:</div>
+                <div class="text-xl is-contact">+17631683</div>
+              </div>
+              <div data-w-id="f77f32f1-4fe9-8681-4d70-30b9220b7332" class="contact_info-wrapper" data-reveal="0.4">
+                <div class="text-color-secondary">Address:</div>
+                <div class="text-xl is-contact">123 Innovation Avenue, Suite 456<br>Tech District, San Francisco, CA 94107<br>United States</div>
+              </div>
+              <div data-w-id="4d964819-5b2c-0233-574f-5939bf5dfde1" class="contact_media-wrapper" data-reveal="0.5">
+                <div class="text-color-secondary">Follow us</div>
+                <div class="contact_media-content">
+                  <a data-w-id="eaf13c40-1a84-070e-9e3e-62ca24d3a309" href="https://www.temlis.com/" target="_blank" class="contact_media w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M13.3333 2.5C14.4384 2.5 15.4982 2.93899 16.2796 3.72039C17.061 4.50179 17.5 5.5616 17.5 6.66667V13.3333C17.5 14.4384 17.061 15.4982 16.2796 16.2796C15.4982 17.061 14.4384 17.5 13.3333 17.5H6.66667C5.5616 17.5 4.50179 17.061 3.72039 16.2796C2.93899 15.4982 2.5 14.4384 2.5 13.3333V6.66667C2.5 5.5616 2.93899 4.50179 3.72039 3.72039C4.50179 2.93899 5.5616 2.5 6.66667 2.5H13.3333ZM10 6.66667C9.11594 6.66667 8.2681 7.01786 7.64298 7.64298C7.01786 8.2681 6.66667 9.11594 6.66667 10C6.66667 10.8841 7.01786 11.7319 7.64298 12.357C8.2681 12.9821 9.11594 13.3333 10 13.3333C10.8841 13.3333 11.7319 12.9821 12.357 12.357C12.9821 11.7319 13.3333 10.8841 13.3333 10C13.3333 9.11594 12.9821 8.2681 12.357 7.64298C11.7319 7.01786 10.8841 6.66667 10 6.66667ZM10 8.33333C10.442 8.33333 10.866 8.50893 11.1785 8.82149C11.4911 9.13405 11.6667 9.55797 11.6667 10C11.6667 10.442 11.4911 10.866 11.1785 11.1785C10.866 11.4911 10.442 11.6667 10 11.6667C9.55797 11.6667 9.13405 11.4911 8.82149 11.1785C8.50893 10.866 8.33333 10.442 8.33333 10C8.33333 9.55797 8.50893 9.13405 8.82149 8.82149C9.13405 8.50893 9.55797 8.33333 10 8.33333ZM13.75 5.41667C13.529 5.41667 13.317 5.50446 13.1607 5.66074C13.0045 5.81702 12.9167 6.02899 12.9167 6.25C12.9167 6.47101 13.0045 6.68298 13.1607 6.83926C13.317 6.99554 13.529 7.08333 13.75 7.08333C13.971 7.08333 14.183 6.99554 14.3393 6.83926C14.4955 6.68298 14.5833 6.47101 14.5833 6.25C14.5833 6.02899 14.4955 5.81702 14.3393 5.66074C14.183 5.50446 13.971 5.41667 13.75 5.41667Z" fill="currentColor"></path>
+                    </svg></a>
+                  <a data-w-id="907f74e3-17b8-80a9-0c3e-883fd9d8c604" href="https://www.temlis.com/" target="_blank" class="contact_media w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.3327 10.0013C18.3327 5.4013 14.5993 1.66797 9.99935 1.66797C5.39935 1.66797 1.66602 5.4013 1.66602 10.0013C1.66602 14.0346 4.53268 17.393 8.33268 18.168V12.5013H6.66602V10.0013H8.33268V7.91797C8.33268 6.30964 9.64102 5.0013 11.2493 5.0013H13.3327V7.5013H11.666C11.2077 7.5013 10.8327 7.8763 10.8327 8.33464V10.0013H13.3327V12.5013H10.8327V18.293C15.041 17.8763 18.3327 14.3263 18.3327 10.0013Z" fill="currentColor"></path>
+                    </svg></a>
+                  <a data-w-id="9a95f687-747b-8be8-1e6d-d2a67b25eb62" href="https://www.temlis.com/" target="_blank" class="contact_media w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M14.4192 1.875H5.58083C4.59799 1.875 3.65539 2.26543 2.96041 2.96041C2.26543 3.65539 1.875 4.59799 1.875 5.58083V14.4192C1.875 15.402 2.26543 16.3446 2.96041 17.0396C3.65539 17.7346 4.59799 18.125 5.58083 18.125H14.4192C15.402 18.125 16.3446 17.7346 17.0396 17.0396C17.7346 16.3446 18.125 15.402 18.125 14.4192V5.58083C18.125 4.59799 17.7346 3.65539 17.0396 2.96041C16.3446 2.26543 15.402 1.875 14.4192 1.875ZM7.36917 14.9933C7.37178 15.0387 7.36509 15.0841 7.34951 15.1268C7.33394 15.1695 7.3098 15.2085 7.27858 15.2415C7.24736 15.2745 7.20973 15.3008 7.16798 15.3188C7.12624 15.3367 7.08127 15.3459 7.03583 15.3458H5.5525C5.46305 15.3437 5.37802 15.3065 5.31569 15.2423C5.25336 15.1781 5.2187 15.092 5.21917 15.0025V8.83333C5.21794 8.78879 5.22566 8.74446 5.24186 8.70296C5.25806 8.66145 5.28242 8.62361 5.3135 8.59168C5.34457 8.55975 5.38173 8.53438 5.42279 8.51705C5.46384 8.49973 5.50794 8.49082 5.5525 8.49083H7.03583C7.08039 8.49082 7.1245 8.49973 7.16555 8.51705C7.2066 8.53438 7.24376 8.55975 7.27484 8.59168C7.30591 8.62361 7.33027 8.66145 7.34647 8.70296C7.36268 8.74446 7.37039 8.78879 7.36917 8.83333V14.9933ZM6.26667 7.19333C6.10607 7.19213 5.94728 7.15931 5.79937 7.09674C5.65146 7.03417 5.51733 6.94308 5.40462 6.82867C5.29191 6.71426 5.20284 6.57877 5.1425 6.42994C5.08215 6.28111 5.05171 6.12185 5.05292 5.96125C5.05412 5.80065 5.08694 5.64187 5.14951 5.49396C5.21208 5.34605 5.30317 5.21191 5.41758 5.0992C5.53199 4.98649 5.66748 4.89743 5.81631 4.83708C5.96514 4.77674 6.1244 4.7463 6.285 4.7475C6.60376 4.75787 6.90586 4.8924 7.12682 5.12238C7.34778 5.35237 7.47012 5.6596 7.46773 5.97852C7.46534 6.29745 7.3384 6.60281 7.11402 6.82946C6.88963 7.0561 6.58555 7.18608 6.26667 7.19167M15.2808 14.9833C15.2804 15.0675 15.2474 15.1483 15.1886 15.2086C15.1299 15.2689 15.05 15.3041 14.9658 15.3067H13.4C13.3157 15.3041 13.2357 15.2688 13.1769 15.2083C13.1181 15.1478 13.0852 15.0668 13.085 14.9825V12.1292C13.085 11.7033 13.215 10.2767 11.955 10.2767C10.9725 10.2767 10.7783 11.2767 10.7408 11.7217V15.0475C10.7409 15.132 10.708 15.2132 10.6492 15.2738C10.5904 15.3345 10.5103 15.3699 10.4258 15.3725H8.90667C8.82062 15.3723 8.73816 15.3379 8.67739 15.277C8.61663 15.2161 8.5825 15.1336 8.5825 15.0475V8.80333C8.5851 8.71888 8.62048 8.63876 8.68115 8.57996C8.74182 8.52116 8.82301 8.48829 8.9075 8.48833H10.4258C10.5103 8.48829 10.5915 8.52116 10.6522 8.57996C10.7128 8.63876 10.7482 8.71888 10.7508 8.80333V9.34083C10.9725 9.01635 11.2786 8.75855 11.6361 8.59525C11.9935 8.43195 12.3887 8.36933 12.7792 8.41417C15.3083 8.41417 15.2992 10.7767 15.2992 12.12L15.2808 14.9833Z" fill="currentColor"></path>
+                    </svg></a>
+                  <a data-w-id="baa542ec-8ec9-10e7-78f0-a82f74049888" href="https://www.temlis.com/" target="_blank" class="contact_media w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M8.74065 12.2092L12.709 17.5H18.5423L11.994 8.76833L17.4423 2.5H15.234L10.9698 7.405L7.29232 2.5H1.45898L7.71732 10.8458L1.93398 17.5H4.14232L8.74065 12.2092ZM13.5423 15.8333L4.79232 4.16667H6.45898L15.209 15.8333H13.5423Z" fill="currentColor"></path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="contact_form-block w-form">
+              <form id="email-form" name="email-form" data-name="Email Form" method="POST" action="/api/contact" class="contact_form" data-wf-page-id="682b8e40e47efb3f7d410edf" data-wf-element-id="cbe7df07-3a0b-e930-4deb-f075970cd1e0">
+                <div class="cotact_form-grid">
+                  <div data-w-id="786176e8-60f7-ca10-d3a2-a917a718700f" class="contact_form-input-wrapper" data-reveal="0.2"><label for="name" class="contact_form-label">Your Name</label><input class="contact_form-input w-input" maxlength="256" name="name" data-name="Name" placeholder="Your full name" type="text" id="name" required=""></div>
+                  <div data-w-id="0a43f4c2-7d21-23c2-4a87-ccd134749922" class="contact_form-input-wrapper" data-reveal="0.3"><label for="name-2" class="contact_form-label">Email address</label><input class="contact_form-input w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="Your email address" type="email" id="name-2" required=""></div>
+                  <div id="w-node-_29965187-ac1a-426a-8c6b-59787d2c0a9b-7d410edf" data-w-id="29965187-ac1a-426a-8c6b-59787d2c0a9b" class="contact_form-input-wrapper" data-reveal="0.4"><label for="field" class="contact_form-label">Message</label><textarea required="" placeholder="Write something...." maxlength="5000" id="field" name="field" data-name="Field" class="contact_form-input is-textarea w-input"></textarea></div>
+                </div>
+                <div data-w-id="1c0fa841-5160-1ead-247c-e32c5e64c872" class="button-wrapper" data-reveal="0.5"><button data-w-id="5003d005-ea69-0c3b-822d-3c7d15301397" type="submit" class="button is-form">
+                    <div class="button-background"></div>
+                    <div class="button-text">Send Message</div>
+                  </button></div>
+              </form>
+              <div class="w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div class="w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="button-magnetic.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

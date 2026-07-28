@@ -1,0 +1,89 @@
+{
+  "slot": "menu",
+  "nome": "xavier-dynamic-side-navigation-menu",
+  "scope": "menu-xavier-dynamic-side-navigation-menu",
+  "origem": "bank/_componentes/menu/xavier-dynamic-side-navigation-menu",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "XAVIER"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "About Us"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Portfolio"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Journal"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Socials"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Instagram"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "LinkedIn"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "X / Twitter"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Behance"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância (acento da origem #ccff00 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

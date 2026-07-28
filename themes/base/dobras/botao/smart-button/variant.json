@@ -1,0 +1,32 @@
+{
+  "slot": "botao",
+  "nome": "smart-button",
+  "scope": "botao-smart-button",
+  "origem": "bank/_componentes/botoes/smart-button",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Smart Botton"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Clica ai"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

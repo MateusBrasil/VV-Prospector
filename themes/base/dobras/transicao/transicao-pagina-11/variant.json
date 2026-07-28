@@ -1,0 +1,52 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-11",
+  "scope": "transicao-transicao-pagina-11",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-11",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Animmaster"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Index"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância (acento da origem #746df8 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

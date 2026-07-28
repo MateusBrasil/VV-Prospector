@@ -1,0 +1,84 @@
+{
+  "slot": "vitrine",
+  "nome": "secao-183",
+  "scope": "vitrine-secao-183",
+  "origem": "bank/_componentes/secoes/secao-183",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "What Our Clients Are Saying"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-5.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-1.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-2.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-3.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-4.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-5.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "35 cor(es) mapeadas para tokens por luminância (acento da origem #06b6d4 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "10 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-1.webp https://d173woph5zl366.cloudfront.net/advisora/images/testimonials-user-2.webp)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

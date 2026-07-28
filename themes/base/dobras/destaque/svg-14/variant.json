@@ -1,0 +1,103 @@
+{
+  "slot": "destaque",
+  "nome": "svg-14",
+  "scope": "destaque-svg-14",
+  "origem": "bank/_componentes/animacoes-svg/svg-14",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 5,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Tutorials/VideoOpeningAnimation/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/codrops/?p=25030"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://dribbble.com/shots/1887815-Download"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://dribbble.com/xjw"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Tutorials/CircularProgressButton/"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/ProgressButtonStyles/"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Back to the Codrops article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Dribbble shot 'Download'"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "xjw"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "If you enjoyed this demo you might also like:"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Circular Progress Button"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Progress Button Styles"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/related/AnimatedProgressButton.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/related/ProgressButtonStyles.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (http://tympanus.net/Tutorials/VideoOpeningAnimation/ http://tympanus.net/codrops/?p=25030)",
+    "a origem usava 5 famílias de fonte e o sistema fornece display + corpo: a peça apoiava-se num contraste tipográfico que o nosso par não reproduz. Confirmar no ecrã que a hierarquia se mantém",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar",
+    "há chavetas no markup que podem precisar de escape em JSX"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

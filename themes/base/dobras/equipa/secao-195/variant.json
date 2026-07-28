@@ -1,0 +1,95 @@
+{
+  "slot": "equipa",
+  "nome": "secao-195",
+  "scope": "equipa-secao-195",
+  "origem": "bank/_componentes/secoes/secao-195",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "three",
+    "swiper",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Testimonials"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "John Doe"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "CEO, Tech Innovations"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Jane Smith"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Head of Strategy, GrowthCo"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Michael Chen"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "COO, BrightPath Consulting"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "David Thompson"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Head of Growth, Veridian Digital"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-1.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-2.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-3.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-4.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "21 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-1.avif https://d173woph5zl366.cloudfront.net/acelia/assets/images/Avatar-2.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

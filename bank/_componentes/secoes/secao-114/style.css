@@ -1,0 +1,30 @@
+/* Home hero — preview/thumbnail fix.
+   initHomeLoad() bails standalone (it needs the nav "stripes" + full home layout that live
+   OUTSIDE this single-section slice, see scroll-reveal.ts:114), so the GSAP load-curtain
+   (.home-curtain: black, z-index 6, inset 0) stays scaleY(1) and covers the hero -> black
+   thumbnail; the bg image is also left blurred/scaled and desc/cta gated hidden. Force the
+   revealed end-state so the standalone preview matches the live hero's final composition.
+   Preview-only (local style.css); the real site's entrance animation is untouched. */
+.section_home .home-curtain { display: none !important; }
+html.anim-ready .section_home .home-background .img { transform: none !important; filter: none !important; }
+html.anim-ready .section_home .hero_gradient { opacity: 1 !important; }
+html.anim-ready .section_home [data-soft-reveal],
+html.anim-ready .section_home .scroll-into-view,
+html.anim-ready .section_home .heading-large,
+html.anim-ready .section_home [animation] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
+/* Navbar: initHomeLoad bails standalone so the gate (html.anim-ready .nav{opacity:0}) never
+   clears it -> force the navbar visible. Its logo slot ([data-scroll-logo]) is also the
+   landing target for the scroll-shrink, so it must render. (Only opacity — leave transform to
+   GSAP so initDoorlyShrink's nav-offset measurement stays correct.) */
+html.anim-ready .nav { opacity: 1 !important; }
+
+/* Black scroll-room below the hero: makes the page scrollable so initDoorlyShrink's
+   ScrollTrigger fires and the giant DOORLY h1 travels + scales into the navbar logo slot as
+   you scroll. Black so the white lifted wordmark stays legible while it travels. */
+.doorly-hero-spacer { min-height: 100vh; background: #000; }

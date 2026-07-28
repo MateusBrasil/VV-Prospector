@@ -1,0 +1,29 @@
+{`
+        @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+        
+        .custom-app-container {
+          min-height: 100vh;
+          padding: 24px;
+          background-color: var(--base-100);
+          font-family: var(--fonte-corpo);
+          overflow-x: hidden;
+        }
+
+        .transform-3d {
+          transform-style: preserve-3d;
+        }
+
+        .perspective-midrange {
+          perspective: 1000px;
+        }
+
+        .backface-hidden {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+
+        .rotate-x-180 {
+          transform: rotateX(180deg);
+        }
+      `}
+

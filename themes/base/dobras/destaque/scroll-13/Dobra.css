@@ -1,0 +1,22 @@
+[data-dobra="destaque-scroll-13"],[data-dobra="destaque-scroll-13"]{ height: 100%; margin: 0; }
+[data-dobra="destaque-scroll-13"]{
+  background: black;
+  text-align: center;
+}
+[data-dobra="destaque-scroll-13"] section{
+  padding: calc(50svh - 15svh) 0;
+}
+[data-dobra="destaque-scroll-13"] img{
+  height: 30svh;
+  opacity: 0;
+}
+[data-dobra="destaque-scroll-13"] img:first-child{ margin-bottom: 30svh; }
+[data-dobra="destaque-scroll-13"] img:last-child{ margin-top: 30svh; }
+[data-dobra="destaque-scroll-13"] h2{
+  display:block;
+  color: white;
+  font-family: var(--fonte-corpo);
+  font-size: 24svh;
+  margin: 8svw 0;
+}
+

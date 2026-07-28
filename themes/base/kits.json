@@ -1,0 +1,78 @@
+{
+  "versao": 1,
+  "kits": [
+    {
+      "nicho": "restaurante",
+      "estado": "mvp-pronto",
+      "tema": "restaurante-noir",
+      "estrutura": [
+        { "slot": "navegacao", "fonte": "tema", "componente": "Nav" },
+        { "slot": "hero", "fonte": "tema", "componente": "HomeHero" },
+        { "slot": "sobre-galeria", "fonte": "tema", "componente": "HomeAboutGallery" },
+        { "slot": "carta", "fonte": "tema", "componente": "DiningMenu" },
+        { "slot": "prova", "fonte": "tema", "componente": "Testimonials" },
+        { "slot": "reserva", "fonte": "tema", "componente": "CTA" },
+        { "slot": "destaque-visual", "fonte": "tema", "componente": "ImageBanner" },
+        { "slot": "rodape", "fonte": "tema", "componente": "Footer" }
+      ],
+      "componentesAprovados": [
+        { "slot": "vitrine", "nome": "grelha-hover", "estado": "aprovada", "uso": "opcional; pratos, ambiente ou eventos, após integração consciente no tema" },
+        { "slot": "botao", "nome": "vidro", "estado": "aprovada", "uso": "opcional; CTA secundário, após integração consciente no tema" }
+      ],
+      "candidatosRevisar": [
+        { "slot": "prova", "nome": "star-rating", "estado": "revisar", "uso": "nota Google; requer reescrita do JS global e QA" },
+        { "slot": "faq", "nome": "secao-21", "estado": "revisar", "uso": "perguntas de reserva; requer reescrita do JS global e QA" },
+        { "slot": "contacto", "nome": "secao-110", "estado": "revisar", "uso": "mapa e horários; trocar todos os assets externos antes de promover" }
+      ],
+      "riscos": [
+        "O tema pronto não materializa dobras do catálogo: integrar uma dobra exige adaptar o layout e passar build, gate e QA visual.",
+        "Não usar candidatos revisar em produção, mesmo que o slot combine com restaurante."
+      ],
+      "criteriosPromocao": [
+        "Substituir imagens, links, fontes e CSS URL de origem por conteúdo local ou slots do cliente.",
+        "Reescrever ou remover JS global; confirmar comportamento em mobile e desktop.",
+        "Passar build, gate, QA visual 375/1440 e revisão humana antes de marcar aprovada."
+      ]
+    },
+    {
+      "nicho": "clinica-estetica",
+      "estado": "em-curadoria",
+      "tema": null,
+      "estrutura": [
+        { "slot": "hero", "fonte": "planeado", "componente": "Hero específico do nicho" },
+        { "slot": "servicos", "fonte": "planeado", "componente": "Tratamentos e especialidades" },
+        { "slot": "prova", "fonte": "planeado", "componente": "Avaliações verificadas" },
+        { "slot": "consulta", "fonte": "planeado", "componente": "CTA de marcação" },
+        { "slot": "contacto", "fonte": "planeado", "componente": "Morada, horário e contactos" }
+      ],
+      "componentesAprovados": [],
+      "candidatosRevisar": [
+        { "slot": "hero", "nome": "hero-24", "estado": "revisar", "uso": "alternativa editorial; JS módulo ES precisa adaptação" },
+        { "slot": "servicos", "nome": "secao-65", "estado": "revisar", "uso": "serviços; requer QA e revisão de conteúdo" },
+        { "slot": "contacto", "nome": "secao-110", "estado": "revisar", "uso": "contacto; requer trocar assets externos" }
+      ],
+      "riscos": ["Não existe tema de clínica aprovado; este kit não pode ser vendido nem usado como produção."],
+      "criteriosPromocao": ["Criar tema próprio com contrato de conteúdo, integrar no máximo poucas dobras e concluir QA visual." ]
+    },
+    {
+      "nicho": "clinica-dentaria",
+      "estado": "em-curadoria",
+      "tema": null,
+      "estrutura": [
+        { "slot": "hero", "fonte": "planeado", "componente": "Proposta clínica" },
+        { "slot": "especialidades", "fonte": "planeado", "componente": "Tratamentos" },
+        { "slot": "equipa", "fonte": "planeado", "componente": "Profissionais e credenciais" },
+        { "slot": "faq", "fonte": "planeado", "componente": "Dúvidas frequentes" },
+        { "slot": "marcacao", "fonte": "planeado", "componente": "CTA de consulta" }
+      ],
+      "componentesAprovados": [],
+      "candidatosRevisar": [
+        { "slot": "servicos", "nome": "secao-65", "estado": "revisar", "uso": "tratamentos; revisar conteúdo e contraste" },
+        { "slot": "equipa", "nome": "secao-111", "estado": "revisar", "uso": "equipa; requer QA de fotos e ações" },
+        { "slot": "faq", "nome": "secao-21", "estado": "revisar", "uso": "dúvidas; JS global requer adaptação" }
+      ],
+      "riscos": ["Não existe tema de clínica aprovado; este kit não pode ser vendido nem usado como produção."],
+      "criteriosPromocao": ["Validar fatos clínicos e legais, criar tema próprio e promover componentes após QA visual." ]
+    }
+  ]
+}

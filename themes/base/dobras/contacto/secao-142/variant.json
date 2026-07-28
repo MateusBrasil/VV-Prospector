@@ -1,0 +1,133 @@
+{
+  "slot": "contacto",
+  "nome": "secao-142",
+  "scope": "contacto-secao-142",
+  "origem": "bank/_componentes/secoes/secao-142",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "swiper",
+    "matter"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Aurae Skincare"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Add to Cart"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/footer-logo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-01.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-02.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-03.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-04.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-01.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-02.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-03.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-04.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 9
+  },
+  "_rever": [
+    "45 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "9 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/aurae/images/footer-logo.svg https://d173woph5zl366.cloudfront.net/aurae/images/cms/product-img-01.webp)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

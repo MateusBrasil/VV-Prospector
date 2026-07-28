@@ -1,0 +1,99 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-svg-7",
+  "scope": "destaque-animacoes-svg-7",
+  "origem": "bank/_componentes/animacoes-svg/animacoes-svg-7",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "splittext"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "The Hover State"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Synthetic Silhouette"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Red Form Study"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Material Pause"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Obscured Profile"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Muted Presence"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Spatial Balance"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "End of Interaction"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./img/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./img/img6.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "10 cor(es) mapeadas para tokens por luminância (acento da origem #eb3828 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

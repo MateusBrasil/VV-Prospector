@@ -1,0 +1,52 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-13",
+  "scope": "destaque-scroll-13",
+  "origem": "bank/_componentes/scroll/scroll-13/pixel-scan-effect-with-vfx-js/dist",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "flip"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Hello."
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "New."
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "World."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://amagi.dev/vfx-js/vfx-js-logo-no-padding.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://amagi.dev/vfx-js/vfx-js-logo-no-padding.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://amagi.dev/vfx-js/vfx-js-logo-no-padding.svg https://amagi.dev/vfx-js/vfx-js-logo-no-padding.svg)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

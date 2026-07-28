@@ -1,0 +1,632 @@
+---
+// 1-bit ordered-dither (BKPT / Aeris style).
+// Each "chunky pixel" of size `cellSize` is binary on/off based on:
+//   c' = lum^gamma + spread * bayer_centered[y%4][x%4]
+//   on if c' > 0.5
+// dotColor over a tinted bgColor (NOT pure black) so dim regions still
+// read as a saturated tone rather than a void.
+//
+// HOVER: while the closest <a>/<article> ancestor is hovered, `spread`
+// pulses between hoverSpreadMin and hoverSpreadMax in a smooth sine loop.
+// On leave it eases back to the idle `spread`. The image is sampled once;
+// each frame only re-paints from the cached luminance data — cheap.
+//
+// Toggle the in-page debug panel with Shift+B to live-tune values.
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  /** Chunky-pixel scale in CSS px. Default 5. */
+  cellSize?: number;
+  /** Foreground (lit pixel) color. */
+  dotColor?: string;
+  /** Tinted background — fills negative space + the wrapper. */
+  bgColor?: string;
+  /** Gamma applied to luminance before the threshold. <1 boosts midtones,
+   *  >1 darkens them. Default 1.65. */
+  gamma?: number;
+  /** Bayer perturbation strength (r). 0 = hard threshold, ~1 = full Bayer.
+   *  This is the IDLE spread. Default 1. */
+  spread?: number;
+  /** While hovered, spread oscillates from min to max and back. Default 0.9. */
+  hoverSpreadMin?: number;
+  /** Hover spread peak. Default 1.15. */
+  hoverSpreadMax?: number;
+  /** Seconds per full pulse cycle (min → max → min). Default 1.4. */
+  hoverPulseSpeed?: number;
+  /** When true, the pulse runs continuously without needing a hover/focus
+   *  trigger. Used on non-interactive covers (e.g. blog post detail) where
+   *  the image isn't a link so there's no hover affordance to gate on. */
+  pulseAlways?: boolean;
+  /** Optional CSS color for an on-hover drop-shadow halo on the dots
+   *  (e.g. "#b5d2ff" for a periwinkle glow). When set, the canvas gets a
+   *  layered drop-shadow filter while the closest hoverable ancestor is
+   *  hovered. Default: undefined (no glow). */
+  hoverGlow?: string;
+  /** Strength of the hover glow (0-1). Higher = brighter halo. Default 0.6. */
+  hoverGlowIntensity?: number;
+  /** Mount the live-tune debug panel (Shift+B toggle) for this instance.
+   *  Default false — the panel is hidden in production. Used in the team
+   *  CMS detail page or any internal tool that needs runtime tuning. */
+  debug?: boolean;
+}
+
+const {
+  src,
+  alt,
+  class: className = "",
+  cellSize = 3,
+  dotColor = "#b5d2ff",
+  bgColor = "#050505",
+  gamma = 1.65,
+  spread = 1,
+  hoverSpreadMin = 0.9,
+  hoverSpreadMax = 1.15,
+  hoverPulseSpeed = 1.4,
+  pulseAlways = false,
+  hoverGlow,
+  hoverGlowIntensity = 0.6,
+  debug = false,
+} = Astro.props;
+
+// Pre-compute hover glow filter string so it's set as a CSS variable.
+// Three-layer stack mirroring `.periwinkle-glow` / `.accent-glow` patterns
+// but parameterized by the prop color and intensity.
+const hexToRgb = (hex: string) => {
+  const m = hex.replace("#", "");
+  const n = m.length === 3 ? m.split("").map((c) => c + c).join("") : m;
+  const v = parseInt(n, 16);
+  return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+};
+let hoverGlowFilter = "none";
+if (hoverGlow) {
+  const [r, g, b] = hexToRgb(hoverGlow);
+  const a = (mult: number) => Math.min(1, hoverGlowIntensity * mult);
+  hoverGlowFilter = [
+    `drop-shadow(0 0 4px rgba(${r}, ${g}, ${b}, ${a(1.0).toFixed(2)}))`,
+    `drop-shadow(0 0 10px rgba(${r}, ${g}, ${b}, ${a(0.6).toFixed(2)}))`,
+    `drop-shadow(0 0 18px rgba(${r}, ${g}, ${b}, ${a(0.3).toFixed(2)}))`,
+  ].join(" ");
+}
+---
+
+<div
+  class:list={["halftone-image", className]}
+  data-halftone-image
+  data-src={src}
+  data-cell={cellSize}
+  data-dot-color={dotColor}
+  data-bg-color={bgColor}
+  data-gamma={gamma}
+  data-spread={spread}
+  data-hover-spread-min={hoverSpreadMin}
+  data-hover-spread-max={hoverSpreadMax}
+  data-hover-pulse-speed={hoverPulseSpeed}
+  data-pulse-always={pulseAlways ? "true" : "false"}
+  data-hover-glow={hoverGlow || ""}
+  data-hover-glow-intensity={hoverGlowIntensity}
+  data-debug={debug ? "true" : "false"}
+  style={`background:${bgColor};--halftone-hover-filter:${hoverGlowFilter}`}
+>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  <canvas aria-hidden="true"></canvas>
+</div>
+
+<style>
+  .halftone-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .halftone-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .halftone-image canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: filter 0.3s ease;
+  }
+
+  /* Hover glow on the dots — applied via the wrapper :hover and also when
+     the closest <a>/<article> ancestor is hovered (matches the JS hover
+     gating used for the pulse). The CSS variable is set inline with the
+     pre-computed drop-shadow stack from the `hoverGlow` prop. */
+  .halftone-image:hover canvas,
+  a:hover .halftone-image canvas,
+  article:hover .halftone-image canvas {
+    filter: var(--halftone-hover-filter);
+  }
+
+  /* Debug panel (singleton, injected by first instance) */
+  :global(.halftone-image-debug) {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 280px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(17, 17, 17, 0.96);
+    border: 1px solid #343434;
+    padding: 16px 18px;
+    z-index: 9999;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #d0d0d0;
+    display: none;
+  }
+  :global(.halftone-image-debug.is-open) {
+    display: block;
+  }
+  :global(.halftone-image-debug h2) {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(181, 210, 255, 0.7);
+    margin-bottom: 12px;
+  }
+  :global(.halftone-image-debug .row) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  :global(.halftone-image-debug label) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b0b0b0;
+  }
+  :global(.halftone-image-debug .v) {
+    font-variant-numeric: tabular-nums;
+    color: #b5d2ff;
+  }
+  :global(.halftone-image-debug input[type="range"]) {
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #343434;
+    outline: none;
+    cursor: pointer;
+  }
+  :global(.halftone-image-debug input[type="range"]::-webkit-slider-thumb) {
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    background: #b5d2ff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  :global(.halftone-image-debug input[type="color"]) {
+    width: 32px;
+    height: 22px;
+    border: 1px solid #343434;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+  :global(.halftone-image-debug .row.color) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  :global(.halftone-image-debug .hint) {
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    text-align: right;
+  }
+  :global(.halftone-image-debug .copy) {
+    margin-top: 10px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #343434;
+    color: #b0b0b0;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  :global(.halftone-image-debug .copy:hover) {
+    border-color: #b5d2ff;
+    color: #b5d2ff;
+  }
+</style>
+
+<script>
+  type Sample = { w: number; h: number; data: Uint8ClampedArray };
+
+  type Inst = {
+    el: HTMLElement;
+    img: HTMLImageElement;
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+    config: {
+      cell: number;
+      dotColor: string;
+      bgColor: string;
+      gamma: number;
+      spread: number;
+      hoverSpreadMin: number;
+      hoverSpreadMax: number;
+      hoverPulseSpeed: number;
+      hoverGlow: string;
+      hoverGlowIntensity: number;
+    };
+    cache: Sample | null;
+    rafId: number;
+    pulseStart: number;
+    hovering: boolean;
+  };
+
+  const instances: Inst[] = [];
+
+  // Bayer 4×4 centered in [-0.5, +0.5].
+  const BAYER_RAW = [
+    [0, 8, 2, 10],
+    [12, 4, 14, 6],
+    [3, 11, 1, 9],
+    [15, 7, 13, 5],
+  ];
+  const BAYER_CENTERED = BAYER_RAW.map((row) => row.map((v) => v / 16 - 0.5));
+
+  function setup(el: HTMLElement) {
+    const img = el.querySelector<HTMLImageElement>("img");
+    const canvas = el.querySelector<HTMLCanvasElement>("canvas");
+    if (!img || !canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const ds = el.dataset;
+    const inst: Inst = {
+      el,
+      img,
+      canvas,
+      ctx,
+      config: {
+        cell: parseFloat(ds.cell || "3"),
+        dotColor: ds.dotColor || "#b5d2ff",
+        bgColor: ds.bgColor || "#050505",
+        gamma: parseFloat(ds.gamma || "1.65"),
+        spread: parseFloat(ds.spread || "1"),
+        hoverSpreadMin: parseFloat(ds.hoverSpreadMin || "0.9"),
+        hoverSpreadMax: parseFloat(ds.hoverSpreadMax || "1.15"),
+        hoverPulseSpeed: parseFloat(ds.hoverPulseSpeed || "1.4"),
+        hoverGlow: ds.hoverGlow || ds.dotColor || "#b5d2ff",
+        hoverGlowIntensity: parseFloat(ds.hoverGlowIntensity || "0"),
+      },
+      cache: null,
+      rafId: 0,
+      pulseStart: 0,
+      hovering: false,
+    };
+
+    const pulseAlways = ds.pulseAlways === "true";
+
+    const enter = () => {
+      if (inst.hovering) return;
+      inst.hovering = true;
+      inst.pulseStart = performance.now();
+      pulse(inst);
+    };
+
+    const onLoad = () => {
+      render(inst);
+      // If pulseAlways is set, kick off the pulse loop as soon as the cache
+      // is ready — no hover/focus required.
+      if (pulseAlways) enter();
+    };
+    if (img.complete && img.naturalWidth > 0) onLoad();
+    else img.addEventListener("load", onLoad, { once: true });
+
+    const ro = new ResizeObserver(() => {
+      if (inst.cache) render(inst);
+    });
+    ro.observe(el);
+
+    // Hover wiring — only when pulseAlways is off. Otherwise the pulse runs
+    // continuously and there's no leave behavior.
+    if (!pulseAlways) {
+      const trigger = el.closest<HTMLElement>("a, article") || el;
+      const leave = () => {
+        if (!inst.hovering) return;
+        inst.hovering = false;
+        if (inst.rafId) {
+          cancelAnimationFrame(inst.rafId);
+          inst.rafId = 0;
+        }
+        // Snap back to idle spread.
+        paint(inst, inst.config.spread);
+      };
+      trigger.addEventListener("mouseenter", enter);
+      trigger.addEventListener("mouseleave", leave);
+      trigger.addEventListener("focusin", enter);
+      trigger.addEventListener("focusout", leave);
+    }
+
+    instances.push(inst);
+  }
+
+  // Full render — re-samples the image and paints with the idle spread.
+  function render(inst: Inst) {
+    const { el, img, canvas, ctx, config } = inst;
+    const { bgColor } = config;
+
+    const r = el.getBoundingClientRect();
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const w = Math.max(1, Math.ceil(r.width));
+    const h = Math.max(1, Math.ceil(r.height));
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    el.style.background = bgColor;
+
+    // Sample image (object-fit: cover).
+    const off = document.createElement("canvas");
+    off.width = w;
+    off.height = h;
+    const offCtx = off.getContext("2d");
+    if (!offCtx) return;
+
+    const ir = img.naturalWidth / img.naturalHeight;
+    const dr = w / h;
+    let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
+    if (ir > dr) {
+      const targetW = img.naturalHeight * dr;
+      sx = (img.naturalWidth - targetW) / 2;
+      sw = targetW;
+    } else {
+      const targetH = img.naturalWidth / dr;
+      sy = (img.naturalHeight - targetH) / 2;
+      sh = targetH;
+    }
+    offCtx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
+    const data = offCtx.getImageData(0, 0, w, h).data;
+
+    inst.cache = { w, h, data };
+    paint(inst, config.spread);
+  }
+
+  // Paint with a given spread value using cached luminance data. Cheap —
+  // safe to call every animation frame for the hover pulse.
+  function paint(inst: Inst, currentSpread: number) {
+    if (!inst.cache) return;
+    const { ctx, config } = inst;
+    const { cell, dotColor, gamma } = config;
+    const { w, h, data } = inst.cache;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = dotColor;
+
+    const px = Math.max(1, cell);
+    const cols = Math.ceil(w / px);
+    const rows = Math.ceil(h / px);
+    for (let ry = 0; ry < rows; ry++) {
+      const cy = Math.min(h - 1, ry * px + Math.floor(px / 2));
+      for (let rx = 0; rx < cols; rx++) {
+        const cx = Math.min(w - 1, rx * px + Math.floor(px / 2));
+        const idx = (cy * w + cx) * 4;
+        const lum =
+          (0.2126 * data[idx] + 0.7152 * data[idx + 1] + 0.0722 * data[idx + 2]) /
+          255;
+        const shaped = Math.pow(lum, gamma);
+        const offset = currentSpread * BAYER_CENTERED[ry & 3][rx & 3];
+        if (shaped + offset <= 0.5) continue;
+        ctx.fillRect(rx * px, ry * px, px, px);
+      }
+    }
+  }
+
+  // Pulse loop — interpolates spread between min and max with a sine wave
+  // (smooth, no abrupt jumps). Only repaint, no resample, so it's cheap.
+  function pulse(inst: Inst) {
+    if (!inst.hovering) return;
+    const { hoverSpreadMin, hoverSpreadMax, hoverPulseSpeed } = inst.config;
+    const elapsed = (performance.now() - inst.pulseStart) / 1000;
+    // 0..1 sine eased — period = hoverPulseSpeed.
+    const phase = (Math.sin((elapsed * Math.PI * 2) / hoverPulseSpeed) + 1) / 2;
+    const s = hoverSpreadMin + (hoverSpreadMax - hoverSpreadMin) * phase;
+    paint(inst, s);
+    inst.rafId = requestAnimationFrame(() => pulse(inst));
+  }
+
+  /* ---------- Debug panel (singleton, Shift+B toggles) ---------- */
+
+  function buildPanel() {
+    if (document.querySelector(".halftone-image-debug")) return;
+    const panel = document.createElement("div");
+    panel.className = "halftone-image-debug";
+    panel.innerHTML = `
+      <h2>Halftone Image Debug</h2>
+      <div class="row">
+        <label>Cell size <span class="v" id="hi-vCell"></span></label>
+        <input type="range" id="hi-cell" min="1" max="24" step="1">
+      </div>
+      <div class="row">
+        <label>Gamma <span class="v" id="hi-vGamma"></span></label>
+        <input type="range" id="hi-gamma" min="0.3" max="3" step="0.05">
+      </div>
+      <div class="row">
+        <label>Spread (idle) <span class="v" id="hi-vSpread"></span></label>
+        <input type="range" id="hi-spread" min="0" max="2" step="0.05">
+      </div>
+      <div class="row">
+        <label>Hover min <span class="v" id="hi-vHmin"></span></label>
+        <input type="range" id="hi-hmin" min="0" max="2" step="0.01">
+      </div>
+      <div class="row">
+        <label>Hover max <span class="v" id="hi-vHmax"></span></label>
+        <input type="range" id="hi-hmax" min="0" max="2" step="0.01">
+      </div>
+      <div class="row">
+        <label>Pulse (s) <span class="v" id="hi-vPulse"></span></label>
+        <input type="range" id="hi-pulse" min="0.3" max="4" step="0.05">
+      </div>
+      <div class="row">
+        <label>Hover glow <span class="v" id="hi-vGlow"></span></label>
+        <input type="range" id="hi-glow" min="0" max="1" step="0.05">
+      </div>
+      <div class="row color">
+        <label>Dot color</label>
+        <input type="color" id="hi-dotColor">
+      </div>
+      <div class="row color">
+        <label>Glow color</label>
+        <input type="color" id="hi-glowColor">
+      </div>
+      <div class="row color">
+        <label>Bg color</label>
+        <input type="color" id="hi-bgColor">
+      </div>
+      <button class="copy" id="hi-copy">Copy current values</button>
+      <div class="hint">Shift + B to close</div>
+    `;
+    document.body.appendChild(panel);
+
+    const target = () => instances[0]?.config;
+    const renderAll = () => instances.forEach((i) => i.cache && render(i));
+
+    const sync = () => {
+      const c = target();
+      if (!c) return;
+      (panel.querySelector("#hi-cell") as HTMLInputElement).value = String(c.cell);
+      (panel.querySelector("#hi-vCell") as HTMLElement).textContent = String(c.cell);
+      (panel.querySelector("#hi-gamma") as HTMLInputElement).value = String(c.gamma);
+      (panel.querySelector("#hi-vGamma") as HTMLElement).textContent = c.gamma.toFixed(2);
+      (panel.querySelector("#hi-spread") as HTMLInputElement).value = String(c.spread);
+      (panel.querySelector("#hi-vSpread") as HTMLElement).textContent = c.spread.toFixed(2);
+      (panel.querySelector("#hi-hmin") as HTMLInputElement).value = String(c.hoverSpreadMin);
+      (panel.querySelector("#hi-vHmin") as HTMLElement).textContent = c.hoverSpreadMin.toFixed(2);
+      (panel.querySelector("#hi-hmax") as HTMLInputElement).value = String(c.hoverSpreadMax);
+      (panel.querySelector("#hi-vHmax") as HTMLElement).textContent = c.hoverSpreadMax.toFixed(2);
+      (panel.querySelector("#hi-pulse") as HTMLInputElement).value = String(c.hoverPulseSpeed);
+      (panel.querySelector("#hi-vPulse") as HTMLElement).textContent = c.hoverPulseSpeed.toFixed(2);
+      (panel.querySelector("#hi-glow") as HTMLInputElement).value = String(c.hoverGlowIntensity);
+      (panel.querySelector("#hi-vGlow") as HTMLElement).textContent = c.hoverGlowIntensity.toFixed(2);
+      (panel.querySelector("#hi-dotColor") as HTMLInputElement).value = c.dotColor;
+      (panel.querySelector("#hi-glowColor") as HTMLInputElement).value = c.hoverGlow;
+      (panel.querySelector("#hi-bgColor") as HTMLInputElement).value = c.bgColor;
+    };
+
+    /** Re-build the CSS variable `--halftone-hover-filter` on every wrapper
+     *  whenever glow color or intensity changes from the debug panel. */
+    const updateGlow = () => {
+      const c = target();
+      if (!c) return;
+      const m = c.hoverGlow.replace("#", "");
+      const n = m.length === 3 ? m.split("").map((x) => x + x).join("") : m;
+      const v = parseInt(n, 16);
+      const r = (v >> 16) & 255, g = (v >> 8) & 255, b = v & 255;
+      const a = (mult: number) => Math.min(1, c.hoverGlowIntensity * mult);
+      const filter = c.hoverGlowIntensity > 0
+        ? [
+            `drop-shadow(0 0 4px rgba(${r}, ${g}, ${b}, ${a(1.0).toFixed(2)}))`,
+            `drop-shadow(0 0 10px rgba(${r}, ${g}, ${b}, ${a(0.6).toFixed(2)}))`,
+            `drop-shadow(0 0 18px rgba(${r}, ${g}, ${b}, ${a(0.3).toFixed(2)}))`,
+          ].join(" ")
+        : "none";
+      instances.forEach((i) => i.el.style.setProperty("--halftone-hover-filter", filter));
+    };
+
+    const bindNum = (id: string, key: keyof Inst["config"], parser: (v: string) => number, fixed?: number) => {
+      const inp = panel.querySelector("#hi-" + id) as HTMLInputElement;
+      const out = panel.querySelector("#hi-v" + id.charAt(0).toUpperCase() + id.slice(1)) as HTMLElement;
+      inp.addEventListener("input", (e) => {
+        const v = parser((e.target as HTMLInputElement).value);
+        instances.forEach((i) => ((i.config as any)[key] = v));
+        if (out) out.textContent = fixed !== undefined ? v.toFixed(fixed) : String(v);
+        renderAll();
+      });
+    };
+    bindNum("cell", "cell", (v) => parseInt(v, 10));
+    bindNum("gamma", "gamma", parseFloat, 2);
+    bindNum("spread", "spread", parseFloat, 2);
+    bindNum("hmin", "hoverSpreadMin", parseFloat, 2);
+    bindNum("hmax", "hoverSpreadMax", parseFloat, 2);
+    bindNum("pulse", "hoverPulseSpeed", parseFloat, 2);
+
+    // Hover glow intensity — same pattern but also re-builds the CSS variable.
+    const glowSlider = panel.querySelector("#hi-glow") as HTMLInputElement;
+    const glowOut = panel.querySelector("#hi-vGlow") as HTMLElement;
+    glowSlider.addEventListener("input", (e) => {
+      const v = parseFloat((e.target as HTMLInputElement).value);
+      instances.forEach((i) => (i.config.hoverGlowIntensity = v));
+      glowOut.textContent = v.toFixed(2);
+      updateGlow();
+    });
+
+    const bindColor = (id: string, key: "dotColor" | "bgColor" | "hoverGlow") => {
+      const inp = panel.querySelector("#hi-" + id) as HTMLInputElement;
+      inp.addEventListener("input", (e) => {
+        const v = (e.target as HTMLInputElement).value;
+        instances.forEach((i) => (i.config[key] = v));
+        if (key === "hoverGlow") updateGlow();
+        else renderAll();
+      });
+    };
+    bindColor("dotColor", "dotColor");
+    bindColor("glowColor", "hoverGlow");
+    bindColor("bgColor", "bgColor");
+
+    panel.querySelector("#hi-copy")?.addEventListener("click", () => {
+      const c = target();
+      if (!c) return;
+      const glowProps = c.hoverGlowIntensity > 0
+        ? ` hoverGlow="${c.hoverGlow}" hoverGlowIntensity={${c.hoverGlowIntensity}}`
+        : "";
+      const out = `cellSize={${c.cell}} dotColor="${c.dotColor}" bgColor="${c.bgColor}" gamma={${c.gamma}} spread={${c.spread}} hoverSpreadMin={${c.hoverSpreadMin}} hoverSpreadMax={${c.hoverSpreadMax}} hoverPulseSpeed={${c.hoverPulseSpeed}}${glowProps}`;
+      navigator.clipboard?.writeText(out);
+      const btn = panel.querySelector("#hi-copy") as HTMLButtonElement;
+      const old = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = old; }, 1200);
+    });
+
+    sync();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.shiftKey && (e.key === "B" || e.key === "b")) {
+        e.preventDefault();
+        panel.classList.toggle("is-open");
+        if (panel.classList.contains("is-open")) sync();
+      }
+    });
+  }
+
+  function init() {
+    document.querySelectorAll<HTMLElement>("[data-halftone-image]").forEach(setup);
+    // Debug panel is opt-in: only mount if at least one instance has
+    // data-debug="true" (set via the `debug` prop). Produtoion team grid
+    // skips this; the team detail page (CMS) can enable it.
+    const anyDebug = document.querySelector('[data-halftone-image][data-debug="true"]');
+    if (instances.length && anyDebug) buildPanel();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

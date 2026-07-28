@@ -1,0 +1,281 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.testimonials {
+  /* Local theme tokens — re-declared by `.testimonials--light` to flip
+     the palette without duplicating any of the section rules below. */
+  --t-bg: var(--color-bg-dark);
+  --t-label-dot: var(--color-accent);
+  --t-text-primary: var(--color-text-white);
+  --t-text-secondary: var(--color-text-secondary-dark);
+  --t-nav-bg: var(--color-surface-dark-icon-bg);
+  --t-nav-bg-hover: var(--color-surface-dark-icon-bg-hover);
+  --t-nav-border: var(--color-surface-dark-icon-border);
+  --t-nav-color: #fff;
+
+  width: 100%;
+  background-color: var(--t-bg);
+}
+
+/* Light variant (e.g. /about) — cream bg, dark text, dark accent dot.
+   Mirrors Figma node 2150:23583. Structure + motion stay identical. */
+.testimonials--light {
+  --t-bg: #f9f9f7;
+  --t-label-dot: var(--color-text-primary);
+  --t-text-primary: var(--color-text-primary);
+  --t-text-secondary: #4e4e4e;
+  --t-nav-bg: transparent;
+  --t-nav-bg-hover: rgba(0, 29, 33, 0.08);
+  --t-nav-border: var(--color-text-primary);
+  --t-nav-color: var(--color-text-primary);
+}
+
+.testimonials__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3.25em;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.testimonials__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  flex-shrink: 0;
+}
+
+.testimonials__labelDot {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--t-label-dot);
+  border-radius: var(--radius-full);
+}
+
+.testimonials__labelText {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--t-text-primary);
+}
+
+.testimonials__content {
+  display: flex;
+  flex-direction: column;
+  gap: 3em; /* 48px */
+  width: 61em; /* 976px */
+  flex-shrink: 0;
+}
+
+/* Swiper container — autoHeight keeps the wrapper sized to the active
+   slide so the nav buttons sit right under whichever testimonial is
+   visible. width:100% lets it fill the testimonials__content column. */
+.testimonials__slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.testimonials__slide {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* When using effect: 'fade', Swiper absolutely-positions inactive slides
+   behind the active one. opacity is driven by Swiper's own classes. */
+
+/* Outer card sets the visual frame (size, radius) and becomes a query
+   container so the inner image can be sized with cqw/cqh against the
+   card — staying anchored at the top while the curtain reveal grows in
+   height. Mirrors `.services__imageWrap`. Background stays transparent
+   so the section's dark teal shows through during the curtain animation
+   rather than a gray placeholder. */
+.testimonials__imageWrap {
+  width: 17.25em;   /* 276px */
+  height: 17.25em;
+  background-color: transparent;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  container-type: size;
+  container-name: testimonialImage;
+}
+
+/* Curtain reveal — starts collapsed (height 0) and animates to 100%.
+   overflow: hidden + matching border-radius keeps the bottom edge of the
+   growing curtain rounded so a sharp horizontal seam never appears mid-
+   animation. Same pattern as `.services__imageReveal`. */
+.testimonials__imageReveal {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+/* Image is sized to the CARD (cqw/cqh) rather than the reveal wrapper —
+   this keeps the portrait visually anchored at the top of the card while
+   the reveal's height grows from 0. Mirrors `.services__image`. */
+.testimonials__image {
+  display: block;
+  width: 100cqw;
+  height: 100cqh;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.testimonials__quote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2.25em;    /* 36px */
+  font-weight: 400;
+  line-height: 1.222;   /* 44/36 */
+  letter-spacing: -2.16px;
+  color: var(--t-text-primary);
+}
+
+.testimonials__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  width: 17.25em;
+}
+
+.testimonials__authorName {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.5em;          /* 24px */
+  font-weight: 400;
+  line-height: 1.333;        /* 32/24 */
+  letter-spacing: -1.44px;
+  color: var(--t-text-primary);
+}
+
+.testimonials__authorTitle {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--t-text-secondary);
+}
+
+.testimonials__nav {
+  display: flex;
+  gap: 0.75em;
+}
+
+.testimonials__navBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2.25em;      /* 36px */
+  height: 2.25em;     /* 36px — enforces 1:1 */
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  color: var(--t-nav-color);
+  background-color: var(--t-nav-bg);
+  border: 1px solid var(--t-nav-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.testimonials__navBtn:focus-visible {
+  background-color: var(--t-nav-bg-hover);
+}
+
+@media (min-width: 992px) {
+  .testimonials__navBtn:hover {
+    background-color: var(--t-nav-bg-hover);
+  }
+}
+
+.testimonials__navIcon {
+  display: inline-flex;
+  width: 0.625em;    /* 10px */
+  height: 1.25em;    /* 20px */
+}
+
+.testimonials__navIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+.testimonials__navIcon svg path {
+  fill: currentColor;
+}
+
+/* Previous button: flip the arrow horizontally (matches Figma's mirrored instance) */
+.testimonials__navBtn--prev .testimonials__navIcon {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 991px) {
+  .testimonials__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding: 3em var(--container-padding);
+    text-align: center;
+  }
+
+  .testimonials__content {
+    width: 100%;
+    gap: 2em;
+    align-items: center;
+  }
+
+  .testimonials__slide {
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Force the quote to fill the slide — without this, flex
+     `align-items: center` shrinks the blockquote to its content width
+     and the quote wraps into short, awkward lines. `width: 100%` lets
+     the text flow to the container edges so each line breaks naturally. */
+  .testimonials__quote {
+    width: 100%;
+    font-size: 2em;
+  }
+
+  .testimonials__author {
+    width: 100%;
+    align-items: center;
+  }
+
+  .testimonials__nav {
+    align-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials__quote {
+    font-size: 1.625em;
+  }
+
+  .testimonials__imageWrap {
+    width: 14em;
+    height: 14em;
+  }
+}
+
+@media (max-width: 479px) {
+  .testimonials__quote {
+    font-size: 1.375em;
+  }
+}

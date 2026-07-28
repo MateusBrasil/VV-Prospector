@@ -1,0 +1,3 @@
+/* Aeline — Contact Hero — local preview overrides only. All section structure/styling lives
+   in the shared /aeline/styles.css cascade; animations run from /aeline/scripts/. */
+body { margin: 0; }

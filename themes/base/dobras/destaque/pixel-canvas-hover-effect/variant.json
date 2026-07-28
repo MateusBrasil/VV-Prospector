@@ -1,0 +1,42 @@
+{
+  "slot": "destaque",
+  "nome": "pixel-canvas-hover-effect",
+  "scope": "destaque-pixel-canvas-hover-effect",
+  "origem": "bank/_componentes/cards/pixel-canvas-hover-effect",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Layout"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Code"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Command"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Dropper"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "14 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

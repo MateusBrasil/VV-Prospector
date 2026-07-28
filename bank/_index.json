@@ -1,0 +1,88 @@
+{
+  "_gerado": "2026-07-17",
+  "_o_que_isto_e": "Indice do banco por NICHO. So entra aqui o que foi ABERTO e verificado — nunca classificado pelo nome da pasta (a licao do 'vetic': pasta chamada vetic, conteudo = seccao de depoimentos).",
+  "_estado": "INCOMPLETO — a colheita por categoria esta BLOQUEADA. Ver bank/_BLOQUEIO.md. Zero paginas novas colhidas nesta sessao.",
+  "_regua": {
+    "fonte": "kasablanca-site",
+    "ratio_display_corpo": 9.4,
+    "ratio_minimo_aceitavel": 8,
+    "peso_display": 900,
+    "line_height_display": 0.85,
+    "generos": "serif display + grotesca + mono",
+    "tokens_cor": 6
+  },
+
+  "saas_tech": [
+    {
+      "slug": "pg_clarix",
+      "nome": "Clarix",
+      "caminho": "bank/_raw/pg_clarix/clarix",
+      "tag": null,
+      "_nota_tag": "A tag .ef-tag nao foi colhida — a listagem exige login.",
+      "formato": "Vite · HTML/CSS/JS puro · index.html na raiz",
+      "ratio": 7.64,
+      "veredicto_gate": "REPROVADO",
+      "gate_fails": 25,
+      "gate_motivos": ["C3 hex-fora-de-token x22", "C2 gradiente-multi-matiz x1", "E8 fonte-cdn x1", "M3 prefers-reduced-motion ausente"],
+      "veredicto_base_de_nicho": "FRACO",
+      "porque": "ratio 7,64x abaixo do minimo 8x · display peso 200 vs regua 900 · lh 1,0 vs 0,85 · 1 so familia (Sarabun), zero contraste de genero. Re-skin corrige cor/fonte-CDN; NAO corrige o ADN tipografico.",
+      "adn": "bank/_raw/pg_clarix/DNA.json",
+      "medido": true
+    },
+    {
+      "slug": "pg_eagle2",
+      "nome": "Aeline (build 'Eagle — AI Consulting & Automation')",
+      "caminho": "bank/_raw/pg_eagle2/aeline/aeline",
+      "tag": null,
+      "formato": "Astro · 43 .astro · compila para HTML, NAO tem .html em disco",
+      "ratio": null,
+      "veredicto_gate": "NAO MEDIDO",
+      "veredicto_base_de_nicho": "POR VERIFICAR",
+      "porque": "Astro nao tem HTML em disco: exige `npm install` + `astro build` para existir render. O build foi BLOQUEADO por politica (executa lifecycle scripts de codigo de terceiros nao auditado). Precisa do OK explicito do Mateus.",
+      "medido": false
+    },
+    {
+      "slug": "pg_eagle5",
+      "nome": "Vaultix (build 'Eagle — Infrastructure for serious AI teams')",
+      "caminho": "bank/_raw/pg_eagle5/vaultix/Vaultix",
+      "tag": null,
+      "formato": "Astro multi-pagina (index, blog, features) · 41 .astro · inclui .claude/agents/ proprios",
+      "ratio": null,
+      "veredicto_gate": "NAO MEDIDO",
+      "veredicto_base_de_nicho": "POR VERIFICAR",
+      "porque": "Mesmo bloqueio de build do pg_eagle2.",
+      "medido": false
+    }
+  ],
+
+  "_nao_e_pagina": [
+    {
+      "slug": "pg_stride",
+      "nome": "Stride — na verdade `next16-claude-starter` (Textura)",
+      "caminho": "bank/_raw/pg_stride",
+      "formato": "Next.js 16 · 42 .tsx · traz AGENTS.md, CLAUDE.md, .claude/ e um vault obsidian/ de docs",
+      "veredicto_base_de_nicho": "NAO SERVE",
+      "porque": "Nao e uma pagina desenhada: e um SCAFFOLD de projecto (starter kit para agentes de IA gerarem codigo). Nao ha pagina para medir nem para re-skinar. O HOW_TO_USE diz 'Stride, GetLayers template', mas o README revela o que e de facto — mais um caso de nao julgar pelo nome."
+    }
+  ],
+
+  "_seccoes_enviesadas": {
+    "n": 24,
+    "veredicto": "TODAS DEPOIMENTOS — confirmado abrindo os ficheiros",
+    "amostra_verificada": {
+      "aeline": "h2: 'What they say about us?'",
+      "vetic": "h2: 'What our happy pet parents' — conteudo pet, mas e uma SECCAO de depoimentos, nao um template de veterinaria",
+      "catalis": "h2: 'What our ...'"
+    },
+    "causa": "Colheram-se 24 URLs consecutivas de uma lista ordenada por tipo. Nao repetir."
+  },
+
+  "_heroes": {
+    "n": 24,
+    "com_html": 19,
+    "vazios": ["hero17", "hero18", "hero19", "hero22", "hero7"],
+    "_nota_vazios": "Contem apenas um .txt de 212 bytes — o ZIP nao trazia codigo. Nao sao paginas."
+  },
+
+  "_lacuna_critica": "As 4 'paginas' do banco sao TODAS de nicho tech/SaaS/AI (consultoria de IA, infra de dados, SaaS de clareza, starter kit). ZERO paginas de negocio local — restaurante, cabeleireiro, ginasio, clinica, advogado, oficina. E exactamente o que a prospeccao de Guimaraes precisa. Mesmo que o build desbloqueasse, o banco continuaria sem base de nicho local."
+}

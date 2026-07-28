@@ -1,0 +1,62 @@
+{
+  "slot": "destaque",
+  "nome": "secao-53",
+  "scope": "destaque-secao-53",
+  "origem": "bank/_componentes/secoes/secao-53",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "swiper",
+    "matter"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Elevated skincare"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "designed"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "restore"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "reveal"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/statement-img.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/footer-svg.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "33 cor(es) mapeadas para tokens por luminância (acento da origem #06b6d4 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/aurae/images/statement-img.avif https://d173woph5zl366.cloudfront.net/aurae/images/footer-svg.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

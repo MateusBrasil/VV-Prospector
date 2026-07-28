@@ -1,0 +1,142 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-13",
+  "scope": "destaque-animacao-rolagem-13",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-13",
+  "registo": "editorial",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Mooz"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Docs"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Info"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "&larr;"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "&rarr;"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Temptation,"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Heartful"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Somnambulist"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Supernova"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Heartfelt"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

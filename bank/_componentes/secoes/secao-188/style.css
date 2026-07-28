@@ -1,0 +1,10 @@
+/* hirely-testimonial-slider — local overrides only. The shared /hirely/styles.css
+   carries the slider layout (.section_testimonial-slider, .testimonial_slider,
+   .slide-item.is-testimonial, .arrow, and the scoped .slider-arrows re-layout) plus
+   the design tokens. The Swiper bundle CSS is linked ABOVE this file (Rule 6) so the
+   component's flex rules win over the vendor `.swiper-slide { display: block }` reset.
+   This section has no sub-components to inline; only a minimal body reset is needed. */
+
+body {
+  margin: 0;
+}

@@ -1,0 +1,50 @@
+<style>
+/* rodapé — a ardósia do hero fecha a página (bookend). A mesma grade de luz do hero,
+   agora a nascer do fundo (técnica GridLines do Museu Triângulo, máscara radial no
+   rodapé); as quatro moradas com o tique da marca — o site inteiro em miniatura. */
+.rodC{position:relative;isolation:isolate;overflow:clip;background:var(--dusk);color:var(--ink-on-dusk);
+  border-top:1px solid var(--hairline-on-dusk);padding-block:var(--space-5) var(--space-3)}
+.rodC::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--brand) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--brand) 5%, transparent) 1px, transparent 1px);
+  background-size:clamp(56px,7vw,96px) clamp(56px,7vw,96px);
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 100%, black 0%, transparent 78%);
+          mask-image:radial-gradient(120% 90% at 50% 100%, black 0%, transparent 78%)}
+.rodC__topo{display:grid;gap:var(--space-4);margin-bottom:var(--space-4)}
+@media (min-width:900px){.rodC__topo{grid-template-columns:minmax(0,1.3fr) minmax(0,2fr)}}
+.rodC__nome{font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-0.02em;line-height:1.15;color:var(--ink-on-dusk)}
+.rodC__meta{color:var(--muted-on-dusk);font-size:var(--step--1);line-height:1.6;margin-top:var(--space-2);max-width:38ch}
+.rodC__meta a{color:var(--ink-on-dusk);text-decoration:none;border-bottom:1px solid var(--hairline-on-dusk)}
+.rodC__meta a:hover{border-color:var(--brand)}
+.rodC__moradas{display:grid;gap:var(--space-3);grid-template-columns:1fr 1fr}
+@media (min-width:700px){.rodC__moradas{grid-template-columns:repeat(4,1fr)}}
+.rodC__clinica{font-size:var(--step--1);line-height:1.55;color:var(--muted-on-dusk);
+  padding-left:var(--space-2);border-left:2px solid color-mix(in srgb, var(--brand) 55%, transparent)}
+.rodC__clinica strong{display:block;color:var(--ink-on-dusk);font-weight:600;margin-bottom:.3rem}
+.rodC__base{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);justify-content:space-between;
+  align-items:center;border-top:1px solid var(--hairline-on-dusk);padding-top:var(--space-3)}
+.rodC__links{display:flex;gap:var(--space-3);font-size:var(--step--1)}
+.rodC__links a{color:var(--muted-on-dusk);text-decoration:none;transition:opacity 150ms var(--ease)}
+.rodC__links a:hover{opacity:.7}
+.rodC__reg{color:var(--muted-on-dusk);font-size:var(--step--1)}
+</style>
+<footer class="rodC" id="contactos-rodape">
+  <div class="wrap">
+    <div class="rodC__topo">
+      <div>
+        <p class="rodC__nome">{{nome}}</p>
+        <p class="rodC__meta">Urgências 24 horas, todos os dias<br>
+          <a href="tel:{{telefoneRaw}}">{{telefone}}</a> · <a href="mailto:{{email}}">{{email}}</a></p>
+      </div>
+      <div class="rodC__moradas">
+        {{{moradas}}}
+      </div>
+    </div>
+    <div class="rodC__base">
+      <nav class="rodC__links">{{{links}}}</nav>
+      <p class="rodC__reg">{{registo}}</p>
+    </div>
+  </div>
+</footer>
+<div class="cta-bar"><a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a></div>

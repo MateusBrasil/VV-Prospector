@@ -1,0 +1,11 @@
+/* congra-hero — overrides locales solamente. Toda la estructura/estilo del hero
+   vive en el cascade compartido /congra/styles.css (webflow.css aplanado: la
+   imagen de fondo .hero_img, el gradiente, los spacers responsive y la
+   tipografía Anton del título). */
+
+/* ===== TEMLIS-INLINED-NAVBAR: congra-navbar styles ===== */
+/* congra-navbar — overrides locales solamente. Toda la estructura/estilo del
+   navbar vive en el cascade compartido /congra/styles.css (webflow.css +
+   components.css aplanados). El navbar es fixed top full-width sobre el bg
+   oscuro del template; acá solo damos altura de stage para que el drawer
+   móvil (≤991) tenga espacio al expandirse. */

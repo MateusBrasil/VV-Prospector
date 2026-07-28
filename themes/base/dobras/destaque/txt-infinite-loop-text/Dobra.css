@@ -1,0 +1,183 @@
+@import url('https://unpkg.com/normalize.css') layer(normalize);
+
+    @layer normalize, base, demo;
+
+    @layer demo{
+      .container {
+        --font-level: 8;
+        opacity: 0;
+        height: 3lh;
+        display: flex;
+        place-items: center;
+        mask: linear-gradient(
+          var(--base-300) 0.25lh,
+          var(--base-100) calc(50% - 0.5lh) calc(50% + 0.5lh),
+          var(--base-300) calc(100% - 0.25lh)
+        );
+        color: color-mix(in lch, canvasText, canvas 15%);
+        text-align: center;
+        position: relative;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        text-transform: uppercase;
+        line-height: 1;
+        font-family: var(--fonte-corpo);
+        height: 1lh;
+        display: inline-grid;
+        flex-direction: column;
+        position: relative;
+        padding-inline: 0.25em;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .indicator {
+        --c: 0.175em;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 1lh;
+        translate: -50% -50%;
+        border: 0.05em solid oklch(0.75 1 var(--h, 320));
+        transition: width 0.25s, border-color 0.25s;
+        width: calc((var(--width) * 1px) + var(--c));
+        
+        clip-path: polygon(
+           0 0,
+          var(--c) 0,
+          var(--c) var(--c),
+          0 var(--c),
+          0 100%,
+           0 calc(100% - var(--c)),
+          var(--c) calc(100% - var(--c)),
+          var(--c) 100%,
+          0 100%,
+           calc(100% - var(--c)) 100%,
+          calc(100% - var(--c)) calc(100% - var(--c)),
+          100% calc(100% - var(--c)),
+          100% 100%,
+           100% var(--c),
+          calc(100% - var(--c)) var(--c),
+          calc(100% - var(--c)) 0,
+          100% 0,
+           100% 100%,
+          0 100%
+        );
+      }
+
+      li {
+        display: inline-block;
+        width: fit-content;
+        height: 1lh;
+        grid-area: 1 / 1;
+        line-height: 1.2;
+      }
+    }
+@layer base{[data-dobra="destaque-txt-infinite-loop-text"]{
+        --font-size-min: 16;
+        --font-size-max: 20;
+        --font-ratio-min: 1.2;
+        --font-ratio-max: 1.33;
+        --font-width-min: 375;
+        --font-width-max: 1500;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"]{
+        color-scheme: light dark;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] [data-theme='light']{
+        color-scheme: light only;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] [data-theme='dark']{
+        color-scheme: dark only;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] :where(.fluid){
+        --fluid-min: calc(
+          var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+        );
+        --fluid-max: calc(
+          var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+        );
+        --fluid-preferred: calc(
+          (var(--fluid-max) - var(--fluid-min)) /
+            (var(--font-width-max) - var(--font-width-min))
+        );
+        --fluid-type: clamp(
+          (var(--fluid-min) / 16) * 1rem,
+          ((var(--fluid-min) / 16) * 1rem) -
+            (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+            (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+          (var(--fluid-max) / 16) * 1rem
+        );
+        font-size: var(--fluid-type);
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] *,[data-dobra="destaque-txt-infinite-loop-text"] *:after,[data-dobra="destaque-txt-infinite-loop-text"] *:before{
+        box-sizing: border-box;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"]{
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        font-family: var(--fonte-corpo);
+        background-color: canvas;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] body::before{
+        --size: 45px;
+        --line: color-mix(in hsl, canvasText, transparent 70%);
+        content: '';
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        background: linear-gradient(
+              90deg,
+              var(--line) 1px,
+              transparent 1px var(--size)
+            )
+            50% 50% / var(--size) var(--size),
+          linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+            var(--size) var(--size);
+        mask: linear-gradient(-20deg, transparent 50%, white);
+        top: 0;
+        transform-style: flat;
+        pointer-events: none;
+        z-index: -1;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] .bear-link{
+        color: canvasText;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        width: 48px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        opacity: 0.8;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] :where(.x-link,[data-dobra="destaque-txt-infinite-loop-text"] .bear-link):is(:hover,[data-dobra="destaque-txt-infinite-loop-text"] :focus-visible){
+        opacity: 1;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] .bear-link svg{
+        width: 75%;
+      }
+[data-dobra="destaque-txt-infinite-loop-text"] .sr-only{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+    }
+
+  

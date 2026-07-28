@@ -1,0 +1,125 @@
+{
+  "slot": "equipa",
+  "nome": "secao-174",
+  "scope": "equipa-secao-174",
+  "origem": "bank/_componentes/secoes/secao-174",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://www.linkedin.com/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Our Team"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-01_1team-card-01.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-02_1team-card-02.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-03_1team-card-03.avif"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-04_1team-card-04.avif"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-05_1team-card-05.avif"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/team-card-06_1team-card-06.avif"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/mage_linkedin.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 12
+  },
+  "_rever": [
+    "72 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "18 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.linkedin.com/ https://www.linkedin.com/)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/hirely/images/404-image.svg)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

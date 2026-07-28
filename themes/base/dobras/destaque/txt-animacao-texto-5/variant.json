@@ -1,0 +1,295 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-5",
+  "scope": "destaque-txt-animacao-texto-5",
+  "origem": "bank/_componentes/textos/animacao-texto-5",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis",
+    "three",
+    "matter",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tym"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Tutorials/LoopScrolling/"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Set 1"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Set 2"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "On-Scroll"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Typography Animations"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Please scroll moderately to fully experience the animations"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Beyond"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "meaning"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Studying texts and stiff meditation can make you lose your Original Mind.\n                A solitary tune by a fisherman, though, can be an invaluable treasure."
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "This treasure was discovered in a bamboo thicket &mdash;\n                I washed the bowl in a spring and then mended it.\n                After morning meditat"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Heavenly"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "pleasure"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "The blossoms"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "have fallen"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "The world before my eyes is wan and wasted, just like me.\n                The earth is decrepit, the sky stormy, all the grass withered.\n                No spri"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "The wind has settled, the blossoms have fallen;\n                Birds sing, the mountains grow dark &mdash;\n                This is the wondrous power of Buddhi"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Human"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "gratitude"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "The tree was barren of leaves but you brought a new spring.\n                Long green sprouts, verdant flowers, fresh promise.\n                Mori, if I ever "
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "In a dilapidated three-room hut\n                I've grown old and tired;\n                This winter cold is the\n                Worst I've ever suffered throu"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Intentionally"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "dramatic"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "First blooming in the Western Paradise,\n                The lotus has delighted us for ages.\n                Its white petals are covered with dew,\n            "
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Blooming"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "flowers"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "My house is buried in the deepest recess of the forest\n            Every year, ivy vines grow longer than the year before.\n            Undisturbed by the affair"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Unfolding"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Elegantly"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Naturally"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Midnight"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Too lazy to be ambitious,\n            I let the world take care of itself.\n            Ten days' worth of rice in my bag;\n            a bundle of twigs by the f"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Moon"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Transportation"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Yes, I’m truly a dunce\n            Living among trees and plants.\n            Please don’t question me about illusion and enlightenment --\n            This old "
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Lucid"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Dreaming"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Diaries"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "In my youth I put aside my studies\n            And I aspired to be a saint.\n            Living austerely as a mendicant monk,\n            I wandered here and th"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "The Routine"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "In stubborn stupidity, I live on alone\n            befriended by trees and herbs.\n            Too lazy to learn right from wrong,\n            I laugh at myself,"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Your finger points to the moon,\n            but the finger is blind until the moon appears.\n            What connection has  moon and finger?\n            Are th"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Night Time"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Returning to my native village after many years’ absence:\n            I put up at a country inn and listen to the rain.\n            One robe, one bowl is all I "
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Megascrapers"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "The city lights flicker and gleam,\n            But true peace is found in stillness.\n            A leaf falling, a drop of dew,\n            Remind us to let go "
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Futuristic"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "The universe is a vast and mysterious place, and yet everything is interconnected, everything is energy. Einstein's theory of relativity tells us that matter an"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Unintelligible"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "It is not easy to let go of our attachment to material possessions and desires. It takes discipline, focus and a certain level of detachment from the world arou"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "View more effects"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #d68521 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tym https://tympanus.net/Tutorials/LoopScrolling/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

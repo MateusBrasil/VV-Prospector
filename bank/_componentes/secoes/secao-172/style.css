@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.team {
+  overflow-x: clip; /* required: x:60 entrance primes off-screen */
+}
+.team__card {
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-container);
+  padding: 52px;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; /* 64px */
+}
+.team__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.team__heading {
+  color: var(--color-text-primary);
+}
+
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; /* 24px */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.team__member {
+  background-color: var(--color-bg-gray-1);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* Hover spotlight transition (see hover-gated rule below) */
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team__photo {
+  width: 100%;
+  height: 22.75rem; /* 364px */
+  border-radius: 0.75rem; /* 12px */
+  overflow: clip;
+}
+.team__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.team__name {
+  margin: 0;
+}
+.team__role {
+  font-family: var(--font-body);
+  /* OPT-OUT: team role caption */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* ── Hover spotlight (desktop only, hover-capable pointer only) ─────
+   Hovering the grid dims every card to 0.4; the hovered card returns
+   to 1 so it reads as the focal point and the rest fade into context.
+   Transition declared on `.team__member` above. */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .team__grid:hover .team__member {
+    opacity: 0.4;
+  }
+}
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .team__grid .team__member:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .team__card {
+    padding: 40px;
+    gap: 3rem;
+  }
+  .team__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .team__photo {
+    height: 20rem; /* 320px */
+  }
+}
+
+@media (max-width: 767px) {
+  .team__card {
+    padding: 24px 20px 20px;
+    gap: 2.5rem;
+  }
+  .team__grid {
+    gap: 1rem;
+  }
+  .team__photo {
+    height: 18rem; /* 288px */
+  }
+}
+
+@media (max-width: 479px) {
+  .team__card {
+    padding: 24px 16px 16px;
+    gap: 2rem;
+  }
+  .team__grid {
+    grid-template-columns: 1fr;
+  }
+  .team__photo {
+    height: 20rem; /* 320px — taller again when full-width on portrait */
+  }
+}

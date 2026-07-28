@@ -1,0 +1,325 @@
+[data-dobra="botao-offer-button"]{
+      margin: 0;
+      display: flex;
+      background-color: var(--base-100);
+    }
+[data-dobra="botao-offer-button"] .btn-container{
+      --btn-color: var(--base-100);
+      --corner-color: var(--base-300);
+      --corner-dist: 24px;
+      --corner-multiplier: 1.5;
+      --timing-function: cubic-bezier(0, 0, 0, 2.5);
+      --duration: 250ms;
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+[data-dobra="botao-offer-button"] .btn{
+      position: relative;
+      min-width: 160px;
+      min-height: calc(var(--corner-dist) * 2);
+      border-radius: 16px;
+      border: none;
+      padding: 0.25em 1em;
+
+      background: linear-gradient(var(--base-100)2, var(--base-300)), var(--btn-color);
+      box-shadow:
+        1px 1px 2px -1px var(--base-100) inset,
+        0 2px 1px var(--base-600),
+        0 4px 2px var(--base-600),
+        0 8px 4px var(--base-600),
+        0 16px 8px var(--base-600),
+        0 32px 16px var(--base-600);
+
+      transition:
+        transform var(--duration) var(--timing-function),
+        filter var(--duration) var(--timing-function);
+      -webkit-transition:
+        transform var(--duration) var(--timing-function),
+        -webkit-filter var(--duration) var(--timing-function);
+
+      cursor: pointer;
+    }
+[data-dobra="botao-offer-button"] .btn-drawer{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+
+      min-height: 32px;
+      border-radius: 16px;
+      border: none;
+      padding: 0.25em 1em;
+      font-size: 0.8em;
+      font-weight: 600;
+      font-family: var(--fonte-mono);
+      color: var(--base-300);
+
+      background: linear-gradient(var(--base-100)2, var(--base-300)), var(--btn-color);
+      background-color: var(--acento);
+      opacity: 0;
+
+      transition:
+        transform calc(0.5 * var(--duration)) ease,
+        filter var(--duration) var(--timing-function),
+        opacity calc(0.5 * var(--duration)) ease;
+      -webkit-transition:
+        transform calc(0.5 * var(--duration)) ease,
+        -webkit-filter var(--duration) var(--timing-function),
+        opacity calc(0.5 * var(--duration)) ease;
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+    }
+[data-dobra="botao-offer-button"] .transition-top{
+      top: 0;
+      left: 0;
+      border-radius: 12px 12px 0 0;
+      align-items: start;
+    }
+[data-dobra="botao-offer-button"] .transition-bottom{
+      bottom: 0;
+      right: 0;
+      border-radius: 0 0 12px 12px;
+      align-items: end;
+    }
+[data-dobra="botao-offer-button"] .btn-text{
+      display: inline-block;
+
+      font-size: 1.25em;
+      font-family: var(--fonte-corpo);
+      font-weight: 600;
+      color: var(--base-300);
+
+      background-image: linear-gradient(var(--base-400), var(--base-300));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300));
+      -webkit-filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300));
+
+      transition:
+        transform var(--duration) var(--timing-function),
+        filter var(--duration) var(--timing-function),
+        color var(--duration) var(--timing-function);
+      -webkit-transition:
+        transform var(--duration) var(--timing-function),
+        -webkit-filter var(--duration) var(--timing-function),
+        color var(--duration) var(--timing-function);
+    }
+[data-dobra="botao-offer-button"] .btn-corner{
+      position: absolute;
+      width: 32px;
+
+      fill: none;
+      stroke: var(--corner-color);
+
+      transition:
+        transform var(--duration) var(--timing-function),
+        filter var(--duration) var(--timing-function);
+      -webkit-transition:
+        transform var(--duration) var(--timing-function),
+        -webkit-filter var(--duration) var(--timing-function);
+    }
+[data-dobra="botao-offer-button"] .btn-corner:nth-of-type(1){
+      top: 0;
+      left: 0;
+      transform: translate(
+          calc(-1 * var(--corner-dist)),
+          calc(-1 * var(--corner-dist))
+        )
+        rotate(90deg);
+    }
+[data-dobra="botao-offer-button"] .btn-corner:nth-of-type(2){
+      top: 0;
+      right: 0;
+      transform: translate(var(--corner-dist), calc(-1 * var(--corner-dist)))
+        rotate(180deg);
+    }
+[data-dobra="botao-offer-button"] .btn-corner:nth-of-type(3){
+      bottom: 0;
+      right: 0;
+      transform: translate(var(--corner-dist), var(--corner-dist)) rotate(-90deg);
+    }
+[data-dobra="botao-offer-button"] .btn-corner:nth-of-type(4){
+      bottom: 0;
+      left: 0;
+      transform: translate(calc(-1 * var(--corner-dist)), var(--corner-dist))
+        rotate(0deg);
+    }
+[data-dobra="botao-offer-button"] .btn-container:has(.btn:hover),[data-dobra="botao-offer-button"] .btn-container:has(.btn:focus-visible){
+      .btn {
+        transform: scale(1.05);
+        filter: drop-shadow(0 16px 16px var(--base-300));
+        -webkit-filter: drop-shadow(0 16px 16px var(--base-300));
+      }
+      .transition-top {
+        transform: translateY(-24px) rotateZ(4deg);
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+        animation: hue-anim 3s infinite linear;
+        -webkit-animation: hue-anim 3s infinite linear;
+        opacity: 1;
+      }
+      .transition-bottom {
+        transform: translateY(24px) rotateZ(4deg);
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+        animation: hue-anim 3s infinite linear;
+        -webkit-animation: hue-anim 3s infinite linear;
+        opacity: 1;
+      }
+      .btn-text {
+        filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300))
+          drop-shadow(0px 6px 2px var(--base-300));
+        -webkit-filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300))
+          drop-shadow(0px 6px 2px var(--base-300));
+        transform: scale(1.05);
+        color: var(--base-300);
+      }
+
+      --corner-color: var(--base-300);
+      .btn-corner:first-of-type {
+        transform: translate(
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist)),
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(90deg);
+        filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+      }
+      .btn-corner:nth-of-type(2) {
+        transform: translate(
+            calc(var(--corner-multiplier) * var(--corner-dist)),
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(180deg);
+        filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+      }
+      @-moz-document url-prefix() {
+        .btn-corner:nth-of-type(2) {
+          filter: drop-shadow(10px -10px 1px var(--corner-color))
+            drop-shadow(20px -20px 2px var(--corner-color));
+        }
+      }
+      .btn-corner:nth-of-type(3) {
+        transform: translate(
+            calc(var(--corner-multiplier) * var(--corner-dist)),
+            calc(var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(-90deg);
+        filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+      }
+      .btn-corner:nth-of-type(4) {
+        transform: translate(
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist)),
+            calc(var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(0deg);
+        filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 1px var(--corner-color))
+          drop-shadow(-20px 20px 2px var(--corner-color));
+      }
+    }
+[data-dobra="botao-offer-button"] .btn-container:has(.btn:active){
+      .btn {
+        transform: scale(0.95);
+        filter: drop-shadow(0 10px 4px var(--base-300));
+        -webkit-filter: drop-shadow(0 10px 4px var(--base-300));
+      }
+      .transition-top,
+      .transition-bottom {
+        transform: translateY(0px) scale(0.5);
+      }
+      .btn-text {
+        filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300))
+          drop-shadow(0px 6px 2px var(--base-300));
+        -webkit-filter: drop-shadow(0 1px 0 var(--base-100)6) drop-shadow(0 -1px 0 var(--base-300))
+          drop-shadow(0px 6px 2px var(--base-300));
+        transform: scale(1);
+        color: var(--base-300);
+      }
+      --corner-color: var(--base-300);
+      --corner-multiplier: 0.95;
+      .btn-corner:first-of-type {
+        transform: translate(
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist)),
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(90deg);
+        filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+      }
+      .btn-corner:nth-of-type(2) {
+        transform: translate(
+            calc(var(--corner-multiplier) * var(--corner-dist)),
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(180deg);
+        filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+      }
+      @-moz-document url-prefix() {
+        .btn-corner:nth-of-type(2) {
+          filter: drop-shadow(10px -10px 2px var(--corner-color))
+            drop-shadow(20px -20px 3px var(--corner-color));
+        }
+      }
+      .btn-corner:nth-of-type(3) {
+        transform: translate(
+            calc(var(--corner-multiplier) * var(--corner-dist)),
+            calc(var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(-90deg);
+        filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+      }
+      .btn-corner:nth-of-type(4) {
+        transform: translate(
+            calc(-1 * var(--corner-multiplier) * var(--corner-dist)),
+            calc(var(--corner-multiplier) * var(--corner-dist))
+          )
+          rotate(0deg);
+        filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+        -webkit-filter: drop-shadow(-10px 10px 2px var(--corner-color))
+          drop-shadow(-20px 20px 3px var(--corner-color));
+      }
+    }
+@keyframes hue-anim{
+      0%,
+      100% {
+        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+      }
+      50% {
+        filter: hue-rotate(-70deg);
+        -webkit-filter: hue-rotate(-70deg);
+      }
+    }
+@-webkit-keyframes hue-anim{
+      0%,
+      100% {
+        -webkit-filter: hue-rotate(0deg);
+      }
+      50% {
+        -webkit-filter: hue-rotate(-70deg);
+      }
+    }
+
+  

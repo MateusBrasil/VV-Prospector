@@ -1,0 +1,186 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-10",
+  "scope": "transicao-transicao-pagina-10",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-10",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/large/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/large/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/large/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/large/4.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://dribbble.com/shots/16174007-Kinetic-Typography"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.twitter.com/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Kinetic Typography Page Transition"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "shot"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "01 &mdash; A Poem"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "I, D-503, the builder of the Integral, I am only one of the many mathematicians of the United State."
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "02 &mdash; Harmony"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "From behind the Green Wall from some unknown plains the wind brings to us the yellow honeyed pollen of flowers."
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "03 &mdash; A Coat"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "I looked over all that I wrote down yesterday and I find that my descriptions are not sufficiently clear."
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "04 &mdash; Epilepsy"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "The auditorium: an enormous half-globe of glass with the sun piercing through."
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "A Poem"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "I, D-503, the builder of the Integral, I am only one of the many mathematicians of the United State."
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "The great historic hour is near, when the first Integral will rise into the limitless space of the universe. A thousand years ago your heroic ancestors subjecte"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Harmony"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "From behind the Green Wall from some unknown plains the wind brings to us the yellow honeyed pollen of flowers."
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "One’s lips are dry from this sweet dust. Every moment one passes one’s tongue over them. Probably, all women whom I meet in the street (and men certainly also),"
+    },
+    {
+      "nome": "titulo8",
+      "tipo": "texto",
+      "exemplo": "A Coat"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "I looked over all that I wrote down yesterday and I find that my descriptions are not sufficiently clear."
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "That is, everything would undoubtedly be clear to one of us but who knows to whom my Integral will some day bring these records? Perhaps you, like our ancestors"
+    },
+    {
+      "nome": "titulo9",
+      "tipo": "texto",
+      "exemplo": "Epilepsy"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "The auditorium: an enormous half-globe of glass with the sun piercing through."
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "The circular rows of noble, globe-like, closely-shaven heads. With joy in my heart I looked around. I believe I was looking in the hope of seeing the rose-color"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #823725 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://dribbble.com/shots/16174007-Kinetic-Typography https://www.twitter.com/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

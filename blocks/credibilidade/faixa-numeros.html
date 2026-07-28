@@ -1,0 +1,12 @@
+<style>
+.cred{background:var(--surface,transparent);border-block:1px solid var(--hairline)}
+.cred__grid{display:grid;gap:var(--space-4);text-align:center}
+@media (min-width:768px){.cred__grid{grid-template-columns:repeat(3,1fr);gap:var(--space-3)}}
+.cred__num{font-family:var(--font-display);font-size:var(--step-3);line-height:1;color:var(--brand-ink);letter-spacing:-0.03em}
+.cred__lbl{color:var(--ink-muted);font-size:var(--step--1);margin-top:var(--space-1);letter-spacing:.04em;text-transform:uppercase}
+</style>
+<section class="cred">
+  <div class="wrap cred__grid reveal" data-motion="contador">
+    {{{numeros}}}
+  </div>
+</section>

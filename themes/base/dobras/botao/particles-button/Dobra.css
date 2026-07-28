@@ -1,0 +1,98 @@
+[data-dobra="botao-particles-button"] *{
+            box-sizing: border-box;
+        }
+[data-dobra="botao-particles-button"],[data-dobra="botao-particles-button"]{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: flex;
+            background: var(--base-100);
+            font-family: var(--fonte-corpo);
+            overflow: hidden;
+        }
+[data-dobra="botao-particles-button"] .demo-stage{
+            position: relative;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 100%;
+            align-items: center;
+            justify-items: center;
+            width: 100%;
+            height: 100%;
+        }
+[data-dobra="botao-particles-button"] .particles{
+            position: relative;
+            grid-area: 1 / 1 / 2 / 2;
+        }
+[data-dobra="botao-particles-button"] .particles-canvas{
+            position: absolute;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            z-index: 10;
+        }
+[data-dobra="botao-particles-button"] .particles-wrapper{
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            will-change: transform;
+            z-index: 5;
+        }
+[data-dobra="botao-particles-button"] .particles-button{
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+            border-radius: 10px;
+            background: var(--acento);
+            color: var(--base-100);
+            border: 0;
+            margin: 0;
+            padding: 1.5rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 25px rgba(252, 1, 110, 0.3);
+            will-change: transform;
+        }
+[data-dobra="botao-particles-button"] .particles-button:hover{
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(252, 1, 110, 0.4);
+        }
+[data-dobra="botao-particles-button"] .particles-button:active{
+            transform: scale(0.98);
+        }
+[data-dobra="botao-particles-button"] .particles-button:focus{
+            outline: none;
+        }
+[data-dobra="botao-particles-button"] .action{
+            position: absolute; 
+            top: 2rem; 
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.9); 
+            color: var(--acento);
+            border: 0; 
+            padding: 1rem; 
+            cursor: pointer;
+            opacity: 0; 
+            pointer-events: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: background 0.2s, transform 0.2s, opacity 0.3s;
+            z-index: 20;
+        }
+[data-dobra="botao-particles-button"] .action:hover{
+            background: var(--base-100);
+            transform: scale(1.1) rotate(-45deg);
+        }
+[data-dobra="botao-particles-button"] .action:focus{ 
+            outline: none; 
+        }
+
+    

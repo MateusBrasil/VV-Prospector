@@ -1,0 +1,169 @@
+[data-dobra="hero-hero-10"] 1,[data-dobra="hero-hero-10"] 9..40,[data-dobra="hero-hero-10"] 100..1000&display=swap");*{
+	padding: 0rem;
+	margin: 0rem;
+	border: 0rem;
+}
+[data-dobra="hero-hero-10"] *,[data-dobra="hero-hero-10"] *::before,[data-dobra="hero-hero-10"] *::after{
+	box-sizing: border-box;
+}
+[data-dobra="hero-hero-10"] *::before,[data-dobra="hero-hero-10"] *::after{
+	display: inline-block;
+}
+[data-dobra="hero-hero-10"],[data-dobra="hero-hero-10"]{
+	height: 100%;
+}
+[data-dobra="hero-hero-10"]{
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="hero-hero-10"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="hero-hero-10"] h1{
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 600;
+  line-height: 1;
+}
+[data-dobra="hero-hero-10"] p{
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+[data-dobra="hero-hero-10"] .preloader,[data-dobra="hero-hero-10"] .split-overlay,[data-dobra="hero-hero-10"] .tags-overlay{
+  position: fixed;
+  width: 100vw;
+  height: 100svh;
+}
+[data-dobra="hero-hero-10"] .preloader,[data-dobra="hero-hero-10"] .split-overlay{
+  background-color: var(--base-600);
+  color: var(--base-100);
+}
+[data-dobra="hero-hero-10"] .preloader,[data-dobra="hero-hero-10"] .tags-overlay{
+  z-index: 2;
+}
+[data-dobra="hero-hero-10"] .split-overlay{
+  z-index: 1;
+}
+[data-dobra="hero-hero-10"] .intro-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="hero-hero-10"] .outro-title{
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 10rem);
+  transform: translate(-50%, -50%);
+}
+[data-dobra="hero-hero-10"] .tag{
+  position: absolute;
+  overflow: hidden;
+  width: max-content;
+  color: var(--base-400);
+}
+[data-dobra="hero-hero-10"] .tag-1{
+  top: 15%;
+  left: 15%;
+}
+[data-dobra="hero-hero-10"] .tag-2{
+  bottom: 15%;
+  left: 25%;
+}
+[data-dobra="hero-hero-10"] .tag-3{
+  bottom: 30%;
+  right: 15%;
+}
+[data-dobra="hero-hero-10"] .container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  clip-path: polygon(0 48%, 0 48%, 0 52%, 0 52%);
+}
+[data-dobra="hero-hero-10"] .container .hero-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+[data-dobra="hero-hero-10"] nav,[data-dobra="hero-hero-10"] footer{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  width: 100vw;
+  padding: 2rem;
+  color: var(--base-100);
+}
+[data-dobra="hero-hero-10"] nav p#logo{
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+[data-dobra="hero-hero-10"] .card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 70%;
+  background-color: var(--base-100);
+  transform: translate(-50%, -50%);
+  clip-path: polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%);
+}
+[data-dobra="hero-hero-10"] .card h1{
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
+[data-dobra="hero-hero-10"] .card .char span{
+  position: relative;
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+[data-dobra="hero-hero-10"] .intro-title .char,[data-dobra="hero-hero-10"] .outro-title .char,[data-dobra="hero-hero-10"] .card .char{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+[data-dobra="hero-hero-10"] .intro-title .char,[data-dobra="hero-hero-10"] .outro-title .char{
+  margin-top: 0.75rem;
+}
+[data-dobra="hero-hero-10"] .intro-title .char span,[data-dobra="hero-hero-10"] .outro-title .char span,[data-dobra="hero-hero-10"] .tag .word{
+  position: relative;
+  display: inline-block;
+  transform: translateY(-100%);
+  will-change: transform;
+}
+[data-dobra="hero-hero-10"] .intro-title .first-char{
+  transform-origin: top left;
+}
+@media (max-width: 62.5rem){[data-dobra="hero-hero-10"] h1{
+    font-size: 2.5rem;
+  }
+[data-dobra="hero-hero-10"] .outro-title{
+    left: calc(50% + 4rem);
+  }
+[data-dobra="hero-hero-10"] .card{
+    width: 75%;
+  }
+[data-dobra="hero-hero-10"] .card h1{
+    font-size: 2.5rem;
+  }
+[data-dobra="hero-hero-10"] .intro-title .char,[data-dobra="hero-hero-10"] .outro-title .char{
+    margin-top: 0.5rem;
+  }
+
+}
+

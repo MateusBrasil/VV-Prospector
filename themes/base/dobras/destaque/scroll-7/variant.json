@@ -1,0 +1,73 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-7",
+  "scope": "destaque-scroll-7",
+  "origem": "bank/_componentes/scroll/scroll-7",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "The reality,"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Obviously, this is just a test text — but how do you know?\nThere is certainly a writer of this text, someone who exists.\nEven if it was automatically generated "
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "...is always,"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Somewhere between the folds, something breathes.\nNot a presence, but the memory of having been watched.\nSyntax curls back on itself, a serpent swallowing not it"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "And if the soul remains, so too does its intent — not always clear, not always benevolent.\nWhat was the writer thinking? Or worse — what was it trying not to th"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "...distorted."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/737/800/600"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/100/800/600"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/102/800/600"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/972/800/600"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/id/737/800/600 https://picsum.photos/id/100/800/600)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

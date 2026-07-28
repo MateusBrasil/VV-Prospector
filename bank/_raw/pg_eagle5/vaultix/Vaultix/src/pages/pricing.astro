@@ -1,0 +1,659 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EagleMarker from "../components/VaultixMarker.astro";
+import SecondaryButton from "../components/SecondaryButton.astro";
+import ComparisonSection from "../components/ComparisonSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import CtaSection from "../components/CtaSection.astro";
+
+const tiers = [
+  {
+    name: "Inicial",
+    price: "$0",
+    cadence: "/month",
+    description: "Para projetos paralelos e prototipos",
+    features: [
+      "100K events/month",
+      "Basic monitoring",
+      "Community support",
+      "1 data source",
+    ],
+    cta: "Comecar gratis",
+    featured: false,
+  },
+  {
+    name: "Pro",
+    price: "$79",
+    cadence: "/month",
+    description: "Para equipes de IA em crescimento",
+    features: [
+      "10M events/month",
+      "AI anomaly detection",
+      "Priority support",
+      "Unlimited data sources",
+      "Full API access",
+    ],
+    cta: "Comecar gratis Trial",
+    featured: true,
+    badge: "Popular",
+  },
+  {
+    name: "Empresarial",
+    price: "Sob consulta",
+    cadence: "",
+    description: "Para equipes em escala",
+    features: [
+      "Everything in Pro",
+      "Unlimited events",
+      "Sob consulta integrations",
+      "Dedicated engineer",
+      "99.99% SLA",
+      "On-prem deployment",
+    ],
+    cta: "Contato Sales",
+    featured: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Planos — Eagle"
+  description="Simples, transparent pricing for serious AI teams. Free tier included. Start with Basic and scale to Empresarial."
+>
+  {/* ========================================================================
+       SECTION 01 — Hero (Figma 1:13965): heading + 3 tier cards
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("pricing-hero-pre-anim");
+    }
+  </script>
+
+  <section
+    class="relative bg-[var(--color-bg)]"
+    data-pricing-hero
+  >
+    {/* navbar-flush hero: section sin pt (arranca al ras del navbar). El
+        bordered block no tiene línea horizontal top — la del navbar la
+        cumple. Top markers offset especial `+0.5px`, mid markers normal
+        `-0.5px`. Markers z-20, navbar (z-40) siempre por encima. */}
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      {/* Vertical lines (span the full title block — height = content + py) */}
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-pricing-hero-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-pricing-hero-line="right"
+        aria-hidden="true"></span>
+
+      {/* Mid horizontal — bottom of the title block. */}
+      <span
+        class="pointer-events-none absolute left-1/2 bottom-0 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-pricing-hero-line="mid"
+        aria-hidden="true"></span>
+
+      {/* 4 corner-bracket markers — top corners sit on navbar bottom line
+          (+0.5px), bottom corners sit on the mid horizontal (-0.5px). The
+          translate-x-1/2 keeps each marker centered on its line on every
+          breakpoint (anchor shifts via left-4 → md:left-0 to track the
+          container padding). */}
+      <EagleMarker type="tip-down" data-pricing-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-pricing-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="corner-bl" data-pricing-hero-tmark class="absolute left-4 bottom-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="corner-br" data-pricing-hero-tmark class="absolute right-4 bottom-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      {/* Title block (height = content + 2.5rem top/bottom padding) */}
+      <div
+        class="relative flex flex-col items-center justify-center gap-[2rem] px-4 pt-[2.5rem] pb-0 md:px-0 md:pb-[2.5rem]"
+      >
+        <div class="flex flex-col items-center gap-[0.75rem]">
+          <span
+            class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-[#fdff22]"
+            data-pricing-hero-eyebrow
+          >
+            Planos
+          </span>
+          <h1
+            class="font-mono text-[2.75rem] font-normal uppercase leading-none tracking-[3.84px] text-white md:text-[3.5rem] md:tracking-[6.72px]"
+            data-pricing-hero-headline
+          >
+            Simples pricing
+          </h1>
+          <p
+            class="max-w-[22.25rem] text-center font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60"
+            data-pricing-hero-subhead
+          >
+            No hidden fees. No per-seat charges. Pay for what you process.
+          </p>
+        </div>
+
+        {/* Trust pill */}
+        <div
+          class="flex flex-col items-center gap-4 border border-[var(--color-border)] bg-[#141414] px-[1rem] py-[0.5rem] md:flex-row md:gap-[0.5rem]"
+          data-pricing-hero-trust
+        >
+          <span
+            class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-white"
+          >
+            Free tier included
+          </span>
+          <span class="hidden size-[0.25rem] bg-[#fdff22] md:block" aria-hidden="true"></span>
+          <span
+            class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-white"
+          >
+            No credit card required
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* 3 tier cards */}
+    <div class="relative mx-auto mt-[3rem] w-full max-w-[68rem] px-4 pb-[5rem] lg:mt-[4.375rem] lg:px-0 lg:pb-[6rem]">
+      <div
+        class="grid grid-cols-1 gap-[1.5rem] md:grid-cols-2 lg:grid-cols-3"
+        data-pricing-tiers
+      >
+        {
+          tiers.map((t, idx) => (
+            <div
+              class:list={[
+                "pricing-tier relative flex flex-col gap-[2.5rem] p-[1.5rem]",
+                t.featured ? "bg-[#fdff22] md:order-first md:col-span-2 lg:order-none lg:col-span-1" : "bg-[#050505]",
+              ]}
+              data-pricing-tier
+              data-tier-idx={idx}
+              data-tier-featured={t.featured ? "true" : undefined}
+            >
+              {/* Border lines + corner markers only on the dark cards. The
+                  Pro card reads as a solid yellow block + glow — no dark
+                  border lines, no corner brackets. */}
+              {!t.featured && (
+                <>
+                  <span class="pricing-tier-line pricing-tier-line--top" data-pricing-tier-line="top" aria-hidden="true" />
+                  <span class="pricing-tier-line pricing-tier-line--right" data-pricing-tier-line="right" aria-hidden="true" />
+                  <span class="pricing-tier-line pricing-tier-line--bottom" data-pricing-tier-line="bottom" aria-hidden="true" />
+                  <span class="pricing-tier-line pricing-tier-line--left" data-pricing-tier-line="left" aria-hidden="true" />
+
+                  <EagleMarker type="corner-tl" data-pricing-tier-marker class="absolute -top-2 -left-2 z-10" />
+                  <EagleMarker type="corner-tr" data-pricing-tier-marker class="absolute -top-2 -right-2 z-10" />
+                  <EagleMarker type="corner-bl" data-pricing-tier-marker class="absolute -bottom-2 -left-2 z-10" />
+                  <EagleMarker type="corner-br" data-pricing-tier-marker class="absolute -bottom-2 -right-2 z-10" />
+                </>
+              )}
+
+              {/* Tier name pill (with optional Popular badge for Pro) */}
+              <div
+                class:list={[
+                  "flex w-full items-center border border-[var(--color-border)] bg-[#141414] py-[0.5rem]",
+                  t.featured ? "justify-between pl-[1rem] pr-[0.5rem]" : "justify-comeca px-[1rem]",
+                ]}
+              >
+                <span class="font-mono text-[1.125rem] uppercase leading-[1.7778] text-[#fdff22]">
+                  {t.name}
+                </span>
+                {t.badge && (
+                  <span
+                    class="bg-[#b5d2ff] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.2857] text-[#11130e]"
+                  >
+                    {t.badge}
+                  </span>
+                )}
+              </div>
+
+              {/* Body — price + description on the left, features on the right
+                  (Pro card on tablet only, since it spans 2 cols). Other tiers
+                  and all viewports outside md keep vertical stacking. */}
+              <div
+                class:list={[
+                  "flex w-full flex-col gap-[1.25rem]",
+                  t.featured && "md:grid md:grid-cols-2 md:items-center md:gap-[3rem] lg:flex lg:flex-col lg:gap-[1.25rem]",
+                ]}
+              >
+                <div
+                  class:list={[
+                    "flex flex-col gap-[1.25rem]",
+                    t.featured && "md:items-center md:text-center lg:items-comeca lg:text-left",
+                  ]}
+                >
+                  <div
+                    class:list={[
+                      "flex w-full items-end gap-[0.5rem]",
+                      t.featured && "md:w-fit lg:w-full",
+                    ]}
+                  >
+                    <span
+                      class:list={[
+                        "font-mono text-[3rem] font-normal uppercase leading-none tracking-[0.12em] whitespace-nowrap",
+                        t.featured ? "text-[#11130e]" : "text-white",
+                      ]}
+                    >
+                      {t.price}
+                    </span>
+                    {t.cadence && (
+                      <span
+                        class:list={[
+                          "flex-1 py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[0.12em]",
+                          t.featured ? "text-[#050505] md:flex-none lg:flex-1" : "text-white/60",
+                        ]}
+                      >
+                        {t.cadence}
+                      </span>
+                    )}
+                  </div>
+
+                  <p
+                    class:list={[
+                      "w-full font-mono text-[0.875rem] uppercase leading-[1.2857]",
+                      t.featured ? "text-[#050505] md:w-auto lg:w-full" : "text-white/60",
+                    ]}
+                  >
+                    {t.description}
+                  </p>
+                </div>
+
+                {/* Recurso bullets */}
+                <ul class="flex w-full flex-col gap-[1.25rem] md:gap-4">
+                  {t.features.map((f) => (
+                    <li class="flex w-full items-center gap-[1rem]">
+                      <span
+                        class:list={[
+                          "size-[0.5rem] shrink-0",
+                          t.featured ? "bg-[#050505]" : "bg-white",
+                        ]}
+                        aria-hidden="true"
+                      />
+                      <span
+                        class:list={[
+                          "flex-1 font-mono text-[0.875rem] uppercase leading-[1.2857]",
+                          t.featured ? "text-[#11130e]" : "text-white/60",
+                        ]}
+                      >
+                        {f}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* CTA — SecondaryButton variant, dark on the yellow Pro card,
+                  default white/12 on the others. Same scramble-hover. */}
+              <SecondaryButton
+               
+                variant={t.featured ? "dark" : "default"}
+                class="mt-auto w-full"
+              >
+                {t.cta}
+              </SecondaryButton>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* === Planos tier card border lines — 4 hairline spans replace CSS
+       border so each side can be drawn in independently via scaleX/scaleY. */
+    .pricing-tier-line {
+      position: absolute;
+      background: var(--color-border);
+      pointer-events: none;
+      z-index: 5;
+    }
+    .pricing-tier-line--top,
+    .pricing-tier-line--bottom {
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+    .pricing-tier-line--top {
+      top: 0;
+      transform-origin: left center;
+    }
+    .pricing-tier-line--bottom {
+      bottom: 0;
+      transform-origin: right center;
+    }
+    .pricing-tier-line--left,
+    .pricing-tier-line--right {
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+    .pricing-tier-line--right {
+      right: 0;
+      transform-origin: center top;
+    }
+    .pricing-tier-line--left {
+      left: 0;
+      transform-origin: center bottom;
+    }
+
+    /* Pre-anim FOUC */
+    .pricing-hero-pre-anim [data-pricing-hero-eyebrow],
+    .pricing-hero-pre-anim [data-pricing-hero-headline],
+    .pricing-hero-pre-anim [data-pricing-hero-subhead],
+    .pricing-hero-pre-anim [data-pricing-hero-trust],
+    .pricing-hero-pre-anim [data-pricing-tier] > *:not([data-pricing-tier-line]):not([data-pricing-tier-marker]) {
+      visibility: hidden;
+    }
+    .pricing-hero-pre-anim [data-pricing-hero-line],
+    .pricing-hero-pre-anim [data-pricing-hero-tmark],
+    .pricing-hero-pre-anim [data-pricing-tier-line],
+    .pricing-hero-pre-anim [data-pricing-tier-marker] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../lib/eases";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+
+    const init = () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("pricing-hero-pre-anim");
+        return;
+      }
+
+      const section = document.querySelector<HTMLElement>("[data-pricing-hero]");
+      if (!section) return;
+
+      const eyebrow = section.querySelector<HTMLElement>(
+        "[data-pricing-hero-eyebrow]"
+      );
+      const headline = section.querySelector<HTMLElement>(
+        "[data-pricing-hero-headline]"
+      );
+      const subhead = section.querySelector<HTMLElement>(
+        "[data-pricing-hero-subhead]"
+      );
+      const trust = section.querySelector<HTMLElement>(
+        "[data-pricing-hero-trust]"
+      );
+      const lines = gsap.utils.toArray<HTMLElement>(
+        "[data-pricing-hero-line]",
+        section
+      );
+      const tmarks = gsap.utils.toArray<SVGElement>(
+        "[data-pricing-hero-tmark]",
+        section
+      );
+      const tiers = gsap.utils.toArray<HTMLElement>(
+        "[data-pricing-tier]",
+        section
+      );
+
+      const eyebrowSplit = eyebrow
+        ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+        : null;
+      const headlineSplit = headline
+        ? new SplitText(headline, { type: "lines", mask: "lines" })
+        : null;
+      const subheadSplit = subhead
+        ? new SplitText(subhead, { type: "lines", mask: "lines" })
+        : null;
+
+      // Per-tier parts: 4 border line spans + 4 corner markers + content
+      // children (tier name pill, price, bullets, CTA). Lines and markers
+      // sit at z-5/z-10 with their own data-attrs; content = remaining
+      // direct children of the tier (everything except line spans + markers).
+      type TierParts = {
+        lines: HTMLElement[];
+        markers: SVGElement[];
+        content: HTMLElement[];
+      };
+      const tierParts: TierParts[] = tiers.map((tier) => {
+        const lineEls = gsap.utils.toArray<HTMLElement>(
+          "[data-pricing-tier-line]",
+          tier
+        );
+        const markerEls = gsap.utils.toArray<SVGElement>(
+          "[data-pricing-tier-marker]",
+          tier
+        );
+        const contentEls = (Array.from(tier.children) as HTMLElement[]).filter(
+          (el) =>
+            !el.hasAttribute("data-pricing-tier-line") &&
+            !el.hasAttribute("data-pricing-tier-marker")
+        );
+        return { lines: lineEls, markers: markerEls, content: contentEls };
+      });
+
+      // Pre-anim states — opacity-only on text/buttons, scale-only on lines/markers.
+      if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+      if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+      if (trust) gsap.set(trust, { opacity: 0 });
+
+      lines.forEach((l) => {
+        const orient = l.dataset.pricingHeroLine;
+        if (orient === "top" || orient === "mid") {
+          gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        } else {
+          gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+        }
+      });
+      gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      tierParts.forEach(({ lines: tLines, markers: tMarkers, content }, idx) => {
+        tLines.forEach((line) => {
+          const side = line.dataset.pricingTierLine;
+          const isHorizontal = side === "top" || side === "bottom";
+          gsap.set(line, isHorizontal ? { scaleX: 0 } : { scaleY: 0 });
+        });
+        gsap.set(tMarkers, {
+          opacity: 0,
+          scale: 0.4,
+          transformOrigin: "center",
+        });
+        gsap.set(content, { opacity: 0 });
+
+        // Pro card (featured) — bg comecas transparent + no glow; the lines
+        // draw the frame first, then bg fades in to yellow with shadow halo.
+        const tier = tiers[idx];
+        const isRecursod = tier?.dataset.tierRecursod === "true";
+        if (isRecursod) {
+          gsap.set(tier, { backgroundColor: "transparent", boxShadow: "none" });
+        }
+      });
+
+      document.documentElement.classList.remove("pricing-hero-pre-anim");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          comeca: "top 80%",
+          once: true,
+        },
+      });
+
+      const horizontals = lines.filter((l) => {
+        const o = l.dataset.pricingHeroLine;
+        return o === "top" || o === "mid";
+      });
+      const verticals = lines.filter((l) => {
+        const o = l.dataset.pricingHeroLine;
+        return o === "left" || o === "right";
+      });
+
+      // Frame: outer hero block lines + markers.
+      tl.to(
+        horizontals,
+        { scaleX: 1, duration: 0.85, ease: "eagleStructure", stagger: 0.06 },
+        0
+      );
+      tl.to(
+        verticals,
+        { scaleY: 1, duration: 0.7, ease: "eagleStructure", stagger: 0.06 },
+        0.15
+      );
+      tl.to(
+        tmarks,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "eagleDecor",
+          stagger: 0.06,
+        },
+        0.55
+      );
+
+      // Header text — SplitText line revelar.
+      if (eyebrowSplit) {
+        tl.to(
+          eyebrowSplit.lines,
+          { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 },
+          0.3
+        );
+      }
+      if (headlineSplit) {
+        tl.to(
+          headlineSplit.lines,
+          { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 },
+          0.45
+        );
+      }
+      if (subheadSplit) {
+        tl.to(
+          subheadSplit.lines,
+          { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 },
+          0.65
+        );
+      }
+      if (trust) {
+        tl.to(
+          trust,
+          { opacity: 1, duration: 0.6, ease: "eagleReveal" },
+          0.85
+        );
+      }
+
+      // Tier cards — borders draw via scaleX/Y, corner markers pop, content
+      // fades opacity-only (no `y`). Stagger 130ms between tiers. Pro card
+      // adds a yellow bg + glow tween after its frame finishes drawing.
+      tierParts.forEach(({ lines: tLines, markers: tMarkers, content }, idx) => {
+        const tierStart = 1.0 + idx * 0.13;
+        const tier = tiers[idx];
+        const isRecursod = tier?.dataset.tierRecursod === "true";
+
+        tLines.forEach((line, lineIdx) => {
+          const side = line.dataset.pricingTierLine;
+          const isHorizontal = side === "top" || side === "bottom";
+          tl.to(
+            line,
+            {
+              [isHorizontal ? "scaleX" : "scaleY"]: 1,
+              duration: 0.55,
+              ease: "eagleStructure",
+            },
+            tierStart + lineIdx * 0.06
+          );
+        });
+
+        if (isRecursod && tier) {
+          // Yellow bg + 3-layer yellow halo (mirrors `.accent-glow-active`).
+          tl.to(
+            tier,
+            {
+              backgroundColor: "#fdff22",
+              boxShadow:
+                "0 0 8px rgba(253, 255, 34, 0.9), 0 0 24px rgba(253, 255, 34, 0.5), 0 0 48px rgba(253, 255, 34, 0.2)",
+              duration: 0.7,
+              ease: "eagleStructure",
+            },
+            tierStart + 0.25
+          );
+        } else {
+          tl.to(
+            tMarkers,
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "eagleDecor",
+              stagger: 0.05,
+            },
+            tierStart + 0.3
+          );
+        }
+
+        tl.to(
+          content,
+          {
+            opacity: 1,
+            duration: 0.5,
+            ease: "eagleReveal",
+            stagger: 0.05,
+          },
+          tierStart + 0.5
+        );
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  </script>
+
+  {/* ========================================================================
+       SECTION 02 — Comparison table (Figma 1:14132)
+     ======================================================================== */}
+  <ComparisonSection
+    headline="Compare plans"
+    columns={[
+      { label: "Basic" },
+      { label: "Pro", highlight: true },
+      { label: "Empresarial" },
+    ]}
+    rows={[
+      { feature: "Eventos/mes", values: ["100K", "10M", "Unlimited"] },
+      { feature: "AI Anomaly Detection", values: [false, true, true] },
+      { feature: "Linhagem de dados", values: [false, true, true] },
+      { feature: "Acesso a API", values: [false, true, true] },
+      { feature: "Engenheiro dedicado", values: [false, false, true] },
+    ]}
+  />
+
+  {/* ========================================================================
+       SECTION 03 — FAQ (Figma 1:14252) — uses shared FaqSection component.
+     ======================================================================== */}
+  <FaqSection
+    items={[
+      {
+        q: 'Can I upgrade or downgrade anytime?',
+        a: 'Sim. Plan changes take effect immediately and we prorate the difference. No annual contracts unless you want one.',
+      },
+      {
+        q: 'What counts as an event?',
+        a: "Any record sent to a Eagle pipeline — API calls, streaming records, model predictions, or batch ingestion rows. Internal retries and platform health checks don't count toward your usage.",
+      },
+      {
+        q: 'Do you offer annual discounts?',
+        a: "Sim. Annual plans get 20% off the monthly price, billed upfront. Reach out from the contact form and we'll set it up — no sales call required.",
+      },
+      {
+        q: 'Can I self-host for compliance?',
+        a: 'Empresarial plans include a self-hosted option deployable to your own AWS, GCP, or on-prem environment. Same UI and APIs, with audit logs, SOC 2 alignment, and dedicated support.',
+      },
+    ]}
+  />
+
+
+  {/* ========================================================================
+       SECTION 04 — CTA (shared component)
+     ======================================================================== */}
+  <CtaSection />
+</BaseLayout>

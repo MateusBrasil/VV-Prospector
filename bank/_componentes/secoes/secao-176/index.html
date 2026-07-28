@@ -1,0 +1,1330 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clayo — Team Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="./style.css">
+
+    <style data-bundled-from="/clayo/styles.css">
+/* Clayo bundled styles — cascade order; /images/ -> /clayo/images/ */
+
+/* ===== normalize.css ===== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+header,
+section {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+
+
+/* ===== tokens.css ===== */
+/* Clayo design tokens — extracted verbatim from clayo.webflow.css :root block */
+/* DO NOT modify values here — modify in Webflow source and re-export. */
+
+/* Note: 4 soft-deleted Webflow variables were stripped (artifacts from deleted workspace vars). */
+
+:root {
+  --text-color--text-primary: #131313;
+  --text-color--text-secondary: var(--brand--neutral-light);
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --bg-color--bg-primary: var(--brand--white);
+  --text-color--text-tertiary: var(--brand--neutral-lighter);
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-dark: #131313;
+  --bg-color--bg-secondary: var(--brand--gray-lighter);
+  --border-color--border-secondary: #d4d4d8;
+  --brand--white: #fff;
+  --brand--gray-light: #d7d7d7;
+  --brand--gray-lighter: #f3f4f2;
+  --brand--secondary: #5f58ff;
+  --brand--secondary-light: #5f58ff4d;
+  --brand--neutral-lighter: #afafaf;
+  --brand--tertiary-light: #43595b;
+  --brand--tertiary: #142f32;
+  --brand--tertiary-lighter: #e6e8e3;
+  --new-base---black: #050505;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---border-default: #ffffff14;
+  --brand--black: #000;
+  --brand--neutral-light: #4e4e4e;
+  --brand--neutral: #2c2626;
+  --bg-color--bg-alternate: var(--brand--white);
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: var(--brand--white);
+}
+
+
+/* ===== webflow.css ===== */
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 32px;
+  line-height: 36px;
+  margin-top: 20px;
+}
+.w-form-done {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}
+.w-form-fail {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.w-input:focus,
+.w-select:focus {
+  border-color: #3898EC;
+  outline: 0;
+}
+.w-slider-dot:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+.w-slider-dot:focus.w-active {
+  box-shadow: none;
+}
+.w-slider-arrow-left:focus,
+.w-slider-arrow-right:focus {
+  outline: 0;
+}
+.w-dropdown-toggle:focus {
+  outline: 0;
+}
+.w-dropdown-link:focus {
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {
+  /* .w-lightbox-content */
+  .w-lightbox-control:hover {
+    opacity: 1;
+  }
+}
+
+.w-lightbox-inactive:hover {
+  opacity: 0;
+}
+[data-nav-menu-open] {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}
+.w--nav-link-open {
+  display: block;
+  position: relative;
+}
+.w-nav-button:focus {
+  outline: 0;
+}
+.w--nav-dropdown-open {
+  display: block;
+}
+.w--nav-dropdown-toggle-open {
+  display: block;
+}
+.w--nav-dropdown-list-open {
+  position: static;
+}
+/**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus {
+  outline: 0;
+}
+.w--tab-active {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.w-layout-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+:root {
+  --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  --new-base---base--black\<deleted\|variable-8aad47e4-6dcf-c440-8596-f84083fecf8a\>: #1d1d1d;
+  --text-color--text-primary: #131313;
+  --text-color--text-secondary: var(--brand--neutral-light);
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --bg-color--bg-primary: var(--brand--white);
+  --text-color--text-tertiary: var(--brand--neutral-lighter);
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-dark: #131313;
+  --bg-color--bg-secondary: var(--brand--gray-lighter);
+  --border-color--border-secondary: #d4d4d8;
+  --brand--white: #fff;
+  --brand--gray-light: #d7d7d7;
+  --brand--gray-lighter: #f3f4f2;
+  --brand--secondary: #5f58ff;
+  --brand--secondary-light: #5f58ff4d;
+  --brand--neutral-lighter: #afafaf;
+  --brand--tertiary-light: #43595b;
+  --brand--tertiary: #142f32;
+  --brand--tertiary-lighter: #e6e8e3;
+  --new-base---black: #050505;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---border-default: #ffffff14;
+  --brand--black: #000;
+  --brand--neutral-light: #4e4e4e;
+  --brand--neutral: #2c2626;
+  --bg-color--bg-alternate: var(--brand--white);
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: var(--brand--white);
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+}
+
+.w-layout-grid {
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.new-base--t-button-secondary:hover {
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}
+
+.new-base--t-button:hover {
+  transform: scale(.95);
+}
+
+body {
+  color: var(--text-color--text-primary);
+  overscroll-behavior: none;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h2 {
+  letter-spacing: -.06em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  font-size: .88rem;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+label {
+  margin-bottom: .25rem;
+  font-weight: 500;
+}
+
+.text-color-secondary {
+  color: var(--text-color--text-secondary);
+}
+
+.padding-global {
+  padding-left: 3.25rem;
+  padding-right: 3.25rem;
+}
+
+.padding-global.is-navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.text-xl {
+  letter-spacing: -.03em;
+  font-size: 1.25rem;
+}
+
+.form_input:hover {
+  background-color: #eaebe9;
+}
+
+.form_input:focus {
+  border-color: var(--border-color--border-secondary);
+  background-color: #eaebe9;
+}
+
+.heading-style-h2 {
+  letter-spacing: -.06em;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+ .heading-style-h2.is-title {
+  display: none;
+}
+
+.page-wrapper {
+  overflow: clip;
+}
+
+.container-large {
+  width: 100%;
+  max-width: 73.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button:hover {
+  transform: scale(.97);
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.button.is-outline:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.button.is-form:hover {
+  transform: scale(1);
+}
+
+.padding-section-medium {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.img.is-hero-one {
+  transform-origin: 50%;
+}
+
+.img.is-hero-two {
+  inset: auto 0% 0%;
+}
+
+.img.is-about-three {
+  transform-origin: 50%;
+}
+
+.nav-button_component:hover {
+  opacity: 1;
+}
+
+.custom:hover {
+  background-color: #f2f2f2;
+}
+
+.temlis {
+  grid-column-gap: 1.37rem;
+  grid-row-gap: 1.37rem;
+  color: #fff;
+  background-color: #0158ff;
+  border: 1px solid #126df299;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25rem 1.25rem;
+  transition: background-color .2s;
+  display: flex;
+}
+
+.temlis:hover {
+  background-color: #0b64e6;
+}
+
+.nav_links:hover {
+  opacity: 1;
+  color: var(--text-color--text-primary);
+}
+
+.nav_dropdown-link:hover {
+  opacity: 100;
+  color: var(--text-color--text-primary);
+}
+
+.header {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-flow: column;
+  display: flex;
+}
+
+ .header.is-centered {
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header.is-hero-two {
+  max-width: 33.375rem;
+}
+
+.header.is-blog {
+  max-width: 48.5rem;
+}
+
+.header.is-testimonials {
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.label-wrapper {
+  grid-column-gap: .75rem;
+  grid-row-gap: .75rem;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.label-icon {
+  width: .75rem;
+  height: .75rem;
+}
+
+.img-wrapper {
+  border-radius: inherit;
+  position: absolute;
+  inset: 0%;
+  overflow: clip;
+}
+
+.img-wrapper.is-hero-two {
+  transform-origin: 0 100%;
+}
+
+.content-wrapper {
+  grid-column-gap: 4rem;
+  grid-row-gap: 4rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.content-wrapper.is-centered {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.testimoniasl_arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-lighter);
+}
+
+.testimoniasl_arrow.is-right:hover {
+  transform: translate(120%);
+}
+
+.footer_link:hover {
+  color: var(--brand--white);
+}
+
+.footer_social:hover {
+  border-color: var(--brand--secondary-light);
+  background-color: var(--brand--secondary);
+}
+
+.blogs_arrow:hover {
+  background-color: var(--brand--secondary);
+}
+
+.blogs_arrow.is-right:hover {
+  transform-origin: 50%;
+  transform: translate(120%);
+}
+
+.dashboard_arrow:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-light);
+}
+
+.testimoniasl-three_arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--gray-lighter);
+}
+
+.testimoniasl-three_arrow.is-right:hover {
+  transform: scale(.97)translate(60%);
+}
+
+.features-four_blogs-arrow:hover {
+  border-color: var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.features-four_blogs-arrow.is-right:hover {
+  transform-origin: 50%;
+  transform: translate(120%);
+}
+
+.features-four_blogs-arrow.is-right:hover {
+  transform: translate(60%);
+}
+
+.team_description {
+  max-width: 39.625rem;
+}
+
+.team_grid {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.team_card {
+  border-radius: 1.5rem;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 106%;
+  position: relative;
+  overflow: clip;
+}
+
+.team_card-content {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  background-color: var(--brand--white);
+  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(11px);
+  border-radius: 1rem;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr auto;
+  grid-auto-columns: 1fr;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  display: grid;
+  position: absolute;
+  inset: auto 1.5rem 1.5rem;
+}
+
+.team_card-info {
+  grid-column-gap: .25rem;
+  grid-row-gap: .25rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.team_card-icon {
+  border: 1px solid var(--brand--gray-light);
+  width: 3rem;
+  height: 3rem;
+  color: var(--text-color--text-primary);
+  border-radius: 99rem;
+  padding: .75rem;
+}
+
+.text-overflow-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.about-three_arrow:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  }
+
+  .padding-global {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .padding-global.is-navbar {
+    padding-bottom: 1rem;
+  }
+
+  .padding-global.padding-section-medium {
+    display: flex;
+  }
+
+  .text-xl.is-contact-two {
+    font-size: 1rem;
+  }
+
+  .heading-style-h2 {
+    font-size: 3.25rem;
+  }
+
+  .padding-section-medium {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .content-wrapper, .content-wrapper.is-centered {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+  }
+
+  .team_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .team_card-content {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .padding-global {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .padding-global.is-navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .text-xl.is-contact, .text-xl.is-contact-two {
+    font-size: 1rem;
+  }
+
+  .heading-style-h2 {
+    font-size: 2.75rem;
+  }
+
+  .padding-section-medium {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .header {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-wrapper {
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 2.5rem;
+  }
+
+  .testimoniasl_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .blogs_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .dashboard_arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .features-four_blogs-arrow.is-right:hover {
+    transform: translate(60%);
+  }
+
+  .team_grid {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .team_card {
+    border-radius: 1rem;
+  }
+
+  .team_card-content {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    border-radius: .75rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr auto;
+    grid-auto-columns: 1fr;
+    padding: .75rem 1rem;
+    display: grid;
+    bottom: .5rem;
+    left: .5rem;
+    right: .5rem;
+  }
+
+  .team_card-info {
+    flex: 0 auto;
+    overflow: hidden;
+  }
+
+  .team_card-icon {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: .7rem;
+  }
+
+  .text-overflow-ellipsis {
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-d0e63101-32c6-d7c7-d930-da450d73a2d2\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-2156c866-8774-f852-1f19-596e0d3ba1f7\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-dd550534-f810-fd16-ceda-25cfe806a50e\>: 600;
+  }
+
+  .heading-style-h2 {
+    font-size: 2.25rem;
+  }
+
+  .container-large {
+    max-width: 100%;
+  }
+
+  .content-wrapper {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .content-wrapper.is-centered {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    align-items: stretch;
+  }
+
+  .team_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+/* ===== global-styles.css ===== */
+/* global-styles.w-embed extracted verbatim from index.html (Rule 13 — 3rd CSS source) */
+/* This file MUST load AFTER webflow.css in BaseLayout cascade. */
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Focus state style for keyboard navigation for the focusable elements */
+/* Set color style to inherit */
+/* Get rid of top margin on first element in any rich text element */
+/* Get rid of bottom margin on last element in any rich text element */
+/* Make sure containers never lose their center alignment */
+ .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+/* Apply "..." after 3 lines of text */
+/* Apply "..." after 2 lines of text */
+/* Adds inline flex display */
+/* These classes are never overwritten */
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+
+/* ===== utilities.css ===== */
+/* Clayo cross-section utilities — extracted verbatim from clayo.webflow.css */
+/* Decisions: COMBO_CLASSES.json — 6 bases extracted as reusable utilities. */
+/* v2 2026-05-27: Fixed @media wrappers (Phase 2 extraction bug — H1 was rendering at tablet size on desktop) */
+
+/* ============================================================
+ * Desktop+ (default — no @media)
+ * ============================================================ */
+
+.button.is-form:hover {
+  transform: scale(1);
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.button.is-outline:hover {
+  border-color: var(--brand--neutral-dark);
+  background-color: var(--bg-color--bg-tertiary);
+  color: var(--brand--white);
+}
+
+.padding-global {
+  padding-left: 3.25rem;
+  padding-right: 3.25rem;
+}
+
+.padding-global.is-navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.img.is-about-three {
+  transform-origin: 50%;
+}
+
+.img.is-hero-one {
+  transform-origin: 50%;
+}
+
+.img.is-hero-two {
+  inset: auto 0% 0%;
+}
+
+
+/* ============================================================
+ * @media screen and (max-width: 991px) {
+ * ============================================================ */
+
+@media screen and (max-width: 991px) {
+
+  .padding-global {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+  .padding-global.is-navbar {
+      padding-bottom: 1rem;
+    }
+
+  .padding-global.padding-section-medium {
+      display: flex;
+    }
+
+}
+
+/* ============================================================
+ * @media screen and (max-width: 767px) {
+ * ============================================================ */
+
+@media screen and (max-width: 767px) {
+
+  .padding-global {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+  .padding-global.is-navbar {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+}
+
+/* ============================================================
+ * @media screen and (max-width: 479px) {
+ * ============================================================ */
+
+
+/* ===== Navbar.astro scoped styles (inlined navbar support) ===== */
+/* Body scroll-lock when mobile menu is open */
+
+/* On mobile (data-collapse=medium kicks in ≤991px), webflow.css hides .w-nav-menu
+   with `display: none`. We need to flip it back to block when our toggle adds .w--nav-menu-open. */
+
+    </style>
+  </head>
+<body>
+  <div class="page-wrapper">
+    <section class="section_team">
+      <div class="padding-global padding-section-medium">
+        <div class="container-large">
+          <div class="content-wrapper">
+            <div class="header">
+              <div class="label-wrapper scroll-into-view" data-reveal="0.1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 12 12" fill="none" class="label-icon">
+                  <circle cx="6" cy="6" r="6" fill="#131313"></circle>
+                </svg>
+                <div>Services</div>
+              </div>
+              <h2 class="heading-style-h2 scroll-into-view" data-reveal="0.1">Meet the Financer team</h2>
+              <div class="team_description">
+                <div class="text-color-secondary scroll-into-view" data-reveal="0.2">Meet the talented individuals who drive our company's success with their dedication, expertise, and passion for innovation</div>
+              </div>
+            </div>
+            <div class="w-layout-grid team_grid">
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d29f1" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-one_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-one_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-one_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Sophia Stone</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Chief Financial Officer</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d29fd" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-two_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-two_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-two_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Liam Lark</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Director of Engineering</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d2a09" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-three_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-three_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-three_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Emma Elm</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Senior UX Designer</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d2a15" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-four_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-four_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-four_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Noah Nugent</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Lead Data Scientist</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d2a21" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-five_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-five_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-five_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Ava Aspen</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Product Marketing Manager</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+              <a data-w-id="412c6839-75b8-5bd0-e471-34d4797d2a2d" href="https://www.temlis.com/" target="_blank" class="team_card w-inline-block">
+                <div class="img-wrapper"><img src="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-six_1.webp" loading="lazy" sizes="(max-width: 752px) 100vw, 752px" srcset="https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-six_1.webp 500w, https://d173woph5zl366.cloudfront.net/clayo/images/Team---user-six_1.webp 752w" alt="" class="img"></div>
+                <div class="team_card-content">
+                  <div class="team_card-info">
+                    <div class="text-xl">Ethan Eagle</div>
+                    <div class="text-color-secondary text-overflow-ellipsis">Head of Customer Success</div>
+                  </div>
+                  <div class="team_card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" fill="none">
+                      <path d="M18.4705 0.000139831H1.53055C1.34013 -0.00250479 1.15105 0.0323873 0.974113 0.102824C0.797177 0.17326 0.63585 0.27786 0.499344 0.410652C0.362839 0.543443 0.253828 0.701824 0.178539 0.876749C0.103249 1.05167 0.0631553 1.23972 0.0605469 1.43014V18.5701C0.0631553 18.7606 0.103249 18.9486 0.178539 19.1235C0.253828 19.2985 0.362839 19.4568 0.499344 19.5896C0.63585 19.7224 0.797177 19.827 0.974113 19.8975C1.15105 19.9679 1.34013 20.0028 1.53055 20.0001H18.4705C18.661 20.0028 18.85 19.9679 19.027 19.8975C19.2039 19.827 19.3652 19.7224 19.5017 19.5896C19.6383 19.4568 19.7473 19.2985 19.8226 19.1235C19.8978 18.9486 19.9379 18.7606 19.9405 18.5701V1.43014C19.9379 1.23972 19.8978 1.05167 19.8226 0.876749C19.7473 0.701824 19.6383 0.543443 19.5017 0.410652C19.3652 0.27786 19.2039 0.17326 19.027 0.102824C18.85 0.0323873 18.661 -0.00250479 18.4705 0.000139831ZM6.09055 16.7401H3.09055V7.74014H6.09055V16.7401ZM4.59055 6.48014C4.17681 6.48014 3.78002 6.31578 3.48746 6.02323C3.1949 5.73067 3.03055 5.33388 3.03055 4.92014C3.03055 4.5064 3.1949 4.10961 3.48746 3.81705C3.78002 3.5245 4.17681 3.36014 4.59055 3.36014C4.81024 3.33522 5.03272 3.35699 5.24342 3.42402C5.45412 3.49105 5.64829 3.60183 5.8132 3.7491C5.97812 3.89637 6.11007 4.07682 6.20042 4.27862C6.29076 4.48043 6.33746 4.69904 6.33746 4.92014C6.33746 5.14124 6.29076 5.35985 6.20042 5.56166C6.11007 5.76346 5.97812 5.94391 5.8132 6.09118C5.64829 6.23845 5.45412 6.34923 5.24342 6.41626C5.03272 6.48329 4.81024 6.50505 4.59055 6.48014ZM16.9105 16.7401H13.9105V11.9101C13.9105 10.7001 13.4805 9.91014 12.3905 9.91014C12.0532 9.91261 11.7247 10.0184 11.4494 10.2133C11.174 10.4082 10.965 10.6828 10.8505 11.0001C10.7723 11.2352 10.7384 11.4827 10.7505 11.7301V16.7301H7.75055V7.73014H10.7505V9.00014C11.0231 8.52725 11.4195 8.13766 11.897 7.87334C12.3745 7.60902 12.9151 7.47999 13.4605 7.50014C15.4605 7.50014 16.9105 8.79014 16.9105 11.5601V16.7401Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

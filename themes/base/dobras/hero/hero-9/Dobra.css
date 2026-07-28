@@ -1,0 +1,150 @@
+/* PORTADO À MÃO em 2026-07-28. Três defeitos da esteira foram corrigidos aqui:
+ *
+ *  1. A LINHA 1 ERA CSS PARTIDO. Sobrava metade de um `@import url(...&display=swap")`
+ *     do Google Fonts que o escopador cortou pelo meio. Fora de ser CDN de fonte (proibido),
+ *     era uma declaração inválida a abrir o ficheiro.
+ *  2. HAVIA UM `:root` GLOBAL AQUI DENTRO, a reescrever `--base-200` e `--base-300` do site
+ *     inteiro (`--base-200: var(--base-500)`). Uma dobra não pode redefinir a paleta do
+ *     documento: bastava usá-la para toda a bordadura e todo o texto ténue do site mudarem
+ *     de cor. Nada nesta folha sai de `[data-dobra=...]` agora.
+ *  3. O h1 estava a `clamp(5rem, 18.5vw, 20rem)`, escala de monumento. A odontologia tem
+ *     `--h1` a `clamp(2.5rem, 5.5vw, 5rem)` por decisão de direção de arte: em saúde a
+ *     hierarquia serve a leitura, não o espetáculo. Passa a ler o token.
+ *
+ * O `clip-path` do reveal também saiu: existia para ser animado pela timeline do preloader,
+ * e sem ela deixava a fotografia reduzida a um ponto no centro do ecrã.
+ */
+
+[data-dobra="hero-hero-9"] * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+[data-dobra="hero-hero-9"] {
+  display: block;
+  background-color: var(--base-600);
+  color: var(--base-100);
+}
+
+[data-dobra="hero-hero-9"] .hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: var(--respiro);
+}
+
+[data-dobra="hero-hero-9"] .hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+[data-dobra="hero-hero-9"] .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Véu de leitura. Sem hex: a cor vem do token e só a opacidade é local, que é o que
+   permite trocar a paleta do cliente sem voltar aqui. */
+[data-dobra="hero-hero-9"] .hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--base-600) 82%, transparent) 0%,
+    color-mix(in srgb, var(--base-600) 42%, transparent) 45%,
+    color-mix(in srgb, var(--base-600) 18%, transparent) 100%
+  );
+}
+
+[data-dobra="hero-hero-9"] .header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: var(--largura-max);
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 2.5rem;
+}
+
+[data-dobra="hero-hero-9"] .hero-kicker {
+  color: var(--base-200);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+[data-dobra="hero-hero-9"] h1 {
+  max-width: 18ch;
+  font-family: var(--fonte-display);
+  font-size: var(--h1);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--base-100);
+  /* Entrada sóbria: 1 movimento, 1 curva. A curva é uma das duas do projeto inteiro. */
+  animation: hero-hero-9-entrada 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-dobra="hero-hero-9"] .hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid var(--base-100);
+  border-radius: 999px;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  font-weight: 500;
+  color: var(--base-100);
+  text-decoration: none;
+  transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="hero-hero-9"] .hero-cta:hover {
+  background-color: var(--base-100);
+  color: var(--base-600);
+}
+
+[data-dobra="hero-hero-9"] .hero-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  justify-content: space-between;
+  max-width: var(--largura-max);
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--base-100) 28%, transparent);
+}
+
+[data-dobra="hero-hero-9"] .hero-footer p {
+  color: var(--base-200);
+}
+
+@keyframes hero-hero-9-entrada {
+  from { opacity: 0; transform: translateY(0.5rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1000px) {
+  [data-dobra="hero-hero-9"] .hero {
+    padding: var(--respiro-compacto);
+  }
+  [data-dobra="hero-hero-9"] .hero-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

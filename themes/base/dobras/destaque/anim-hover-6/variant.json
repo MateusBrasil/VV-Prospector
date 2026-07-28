@@ -1,0 +1,266 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-6",
+  "scope": "destaque-anim-hover-6",
+  "origem": "bank/_componentes/animacoes/hover-6",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Châtaignier"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Dehumanization experiment with vanilla flavor"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Love"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "with"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "animosity"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Jeremy Boulder Karlsson"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Geek"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "and"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "mango"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Mathilde Trudeaux Matisse"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "French"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "in"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "spring"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Jonathan Colamista Zen"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Hover and click on a card"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Le Pêcher"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Automatic adjustable sensation experience"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Love"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "with"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "animosity"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Jeremy Boulder"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Geek"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "and"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "mango"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Mathilde Trudeaux Matisse"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "French"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "in"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "spring"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Art Direction"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Jonathan Colamista"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Hover and click on a card"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #1043db → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,76 @@
+{
+  "slot": "precos",
+  "nome": "secao-141",
+  "scope": "precos-secao-141",
+  "origem": "bank/_componentes/secoes/secao-141",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "swiper"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Strategy That Moves Your Business Forward"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/nav-logo-black.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/contact-bg.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "39 cor(es) mapeadas para tokens por luminância (acento da origem #b7fe02 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/upmind/images/nav-logo-black.svg https://d173woph5zl366.cloudfront.net/upmind/images/contact-bg.avif)",
+    "1 atributo(s) de gancho da ORIGEM (button-text): o React passa-os ao DOM tal e qual, não são erro de sintaxe. Ficam órfãos se o JS de origem não for reescrito"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

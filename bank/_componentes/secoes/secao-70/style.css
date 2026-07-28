@@ -1,0 +1,7 @@
+/* stayli-home-about — local overrides only. All section structure/styling lives
+   in the shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css). The reveal start-state and keyframes also live there. */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}

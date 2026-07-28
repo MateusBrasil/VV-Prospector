@@ -1,0 +1,10 @@
+/* vetic-about-marquee — local overrides only. The real styles live in the shared
+   /vetic/styles.css: .section_about layout, and the double CSS marquee
+   (.about_loop > .section_tags-wrap, keyframes marquee-x / marquee-x-reverse,
+   disabled under prefers-reduced-motion). Header reveals are GSAP via
+   /vetic/scripts/scroll-reveal.js. The source .astro has no scoped <style>. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

@@ -1,0 +1,52 @@
+{
+  "slot": "faq",
+  "nome": "secao-30",
+  "scope": "faq-secao-30",
+  "origem": "bank/_componentes/secoes/secao-30",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "swiper"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Questions, answered"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "What services does Upmind provide?"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "How do you tailor solutions to my business?"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "How long does a typical project take?"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Do you offer ongoing support after launch?"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "38 cor(es) mapeadas para tokens por luminância (acento da origem #b7fe02 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

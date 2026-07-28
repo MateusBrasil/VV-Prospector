@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congra — Speaker Hero</title>
+
+  <!-- Gate de animaciones: .anim en <html> pre-pinta los reveals (opacity:0)
+       solo cuando el visitante permite motion. Igual que el BaseLayout del template. -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+    <script src="navbar.js" defer=""></script>
+  </head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (congra-navbar) -->
+    <div class="navbar w-nav" data-collapse="medium" role="banner" data-nav="">
+          <div class="padding-global is-navbar">
+            <div class="container-large">
+              <div class="navbar_content">
+                <a href="/" aria-current="page" class="navbar_logo-link w-nav-brand">
+                  <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/congra/images/congra.svg" alt="Congra" class="navbar_logo">
+                </a>
+                <div class="nav_wrap">
+                  <nav role="navigation" class="nav_mobile w-nav-menu" data-nav-menu="">
+                    <div class="navbar_list">
+                      <a href="/" aria-current="page" class="link w-inline-block w--current" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">Home</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">Home</div>
+                        </div>
+                      </a>
+                      <a href="/#about" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">about us</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">about us</div>
+                        </div>
+                      </a>
+                      <a href="/#pricing" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">pricing</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">pricing</div>
+                        </div>
+                      </a>
+                      <a href="/#contact" class="link w-inline-block" data-nav-link="">
+                        <div class="link_wrap">
+                          <div class="text-sm">contact</div>
+                        </div>
+                        <div class="link_wrap is-bot">
+                          <div class="text-sm">contact</div>
+                        </div>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+                <div class="nav_buttons-wrap">
+                  <div class="login-wrap hide-mobile-landscape">
+                    <a data-wf--button--variant="secondary" href="/#pricing" class="button w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d w-inline-block">
+                      <div class="button_left w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d">
+                        <div class="clip_intro">
+                          <div class="button_banner-text">
+                            <div class="button_text">get a ticket</div>
+                          </div>
+                          <div class="button_banner-text is-bottom">
+                            <div class="button_text text-color-primary w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d">get a ticket</div>
+                          </div>
+                        </div>
+                        <div class="button_cover w-variant-16339642-0577-1bb6-ab84-e46e09c4ed4d"></div>
+                      </div>
+                    </a>
+                  </div>
+                  <button type="button" class="menu-button w-nav-button" aria-label="Open menu" aria-expanded="false" data-nav-toggle="">
+                    <div class="nav-button_component">
+                      <div class="nav-button_line is-first"></div>
+                      <div class="nav-button_line is-second"></div>
+                      <div class="nav-button_line is-third"></div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar_gradient"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <main class="main-wrapper">
+      <section class="section_speaker">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="speaker_layout">
+              <div class="speaker_content">
+                <div>
+                  <h1 class="h2 slide-left">Alex Carter</h1>
+                  <div class="spacer-xlarge"></div>
+                  <div class="max-description is-80">
+                    <div class="text-color-secondary slide-left">A globally recognized leader in artificial intelligence, Alex Carter has spent over 20 years pushing the boundaries of innovation. She will share her vision of how AI will shape the future of business, creativity, and human connection.</div>
+                  </div>
+                </div>
+                <div class="social_list">
+                  <a href="#" class="social_link slide-left w-inline-block" aria-label="Youtube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                      <path d="M10 15L15.19 12L10 9V15ZM21.56 7.17C21.69 7.64 21.78 8.27 21.84 9.07C21.91 9.87 21.94 10.56 21.94 11.16L22 12C22 14.19 21.84 15.8 21.56 16.83C21.31 17.73 20.73 18.31 19.83 18.56C19.36 18.69 18.5 18.78 17.18 18.84C15.88 18.91 14.69 18.94 13.59 18.94L12 19C7.81 19 5.2 18.84 4.17 18.56C3.27 18.31 2.69 17.73 2.44 16.83C2.31 16.36 2.22 15.73 2.16 14.93C2.09 14.13 2.06 13.44 2.06 12.84L2 12C2 9.81 2.16 8.2 2.44 7.17C2.69 6.27 3.27 5.69 4.17 5.44C4.64 5.31 5.5 5.22 6.82 5.16C8.12 5.09 9.31 5.06 10.41 5.06L12 5C16.19 5 18.8 5.16 19.83 5.44C20.73 5.69 21.31 6.27 21.56 7.17Z" fill="white"></path>
+                    </svg>
+                    <div class="text-sm">Youtube</div>
+                  </a>
+                  <a href="#" class="social_link slide-left w-inline-block" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                      <path d="M16 3C17.3261 3 18.5979 3.52678 19.5355 4.46447C20.4732 5.40215 21 6.67392 21 8V16C21 17.3261 20.4732 18.5979 19.5355 19.5355C18.5979 20.4732 17.3261 21 16 21H8C6.67392 21 5.40215 20.4732 4.46447 19.5355C3.52678 18.5979 3 17.3261 3 16V8C3 6.67392 3.52678 5.40215 4.46447 4.46447C5.40215 3.52678 6.67392 3 8 3H16ZM12 8C10.9391 8 9.92172 8.42143 9.17157 9.17157C8.42143 9.92172 8 10.9391 8 12C8 13.0609 8.42143 14.0783 9.17157 14.8284C9.92172 15.5786 10.9391 16 12 16C13.0609 16 14.0783 15.5786 14.8284 14.8284C15.5786 14.0783 16 13.0609 16 12C16 10.9391 15.5786 9.92172 14.8284 9.17157C14.0783 8.42143 13.0609 8 12 8ZM12 10C12.5304 10 13.0391 10.2107 13.4142 10.5858C13.7893 10.9609 14 11.4696 14 12C14 12.5304 13.7893 13.0391 13.4142 13.4142C13.0391 13.7893 12.5304 14 12 14C11.4696 14 10.9609 13.7893 10.5858 13.4142C10.2107 13.0391 10 12.5304 10 12C10 11.4696 10.2107 10.9609 10.5858 10.5858C10.9609 10.2107 11.4696 10 12 10ZM16.5 6.5C16.2348 6.5 15.9804 6.60536 15.7929 6.79289C15.6054 6.98043 15.5 7.23478 15.5 7.5C15.5 7.76522 15.6054 8.01957 15.7929 8.20711C15.9804 8.39464 16.2348 8.5 16.5 8.5C16.7652 8.5 17.0196 8.39464 17.2071 8.20711C17.3946 8.01957 17.5 7.76522 17.5 7.5C17.5 7.23478 17.3946 6.98043 17.2071 6.79289C17.0196 6.60536 16.7652 6.5 16.5 6.5Z" fill="white"></path>
+                    </svg>
+                    <div class="text-sm">Instagram</div>
+                  </a>
+                  <a href="#" class="social_link slide-left w-inline-block" aria-label="Linkedin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                      <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="white"></path>
+                    </svg>
+                    <div class="text-sm">Linkedin</div>
+                  </a>
+                </div>
+              </div>
+              <div class="speaker_img slide-right">
+                <img src="https://d173woph5zl366.cloudfront.net/congra/images/speakers/alex-carter-avatar.webp" loading="eager" alt="Alex Carter" class="img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

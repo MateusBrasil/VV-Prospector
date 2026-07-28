@@ -1,0 +1,142 @@
+[data-dobra="hero-hero-8"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="hero-hero-8"],[data-dobra="hero-hero-8"]{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--acento);
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="hero-hero-8"] img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
+}
+[data-dobra="hero-hero-8"] .hero{
+  width: 100vw;
+  height: 100vh;
+  padding: 3em;
+}
+[data-dobra="hero-hero-8"] .pre-loader{
+  width: 200%;
+  height: 100%;
+  padding: 2em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.5em;
+  overflow: hidden;
+  z-index: 2;
+}
+[data-dobra="hero-hero-8"] .pre-loader p{
+  width: max-content;
+  text-transform: uppercase;
+
+  font-size: 60px;
+  line-height: 60px;
+}
+[data-dobra="hero-hero-8"] .counter{
+  height: 100px;
+  display: flex;
+
+  font-size: 100px;
+  font-weight: 400;
+  line-height: 150px;
+  clip-path: polygon(0 0, 100% 0, 100% 100px, 0 100px);
+}
+[data-dobra="hero-hero-8"] .digit-1,[data-dobra="hero-hero-8"] .digit-2,[data-dobra="hero-hero-8"] .digit-3,[data-dobra="hero-hero-8"] .digit-4{
+  position: relative;
+  top: -15px;
+}
+[data-dobra="hero-hero-8"] .offset{
+  position: relative;
+  right: -7.5px;
+}
+[data-dobra="hero-hero-8"] .progress-bar{
+  position: relative;
+  top: -15px;
+  width: 0%;
+  height: 4px;
+  background: var(--base-600);
+}
+[data-dobra="hero-hero-8"] .hero-imgs{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+[data-dobra="hero-hero-8"] .website-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+[data-dobra="hero-hero-8"] nav{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: 2em;
+}
+[data-dobra="hero-hero-8"] nav > div{
+  flex: 1;
+
+  font-size: 36px;
+  font-weight: lighter;
+  color: var(--acento);
+  text-transform: uppercase;
+}
+[data-dobra="hero-hero-8"] .site-info{
+  text-align: center;
+}
+[data-dobra="hero-hero-8"] .menu{
+  text-align: right;
+}
+[data-dobra="hero-hero-8"] .header{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="hero-hero-8"] h1{
+  text-transform: uppercase;
+  font-family: var(--fonte-corpo);
+  font-size: 20vw;
+  font-weight: 200;
+  color: var(--acento);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+[data-dobra="hero-hero-8"] h1 span{
+  position: relative;
+  top: 400px;
+}
+@media (max-width: 900px){[data-dobra="hero-hero-8"] .pre-loader{
+    padding: 1em;
+    gap: 0.5em;
+  }
+[data-dobra="hero-hero-8"] .counter{
+    font-size: 70px;
+  }
+[data-dobra="hero-hero-8"] .pre-loader p{
+    font-size: 40px;
+    line-height: 64px;
+  }
+[data-dobra="hero-hero-8"] .offset{
+    position: relative;
+    right: -5px;
+  }
+
+}
+
+

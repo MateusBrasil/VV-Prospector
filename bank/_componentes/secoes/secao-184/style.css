@@ -1,0 +1,65 @@
+body { margin: 0; min-height: 100svh; }
+
+/* Swiper 11's core CSS (swiper-bundle.min.css) sets `.swiper { display:block }` and
+   lays out `.swiper-wrapper` as flex. The source w-slider used `.slide-item`
+   margin-right spacing; Swiper drives translation via `spaceBetween` instead, so
+   neutralize the residual source margin-right on the active track to avoid a double
+   gap. Source `.slide-item.is-three` margin-right was 5rem (now handled by Swiper
+   spaceBetween). Keep the mask card background/radius from .slider-mask.is-three. */
+.slider.is-three.swiper {
+  position: relative;
+}
+.slider.is-three .slide-item.is-three.swiper-slide {
+  margin-right: 0;
+  height: auto;
+}
+
+/* --- Mobile spacing refinement ---
+   At ≤479 the source stacks the header (.testimonial_left) above the card and zeroes
+   its padding (webflow.css @479: .testimonial_left { padding: 0 }), so the
+   "Partnerships" title block sits flush against the card edges. Add a top + lateral
+   inset back so it breathes. Applied ≤767 (cushion) and ≤479 (where source zeroes it). */
+@media screen and (max-width: 767px) {
+  .section_testimonial .testimonial_left {
+    padding-top: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+@media screen and (max-width: 479px) {
+  .section_testimonial .testimonial_left {
+    padding: 1.5rem 1.25rem 0;
+  }
+
+  /* Arrows: source @479 leaves them hugging the card bottom with no breathing room
+     and not centered (.arrow.is-three position:relative; .arrow.is-right.is-three
+     position:absolute bottom:0). Reserve room below the card on the (relatively
+     positioned, NOT display-flex — keep Swiper happy) .slider root, then absolutely
+     position both arrows in a centered row in that reserved strip, lower than source. */
+  .slider.is-three.swiper {
+    padding-bottom: 5rem;
+  }
+  .section_testimonial .arrow.is-three {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-100% - 0.5rem));
+  }
+  .section_testimonial .arrow.is-three:hover,
+  .section_testimonial .arrow.is-three:active {
+    transform: translateX(calc(-100% - 0.5rem)) scale(0.95);
+  }
+  .section_testimonial .arrow.is-right.is-three {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    margin: 0;
+    transform: translateX(0.5rem);
+  }
+  .section_testimonial .arrow.is-right.is-three:hover,
+  .section_testimonial .arrow.is-right.is-three:active {
+    transform: translateX(0.5rem) scale(0.95);
+  }
+}

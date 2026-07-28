@@ -1,0 +1,439 @@
+/* ── Body baseline ─────────────────────────────────────────────────────── */
+body {
+  margin: 0;
+  background: var(--color-bg-dark, #0a1f22);
+  color: var(--color-text-white, #fff);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+/* ── AboutHero ────────────────────────────────────────────────────────── */
+.aboutHero {
+  width: 100%;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.aboutHero__inner {
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4rem var(--container-padding); /* 64px Y — navbar lives outside this container in normal flow */
+  display: flex;
+  flex-direction: column;
+  gap: 3.9375em; /* 63px — matches Figma 132+244+63=439 layout */
+}
+
+/* Header — centered title + subhead. The header spans the full inner
+   container so the heading at 68px can lay out "Your strategic partner
+   for" on a single first line. The subhead has its own narrower
+   max-width (29.875em / 478px) below, so removing the header constraint
+   doesn't widen it. */
+.aboutHero__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em; /* 16px */
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.aboutHero__heading {
+  font-family: var(--font-heading);
+  font-size: 4.25em;       /* 68px */
+  font-weight: 400;
+  line-height: 1.147;      /* 78/68 */
+  letter-spacing: -0.06em;
+  color: var(--color-text-white);
+  margin: 0;
+}
+
+/* SplitText sets `text-align` inline on every line wrapper. Force `center`
+   so the headline reads centered regardless of when SplitText runs. */
+.aboutHero__heading div[aria-hidden] {
+  text-align: center !important;
+}
+
+/* Desktop forces a break after "for". Below tablet the line break is
+   hidden so the text wraps naturally on its own. The whitespace around
+   the <br> stays in the textContent, so SplitText still sees a single
+   string of words separated by spaces. */
+.aboutHero__br {
+  display: inline;
+}
+@media (max-width: 991px) {
+  .aboutHero__br {
+    display: none;
+  }
+}
+
+.aboutHero__subheading {
+  font-family: var(--font-body);
+  font-size: 1em;          /* 16px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.128px;
+  color: var(--color-text-secondary-dark);
+  max-width: 29.875em;     /* 478px */
+  margin: 0;
+}
+
+/* Gallery — 3 image cards in a row, equal flex widths */
+.aboutHero__gallery {
+  display: flex;
+  gap: 1.5em;              /* 24px */
+  width: 100%;
+}
+
+.aboutHero__card {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 30em;            /* 480px */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  /* will-change hints the compositor for the dealing entrance */
+  will-change: transform, opacity;
+}
+
+.aboutHero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .aboutHero__inner {
+    padding: 3rem var(--container-padding); /* 48px Y — tablet */
+    gap: 3em;
+  }
+
+  .aboutHero__heading {
+    font-size: 3.5em;
+    letter-spacing: -0.05em;
+  }
+
+  .aboutHero__card {
+    height: 22em;
+  }
+}
+
+@media (max-width: 767px) {
+  .aboutHero__inner {
+    padding: 2.5rem var(--container-padding); /* 40px Y — landscape */
+    gap: 2em;
+  }
+
+  .aboutHero__heading {
+    font-size: 2.75em;
+    letter-spacing: -0.04em;
+  }
+
+  /* Landscape — keep 2 of the 3 cards side-by-side. The third (cropped
+     hardhat) is the natural drop because it's the most context-heavy
+     and reads thin at this width. Cards stay row-aligned with a smaller
+     gap and a portrait aspect ratio that matches the source images. */
+  .aboutHero__gallery {
+    gap: 1em;
+  }
+
+  .aboutHero__card {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .aboutHero__card:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .aboutHero__inner {
+    padding: 2rem var(--container-padding); /* 32px Y — portrait */
+    gap: 1.75em;
+  }
+
+  .aboutHero__heading {
+    font-size: 2.25em;
+    letter-spacing: -0.03em;
+  }
+
+  /* Portrait — only one card. The first one (tablet) reads as the
+     cleanest single-image hero. The other two are hidden completely. */
+  .aboutHero__card:nth-child(n+2) {
+    display: none;
+  }
+
+  .aboutHero__card {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* ── Navbar (inlined from Navbar.astro, dark variant) ──────────────────── */
+.navbar {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-dark);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 1em var(--container-padding);
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  color: var(--color-text-white);
+}
+
+.navbar__logo {
+  height: 2rem;            /* 32px cap — never taller than this */
+  width: auto;
+  aspect-ratio: 114 / 40;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  padding: 0.75em;
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.navbar__link:focus-visible {
+  color: var(--color-text-white);
+}
+
+@media (min-width: 992px) {
+  .navbar__link:hover {
+    color: var(--color-text-white);
+  }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.navbar__cta {
+  height: 3rem;
+  min-height: 3rem;
+}
+
+/* Hamburger toggle — hidden on desktop, shown at ≤991px. */
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--color-text-white-soft);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__toggle:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+}
+
+.navbar__toggleBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.375em;          /* 22px */
+  height: 2px;
+  margin-left: -0.6875em;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 280ms ease, opacity 200ms ease;
+}
+
+.navbar__toggleBar:nth-child(1) { transform: translateY(-0.4375em); }
+.navbar__toggleBar:nth-child(2) { transform: translateY(0); }
+.navbar__toggleBar:nth-child(3) { transform: translateY(0.4375em); }
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* Drawer — glass floating panel at ≤991px. */
+.navbar__drawer {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: var(--container-padding);
+  left: var(--container-padding);
+  z-index: 50;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 32px 64px -24px rgba(0, 0, 0, 0.55),
+    0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 320ms;
+}
+
+.navbar__drawer[hidden] { display: block; }
+
+.navbar__drawer.is-open {
+  max-height: 80vh;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 0s;
+}
+
+.navbar__drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1rem;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar__drawerCtaItem {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.navbar__drawerCta {
+  width: 100%;
+}
+
+.navbar__drawerLinks li {
+  margin: 0;
+}
+
+.navbar__drawerLink {
+  display: block;
+  padding: 0.5em 0.75em;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  background-color: transparent;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__drawerLink:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(205, 203, 255, 0.10);
+  color: var(--color-accent);
+}
+
+@media (max-width: 991px) {
+  .navbar__inner {
+    padding: 0.75em var(--container-padding);
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__left {
+    gap: 1em;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar__drawerLinks {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__drawerCtaItem {
+    display: list-item;
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "slot": "hero",
+  "nome": "hero-20",
+  "scope": "hero-hero-20",
+  "origem": "bank/_componentes/hero-section/hero-20/cinematic-loader-entrance/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap)",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

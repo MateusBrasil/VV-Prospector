@@ -1,0 +1,262 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-53",
+  "scope": "destaque-scroll-53",
+  "origem": "bank/_componentes/scroll/scroll-53",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Wasteland Couture"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Wasteland Couture"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "In a world where the line between chaos and order is blurred, our\n        dystopian fashion brand emerges as a beacon of rebellion. We craft\n        garments th"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Our collection is inspired by the grit and grime of a dystopian future,\n        where functionality meets raw beauty. From tattered fabrics to\n        industria"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Selected Clients"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Ames"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Billiani"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Botteganove"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Budri"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "CC-Tapis"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Cedit"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Esperia"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Experimental Group"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Fendi"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Ames"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Fornace Brioni"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Etel"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Giovanni De Maio"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Kaldewei"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Margraf"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "Kundalini"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "Wonderglass"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "Torri Lana"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "The Socialite Family"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "Maison Matisse"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "Gervasoni"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "Sergio Rossi"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "Gebruder Thonet Vienna"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "Lison De Caunes"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "Luisa Via Roma"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "Misha"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "Nilufar"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "Paola C"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "Palazzo Avino"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "Luisa Via Roma"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "Pianca"
+    },
+    {
+      "nome": "texto35",
+      "tipo": "texto",
+      "exemplo": "Saba"
+    },
+    {
+      "nome": "texto36",
+      "tipo": "texto",
+      "exemplo": "Moooi"
+    },
+    {
+      "nome": "texto37",
+      "tipo": "texto",
+      "exemplo": "All"
+    },
+    {
+      "nome": "texto38",
+      "tipo": "texto",
+      "exemplo": "Lighting"
+    },
+    {
+      "nome": "texto39",
+      "tipo": "texto",
+      "exemplo": "Textiles"
+    },
+    {
+      "nome": "texto40",
+      "tipo": "texto",
+      "exemplo": "Furniture"
+    },
+    {
+      "nome": "texto41",
+      "tipo": "texto",
+      "exemplo": "Accessories"
+    },
+    {
+      "nome": "texto42",
+      "tipo": "texto",
+      "exemplo": "Surfaces"
+    },
+    {
+      "nome": "texto43",
+      "tipo": "texto",
+      "exemplo": "In the world of fashion, where style meets survival, our brand stands at\n        the forefront of the dystopian era. Our designs are inspired by the\n        har"
+    },
+    {
+      "nome": "texto44",
+      "tipo": "texto",
+      "exemplo": "Our collections feature weathered fabrics, rugged textures, and a\n        monochromatic palette that reflects the stark landscapes of a dystopian\n        future"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

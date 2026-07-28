@@ -1,0 +1,10 @@
+/* stayli-destinations — local overrides only. All section structure/styling lives
+   in the shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css). The carousel is wired by /stayli/scripts/swiper-init.js
+   (Swiper path A, data-swiper). Nothing section-specific to override here beyond
+   the body reset. */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: var(--bg-color--bg-primary, #fcfcfc);
+}

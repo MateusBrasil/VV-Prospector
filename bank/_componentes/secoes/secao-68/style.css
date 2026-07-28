@@ -1,0 +1,8 @@
+/* hirely-alternative — local overrides only. The shared /hirely/styles.css carries
+   the section layout (.section_alternative, .alternative-grid, .alternative_item,
+   .alternative_header), the .bg-yellow surface, spacers and tokens. This section
+   has no sub-component <style> to inline; only a minimal body reset. */
+
+body {
+  margin: 0;
+}

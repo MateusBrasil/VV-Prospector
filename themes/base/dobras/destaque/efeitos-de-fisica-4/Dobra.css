@@ -1,0 +1,60 @@
+[data-dobra="destaque-efeitos-de-fisica-4"]{
+      --cell-size: 8px;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] *{
+      user-select: none;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"]{
+      margin: 0;
+      background-color: var(--base-600);
+      color: var(--base-100);
+      font-family: var(--fonte-mono);
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] canvas{
+      z-index: 10;
+      image-rendering: pixelated;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .render{
+      position: fixed;
+      top: 0;
+      left: 0;
+      white-space: pre;
+      letter-spacing: 0.4em;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits{
+      text-transform: uppercase;
+      position: fixed;
+      top: 0.5em;
+      letter-spacing: 0.1em;
+      z-index: 100;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits.-right{
+      right: 0;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits.-left{
+      left: 0;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .render,[data-dobra="destaque-efeitos-de-fisica-4"] .credits{
+      font-size: var(--cell-size);
+      line-height: var(--cell-size);
+      font-weight: 700;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits a{
+      color: var(--base-100);
+      text-decoration: none;
+      display: block;
+      padding: 0.5em 1em 1.5em;
+      text-align: right;
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits a:hover{
+      color: var(--acento);
+    }
+[data-dobra="destaque-efeitos-de-fisica-4"] .credits .credits-label{
+      display: inline-block;
+      background: black;
+    }
+
+  

@@ -1,0 +1,24 @@
+{
+  "slot": "vitrine",
+  "nome": "3d-carousel-with-scroll",
+  "scope": "vitrine-3d-carousel-with-scroll",
+  "origem": "bank/_componentes/carrossel/3d-carousel-with-scroll",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

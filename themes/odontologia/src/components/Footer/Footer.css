@@ -1,0 +1,113 @@
+.footer {
+  width: 100%;
+  background-color: var(--base-600);
+  color: var(--base-100);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--respiro);
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: var(--respiro);
+}
+
+.footer-convite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  max-width: 22ch;
+}
+
+.footer-convite h2 {
+  color: var(--base-100);
+}
+
+.footer-botao {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 1.6rem;
+  border-radius: 999px;
+  background-color: var(--acento);
+  color: var(--base-100);
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-botao:hover {
+  background-color: var(--base-100);
+  color: var(--base-600);
+}
+
+.footer-colunas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--base-100) 20%, transparent);
+}
+
+.footer-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer-rotulo {
+  color: var(--base-300);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-morada {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+
+.footer-morada span,
+.footer-valor {
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  line-height: 1.6;
+  color: var(--base-200);
+  text-decoration: none;
+}
+
+a.footer-valor {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a.footer-valor:hover {
+  color: var(--base-100);
+}
+
+.footer-barra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--base-100) 20%, transparent);
+}
+
+.footer-barra p {
+  color: var(--base-300);
+}
+
+@media (max-width: 1000px) {
+  .footer-inner {
+    gap: var(--respiro-compacto);
+    padding: var(--respiro-compacto);
+  }
+}

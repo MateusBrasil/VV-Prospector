@@ -1,0 +1,405 @@
+---
+// Shared "Pronta para build" CTA — single source of truth used at the bottom
+// of Sobre, team detail, and any future page that ends with the same call
+// to action. Mirrors the Footer / Navbar pattern: change the component, all
+// usages update.
+//
+// Bottom decorative visual: manos2.png lives inside a flex-centered spacer
+// with a fixed height. The image is rendered with opacity:0 (kept in DOM
+// only as the sample source). A halftone canvas overlay covers the whole
+// section above the image and below the header — samples the image's pixels
+// and renders dots either with Bayer 4×4 dither (scattered, blog-thumb
+// style) or aligned in a clean grid (HalftoneCanvas-bg style). Header
+// buttons sit at z-30 so the filter never touches them.
+
+import { Image } from "astro:assets";
+import AccentButton from "./AccentButton.astro";
+import SecondaryButton from "./SecondaryButton.astro";
+import manosImage from "../assets/manos2.png";
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  subhead?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  /** Render the decorative spacer + image. Default true. */
+  showVisual?: boolean;
+}
+
+const {
+  eyebrow = "[ get comecaed ]",
+  headline = "Pronta para build the future<br /> of your data stack?",
+  subhead = "Join 2,000+ AI teams already shipping faster with Eagle.",
+  primaryLabel = "Comecar gratis",
+  primaryHref = "/contact",
+  secondaryLabel = "Agendar demo",
+  secondaryHref = "/contact",
+  showVisual = true,
+} = Astro.props;
+
+// Spacer + image positioning
+const SPACER_HEIGHT_REM = 20;
+const IMG_OFFSET_Y_PERCENT = -30;
+
+// Halftone filter — locked-in values.
+const FILTER_MODE: "scattered" | "grid" = "grid";
+const FILTER_CELL_SIZE = 6;
+const FILTER_GAMMA = 1;
+const FILTER_SPREAD = 0.95;
+const FILTER_DOT_COLOR = "#b5d2ff";
+const FILTER_GAP = 1;
+const FILTER_MIN_SIZE = 0;
+const FILTER_MAX_SIZE = 1;
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("cta-section-pre-anim");
+  }
+</script>
+
+<section
+  class="relative pt-[5rem] pb-[3.25rem] md:pt-[5.875rem] md:pb-0"
+  data-cta-section
+>
+  <div
+    class="relative z-30 mx-auto flex w-full max-w-[68rem] flex-col items-center gap-[1.75rem] px-4 md:gap-[2.25rem] md:px-0"
+  >
+    <div class="flex max-w-[64.25rem] flex-col items-center gap-4 text-center font-mono uppercase md:gap-[0.75rem]">
+      <span
+        class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+        data-cta-section-eyebrow
+      >
+        {eyebrow}
+      </span>
+      <h2
+        class="text-[2rem] leading-[1.05] tracking-[3.2px] text-white md:text-[2.5rem] md:leading-none md:tracking-[4.8px] lg:text-[3rem] lg:tracking-[5.76px]"
+        data-cta-section-headline
+        set:html={headline}
+      />
+      <p
+        class="max-w-[32.3125rem] text-[0.875rem] leading-[1.2857] text-white/60"
+        data-cta-section-subhead
+      >
+        {subhead}
+      </p>
+    </div>
+
+    <div class="flex w-full flex-col gap-[0.75rem] sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center" data-cta-section-buttons>
+      <AccentButton class="w-full sm:w-auto">{primaryLabel}</AccentButton>
+      <SecondaryButton class="w-full sm:w-auto">{secondaryLabel}</SecondaryButton>
+    </div>
+  </div>
+
+  {showVisual && (
+    <div
+      class="relative mt-[2.5rem] hidden w-full items-center justify-center md:mt-[3rem] md:flex"
+      style={`height: ${SPACER_HEIGHT_REM}rem;`}
+      aria-hidden="true"
+    >
+      <Image
+        src={manosImage}
+        alt=""
+        widths={[640, 960, 1280, 1600, 1920]}
+        sizes="100vw"
+        format="webp"
+        quality={82}
+        loading="lazy"
+        decoding="async"
+        class="pointer-events-none relative block h-auto w-full max-w-none flex-shrink-0 select-none opacity-0"
+        style={`top: ${IMG_OFFSET_Y_PERCENT}%;`}
+        draggable="false"
+        data-cta-section-image
+      />
+    </div>
+  )}
+
+  {showVisual && (
+    <canvas
+      class="pointer-events-none absolute inset-0 z-10 hidden h-full w-full md:block"
+      data-cta-section-filter
+      data-mode={FILTER_MODE}
+      data-cell={FILTER_CELL_SIZE}
+      data-gamma={FILTER_GAMMA}
+      data-spread={FILTER_SPREAD}
+      data-dot-color={FILTER_DOT_COLOR}
+      data-gap={FILTER_GAP}
+      data-min-size={FILTER_MIN_SIZE}
+      data-max-size={FILTER_MAX_SIZE}
+      aria-hidden="true"
+    ></canvas>
+  )}
+</section>
+
+<style>
+  .cta-section-pre-anim [data-cta-section-eyebrow],
+  .cta-section-pre-anim [data-cta-section-headline],
+  .cta-section-pre-anim [data-cta-section-subhead],
+  .cta-section-pre-anim [data-cta-section-buttons] {
+    visibility: hidden;
+  }
+
+  /* Periwinkle glow on the halftone dots — three-layer drop-shadow stack
+     mirroring the canonical Eagle pattern (`.periwinkle-glow`, accent
+     buttons, etc.). Color matches FILTER_DOT_COLOR (#b5d2ff = rgb 181 210 255). */
+  [data-cta-section-filter] {
+    filter:
+      drop-shadow(0 0 4px rgba(181, 210, 255, 0.8))
+      drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+      drop-shadow(0 0 18px rgba(181, 210, 255, 0.25));
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      document.documentElement.classList.remove("cta-section-pre-anim");
+      return;
+    }
+    const section = document.querySelector<HTMLElement>("[data-cta-section]");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-cta-section-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-cta-section-headline]");
+    const subhead = section.querySelector<HTMLElement>("[data-cta-section-subhead]");
+    const buttons = section.querySelector<HTMLElement>("[data-cta-section-buttons]");
+
+    // SplitText is enabled at all viewports — the headline's max-w / parent
+    // width is wide enough that lines wrap naturally (3-4 words per line)
+    // even on mobile/tablet. Earlier we gated this to lg+ because the previous
+    // narrower max-w caused per-word fragmentation, which has since been fixed.
+    const useSplit = true;
+
+    const eyebrowSplit = useSplit && eyebrow ? new SplitText(eyebrow, { type: "lines", mask: "lines" }) : null;
+    const headlineSplit = useSplit && headline ? new SplitText(headline, { type: "lines", mask: "lines" }) : null;
+    const subheadSplit = useSplit && subhead ? new SplitText(subhead, { type: "lines", mask: "lines" }) : null;
+
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    else if (eyebrow) gsap.set(eyebrow, { opacity: 0, y: 14 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    else if (headline) gsap.set(headline, { opacity: 0, y: 14 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+    else if (subhead) gsap.set(subhead, { opacity: 0, y: 14 });
+    if (buttons) gsap.set(buttons, { opacity: 0, y: 14 });
+
+    document.documentElement.classList.remove("cta-section-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+    });
+    if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+    else if (eyebrow) tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0);
+    if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.15);
+    else if (headline) tl.to(headline, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal" }, 0.15);
+    if (subheadSplit) tl.to(subheadSplit.lines, { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 }, 0.4);
+    else if (subhead) tl.to(subhead, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.4);
+    if (buttons) tl.to(buttons, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.65);
+  };
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+</script>
+
+<script>
+  /* Halftone filter — samples the manos image and renders dots either with
+     Bayer 4×4 dither (scattered) or aligned in a grid (grid). Canvas covers
+     the whole section; cells outside the image rect render transparent so
+     only the image area is filtered.
+
+     Entry animation: revelarProgress (0 → 1) gates which cells render.
+     Bright pixels (high luminance) appear first, dim pixels later — a
+     "develop" revelar driven by ScrollTrigger. No movement, just threshold/
+     size scaling so the header animation is unaffected. */
+
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger);
+  registerEagleEases();
+
+  const BAYER_RAW = [
+    [0, 8, 2, 10],
+    [12, 4, 14, 6],
+    [3, 11, 1, 9],
+    [15, 7, 13, 5],
+  ];
+  const BAYER_CENTERED = BAYER_RAW.map((row) => row.map((v) => v / 16 - 0.5));
+
+  const initFilter = () => {
+    const section = document.querySelector<HTMLElement>("[data-cta-section]");
+    const canvas = document.querySelector<HTMLCanvasElement>("[data-cta-section-filter]");
+    const img = document.querySelector<HTMLImageElement>("[data-cta-section-image]");
+    if (!section || !canvas || !img) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const ds = canvas.dataset;
+    const config = {
+      mode: (ds.mode === "grid" ? "grid" : "scattered") as "scattered" | "grid",
+      cell: parseFloat(ds.cell || "4"),
+      gamma: parseFloat(ds.gamma || "1.65"),
+      spread: parseFloat(ds.spread || "1"),
+      dotColor: ds.dotColor || "#b5d2ff",
+      gap: parseFloat(ds.gap || "1"),
+      minSize: parseFloat(ds.minSize || "0.1"),
+      maxSize: parseFloat(ds.maxSize || "1"),
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let revelarProgress = reduceMotion ? 1 : 0;
+
+    let imgData: { w: number; h: number; data: Uint8ClampedArray } | null = null;
+    let imgRect = { x: 0, y: 0, w: 0, h: 0 };
+
+    const resample = () => {
+      if (!img.naturalWidth) return;
+      const sectionR = section.getBoundingClientRect();
+      const imgR = img.getBoundingClientRect();
+      imgRect = {
+        x: imgR.left - sectionR.left,
+        y: imgR.top - sectionR.top,
+        w: imgR.width,
+        h: imgR.height,
+      };
+
+      const off = document.createElement("canvas");
+      off.width = Math.max(1, Math.ceil(imgR.width));
+      off.height = Math.max(1, Math.ceil(imgR.height));
+      const offCtx = off.getContext("2d");
+      if (!offCtx) return;
+      offCtx.drawImage(img, 0, 0, off.width, off.height);
+      imgData = { w: off.width, h: off.height, data: offCtx.getImageData(0, 0, off.width, off.height).data };
+    };
+
+    const paint = () => {
+      if (!imgData) return;
+      const sectionR = section.getBoundingClientRect();
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const w = Math.max(1, Math.ceil(sectionR.width));
+      const h = Math.max(1, Math.ceil(sectionR.height));
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + "px";
+      canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = config.dotColor;
+
+      // Reveal threshold — only cells whose normalized brightness exceeds
+      // (1 - revelarProgress) are eligible to render. progress=0 → nothing,
+      // progress=1 → everything passes (raw brightness).
+      const revelarCutoff = 1 - revelarProgress;
+
+      if (config.mode === "scattered") {
+        const px = Math.max(1, config.cell);
+        const cols = Math.ceil(w / px);
+        const rows = Math.ceil(h / px);
+        for (let ry = 0; ry < rows; ry++) {
+          const cy = ry * px + Math.floor(px / 2);
+          const imgY = cy - imgRect.y;
+          if (imgY < 0 || imgY >= imgRect.h) continue;
+          for (let rx = 0; rx < cols; rx++) {
+            const cx = rx * px + Math.floor(px / 2);
+            const imgX = cx - imgRect.x;
+            if (imgX < 0 || imgX >= imgRect.w) continue;
+            const sx = Math.min(imgData.w - 1, Math.floor((imgX / imgRect.w) * imgData.w));
+            const sy = Math.min(imgData.h - 1, Math.floor((imgY / imgRect.h) * imgData.h));
+            const idx = (sy * imgData.w + sx) * 4;
+            const lum =
+              (0.2126 * imgData.data[idx] +
+                0.7152 * imgData.data[idx + 1] +
+                0.0722 * imgData.data[idx + 2]) /
+              255;
+            const shaped = Math.pow(lum, config.gamma);
+            // Reveal gate: skip cells whose brightness hasn't been "uncovered"
+            // yet by the progress sweep.
+            if (shaped < revelarCutoff) continue;
+            const offset = config.spread * BAYER_CENTERED[ry & 3][rx & 3];
+            if (shaped + offset <= 0.5) continue;
+            ctx.fillRect(rx * px, ry * px, px, px);
+          }
+        }
+      } else {
+        const cell = Math.max(1, config.cell);
+        const step = cell + Math.max(0, config.gap);
+        const cols = Math.ceil(w / step);
+        const rows = Math.ceil(h / step);
+        const halfCell = cell / 2;
+        const minR = config.minSize * halfCell;
+        const maxR = config.maxSize * halfCell;
+        const range = maxR - minR;
+        for (let ry = 0; ry < rows; ry++) {
+          const cy = ry * step + step / 2;
+          const imgY = cy - imgRect.y;
+          if (imgY < 0 || imgY >= imgRect.h) continue;
+          for (let rx = 0; rx < cols; rx++) {
+            const cx = rx * step + step / 2;
+            const imgX = cx - imgRect.x;
+            if (imgX < 0 || imgX >= imgRect.w) continue;
+            const sx = Math.min(imgData.w - 1, Math.floor((imgX / imgRect.w) * imgData.w));
+            const sy = Math.min(imgData.h - 1, Math.floor((imgY / imgRect.h) * imgData.h));
+            const idx = (sy * imgData.w + sx) * 4;
+            const lum =
+              (0.2126 * imgData.data[idx] +
+                0.7152 * imgData.data[idx + 1] +
+                0.0722 * imgData.data[idx + 2]) /
+              255;
+            const shaped = Math.min(1, Math.max(0, Math.pow(lum, config.gamma)));
+            // Reveal gate: same as scattered — bright cells appear first.
+            if (shaped < revelarCutoff) continue;
+            const half = minR + range * shaped;
+            if (half <= 0.05) continue;
+            const side = half * 2;
+            ctx.fillRect(cx - half, cy - half, side, side);
+          }
+        }
+      }
+    };
+
+    const renderAll = () => {
+      resample();
+      paint();
+    };
+
+    const onReady = () => {
+      renderAll();
+      if (reduceMotion) return;
+      // Develop-style revelar: bright cells (the hands) appear first, dim
+      // cells (background) flow in last. Triggered when the section enters
+      // the viewport. Pure threshold-driven — no movement, no transform.
+      const progressObj = { p: 0 };
+      gsap.to(progressObj, {
+        p: 1,
+        duration: 1.2,
+        ease: "eagleReveal",
+        scrollTrigger: { trigger: section, comeca: "top 85%", once: true },
+        onUpdate: () => {
+          revelarProgress = progressObj.p;
+          paint();
+        },
+      });
+    };
+
+    if (img.complete && img.naturalWidth > 0) onReady();
+    else img.addEventListener("load", onReady, { once: true });
+
+    const ro = new ResizeObserver(() => renderAll());
+    ro.observe(section);
+  };
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initFilter);
+  else initFilter();
+</script>

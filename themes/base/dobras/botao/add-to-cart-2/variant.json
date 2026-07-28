@@ -1,0 +1,41 @@
+{
+  "slot": "botao",
+  "nome": "add-to-cart-2",
+  "scope": "botao-add-to-cart-2",
+  "origem": "bank/_componentes/botoes/add-to-cart-2",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://dribbble.com/shots/9713067-Add-to-cart"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #362a89 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://dribbble.com/shots/9713067-Add-to-cart https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

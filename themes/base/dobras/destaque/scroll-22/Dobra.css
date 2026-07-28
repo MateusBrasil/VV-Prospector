@@ -1,0 +1,229 @@
+[data-dobra="destaque-scroll-22"] *,[data-dobra="destaque-scroll-22"] *::after,[data-dobra="destaque-scroll-22"] *::before{
+	box-sizing: border-box;
+}
+[data-dobra="destaque-scroll-22"]{
+	font-size: 14px;
+	--color-text: var(--base-100);
+	--color-bg: var(--base-300);
+	--color-link: var(--base-100);
+	--color-link-hover: var(--base-100);
+	--padding-page: 2rem;
+}
+[data-dobra="destaque-scroll-22"]{
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: var(--fonte-corpo);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-transform: uppercase;
+	overflow-x: hidden;
+}
+[data-dobra="destaque-scroll-22"] .js .loading::before,[data-dobra="destaque-scroll-22"] .js .loading::after{
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+[data-dobra="destaque-scroll-22"] .js .loading::before{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+[data-dobra="destaque-scroll-22"] .js .loading::after{
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+@keyframes loaderAnim{
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+[data-dobra="destaque-scroll-22"] a{
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+	cursor: pointer;
+}
+[data-dobra="destaque-scroll-22"] a:hover{
+	color: var(--color-link-hover);
+	outline: none;
+}
+[data-dobra="destaque-scroll-22"] a:focus{
+	
+	outline: none;
+	background: lightgrey;
+}
+[data-dobra="destaque-scroll-22"] a:focus:not(:focus-visible){
+	
+	background: transparent;
+}
+[data-dobra="destaque-scroll-22"] a:focus-visible{
+	
+	outline: 2px solid red;
+	background: transparent;
+}
+[data-dobra="destaque-scroll-22"] .unbutton{
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+[data-dobra="destaque-scroll-22"] .unbutton:focus{
+	outline: none;
+}
+[data-dobra="destaque-scroll-22"] .frame{
+	z-index: 1000;
+	position: fixed;
+	width: 100%;
+	padding: var(--padding-page);
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-areas: 'title' 'prev' 'sponsor';
+	grid-gap: 0.5rem;
+	justify-items: start;
+	align-self: start;
+	justify-self: start;
+	pointer-events: none;
+	align-items: center;
+}
+[data-dobra="destaque-scroll-22"] .loading .frame{
+	opacity: 0;
+}
+[data-dobra="destaque-scroll-22"] body #cdawrap{
+    justify-self: start;
+}
+[data-dobra="destaque-scroll-22"] .frame a{
+	pointer-events: auto;
+}
+[data-dobra="destaque-scroll-22"] .frame a:not(.frame__title-back){
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+}
+[data-dobra="destaque-scroll-22"] .frame a:not(.frame__title-back)::before{
+	content: '';
+	height: 1px;
+	width: 100%;
+	background: currentColor;
+	position: absolute;
+	top: 90%;
+	transition: transform 0.3s;
+	transform-origin: 0% 50%;
+}
+[data-dobra="destaque-scroll-22"] .frame a:not(.frame__title-back):hover::before{
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+}
+[data-dobra="destaque-scroll-22"] .frame__title{
+	grid-area: title;
+	display: flex;
+}
+[data-dobra="destaque-scroll-22"] .frame__title-main{
+	font-size: inherit;
+	margin: 0;
+	font-weight: inherit;
+}
+[data-dobra="destaque-scroll-22"] .frame__title-back{
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 0.15rem;
+}
+[data-dobra="destaque-scroll-22"] .frame__title-back span{
+	display: none;
+}
+[data-dobra="destaque-scroll-22"] .frame__title-back svg{
+	fill: currentColor;
+}
+[data-dobra="destaque-scroll-22"] .frame__prev{
+	grid-area: prev;
+}
+[data-dobra="destaque-scroll-22"] .deco{
+	position: fixed;
+	stroke: var(--base-100);
+	stroke-width: 1px;
+	top: var(--padding-page);
+	right: var(--padding-page);
+	z-index: 900;
+	pointer-events: none;
+	fill: none;
+	height: 150px;
+	width: 150px;
+}
+[data-dobra="destaque-scroll-22"] .content{
+	display: grid;
+	grid-template-rows: 100vh 1fr auto;
+	grid-template-columns: 100%;
+	width: 100vw;
+	--imgRatio: 1344 / 896;
+	height: calc(var(--imgRatio) * 100vw);
+	padding: 0 var(--padding-page);
+	position: relative;
+}
+[data-dobra="destaque-scroll-22"] .canvas-wrap{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-position: 50% 50%;
+	background-size: cover;
+	opacity: 0;
+}
+[data-dobra="destaque-scroll-22"] .no-js .canvas-wrap{
+	opacity: 1;
+}
+[data-dobra="destaque-scroll-22"] .content__inner{
+	position: relative;
+	justify-self: end;
+	align-self: end;
+	padding-bottom: var(--padding-page);
+}
+[data-dobra="destaque-scroll-22"] h2{
+	position: relative;
+	font-size: 10vw;
+	font-weight: 400;
+	text-align: right;
+	margin: 0;
+	line-height: 0.8;
+}
+[data-dobra="destaque-scroll-22"] p{
+	position: relative;
+	grid-area: content;
+	margin: 1rem 0 0 auto;
+	text-align: right;
+	max-width: 400px;
+	justify-self: end;
+}
+[data-dobra="destaque-scroll-22"] h2 span:nth-child(even){
+	font-size: 10.5vw;
+	font-family: var(--fonte-corpo);
+}
+@media screen and (min-width: 53em){[data-dobra="destaque-scroll-22"] .frame{
+		height: 100vh;
+		grid-template-columns: auto auto 1fr;
+		grid-template-rows: auto auto;
+		grid-template-areas: 'title prev ...' 'sponsor sponsor ...';
+		align-content: space-between;
+		justify-items: start;
+		grid-gap: 2rem;
+	}
+[data-dobra="destaque-scroll-22"] .frame__demos{
+		justify-self: end;
+	}
+
+}
+
+

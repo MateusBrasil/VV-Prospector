@@ -1,0 +1,145 @@
+{
+  "slot": "precos",
+  "nome": "secao-108",
+  "scope": "precos-secao-108",
+  "origem": "bank/_componentes/secoes/secao-108",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Features"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Features"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Build &amp; growth with scalable tools"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Free trial"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/logo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/hero-icon-one.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/hero-icon-two.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/hero-icon-three.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/hero-icon-four.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/hero-image.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/tag-one.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/tag-two.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/tag-three.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 11
+  },
+  "_rever": [
+    "42 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "11 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/advisora/images/logo.svg https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

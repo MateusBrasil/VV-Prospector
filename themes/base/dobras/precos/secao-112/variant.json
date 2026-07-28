@@ -1,0 +1,112 @@
+{
+  "slot": "precos",
+  "nome": "secao-112",
+  "scope": "precos-secao-112",
+  "origem": "bank/_componentes/secoes/secao-112",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "swiper"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/videos/asdsa_poster.0000000.jpg"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Clear insights. Real strategy. Sustainable growth."
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/nav-logo-black.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/ai-fill.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/ai-fill.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/ai-fill.svg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/ai-fill.svg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/upmind/images/ai-fill.svg"
+    },
+    {
+      "nome": "video",
+      "tipo": "video",
+      "exemplo": "asdsa_mp4.mp4"
+    },
+    {
+      "nome": "video2",
+      "tipo": "video",
+      "exemplo": "asdsa_webm.webm"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 7
+  },
+  "_rever": [
+    "44 cor(es) mapeadas para tokens por luminância (acento da origem #b7fe02 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "7 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/upmind/videos/asdsa_poster.0000000.jpg https://d173woph5zl366.cloudfront.net/upmind/images/nav-logo-black.svg)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d173woph5zl366.cloudfront.net/upmind/images/hero-img-three.avif https://d173woph5zl366.cloudfront.net/upmind/images/hero-img.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

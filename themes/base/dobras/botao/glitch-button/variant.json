@@ -1,0 +1,26 @@
+{
+  "slot": "botao",
+  "nome": "glitch-button",
+  "scope": "botao-glitch-button",
+  "origem": "bank/_componentes/botoes/glitch-button",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Garantir minha Vaga"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #1df2f0 → var(--acento)): confirmar no ecrã que o contraste se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

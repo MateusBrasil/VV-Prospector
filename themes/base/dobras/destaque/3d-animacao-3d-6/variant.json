@@ -1,0 +1,34 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-6",
+  "scope": "destaque-3d-animacao-3d-6",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-6",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://t//"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://vwlab.io"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #e19800 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://t// https://vwlab.io)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

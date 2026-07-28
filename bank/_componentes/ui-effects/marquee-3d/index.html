@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Marquee</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #222;
+      background-color: #ececec;
+      
+      font-size: 36px;
+      font-family: "Bricolage Grotesque", sans-serif;
+      letter-spacing: 1px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 800px;
+      overflow: hidden; /* Evita barras de rolagem por conta dos elementos 3D */
+      
+      --depth: -200px;
+      --side-rotation: 50deg;
+      --marquee-width: clamp(300px, 40vw, 500px);
+      --speed: 7s;
+    }
+
+    .marquee-wrapper {
+      width: var(--marquee-width);
+      height: min(100vh, 600px);
+      overflow: hidden;
+      flex-shrink: 0;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      transform: translateZ(var(--depth));
+      
+      background-image: 
+        repeating-linear-gradient(0deg, #fffa 0 1px, transparent 1px 40px), 
+        repeating-linear-gradient(-90deg, #fffa 0 1px, transparent 1px 40px);
+    }
+
+    .marquee-wrapper .marquee {
+      width: max-content;
+      padding: 12px 0;
+      border: 1px solid;
+      border-width: 2px 0;
+      
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 12px;
+      
+      animation: marquee linear var(--speed) infinite both;
+    }
+
+    .marquee-wrapper.center {
+      background-color: #fff5;
+    }
+
+    .marquee-wrapper.left {
+      transform-origin: right center;
+      transform: translateZ(var(--depth)) rotateY(var(--side-rotation));
+      -webkit-mask: linear-gradient(to right, transparent, #000 10%);
+      mask: linear-gradient(to right, transparent, #000 10%);
+    }
+
+    .marquee-wrapper.left .marquee {
+      animation-name: marquee-left;
+    }
+
+    .marquee-wrapper.right {
+      transform-origin: left center;
+      transform: translateZ(var(--depth)) rotateY(calc(var(--side-rotation) * -1));
+      -webkit-mask: linear-gradient(to left, transparent, #000 10%);
+      mask: linear-gradient(to left, transparent, #000 10%);
+    }
+
+    .marquee-wrapper.right .marquee {
+      animation-name: marquee-right;
+      animation-duration: calc(var(--speed) * 2);
+    }
+
+    .marquee-wrapper .emoji-1 {
+      display: inline-block;
+      animation: rotate 1s linear both infinite alternate;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes marquee-left {
+      from {
+        transform: translateX(calc(-50% + var(--marquee-width)));
+      }
+      to {
+        transform: translateX(calc(-100% + var(--marquee-width)));
+      }
+    }
+
+    @keyframes marquee-right {
+      from {
+        transform: translateX(calc(var(--marquee-width) * -1));
+      }
+      to {
+        transform: translateX(calc(-50% - var(--marquee-width)));
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        rotate: -15deg;
+      }
+      to {
+        rotate: 15deg;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Group: Left (count: 2) -->
+  <div class="marquee-wrapper left">
+    <div class="marquee">
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+    </div>
+  </div>
+
+  <!-- Group: Center (count: 2) -->
+  <div class="marquee-wrapper center">
+    <div class="marquee">
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+    </div>
+  </div>
+
+  <!-- Group: Right (count: 4) -->
+  <div class="marquee-wrapper right">
+    <div class="marquee">
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+      <div>
+        <span class="emoji-1">🧙</span> hellooooo
+      </div>
+      <div>
+        <span class="emoji-2">🍰</span> nice to meet you
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

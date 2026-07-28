@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AetherFlow - Interactive WebGL Fluid Trail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #050508;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #canvas-webgl {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            touch-action: none;
+            z-index: 0;
+        }
+    </style>
+    
+    <!-- Mapeamento de Importação ES Modules para compatibilidade nativa -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.js"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Canvas WebGL ou Fallback 2D de Tela Cheia -->
+    <canvas id="canvas-webgl"></canvas>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- DEFINIÇÕES DOS SHADERS WEBGL ---
+
+        const trailVertex = `
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = vec4(position, 1.0);
+            }
+        `;
+
+        const trailFragment = `
+            uniform vec2 uResolution;
+            uniform sampler2D uMap;
+            uniform vec2 uPointer;
+            uniform float uDt;
+            uniform float uSpeed;
+            uniform float uTime;
+
+            // Variáveis uniformes de configuração da simulação
+            uniform vec3 uColor1;
+            uniform vec3 uColor2;
+            uniform vec3 uColor3;
+            uniform float uDissipation;
+            uniform float uNoiseScale;
+            uniform float uNoiseSpeed;
+            uniform float uSpeedMultiplier;
+            uniform float uMinRadius;
+            uniform float uMaxRadius;
+
+            vec4 permute(vec4 x){return mod(x*x*34.+x,289.);}
+            float snoise(vec3 v){
+                const vec2 C = 1./vec2(6,3);
+                const vec4 D = vec4(0,.5,1,2);
+                vec3 i  = floor(v + dot(v, C.yyy));
+                vec3 x0 = v - i + dot(i, C.xxx);
+                vec3 g = step(x0.yzx, x0.xyz);
+                vec3 l = 1. - g;
+                vec3 i1 = min( g.xyz, l.zxy );
+                vec3 i2 = max( g.xyz, l.zxy );
+                vec3 x1 = x0 - i1 + C.x;
+                vec3 x2 = x0 - i2 + C.y;
+                vec3 x3 = x0 - D.yyy;
+                i = mod(i,289.);
+                vec4 p = permute( permute( permute(
+                    i.z + vec4(0., i1.z, i2.z, 1.))
+                    + i.y + vec4(0., i1.y, i2.y, 1.))
+                    + i.x + vec4(0., i1.x, i2.x, 1.));
+                vec3 ns = .142857142857 * D.wyz - D.xzx;
+                vec4 j = p - 49. * floor(p * ns.z * ns.z);
+                vec4 x_ = floor(j * ns.z);
+                vec4 x = x_ * ns.x + ns.yyyy;
+                vec4 y = floor(j - 7. * x_ ) *ns.x + ns.yyyy;
+                vec4 h = 1. - abs(x) - abs(y);
+                vec4 b0 = vec4( x.xy, y.xy );
+                vec4 b1 = vec4( x.zw, y.zw );
+                vec4 sh = -step(h, vec4(0));
+                vec4 a0 = b0.xzyw + (floor(b0)*2.+ 1.).xzyw*sh.xxyy ;
+                vec4 a1 = b1.xzyw + (floor(b1)*2.+ 1.).xzyw*sh.zzww ;
+                vec3 p0 = vec3(a0.xy,h.x);
+                vec3 p1 = vec3(a0.zw,h.y);
+                vec3 p2 = vec3(a1.xy,h.z);
+                vec3 p3 = vec3(a1.zw,h.w);
+                vec4 norm = inversesqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+                p0 *= norm.x;
+                p1 *= norm.y;
+                p2 *= norm.z;
+                p3 *= norm.w;
+                vec4 m = max(.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.);
+                return .5 + 12. * dot( m * m * m, vec4( dot(p0,x0), dot(p1,x1),dot(p2,x2), dot(p3,x3) ) );
+            }
+
+            vec3 snoiseVec3( vec3 x ){
+                return vec3(  snoise(vec3( x )*2.-1.),
+                                snoise(vec3( x.y - 19.1 , x.z + 33.4 , x.x + 47.2 ))*2.-1.,
+                                snoise(vec3( x.z + 74.2 , x.x - 124.5 , x.y + 99.4 )*2.-1.)
+                );
+            }
+
+            vec3 curlNoise( vec3 p ){
+                const float e = .1;
+                vec3 dx = vec3( e   , 0.0 , 0.0 );
+                vec3 dy = vec3( 0.0 , e   , 0.0 );
+                vec3 dz = vec3( 0.0 , 0.0 , e   );
+
+                vec3 p_x0 = snoiseVec3( p - dx );
+                vec3 p_x1 = snoiseVec3( p + dx );
+                vec3 p_y0 = snoiseVec3( p - dy );
+                vec3 p_y1 = snoiseVec3( p + dy );
+                vec3 p_z0 = snoiseVec3( p - dz );
+                vec3 p_z1 = snoiseVec3( p + dz );
+
+                float x = p_y1.z - p_y0.z - p_z1.y + p_z0.y;
+                float y = p_z1.x - p_z0.x - p_x1.z + p_x0.z;
+                float z = p_x1.y - p_x0.y - p_y1.x + p_y0.x;
+
+                const float divisor = 1.0 / ( 2.0 * e );
+                return normalize( vec3( x , y , z ) * divisor );
+            }
+
+            void main() {
+                vec2 uv = gl_FragCoord.xy / uResolution;
+
+                vec2 uv2 = uv + curlNoise(vec3(uv * 4.0 * uNoiseScale + uTime * uNoiseSpeed, uTime * uNoiseSpeed)).xy * uDt * 0.3;
+                uv += curlNoise(vec3(uv * 2.0 * uNoiseScale + uTime * uNoiseSpeed, uTime * uNoiseSpeed)).xy * uDt * 0.15;
+
+                vec3 mapColor = texture2D(uMap, uv).rgb;
+                vec3 mapColor2 = texture2D(uMap, uv2).rgb;
+
+                uv -= 0.5;
+                uv *= 2.0;
+                uv.x *= uResolution.x / uResolution.y;
+                vec2 pointer = uPointer;
+                pointer.x *= uResolution.x / uResolution.y;
+
+                float d = distance(uv, pointer);
+
+                vec3 color = mix(mapColor, mapColor2, 0.5);
+                color *= 1. - uDt * uDissipation;
+
+                float speed = clamp(uSpeed * uSpeedMultiplier, uMinRadius, uMaxRadius);
+                float t = smoothstep(speed, 0., d);
+                float t2 = smoothstep(speed, 0., d);
+                float t3 = smoothstep(speed, 0., d);
+                t2 = pow(t2, 10.);
+                t3 = pow(t3, 4.);
+                float scale = speed * 5.5;
+                t *= scale;
+                t2 *= scale;
+                t3 *= scale;
+
+                color = mix(color, uColor1, t);
+                color = mix(color, uColor2, t3);
+                color = mix(color, uColor3, t2);
+
+                color = clamp(color, 0.0, 1.0);
+
+                gl_FragColor = vec4(color, 1.0);
+            }
+        `;
+
+        // --- CONFIGURAÇÕES PADRÃO (PRESET ELEGANTE) ---
+
+        const config = {
+            color1: '#3f06e6',          // Cor do rastro interno (azul/roxo profundo)
+            color2: '#0ae6cd',          // Cor do rastro externo (ciano brilhante)
+            color3: '#ffffff',          // Brilho do núcleo (branco cristalino)
+            dissipation: 1.8,           // Velocidade de sumiço do rastro (menor = rastro mais longo)
+            noiseScale: 1.3,            // Frequência do Ruído Curl (turbulência)
+            noiseSpeed: 0.12,           // Velocidade de oscilação do fluido
+            speedMultiplier: 2.8,       // Influência da velocidade do cursor
+            minRadius: 0.06,            // Tamanho mínimo do pincel do rastro
+            maxRadius: 0.32,            // Tamanho máximo do pincel do rastro
+            resolutionScale: 0.25       // Escala de renderização interna (equilíbrio de performance)
+        };
+
+        const sizes = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        };
+
+        const pointer = new THREE.Vector2(0, 0);
+        const rawPointer = { x: null, y: null }; // Posição crua em pixels para o Fallback 2D
+        let time = 0;
+
+        // --- DETECTA SUPORTE A WEBGL ---
+
+        const canvas = document.getElementById('canvas-webgl');
+        let useFallback = false;
+
+        function checkWebGLSupport() {
+            try {
+                const testCanvas = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && (testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl')));
+            } catch (e) {
+                return false;
+            }
+        }
+
+        if (!checkWebGLSupport()) {
+            useFallback = true;
+        }
+
+        // --- CONFIGURAÇÃO DE RENDERIZADORES ---
+
+        let scene, camera, renderer, bgGeometry, bgMaterial, bgMesh;
+        let rt1, rt2, inputRT, outputRT, trailMaterial, trailMesh, sceneTrail;
+
+        if (!useFallback) {
+            try {
+                scene = new THREE.Scene();
+                camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+                renderer = new THREE.WebGLRenderer({
+                    canvas: canvas,
+                    antialias: window.devicePixelRatio < 2,
+                    powerPreference: "high-performance"
+                });
+                renderer.setSize(sizes.width, sizes.height);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                // Geometria
+                bgGeometry = new THREE.BufferGeometry();
+                bgGeometry.setAttribute(
+                    'position',
+                    new THREE.BufferAttribute(
+                        new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]),
+                        3
+                    )
+                );
+                bgGeometry.setAttribute(
+                    'uv',
+                    new THREE.BufferAttribute(new Float32Array([0, 0, 2, 0, 0, 2]), 2)
+                );
+
+                // Material final que exibe o resultado
+                bgMaterial = new THREE.ShaderMaterial({
+                    vertexShader: `
+                        varying vec2 vUv;
+                        void main() {
+                            vUv = uv;
+                            gl_Position = vec4(position, 1.0);
+                        }
+                    `,
+                    fragmentShader: `
+                        uniform sampler2D uTrailMap;
+                        varying vec2 vUv;
+                        void main() {
+                            vec3 color = texture2D(uTrailMap, vUv).rgb;
+                            gl_FragColor = vec4(color, 1.0);
+                        }
+                    `,
+                    uniforms: {
+                        uTrailMap: new THREE.Uniform(),
+                    },
+                    depthWrite: false,
+                });
+                bgMesh = new THREE.Mesh(bgGeometry, bgMaterial);
+                scene.add(bgMesh);
+
+                // Render Targets
+                const createRenderTarget = () => {
+                    const rtWidth = Math.max(sizes.width * config.resolutionScale, 64);
+                    const rtHeight = Math.max(sizes.height * config.resolutionScale, 64);
+                    return new THREE.WebGLRenderTarget(rtWidth, rtHeight, {
+                        type: THREE.HalfFloatType,
+                        minFilter: THREE.LinearFilter,
+                        magFilter: THREE.LinearFilter,
+                        depthBuffer: false,
+                    });
+                };
+
+                rt1 = createRenderTarget();
+                rt2 = createRenderTarget();
+
+                inputRT = rt1;
+                outputRT = rt2;
+
+                // Shader de Feedback
+                trailMaterial = new THREE.ShaderMaterial({
+                    vertexShader: trailVertex,
+                    fragmentShader: trailFragment,
+                    uniforms: {
+                        uResolution: new THREE.Uniform(new THREE.Vector2()),
+                        uMap: new THREE.Uniform(),
+                        uPointer: new THREE.Uniform(new THREE.Vector2(0, 0)),
+                        uDt: new THREE.Uniform(0.0),
+                        uSpeed: new THREE.Uniform(0),
+                        uTime: new THREE.Uniform(0),
+                        uColor1: new THREE.Uniform(new THREE.Color(config.color1)),
+                        uColor2: new THREE.Uniform(new THREE.Color(config.color2)),
+                        uColor3: new THREE.Uniform(new THREE.Color(config.color3)),
+                        uDissipation: new THREE.Uniform(config.dissipation),
+                        uNoiseScale: new THREE.Uniform(config.noiseScale),
+                        uNoiseSpeed: new THREE.Uniform(config.noiseSpeed),
+                        uSpeedMultiplier: new THREE.Uniform(config.speedMultiplier),
+                        uMinRadius: new THREE.Uniform(config.minRadius),
+                        uMaxRadius: new THREE.Uniform(config.maxRadius)
+                    },
+                });
+                trailMesh = new THREE.Mesh(bgGeometry, trailMaterial);
+                sceneTrail = new THREE.Scene();
+                sceneTrail.add(trailMesh);
+
+            } catch (e) {
+                console.warn("Falha ao instanciar WebGL Renderer. Ativando fallback 2D.", e);
+                useFallback = true;
+            }
+        }
+
+        // --- SISTEMA DE LOGICA & SIMULAÇÃO 2D (FALLBACK) ---
+        // Ativo caso WebGL seja bloqueado ou indisponível
+        
+        const particles = [];
+        const maxParticles = 200;
+
+        function getWaveVelocity2D(x, y, t) {
+            // Simulação de turbulência fluida usando ondas sinusoidais complexas
+            const scale = 0.003 * config.noiseScale;
+            const angle = Math.sin(x * scale + t * config.noiseSpeed) * Math.cos(y * scale + t * config.noiseSpeed) * Math.PI * 4;
+            return new THREE.Vector2(Math.cos(angle) * 1.5, Math.sin(angle) * 1.5);
+        }
+
+        class FluidParticle {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx * 0.4 + (Math.random() - 0.5) * 1.5;
+                this.vy = vy * 0.4 + (Math.random() - 0.5) * 1.5;
+                this.life = 1.0;
+                this.decay = 0.008 * config.dissipation + Math.random() * 0.01;
+                this.size = (config.minRadius * sizes.width) * (0.8 + Math.random() * 1.2);
+                
+                // Distribuição de cores do rastro baseado nas cores configuradas
+                const r = Math.random();
+                if (r < 0.4) {
+                    this.color = config.color2; // Ciano
+                } else if (r < 0.8) {
+                    this.color = config.color1; // Roxo/Azul
+                } else {
+                    this.color = config.color3; // Branco brilhante
+                }
+            }
+
+            update(dt, t) {
+                const force = getWaveVelocity2D(this.x, this.y, t);
+                this.vx += force.x * 0.15;
+                this.vy += force.y * 0.15;
+                
+                this.vx *= 0.95;
+                this.vy *= 0.95;
+
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.life;
+                ctx.globalCompositeOperation = 'screen';
+                
+                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                grad.addColorStop(0, this.color);
+                grad.addColorStop(0.3, this.color);
+                grad.addColorStop(1, 'transparent');
+                
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // --- CAPTURA DE MOVIMENTOS ---
+
+        function updatePointerCoords(x, y) {
+            rawPointer.x = x;
+            rawPointer.y = y;
+            pointer.x = (x / sizes.width) * 2 - 1;
+            pointer.y = -(y / sizes.height) * 2 + 1;
+        }
+
+        window.addEventListener('pointermove', (ev) => {
+            updatePointerCoords(ev.clientX, ev.clientY);
+        });
+
+        window.addEventListener('touchstart', (ev) => {
+            if (ev.touches.length > 0) {
+                updatePointerCoords(ev.touches[0].clientX, ev.touches[0].clientY);
+                if (!useFallback) {
+                    trailMaterial.uniforms.uPointer.value.copy(pointer);
+                }
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (ev) => {
+            if (ev.touches.length > 0) {
+                updatePointerCoords(ev.touches[0].clientX, ev.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        // --- LOOPS DE ATUALIZAÇÃO ---
+
+        const clock = new THREE.Clock();
+        let lastPointerX = null;
+        let lastPointerY = null;
+
+        // Loop de Renderização WebGL Original
+        function tic() {
+            const dt = Math.min(clock.getDelta(), 0.1);
+            time += dt;
+
+            trailMaterial.uniforms.uTime.value = time;
+            const prevPointer = trailMaterial.uniforms.uPointer.value;
+
+            const pointerDiff = Math.sqrt(
+                (pointer.x - prevPointer.x) ** 2 + (pointer.y - prevPointer.y) ** 2
+            );
+            trailMaterial.uniforms.uSpeed.value = THREE.MathUtils.lerp(
+                trailMaterial.uniforms.uSpeed.value,
+                pointerDiff,
+                dt * 4.5
+            );
+
+            trailMaterial.uniforms.uPointer.value.lerp(pointer, dt * 15);
+            trailMaterial.uniforms.uDt.value = dt;
+
+            trailMaterial.uniforms.uMap.value = inputRT.texture;
+            renderer.setRenderTarget(outputRT);
+            renderer.render(sceneTrail, camera);
+
+            renderer.setRenderTarget(null);
+            bgMaterial.uniforms.uTrailMap.value = outputRT.texture;
+            renderer.render(scene, camera);
+
+            const temp = inputRT;
+            inputRT = outputRT;
+            outputRT = temp;
+
+            requestAnimationFrame(tic);
+        }
+
+        // Loop de Renderização 2D Fallback
+        function tic2D() {
+            const dt = Math.min(clock.getDelta(), 0.1);
+            time += dt;
+
+            const ctx = canvas.getContext('2d');
+            
+            // Fundo persistente com leve transparência criando efeito de rastro
+            ctx.fillStyle = 'rgba(5, 5, 8, 0.15)'; 
+            ctx.fillRect(0, 0, sizes.width, sizes.height);
+
+            // Emite partículas à medida que o cursor se move
+            if (rawPointer.x !== null && rawPointer.y !== null) {
+                if (lastPointerX !== null && lastPointerY !== null) {
+                    const dx = rawPointer.x - lastPointerX;
+                    const dy = rawPointer.y - lastPointerY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    const steps = Math.min(Math.floor(dist / 4), 6) || 1;
+                    for (let i = 0; i < steps; i++) {
+                        const alpha = i / steps;
+                        const px = lastPointerX + dx * alpha;
+                        const py = lastPointerY + dy * alpha;
+                        if (particles.length < maxParticles) {
+                            particles.push(new FluidParticle(px, py, dx * config.speedMultiplier, dy * config.speedMultiplier));
+                        }
+                    }
+                }
+                lastPointerX = rawPointer.x;
+                lastPointerY = rawPointer.y;
+            }
+
+            // Atualiza e desenha partículas
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update(dt, time);
+                if (p.life <= 0) {
+                    particles.splice(i, 1);
+                } else {
+                    p.draw(ctx);
+                }
+            }
+
+            requestAnimationFrame(tic2D);
+        }
+
+        // --- SISTEMA DE REDIMENSIONAMENTO ---
+
+        function handleResize() {
+            sizes.width = window.innerWidth;
+            sizes.height = window.innerHeight;
+
+            if (useFallback) {
+                canvas.width = sizes.width;
+                canvas.height = sizes.height;
+                return;
+            }
+
+            const rtScale = config.resolutionScale;
+            trailMaterial.uniforms.uResolution.value.set(
+                sizes.width * rtScale,
+                sizes.height * rtScale
+            );
+
+            renderer.setSize(sizes.width, sizes.height);
+            
+            rt1.dispose();
+            rt2.dispose();
+            rt1 = createRenderTarget();
+            rt2 = createRenderTarget();
+
+            inputRT = rt1;
+            outputRT = rt2;
+
+            const pixelRatio = Math.min(window.devicePixelRatio, 2);
+            renderer.setPixelRatio(pixelRatio);
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        // --- LIMPEZA DE TELA INICIAL ---
+
+        function clearBuffers() {
+            if (useFallback) return;
+            const currentRT = renderer.getRenderTarget();
+            renderer.setRenderTarget(rt1);
+            renderer.clear();
+            renderer.setRenderTarget(rt2);
+            renderer.clear();
+            renderer.setRenderTarget(currentRT);
+        }
+
+        // --- INICIALIZAÇÃO ---
+
+        window.onload = function() {
+            handleResize();
+            if (useFallback) {
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#050508';
+                ctx.fillRect(0, 0, sizes.width, sizes.height);
+                tic2D();
+            } else {
+                clearBuffers();
+                tic();
+            }
+        };
+
+    </script>
+</body>
+</html>

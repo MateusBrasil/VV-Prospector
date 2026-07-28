@@ -1,0 +1,301 @@
+{
+  "slot": "precos",
+  "nome": "secao-109",
+  "scope": "precos-secao-109",
+  "origem": "bank/_componentes/secoes/secao-109",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "splittext"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Vaultix"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Features"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Real-Time Pipeline Monitoring"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "AI-Powered Anomaly Detection"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Enterprise-Grade Security"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Vector Database Built-In"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "View all features"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Buy template"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Buy template"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Features"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Real-Time Pipeline Monitoring"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "AI-Powered Anomaly Detection"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Enterprise-Grade Security"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Vector Database Built-In"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "View all features →"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Ship"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Smarter"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Scale"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Faster"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Real-time data infrastructure for AI teams. Monitor pipelines,\n                optimize models, and deploy with confidence — all in one platform."
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "Start Building Free"
+    },
+    {
+      "nome": "acao12",
+      "tipo": "texto",
+      "exemplo": "Book a Demo"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Play Showreel"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/pipeline-monitoring.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/anomaly-detection.png"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/security.png"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/vector-database.png"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/pipeline-monitoring.png"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/anomaly-detection.png"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/security.png"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/vector-database.png"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://img.youtube.com/vi/A6oW7SnNq2g/hqdefault.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-1.svg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-2.svg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-3.svg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-4.svg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-5.svg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-6.svg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-7.svg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-1.svg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-2.svg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-3.svg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-4.svg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-5.svg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-6.svg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-7.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 23
+  },
+  "_rever": [
+    "13 cor(es) mapeadas para tokens por luminância (acento da origem #fdff22 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "23 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/pipeline-monitoring.png https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/anomaly-detection.png)",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

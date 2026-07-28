@@ -1,0 +1,63 @@
+[data-dobra="destaque-efeitos-de-fisica-7"] *,[data-dobra="destaque-efeitos-de-fisica-7"] *::before,[data-dobra="destaque-efeitos-de-fisica-7"] *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+[data-dobra="destaque-efeitos-de-fisica-7"],[data-dobra="destaque-efeitos-de-fisica-7"]{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background: var(--base-600);
+   color: var(--base-100);
+   font-family: var(--fonte-corpo);
+   cursor: none;
+}
+[data-dobra="destaque-efeitos-de-fisica-7"] .title{
+   position: fixed;
+   inset: 0;
+   z-index: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.05em;
+   font-family: var(--fonte-corpo);
+   font-weight: 900;
+   font-size: clamp(80px, 16vw, 240px);
+   line-height: 0.9;
+   letter-spacing: -0.05em;
+   color: var(--base-100);
+   pointer-events: none;
+   user-select: none;
+}
+[data-dobra="destaque-efeitos-de-fisica-7"] .title em{
+   font-family: var(--fonte-corpo);
+   font-style: italic;
+   font-weight: 400;
+   font-size: 1.2em;
+   color: var(--base-100);
+}
+[data-dobra="destaque-efeitos-de-fisica-7"] #js-canvas{
+   position: fixed;
+   inset: 0;
+   z-index: 2;
+   width: 100%;
+   height: 100%;
+   mix-blend-mode: lighten;
+}
+[data-dobra="destaque-efeitos-de-fisica-7"] .hint{
+   position: fixed;
+   bottom: 32px;
+   left: 50%;
+   transform: translateX(-50%);
+   z-index: 3;
+   padding: 10px 20px;
+   border: 1px solid rgba(245, 241, 232, 0.3);
+   border-radius: 999px;
+   font-family: var(--fonte-corpo);
+   font-weight: 500;
+   font-size: 11px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: var(--base-100);
+   pointer-events: none;
+   transition: opacity 0.6s ease;
+}
+[data-dobra="destaque-efeitos-de-fisica-7"] .hint.is-hidden{ opacity: 0; }
+
+

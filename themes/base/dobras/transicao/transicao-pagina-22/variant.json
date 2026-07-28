@@ -1,0 +1,105 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-22",
+  "scope": "transicao-transicao-pagina-22",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-22",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "flip",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Tutorials/GooeyImageHoverEffects/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=44490"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/akella/webGLImageTransitions"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "WebGL Image Transitions"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "demo 4"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "demo 5"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "demo 6"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "demo 7"
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "demo 8"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "11 cor(es) mapeadas para tokens por luminância (acento da origem #01a19c → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/Tutorials/GooeyImageHoverEffects/ https://tympanus.net/codrops/?p=44490)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

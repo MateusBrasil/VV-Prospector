@@ -1,0 +1,183 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-28",
+  "scope": "destaque-scroll-28",
+  "origem": "bank/_componentes/scroll/scroll-28",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tymntent/"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Fullscreen Scrolling Slideshow"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Stronger"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "No choice"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Owned no longer"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Assert control"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Cold &amp; detached"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "&larr; Go back"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "&darr; Scroll or drag &darr;"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Stronger"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "You strung me along, I thought I was strong, but now you have pushed me under. I’ve opened my eyes, and counted the lies, now it is clearer to me. You are just "
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "No choice"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Fall into line, you will do as you’re told. No choice fatigue, your blood is running cold. We lose control, the world will fall apart."
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Owned no longer"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "We need a transmutation. One we all conceive. We need a revolution. So long as we stay free."
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Assert control"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Cornered, I’m exhausted with fear. Our love and compassion dissolved. And demons, have materialised in me. Can’t fight them, they’re taking control."
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Cold &amp; detached"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Fate has brought us here to face. Our hopes and dreams erased. Either kill or be killed."
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "+ Discover more"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tymntent/)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

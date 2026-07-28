@@ -1,0 +1,54 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-3",
+  "scope": "destaque-scroll-3",
+  "origem": "bank/_componentes/scroll/scroll-3",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "THREE.JS"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "RESPONSIVE AND ACCESSIBLE TEXT"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "THIS TEXT IS STYLED TO LOOK LIKE A TYPICAL BLOCK OF TEXT ON A STANDARD WEBSITE. BUT UNDER THE SURFACE,\n              IT’S BEING RENDERED WITH WEBGL INSTEAD OF T"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "THIS OPENS THE DOOR TO CUSTOM SHADER EFFECTS AND INTERACTIONS THAT GO BEYOND WHAT’S POSSIBLE WITH\n              TRADITIONAL HTML."
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "WE KEEP THE UNDERYLING HTML STRUCTURE PRESENT IN THE DOM. RATHER THAN CREATING MESHES DIRECTLY IN\n              THREE.JS, THE SCENE IS BUILT BY READING FROM THE"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "NOW GO CRAZY WITH THE SHADERS :)"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

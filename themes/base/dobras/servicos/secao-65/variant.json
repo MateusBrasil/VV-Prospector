@@ -1,0 +1,37 @@
+{
+  "slot": "servicos",
+  "nome": "secao-65",
+  "scope": "servicos-secao-65",
+  "origem": "bank/_componentes/secoes/secao-65",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "swiper"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "We help startups make smarter decisions and grow with clarity."
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Performance"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "38 cor(es) mapeadas para tokens por luminância (acento da origem #b7fe02 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

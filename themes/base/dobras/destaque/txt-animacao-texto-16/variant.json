@@ -1,0 +1,37 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-16",
+  "scope": "destaque-txt-animacao-texto-16",
+  "origem": "bank/_componentes/textos/animacao-texto-16",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "one TWOO"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Sharing all the sauce behind building dope interactive experiences and\n        the finest websites that truly stand out. Recently, PRO was\n        introduced, a"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "endless web design"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

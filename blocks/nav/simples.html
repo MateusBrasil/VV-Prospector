@@ -1,0 +1,22 @@
+<style>
+.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--canvas) 88%,transparent);
+  backdrop-filter:blur(12px) saturate(150%);border-bottom:1px solid var(--hairline)}
+@supports not (backdrop-filter:blur(1px)){.nav{background:var(--canvas)}}
+.nav__in{display:flex;align-items:center;gap:var(--space-3);padding-block:.75rem}
+/* max-width + object-fit: sem isto, o rácio intrínseco do SVG (min-width:auto de
+   flex item não encolhe imagem) empurra o CTA 60px para fora do ecrã em 375px. */
+.nav__logo{height:38px;width:auto;max-width:min(58vw,270px);object-fit:contain;object-position:left center;margin-right:auto}
+.nav__links{display:none;gap:var(--space-3);font-size:var(--step--1);font-weight:500}
+@media (min-width:900px){.nav__links{display:flex}}
+.nav__links a{text-decoration:none;color:var(--ink-muted);transition:color 150ms var(--ease)}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:focus-visible{outline:2px solid var(--brand-cta);outline-offset:3px;border-radius:3px}
+.nav .cta{padding:.6rem 1.1rem;font-size:var(--step--1);white-space:nowrap;flex:none}
+</style>
+<header class="nav">
+  <div class="wrap nav__in">
+    <img class="nav__logo" src="{{logo}}" alt="{{nome}}" width="140" height="38">
+    <nav class="nav__links">{{{links}}}</nav>
+    <a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a>
+  </div>
+</header>

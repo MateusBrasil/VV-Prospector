@@ -1,0 +1,194 @@
+{
+  "slot": "vitrine",
+  "nome": "secao-4",
+  "scope": "vitrine-secao-4",
+  "origem": "bank/_componentes/secoes/secao-4",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Pipeline Infrastructure Modernization"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Replaced 240km of aging transmission pipeline across three states, cutting downtime by 38% and lifting throughput to record levels for the operator."
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Engineering"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Construction"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Energy"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Operational Excellence Program"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Deployed a unified monitoring stack across 14 facilities, giving control-room teams real-time visibility and reducing incident response time from hours to minut"
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "Operations"
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "Monitoring"
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "Safety"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Terminal Capacity Expansion"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Designed and delivered a 1.4M-barrel storage expansion, completed two months ahead of schedule with zero recordable safety incidents on site."
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "Project Delivery"
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "Logistics"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Integrity Management Overhaul"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Rolled out a risk-based inspection program covering 3,800 assets, lifting compliance scores into the top quartile of industry benchmarks within a single year."
+    },
+    {
+      "nome": "item10",
+      "tipo": "texto",
+      "exemplo": "Integrity"
+    },
+    {
+      "nome": "item11",
+      "tipo": "texto",
+      "exemplo": "Compliance"
+    },
+    {
+      "nome": "item12",
+      "tipo": "texto",
+      "exemplo": "Data"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-1.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-2.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-3.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-4.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-1.avif https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-study-2.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,131 @@
+{
+  "_fonte": "Code Eagle (nextcodeeagle.com) — assinatura do Mateus, licenca comercial p/ projeto de cliente. Catalogo da categoria 'Secoes' (200 no site; 100 carregados). Colhido 2026-07-16.",
+  "_nota_proveniencia": "O HOW_TO_USE.md de alguns pacotes revela que sao 'GetLayers templates' redistribuidos pelo Code Eagle. Origem registada.",
+  "_formato": "ZIPs de HTML/CSS/JS puro (Vite ou estatico). Compativel com os nossos blocos. Stack tipico: GSAP+ScrollTrigger, alguns com Three.js/Lenis.",
+  "_regra": "Colher para estudar TECNICA e extrair pecas pontuais ADAPTADAS aos nossos tokens. Nunca copiar template cru — template repetido = todo cliente igual = o problema original.",
+  "secoes": [
+    "1783357471069-stayli-1781042492157.zip",
+    "1783357453630-aeline-1782176717232.zip",
+    "1783357430740-doorly-1782326822758.zip",
+    "1783357408507-coverly-1780407207749.zip",
+    "1783357391770-firmo-1781039620433.zip",
+    "1783357375993-acelia-1780406904350.zip",
+    "1783357351395-vetic-1781216719491.zip",
+    "1783357328067-hirekit-1782012489348.zip",
+    "1783357312164-genovas-1780573720034.zip",
+    "1783357296919-stayli-1781042477903.zip",
+    "1783357230066-congra-1781223713261.zip",
+    "1783357214554-hirely-1781040973710.zip",
+    "1783357197794-hirely-1781040960630.zip",
+    "1783357183428-catalis-1781975916547.zip",
+    "1783357162665-aurae-1780536389524.zip",
+    "1783357147680-pipely-1780407972637.zip",
+    "1783357130732-upmind-1780573778821.zip",
+    "1783357114347-advisora-1780535927248.zip",
+    "1783357099727-pipely-1780407500001.zip",
+    "1783357084271-vaultix-1780408182657.zip",
+    "1783357065218-firmo-1781039613893.zip",
+    "1783357047785-aurae-1780536372936.zip",
+    "1783356944578-aurae-1780536198401.zip",
+    "1783356921262-upmind-1780573995872.zip"
+  ],
+  "_aviso": "As 24 'secoes' da 1a colheita sao TODAS depoimentos — a lista vinha ordenada por tipo. Colher por CATEGORIA (o card tem .ef-title e .ef-tag), nunca N URLs consecutivas.",
+  "heroes": [
+    {
+      "nome": "HERO 26",
+      "zip": "1782827583696-code.zip"
+    },
+    {
+      "nome": "HERO 25",
+      "zip": "1782827549177-code.zip"
+    },
+    {
+      "nome": "HERO 24",
+      "zip": "1782827516394-code.zip"
+    },
+    {
+      "nome": "HERO 23",
+      "zip": "1782827484970-code.zip"
+    },
+    {
+      "nome": "HERO 22",
+      "zip": "1782827459558-HERO_753.zip"
+    },
+    {
+      "nome": "HERO 21",
+      "zip": "1782827380041-code.zip"
+    },
+    {
+      "nome": "HERO 20",
+      "zip": "1782827335072-HERO_EAGLE.zip"
+    },
+    {
+      "nome": "HERO 19",
+      "zip": "1782827000959-HERO_233222.zip"
+    },
+    {
+      "nome": "HERO 18",
+      "zip": "1782826925336-HERO_232.zip"
+    },
+    {
+      "nome": "HERO 17",
+      "zip": "1782826862315-HERO_214.zip"
+    },
+    {
+      "nome": "HERO 16",
+      "zip": "1782826783227-code.zip"
+    },
+    {
+      "nome": "HERO 15",
+      "zip": "1782826750585-code.zip"
+    },
+    {
+      "nome": "HERO 14",
+      "zip": "1782826721834-code.zip"
+    },
+    {
+      "nome": "HERO 13",
+      "zip": "1782826699168-Compress.zip"
+    },
+    {
+      "nome": "HERO 12",
+      "zip": "1782826667401-code.zip"
+    },
+    {
+      "nome": "HERO 11",
+      "zip": "1782826633927-code.zip"
+    },
+    {
+      "nome": "HERO 9",
+      "zip": "1782826554695-code.zip"
+    },
+    {
+      "nome": "HERO 8",
+      "zip": "1782826527281-code.zip"
+    },
+    {
+      "nome": "HERO 7",
+      "zip": "1782826497564-HERO_1243.zip"
+    },
+    {
+      "nome": "HERO 6",
+      "zip": "1782826356048-code.zip"
+    },
+    {
+      "nome": "HERO 5",
+      "zip": "1782826320424-code.zip"
+    },
+    {
+      "nome": "HERO 4",
+      "zip": "1782826270126-code.zip"
+    },
+    {
+      "nome": "HERO 3",
+      "zip": "1782826193864-code.zip"
+    },
+    {
+      "nome": "HERO 1",
+      "zip": "1782826169463-code.zip"
+    }
+  ]
+}

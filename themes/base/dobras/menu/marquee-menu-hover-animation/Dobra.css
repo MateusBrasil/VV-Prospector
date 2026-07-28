@@ -1,0 +1,233 @@
+[data-dobra="menu-marquee-menu-hover-animation"] *,[data-dobra="menu-marquee-menu-hover-animation"] *::after,[data-dobra="menu-marquee-menu-hover-animation"] *::before{
+            box-sizing: border-box;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"]{
+            font-size: 18px;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"]{
+            margin: 0;
+            --color-text: var(--base-600);
+            --color-bg: var(--base-100);
+            --color-link: var(--base-600);
+            --color-link-hover: var(--base-600);
+            --color-border: var(--base-200);
+            --marquee-bg: var(--base-600);
+            --marquee-text: var(--base-100);
+            --menu-focus: var(--acento);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: var(--fonte-corpo);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .js .loading::before,[data-dobra="menu-marquee-menu-hover-animation"] .js .loading::after{
+            content: '';
+            position: fixed;
+            z-index: 1000;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .js .loading::before{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .js .loading::after{
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: var(--color-link);
+            animation: loaderAnim 0.7s linear infinite alternate forwards;
+        }
+@keyframes loaderAnim{
+            to {
+                opacity: 1;
+                transform: scale3d(0.5,0.5,1);
+            }
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] a{
+            text-decoration: underline;
+            color: var(--color-link);
+            outline: none;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] a:hover{
+            color: var(--color-link-hover);
+            outline: none;
+            text-decoration: none;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] a:focus{
+            outline: none;
+            background: lightgrey;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] a:focus:not(:focus-visible){
+            background: transparent;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] a:focus-visible{
+            outline: 2px solid red;
+            background: transparent;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .unbutton{
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .unbutton:focus{
+            outline: none;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame{
+            padding: 3rem 5vw;
+            text-align: center;
+            position: relative;
+            z-index: 1000;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__logo{
+            font-size: 1rem;
+            margin: 0 0 1rem;
+            font-weight: 700;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__links{
+            display: inline;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__links a:not(:last-child){
+            margin-right: 1rem;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__demos{
+            margin: 1rem 0;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__demo--current,[data-dobra="menu-marquee-menu-hover-animation"] .frame__demo--current:hover{
+            color: var(--color-text);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu-wrap{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: calc(100vh - 13rem);
+            position: relative;
+            justify-content: center;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item{
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 -1px var(--color-border);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item:last-child{
+            box-shadow: 0 1px var(--color-border), 0 -1px var(--color-border);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item-link{
+            display: block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item-link:focus,[data-dobra="menu-marquee-menu-hover-animation"] .menu__item-link:focus-visible{
+            color: var(--menu-focus);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item-link:focus:not(:focus-visible){
+            color: var(--color-link);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .marquee{
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: var(--marquee-bg);
+            transform: translate3d(0,101%,0);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .marquee__inner-wrap{
+            height: 100%;
+            width: 100%;
+            transform: translate3d(0,-101%,0);
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .marquee__inner{
+            height: 100%;
+            width: fit-content;
+            align-items: center;
+            display: flex;
+            position: relative;
+            animation: marquee 15s linear infinite;
+            will-change: transform;
+        }
+@keyframes marquee{
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu__item-link,[data-dobra="menu-marquee-menu-hover-animation"] .marquee span{
+            white-space: nowrap;
+            font-size: 6vw;
+            line-height: 1.2;
+            font-weight: 600;
+            padding: 1vh 1vw 0;
+            text-transform: uppercase;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .marquee span{
+            text-align: center;
+            color: var(--marquee-text);
+            font-weight: 400;
+        }
+[data-dobra="menu-marquee-menu-hover-animation"] .marquee__img{
+            width: 15vw;
+            height: 70%;
+            margin: 0 2vw;
+            border-radius: 5vw;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+@media screen and (min-width: 53em){[data-dobra="menu-marquee-menu-hover-animation"] .frame{
+                position: fixed;
+                text-align: left;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                display: grid;
+                align-content: space-between;
+                width: 100%;
+                max-width: none;
+                height: 100vh;
+                padding: 1.5rem 2rem 1rem;
+                pointer-events: none;
+                grid-template-columns: 25% 50% 25%;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: 'logo credits links'
+                                    '... ... ...'
+                                    '... ... author';
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__logo{
+                grid-area: logo;
+                margin: 0;
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__credits{
+                grid-area: credits;
+                justify-self: center;
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__author{
+                grid-area: author;
+                justify-self: end;
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame__links{
+                grid-area: links;
+                padding: 0;
+                justify-self: end;
+                text-align: right;
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .frame a{
+                pointer-events: auto;
+            }
+[data-dobra="menu-marquee-menu-hover-animation"] .menu-wrap{
+                height: 100vh;
+            }
+
+        }
+
+    

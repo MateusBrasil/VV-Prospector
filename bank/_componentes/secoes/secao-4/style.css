@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.case-studies-list {
+  overflow-x: clip;
+}
+/* NOTE: NO `overflow: clip/hidden` on the card — it would break the
+   sticky eyebrow below. Children stay within rounded corners by sizing. */
+.case-studies-list__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 5rem; /* 80px between eyebrow and the rows column (desktop) */
+  padding: 52px;
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-container);
+}
+
+.case-studies-list__eyebrow {
+  flex-shrink: 0;
+  white-space: nowrap;
+  /* Sticky: stays at top of viewport while user scrolls through the rows.
+     Only meaningful at desktop where eyebrow is in the left column. At
+     tablet+ the eyebrow stacks above content and sticky is irrelevant. */
+  position: sticky;
+  top: 1.25rem; /* 20px — matches body padding-top */
+  align-self: flex-start;
+}
+
+.case-studies-list__rows {
+  /* Takes the remaining width of the card — no fixed max. */
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 32px between rows */
+  padding: 0;
+  margin: 0;
+}
+
+/* === Single case study row ===
+   Two-column grid, both columns 1fr (equal width). No fixed widths —
+   the columns share the available row width fluidly. */
+.case-study-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; /* 48px */
+  align-items: stretch;
+  width: 100%;
+}
+.case-study-item__media {
+  /* No aspect-ratio at desktop/tablet — the image stretches to match the
+     body column's natural height (grid `align-items: stretch` default).
+     This prevents an empty strip below the image when text grows taller
+     than the image's 476:400 proportions would produce as the viewport
+     shrinks. The <img> uses object-fit:cover so it fills without distortion.
+     Aspect ratio is re-added at landscape (≤767) where the layout stacks
+     and the image needs its own height. */
+  border-radius: 0.75rem; /* 12px */
+  overflow: clip;
+  width: 100%;
+}
+.case-study-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.case-study-item__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  /* Text block + CTA centered vertically inside the column so they cluster
+     together (no top/bottom split). Gap = breathing room between them. */
+  justify-content: center;
+  /* Gap between text block (title + desc + tags) and "Learn more" CTA.
+     Monotonic shrink desktop → portrait: 48 → 40 → 32 → 24. */
+  gap: 3rem;
+  padding: 1rem 0;
+}
+.case-study-item__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* 12px */
+}
+.case-study-item__title {
+  color: var(--color-text-primary);
+}
+.case-study-item__desc {
+  font-family: var(--font-body);
+  /* OPT-OUT: case study description */
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.case-study-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* 12px */
+  padding: 0;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+.case-study-item__tag {
+  background-color: var(--color-bg-gray-1);
+  padding: 0.25rem 0.625rem; /* 4px 10px */
+  border-radius: 0.25rem; /* 4px */
+  font-family: var(--font-body);
+  /* OPT-OUT: tag pill */
+  font-size: 0.875em; /* 14px */
+  line-height: 1.43; /* 20/14 */
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* Position-only override — .btn .btn--ghost (in global.css) drives all
+   visual styling (caption typography, height, padding, radius, hover). */
+.case-study-item__cta {
+  align-self: flex-start;
+}
+
+/* === Tablet ≤991: side-by-side still, narrower image === */
+@media (max-width: 991px) {
+  .case-studies-list__card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem; /* 40px — vertical gap between eyebrow and rows */
+    padding: 40px;
+  }
+  .case-studies-list__eyebrow {
+    /* Reset sticky in stacked layout — eyebrow now sits above content. */
+    position: static;
+  }
+  .case-studies-list__rows {
+    gap: 1.75rem;
+  }
+  .case-study-item {
+    gap: 2rem;
+  }
+  .case-study-item__body {
+    padding: 0;
+    gap: 2.5rem; /* 40px */
+  }
+}
+
+/* === Landscape ≤767: stack image above text === */
+@media (max-width: 767px) {
+  .case-studies-list__card {
+    padding: 24px 20px 20px;
+    gap: 1.75rem; /* 28px */
+  }
+  .case-studies-list__rows {
+    gap: 2rem; /* 32px — same as desktop, starting from landscape down */
+  }
+  .case-study-item {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .case-study-item__body {
+    gap: 2rem; /* 32px */
+  }
+  .case-study-item__media {
+    /* Stack layout — re-introduce aspect ratio so the image has height
+       without a body column next to it to stretch against. */
+    aspect-ratio: 476 / 400;
+  }
+  .case-study-item__text {
+    gap: 0.75rem;
+  }
+}
+
+/* === Portrait ≤479 === */
+@media (max-width: 479px) {
+  .case-studies-list__card {
+    padding: 24px 16px 16px;
+    gap: 1.5rem; /* 24px */
+  }
+  .case-study-item__body {
+    gap: 1.5rem; /* 24px */
+  }
+}
+/* No portrait width override needed — global button rule handles full-width at portrait. */

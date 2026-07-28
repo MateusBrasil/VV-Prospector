@@ -1,0 +1,4 @@
+/* Fondo de la página en vista aislada. El grueso de los estilos de la sección
+   (.section_about, .about-three_grid, .about-three_image, .img-wrapper, .img,
+   .label, .button, etc.) vive en la hoja compartida /firmo/styles.css. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }

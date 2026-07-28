@@ -1,0 +1,627 @@
+---
+import AccentButton from "./AccentButton.astro";
+
+const links = [
+  { href: "/pricing", label: "Planos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contato" },
+];
+
+const featureItems = [
+  {
+    href: "/features/pipeline-monitoring",
+    label: "Real-Time Pipeline Monitoraring",
+    icon: "/feature-icons/pipeline-monitoring.png",
+  },
+  {
+    href: "/features/anomaly-detection",
+    label: "Deteccao de anomalias com IA",
+    icon: "/feature-icons/anomaly-detection.png",
+  },
+  {
+    href: "/features/security",
+    label: "Seguranca de nivel empresarial",
+    icon: "/feature-icons/security.png",
+  },
+  {
+    href: "/features/vector-database",
+    label: "Banco vetorial integrado",
+    icon: "/feature-icons/vector-database.png",
+  },
+];
+
+const current = Astro.url.pathname;
+const featuresActive = current.startsWith("/features");
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]"
+  data-navbar
+>
+  <nav
+    class="mx-auto flex w-full max-w-[70.5rem] items-center justify-between px-4 py-4 md:px-[calc(1.25rem+1px)]"
+  >
+    <a href="/" class="eagle-logo flex items-center gap-3">
+      <svg
+        class="h-[1.2035rem] w-[1.625rem] text-[var(--color-accent)]"
+        viewBox="0 0 26 19.256"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M11.0922 19.256L0 0H7.36519L14.8191 12.8669L18.4573 6.47782L14.8191 0H22.1843L26 6.47782L22.3618 13.0444L14.8191 12.8669L11.0922 19.256Z"
+        ></path>
+      </svg>
+      <span
+        class="font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white"
+      >
+        Eagle
+      </span>
+    </a>
+
+    {/* === Desktop menu (lg+) — full link bar + buy template === */}
+    <div
+      class="relative hidden items-center gap-2 bg-[var(--color-surface-2)] p-1 lg:flex"
+    >
+      <ul class="flex items-center">
+        <li>
+          <a
+            href="/about"
+            data-scramble-hover
+            aria-current={current.startsWith("/about") ? "page" : undefined} class:list={[
+              "nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem]",
+              current.startsWith("/about") ? "text-white" : "text-white/60",
+            ]}
+          >
+            Sobre
+          </a>
+        </li>
+
+        <li class="group" data-platform-dropdown>
+          <button
+            type="button"
+            aria-haspopup="true"
+            aria-current={featuresActive ? "page" : undefined}
+            class:list={[
+              "nav-link relative flex h-9 cursor-pointer items-center gap-1 pl-3 pr-2 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] after:absolute after:left-0 after:right-0 after:top-full after:h-[0.75rem] after:content-['']",
+              featuresActive ? "text-white" : "text-white/60",
+            ]}
+          >
+            <span data-scramble-hover>Recursos</span>
+            <svg
+              class="platform-chevron h-[1.125rem] w-[1.125rem]"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M10 17L15 12L10 7V17Z"></path>
+            </svg>
+          </button>
+
+          <div
+            class="invisible absolute inset-x-0 top-[calc(100%+0.5rem)] z-50 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+          >
+            <ul class="flex flex-col">
+              {
+                featureItems.map((item) => {
+                  const isCurrent = current === item.href;
+                  return (
+                    <li>
+                      <a
+                        href={item.href}
+                        aria-current={isCurrent ? "page" : undefined} class:list={[
+                          "nav-feature-item relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors",
+                        ]}
+                      >
+                        <span class="nav-active-marker" aria-hidden="true" />
+                        <span class="flex items-center gap-6">
+                          <img
+                            src={item.icon}
+                            alt=""
+                            class="nav-feature-icon h-7 w-7 shrink-0"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <span
+                            data-scramble-hover
+                            class:list={[
+                              "nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem]",
+                              isCurrent ? "text-[var(--color-accent)]" : "text-white",
+                            ]}
+                          >
+                            {item.label}
+                          </span>
+                        </span>
+                        <svg
+                          class:list={[
+                            "nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 transition-colors",
+                            isCurrent ? "text-[var(--color-accent)]" : "text-white/40",
+                          ]}
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path d="M10 17L15 12L10 7V17Z" />
+                        </svg>
+                      </a>
+                    </li>
+                  );
+                })
+              }
+              <li>
+                <a
+                  href="/features"
+                  aria-current={current === "/features" ? "page" : undefined} class="nav-feature-item nav-feature-item--all relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors"
+                >
+                  <span class="nav-active-marker" aria-hidden="true" />
+                  <span
+                    data-scramble-hover
+                    class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/70"
+                  >
+                    View all features
+                  </span>
+                  <svg
+                    class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 17L15 12L10 7V17Z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        {
+          links.map((link) => {
+            const isCurrent =
+              current === link.href ||
+              (link.href !== "/" && current.startsWith(link.href));
+            return (
+              <li>
+                <a
+                  href={link.href}
+                  data-scramble-hover
+                  aria-current={isCurrent ? "page" : undefined} class:list={[
+                    "nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem]",
+                    isCurrent ? "text-white" : "text-white/60",
+                  ]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      
+    </div>
+
+    {/* === Tablet & mobile (<lg) — buy template + hamburger === */}
+    <div class="flex items-center gap-2 lg:hidden">
+      
+      <button
+        type="button"
+        class="nav-burger flex h-10 w-10 items-center justify-center border border-[var(--color-border)] bg-[var(--color-surface-2)]"
+        aria-label="Alternar menu"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        data-nav-burger
+      >
+        <span class="nav-burger__bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  {/* === Drawer (only renders on <lg via CSS) === */}
+  <div
+    id="nav-drawer"
+    class="nav-drawer lg:hidden"
+    data-nav-drawer
+    aria-hidden="true"
+  >
+    <ul class="nav-drawer__list">
+      <li>
+        <a
+          href="/about"
+          class:list={[
+            "nav-drawer__link",
+            current.startsWith("/about") && "is-current",
+          ]}
+        >
+          Sobre
+        </a>
+      </li>
+
+      <li class="nav-drawer__group" data-nav-drawer-group>
+        <button
+          type="button"
+          class="nav-drawer__group-toggle"
+          aria-expanded="false"
+          aria-controls="nav-drawer-features"
+          data-nav-drawer-toggle
+        >
+          <span>Recursos</span>
+          <svg
+            class="nav-drawer__chevron"
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M10 17L15 12L10 7V17Z" />
+          </svg>
+        </button>
+        <ul id="nav-drawer-features" class="nav-drawer__sub" hidden>
+          {
+            featureItems.map((item) => (
+              <li>
+                <a
+                  href={item.href} class:list={[
+                    "nav-drawer__sub-link",
+                    current === item.href && "is-current",
+                  ]}
+                >
+                  <img
+                    src={item.icon}
+                    alt=""
+                    class="nav-drawer__sub-icon"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>{item.label}</span>
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="/features"
+              class:list={[
+                "nav-drawer__sub-link nav-drawer__sub-link--all",
+                current === "/features" && "is-current",
+              ]}
+            >
+              <span class="nav-drawer__sub-icon" aria-hidden="true"></span>
+              <span>View all features →</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      {
+        links
+          .filter((l) => l.label !== "Sobre")
+          .map((link) => (
+            <li>
+              <a
+                href={link.href} class:list={[
+                  "nav-drawer__link",
+                  (current === link.href ||
+                    (link.href !== "/" && current.startsWith(link.href))) &&
+                    "is-current",
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
+</header>
+
+<style>
+  .platform-chevron {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease;
+  }
+  [data-platform-dropdown]:hover .platform-chevron,
+  [data-platform-dropdown]:focus-within .platform-chevron {
+    transform: rotate(-90deg);
+  }
+
+  /* Top-level nav links — hover shifts to accent yellow with a soft glow,
+     mirroring the footer link treatment. The current item (with
+     aria-current="page") stays white and skips the hover effect.
+     Wrapped in @media (hover: hover) so touch devices don't get sticky
+     hover state from a tap. */
+  .nav-link {
+    transition: color 0.3s ease, filter 0.3s ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:not([aria-current="page"]):hover,
+    /* Keep the dropdown trigger (button.nav-link) styled while the user
+       moves into the open dropdown panel — the wrapper li hover holds it. */
+    [data-platform-dropdown]:hover .nav-link:not([aria-current="page"]) {
+      color: var(--color-accent);
+      filter:
+        drop-shadow(0 0 2px rgba(253, 255, 34, 0.55))
+        drop-shadow(0 0 6px rgba(253, 255, 34, 0.18));
+    }
+  }
+
+  /* Dropdown feature item — default / hover / current states */
+  .nav-feature-item:hover:not([aria-current="page"]) {
+    background-color: #1c1c1c;
+  }
+
+  .nav-feature-icon {
+    filter: grayscale(1) brightness(0.55);
+    transition: filter 0.3s ease;
+  }
+  /* Hover: icon goes color (no grayscale) AND picks up the periwinkle
+     accent glow — matches the selected state's halo at slightly lower
+     intensity to read as a hover hint, not "selected". */
+  .nav-feature-item:hover:not([aria-current="page"]) .nav-feature-icon {
+    filter:
+      grayscale(0) brightness(1)
+      drop-shadow(0 0 4px rgba(95, 92, 255, 0.85))
+      drop-shadow(0 0 10px rgba(95, 92, 255, 0.5))
+      drop-shadow(0 0 18px rgba(95, 92, 255, 0.2));
+  }
+  .nav-feature-item[aria-current="page"] .nav-feature-icon {
+    filter:
+      drop-shadow(0 0 4px rgba(95, 92, 255, 0.9))
+      drop-shadow(0 0 10px rgba(95, 92, 255, 0.55))
+      drop-shadow(0 0 18px rgba(95, 92, 255, 0.25));
+  }
+
+  .nav-feature-chevron {
+    transition: color 0.25s ease, filter 0.25s ease;
+  }
+  .nav-feature-item:hover:not([aria-current="page"]) .nav-feature-chevron {
+    color: var(--color-accent);
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.6))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.3));
+  }
+
+  /* Active marker — yellow vertical strip on left edge when current */
+  .nav-active-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--color-accent);
+    pointer-events: none;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition:
+      opacity 0.25s ease,
+      transform 0.35s cubic-bezier(0.7, 0, 0.2, 1);
+    box-shadow:
+      0 0 6px 0 rgba(253, 255, 34, 0.55),
+      0 0 14px 0 rgba(253, 255, 34, 0.25);
+  }
+  .nav-feature-item[aria-current="page"] .nav-active-marker {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  /* "View all features" footer item — gray marker by default,
+     accent yellow with glow on hover. */
+  .nav-feature-item--all .nav-active-marker {
+    opacity: 1;
+    transform: scaleY(1);
+    background-color: rgba(255, 255, 255, 0.18);
+    box-shadow: none;
+    transition:
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .nav-feature-item--all:hover .nav-active-marker,
+  .nav-feature-item--all[aria-current="page"] .nav-active-marker {
+    background-color: var(--color-accent);
+    box-shadow:
+      0 0 6px 0 rgba(253, 255, 34, 0.55),
+      0 0 14px 0 rgba(253, 255, 34, 0.25);
+  }
+  .nav-feature-item--all:hover .nav-feature-chevron,
+  .nav-feature-item--all[aria-current="page"] .nav-feature-chevron {
+    color: var(--color-accent);
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.6))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.3));
+  }
+
+  /* ========================================
+     Hamburger button — 3 bars → X on open
+     ======================================== */
+  .nav-burger__bars {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+  }
+  .nav-burger__bars > span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: #fff;
+    transition:
+      transform 0.3s cubic-bezier(0.7, 0, 0.2, 1),
+      top 0.3s cubic-bezier(0.7, 0, 0.2, 1),
+      opacity 0.2s ease;
+  }
+  .nav-burger__bars > span:nth-child(1) {
+    top: 0;
+  }
+  .nav-burger__bars > span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .nav-burger__bars > span:nth-child(3) {
+    bottom: 0;
+  }
+  .nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+
+  /* ========================================
+     Drawer — slides down under the navbar
+     ======================================== */
+  .nav-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.32s cubic-bezier(0.7, 0, 0.2, 1);
+  }
+  .nav-drawer.is-open {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+  .nav-drawer__list {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-drawer__link,
+  .nav-drawer__group-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.125rem 1rem;
+    border-top: 1px solid var(--color-border);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.105rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+  .nav-drawer__link.is-current,
+  .nav-drawer__group-toggle[aria-expanded="true"] {
+    color: #fff;
+  }
+  .nav-drawer__chevron {
+    transition: transform 0.25s ease;
+  }
+  .nav-drawer__group-toggle[aria-expanded="true"] .nav-drawer__chevron {
+    transform: rotate(90deg);
+  }
+  .nav-drawer__sub {
+    display: flex;
+    flex-direction: column;
+    background: #0a0a0a;
+  }
+  .nav-drawer__sub-link {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 1rem 1rem 2rem;
+    border-top: 1px solid var(--color-border);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+  }
+  .nav-drawer__sub-link.is-current {
+    color: var(--color-accent);
+  }
+  .nav-drawer__sub-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    filter: grayscale(1) brightness(0.55);
+  }
+  .nav-drawer__sub-link.is-current .nav-drawer__sub-icon {
+    filter: none;
+  }
+  .nav-drawer__sub-link--all {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  /* Hide the icon placeholder slot so the label sits flush at the icon
+     column — matches the left alignment of the icons in the items above. */
+  .nav-drawer__sub-link--all .nav-drawer__sub-icon {
+    display: none;
+  }
+  .nav-drawer__sub-link--all.is-current {
+    color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-burger__bars > span,
+    .nav-drawer,
+    .nav-drawer__chevron {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import { applyScrambleHover } from "../lib/scramble-hover";
+  applyScrambleHover("[data-navbar] [data-scramble-hover]");
+
+  // Mobile / tablet drawer toggle.
+  const burger = document.querySelector<HTMLButtonElement>("[data-nav-burger]");
+  const drawer = document.querySelector<HTMLElement>("[data-nav-drawer]");
+  if (burger && drawer) {
+    const setOpen = (open: boolean) => {
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+      drawer.setAttribute("aria-hidden", open ? "false" : "true");
+      drawer.classList.toggle("is-open", open);
+    };
+    burger.addEventListener("click", () => {
+      const open = burger.getAttribute("aria-expanded") !== "true";
+      setOpen(open);
+    });
+    // Close on link click so navigation feels natural.
+    drawer.querySelectorAll<HTMLAnchorElement>("a").forEach((a) => {
+      a.addEventListener("click", () => setOpen(false));
+    });
+    // Close if the viewport jumps to desktop (e.g. tablet rotates wide).
+    window.matchMedia("(min-width: 1024px)").addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+
+  // Recursos sub-list expand within the drawer.
+  const groupToggle = document.querySelector<HTMLButtonElement>(
+    "[data-nav-drawer-toggle]"
+  );
+  const groupSub = document.getElementById("nav-drawer-features");
+  if (groupToggle && groupSub) {
+    groupToggle.addEventListener("click", () => {
+      const open = groupToggle.getAttribute("aria-expanded") !== "true";
+      groupToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) groupSub.removeAttribute("hidden");
+      else groupSub.setAttribute("hidden", "");
+    });
+  }
+</script>

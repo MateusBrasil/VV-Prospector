@@ -36,3 +36,8 @@ clientes/*/
 .vercel/
 .cache/
 _bkp_teste/
+
+# Metadados de workspaces importados: não são componentes nem código do produto e alguns
+# apontam para repositórios Git incompletos, que o repositório principal não pode indexar.
+**/.workspace/
+**/code/.git/

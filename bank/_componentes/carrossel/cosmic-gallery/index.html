@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cosmic Gallery: 3D Holographic Grid</title>
+	<meta name="description" content="A grid layout with content preview and a magnetic effect." />
+	<meta name="keywords" content="gsap, 3d, grid, thumbnails, content, preview, front end, css, javascript" />
+	
+	<!-- Fonts and Third-party CSS -->
+	<link rel="stylesheet" href="https://use.typekit.net/gyf5muf.css">
+	<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+	<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+
+	<style>
+		/* ===== CSS: base.css ===== */
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+
+		:root {
+			font-size: 18px;
+		}
+
+		html, 
+		body, 
+		main {
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+
+		body {
+			margin: 0;
+			--color-text: #000;
+			--color-text-alt: #848484;
+			--color-title: #d3d3d3;
+			--color-bg: #DCDCDC;
+			--color-link: #E3154D;
+			--color-link-hover: #000;
+			color: var(--color-text);
+			background-color: var(--color-bg);
+			--cursor-stroke: #E3154D;
+			--cursor-fill: none;
+			--cursor-stroke-width: 1px;
+			--cursor-text: #000;
+			font-family: tenon, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		a {
+			text-decoration: underline;
+			color: var(--color-link);
+			outline: none;
+		}
+
+		a:hover,
+		a:focus {
+			text-decoration: none;
+			color: var(--color-link-hover);
+			outline: none;
+		}
+
+		.unbutton {
+			background: none;
+			border: 0;
+			padding: 0;
+			margin: 0;
+			font: inherit;
+			cursor: pointer;
+		}
+
+		.unbutton:focus {
+			outline: none;
+		}
+
+		/* Page Loader */
+		.js .loading::before,
+		.js .loading::after {
+			content: '';
+			position: fixed;
+			z-index: 1000;
+		}
+
+		.js .loading::before {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: var(--color-bg);
+		}
+
+		.js .loading::after {
+			top: 50%;
+			left: 50%;
+			width: 60px;
+			height: 60px;
+			margin: -30px 0 0 -30px;
+			border-radius: 50%;
+			opacity: 0.4;
+			background: var(--color-link);
+			animation: loaderAnim 0.7s linear infinite alternate forwards;
+		}
+
+		@keyframes loaderAnim {
+			to {
+				opacity: 1;
+				transform: scale3d(0.5,0.5,1);
+			}
+		}
+
+		.message {
+			position: relative;
+			z-index: 100;
+			background: var(--color-text);
+			color: var(--color-bg);
+			padding: 0.5rem;
+			font-size: 0.75rem;
+		}
+
+		.no-select {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.frame {
+			padding: 1rem 5vw;
+			position: relative;
+			z-index: 1000;
+		}
+
+		.frame__title {
+			font-size: 1rem;
+			margin: 0 0 1rem;
+			font-weight: normal;
+		}
+
+		.frame__demos {
+			margin: 1rem 0;
+		}
+
+		.frame__demo--current,
+		.frame__demo--current:hover {
+			color: var(--color-text);
+			text-decoration: none;
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			width: 100vw;
+			height: 300px;
+			justify-content: center;
+			position: relative;
+			align-items: center;
+		}
+
+		.grid {
+			position: absolute;
+			width: 120%;
+			height: 120%;
+			top: -10%;
+			left: -10%;
+			display: grid;
+			grid-template-columns: repeat(50,2%);
+			grid-template-rows: repeat(50,2%);
+			perspective: 1000px;
+		}
+
+		.grid--inactive {
+			pointer-events: none;
+		}
+
+		.grid__item {
+			position: relative;
+			will-change: transform;
+			grid-area: var(--grid-row) / var(--grid-column) / span 12 / span 5;
+		}
+
+		.grid__item-img {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: 50% 50%;
+			border-radius: 10px;
+			will-change: transform;
+		}
+
+		.char {
+			will-change: transform;
+		}
+
+		/* Shorthand grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end */
+		.pos-1 { --grid-row: 10; --grid-column: 1; }
+		.pos-2 { --grid-row: 1; --grid-column: 18; }
+		.pos-3 { --grid-row: 1; --grid-column: 29; }
+		.pos-4 { --grid-row: 15; --grid-column: 12; }
+		.pos-5 { --grid-row: 17; --grid-column: 25; }
+		.pos-6 { --grid-row: 20; --grid-column: 43; }
+		.pos-7 { --grid-row: 35; --grid-column: 5; }
+		.pos-8 { --grid-row: 40; --grid-column: 14; }
+		.pos-9 { --grid-row: 37; --grid-column: 29; }
+		.pos-10 { --grid-row: 35; --grid-column: 42; }
+		.pos-11 { --grid-row: 1; --grid-column: 44; }
+		.pos-12 { --grid-row: 32; --grid-column: 20; }
+		.pos-13 { --grid-row: 22; --grid-column: 2; }
+		.pos-14 { --grid-row: 9; --grid-column: 38; }
+		.pos-15 { --grid-row: 4; --grid-column: 7; }
+		.pos-16 { --grid-row: 28; --grid-column: 36; }
+
+		.content__title {
+			font-size: 12vw;
+			margin: 0;
+			line-height: 1.2;
+			position: relative;
+			color: var(--color-title);
+			text-transform: uppercase;
+			pointer-events: none;
+		}
+
+		.content__title-line {
+			display: block;
+			position: relative;
+			overflow: hidden;
+			line-height: 1;
+		}
+
+		.content__title-line--1 {
+			margin-left: -5vw;
+		}
+
+		.content__title-line--2 {
+			margin-right: -5vw;
+		}
+
+		.preview {
+			position: relative;
+			pointer-events: none;
+		}
+
+		.js .preview {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.preview__item {
+			position: relative;
+			margin: 0 auto;
+			padding: 0 5vw;
+			display: grid;
+			grid-template-rows: auto auto auto;
+			grid-template-columns: 50% 50%;
+			grid-template-areas: 
+			'preview-back preview-back' 
+			'preview-img preview-title' 
+			'preview-content preview-content';
+		}
+
+		.js .preview__item {
+			perspective: 1000px;
+		}
+
+		.js .preview__item:not(.preview__item--open) {
+			position: absolute;
+			overflow: hidden;
+			height: 0;
+			opacity: 0;
+		}
+
+		.js .preview__item--open {
+			pointer-events: auto;
+		}
+
+		.preview__item-back {
+			grid-area: preview-back;
+			justify-self: start;
+			font-size: 0.857rem;
+			text-transform: uppercase;
+			font-weight: 500;
+			padding-left: 90px;
+			margin-bottom: 1rem;
+			/* Embed arrow.svg directly to avoid external file requirement */
+			background: url("data:image/svg+xml;utf8,<svg width='79' height='9' xmlns='http://www.w3.org/2000/svg'><g stroke='%23000' fill='none' fill-rule='evenodd' stroke-linecap='square'><path d='M1.5 4.5l5-3M1.5 4.5l5 3M78.5 4.5h-77'/></g></svg>") no-repeat 0% 50%;
+		}
+
+		.preview__item-title {
+			grid-area: preview-title;
+			font-family: dystopian, sans-serif;
+			font-size: 12vw;
+			font-size: clamp(1.5rem,12vw,20vh);
+			margin: 0;
+			grid-column-start: 1;
+			align-self: center;
+			padding-left: 1rem;
+			position: relative;
+			overflow: hidden;
+			pointer-events: none;
+		}
+
+		.preview__item-imgwrap {
+			width: 100px;
+			height: 150px;
+			border-radius: 10px;
+			overflow: hidden;
+			grid-area: preview-img;
+			transform-origin: 50% 100%;
+		}
+
+		.preview__item-img {
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: 50% 50%;
+		}
+
+		.preview__item-content {
+			grid-area: preview-content;
+			max-width: calc(1100px - 80vh);
+			min-height: 440px;
+			line-height: 1.3;
+		}
+
+		.preview__item-meta {
+			color: var(--color-text-alt);
+			text-transform: uppercase;
+			font-size: 0.857rem;
+			padding: 1rem 0 0;
+		}
+
+		.preview__item-meta span {
+			display: block;
+		}
+
+		.preview__item-info {
+			display: block;
+			color: var(--color-link);
+			margin: 1rem 0;
+		}
+
+		.preview__item-button {
+			color: #fff;
+			border: 0;
+			border-radius: 2rem;
+			text-transform: uppercase;
+			font: inherit;
+			font-size: 0.875rem;
+			font-weight: 500;
+			background: #000;
+			padding: 1rem 2rem;
+			display: inline-block;
+			cursor: pointer;
+			margin-bottom: 1rem;
+		}
+
+		.preview__item-button:hover,
+		.preview__item-button:active,
+		.preview__item-button:focus {
+			outline: none;
+			background: var(--color-link);
+		}
+
+		.cursor {
+			display: none;
+		}
+
+		@media screen and (min-width: 53em) {
+			html, 
+			body, 
+			main {
+				overflow: hidden;
+			}
+			.message {
+				display: none;
+			}
+			.frame {
+				position: fixed;
+				z-index: 100;
+				top: 0;
+				left: 0;
+				display: grid;
+				align-content: space-between;
+				width: 100%;
+				max-width: none;
+				height: 100%;
+				padding: 1rem 1.5rem;
+				grid-gap: 6vw;
+				pointer-events: none;
+				grid-template-columns: auto 1fr auto;
+				grid-template-rows: auto auto auto;
+				grid-template-areas: 'title ... ...'
+									'... ... ...'
+									'... ... ...';
+			}
+			.frame__title-wrap {
+				grid-area: title;
+				display: flex;
+			}
+			.frame__title {
+				margin: 0;
+			}
+			.frame__tagline {
+				position: relative;
+				margin: 0 0 0 1rem;
+				padding: 0 0 0 1rem;
+				opacity: 0.5;
+			}
+			.frame__demos {
+				margin: 0;
+				grid-area: demos;
+				justify-self: end;
+			}
+			.frame a {
+				pointer-events: auto;
+			}
+			.content {
+				height: 100%;
+			}
+			.preview__item {
+				height: 100%;
+				width: 80vw;
+				grid-template-columns: 47% 53%;
+				grid-template-rows: minmax(max(5rem, 18vh), 1fr) auto auto 1fr;
+				grid-template-areas: 
+				'... ...'
+				'preview-back ...' 
+				'preview-title preview-title' 
+				'preview-img preview-content';
+			}
+			.preview__item-title {
+				justify-self: center;
+				padding: 0;
+			}
+			.preview__item-meta {
+				padding: 1rem 0;
+			}
+			.preview__item-info {
+				margin: 1rem 0 3rem;
+			}
+			.preview__item-imgwrap {
+				width: 100%;
+				height: 100%;
+				grid-row-start: 3;
+				border-radius: 10px 10px 0 0;
+			}
+			.preview__item-content {
+				padding: 0 0 0 4rem;
+			}
+		}
+
+		@media (any-pointer: fine) {
+			.cursor {
+				display: block;
+				position: fixed; /* Fix para resolver o offset/sincronia do cursor */
+				top: 0;
+				left: 0;
+				pointer-events: none;
+				z-index: 99999;
+			}
+
+			.cursor__svg {
+				pointer-events: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			.cursor__svg-circle {
+				fill: var(--cursor-fill);
+				stroke: var(--cursor-stroke);
+				stroke-width: var(--cursor-stroke-width);
+			}
+
+			.cursor__text {
+				position: absolute;
+				top: 1.875rem;
+				left: 80px;
+				font-size: 0.857rem;
+				text-transform: uppercase;
+				font-weight: 500;
+				fill: var(--cursor-text);
+			}
+		}
+	</style>
+	<script>
+		document.documentElement.className="js";
+		var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};
+		supportsCssVars()||alert("Access via a desktop terminal for optimal holographic rendering.");
+	</script>
+</head>
+<body class="loading">
+	<main>
+		<div class="message">Access via a desktop terminal for optimal holographic rendering.</div>
+		<div class="frame">
+			<div class="frame__title-wrap">
+				<h1 class="frame__title">Cosmic Gallery: 3D Holographic Grid</h1>
+			</div>
+			<!-- Links removed as requested -->
+		</div>
+		<div class="content">
+			<h2 class="content__title">
+				<span class="content__title-line content__title-line--1" data-splitting>Deep/</span>
+				<span class="content__title-line content__title-line--2" data-splitting>Space</span>
+			</h2>
+			<div class="grid">
+				<a href="#preview-1" class="grid__item pos-1" data-title="Nebula"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops1/400/600);"></div></a>
+				<a href="#preview-2" class="grid__item pos-2" data-title="Quasar"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops2/400/600);"></div></a>
+				<a href="#preview-3" class="grid__item pos-3" data-title="Pulsar"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops3/400/600);"></div></a>
+				<a href="#preview-4" class="grid__item pos-4" data-title="Supernova"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops4/400/600);"></div></a>
+				<a href="#preview-5" class="grid__item pos-5" data-title="Asteroid"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops5/400/600);"></div></a>
+				<a href="#preview-6" class="grid__item pos-6" data-title="Comet"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops6/400/600);"></div></a>
+				<a href="#preview-7" class="grid__item pos-7" data-title="Galaxy"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops7/400/600);"></div></a>
+				<a href="#preview-8" class="grid__item pos-8" data-title="Black Hole"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops8/400/600);"></div></a>
+				<a href="#preview-9" class="grid__item pos-9" data-title="Red Dwarf"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops9/400/600);"></div></a>
+				<a href="#preview-10" class="grid__item pos-10" data-title="White Dwarf"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops10/400/600);"></div></a>
+				<a href="#preview-11" class="grid__item pos-11" data-title="Neutron Star"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops11/400/600);"></div></a>
+				<a href="#preview-12" class="grid__item pos-12" data-title="Event Horizon"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops12/400/600);"></div></a>
+				<a href="#preview-13" class="grid__item pos-13" data-title="Dark Matter"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops13/400/600);"></div></a>
+				<a href="#preview-14" class="grid__item pos-14" data-title="Exoplanet"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops14/400/600);"></div></a>
+				<a href="#preview-15" class="grid__item pos-15" data-title="Stardust"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops15/400/600);"></div></a>
+				<a href="#preview-16" class="grid__item pos-16" data-title="Cosmic Void"><div class="grid__item-img" style="background-image:url(https://picsum.photos/seed/codrops16/400/600);"></div></a>
+			</div>
+			<div class="preview">
+				<div class="preview__item" id="preview-1">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops1/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Nebula</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Alpha Quadrant</span><span>Epoch 1.0</span></div>
+						<p class="preview__item-description">A magnificent interstellar cloud of dust, hydrogen, helium and other ionized gases. A true stellar nursery where new cosmic phenomena are born over millions of years.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-2">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops2/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Quasar</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Beta Quadrant</span><span>Epoch 1.1</span></div>
+						<p class="preview__item-description">An extremely luminous active galactic nucleus, powered by a supermassive black hole with mass ranging from millions to billions of solar masses. A beacon in the deep dark.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-3">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops3/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Pulsar</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Gamma Quadrant</span><span>Epoch 1.2</span></div>
+						<p class="preview__item-description">A highly magnetized rotating neutron star that emits beams of electromagnetic radiation out of its magnetic poles. The lighthouse of the interstellar void.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-4">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops4/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Supernova</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Delta Quadrant</span><span>Epoch 1.3</span></div>
+						<p class="preview__item-description">A powerful and luminous stellar explosion. This transient astronomical event occurs during the last evolutionary stages of a massive star, seeding the universe with heavy elements.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-5">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops5/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Asteroid</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Inner Belt</span><span>Epoch 1.4</span></div>
+						<p class="preview__item-description">A minor planet of the inner Solar System. Historically, these terms have been applied to any astronomical object orbiting the sun that did not resolve into a disc in a telescope.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-6">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops6/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Comet</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Oort Cloud</span><span>Epoch 1.5</span></div>
+						<p class="preview__item-description">An icy, small Solar System body that, when passing close to the Sun, warms and begins to release gases, a process called outgassing, leaving a brilliant trail.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-7">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops7/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Galaxy</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Local Group</span><span>Epoch 1.6</span></div>
+						<p class="preview__item-description">A gravitationally bound system of stars, stellar remnants, interstellar gas, dust, and dark matter. The foundational building blocks of the observable universe.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-8">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops8/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Black Hole</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Core Center</span><span>Epoch 1.7</span></div>
+						<p class="preview__item-description">A region of spacetime where gravity is so strong that nothing—no particles or even electromagnetic radiation such as light—can escape from its immense gravitational pull.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-9">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops9/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Red Dwarf</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Outer Arm</span><span>Epoch 1.8</span></div>
+						<p class="preview__item-description">The smallest and coolest kind of star on the main sequence. They are by far the most common type of star in the Milky Way, burning slowly over trillions of years.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-10">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops10/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">White Dwarf</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Perseus Arm</span><span>Epoch 1.9</span></div>
+						<p class="preview__item-description">A stellar core remnant composed mostly of electron-degenerate matter. A very dense object, comparable in mass to the Sun but in volume to the Earth.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-11">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops11/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Neutron Star</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Orion Spur</span><span>Epoch 2.0</span></div>
+						<p class="preview__item-description">The collapsed core of a massive supergiant star. These entities possess the strongest magnetic fields and highest densities of any known stellar object.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-12">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops12/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Event Horizon</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Singularity Edge</span><span>Epoch 2.1</span></div>
+						<p class="preview__item-description">A boundary beyond which events cannot affect an observer. The absolute point of no return for anything falling into the immense gravity well of a black hole.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-13">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops13/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Dark Matter</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Cosmic Web</span><span>Epoch 2.2</span></div>
+						<p class="preview__item-description">A hypothetical form of matter thought to account for approximately 85% of the matter in the universe. It interacts primarily through gravity, remaining invisible.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-14">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops14/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Exoplanet</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Proxima Centauri</span><span>Epoch 2.3</span></div>
+						<p class="preview__item-description">A planet outside the Solar System. With trillions scattered across the galaxy, they hold the greatest promise for discovering extraterrestrial life and habitable zones.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-15">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops15/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Stardust</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Interstellar Medium</span><span>Epoch 2.4</span></div>
+						<p class="preview__item-description">Cosmic dust that originates from stars. It is composed of tiny particulates drifting in space, often carrying the essential building blocks for planetary formation.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+				<div class="preview__item" id="preview-16">
+					<button class="preview__item-back unbutton"><span>Return</span></button>
+					<div class="preview__item-imgwrap">
+						<div class="preview__item-img" style="background-image:url(https://picsum.photos/seed/codrops16/800/1200);"></div>
+					</div>
+					<h2 data-splitting class="preview__item-title">Cosmic Void</h2>
+					<div class="preview__item-content">
+						<div class="preview__item-meta"><span>Bootes</span><span>Epoch 2.5</span></div>
+						<p class="preview__item-description">Vast, empty spaces between galaxy filaments, which contain very few or no galaxies. These are some of the largest and most mysterious structures in the Universe.</p>
+						<button class="preview__item-info unbutton">+ Scan Data</button>
+						<button class="preview__item-button">Engage Warp</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div class="cursor">
+		<svg class="cursor__svg" width="80" height="80" viewBox="0 0 80 80">
+			<circle vector-effect="non-scaling-stroke" class="cursor__svg-circle" cx="40" cy="40" r="20"/>
+		</svg>
+		<span class="cursor__text"></span>
+	</div>
+
+	<!-- External Libraries -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+	<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+	<!-- Script logic originally split across modules -->
+	<script>
+		// ===== EventEmitter Polyfill (Browser Replacement for Node.js 'events') =====
+		class EventEmitter {
+			constructor() {
+				this.events = {};
+			}
+			on(evt, listener) {
+				(this.events[evt] || (this.events[evt] = [])).push(listener);
+				return this;
+			}
+			emit(evt, ...args) {
+				(this.events[evt] || []).forEach(lsn => lsn(...args));
+			}
+		}
+
+		// ===== UTILS (utils.js) =====
+		const map = (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c;
+		const lerp = (a, b, n) => (1 - n) * a + n * b;
+		const calcWinsize = () => ({ width: window.innerWidth, height: window.innerHeight });
+		const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+		const getMousePos = e => ({ x: e.clientX, y: e.clientY });
+
+		const preloadImages = (selector) => {
+			return new Promise((resolve) => {
+				imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
+			});
+		};
+
+		const getTranslateValues = element => {
+			const style = window.getComputedStyle(element);
+			const matrix = style['transform'] || style.webkitTransform || style.mozTransform;
+
+			if (matrix === 'none' || typeof matrix === 'undefined') return { x: 0, y: 0, z: 0 };
+
+			const matrixType = matrix.includes('3d') ? '3d' : '2d';
+			const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+
+			if (matrixType === '2d') return { x: parseFloat(matrixValues[4]), y: parseFloat(matrixValues[5]), z: 0 };
+			if (matrixType === '3d') return { x: parseFloat(matrixValues[12]), y: parseFloat(matrixValues[13]), z: parseFloat(matrixValues[14]) };
+		};
+
+		// Global state tracking based on utilities
+		let winsize = calcWinsize();
+		window.addEventListener('resize', () => winsize = calcWinsize());
+		
+		let mousepos = { x: winsize.width / 2, y: winsize.height / 2 };
+		window.addEventListener('mousemove', ev => mousepos = getMousePos(ev));
+
+
+		// ===== MAGNETIC FX (magneticFx.js) =====
+		class MagneticFx {
+			constructor(el) {
+				this.DOM = { el: el };
+				this.renderedStyles = {
+					tx: { previous: 0, current: 0, amt: 0.04 },
+					ty: { previous: 0, current: 0, amt: 0.04 }
+				};
+				this.calculateSizePosition();
+				this.initEvents();
+			}
+			calculateSizePosition() {
+				this.scrollVal = { x: window.scrollX, y: window.scrollY };
+				this.rect = this.DOM.el.getBoundingClientRect();
+			}
+			initEvents() {
+				window.addEventListener('resize', () => this.calculateSizePosition());
+				this.DOM.el.addEventListener('mouseenter', () => {
+					this.hoverTimeout = setTimeout(() => {
+						const { x, y } = getTranslateValues(this.DOM.el);
+						this.renderedStyles['tx'].previous = x;
+						this.renderedStyles['ty'].previous = y;
+						this.loopRender();
+					}, 10);
+				});
+				this.DOM.el.addEventListener('mouseleave', () => {
+					if (this.hoverTimeout) clearTimeout(this.hoverTimeout);
+					this.stopRendering();
+				});
+			}
+			loopRender() {
+				if (!this.requestId) {
+					this.requestId = requestAnimationFrame(() => this.render());
+				}
+			}
+			stopRendering() {
+				if (this.requestId) {
+					window.cancelAnimationFrame(this.requestId);
+					this.requestId = undefined;
+				}
+			}
+			render() {
+				this.requestId = undefined;
+				const scrollDiff = {
+					x: this.scrollVal.x - window.scrollX,
+					y: this.scrollVal.y - window.scrollY
+				};
+				this.renderedStyles['tx'].current = (mousepos.x - (scrollDiff.x + this.rect.left + this.rect.width / 2)) * .3;
+				this.renderedStyles['ty'].current = (mousepos.y - (scrollDiff.y + this.rect.top + this.rect.height / 2)) * .3;
+				for (const key in this.renderedStyles) {
+					this.renderedStyles[key].previous = lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+				}
+				gsap.set(this.DOM.el, { x: this.renderedStyles['tx'].previous, y: this.renderedStyles['ty'].previous });
+				this.loopRender();
+			}
+		}
+
+		// ===== PREVIEW (preview.js) =====
+		class Preview {
+			constructor(el) {
+				this.DOM = { el: el };
+				this.DOM.backCtrl = this.DOM.el.querySelector('.preview__item-back');
+				this.DOM.imgWrap = this.DOM.el.querySelector('.preview__item-imgwrap');
+				this.DOM.image = this.DOM.imgWrap.querySelector('.preview__item-img');
+				this.DOM.title = this.DOM.el.querySelector('.preview__item-title');
+				this.DOM.titleChars = [...this.DOM.title.querySelectorAll('.char')];
+				this.DOM.content = this.DOM.el.querySelector('.preview__item-content');
+				this.init();
+			}
+			init() {
+				gsap.set(this.DOM.titleChars, { opacity: 0, y: '100%' });
+				gsap.set(this.DOM.imgWrap, { y: '100%', rotationX: -20 });
+				gsap.set(this.DOM.image, { y: '-100%' });
+				gsap.set(this.DOM.backCtrl, { opacity: 0 });
+				gsap.set(this.DOM.content, { opacity: 0 });
+			}
+		}
+
+
+		// ===== CURSOR (cursor.js) =====
+		class Cursor {
+			constructor(el) {
+				this.DOM = { el: el };
+				this.DOM.svg = this.DOM.el.querySelector('.cursor__svg');
+				this.DOM.circle = this.DOM.svg.querySelector('.cursor__svg-circle');
+				this.DOM.circle.style.transformOrigin = '50% 50%';
+				this.DOM.text = this.DOM.el.querySelector('.cursor__text');
+				this.DOM.el.style.opacity = 0;
+				this.bounds = this.DOM.svg.getBoundingClientRect();
+				this.renderedStyles = {
+					tx: { previous: 0, current: 0, amt: 0.2 },
+					ty: { previous: 0, current: 0, amt: 0.2 },
+					txText: { previous: 0, current: 0, amt: 0.1 },
+					tyText: { previous: 0, current: 0, amt: 0.1 },
+					scale: { previous: 1, current: 1, amt: 0.15 }
+				};
+
+				this.onMouseMoveEv = () => {
+					this.renderedStyles.tx.previous = this.renderedStyles.tx.current = this.renderedStyles.txText.previous = this.renderedStyles.txText.current = mousepos.x - this.bounds.width / 2;
+					this.renderedStyles.ty.previous = this.renderedStyles.ty.current = this.renderedStyles.tyText.previous = this.renderedStyles.tyText.current = mousepos.y - this.bounds.height / 2;
+					gsap.to(this.DOM.el, { duration: 0.9, ease: 'power3.out', opacity: 1 });
+					requestAnimationFrame(() => this.render());
+					window.removeEventListener('mousemove', this.onMouseMoveEv);
+				};
+				window.addEventListener('mousemove', this.onMouseMoveEv);
+			}
+			enter() { this.renderedStyles['scale'].current = 1.5; }
+			leave() { this.renderedStyles['scale'].current = 1; }
+			render() {
+				this.renderedStyles['tx'].current = this.renderedStyles['txText'].current = mousepos.x - this.bounds.width / 2;
+				this.renderedStyles['ty'].current = this.renderedStyles['tyText'].current = mousepos.y - this.bounds.height / 2;
+				for (const key in this.renderedStyles) {
+					this.renderedStyles[key].previous = lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+				}
+				this.DOM.svg.style.transform = `translateX(${this.renderedStyles['tx'].previous}px) translateY(${this.renderedStyles['ty'].previous}px)`;
+				this.DOM.text.style.transform = `translateX(${this.renderedStyles['txText'].previous}px) translateY(${this.renderedStyles['tyText'].previous}px)`;
+				this.DOM.circle.style.transform = `scale(${this.renderedStyles['scale'].previous})`;
+				requestAnimationFrame(() => this.render());
+			}
+		}
+
+		// ===== GRID ITEM (gridItem.js) =====
+		class GridItem {
+			constructor(el) {
+				this.DOM = { el: el };
+				this.DOM.image = this.DOM.el.querySelector('.grid__item-img');
+				this.title = this.DOM.el.dataset.title;
+				this.translationVals = { x: 0, y: 0 };
+				this.rotationVals = { x: 0, y: 0 };
+				this.xstart = getRandomNumber(70, 100);
+				this.ystart = getRandomNumber(40, 65);
+				this.rxstart = 5;
+				this.rystart = 10;
+				this.magneticFx = new MagneticFx(this.DOM.image);
+				this.DOM.contentEl = document.querySelector(this.DOM.el.getAttribute('href').substring(this.DOM.el.getAttribute('href').lastIndexOf('#')));
+				this.preview = new Preview(this.DOM.contentEl);
+				this.layout();
+				this.loopTransformAnimation();
+			}
+			layout() {
+				const rect = this.DOM.el.getBoundingClientRect();
+				this.isLeft = rect.left + rect.width / 2 < winsize.width / 2;
+				this.isTop = rect.top + rect.height / 2 < winsize.height / 2;
+				this.rY = this.isLeft ? map(rect.left + rect.width / 2, 0, winsize.width / 2, this.rystart, 0) : map(rect.left + rect.width / 2, winsize.width / 2, winsize.width, 0, -this.rystart);
+				this.rX = this.isTop ? map(rect.top + rect.height / 2, 0, winsize.height / 2, -this.rxstart, 0) : map(rect.top + rect.height / 2, winsize.height / 2, winsize.height, 0, this.rxstart);
+				this.tZ = this.isLeft ? map(rect.left + rect.width / 2, 0, winsize.width / 2, -200, -600) : map(rect.left + rect.width / 2, winsize.width / 2, winsize.width, -600, -200);
+
+				gsap.set(this.DOM.el, { rotationX: this.rX, rotationY: this.rY, z: this.tZ });
+			}
+			onMouseEnter() {
+				this.hoverTimeout = setTimeout(() => {
+					if (this.timelineHoverOut) this.timelineHoverOut.kill();
+					this.timelineHoverIn = gsap.timeline()
+						.addLabel('start', 0)
+						.to(this.DOM.image, { duration: 0.8, ease: 'expo', scale: 1.1 }, 'start');
+				}, 10);
+			}
+			onMouseLeave() {
+				if (this.hoverTimeout) clearTimeout(this.hoverTimeout);
+				if (this.timelineHoverIn) this.timelineHoverIn.kill();
+				this.timelineHoverOut = gsap.timeline()
+					.to(this.DOM.image, { duration: 1, ease: 'power4', x: 0, y: 0, scale: 1 });
+			}
+			loopTransformAnimation() {
+				if (!this.requestId) {
+					this.requestId = requestAnimationFrame(() => this.move());
+				}
+			}
+			stopTransformAnimation() {
+				if (this.requestId) {
+					window.cancelAnimationFrame(this.requestId);
+					this.requestId = undefined;
+				}
+			}
+			move() {
+				this.requestId = undefined;
+				this.translationVals.x = lerp(this.translationVals.x, map(mousepos.x, 0, winsize.width, -this.xstart, this.xstart), 0.04);
+				this.translationVals.y = lerp(this.translationVals.y, map(mousepos.y, 0, winsize.height, -this.ystart, this.ystart), 0.04);
+				this.rotationVals.x = this.isTop ? lerp(this.rotationVals.x, map(mousepos.y, 0, winsize.height / 2, this.rxstart, 0), 0.04) : lerp(this.rotationVals.x, map(mousepos.y, winsize.height / 2, winsize.height, 0, -this.rxstart), 0.04);
+				this.rotationVals.y = this.isLeft ? lerp(this.rotationVals.y, map(mousepos.x, 0, winsize.width / 2, -this.rystart, 0), 0.04) : lerp(this.rotationVals.y, map(mousepos.x, winsize.width / 2, winsize.width, 0, this.rystart), 0.04);
+
+				gsap.set(this.DOM.el, {
+					x: -this.translationVals.x,
+					y: -this.translationVals.y,
+					rotationX: -this.rX - this.rotationVals.x,
+					rotationY: -this.rY - this.rotationVals.y
+				});
+				this.loopTransformAnimation();
+			}
+		}
+
+		// ===== GRID (grid.js) =====
+		let splittingInit = false;
+		let titleChars = [];
+
+		class Grid extends EventEmitter {
+			constructor(el) {
+				super();
+				this.DOM = { el: el };
+				
+				// Initialize splitting here to ensure the elements are prepared
+				if (!splittingInit) {
+					Splitting();
+					splittingInit = true;
+					const title = document.querySelector('.content__title');
+					titleChars = [...title.querySelectorAll('.char')];
+				}
+
+				this.gridItems = [];
+				this.DOM.items = [...this.DOM.el.querySelectorAll('.grid__item')];
+				this.DOM.items.forEach(item => {
+					this.gridItems.push(new GridItem(item));
+				});
+				this.showItems();
+				this.initEvents();
+			}
+			showItems() {
+				gsap.timeline()
+					.addLabel('start', 0)
+					.set(this.DOM.items, { scale: 1.5, opacity: 0 }, 0)
+					.to(this.DOM.items, { duration: 1.2, ease: 'expo', scale: 1, stagger: { amount: 0.4, grid: 'auto', from: 'center' } }, 'start')
+					.to(this.DOM.items, { duration: 1.2, ease: 'power1', opacity: 1, stagger: { amount: 0.4, grid: 'auto', from: 'center' } }, 'start');
+			}
+			initEvents() {
+				for (const item of this.gridItems) {
+					item.DOM.image.addEventListener('mouseenter', () => {
+						item.onMouseEnter();
+						this.emit('mouseEnterItem', item.title);
+					});
+					item.DOM.image.addEventListener('mouseleave', () => {
+						item.onMouseLeave();
+						this.emit('mouseLeaveItem');
+					});
+					item.DOM.el.addEventListener('click', ev => {
+						ev.preventDefault();
+						this.showContent(item);
+					});
+					item.preview.DOM.backCtrl.addEventListener('click', () => {
+						this.hideContent(item);
+					});
+				}
+			}
+			showContent(item) {
+				if (this.isContentOpen) return false;
+				this.isContentOpen = true;
+				this.DOM.el.classList.add('grid--inactive');
+
+				for (const gridItem of this.gridItems) {
+					gridItem.stopTransformAnimation();
+				}
+
+				gsap.timeline()
+					.addLabel('start', 0)
+					.to(this.DOM.items, { duration: 2, ease: 'expo.inOut', opacity: 0, rotationX: 0, rotationY: 0, y: '-=' + getRandomNumber(1000, 1600), stagger: { amount: 0.2, grid: 'auto', from: 'top' } }, 'start')
+					.to(titleChars, { duration: 1.5, ease: 'expo.inOut', opacity: 0, y: '-=100%', stagger: 0.03 }, 'start+=0.1')
+					.add(() => { item.preview.DOM.el.classList.add('preview__item--open'); }, 'start+=0.1')
+					.to(item.preview.DOM.titleChars, { duration: 1.5, ease: 'expo.inOut', opacity: 1, y: '0%', stagger: 0.05 }, 'start+=0.6')
+					.to([item.preview.DOM.imgWrap, item.preview.DOM.image], { duration: 1.5, ease: 'expo.inOut', opacity: 1, y: '0%', rotationX: 0 }, 'start+=0.5')
+					.to(item.preview.DOM.imgWrap, { duration: 1.5, ease: 'expo.inOut', opacity: 1 }, 'start+=0.5')
+					.to(item.preview.DOM.backCtrl, { duration: 1.5, ease: 'expo', startAt: { x: '20%' }, x: '0%', opacity: 1 }, 'start+=1.5')
+					.to(item.preview.DOM.content, { duration: 1.5, ease: 'expo', startAt: { y: '20%' }, y: '0%', opacity: 1 }, 'start+=1.5');
+			}
+			hideContent(item) {
+				if (!this.isContentOpen) return false;
+				this.isContentOpen = false;
+
+				gsap.timeline({
+					onComplete: () => {
+						item.preview.DOM.el.classList.remove('preview__item--open');
+						this.DOM.el.classList.remove('grid--inactive');
+					}
+				})
+				.addLabel('start', 0)
+				.to(item.preview.DOM.titleChars, { duration: 1.5, ease: 'expo.inOut', opacity: 0, y: '100%', stagger: -0.04 }, 'start')
+				.to(item.preview.DOM.imgWrap, { duration: 1.5, ease: 'expo.inOut', y: '100%', rotationX: -20 }, 'start')
+				.to(item.preview.DOM.image, { duration: 1.5, ease: 'expo.inOut', y: '-100%' }, 'start')
+				.to(item.preview.DOM.backCtrl, { duration: 1.5, ease: 'expo.inOut', x: '20%', opacity: 0 }, 'start')
+				.to(item.preview.DOM.content, { duration: 1.5, ease: 'expo.inOut', y: '50%', opacity: 0 }, 'start')
+				.to(titleChars, { duration: 1, ease: 'expo.inOut', opacity: 1, y: '0%', stagger: -0.03 }, 'start+=0.4')
+				.add(() => {
+					for (const gridItem of this.gridItems) {
+						gridItem.translationVals.y = gridItem.rotationVals.y = gridItem.rotationVals.x = 0;
+						gridItem.loopTransformAnimation();
+					}
+				}, 'start+=0.3')
+				.to(this.DOM.items, { duration: 1, ease: 'expo', opacity: 1, startAt: { scale: 0.2 }, scale: 1, stagger: { amount: 0.2, grid: 'auto', from: 'center' } }, 'start+=1');
+			}
+		}
+
+		// ===== INITIALIZATION (index.js) =====
+		const cursor = new Cursor(document.querySelector('.cursor'));
+
+		preloadImages('.grid__item-img').then(() => {
+			document.body.classList.remove('loading');
+			const grid = new Grid(document.querySelector('.grid'));
+			grid.on('mouseEnterItem', itemTitle => cursor.DOM.text.innerHTML = itemTitle);
+			grid.on('mouseLeaveItem', () => cursor.DOM.text.innerHTML = '');
+		});
+
+		[...document.querySelectorAll('a, button, .grid__item')].forEach(link => {
+			link.addEventListener('mouseenter', () => cursor.enter());
+			link.addEventListener('mouseleave', () => cursor.leave());
+		});
+	</script>
+</body>
+</html>

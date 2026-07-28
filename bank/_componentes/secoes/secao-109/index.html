@@ -1,0 +1,557 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultix — Hero</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Tailwind v4 browser CDN: compiles utility classes at runtime -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Vaultix tokens + custom utility classes (.btn-accent-glow, .hover-stagger, etc.) -->
+    
+
+    <!-- Component-specific custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP + plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+    <script src="eases.js"></script>
+    <script src="scramble-hover.js"></script>
+
+    <!-- Pre-anim FOUC guard (must run before main script) -->
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("hero-pre-anim");
+      }
+    </script>
+  
+    <style data-bundled-from="/vaultix/global.css">
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* The @theme block above is a Tailwind v4 build-time directive — browsers ignore
+   it when this file is served as a plain stylesheet, so the design tokens must be
+   mirrored onto :root here for the standalone ported components (which load this
+   file via <link> and never run the Tailwind compiler on it). */
+:root {
+  color-scheme: dark;
+  --nav-height: 3.25rem;
+
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --nav-height: 4.8125rem;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(253, 255, 34, 0.7);
+}
+
+/* Char roll-up hover (Osmo `btn-animate-chars` pattern).
+   Inner wrapper inherits parent's line-height so the parent's vertical centering
+   is preserved (no shrinking the button). overflow:hidden + clip-path keep the
+   text-shadow clone hidden until the char rolls up. */
+.hover-stagger:hover .hover-stagger__inner > span {
+  transform: translateY(-1.4em) rotate(0.001deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none;
+  }
+}
+
+/* Accent glow on hover — same 3-layer pattern as HeroLoader bars `.is-lit`. */
+.btn-accent-glow {
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.btn-accent-glow:hover {
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+
+/* Always-on accent glow — same 3-layer stack as `.btn-accent-glow:hover`.
+   Apply to elements that should glow whenever they are visible (e.g. the
+   active pill in the About / Our Values slider, hero loader bars). */
+
+/* Periwinkle (#B5D2FF) glow as a CSS drop-shadow stack — works on SVGs and
+   text. Companion to `.accent-glow-active` but for the secondary blue
+   accent used in pixel-art icons / eyebrows. */
+
+/* Yellow accent glow as a CSS drop-shadow stack — for SVG paths and text
+   (HUD style). Use when the element is yellow and you want it to "emit"
+   light. Box-shadow companion is `.accent-glow-active`. */
+
+/* Vaultix logo — yellow accent glow on hover, applied ONLY to the icon
+   (svg in Navbar, img in Footer). The wordmark stays clean.
+   Wrapped in `@media (hover: hover)` so touch devices (tablet/phone)
+   never get a sticky hover state from a tap. */
+@media (hover: hover) and (pointer: fine) {
+  .vaultix-logo svg,
+  .vaultix-logo img {
+    transition: filter 0.3s ease;
+  }
+  .vaultix-logo:hover svg,
+  .vaultix-logo:hover img {
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vaultix-logo svg,
+  .vaultix-logo img {
+    transition: none;
+  }
+}
+
+/* Touch devices: kill hover-driven transforms / shadows / filters by
+   neutralizing the most common patterns. Components scoped under `@media
+   (hover: hover)` are already safe; this catches the rest as a guardrail. */
+@media (hover: none), (pointer: coarse) {
+  .btn-accent-glow:hover {
+    box-shadow: none !important;
+  }
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Mobile (<768px): drop the structural decoration layer.
+   Markers (T-marks / corner dots), animated frame lines, and the
+   side borders of containers are all desktop-only language. On
+   phones each section reads cleanly without that scaffolding.
+   ============================================================ */
+@media (max-width: 767px) {
+  [data-howit-line],
+  [data-impact-line],
+  [data-blog-line],
+  [data-footer-line],
+  [data-howit-tmark],
+  [data-impact-tmark],
+  [data-blog-tmark],
+  [data-footer-marker] {
+    display: none !important;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- TEMLIS-INLINED-NAVBAR (vaultix-navbar) -->
+    <header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]" data-navbar="">
+          <nav class="mx-auto flex w-full max-w-[70.5rem] items-center justify-between px-4 py-4 md:px-[calc(1.25rem+1px)]">
+            <a href="#" class="vaultix-logo flex items-center gap-3">
+              <svg class="h-[1.2035rem] w-[1.625rem] text-[var(--color-accent)]" viewBox="0 0 26 19.256" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M11.0922 19.256L0 0H7.36519L14.8191 12.8669L18.4573 6.47782L14.8191 0H22.1843L26 6.47782L22.3618 13.0444L14.8191 12.8669L11.0922 19.256Z"></path>
+              </svg>
+              <span class="font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white">
+                Vaultix
+              </span>
+            </a>
+    
+            <!-- === Desktop menu (lg+) — full link bar + buy template === -->
+            <div class="relative hidden items-center gap-2 bg-[var(--color-surface-2)] p-1 lg:flex">
+              <ul class="flex items-center">
+                <li>
+                  <a href="#about" data-scramble-hover="" class="nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/60">
+                    About
+                  </a>
+                </li>
+    
+                <li class="group" data-platform-dropdown="">
+                  <button type="button" aria-haspopup="true" class="nav-link relative flex h-9 cursor-pointer items-center gap-1 pl-3 pr-2 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/60 after:absolute after:left-0 after:right-0 after:top-full after:h-[0.75rem] after:content-['']">
+                    <span data-scramble-hover="">Features</span>
+                    <svg class="platform-chevron h-[1.125rem] w-[1.125rem]" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M10 17L15 12L10 7V17Z"></path>
+                    </svg>
+                  </button>
+    
+                  <div class="invisible absolute inset-x-0 top-[calc(100%+0.5rem)] z-50 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <ul class="flex flex-col">
+                      <li>
+                        <a href="#pipeline-monitoring" class="nav-feature-item relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors">
+                          <span class="nav-active-marker" aria-hidden="true"></span>
+                          <span class="flex items-center gap-6">
+                            <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/pipeline-monitoring.png" alt="" class="nav-feature-icon h-7 w-7 shrink-0" loading="lazy" decoding="async">
+                            <span data-scramble-hover="" class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white">
+                              Real-Time Pipeline Monitoring
+                            </span>
+                          </span>
+                          <svg class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40 transition-colors" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 17L15 12L10 7V17Z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#anomaly-detection" class="nav-feature-item relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors">
+                          <span class="nav-active-marker" aria-hidden="true"></span>
+                          <span class="flex items-center gap-6">
+                            <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/anomaly-detection.png" alt="" class="nav-feature-icon h-7 w-7 shrink-0" loading="lazy" decoding="async">
+                            <span data-scramble-hover="" class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white">
+                              AI-Powered Anomaly Detection
+                            </span>
+                          </span>
+                          <svg class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40 transition-colors" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 17L15 12L10 7V17Z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#security" class="nav-feature-item relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors">
+                          <span class="nav-active-marker" aria-hidden="true"></span>
+                          <span class="flex items-center gap-6">
+                            <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/security.png" alt="" class="nav-feature-icon h-7 w-7 shrink-0" loading="lazy" decoding="async">
+                            <span data-scramble-hover="" class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white">
+                              Enterprise-Grade Security
+                            </span>
+                          </span>
+                          <svg class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40 transition-colors" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 17L15 12L10 7V17Z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#vector-database" class="nav-feature-item relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors">
+                          <span class="nav-active-marker" aria-hidden="true"></span>
+                          <span class="flex items-center gap-6">
+                            <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/vector-database.png" alt="" class="nav-feature-icon h-7 w-7 shrink-0" loading="lazy" decoding="async">
+                            <span data-scramble-hover="" class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white">
+                              Vector Database Built-In
+                            </span>
+                          </span>
+                          <svg class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40 transition-colors" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 17L15 12L10 7V17Z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#features" class="nav-feature-item nav-feature-item--all relative flex cursor-pointer items-center justify-between gap-6 border border-[var(--color-border)] bg-[#141414] px-6 py-5 transition-colors">
+                          <span class="nav-active-marker" aria-hidden="true"></span>
+                          <span data-scramble-hover="" class="nav-feature-label whitespace-nowrap font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/70">
+                            View all features
+                          </span>
+                          <svg class="nav-feature-chevron h-[1.125rem] w-[1.125rem] shrink-0 text-white/40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M10 17L15 12L10 7V17Z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+    
+                <li>
+                  <a href="#pricing" data-scramble-hover="" class="nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/60">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#blog" data-scramble-hover="" class="nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/60">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" data-scramble-hover="" class="nav-link flex h-9 items-center px-3 font-mono text-[0.875rem] uppercase leading-[1.125rem] tracking-[0.105rem] text-white/60">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+    
+              <a href="#buy" data-scramble-hover="" data-accent-btn="" class="btn-accent-glow inline-flex cursor-pointer items-center justify-center border-0 bg-[var(--color-accent)] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] text-[#11130e] outline-none transition-[filter] hover:brightness-110 focus:outline-none focus-visible:outline-none">
+                Buy template
+              </a>
+            </div>
+    
+            <!-- === Tablet & mobile (<lg) — buy template + hamburger === -->
+            <div class="flex items-center gap-2 lg:hidden">
+              <a href="#buy" data-accent-btn="" class="btn-accent-glow inline-flex cursor-pointer items-center justify-center border-0 bg-[var(--color-accent)] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] text-[#11130e] outline-none transition-[filter] hover:brightness-110 focus:outline-none focus-visible:outline-none">
+                Buy template
+              </a>
+              <button type="button" class="nav-burger flex h-10 w-10 items-center justify-center border border-[var(--color-border)] bg-[var(--color-surface-2)]" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-burger="">
+                <span class="nav-burger__bars" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </button>
+            </div>
+          </nav>
+    
+          <!-- === Drawer (only renders on <lg via CSS) === -->
+          <div id="nav-drawer" class="nav-drawer lg:hidden" data-nav-drawer="" aria-hidden="true">
+            <ul class="nav-drawer__list">
+              <li>
+                <a href="#about" class="nav-drawer__link">About</a>
+              </li>
+    
+              <li class="nav-drawer__group" data-nav-drawer-group="">
+                <button type="button" class="nav-drawer__group-toggle" aria-expanded="false" aria-controls="nav-drawer-features" data-nav-drawer-toggle="">
+                  <span>Features</span>
+                  <svg class="nav-drawer__chevron" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                    <path d="M10 17L15 12L10 7V17Z"></path>
+                  </svg>
+                </button>
+                <ul id="nav-drawer-features" class="nav-drawer__sub" hidden="">
+                  <li>
+                    <a href="#pipeline-monitoring" class="nav-drawer__sub-link">
+                      <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/pipeline-monitoring.png" alt="" class="nav-drawer__sub-icon" loading="lazy" decoding="async">
+                      <span>Real-Time Pipeline Monitoring</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#anomaly-detection" class="nav-drawer__sub-link">
+                      <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/anomaly-detection.png" alt="" class="nav-drawer__sub-icon" loading="lazy" decoding="async">
+                      <span>AI-Powered Anomaly Detection</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#security" class="nav-drawer__sub-link">
+                      <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/security.png" alt="" class="nav-drawer__sub-icon" loading="lazy" decoding="async">
+                      <span>Enterprise-Grade Security</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#vector-database" class="nav-drawer__sub-link">
+                      <img src="https://d173woph5zl366.cloudfront.net/vaultix/feature-icons/vector-database.png" alt="" class="nav-drawer__sub-icon" loading="lazy" decoding="async">
+                      <span>Vector Database Built-In</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#features" class="nav-drawer__sub-link nav-drawer__sub-link--all">
+                      <span class="nav-drawer__sub-icon" aria-hidden="true"></span>
+                      <span>View all features →</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+    
+              <li>
+                <a href="#pricing" class="nav-drawer__link">Pricing</a>
+              </li>
+              <li>
+                <a href="#blog" class="nav-drawer__link">Blog</a>
+              </li>
+              <li>
+                <a href="#contact" class="nav-drawer__link">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </header>
+
+    <section class="hero relative flex flex-col lg:min-h-[calc(100svh-var(--nav-height))]" data-hero="">
+      <div class="hero-frame relative mx-auto flex w-full min-h-[max(36rem,calc(100svh-73px))] max-w-[70.5rem] flex-1 flex-col lg:grid lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:border-x lg:border-[var(--color-border)]">
+        <!-- Frame lines overlay — animated draw-in -->
+        <div class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block" style="left: -1px" data-frame-line="" data-axis="y" aria-hidden="true"></div>
+        <div class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block" style="right: -1px" data-frame-line="" data-axis="y" aria-hidden="true"></div>
+        <div class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block" style="left: calc(100% / 2.25)" data-frame-line="" data-axis="y" aria-hidden="true"></div>
+
+        <!-- T tip down — upper-left -->
+        <svg class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+          <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+        </svg>
+        <!-- T tip down — upper-right -->
+        <svg class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+          <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+        </svg>
+        <!-- T tip down — top-middle -->
+        <svg class="pointer-events-none absolute left-[calc(100%/2.25_-_9px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+          <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+        </svg>
+        <!-- T tip up — bottom-middle -->
+        <svg class="pointer-events-none absolute bottom-[calc(-0.5rem_-_0.5px)] left-[calc(100%/2.25_-_9px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+          <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+        </svg>
+
+        <div class="hero-col-left lg:flex lg:flex-col lg:justify-between lg:gap-8 lg:p-5">
+          <div class="relative z-10 order-1 flex flex-col items-start gap-6 p-5 lg:order-none lg:z-auto lg:gap-10 lg:p-0">
+            <div class="flex flex-col items-start gap-3 font-mono uppercase">
+              <h1 class="text-[2.75rem] leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem]">
+                <span class="hero-line"><span class="hero-word">Ship</span>
+                  <span class="hero-word">Smarter</span></span>
+                <span class="hero-line"><span class="hero-word">Scale</span>
+                  <span class="hero-word">Faster</span></span>
+              </h1>
+              <p class="text-[0.875rem] leading-[1.125rem] text-white/60 lg:max-w-[27.3125rem]" data-hero-subhead="">
+                Real-time data infrastructure for AI teams. Monitor pipelines,
+                optimize models, and deploy with confidence — all in one platform.
+              </p>
+            </div>
+            <div class="flex w-full flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
+              <a href="#" class="btn-accent-glow inline-flex cursor-pointer items-center justify-center border-0 bg-[var(--color-accent)] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] text-[#11130e] outline-none transition-[filter] hover:brightness-110 focus:outline-none focus-visible:outline-none w-full whitespace-nowrap text-center sm:w-auto" data-accent-btn="" data-hero-cta="">
+                Start Building Free
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] transition-colors bg-white/[0.12] text-white hover:bg-white/[0.18] w-full whitespace-nowrap text-center sm:w-auto" data-secondary-btn="" data-hero-cta="">
+                Book a Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- VideoPreview (inlined) — desktop bottom-anchored, hidden on small screens -->
+          <div class="absolute bottom-4 right-4 z-20 hidden w-[14.6875rem] md:block lg:static lg:z-auto lg:order-none lg:ml-0 lg:self-auto lg:p-0" data-hero-video="">
+            <!-- Lightbox shell -->
+            <div class="reel-lightbox" data-mini-showreel-lightbox="showreel" data-mini-showreel-status="not-active" aria-hidden="true">
+              <div class="reel-lightbox__dark" data-mini-showreel-close="showreel"></div>
+              <div class="reel-lightbox__safearea" data-mini-showreel-safearea="">
+                <div class="reel-lightbox__target" data-mini-showreel-target=""></div>
+              </div>
+            </div>
+
+            <!-- Player card -->
+            <div class="reel-card group relative block w-full overflow-hidden border border-[var(--color-border)] bg-[#0a0a0f]" data-mini-showreel-player="showreel" data-mini-showreel-status="not-active">
+              <div class="reel-card__media relative w-full" style="aspect-ratio: 16 / 9;">
+                <img src="https://img.youtube.com/vi/A6oW7SnNq2g/hqdefault.jpg" alt="Play showreel" class="reel-card__thumb absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-500 group-hover:opacity-100">
+                <iframe class="reel-card__iframe absolute inset-0 h-full w-full" data-reel-iframe="" data-reel-embed-url="https://www.youtube.com/embed/A6oW7SnNq2g?autoplay=1&amp;rel=0&amp;modestbranding=1&amp;playsinline=1" title="Play showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                <div class="reel-card__gradient absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent"></div>
+
+                <span class="reel-corner absolute left-1 top-1 h-[0.375rem] w-[0.375rem] border-l border-t border-white/30"></span>
+                <span class="reel-corner absolute right-1 top-1 h-[0.375rem] w-[0.375rem] border-r border-t border-white/30"></span>
+                <span class="reel-corner absolute bottom-1 left-1 h-[0.375rem] w-[0.375rem] border-b border-l border-white/30"></span>
+                <span class="reel-corner absolute bottom-1 right-1 h-[0.375rem] w-[0.375rem] border-b border-r border-white/30"></span>
+              </div>
+
+              <div class="reel-card__info flex items-center justify-between border-t border-[var(--color-border)] px-[0.625rem] py-2">
+                <span class="reel-label font-mono text-[0.625rem] uppercase tracking-[0.075rem] text-[var(--color-accent)]">
+                  Play Showreel
+                </span>
+                <div class="reel-play-btn flex h-4 w-4 items-center justify-center rounded-full bg-[var(--color-accent)]">
+                  <svg width="7" height="7" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M6 3L17 10L6 17V3Z" fill="#11130e"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <button type="button" class="reel-card__click absolute inset-0 z-[2] block w-full cursor-pointer" data-mini-showreel-open="showreel" aria-label="Play showreel"></button>
+            </div>
+          </div>
+
+          <!-- Mobile-only mini trigger — circular play button -->
+          <button type="button" class="hero-mini-play absolute bottom-4 right-4 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)] md:hidden" data-mini-showreel-open="showreel" aria-label="Play showreel">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M6 3L17 10L6 17V3Z" fill="#11130e"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="relative order-2 my-0 flex-1 overflow-hidden md:-my-8 md:aspect-[4/3] md:flex-none lg:order-none lg:my-0 lg:aspect-auto" data-hero-visual="">
+          <!-- LiquidCanvas (inlined) -->
+          <div class="stage" id="stage" data-liquid-stage=""></div>
+        </div>
+      </div>
+
+      <div class="hero-marquee-wrap relative lg:border-y lg:border-[var(--color-border)]">
+        <!-- Frame lines overlay — top + bottom horizontals -->
+        <div class="frame-line pointer-events-none absolute left-0 right-0 z-[5] hidden h-px bg-[var(--color-border)] lg:block" style="top: -1px" data-frame-line="" data-axis="x" aria-hidden="true"></div>
+        <div class="frame-line pointer-events-none absolute left-0 right-0 z-[5] hidden h-px bg-[var(--color-border)] lg:block" style="bottom: -1px" data-frame-line="" data-axis="x" aria-hidden="true"></div>
+
+        <div class="hero-marquee-inner relative z-10 mx-auto w-full max-w-[70.5rem] pt-16 pb-6 lg:py-6 lg:border-x lg:border-[var(--color-border)]" data-hero-marquee="">
+          <!-- cruz — upper-left -->
+          <svg class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+            <path d="M8 8.5H0V7.5H8V0H9V7.5H16V8.5H9V16H8V8.5Z"></path>
+          </svg>
+          <!-- cruz — upper-right -->
+          <svg class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+            <path d="M8 8.5H0V7.5H8V0H9V7.5H16V8.5H9V16H8V8.5Z"></path>
+          </svg>
+          <!-- T tip up — lower-left -->
+          <svg class="pointer-events-none absolute bottom-[calc(-0.5rem_-_0.5px)] left-[calc(-0.5rem_-_1px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+            <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+          </svg>
+          <!-- T tip up — lower-right -->
+          <svg class="pointer-events-none absolute -right-2 bottom-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-hero-tick="">
+            <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+          </svg>
+
+          <div class="overflow-hidden" data-hero-marquee-track="">
+            <div class="marquee-track flex w-max">
+              <div class="flex shrink-0 items-center gap-[6.46875rem] pr-[6.46875rem]">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-1.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-2.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-3.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-4.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-5.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-6.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-7.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+              </div>
+              <div class="flex shrink-0 items-center gap-[6.46875rem] pr-[6.46875rem]" aria-hidden="true">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-1.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-2.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-3.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-4.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-5.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-6.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/logos/logo-7.svg" alt="" class="h-[2.25rem] w-auto shrink-0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

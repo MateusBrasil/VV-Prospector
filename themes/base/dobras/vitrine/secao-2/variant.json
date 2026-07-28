@@ -1,0 +1,123 @@
+{
+  "slot": "vitrine",
+  "nome": "secao-2",
+  "scope": "vitrine-secao-2",
+  "origem": "bank/_componentes/secoes/secao-2",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Portfolio"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "At Pipely, we believe in delivering measurable results. Here are some success stories showcasing how our tailored consulting solutions have helped businesses ov"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Operational excellence"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Implemented streamlined processes that increased efficiency by 30%."
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Construction advisory"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Guided a contractor through complex project planning, delivering on time and 12% under budget."
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Hospitality Solutions"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Redesigned guest workflows for a hotel group, lifting satisfaction scores by 25%."
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Firefighting communication"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Built a real-time coordination protocol that cut emergency response time in half."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-plus.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-close.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-plus.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-close.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-plus.svg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-close.svg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-plus.svg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-close.svg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/portfolio.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 9
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "9 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-plus.svg https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-close.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

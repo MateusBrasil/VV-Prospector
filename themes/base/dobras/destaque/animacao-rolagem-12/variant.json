@@ -1,0 +1,205 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-12",
+  "scope": "destaque-animacao-rolagem-12",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-12",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "three",
+    "matter",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tymffpanuft/ExplodingObjects/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tymf39863"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://githfSlideshow/"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "New York City, March 24"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Kanzu"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "In the gloomy domed livingroom of the tower Buck Mulligan’s gowned form\n\t\t\t\t\t\tmoved briskly to and fro about the hearth, hiding and revealing its\n\t\t\t\t\t\tyellow g"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "more +"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Acapulco, March 25"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Juked"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "The key scraped round harshly twice and, when the heavy door had been\n\t\t\t\t\t\tset ajar, welcome light and bright air entered. Haines stood at the\n\t\t\t\t\t\tdoorway, l"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "more +"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Brisbane, March 26"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Colza"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Stephen listened in scornful silence. She bows her old head to a voice\n\t\t\t\t\t\tthat speaks to her loudly, her bonesetter, her medicineman: me she\n\t\t\t\t\t\tslights. T"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "more +"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Berlin, March 27"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Voxey"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "And putting on his stiff collar and rebellious tie he spoke to them,\n\t\t\t\t\t\tchiding them, and to his dangling watchchain. His hands plunged and\n\t\t\t\t\t\trummaged in"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "more +"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Kanzu"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Juked"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Colza"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Voxey"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Crossroads Slideshow"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "12 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tymffpanuft/ExplodingObjects/ https://tymf39863)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

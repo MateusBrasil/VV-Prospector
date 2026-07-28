@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hover Effect - Eagle Code</title>
+    <!-- Importando a fonte Inter Tight do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos base para centrar no ecrã (apenas para demonstração) */
+        body {
+            background-color: #ffffff; /* Fundo alterado para branco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter Tight', sans-serif;
+        }
+
+        /* * A classe .selector representa o contentor principal do widget no Elementor.
+         * Foram adicionadas dimensões fixas (largura/altura) para garantir 
+         * que a rotação 3D tenha espaço adequado para girar.
+         */
+        .selector {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            width: 350px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Máscara de gradiente que faz o texto sumir suavemente nas bordas superior e inferior */
+            mask: linear-gradient(to top, transparent 5%, black 25%, black 85%, transparent 95%);
+            -webkit-mask: linear-gradient(to top, transparent 5%, black 25%, black 85%, transparent 95%);
+        }
+
+        /* Pseudo-elemento que contém o texto que aparece no HOVER ("EAGLE CODE") */
+        .selector:after {
+            font-family: 'Inter Tight', sans-serif;
+            color: #FC016E; /* Cor rosa/magenta */
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            content: "EAGLE CODE"; /* Texto alterado para EAGLE CODE */
+            pointer-events: none;
+            
+            /* Posição inicial: empurrado para baixo e rotacionado em 100 graus no eixo X */
+            transform: translate(-50%, 50%) perspective(900px) rotatex(100deg);
+            left: 50%;
+            top: 50%;
+            z-index: 99;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            
+            /* Flexbox para centrar perfeitamente o texto dentro do pseudo-elemento */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s !important;
+        }
+
+        /* Animação do título original quando o contentor recebe HOVER */
+        .selector:hover .elementor-heading-title {
+            /* Sobe e rotaciona para trás */
+            transform: translatey(-100%) perspective(900px) rotatex(-100deg);
+            transition: 1s !important;
+            opacity: 0; /* Ajuda a esconder melhor no final do giro */
+        }
+
+        /* Estilo inicial do título original */
+        .selector .elementor-heading-title {
+            color: #111827; /* Cor escura para ficar visível no fundo branco */
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+            transition: 1s !important;
+            line-height: 1.5em !important;
+            
+            /* Posição inicial: reta e no centro */
+            transform: translatey(0%) perspective(900px) rotatex(0deg);
+        }
+
+        /* Animação do texto novo ("EAGLE CODE") quando o contentor recebe HOVER */
+        .selector:hover:after {
+            /* Sobe para o centro exato (-50%, -50%) e zera a rotação (fica reto) */
+            transform: translate(-50%, -50%) perspective(900px) rotatex(0deg);
+            transition: 1s !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Estrutura HTML simulando o Elementor -->
+    <div class="selector">
+        <h2 class="elementor-heading-title">ORIGINAL TEXT</h2>
+    </div>
+
+</body>
+</html>

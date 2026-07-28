@@ -1,0 +1,337 @@
+{
+  "slot": "cursor",
+  "nome": "efeitos-mouse-16",
+  "scope": "cursor-efeitos-mouse-16",
+  "origem": "bank/_componentes/cursor/efeitos-mouse-16/gsap-hero-section-with-advanced-image-cursor-trail-effects/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://instagram.com/filipz__"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://x.com/filipz"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://linkedin.com/in/filipzrnzevic"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Flame"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Venetian"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Curtain"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Hexagon"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Liquid"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Zoom Split"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Instagram"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "X / Twitter"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "LinkedIn"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Silence"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Intuition"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Source"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Awareness"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Presence"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Breath"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Flow"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Surrender"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Process"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Emergence"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Channel"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Receptivity"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Simplicity"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Clarity"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Vulnerability"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Listening"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Frequency"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Vibration"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Resonance"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Energy"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Field"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Dimension"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Consciousness"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Unity"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Form"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Function"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "Beauty"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Harmony"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Balance"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Proportion"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Rhythm"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "Texture"
+    },
+    {
+      "nome": "rotulo33",
+      "tipo": "texto",
+      "exemplo": "Beyond"
+    },
+    {
+      "nome": "rotulo34",
+      "tipo": "texto",
+      "exemplo": "Possibility"
+    },
+    {
+      "nome": "rotulo35",
+      "tipo": "texto",
+      "exemplo": "Potential"
+    },
+    {
+      "nome": "rotulo36",
+      "tipo": "texto",
+      "exemplo": "Transcendence"
+    },
+    {
+      "nome": "rotulo37",
+      "tipo": "texto",
+      "exemplo": "Evolution"
+    },
+    {
+      "nome": "rotulo38",
+      "tipo": "texto",
+      "exemplo": "Transformation"
+    },
+    {
+      "nome": "rotulo39",
+      "tipo": "texto",
+      "exemplo": "Awakening"
+    },
+    {
+      "nome": "rotulo40",
+      "tipo": "texto",
+      "exemplo": "Creation"
+    },
+    {
+      "nome": "rotulo41",
+      "tipo": "texto",
+      "exemplo": "Truth"
+    },
+    {
+      "nome": "rotulo42",
+      "tipo": "texto",
+      "exemplo": "Nature"
+    },
+    {
+      "nome": "rotulo43",
+      "tipo": "texto",
+      "exemplo": "Wonder"
+    },
+    {
+      "nome": "rotulo44",
+      "tipo": "texto",
+      "exemplo": "Mystery"
+    },
+    {
+      "nome": "rotulo45",
+      "tipo": "texto",
+      "exemplo": "Cosmos"
+    },
+    {
+      "nome": "rotulo46",
+      "tipo": "texto",
+      "exemplo": "Inspiration"
+    },
+    {
+      "nome": "rotulo47",
+      "tipo": "texto",
+      "exemplo": "Discovery"
+    },
+    {
+      "nome": "rotulo48",
+      "tipo": "texto",
+      "exemplo": "Expression"
+    },
+    {
+      "nome": "rotulo49",
+      "tipo": "texto",
+      "exemplo": "Liberation"
+    },
+    {
+      "nome": "rotulo50",
+      "tipo": "texto",
+      "exemplo": "Manifestation"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "26 cor(es) mapeadas para tokens por luminância (acento da origem #ff3300 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://instagram.com/filipz__ https://x.com/filipz)",
+    "3 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://assets.codepen.io/7558/PPSupplyMono-Regular.ttf https://assets.codepen.io/7558/GT-Standard-VF-Trial.woff2)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

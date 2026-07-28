@@ -1,0 +1,131 @@
+{
+  "slot": "vitrine",
+  "nome": "circular-gallery",
+  "scope": "vitrine-circular-gallery",
+  "origem": "bank/_componentes/carrossel/circular-gallery",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Eagle Gallery"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/27/1200/1200"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/25/1200/1200"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/372/1200/1200"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/380/1200/1200"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/392/1200/1200"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/456/1200/1200"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/469/1200/1200"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/497/1200/1200"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/515/1200/1200"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/521/1200/1200"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/549/1200/1200"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/569/1200/1200"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/637/1200/1200"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/641/1200/1200"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/669/1200/1200"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/685/1200/1200"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/699/1200/1200"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/611/1200/1200"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/480/1200/1200"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/id/773/1200/1200"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 20,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "20 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/id/27/1200/1200 https://picsum.photos/id/25/1200/1200)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://fonts.bunny.net/css?family=jura:300,500)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

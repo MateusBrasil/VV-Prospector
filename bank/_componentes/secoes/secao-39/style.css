@@ -1,0 +1,19 @@
+/* coverly-cta — component-scoped overrides only.
+   The bulk of styles come from /coverly/styles.css (shared Coverly stylesheet). */
+
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #fbfbf9);
+  color: var(--text-color--text-primary, #000);
+  font-family: var(--_typography---font-family--secondary, Inter, sans-serif);
+  min-height: 100svh;
+}
+
+/* The shared stylesheet points the section background at `/images/image-large_1.webp`
+   (the Astro source path). In this ported component the asset lives under
+   `/coverly/images/`, so without this override the section renders with no
+   background image — making the narrow orange `.cta_wrap` card look stranded
+   against the empty page background. */
+.section_cta {
+  background-image: url('https://d173woph5zl366.cloudfront.net/coverly/images/image-large_1.webp');
+}

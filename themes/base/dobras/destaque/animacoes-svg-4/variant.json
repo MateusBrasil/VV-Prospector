@@ -1,0 +1,154 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-svg-4",
+  "scope": "destaque-animacoes-svg-4",
+  "origem": "bank/_componentes/animacoes-svg/animacoes-svg-4",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://codepen.io/supah/pen/poxmKPQ"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Filter Effect"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "this demo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Scroll moderately to fully experience the animations"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Foot"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Print"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "As darkness cloaked the forsaken city, the crew huddled together, their eyes darting nervously into the murky abyss."
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Storm"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Born"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "The skies above were tinged with an otherworldly hue, casting an eerie glow on the jagged rock formations below."
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Hind"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Sight"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "The Forbidden Planet was not merely an ancient world lost to time—it was a prison, a gateway to realms beyond their understanding. They had unwittingly set loos"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Heart"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Ache"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Sandstorms raged across the barren landscape, their fury obscuring the horizon and leaving a veil of gritty particles that stung the skin. The sun, a distant or"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Night"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Fall"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "From the shadows, strange shapes began to emerge, haunting figures that seemed to materialize from the very fabric of the night."
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Fire"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Storm"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Visions of a vibrant world, once teeming with life, flickered in her mind's eye, only to be devoured by the relentless sands of time."
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Star"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Light"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "The desert world had claimed another fragment of history, another chapter buried beneath the sands of oblivion."
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #e93f33 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://codepen.io/supah/pen/poxmKPQ)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

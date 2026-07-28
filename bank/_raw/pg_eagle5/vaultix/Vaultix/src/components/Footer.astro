@@ -1,0 +1,613 @@
+---
+import HalftoneCanvas from "./HalftoneCanvas.astro";
+import AccentButton from "./AccentButton.astro";
+
+// 3 × 3 grid. First two columns are real internal pages; third column is
+// legal/relleno that points to temlis.com (parent brand) since those pages
+// don't exist yet on Eagle.
+const linkCols: { label: string; href: string }[][] = [
+  [
+    { label: "Recursos", href: "/features" },
+    { label: "Planos", href: "/pricing" },
+    { label: "Integracoes", href: "https://temlis.com" },
+  ],
+  [
+    { label: "Sobre", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contato", href: "/contact" },
+  ],
+  [
+    { label: "Privacidade", href: "https://temlis.com" },
+    { label: "Termos", href: "https://temlis.com" },
+    { label: "Licenca", href: "https://temlis.com" },
+  ],
+];
+
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+
+// Marker paths from reference-eagle-corner-markers.md
+const PATH = {
+  cruz: "M8 8.5H0V7.5H8V0H9V7.5H16V8.5H9V16H8V8.5Z",
+  tDown: "M0 7.5H16V8.5H9V16H8V8.5H0Z",
+  tUp: "M0 8.5H16V7.5H9V0H8V7.5H0Z",
+  tRight: "M7.5 0H8.5V7.5H16V8.5H8.5V16H7.5Z",
+  tLeft: "M7.5 0H8.5V16H7.5V8.5H0V7.5H7.5Z",
+};
+
+type MType = keyof typeof PATH;
+type Marker = { x: number; type: MType };
+
+// Marker x positions match the desktop grid layout:
+//   Top section:    1.5fr_1fr_1fr_1fr  → boundaries at 33.33%, 55.56%, 77.78%
+//   Bottom section: 1.5fr_3fr           → boundary at 33.33% only
+// Middle markers: cruz only at 33.33% (where top + bottom dividers meet);
+//   55.56 and 77.78 are top-only dividers → tUp.
+const topMarkers: Marker[] = [
+  { x: 0, type: "tDown" },
+  { x: 33.33, type: "tDown" },
+  { x: 55.56, type: "tDown" },
+  { x: 77.78, type: "tDown" },
+  { x: 100, type: "tDown" },
+];
+const middleMarkers: Marker[] = [
+  { x: 0, type: "tRight" },
+  { x: 33.33, type: "cruz" },
+  { x: 55.56, type: "tUp" },
+  { x: 77.78, type: "tUp" },
+  { x: 100, type: "tLeft" },
+];
+const bottomMarkers: Marker[] = [
+  { x: 0, type: "tUp" },
+  { x: 33.33, type: "tUp" },
+  { x: 100, type: "tUp" },
+];
+
+function xCss(x: number) {
+  if (x === 0) return "left: calc(-0.5rem - 1px);";
+  if (x === 100) return "right: -0.5rem;";
+  return `left: calc(${x}% - 9px);`;
+}
+const topY = "top: calc(-0.5rem + 0.5px);";
+const midY = "top: calc(10.5rem + 0.5px);";
+const botY = "bottom: calc(-0.5rem + 0.5px);";
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("footer-pre-anim");
+  }
+</script>
+
+<footer class="relative bg-[#050505] pt-12 pb-0 md:pt-[4.5rem] lg:pb-[4.5rem]" data-footer>
+  <div
+    class="relative mx-auto w-full max-w-[70.5rem]"
+  >
+    {/* Static container side borders (kept simple — animated lines go on top) */}
+    <span
+      class="pointer-events-none absolute -left-px top-0 hidden h-full w-px bg-[#343434] lg:block"
+      data-footer-line="left"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute -right-px top-0 hidden h-full w-px bg-[#343434] lg:block"
+      data-footer-line="right"
+      aria-hidden="true"
+    ></span>
+
+    {/* ===== 3 full-width horizontal lines ===== */}
+    <span
+      class="pointer-events-none absolute top-0 hidden h-px bg-[#343434] md:block"
+      style="left: calc(50% - 50vw); width: 100vw;"
+      data-footer-line="top"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute hidden h-px bg-[#343434] md:block"
+      style="left: calc(50% - 50vw); width: 100vw; top: 11rem;"
+      data-footer-line="middle"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute bottom-0 hidden h-px bg-[#343434] md:block"
+      style="left: calc(50% - 50vw); width: 100vw;"
+      data-footer-line="bottom"
+      aria-hidden="true"
+    ></span>
+
+    {/* ========= TOP SECTION — 4 cols (Logo + 3 link cols) ========= */}
+    <div
+      class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] md:divide-x md:divide-[#343434]"
+    >
+      {/* Logo Section */}
+      <div class="flex flex-col gap-8 p-6 md:h-[11rem]" data-footer-logo-block>
+        <a
+          href="/"
+          class="eagle-logo flex items-center gap-3 self-comeca"
+        >
+          <img
+            src="/logo.svg"
+            alt=""
+            class="block h-[1.3125rem] w-[1.625rem]"
+          />
+          <span
+            class="font-mono text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white uppercase"
+          >
+            Eagle
+          </span>
+        </a>
+        <p
+          class="mt-auto font-mono text-[0.875rem] leading-[1.2857] text-white uppercase"
+          data-footer-tagline
+        >
+          Real-time data infrastructure for the next generation of AI teams.
+        </p>
+      </div>
+
+      {/* 3 Link Columns */}
+      {
+        linkCols.map((col) => (
+          <ul
+            class="divide-y divide-[#343434] border-t border-[#343434] last:border-b md:border-t-0 md:last:border-b-0"
+            data-footer-col
+          >
+            {col.map(({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  target={isExternal(href) ? "_blank" : undefined}
+                  rel={isExternal(href) ? "noopener noreferrer" : undefined} class="footer-link group flex items-center justify-between gap-2 px-6 py-5 font-mono text-[0.875rem] leading-[1.2857] text-white uppercase"
+                  data-footer-link
+                >
+                  <span data-footer-link-label>{label}</span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="footer-link__arrow shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7.5 12.75L11.25 9L7.5 5.25L7.5 12.75Z"
+                      fill="#FDFF22"
+                    />
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+
+    {/* ========= BOTTOM SECTION — 1fr 3fr ========= */}
+    <div
+      class="grid grid-cols-1 md:grid-cols-[1.5fr_3fr] md:divide-x md:divide-[#343434]"
+    >
+      {/* Stay Updated Container */}
+      <div class="flex flex-col gap-6 p-6" data-footer-cta-block>
+        <h3
+          class="font-mono text-[2rem] leading-none tracking-[3.84px] text-white uppercase"
+          data-footer-heading
+        >
+          Stay updated
+        </h3>
+        <p
+          class="font-mono text-[0.875rem] leading-[1.2857] text-white uppercase"
+          data-footer-subhead
+        >
+          Subscribe to our newsletter for engineering insights and product
+          updates.
+        </p>
+        <div class="mt-auto w-full">
+          <AccentButton class="w-full" data-footer-cta>
+            Fale conosco
+          </AccentButton>
+        </div>
+      </div>
+
+      {/* Halftone animated bg + giant EAGLE wordmark cut into it.
+          The wordmark uses the same dark bg color so it appears as
+          negative space against the moving dots. p-6 frames the visual
+          like the other footer cells. */}
+      <div class="p-6" data-footer-image>
+        <div
+          class="footer-cta-visual relative aspect-[846/398] w-full overflow-hidden bg-[#050505]"
+        >
+          <HalftoneCanvas
+            speed={0.6}
+            cellSize={10}
+            threshold={0.62}
+            minSize={0.08}
+            maxSize={0.85}
+            color="#b5d2ff"
+            cursorReactive={false}
+          />
+          <svg
+            class="footer-cta-wordmark pointer-events-none absolute inset-x-0 bottom-0 block w-full"
+            viewBox="0 0 100 22"
+            preserveAspectRatio="xMidYMax meet"
+            aria-hidden="true"
+          >
+            <text
+              x="50"
+              y="21.6"
+              text-anchor="middle"
+              textLength="99"
+              lengthAdjust="spacingAndGlyphs"
+              fill="#050505"
+              stroke="#050505"
+              stroke-width="0.9"
+              stroke-linejoin="round"
+              paint-order="stroke fill"
+              style="font: 900 22px/1 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"
+            >
+              EAGLE
+            </text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    {/* ===== MARKERS ===== */}
+    <div
+      class="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+    >
+      {
+        topMarkers.map((m) => (
+          <svg
+            class="absolute h-4 w-4 text-white"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            data-footer-marker
+            style={topY + xCss(m.x)}
+          >
+            <path d={PATH[m.type]} />
+          </svg>
+        ))
+      }
+      {
+        middleMarkers.map((m) => (
+          <svg
+            class="absolute h-4 w-4 text-white"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            data-footer-marker
+            style={midY + xCss(m.x)}
+          >
+            <path d={PATH[m.type]} />
+          </svg>
+        ))
+      }
+      {
+        bottomMarkers.map((m) => (
+          <svg
+            class="absolute h-4 w-4 text-white"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            data-footer-marker
+            style={botY + xCss(m.x)}
+          >
+            <path d={PATH[m.type]} />
+          </svg>
+        ))
+      }
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Pre-anim FOUC protection */
+  .footer-pre-anim [data-footer-tagline],
+  .footer-pre-anim [data-footer-heading],
+  .footer-pre-anim [data-footer-subhead],
+  .footer-pre-anim [data-footer-cta],
+  .footer-pre-anim [data-footer-link],
+  .footer-pre-anim [data-footer-image] > div {
+    visibility: hidden;
+  }
+  .footer-pre-anim [data-footer-line],
+  .footer-pre-anim [data-footer-marker] {
+    opacity: 0;
+  }
+
+  /* Footer link hover — text shifts white → accent yellow with glow,
+     arrow picks up an additional drop-shadow (composed on top of the
+     parent's filter for an even tighter glow). Block roll-up of the label
+     itself is handled by applyScrambleHover. */
+  .footer-link {
+    transition:
+      background-color 0.25s ease,
+      color 0.3s ease,
+      filter 0.3s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-accent);
+    filter:
+      drop-shadow(0 0 2px rgba(253, 255, 34, 0.55))
+      drop-shadow(0 0 6px rgba(253, 255, 34, 0.18));
+  }
+  .footer-link__arrow {
+    transition: transform 0.3s ease;
+  }
+  .footer-link:hover .footer-link__arrow {
+    transform: translateX(2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-link,
+    .footer-link__arrow {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+  import { applyScrambleHover } from "../lib/scramble-hover";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      document.documentElement.classList.remove("footer-pre-anim");
+      return;
+    }
+
+    const footer = document.querySelector<HTMLElement>("[data-footer]");
+    if (!footer) return;
+
+    const tagline = footer.querySelector<HTMLElement>("[data-footer-tagline]");
+    const heading = footer.querySelector<HTMLElement>("[data-footer-heading]");
+    const subhead = footer.querySelector<HTMLElement>("[data-footer-subhead]");
+    const cta = footer.querySelector<HTMLElement>("[data-footer-cta]");
+    // Animate the inner visual block (not the wrapper with the border-left).
+    // The wrapper is part of `dividedChildren` and needs to keep its border
+    // animation independent of the inner fade-in.
+    const image = footer.querySelector<HTMLElement>(
+      "[data-footer-image] > div"
+    );
+    const lines = gsap.utils.toArray<HTMLElement>("[data-footer-line]", footer);
+    const markers = gsap.utils.toArray<SVGElement>("[data-footer-marker]", footer);
+    const linkItems = gsap.utils.toArray<HTMLElement>("[data-footer-link]", footer);
+
+    // Tailwind v4 changed how `divide-x` / `divide-y` paints borders.
+    // It targets children with `:not(:last-child)` (every child EXCEPT the
+    // last) and applies `border-bottom-width` (or `border-inline-end-width`)
+    // + `border-color`. So we must collect all children except the last,
+    // and animate `border-color` directly (no `--tw-divide-opacity` var
+    // exists in v4).
+    const dividedChildren: HTMLElement[] = [];
+    footer
+      .querySelectorAll<HTMLElement>('[class*="divide-x"], [class*="divide-y"]')
+      .forEach((container) => {
+        const total = container.children.length;
+        Array.from(container.children).forEach((ch, i) => {
+          if (i < total - 1) dividedChildren.push(ch as HTMLElement);
+        });
+      });
+
+    const taglineSplit = tagline
+      ? new SplitText(tagline, { type: "lines", mask: "lines" })
+      : null;
+    const headingSplit = heading
+      ? new SplitText(heading, { type: "lines", mask: "lines" })
+      : null;
+    const subheadSplit = subhead
+      ? new SplitText(subhead, { type: "lines", mask: "lines" })
+      : null;
+
+    // ---- Pre-anim states ----
+    if (taglineSplit) gsap.set(taglineSplit.lines, { yPercent: 110 });
+    if (headingSplit) gsap.set(headingSplit.lines, { yPercent: 110 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+    if (cta) gsap.set(cta, { y: 12, scale: 0.96, opacity: 0, transformOrigin: "center" });
+    if (image) gsap.set(image, { opacity: 0 });
+    gsap.set(linkItems, { opacity: 0, y: 12 });
+
+    lines.forEach((l) => {
+      const orient = l.dataset.footerLine;
+      if (orient === "top" || orient === "middle") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "left center", opacity: 1 });
+      } else if (orient === "bottom") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "right center", opacity: 1 });
+      } else if (orient === "left") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center top", opacity: 1 });
+      } else if (orient === "right") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center bottom", opacity: 1 });
+      }
+    });
+    gsap.set(markers, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+    if (dividedChildren.length) {
+      // Tailwind v4 paints `border-color: #343434` directly on the children.
+      // Inline `border-color: transparent` overrides the class rule (inline
+      // specificity > class). Animating from transparent → #343434 fades each
+      // divider in.
+      gsap.set(dividedChildren, { borderColor: "transparent" });
+    }
+
+    document.documentElement.classList.remove("footer-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footer,
+        // Fire as soon as the footer enters the viewport from the bottom.
+        // Was "top 80%" — that required scrolling far enough that the
+        // footer's top reached 80% of the viewport, but on short pages the
+        // user can't scroll past the end of the document, so the trigger
+        // never fired and the footer stayed invisible (opacity:0).
+        comeca: "top bottom",
+        once: true,
+      },
+    });
+
+    // 1. Horizontal lines — drawn from left/right
+    const horizontals = lines.filter((l) => {
+      const o = l.dataset.footerLine;
+      return o === "top" || o === "middle" || o === "bottom";
+    });
+    const verticals = lines.filter((l) => {
+      const o = l.dataset.footerLine;
+      return o === "left" || o === "right";
+    });
+
+    tl.to(
+      horizontals,
+      {
+        scaleX: 1,
+        duration: 1.2,
+        ease: "eagleStructure",
+        stagger: 0.1,
+      },
+      0
+    );
+
+    tl.to(
+      verticals,
+      {
+        scaleY: 1,
+        duration: 0.9,
+        ease: "eagleStructure",
+        stagger: 0.06,
+      },
+      0.2
+    );
+
+    // 1b. Internal divider borders (divide-x / divide-y children) — fade
+    // their border-color in so they don't appear instantly while the
+    // outer frame is still drawing.
+    if (dividedChildren.length) {
+      tl.to(
+        dividedChildren,
+        {
+          borderColor: "#343434",
+          duration: 0.85,
+          ease: "eagleStructure",
+          stagger: 0.05,
+        },
+        0.4
+      );
+    }
+
+    // 2. Markers
+    tl.to(
+      markers,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.45,
+        ease: "eagleDecor",
+        stagger: 0.04,
+      },
+      0.7
+    );
+
+    // 3. Tagline / heading / subhead
+    if (taglineSplit) {
+      tl.to(
+        taglineSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.4
+      );
+    }
+    if (headingSplit) {
+      tl.to(
+        headingSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.85,
+          ease: "eagleReveal",
+          stagger: 0.08,
+        },
+        0.5
+      );
+    }
+    if (subheadSplit) {
+      tl.to(
+        subheadSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.7
+      );
+    }
+
+    // 4. CTA "Fale conosco" entry
+    if (cta) {
+      tl.to(
+        cta,
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: "eagleReveal",
+        },
+        0.85
+      );
+    }
+
+    // 5. Image fade in
+    if (image) {
+      tl.to(
+        image,
+        {
+          opacity: 1,
+          duration: 0.7,
+          ease: "eagleReveal",
+        },
+        0.6
+      );
+    }
+
+    // 6. Link items stagger
+    if (linkItems.length) {
+      tl.to(
+        linkItems,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "eagleReveal",
+          stagger: 0.04,
+        },
+        0.7
+      );
+    }
+
+    // Block-roll-up hover on Contato CTA + each footer link label
+    try {
+      applyScrambleHover("[data-footer-cta]", footer);
+      applyScrambleHover("[data-footer-link-label]", footer);
+    } catch (e) {
+      if (import.meta.env.DEV) console.warn("[Footer] scramble hover failed", e);
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

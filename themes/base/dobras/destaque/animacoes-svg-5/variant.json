@@ -1,0 +1,124 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-svg-5",
+  "scope": "destaque-animacoes-svg-5",
+  "origem": "bank/_componentes/animacoes-svg/animacoes-svg-5",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tymf=63809"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/ScrollAnimationsGrid/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "On Scroll Path Animations"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Crafting"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Transcendence"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Mastering the Now"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Sit down, and I shall tell thee. The thirst for love, without love of learning, sinks into simpleness. Love of knowledge, without love of learning, sinks into v"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Studies of"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Discipline"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Virtues of"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Excellence"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Language of"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Awekening"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Without Longing"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #744229 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tymf=63809 https://tympanus.net/Development/ScrollAnimationsGrid/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

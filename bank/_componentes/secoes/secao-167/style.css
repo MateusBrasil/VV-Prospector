@@ -1,0 +1,5 @@
+/* Fondo de la página en vista aislada. El grueso de los estilos de la sección
+   (.section_team, .team_grid, .team_item, .team_card, .team_card-image, .img-wrapper,
+   .img.is-team-card, .team-three_card-content, .team_card-button, .button-svg, .label,
+   etc.) vive en la hoja compartida /firmo/styles.css. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }

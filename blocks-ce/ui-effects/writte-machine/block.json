@@ -1,0 +1,9 @@
+{
+  "ref": "ui-effects/writte-machine",
+  "scope": "ui-effects-writte-machine",
+  "libs": [],
+  "fontesCdn": [],
+  "tem_js": false,
+  "n_assets": 1,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

@@ -1,0 +1,113 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-4",
+  "scope": "menu-navegacao-menu-4",
+  "origem": "bank/_componentes/navegacao-menu/navegacao-menu-4",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "EAGLE"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Shopy.co"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Cart(0)"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "About Us"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Lookbook"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Made by:"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Typography:"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Images:"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Privacy Policy"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Terms &amp; Conditions"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/home.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #4d3d30 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,299 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-galore-clone",
+  "scope": "destaque-scroll-galore-clone",
+  "origem": "bank/_componentes/parallax/scroll-galore-clone",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "SCROLL"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Canary"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Purple"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "SCARLET"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Yellow"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "SCROLLed"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/hero_.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-0.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-9.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-10.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-8.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-4.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-3_1.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-6.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-5.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-1_1.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-2_1.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/PURPLE.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-2.png"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-4.png"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-2_1.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-6.png"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-1.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/PURPLE-4.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-4.png"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-2_1.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/PURPLE-3.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-6.png"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/PURPLE-2.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/purple-1.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/RED.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLETT-3.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLETT-1.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLETT-2.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLET-4.jpg"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLET-1.jpg"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLET-2.jpg"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLET-7.jpg"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLET-5.jpg"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/SCARLETT-4.webp"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/YELLOW.jpg"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/YELLOW-2.jpg"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/YELLOW-3.jpg"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-4_1.jpg"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/YELLOW-1.jpg"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-5_1.jpg"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-1_2.jpg"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-7.jpg"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-3_2.jpg"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-2_2.jpg"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-6_1.jpg"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/YELLOW-3.jpg"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/yellow-5_1.jpg"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slider-motionpath/images/hero-.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 48
+  },
+  "_rever": [
+    "11 cor(es) mapeadas para tokens por luminância (acento da origem #001 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "48 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://moussamamadou.github.io/slider-motionpath/images/hero_.jpg https://moussamamadou.github.io/slider-motionpath/images/yellow-0.webp)",
+    "4 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://moussamamadou.github.io/slider-motionpath/fonts/Doner-RegularTextItalic.otf https://moussamamadou.github.io/slider-motionpath/fonts/Doner-RegularDisplayItalic.otf)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

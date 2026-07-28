@@ -22,6 +22,7 @@ import { resolver, relatorio } from './schema.mjs';
 import { gerarTokens } from './tokens.mjs';
 import { gerarFontes } from './fonts.mjs';
 import { materializarDobras } from './dobras-manifest.mjs';
+import { aplicarDirecao, carregarDirecoes } from './direcoes.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
@@ -33,7 +34,13 @@ export function hidratar(slug, temaNome) {
   const fichaPath = join(dirCliente, 'cliente.json');
   if (!existsSync(fichaPath)) throw new Error(`não existe: clientes/${slug}/cliente.json`);
 
-  const bruto = JSON.parse(readFileSync(fichaPath, 'utf8'));
+  const ficha = JSON.parse(readFileSync(fichaPath, 'utf8'));
+  // A direção é a base visual de nicho; o cliente só declara o que precisa sobrescrever.
+  // Isto impede que uma cópia parcial de `design` perca tokens (como tracking de display).
+  const bruto = aplicarDirecao(
+    ficha,
+    carregarDirecoes(join(ROOT, 'themes', 'base', 'direcoes.json')),
+  );
   const tema = temaNome || String(bruto.tema || '').split('@')[0] || 'restaurante-noir';
   const dirTema = join(ROOT, 'themes', tema);
   if (!existsSync(dirTema)) throw new Error(`tema não existe: themes/${tema}`);

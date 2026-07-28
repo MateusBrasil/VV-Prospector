@@ -1,0 +1,77 @@
+[data-dobra="destaque-txt-animacao-texto-10"] *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"],[data-dobra="destaque-txt-animacao-texto-10"]{
+    width: 100%;
+    height: 100%;
+    font-family: var(--fonte-corpo);
+    overscroll-behavior: none;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] p{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar{
+    position: fixed;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1em;
+    display: flex;
+    mix-blend-mode: difference;
+
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item:nth-child(1),[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item:nth-child(3){
+    flex: 2;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item:nth-child(3){
+    text-align: right;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item:nth-child(2){
+    flex: 1;
+    text-align: center;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item p{
+    color: var(--base-100);
+    font-size: 1.5vw;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] section.hero{
+    width: 100vw;
+    height: 100vh;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .clients{
+    width: 100%;
+    padding: 10em 1em;
+    background: var(--base-100);
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] .logo p{
+    font-size: 40px;
+  }
+[data-dobra="destaque-txt-animacao-texto-10"] section.trigger-footer{
+    width: 100%;
+    height: 100%;
+    background: var(--base-600);
+  }
+@media (max-width: 900px){[data-dobra="destaque-txt-animacao-texto-10"] .sticky-bar .item p{
+      font-size: 2.5vw;
+    }
+[data-dobra="destaque-txt-animacao-texto-10"] .logo p{
+      font-size: 20px;
+    }
+
+  }
+

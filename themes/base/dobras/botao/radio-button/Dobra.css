@@ -1,0 +1,89 @@
+[data-dobra="botao-radio-button"] 1,[data-dobra="botao-radio-button"] 500&display=swap");
+
+    html,[data-dobra="botao-radio-button"]{
+      margin: 0;
+    }
+[data-dobra="botao-radio-button"]{
+      background-color: var(--base-100);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+[data-dobra="botao-radio-button"] .container{
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+[data-dobra="botao-radio-button"] .radio-btn-group{
+      margin: 10px;
+    }
+[data-dobra="botao-radio-button"] input[type="radio"]{
+      opacity: 0;
+      position: absolute;
+    }
+[data-dobra="botao-radio-button"] input[type="radio"]:checked + label::before{
+      box-shadow: 0 0 20px 2px var(--acento);
+    }
+[data-dobra="botao-radio-button"] input[type="radio"]:checked + label span{
+      color: var(--base-400);
+    }
+[data-dobra="botao-radio-button"] input[type="radio"]:focus + label::before{
+      box-shadow: 0 0 20px 2px var(--acento);
+    }
+[data-dobra="botao-radio-button"] label{
+      color: var(--base-100);
+      cursor: pointer;
+      display: flex;
+      font-weight: 500;
+      font-style: italic;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fonte-mono);
+      height: 50px;
+      padding: 0 30px;
+      position: relative;
+    }
+[data-dobra="botao-radio-button"] label::before{
+      background-color: var(--base-600);
+      background-image: repeating-linear-gradient(
+        0deg,
+        var(--base-600),
+        var(--base-600) 1px,
+        var(--base-600) 1px,
+        var(--base-600) 2px
+      );
+      border-radius: 10px;
+      box-shadow: 0 0 0 0 var(--acento);
+      content: "";
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      transform: skew(-15deg);
+      transition: box-shadow 350ms;
+      width: 100%;
+      z-index: -1;
+    }
+[data-dobra="botao-radio-button"] label span{
+      transition: color 350ms;
+      z-index: 1;
+    }
+[data-dobra="botao-radio-button"] label svg{
+      border-radius: 10px;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: skew(-15deg);
+      
+      pointer-events: none; 
+    }
+[data-dobra="botao-radio-button"] label svg rect{
+      fill: var(--base-200);
+      shape-rendering: crispEdges;
+    }
+
+  

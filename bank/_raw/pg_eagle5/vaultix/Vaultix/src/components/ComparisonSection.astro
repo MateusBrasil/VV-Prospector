@@ -1,0 +1,547 @@
+---
+// ComparisonSection — shared comparison table block.
+// Used by /features (Eagle vs Legacy) and /pricing (Basic vs Pro vs Empresarial).
+//
+// Supports:
+//  - N columns (3 in features = Eagle/Legacy, 4 in pricing = Basic/Pro/Ent)
+//  - Optional `highlight` per column → yellow header + #141414 data cells
+//  - Mixed cell content per row: boolean (check/x icons) OR string (text)
+//
+// Entrance pattern mirrors Footer:
+//  1. SplitText line revelar for eyebrow + headline
+//  2. Outer 4 frame lines drawn-in via scaleX/scaleY
+//  3. Per-cell border-color fade transparent → token (the inner grid lines)
+//  4. Corner-bracket markers scale + opacity
+//  5. Header + rows opacity fade (no movement)
+
+import EagleMarker from "./VaultixMarker.astro";
+
+export interface ColumnDef {
+  label: string;
+  /** Yellow bg on header + #141414 bg on data cells. Used for the "Pro" column in pricing. */
+  highlight?: boolean;
+}
+
+export interface ComparisonRow {
+  feature: string;
+  /** One value per column (length must match `columns`). Boolean = check/x icon. String = label. */
+  values: (boolean | string)[];
+}
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  columns: ColumnDef[];
+  rows: ComparisonRow[];
+}
+
+const {
+  eyebrow = "[ comparativo ]",
+  headline,
+  columns,
+  rows,
+} = Astro.props;
+
+// Column-grid template: feature column flexes, others are 15rem fixed.
+const colGridStyle = `grid-template-columns: 1fr ${columns.map(() => "15rem").join(" ")};`;
+
+// Default active plan tab on mobile/tablet — first highlighted column, fallback 0.
+const defaultActiveIdx = columns.findIndex((c) => c.highlight) >= 0
+  ? columns.findIndex((c) => c.highlight)
+  : 0;
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("comparison-pre-anim");
+  }
+</script>
+
+<section
+  class="relative bg-[var(--color-bg)] py-[5.1875rem]"
+  data-comparison-section
+>
+  <div class="mx-auto w-full max-w-[68rem] px-4">
+    {/* Header — gap 12px, headline 40px tracking 4.8px white, eyebrow 14/18 #b5d2ff. */}
+    <div
+      class="mx-auto mb-[2rem] flex max-w-[33.4375rem] flex-col items-center gap-4 text-center font-mono uppercase md:mb-[3rem] md:gap-[0.75rem]"
+    >
+      <span
+        class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#b5d2ff]"
+        data-comparison-eyebrow
+      >
+        {eyebrow}
+      </span>
+      <h2
+        class="text-[2rem] font-normal leading-none tracking-[3.84px] text-white md:text-[2.5rem] md:tracking-[4.8px]"
+        data-comparison-headline
+      >
+        {headline}
+      </h2>
+    </div>
+
+    {/* Plan picker tabs — only visible on mobile/tablet. Lets the user pick
+        which plan column is visible in the table below (table becomes
+        2 cols: feature + active plan). Desktop shows the full grid. */}
+    <div
+      class="mb-4 flex gap-2 overflow-x-auto lg:hidden"
+      data-comparison-tabs
+      role="tablist"
+    >
+      {
+        columns.map((col, idx) => (
+          <button
+            type="button"
+            class:list={[
+              "comparison-tab flex-1 whitespace-nowrap border border-[var(--color-border)] bg-[#141414] px-4 py-3 font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[1.68px] text-white/60 transition-colors",
+            ]}
+            data-comparison-tab
+            data-tab-idx={idx}
+            data-tab-highlight={col.highlight ? "true" : undefined}
+            aria-selected={idx === defaultActiveIdx ? "true" : "false"}
+            role="tab"
+          >
+            {col.label}
+          </button>
+        ))
+      }
+    </div>
+
+    {/* Table — relative parent for the 4 corner-bracket markers + 4 frame lines.
+        Each cell carries its own border so adjacent borders form the grid. */}
+    <div
+      class="relative"
+      data-comparison-table
+      data-active-plan={defaultActiveIdx}
+    >
+      <span
+        class="comparison-frame-line comparison-frame-line--top"
+        data-comparison-frame-line="top"
+        aria-hidden="true"></span>
+      <span
+        class="comparison-frame-line comparison-frame-line--right"
+        data-comparison-frame-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="comparison-frame-line comparison-frame-line--bottom"
+        data-comparison-frame-line="bottom"
+        aria-hidden="true"></span>
+      <span
+        class="comparison-frame-line comparison-frame-line--left"
+        data-comparison-frame-line="left"
+        aria-hidden="true"></span>
+
+      <EagleMarker
+        type="corner-tl"
+        data-comparison-tmark
+        class="absolute -top-2 -left-2 z-10"
+      />
+      <EagleMarker
+        type="corner-tr"
+        data-comparison-tmark
+        class="absolute -top-2 -right-2 z-10"
+      />
+      <EagleMarker
+        type="corner-bl"
+        data-comparison-tmark
+        class="absolute -bottom-2 -left-2 z-10"
+      />
+      <EagleMarker
+        type="corner-br"
+        data-comparison-tmark
+        class="absolute -bottom-2 -right-2 z-10"
+      />
+
+      {/* Header row: Recurso + N column labels. Highlight col gets yellow bg + dark text. */}
+      <div class="grid" style={colGridStyle} data-comparison-header-row>
+        <div
+          class="border border-[var(--color-border)] bg-[#141414] p-[1.5rem]"
+        >
+          <span
+            class="font-mono text-[1.125rem] font-normal leading-[1.5556] tracking-[2.16px] uppercase text-white/60"
+            >Recurso</span
+          >
+        </div>
+        {
+          columns.map((col, idx) => (
+            <div
+              class:list={[
+                "border border-[var(--color-border)] p-[1.5rem] text-center",
+                col.highlight ? "bg-[#fdff22]" : "bg-[#141414]",
+              ]}
+              data-plan-cell
+              data-plan-idx={idx}
+            >
+              <span
+                class:list={[
+                  "font-mono text-[1.125rem] font-normal leading-[1.5556] tracking-[2.16px] uppercase",
+                  col.highlight ? "text-[#11130e]" : "text-white/60",
+                ]}
+              >
+                {col.label}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+      {/* Data rows. */}
+      {
+        rows.map((row) => (
+          <div class="grid" style={colGridStyle} data-comparison-row>
+            <div class="flex items-center border border-[var(--color-border)] bg-[var(--color-bg)] p-[1.5rem]">
+              <span class="font-mono text-[1rem] font-normal leading-[1.25] uppercase text-white">
+                {row.feature}
+              </span>
+            </div>
+            {row.values.map((value, colIdx) => {
+              const col = columns[colIdx];
+              const cellBg = col?.highlight
+                ? "bg-[#141414]"
+                : "bg-[var(--color-bg)]";
+              return (
+                <div
+                  class:list={[
+                    "flex h-[4.5rem] items-center justify-center border border-[var(--color-border)] p-[1.5rem]",
+                    cellBg,
+                  ]}
+                  data-plan-cell
+                  data-plan-idx={colIdx}
+                >
+                  {typeof value === "string" ? (
+                    <span class="font-mono text-[0.875rem] leading-[1.2857] tracking-[1.68px] uppercase text-white/60">
+                      {value}
+                    </span>
+                  ) : value ? (
+                    <svg
+                      class="comparison-check h-6 w-6 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="#fdff22"
+                      fill-rule="evenodd"
+                      aria-label="Sim"
+                    >
+                      <path d="M10.6 16.2L17.65 9.15L16.25 7.75L10.6 13.4L7.75 10.55L6.35 11.95L10.6 16.2ZM3 21V3H21V21H3Z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      class="h-6 w-6 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="#343434"
+                      fill-rule="evenodd"
+                      aria-label="No"
+                    >
+                      <path d="M20.625 2.625C21.0398 2.625 21.375 2.96016 21.375 3.375V20.625C21.375 21.0398 21.0398 21.375 20.625 21.375H3.375C2.96016 21.375 2.625 21.0398 2.625 20.625V3.375C2.625 2.96016 2.96016 2.625 3.375 2.625H20.625ZM14.9987 7.94123L12 10.9393L9.00328 7.94262L7.94259 8.99775L10.9393 12L7.94262 14.9968L8.99775 16.0574L12 13.0606L14.9968 16.0574L16.0574 15.0023L13.0606 12L16.0574 9.00328L15.0023 7.94259L14.9987 7.94123Z" />
+                    </svg>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* === Outer frame lines — drawn-in via scaleX/scaleY (Footer pattern). */
+  .comparison-frame-line {
+    position: absolute;
+    background: var(--color-border);
+    pointer-events: none;
+    z-index: 5;
+  }
+  .comparison-frame-line--top,
+  .comparison-frame-line--bottom {
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+  .comparison-frame-line--top {
+    top: 0;
+    transform-origin: left center;
+  }
+  .comparison-frame-line--bottom {
+    bottom: 0;
+    transform-origin: right center;
+  }
+  .comparison-frame-line--left,
+  .comparison-frame-line--right {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+  /* Mobile + tablet: hide vertical frame lines + corner markers (table
+     feels too boxed-in at narrow widths). Desktop only (lg+) keeps them.
+     Also activate the plan-picker layout: table becomes 2 cols (feature +
+     selected plan only) — every grid row gets a 1fr 1fr template, and only
+     the plan cell matching [data-active-plan] stays visible. */
+  @media (max-width: 1023px) {
+    .comparison-frame-line--left,
+    .comparison-frame-line--right,
+    [data-comparison-tmark] {
+      display: none;
+    }
+    [data-comparison-table][data-active-plan] [data-comparison-header-row],
+    [data-comparison-table][data-active-plan] [data-comparison-row] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    [data-comparison-table][data-active-plan="0"] [data-plan-cell]:not([data-plan-idx="0"]),
+    [data-comparison-table][data-active-plan="1"] [data-plan-cell]:not([data-plan-idx="1"]),
+    [data-comparison-table][data-active-plan="2"] [data-plan-cell]:not([data-plan-idx="2"]),
+    [data-comparison-table][data-active-plan="3"] [data-plan-cell]:not([data-plan-idx="3"]) {
+      display: none;
+    }
+    /* Compact cell padding on mobile/tablet for both header + data rows.
+       Drop fixed height on data cells so they stretch to match the (often
+       wrapped) feature cell — grid rows stretch children by default. */
+    [data-comparison-header-row] > div,
+    [data-comparison-row] > div {
+      padding: 0.75rem 1rem !important;
+    }
+    [data-comparison-row] > div {
+      height: auto !important;
+      min-height: 0;
+    }
+  }
+
+  /* Tab active states — match the visual language of the column headers
+     (yellow accent for the highlighted plan, white border for others). */
+  .comparison-tab[aria-selected="true"] {
+    border-color: var(--color-fg);
+    color: var(--color-fg);
+  }
+  .comparison-tab[aria-selected="true"][data-tab-highlight="true"] {
+    background: #fdff22;
+    border-color: #fdff22;
+    color: #11130e;
+  }
+  .comparison-frame-line--right {
+    right: 0;
+    transform-origin: center top;
+  }
+  .comparison-frame-line--left {
+    left: 0;
+    transform-origin: center bottom;
+  }
+
+  /* === Check icon — yellow glow halo (mirrors Figma 5x drop-shadow stack). */
+  .comparison-check {
+    filter:
+      drop-shadow(0 0 0.5px rgba(253, 255, 34, 0.98))
+      drop-shadow(0 0 1px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 1px 1.5px rgba(253, 255, 34, 0.55))
+      drop-shadow(0 2px 3px rgba(253, 255, 34, 0.3));
+  }
+
+  /* === Pre-anim FOUC guard. The id-prefixed class is added by the inline
+       script and removed by the JS after gsap.set captures the initial state. */
+  :global(.comparison-pre-anim) [data-comparison-eyebrow],
+  :global(.comparison-pre-anim) [data-comparison-headline],
+  :global(.comparison-pre-anim) [data-comparison-table] {
+    visibility: hidden;
+  }
+  :global(.comparison-pre-anim) [data-comparison-tmark] {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  let preAnimDropped = false;
+  const dropPreAnim = () => {
+    if (preAnimDropped) return;
+    document.documentElement.classList.remove("comparison-pre-anim");
+    preAnimDropped = true;
+  };
+
+  const initComparison = (root: HTMLElement) => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      dropPreAnim();
+      return;
+    }
+
+    const eyebrow = root.querySelector<HTMLElement>("[data-comparison-eyebrow]");
+    const headline = root.querySelector<HTMLElement>(
+      "[data-comparison-headline]"
+    );
+    const table = root.querySelector<HTMLElement>("[data-comparison-table]");
+    const tmarks = gsap.utils.toArray<SVGElement>(
+      "[data-comparison-tmark]",
+      root
+    );
+    const headerRow = root.querySelector<HTMLElement>(
+      "[data-comparison-header-row]"
+    );
+    const rows = gsap.utils.toArray<HTMLElement>(
+      "[data-comparison-row]",
+      root
+    );
+    const frameLines = gsap.utils.toArray<HTMLElement>(
+      "[data-comparison-frame-line]",
+      root
+    );
+
+    // All cells = direct children of header row + each data row.
+    const cells: HTMLElement[] = [];
+    if (headerRow) cells.push(...(Array.from(headerRow.children) as HTMLElement[]));
+    rows.forEach((r) =>
+      cells.push(...(Array.from(r.children) as HTMLElement[]))
+    );
+
+    const eyebrowSplit = eyebrow
+      ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+      : null;
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    if (tmarks.length)
+      gsap.set(tmarks, {
+        opacity: 0,
+        scale: 0.4,
+        transformOrigin: "center",
+      });
+    if (rows.length) gsap.set(rows, { opacity: 0 });
+    if (headerRow) gsap.set(headerRow, { opacity: 0 });
+    frameLines.forEach((l) => {
+      const side = l.dataset.comparisonFrameLine;
+      if (side === "top" || side === "bottom") gsap.set(l, { scaleX: 0 });
+      else gsap.set(l, { scaleY: 0 });
+    });
+    if (cells.length) gsap.set(cells, { borderColor: "transparent" });
+
+    dropPreAnim();
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: root, comeca: "top 80%", once: true },
+    });
+
+    tl.to(
+      eyebrowSplit?.lines || [],
+      {
+        yPercent: 0,
+        duration: 0.65,
+        ease: "eagleReveal",
+        stagger: 0.05,
+      },
+      0
+    );
+    tl.to(
+      headlineSplit?.lines || [],
+      {
+        yPercent: 0,
+        duration: 0.9,
+        ease: "eagleReveal",
+        stagger: 0.1,
+      },
+      0.15
+    );
+
+    const horizontals = frameLines.filter((l) => {
+      const s = l.dataset.comparisonFrameLine;
+      return s === "top" || s === "bottom";
+    });
+    const verticals = frameLines.filter((l) => {
+      const s = l.dataset.comparisonFrameLine;
+      return s === "left" || s === "right";
+    });
+    tl.to(
+      horizontals,
+      { scaleX: 1, duration: 1.0, ease: "eagleStructure", stagger: 0.08 },
+      0.4
+    );
+    tl.to(
+      verticals,
+      { scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.08 },
+      0.55
+    );
+
+    if (cells.length) {
+      tl.to(
+        cells,
+        {
+          borderColor: "var(--color-border)",
+          duration: 0.7,
+          ease: "eagleStructure",
+        },
+        0.85
+      );
+    }
+
+    tl.to(
+      tmarks,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.45,
+        ease: "eagleDecor",
+        stagger: 0.06,
+      },
+      1.0
+    );
+
+    if (headerRow)
+      tl.to(
+        headerRow,
+        { opacity: 1, duration: 0.45, ease: "eagleReveal" },
+        0.95
+      );
+    tl.to(
+      rows,
+      {
+        opacity: 1,
+        duration: 0.45,
+        ease: "eagleReveal",
+        stagger: 0.06,
+      },
+      1.05
+    );
+  };
+
+  const initPlanPicker = (root: HTMLElement) => {
+    const table = root.querySelector<HTMLElement>("[data-comparison-table]");
+    const tabs = root.querySelectorAll<HTMLButtonElement>("[data-comparison-tab]");
+    if (!table || !tabs.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const idx = tab.dataset.tabIdx;
+        if (idx === undefined) return;
+        table.setAttribute("data-active-plan", idx);
+        tabs.forEach((t) =>
+          t.setAttribute(
+            "aria-selected",
+            t.dataset.tabIdx === idx ? "true" : "false",
+          ),
+        );
+      });
+    });
+  };
+
+  const init = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-comparison-section]")
+      .forEach((root) => {
+        initComparison(root);
+        initPlanPicker(root);
+      });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

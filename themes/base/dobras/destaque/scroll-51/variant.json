@@ -1,0 +1,90 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-51",
+  "scope": "destaque-scroll-51",
+  "origem": "bank/_componentes/scroll/scroll-51",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "splittext",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Beyond the limits"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Carbon Edge"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Velocity Grid"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Aeroform"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Mach Horizon"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Titan Rail"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Back to base"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/work_01.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "/work_02.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "/work_03.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "/work_04.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "/work_05.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

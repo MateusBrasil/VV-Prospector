@@ -1,0 +1,110 @@
+{
+  "slot": "equipa",
+  "nome": "secao-96",
+  "scope": "equipa-secao-96",
+  "origem": "bank/_componentes/secoes/secao-96",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "How to Build a Scalable Hiring Process for Startups"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Hiring at a startup isn’t just about filling roles fast—it’s about building a team that can grow with your business. Without a scalable hiring system, you risk "
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Create Clear Job Descriptions and Scorecards"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Then, create a scorecard—a checklist for evaluating candidates consistently during interviews. This ensures that all stakeholders are aligned on what “good” loo"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Define Your Hiring Funnel"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Map out each stage of your hiring process—typically:"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Job Posting → Screening → First Interview → Assignment (if any) → Final Interview → Offer"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Having this pipeline clearly defined helps you measure conversion at each stage, spot bottlenecks, and ensure that all candidates are treated fairly and profess"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Use ATS Tools to Track Applications"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Don’t manage applications via spreadsheets or email. Use an Applicant Tracking System (ATS) like BreezyHR, Workable, or Lever to automate resume sorting, schedu"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "These tools make your process more efficient, collaborative, and compliant—especially as you scale and handle more applicants."
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Train Hiring Managers"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Inconsistent or untrained interviewers can damage your employer brand and lead to poor hiring decisions. Provide basic training for anyone involved in interview"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Standardize Interview Questions"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Avoid winging it. Create a structured set of interview questions tailored to the role, focusing on skills, behavior, and cultural fit. This levels the playing f"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/cms-blog-01.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "72 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/hirely/images/cms-blog-01.webp)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/hirely/images/404-image.svg)",
+    "1 atributo(s) de gancho da ORIGEM (bounce-enter): o React passa-os ao DOM tal e qual, não são erro de sintaxe. Ficam órfãos se o JS de origem não for reescrito"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

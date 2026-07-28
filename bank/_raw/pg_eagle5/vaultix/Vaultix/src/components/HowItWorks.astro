@@ -1,0 +1,828 @@
+---
+import HalftoneCanvas from "./HalftoneCanvas.astro";
+
+// Bar-chart data for Step 2 — heights more varied vs the Solution's tab-1 chart
+const step2Days = [
+  { name: "SUN", total: 6, filled: 3 },
+  { name: "MON", total: 12, filled: 8 },
+  { name: "TUE", total: 9, filled: 5 },
+  { name: "WED", total: 18, filled: 14 },
+  { name: "THU", total: 7, filled: 4 },
+  { name: "FRI", total: 16, filled: 16 },
+  { name: "SAT", total: 11, filled: 6 },
+];
+const step2BarGlow =
+  "0 0 6px rgba(95,92,255,0.9), 0 0 14px rgba(95,92,255,0.6), 0 0 28px rgba(95,92,255,0.35), 0 0 50px rgba(95,92,255,0.15)";
+
+// Step 3 — wave-pattern chart (22 cols × 14 rows). Per-col list of lit row indices (0 = top).
+// Sinusoidal wave with 4 peaks (each higher than the last) — dots float across the middle,
+// not glued to the bottom. End-state is highest in the upper-right quadrant.
+const step3Pattern: number[][] = [
+  [8, 9],        // 0  — comeca mid-low
+  [6, 7],        // 1  — climb
+  [3, 4, 5],     // 2  — peak 1
+  [5, 6],        // 3  — descend
+  [7, 8],        // 4
+  [9, 10],       // 5  — valley 1
+  [7, 8],        // 6  — climb
+  [5, 6],        // 7
+  [2, 3, 4],     // 8  — peak 2 (higher)
+  [4, 5],        // 9  — descend
+  [6, 7],        // 10 — valley
+  [5, 6],        // 11
+  [3, 4],        // 12 — climb
+  [1, 2, 3],     // 13 — peak 3 (taller)
+  [3, 4],        // 14
+  [5, 6],        // 15
+  [6, 7],        // 16 — small dip
+  [4, 5],        // 17
+  [2, 3],        // 18
+  [0, 1, 2],     // 19 — peak 4 (tallest)
+  [1, 2],        // 20
+  [2, 3],        // 21 — sustain high
+];
+const step3Cols = 22;
+const step3Rows = 14;
+const step3LitMap: boolean[] = Array.from(
+  { length: step3Cols * step3Rows },
+  (_, i) => {
+    const col = i % step3Cols;
+    const row = Math.floor(i / step3Cols);
+    return step3Pattern[col]?.includes(row) ?? false;
+  }
+);
+
+const steps = [
+  {
+    num: "01",
+    title: "Conectar",
+    desc: "Point Eagle at your data sources. We ingest from 50+ databases, APIs, and streaming platforms.",
+    bullets: [
+      "50+ pre-built connectors for databases, APIs, and streams",
+      "Auto-discovery of schemas and data types",
+      "No-code setup, ready in under five minutes",
+    ],
+    progressTotal: 17,
+    progressYellow: 11,
+    chartSrc: "/how-it-works/chart-step1.svg",
+  },
+  {
+    num: "02",
+    title: "Monitorar",
+    desc: "Track every event in real time. Eagle watches latency, throughput, and data quality across your entire stack — automatically.",
+    bullets: [
+      "Real-time pipeline metrics and alerts",
+      "AI-powered anomaly detection out of the box",
+      "Unified dashboards across your stack",
+    ],
+    progressTotal: 18,
+    progressYellow: 12,
+    chartSrc: "/how-it-works/chart-step2.svg",
+  },
+  {
+    num: "03",
+    title: "Publicar",
+    desc: "Push to production with one click. Auto-scaling, rollbacks, and zero-downtime deploys built in.",
+    bullets: [
+      "One-click deployment to production environments",
+      "Automatic scaling based on workload",
+      "Safe rollbacks with version control",
+    ],
+    progressTotal: 18,
+    progressYellow: 18,
+    chartSrc: "/how-it-works/chart-step3.svg",
+  },
+];
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("howit-pre-anim");
+  }
+</script>
+
+<section
+  class="relative bg-[var(--color-bg)] py-12 md:py-[5rem]"
+  data-howit-section
+>
+  <div class="relative mx-auto w-full max-w-[70.5rem] px-4">
+    {/* Vertical borders (animatable) */}
+    <span
+      class="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-howit-line="left"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute right-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-howit-line="right"
+      aria-hidden="true"
+    ></span>
+
+    {/* Top/bottom full-width horizontals */}
+    <span
+      class="pointer-events-none absolute left-1/2 top-0 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+      data-howit-line="top"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+      data-howit-line="bottom"
+      aria-hidden="true"
+    ></span>
+
+    {/* 4 T corner markers */}
+    <svg
+      class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-howit-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-howit-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute bottom-[calc(-0.5rem_+_0.5px)] left-[calc(-0.5rem_-_1px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-howit-tmark
+    >
+      <path d="M16 8.5H0V7.5H7V0H8V7.5H16Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 bottom-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-howit-tmark
+    >
+      <path d="M16 8.5H0V7.5H7V0H8V7.5H16Z"></path>
+    </svg>
+
+    {/* Heading block */}
+    <div
+      class="relative z-0 flex flex-col items-center gap-4 pt-[3.625rem] text-center font-mono font-normal uppercase md:gap-[0.75rem]"
+    >
+      <p
+        class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[var(--color-accent)]"
+        data-howit-eyebrow
+      >
+        [ how it works ]
+      </p>
+      <h2
+        class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+        data-howit-headline
+      >
+        How it works
+      </h2>
+      <p
+        class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white/60"
+        data-howit-subhead
+      >
+        From zero to production in three steps
+      </p>
+    </div>
+
+    {/* Steps stack — sticky stacking cards (GSAP-driven on scroll) */}
+    <div
+      class="relative mt-[2rem] pb-[3.75rem] md:pb-[5.5rem] lg:mt-[5.375rem]"
+    >
+      <div
+        class="howit-stack relative mx-auto w-full max-w-[58.8125rem]"
+        data-howit-stack
+      >
+        {
+          steps.map((step, idx) => (
+            <div
+              class="howit-card overflow-clip rounded-[2px] border border-[var(--color-border)] bg-[var(--color-surface)]"
+              data-howit-card
+              data-card-idx={idx}
+            >
+              <div
+                class="flex items-center justify-center gap-[0.625rem] bg-[#141414] px-[2rem] py-[1rem]"
+                data-howit-card-header
+              >
+                <p class="flex-1 font-mono text-[1rem] uppercase leading-[1.25] tracking-[1.92px] text-white">
+                  Step {step.num.replace(/^0/, "")}
+                </p>
+                <div class="flex items-center gap-[0.4375rem]">
+                  {Array.from({ length: step.progressTotal }, () => (
+                    <span
+                      class="h-[1.5rem] w-[0.75rem] shrink-0 bg-[#343434]"
+                      data-howit-bar
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Body: text left, chart right */}
+              <div class="flex flex-col gap-[1.5rem] p-[0.5rem] max-md:gap-2 md:flex-row">
+                <div class="flex flex-1 flex-col justify-between gap-[1.5rem] p-[1.5rem] font-mono font-normal uppercase lg:gap-[3.5rem]">
+                  <div class="flex flex-col gap-[1.5rem]">
+                    <h3 class="text-[1.75rem] leading-none tracking-[3.36px] text-white md:text-[2rem] md:tracking-[3.84px]">
+                      <span class="text-[var(--color-accent)]">{step.num}</span>
+                      <span> - {step.title}</span>
+                    </h3>
+                    <p class="max-w-[17.5625rem] text-[0.875rem] normal-case leading-[1.2857] text-white/60">
+                      {step.desc}
+                    </p>
+                  </div>
+                  <ul class="flex flex-col gap-[1.5rem]">
+                    {step.bullets.map((b) => (
+                      <li class="flex items-comeca gap-[0.5rem]">
+                        <span class="mt-[0.25rem] h-[0.5rem] w-[0.5rem] shrink-0 bg-[#b5d2ff] shadow-[0_0_3px_rgba(95,92,255,0.78),0_1px_6px_rgba(95,92,255,0.67),0_2px_8px_rgba(95,92,255,0.4),0_4px_9px_rgba(95,92,255,0.12),0_6px_10px_rgba(95,92,255,0.01)]" />
+                        <p class="max-w-[17.5625rem] text-[0.75rem] leading-[1.1667] tracking-[1.44px] text-white/60">
+                          {b}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Chart asset — halftone bg + per-step rebuilt SVG centered on top */}
+                <div class="howit-asset relative flex flex-1 items-center justify-center self-stretch overflow-hidden border border-[var(--color-border)] bg-[#141414]">
+                  <HalftoneCanvas
+                    cursorReactive={false}
+                    driftX={[-0.55, -0.18, -0.35][idx]}
+                    driftY={[-0.18, -0.55, -0.42][idx]}
+                    warp={[0.42, 0.5, 0.46][idx]}
+                    speed={[0.95, 1.05, 0.85][idx]}
+                    phaseOffset={[0, 9, 17][idx]}
+                  />
+
+                  {step.num === "02" && (
+                    <div class="relative z-[1] flex aspect-square w-full max-w-[280px] flex-col justify-between border border-[var(--color-border)] bg-[#010101] p-3">
+                      <div class="flex items-center">
+                        <span class="font-mono text-[0.75rem] leading-[1.125rem] tracking-[0.105rem] text-white/60 uppercase">
+                          Live System
+                        </span>
+                      </div>
+
+                      <div class="flex items-center justify-between font-mono font-normal uppercase">
+                        <span class="text-[1.75rem] leading-[1.1] tracking-[0.18rem] text-white">
+                          1,240
+                        </span>
+                        <span class="text-[0.625rem] leading-[0.875rem] tracking-[0.075rem] text-[var(--color-accent)]">
+                          +70%
+                        </span>
+                      </div>
+
+                      <div class="flex w-full flex-col gap-2">
+                        <div class="flex items-end justify-between gap-1">
+                          {step2Days.map((d) => (
+                            <div class="flex flex-1 flex-col gap-1 items-stretch">
+                              {Array.from({ length: d.total }).map((_, i) => {
+                                const isFilled = i >= d.total - d.filled;
+                                return (
+                                  <span
+                                    class="h-1.5 w-full"
+                                    style={{
+                                      backgroundColor: isFilled ? "#B5D2FF" : "#343434",
+                                      boxShadow: isFilled ? step2BarGlow : "none",
+                                    }}
+                                  />
+                                );
+                              })}
+                            </div>
+                          ))}
+                        </div>
+                        <div class="flex items-comeca justify-between font-mono text-center text-[0.5rem] leading-[0.72rem] tracking-[0.06rem] text-[#616161] uppercase">
+                          {step2Days.map((d) => (
+                            <span class="flex-1">{d.name}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {step.num === "03" && (
+                    <div class="step3-card relative z-[1] flex w-full max-w-[280px] flex-col bg-[#141414] border border-[var(--color-border)] p-[8px] gap-[10px]">
+                      <div
+                        class="step3-grid"
+                        style={`grid-template-columns: repeat(${step3Cols}, 1fr); grid-template-rows: repeat(${step3Rows}, 1fr);`}
+                      >
+                        {step3LitMap.map((isLit) => (
+                          <span
+                            class:list={["step3-cell", isLit && "is-lit"]}
+                            data-step3-cell-on={isLit ? "true" : "false"}
+                          />
+                        ))}
+                      </div>
+                      <div class="step3-label step3-label-dim">
+                        Department Tools
+                      </div>
+                      <div class="step3-label step3-label-active">
+                        Process Tools
+                      </div>
+                    </div>
+                  )}
+
+                  {step.num === "01" && (
+                    <svg
+                      class="howit-asset-svg relative z-[1] h-auto max-h-[70%] w-auto max-w-[70%]"
+                      viewBox="0 0 278 215"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <g filter="url(#step1-glow)">
+                        <path
+                          d="M120.885 197.656L16.5763 16.5762H85.8374L155.933 137.574L190.146 77.4926L155.933 16.5762H225.194L261.076 77.4926L226.863 139.243L155.933 137.574L120.885 197.656Z"
+                          fill="#FDFF22"
+                        />
+                      </g>
+                      <defs>
+                        <filter
+                          id="step1-glow"
+                          x="-10"
+                          y="-10"
+                          width="298"
+                          height="235"
+                          filterUnits="userSpaceOnUse"
+                          color-interpolation-filters="sRGB"
+                        >
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset />
+                          <feGaussianBlur stdDeviation="8.28814" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0 0 0 0 0.98 0" />
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset />
+                          <feGaussianBlur stdDeviation="2.07203" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0 0 0 0 0.85 0" />
+                          <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2.07203" />
+                          <feGaussianBlur stdDeviation="3.10805" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0 0 0 0 0.5 0" />
+                          <feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="4.14407" />
+                          <feGaussianBlur stdDeviation="4.14407" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.807843 0 0 0 0 0.807843 0 0 0 0 0 0 0 0 0.15 0" />
+                          <feBlend mode="normal" in2="effect3_dropShadow" result="effect4_dropShadow" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="6.2161" />
+                          <feGaussianBlur stdDeviation="4.14407" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.808969 0 0 0 0 0.808969 0 0 0 0 0 0 0 0 0.02 0" />
+                          <feBlend mode="normal" in2="effect4_dropShadow" result="effect5_dropShadow" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect5_dropShadow" result="shape" />
+                        </filter>
+                      </defs>
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Pre-anim FOUC protection — only frame + heading; cards stay visible */
+  .howit-pre-anim [data-howit-eyebrow],
+  .howit-pre-anim [data-howit-headline],
+  .howit-pre-anim [data-howit-subhead] {
+    visibility: hidden;
+  }
+  .howit-pre-anim [data-howit-line],
+  .howit-pre-anim [data-howit-tmark] {
+    opacity: 0;
+  }
+  /* Hide cards before GSAP positions them off-screen — prevents FOUC flash */
+  .howit-pre-anim .howit-card {
+    visibility: hidden;
+  }
+
+  /* === Sticky stacking cards === */
+  .howit-stack {
+    /* height = card 1 (the only one in normal flow). Cards 2/3 are absolute-stacked. */
+    position: relative;
+  }
+  .howit-card {
+    /* Card 1 (idx 0): in flow — heading flows naturally above it, no negative gap */
+    position: relative;
+    will-change: transform;
+    /* Tucked cards shrink from their top edge so the header stays anchored */
+    transform-origin: top center;
+  }
+  /* Cards 2 and beyond: absolute-stacked over card 1, off-screen until entry */
+  .howit-card:not([data-card-idx="0"]) {
+    position: absolute;
+    inset: 0 0 auto 0;
+  }
+  /* During reduced motion or non-JS, cards revert to normal flow with gap */
+  @media (prefers-reduced-motion: reduce) {
+    .howit-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .howit-card,
+    .howit-card:not([data-card-idx="0"]) {
+      position: static;
+      inset: auto;
+      transform: none !important;
+    }
+  }
+
+  /* Mobile (<768px): no sticky stacking, no visuals, no progress bar.
+     Cards become a simple vertical list with the text only — three plain
+     blocks describing each step. The scroll-pinned choreography is
+     desktop-only. */
+  @media (max-width: 767px) {
+    .howit-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .howit-card,
+    .howit-card:not([data-card-idx="0"]) {
+      position: static;
+      inset: auto;
+      transform: none !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Hide only the progress-bar header chunk on mobile.
+       The visual chart stays visible — it now stacks below the bullet list
+       (the body is flex-col on mobile via Tailwind classes). */
+    .howit-card [data-howit-card-header] {
+      display: none;
+    }
+    .howit-card .howit-asset {
+      aspect-ratio: 1 / 1;
+      min-height: 14rem;
+      /* 1rem inset on sides + bottom (card body already adds p-[0.5rem] = 8px,
+         asset adds 8px). No top margin so the visual sits flush against the
+         text/list above (no extra gap). */
+      margin: 0 0.5rem 0.5rem;
+      /* 1.5rem internal padding so the chart sits inset and the halftone
+         bg ring is clearly visible around it (same approach as features hero). */
+      padding: 1.5rem;
+    }
+  }
+
+  /* === Step 3 — area chart card (rebuilt in code, animatable) === */
+  .step3-grid {
+    display: grid;
+    gap: 3px;
+    aspect-ratio: 22 / 14;
+    width: 100%;
+  }
+  .step3-cell {
+    background: #313131;
+    aspect-ratio: 1 / 1;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .step3-cell.is-lit {
+    background: #b5d2ff;
+    box-shadow:
+      0 0 4px rgba(95, 92, 255, 0.95),
+      0 0 9px rgba(95, 92, 255, 0.6),
+      0 0 18px rgba(95, 92, 255, 0.35),
+      0 0 32px rgba(95, 92, 255, 0.15);
+  }
+  .step3-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.85rem 1rem;
+  }
+  .step3-label-dim {
+    background: #212121;
+    color: var(--color-accent);
+  }
+  .step3-label-active {
+    background: var(--color-accent);
+    color: #11130e;
+    box-shadow:
+      0 0 6px rgba(253, 255, 34, 0.55),
+      0 0 14px rgba(253, 255, 34, 0.25);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    // Mobile: section becomes a static stack of text cards — skip the entire
+    // GSAP setup (sticky pin, bar fill, line draws). The CSS handles layout.
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (reduceMotion || isMobile) {
+      document.documentElement.classList.remove("howit-pre-anim");
+      return;
+    }
+
+    const section = document.querySelector<HTMLElement>("[data-howit-section]");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-howit-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-howit-headline]");
+    const subhead = section.querySelector<HTMLElement>("[data-howit-subhead]");
+    const lines = gsap.utils.toArray<HTMLElement>("[data-howit-line]", section);
+    const tmarks = gsap.utils.toArray<SVGElement>("[data-howit-tmark]", section);
+
+    const eyebrowSplit = eyebrow
+      ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+      : null;
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+    const subheadSplit = subhead
+      ? new SplitText(subhead, { type: "lines", mask: "lines" })
+      : null;
+
+    // ---- Pre-anim states ----
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+
+    lines.forEach((l) => {
+      const orient = l.dataset.howitLine;
+      if (orient === "top") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+      } else if (orient === "bottom") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "right center" });
+      } else if (orient === "left") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+      } else if (orient === "right") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center bottom" });
+      }
+    });
+    gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+    // Stacking cards setup (BEFORE removing pre-anim class — prevents FOUC flash)
+    const stackEl = section.querySelector<HTMLElement>("[data-howit-stack]");
+    const cardEls = gsap.utils.toArray<HTMLElement>("[data-howit-card]", section);
+    // Stack later cards on top — incoming card covers tucked ones
+    cardEls.forEach((c, i) => {
+      c.style.zIndex = String(10 + i);
+    });
+    // Card 1 stays in normal flow (no off-screen translate). Cards 2+ comeca off-screen below.
+    cardEls.forEach((c, i) => {
+      if (i === 0) {
+        gsap.set(c, { y: 0, scale: 1 });
+      } else {
+        gsap.set(c, { y: "110vh", scale: 1 });
+      }
+    });
+
+    document.documentElement.classList.remove("howit-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        comeca: "top 80%",
+        once: true,
+      },
+    });
+
+    // 1. Horizontal lines (top/bottom)
+    const horizontals = lines.filter(
+      (l) =>
+        l.dataset.howitLine === "top" || l.dataset.howitLine === "bottom"
+    );
+    const verticals = lines.filter(
+      (l) =>
+        l.dataset.howitLine === "left" || l.dataset.howitLine === "right"
+    );
+
+    tl.to(
+      horizontals,
+      {
+        scaleX: 1,
+        duration: 0.85,
+        ease: "eagleStructure",
+        stagger: 0.06,
+      },
+      0
+    );
+
+    tl.to(
+      verticals,
+      {
+        scaleY: 1,
+        duration: 0.7,
+        ease: "eagleStructure",
+        stagger: 0.06,
+      },
+      0.15
+    );
+
+    // 2. T-markers
+    tl.to(
+      tmarks,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "eagleDecor",
+        stagger: 0.06,
+      },
+      0.55
+    );
+
+    // 3. Heading block — eyebrow / headline / subhead line stagger
+    if (eyebrowSplit) {
+      tl.to(
+        eyebrowSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.3
+      );
+    }
+    if (headlineSplit) {
+      tl.to(
+        headlineSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.95,
+          ease: "eagleReveal",
+          stagger: 0.1,
+        },
+        0.45
+      );
+    }
+    if (subheadSplit) {
+      tl.to(
+        subheadSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.65
+      );
+    }
+
+    // ============================================================
+    // Sticky stacking cards
+    //   - Card 1 lives in the normal flow (visible naturally with the heading).
+    //   - Pre-pin scrub: card 1's bars fill yellow as it scrolls toward center.
+    //   - Pin trigger: when card 1 hits viewport center → cards 2/3 enter & 1/2 tuck.
+    // ============================================================
+    if (!stackEl || cardEls.length === 0) return;
+
+    // Yellow bar visual config (matches the original Tailwind shadow)
+    const BAR_YELLOW = "#fdff22";
+    const BAR_GLOW =
+      "0 0 1px rgba(206,206,0,0.98), 0 0 2px rgba(206,206,0,0.85), 0 1px 3px rgba(206,206,0,0.5), 0 2px 4px rgba(206,206,0,0.15)";
+
+    // Header height per card — used to compute tuck offsets (each scaled by its level)
+    const headerHs = cardEls.map((c) => {
+      const h = c.querySelector<HTMLElement>("[data-howit-card-header]");
+      return h ? h.offsetHeight : 56;
+    });
+    const SCALE_STEP = 0.05;
+
+    // Cumulative tuck offset for `level` (1, 2, ...): Σ headerH × scale_k for k=1..level
+    // This ensures each tucked card's scaled header sits flush above the next card,
+    // with no overlap or gap.
+    const cumulativeTuckOffset = (level: number) => {
+      let sum = 0;
+      for (let k = 1; k <= level; k++) {
+        sum += headerHs[0] * (1 - SCALE_STEP * k);
+      }
+      return sum;
+    };
+
+    // ---- Visual center of the viewport excluding the sticky navbar ----
+    // Navbar is `sticky top-0` so it occupies the top of the viewport.
+    // True usable center = navH + (vh - navH) / 2 = (vh + navH) / 2.
+    const navEl = document.querySelector<HTMLElement>("[data-navbar]");
+    const visualCenter = () => {
+      const navH = navEl ? navEl.getBoundingClientRect().height : 0;
+      return (window.innerHeight + navH) / 2;
+    };
+
+    // ---- Pre-pin: card 1's bars fill yellow as it scrolls toward visual center ----
+    const card1 = cardEls[0];
+    const card1Bars = gsap.utils.toArray<HTMLElement>(
+      "[data-howit-bar]",
+      card1
+    );
+    if (card1Bars.length) {
+      gsap.to(card1Bars, {
+        backgroundColor: BAR_YELLOW,
+        boxShadow: BAR_GLOW,
+        duration: 0.001,
+        ease: "none",
+        stagger: { each: 1 / card1Bars.length, ease: "none" },
+        scrollTrigger: {
+          trigger: card1,
+          comeca: "top bottom",
+          end: () => `center ${visualCenter()}px`,
+          scrub: 0.4,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+
+    // ---- Pin timeline: cards 2/3 entries + tucks (only runs while pinned) ----
+    const tlStack = gsap.timeline({
+      scrollTrigger: {
+        trigger: stackEl,
+        comeca: () => `center ${visualCenter()}px`,
+        end: `+=${(cardEls.length - 1) * 100}%`, // 2 segments for 3 cards
+        pin: true,
+        // Fast scrub — at 0.6 the animation lagged ~0.6s behind the scroll,
+        // so on quick scrolls card 3 kept floating in while the next section
+        // had already comecaed revelaring. 0.15 keeps a touch of smoothing
+        // without the perceptible delay.
+        scrub: 0.15,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        // When the trigger leaves (pin released), force the timeline to its
+        // final state so cards never get "stuck" mid-animation due to scrub
+        // lag if the user scrolled past the end faster than the lag window.
+        onLeave: (self) => self.animation && self.animation.progress(1),
+        onLeaveBack: (self) => self.animation && self.animation.progress(0),
+      },
+    });
+
+    // For each new card N (1-indexed: card 2, card 3): segStart = N-1 (0, 1)
+    for (let idx = 1; idx < cardEls.length; idx++) {
+      const segStart = idx - 1;
+      const card = cardEls[idx];
+      const bars = gsap.utils.toArray<HTMLElement>("[data-howit-bar]", card);
+
+      // ENTRY: card slides from off-screen below up to its anchored top:0
+      tlStack.fromTo(
+        card,
+        { y: "110vh" },
+        { y: 0, duration: 1, ease: "none" },
+        segStart
+      );
+
+      // BAR FILL: each bar turns yellow with stagger as the card enters
+      if (bars.length) {
+        tlStack.to(
+          bars,
+          {
+            backgroundColor: BAR_YELLOW,
+            boxShadow: BAR_GLOW,
+            duration: 0.001,
+            ease: "none",
+            stagger: { each: 0.95 / bars.length, ease: "none" },
+          },
+          segStart + 0.05
+        );
+      }
+
+      // TUCK earlier cards: at this segment, every previous card moves up by
+      // its cumulative scaled-header height and shrinks to its target scale.
+      for (let earlier = 0; earlier < idx; earlier++) {
+        const tuckLevel = idx - earlier; // 1 for the most recent, 2 for older
+        const yOffset = -cumulativeTuckOffset(tuckLevel);
+        const scaleVal = 1 - SCALE_STEP * tuckLevel;
+        tlStack.to(
+          cardEls[earlier],
+          {
+            y: yOffset,
+            scale: scaleVal,
+            duration: 1,
+            ease: "none",
+          },
+          segStart
+        );
+      }
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

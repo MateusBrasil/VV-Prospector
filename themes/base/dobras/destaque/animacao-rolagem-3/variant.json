@@ -1,0 +1,103 @@
+{
+  "slot": "destaque",
+  "nome": "animacao-rolagem-3",
+  "scope": "destaque-animacao-rolagem-3",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacao-rolagem-3",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Silent Ridge"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Nature study / 2026"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Blue Lake"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Nature study / 2026"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Golden Field"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Nature study / 2026"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Mist Fall"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Nature study / 2026"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Dark Pines"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Nature study / 2026"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=80"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=80"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "5 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80 https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=80)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

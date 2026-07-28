@@ -1,0 +1,59 @@
+@font-face{
+  font-family: var(--fonte-corpo);
+  src: url("/Harmond-ExtraBoldExpanded.otf") format("opentype");
+}
+[data-dobra="destaque-scroll-1"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="destaque-scroll-1"],[data-dobra="destaque-scroll-1"]{
+  overscroll-behavior: none;
+  background-color: var(--base-600);
+  height: 100vh;
+  width: 100%;
+}
+[data-dobra="destaque-scroll-1"] main{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+}
+[data-dobra="destaque-scroll-1"] .scrollable{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+}
+[data-dobra="destaque-scroll-1"] .image-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-dobra="destaque-scroll-1"] h1{
+  position: absolute;
+  left: 0;
+  top: 60%;
+  left: 55%;
+  z-index: 10;
+  color: var(--base-100);
+  mix-blend-mode: difference;
+}
+[data-dobra="destaque-scroll-1"] img{
+  position: absolute;
+  height: 60%;
+  visibility: hidden;
+}
+[data-dobra="destaque-scroll-1"] canvas{
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+}
+
+

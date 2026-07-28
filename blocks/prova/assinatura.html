@@ -1,0 +1,70 @@
+<style>
+/* ============================================================================
+   SIGNATURE MOMENT (Lei C8) — "A nota que 30 anos construíram".
+   Único lugar da página autorizado a exceder o orçamento: wash radial da marca
+   (mono-matiz, ΔH≈0) + a nota gigante em contador. A prova social — 4,8 com
+   280+ avaliações — deixa de ser um numerozinho e vira a protagonista,
+   ancorada na foto REAL da parede de pacientes de três décadas.
+   ============================================================================ */
+.prova{background:radial-gradient(120% 90% at 15% 0%, var(--brand-wash) 0%, var(--canvas) 58%);
+  border-bottom:1px solid var(--hairline)}
+.prova__grid{display:grid;gap:var(--space-5);align-items:center}
+@media (min-width:960px){.prova__grid{grid-template-columns:minmax(0,52fr) minmax(0,48fr);gap:var(--space-6)}}
+.prova__tag{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:var(--space-3)}
+.prova__tag svg{flex:none;color:var(--brand-ink)}
+.prova__notaLinha{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap}
+.prova__num--giga{font-family:var(--font-display);font-size:var(--step-giga);line-height:.95;
+  letter-spacing:-0.04em;color:var(--ink)}
+.prova__em5{font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-0.02em;color:var(--ink-muted)}
+.prova__estrelas{position:relative;display:inline-block;line-height:0;margin-block:var(--space-2) var(--space-3)}
+.prova__fila{display:flex;gap:4px;color:var(--hairline)}
+.prova__fila--cheia{position:absolute;inset:0;overflow:hidden;width:96%;color:var(--brand)}
+.prova__texto{color:var(--ink-muted);max-width:44ch;margin-bottom:var(--space-3)}
+.prova__link{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:var(--step-0);
+  color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:2px}
+.prova__link:hover{border-color:var(--brand-ink)}
+.prova__link:focus-visible{outline:2px solid var(--brand-cta);outline-offset:3px}
+.prova__link svg{transition:transform 200ms var(--ease)}
+.prova__link:hover svg{transform:translateX(4px)}
+.prova__stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;
+  gap:var(--space-4);margin-top:var(--space-5);padding-top:var(--space-3);border-top:1px solid var(--hairline)}
+/* tiques da marca nos stats — o mesmo acento fino dos pontos do marquee do hero */
+.prova__stats>div{padding-left:var(--space-2);border-left:2px solid var(--brand)}
+.prova__statnum{font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-0.02em;line-height:1;color:var(--ink)}
+.prova__statlbl{font-size:var(--step--1);color:var(--ink-muted);margin-top:.35rem}
+/* moldura deslocada da marca — a MESMA assinatura da foto do hero, espelhada p/ baixo-esquerda */
+.prova__media{position:relative;margin:0}
+.prova__media::before{content:"";position:absolute;inset:var(--space-2) var(--space-2) calc(-1 * var(--space-2)) calc(-1 * var(--space-2));
+  border:1px solid color-mix(in srgb, var(--brand) 55%, transparent);border-radius:var(--radius-lg);pointer-events:none}
+.prova__moldura{display:block;position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--ring)}
+.prova__moldura img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.prova__legenda{position:absolute;left:var(--space-2);bottom:var(--space-2);right:var(--space-2);
+  padding:.6rem .9rem;border-radius:var(--radius);font-size:var(--step--1);color:var(--ink);
+  background:color-mix(in srgb, var(--canvas) 78%, transparent);
+  -webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);
+  border:1px solid var(--hairline)}
+@supports not (backdrop-filter:blur(1px)){.prova__legenda{background:var(--canvas)}}
+@media (max-width:520px){.prova__stats{grid-template-columns:1fr;gap:var(--space-3)}}
+</style>
+<section class="prova" id="avaliacoes">
+  <div class="wrap prova__grid">
+    <div data-motion="contador">
+      <p class="prova__tag"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>Avaliações no Google</p>
+      <p class="prova__notaLinha"><span class="cred__num prova__num--giga">{{nota}}</span><span class="prova__em5">em 5</span></p>
+      <div class="prova__estrelas" role="img" aria-label="{{nota}} em 5 estrelas">
+        <span class="prova__fila" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg></span>
+        <span class="prova__fila prova__fila--cheia" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg></span>
+      </div>
+      <p class="prova__texto">{{texto}}</p>
+      <a class="prova__link" href="{{linkAvaliacoes}}" target="_blank" rel="noopener">Ler as avaliações no Google<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div class="prova__stats reveal">
+        {{{stats}}}
+      </div>
+    </div>
+    <figure class="prova__media reveal">
+      <span class="prova__moldura"><img class="foto" src="{{fotoProva}}" alt="{{fotoProvaAlt}}" width="1200" height="800" loading="lazy"></span>
+      {{#legenda}}<figcaption class="prova__legenda">{{legenda}}</figcaption>{{/legenda}}
+    </figure>
+  </div>
+</section>

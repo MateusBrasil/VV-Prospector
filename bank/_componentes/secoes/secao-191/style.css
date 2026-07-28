@@ -1,0 +1,9 @@
+/* stayli-property-testimonials — local overrides only. All structure/styling for
+   the testimonials-two grid (section_testimonials-two, testimonials_grid,
+   testimonials_item-sec, author_wrap.is-sec, etc.) lives in the shared
+   /stayli/styles.css cascade (webflow.css + global-styles.css + components.css,
+   which owns the [data-reveal] start/end states). */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}

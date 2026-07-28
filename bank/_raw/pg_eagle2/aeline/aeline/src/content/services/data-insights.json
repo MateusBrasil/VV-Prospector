@@ -1,0 +1,31 @@
+{
+  "name": "Data & insights",
+  "summary": "We help you identify opportunities for Big Data use and implement the right analytics.",
+  "icon": "/images/cms/698e487f52e4cd9da04322e0_ic_round-insert-chart.svg",
+  "card": "/images/cms/696202de6ed108d94012bd8e_service-img-3.webp",
+  "headline": "The benefits of a strong data strategy",
+  "subtext": "A well-defined data strategy gives your organization clarity, direction, and measurable impact.",
+  "features": [
+    {
+      "title": "Clear Direction for Data Usage",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you use data with confidence and purpose."
+    },
+    {
+      "title": "Reduced Processing Costs",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you use data with confidence and purpose."
+    },
+    {
+      "title": "Clear Direction for Data Usage",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you use data with confidence and purpose."
+    },
+    {
+      "title": "Reduced Processing Costs",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you use data with confidence and purpose."
+    }
+  ],
+  "quote": "\"They brought insight to complex datasets, breaking down barriers and delivering innovative solutions.”",
+  "author": "Mark Leo",
+  "role": "Data Analyst II",
+  "avatar": "/images/cms/6961fed3966b530753b60b44_av-author.png",
+  "content": "<p>We help organizations understand where BI creates the most impact and how to track it effectively.</p><p>‍</p><p>Through strategic analysis, opportunity mapping, and dashboarding guidance, we design a step-by-step plan that aligns data flows with your business goals — ensuring clarity, feasibility, and long-term value.</p>"
+}

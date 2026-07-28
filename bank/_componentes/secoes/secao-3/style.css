@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.csGrid {
+  width: 100%;
+  background-color: var(--color-bg-cream);
+}
+
+.csGrid__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;             /* 48px between header and grid */
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.csGrid__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.csGrid__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.csGrid__labelDot {
+  display: inline-block;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.csGrid__labelText {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-text-primary);
+}
+
+/* Font-size / line-height / letter-spacing live in the global "60px
+   section heading" bucket (see global.css) so this heading scales with
+   the same per-breakpoint stops as services/expertise/team/journey/blogs.
+   Only layout-specific properties (color, max-width, spacing) belong here. */
+.csGrid__heading {
+  color: var(--color-text-primary);
+  max-width: 41.5em;     /* 663px — Figma frame width for the heading */
+  margin: 0;
+}
+
+/* Block-level wrappers per line — each `\n` in the heading prop becomes
+   its own line. Forces "Real Results, Real Impact" onto a second line
+   even at desktop where the container would otherwise let it stay on
+   one continuous row. */
+.csGrid__headingLine {
+  display: block;
+}
+
+/* 2-column grid. Cards are flex-column inside so the divider sits on top
+   and the description naturally flows below the image. */
+.csGrid__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* row-gap | column-gap — desktop & tablet share the default; landscape
+     overrides column-gap, portrait overrides row-gap. */
+  row-gap: 2rem;
+  column-gap: 1.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.csGrid__item {
+  margin: 0;
+}
+
+.csGrid__card {
+  width: 100%;
+}
+
+/* The whole card is a single `<a>` that wraps every part (divider, title,
+   image, desc). Clicks on any element navigate natively — no overlay,
+   no `pointer-events` hacks, no nested interactives. Each child is a
+   normal DOM node so dev-tools "Inspect element" picks them individually. */
+.csGrid__cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;             /* constant across breakpoints */
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.csGrid__divider {
+  height: 1px;
+  background-color: var(--color-divider);
+  width: 100%;
+  transition: background-color 0.4s ease;
+}
+
+/* Hover only on desktop with hover-capable + fine pointer — touch viewports
+   skip the rule entirely (avoids the sticky-hover issue on tablets). */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .csGrid__cardLink:hover .csGrid__image {
+    transform: scale(1.05);
+  }
+
+  .csGrid__cardLink:hover .csGrid__divider {
+    background-color: var(--color-text-primary);
+  }
+}
+
+/* Font-size / line-height / letter-spacing live in the global "36px
+   bucket" (see global.css) — same scale as `.about__statement`,
+   `.testimonials__quote`, etc. (36 → 32 → 28 → 24). Vertical padding
+   scales by breakpoint via the responsive overrides below: 1rem on
+   desktop, 0.75rem on tablet, 0.5rem from landscape onward. The padding
+   is in `rem` (constant per breakpoint) — `em` would compound with the
+   bucket's font-size and create a different inset at each breakpoint. */
+.csGrid__title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;            /* no Y inset on any viewport */
+}
+
+/* Image card — horizontal but close to the source's natural aspect
+   (952x800 ≈ 1.19:1). The Figma frame was 576x338 (1.7:1) which would
+   crop ~30% off the top and bottom of the source image, eating the
+   subject's head. 4:3 keeps the wrapper horizontal while only trimming
+   ~5% top/bottom — heads stay inside. */
+.csGrid__imageWrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-bg-placeholder);
+  border-radius: var(--radius-lg);  /* 16px */
+  overflow: hidden;
+}
+
+.csGrid__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Elegant ease for the hover scale — same curve used across the site
+     for soft, slow image reveals (matches GSAP's power3.out feel). */
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.csGrid__desc {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* From tablet onward the SECTION wrapper (badge + heading + grid container)
+   reads centered as one column down the page. The CARDS inside the grid
+   keep their default LEFT alignment (title / image / desc all flush-left)
+   through landscape — only at portrait do the card pieces also center,
+   since the single-column layout there already implies a centered axis. */
+@media (max-width: 991px) {
+  .csGrid__inner {
+    gap: 2em;
+    padding: 3em var(--container-padding);
+    align-items: center;
+    text-align: center;
+  }
+
+  .csGrid__header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .csGrid__heading {
+    max-width: none;
+  }
+
+  .csGrid__card {
+    /* Card content stays left-aligned at tablet/landscape — overrides the
+       centered text-align inherited from .csGrid__inner above. */
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Stay 2-col through landscape — narrower gaps keep the cards from
+     looking cramped while still preserving the gallery feel. Single
+     column only kicks in at portrait. */
+  .csGrid__inner {
+    gap: 1.75em;
+    padding: 2.5em var(--container-padding);
+  }
+
+  .csGrid__list {
+    column-gap: 1rem;        /* landscape — tighter horizontal gap */
+  }
+}
+
+@media (max-width: 479px) {
+  /* Portrait — single column AND the card content (title + desc) recenters
+     to match the page's centered axis at the smallest viewport. Override
+     the tablet/landscape `text-align: left` on the card itself. */
+  .csGrid__list {
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;         /* portrait — tighter vertical gap */
+  }
+
+  .csGrid__card {
+    text-align: center;
+  }
+
+  /* Center the flex children (divider, title, imageWrap, desc) along the
+     cross axis. The flex context lives on `.csGrid__cardLink`, so the
+     `align-items` rule belongs here, not on `.csGrid__card`. */
+  .csGrid__cardLink {
+    align-items: center;
+  }
+}

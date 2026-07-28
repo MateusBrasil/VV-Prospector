@@ -1,0 +1,17 @@
+.line,
+.word {
+  display: inline-block;
+  will-change: transform;
+}
+
+/*
+ * O SplitText do GSAP envolve cada linha/palavra numa mascara com overflow:clip
+ * colada a caixa da linha. Em ingles isso e invisivel, mas em PT corta os
+ * acentos que saem da caixa: o til e o agudo por cima, a cedilha por baixo.
+ * overflow-clip-margin estende a zona visivel da mascara sem mexer no layout
+ * nem na animacao de revelacao (a linha continua a slidar de y:110% para 0%).
+ */
+.line-mask,
+.word-mask {
+  overflow-clip-margin: 0.4em;
+}

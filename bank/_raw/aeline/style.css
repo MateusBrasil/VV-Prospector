@@ -1,0 +1,4 @@
+/* Aeline — Testimonials Slider — local preview overrides only. All section structure/styling lives
+   in the shared /aeline/styles.css cascade; animations run from /aeline/scripts/. */
+body { margin: 0; }
+.section_testimonials { min-height: 100svh; display: flex; flex-direction: column; justify-content: safe center; }

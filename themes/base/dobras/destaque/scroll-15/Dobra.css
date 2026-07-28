@@ -1,0 +1,19 @@
+[data-dobra="destaque-scroll-15"] .Horizontal{
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+[data-dobra="destaque-scroll-15"] .Horizontal__text{
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  gap: 4vw;
+  padding-left: 100vw;
+}
+[data-dobra="destaque-scroll-15"] .heading-xl{
+  font-size: clamp(2rem, 10vw, 12rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+

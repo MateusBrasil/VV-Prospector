@@ -1,0 +1,372 @@
+---
+const metrics = [
+  { value: "2", suffix: "M+", label: "Eventos/segundo" },
+  { value: "99", suffix: "%", label: "SLA de disponibilidade" },
+  { value: "10", suffix: "B+", label: "Registros processados" },
+  { value: "99", suffix: "%", label: "Crescimento" },
+];
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("impact-pre-anim");
+  }
+</script>
+
+<section
+  class="relative bg-[var(--color-bg)] pt-12 md:pt-[5rem]"
+  data-impact-section
+>
+  <div class="relative mx-auto w-full max-w-[70.5rem] px-4">
+    {/* Vertical borders (animatable) */}
+    <span
+      class="pointer-events-none absolute left-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-impact-line="left"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute right-0 top-0 hidden h-full w-px bg-[var(--color-border)] lg:block"
+      data-impact-line="right"
+      aria-hidden="true"
+    ></span>
+
+    {/* Top/bottom full-width horizontals passing through T markers */}
+    <span
+      class="pointer-events-none absolute left-1/2 top-0 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+      data-impact-line="top"
+      aria-hidden="true"
+    ></span>
+    <span
+      class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+      data-impact-line="bottom"
+      aria-hidden="true"
+    ></span>
+
+    {/* 4 T corner markers */}
+    <svg
+      class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-impact-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-impact-tmark
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute bottom-[calc(-0.5rem_+_0.5px)] left-[calc(-0.5rem_-_1px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-impact-tmark
+    >
+      <path d="M16 8.5H0V7.5H7V0H8V7.5H16Z"></path>
+    </svg>
+    <svg
+      class="pointer-events-none absolute -right-2 bottom-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden="true"
+      data-impact-tmark
+    >
+      <path d="M16 8.5H0V7.5H7V0H8V7.5H16Z"></path>
+    </svg>
+
+    {/* Content */}
+    <div
+      class="py-[3.5rem] md:px-[1.25rem] md:py-[5rem] lg:py-[5rem]"
+    >
+      <div
+        class="flex flex-col gap-4 font-mono font-normal uppercase md:gap-[2.5rem] lg:flex-row lg:items-comeca lg:justify-between lg:gap-[1.5rem]"
+      >
+        {/* Label */}
+        <span
+          class="shrink-0 text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#b5d2ff]"
+          data-impact-eyebrow
+        >
+          [ Nossa impacts ]
+        </span>
+
+        {/* Right column: title + metrics */}
+        <div
+          class="flex flex-col gap-[3rem] lg:w-[44.1875rem] lg:gap-[5rem]"
+        >
+          <h2
+            class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px] lg:max-w-[44rem]"
+            data-impact-headline
+          >
+            The numbers that define our success
+          </h2>
+          <div
+            class="grid grid-cols-2 gap-x-[0.625rem] gap-y-[2rem] md:grid-cols-4 md:gap-y-0"
+          >
+            {
+              metrics.map((m) => (
+                <div
+                  class="flex flex-col items-comeca gap-2 lg:gap-[1.5rem]"
+                  data-impact-metric
+                >
+                  <p
+                    class="text-[2.5rem] leading-[1.0833] tracking-[4.8px] text-[var(--color-accent)] md:text-[3rem] md:tracking-[5.76px]"
+                    data-impact-num
+                    data-target={m.value}
+                    data-suffix={m.suffix}
+                  >
+                    0{m.suffix}
+                  </p>
+                  <p
+                    class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white/60"
+                    data-impact-lbl
+                  >
+                    {m.label}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Pre-anim FOUC protection */
+  .impact-pre-anim [data-impact-eyebrow],
+  .impact-pre-anim [data-impact-headline],
+  .impact-pre-anim [data-impact-metric] {
+    visibility: hidden;
+  }
+  .impact-pre-anim [data-impact-line],
+  .impact-pre-anim [data-impact-tmark] {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      document.documentElement.classList.remove("impact-pre-anim");
+      return;
+    }
+
+    const section = document.querySelector<HTMLElement>("[data-impact-section]");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-impact-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-impact-headline]");
+    const lines = gsap.utils.toArray<HTMLElement>("[data-impact-line]", section);
+    const tmarks = gsap.utils.toArray<SVGElement>("[data-impact-tmark]", section);
+    const metricEls = gsap.utils.toArray<HTMLElement>(
+      "[data-impact-metric]",
+      section
+    );
+
+    const eyebrowSplit = eyebrow
+      ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+      : null;
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+
+    type MetricData = {
+      el: HTMLElement;
+      numEl: HTMLElement | null;
+      lblSplit: SplitText | null;
+    };
+    const metricData: MetricData[] = metricEls.map((el) => {
+      const numEl = el.querySelector<HTMLElement>("[data-impact-num]");
+      const lblEl = el.querySelector<HTMLElement>("[data-impact-lbl]");
+      return {
+        el,
+        numEl,
+        lblSplit: lblEl
+          ? new SplitText(lblEl, { type: "lines", mask: "lines" })
+          : null,
+      };
+    });
+
+    // ---- Pre-anim states ----
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+
+    metricData.forEach(({ el, numEl, lblSplit }) => {
+      gsap.set(el, { opacity: 0, y: 14 });
+      if (numEl) {
+        const suffix = numEl.dataset.suffix || "";
+        numEl.textContent = "0" + suffix;
+      }
+      if (lblSplit) gsap.set(lblSplit.lines, { yPercent: 110 });
+    });
+
+    lines.forEach((l) => {
+      const orient = l.dataset.impactLine;
+      if (orient === "top") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+      } else if (orient === "bottom") {
+        gsap.set(l, { scaleX: 0, transformOrigin: "right center" });
+      } else if (orient === "left") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+      } else if (orient === "right") {
+        gsap.set(l, { scaleY: 0, transformOrigin: "center bottom" });
+      }
+    });
+    gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+    document.documentElement.classList.remove("impact-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        comeca: "top 80%",
+        once: true,
+      },
+    });
+
+    // 1. Horizontal lines (top/bottom) — draw out from center
+    const horizontals = lines.filter(
+      (l) =>
+        l.dataset.impactLine === "top" || l.dataset.impactLine === "bottom"
+    );
+    const verticals = lines.filter(
+      (l) =>
+        l.dataset.impactLine === "left" || l.dataset.impactLine === "right"
+    );
+
+    tl.to(
+      horizontals,
+      {
+        scaleX: 1,
+        duration: 0.85,
+        ease: "eagleStructure",
+        stagger: 0.06,
+      },
+      0
+    );
+
+    // 2. Vertical lines come in slightly after
+    tl.to(
+      verticals,
+      {
+        scaleY: 1,
+        duration: 0.7,
+        ease: "eagleStructure",
+        stagger: 0.06,
+      },
+      0.15
+    );
+
+    // 3. T-markers pop after the frame is drawn
+    tl.to(
+      tmarks,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "eagleDecor",
+        stagger: 0.06,
+      },
+      0.55
+    );
+
+    // 4. Eyebrow line revelar
+    if (eyebrowSplit) {
+      tl.to(
+        eyebrowSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.65,
+          ease: "eagleReveal",
+          stagger: 0.05,
+        },
+        0.3
+      );
+    }
+
+    // 5. Headline lines revelar
+    if (headlineSplit) {
+      tl.to(
+        headlineSplit.lines,
+        {
+          yPercent: 0,
+          duration: 0.9,
+          ease: "eagleReveal",
+          stagger: 0.1,
+        },
+        0.45
+      );
+    }
+
+    // 6. Metrics — stagger left → right; per metric: card fade, count-up, label revelar
+    metricData.forEach(({ el, numEl, lblSplit }, idx) => {
+      const mStart = 0.7 + idx * 0.12;
+      tl.to(
+        el,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          ease: "eagleReveal",
+        },
+        mStart
+      );
+
+      if (numEl) {
+        const target = parseFloat(numEl.dataset.target || "0");
+        const suffix = numEl.dataset.suffix || "";
+        const proxy = { val: 0 };
+        tl.to(
+          proxy,
+          {
+            val: target,
+            duration: 0.95,
+            ease: "eagleStructure",
+            snap: { val: 1 },
+            onUpdate: () => {
+              numEl.textContent = String(proxy.val) + suffix;
+            },
+          },
+          mStart
+        );
+      }
+
+      if (lblSplit) {
+        tl.to(
+          lblSplit.lines,
+          {
+            yPercent: 0,
+            duration: 0.55,
+            ease: "eagleReveal",
+            stagger: 0.05,
+          },
+          mStart + 0.35
+        );
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

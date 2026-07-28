@@ -1,0 +1,179 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-50",
+  "scope": "destaque-scroll-50",
+  "origem": "bank/_componentes/scroll/scroll-50",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "flip",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "AMM"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./assets/img6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./assets/img7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "./assets/img8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "./assets/img9.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "./assets/img10.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "./assets/img11.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "./assets/img12.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "./assets/img13.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "./assets/img14.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "./assets/img1.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "./assets/img2.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "./assets/img3.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "./assets/img4.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "./assets/img5.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "./assets/img6.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "./assets/img7.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "./assets/img8.jpg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "./assets/img9.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "./assets/img10.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "./assets/img11.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "./assets/img12.jpg"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "./assets/img13.jpg"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "./assets/img14.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 28
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

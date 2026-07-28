@@ -1,0 +1,22 @@
+/* vetic-service-hero — local overrides only. All hero structure/styling lives in
+   the shared /vetic/styles.css cascade (webflow.css + components.css). The
+   reveals (view + curtain) are driven by GSAP via /vetic/scripts/scroll-reveal.js.
+   We only paint the template's light-gray page background behind it. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: vetic-navbar styles ===== */
+/* vetic-navbar — local overrides only. All navbar structure/styling lives in the
+   shared /vetic/styles.css cascade (webflow.css + hamburger-nav.css +
+   components.css). The navbar is a floating white pill (.navbar_content on
+   bg-secondary) that in the template sits on the page's light-gray background —
+   we reproduce that backdrop here, with enough height for the hamburger card
+   (≤991) to expand. */
+
+.page-wrapper {
+  position: relative;
+  min-height: 24rem;
+}

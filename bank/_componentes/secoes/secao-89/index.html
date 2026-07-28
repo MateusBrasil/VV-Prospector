@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congra — Contact</title>
+
+  <!-- Gate de animaciones: .anim en <html> pre-pinta los reveals (opacity:0)
+       solo cuando el visitante permite motion. Igual que el BaseLayout del template. -->
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <main class="main-wrapper">
+      <section id="contact" class="section_contact">
+        <div class="padding-section-medium"></div>
+        <div class="padding-global">
+          <div class="container-small">
+            <div class="vertical-center">
+              <h2 class="slide_down">Get in Touch</h2>
+              <div class="spacer-small"></div>
+              <div class="text-color-secondary slide_down">We'd love to hear from you!</div>
+            </div>
+            <div class="gap-section-small"></div>
+            <div class="form slide_down">
+              <div class="form_grid">
+                <div class="form_item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                    <path d="M22 4H2V20H22V4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="white"></path>
+                  </svg>
+                  <div class="text-sm">hello@relume.io</div>
+                </div>
+                <div id="w-node-c4c0747c-8b57-c681-55c3-99897ab859f3-7ab859e1" class="form_item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.262 22.134C11.262 22.134 4 16.018 4 10C4 7.87827 4.84285 5.84344 6.34315 4.34315C7.84344 2.84285 9.87827 2 12 2C14.1217 2 16.1566 2.84285 17.6569 4.34315C19.1571 5.84344 20 7.87827 20 10C20 16.018 12.738 22.134 12.738 22.134C12.334 22.506 11.669 22.502 11.262 22.134ZM12 13.5C12.4596 13.5 12.9148 13.4095 13.3394 13.2336C13.764 13.0577 14.1499 12.7999 14.4749 12.4749C14.7999 12.1499 15.0577 11.764 15.2336 11.3394C15.4095 10.9148 15.5 10.4596 15.5 10C15.5 9.54037 15.4095 9.08525 15.2336 8.66061C15.0577 8.23597 14.7999 7.85013 14.4749 7.52513C14.1499 7.20012 13.764 6.94231 13.3394 6.76642C12.9148 6.59053 12.4596 6.5 12 6.5C11.0717 6.5 10.1815 6.86875 9.52513 7.52513C8.86875 8.1815 8.5 9.07174 8.5 10C8.5 10.9283 8.86875 11.8185 9.52513 12.4749C10.1815 13.1313 11.0717 13.5 12 13.5Z" fill="white"></path>
+                  </svg>
+                  <div class="text-sm">Los Angeles, CA 90001</div>
+                </div>
+                <div id="w-node-c4c0747c-8b57-c681-55c3-99897ab859f8-7ab859e1" class="form_item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="icon-1x1-medium">
+                    <path d="M19.95 21C17.8667 21 15.8043 20.55 13.763 19.65C11.7217 18.75 9.86733 17.4667 8.2 15.8C6.53267 14.1333 5.24933 12.2833 4.35 10.25C3.45067 8.21667 3.00067 6.15 3 4.05V3H8.9L9.825 8.025L6.975 10.9C7.34167 11.55 7.75 12.1667 8.2 12.75C8.65 13.3333 9.13333 13.875 9.65 14.375C10.1333 14.8583 10.6627 15.321 11.238 15.763C11.8133 16.205 12.434 16.6173 13.1 17L16 14.1L21 15.125V21H19.95Z" fill="white"></path>
+                  </svg>
+                  <div class="text-sm">+1 (555) 123-4567</div>
+                </div>
+              </div>
+              <div class="form_component w-form">
+                <form name="contact" data-name="Contact" class="form_form" data-contact-form="">
+                  <div class="form_par">
+                    <div class="form_field-wrapper">
+                      <label for="full-name" class="text-sm text-color-secondary">your full Name</label>
+                      <input class="form_input w-input" maxlength="256" name="full-name" placeholder="" type="text" id="full-name" required="">
+                    </div>
+                    <div class="form_field-wrapper">
+                      <label for="email-address" class="text-sm text-color-secondary">Your email address</label>
+                      <input class="form_input w-input" maxlength="256" name="email-address" placeholder="" type="email" id="email-address" required="">
+                    </div>
+                  </div>
+                  <div class="form_field-wrapper">
+                    <label for="Message-3" class="text-sm text-color-secondary">Type your message...</label>
+                    <textarea id="Message-3" name="Message" maxlength="5000" placeholder="" class="form_input is-text-area w-input"></textarea>
+                  </div>
+                  <input type="submit" data-wait="Please wait..." class="button is-form-submit w-button" value="Submit">
+                </form>
+                <div class="form_message-success w-form-done" data-form-success="">
+                  <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div class="form_message-error w-form-fail" data-form-error="">
+                  <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-section-medium"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

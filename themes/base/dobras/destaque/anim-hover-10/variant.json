@@ -1,0 +1,18 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-10",
+  "scope": "destaque-anim-hover-10",
+  "origem": "bank/_componentes/animacoes/hover-10",
+  "registo": "editorial",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

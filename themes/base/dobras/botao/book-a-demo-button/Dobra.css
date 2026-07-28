@@ -1,0 +1,119 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+        @font-face{
+            font-family: var(--fonte-corpo);
+            src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+        }
+[data-dobra="botao-book-a-demo-button"] *,[data-dobra="botao-book-a-demo-button"] *:after,[data-dobra="botao-book-a-demo-button"] *:before{
+            box-sizing: border-box;
+        }
+[data-dobra="botao-book-a-demo-button"]{
+            display: grid;
+            font-family: var(--fonte-corpo);
+            font-weight: 80;
+            background-color: var(--base-100);
+        }
+[data-dobra="botao-book-a-demo-button"] button{
+            height: 48px;
+            padding: 0;
+            display: grid;
+            border-radius: 8px;
+            border: 2px solid black;
+            letter-spacing: 0.25px;
+            cursor: pointer;
+            position: relative;
+            background: black;
+            color: white;
+            font-weight: 80;
+            scale: 2;
+            outline-color: var(--acento);
+            outline-offset: 0.25rem;
+        }
+[data-dobra="botao-book-a-demo-button"] button:is(:hover,[data-dobra="botao-book-a-demo-button"] :focus-visible){
+            --active: 1;
+        }
+[data-dobra="botao-book-a-demo-button"] button:active{
+            --pressed: 1;
+        }
+[data-dobra="botao-book-a-demo-button"] button > span:nth-of-type(1){
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+            position: absolute;
+            inset: 0;
+            scale: calc(1 - (var(--pressed, 0) * 0.05));
+            transition: scale 0.1s;
+        }
+[data-dobra="botao-book-a-demo-button"] button:is(:hover,[data-dobra="botao-book-a-demo-button"] :focus-visible) .container{
+            width: 100%;
+        }
+[data-dobra="botao-book-a-demo-button"] .container{
+            --mask-image: url(https://assets.codepen.io/605876/chev-mask_1.png);
+            --spread: 24px;
+            --size: 28px;
+            width: 58px;
+            height: 100%;
+            background: var(--acento);
+            position: absolute;
+            left: 0;
+            transition: width 0.25s;
+            border-radius: 6px;
+            box-shadow: 0 10px 10px -5px hsl(0 0% 0% / 0.5);
+            container-type: inline-size;
+        }
+[data-dobra="botao-book-a-demo-button"] .primary{
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: hsl(0 0% 0% / 0.15);
+            z-index: 2;
+            mask: var(--mask-image) 50% 50% / var(--size) var(--size) no-repeat;
+            -webkit-mask: var(--mask-image) 50% 50% / var(--size) var(--size) no-repeat;
+            container-type: inline-size;
+        }
+[data-dobra="botao-book-a-demo-button"] :where(.primary,[data-dobra="botao-book-a-demo-button"] .complimentary)::after{
+            --distance: calc(100cqi + 100%);
+            content: "";
+            height: calc(var(--size) * 4);
+            aspect-ratio: 1;
+            position: absolute;
+            left: 0%;
+            top: 50%;
+            translate: -50% -50%;
+            background: radial-gradient(hsl(0 0% 0%), transparent);
+            animation: fly-by calc((2 - var(--active, 0)) * 1s) infinite linear;
+        }
+@keyframes fly-by{
+            0% { translate: -100% -50%; }
+            100% { translate: var(--distance) -50%; }
+        }
+[data-dobra="botao-book-a-demo-button"] .complimentary{
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: var(--active, 0);
+            transition: opacity 0.25s;
+            background: hsl(0 0% 0% / 0.15);
+            mask:
+                var(--mask-image) calc(50% - (var(--spread) * 1)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% - (var(--spread) * 2)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% - (var(--spread) * 3)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 1)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 2)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 3)) 50% / var(--size) var(--size) no-repeat;
+            -webkit-mask:
+                var(--mask-image) calc(50% - (var(--spread) * 1)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% - (var(--spread) * 2)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% - (var(--spread) * 3)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 1)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 2)) 50% / var(--size) var(--size) no-repeat,
+                var(--mask-image) calc(50% + (var(--spread) * 3)) 50% / var(--size) var(--size) no-repeat;
+        }
+[data-dobra="botao-book-a-demo-button"] button > span:nth-of-type(2){
+            padding: 0 1.1rem 0 calc(58px + 1.1rem);
+            display: grid;
+            place-items: center;
+            height: 100%;
+        }
+
+    

@@ -1,0 +1,78 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-33",
+  "scope": "destaque-scroll-33",
+  "origem": "bank/_componentes/scroll/scroll-33",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Designed to keep information clear and connected"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "A cleaner way to handle incoming updates"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Instead of showing every message or notification instantly, the\n                  app groups related items and presents them in an organized panel.\n            "
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Built for increasing information demands"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Whether it is files, notes, or incoming messages, the app sorts\n                  and prioritizes items automatically. It prevents clutter and helps\n           "
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Clearer organization ready for whatever comes next"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/img_1.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/img_2.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/img_3.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img/img_4.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,16 @@
+{
+  "slot": "vitrine",
+  "nome": "carousel-3d-1",
+  "scope": "vitrine-carousel-3d-1",
+  "origem": "bank/_componentes/carrossel/carousel-3d-1",
+  "registo": null,
+  "libs": [],
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [
+    "registo por definir (sobrio | editorial | cinematografico)",
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "há chavetas no markup que podem precisar de escape em JSX"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. A parte mecânica está feita; o que está em _rever é julgamento e não deve ser automatizado."
+}

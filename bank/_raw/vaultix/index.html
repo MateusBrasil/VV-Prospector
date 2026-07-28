@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultix — Testimonials</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Tailwind v4 browser CDN: compiles utility classes at runtime -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Vaultix tokens + custom utility classes (.btn-accent-glow, .hover-stagger, etc.) -->
+    
+
+    <!-- Component-specific custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("test-pre-anim");
+      }
+    </script>
+  
+    <style data-bundled-from="/vaultix/global.css">
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* The @theme block above is a Tailwind v4 build-time directive — browsers ignore
+   it when this file is served as a plain stylesheet, so the design tokens must be
+   mirrored onto :root here for the standalone ported components (which load this
+   file via <link> and never run the Tailwind compiler on it). */
+:root {
+  color-scheme: dark;
+  --nav-height: 3.25rem;
+
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --nav-height: 4.8125rem;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Char roll-up hover (Osmo `btn-animate-chars` pattern).
+   Inner wrapper inherits parent's line-height so the parent's vertical centering
+   is preserved (no shrinking the button). overflow:hidden + clip-path keep the
+   text-shadow clone hidden until the char rolls up. */
+.hover-stagger:hover .hover-stagger__inner > span {
+  transform: translateY(-1.4em) rotate(0.001deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none;
+  }
+}
+
+/* Accent glow on hover — same 3-layer pattern as HeroLoader bars `.is-lit`. */
+.btn-accent-glow {
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.btn-accent-glow:hover {
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+
+/* Always-on accent glow — same 3-layer stack as `.btn-accent-glow:hover`.
+   Apply to elements that should glow whenever they are visible (e.g. the
+   active pill in the About / Our Values slider, hero loader bars). */
+
+/* Periwinkle (#B5D2FF) glow as a CSS drop-shadow stack — works on SVGs and
+   text. Companion to `.accent-glow-active` but for the secondary blue
+   accent used in pixel-art icons / eyebrows. */
+
+/* Yellow accent glow as a CSS drop-shadow stack — for SVG paths and text
+   (HUD style). Use when the element is yellow and you want it to "emit"
+   light. Box-shadow companion is `.accent-glow-active`. */
+
+/* Vaultix logo — yellow accent glow on hover, applied ONLY to the icon
+   (svg in Navbar, img in Footer). The wordmark stays clean.
+   Wrapped in `@media (hover: hover)` so touch devices (tablet/phone)
+   never get a sticky hover state from a tap. */
+@media (hover: hover) and (pointer: fine) {
+  .vaultix-logo:hover svg,
+  .vaultix-logo:hover img {
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+}
+
+/* Touch devices: kill hover-driven transforms / shadows / filters by
+   neutralizing the most common patterns. Components scoped under `@media
+   (hover: hover)` are already safe; this catches the rest as a guardrail. */
+@media (hover: none), (pointer: coarse) {
+  .btn-accent-glow:hover {
+    box-shadow: none !important;
+  }
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Mobile (<768px): drop the structural decoration layer.
+   Markers (T-marks / corner dots), animated frame lines, and the
+   side borders of containers are all desktop-only language. On
+   phones each section reads cleanly without that scaffolding.
+   ============================================================ */
+@media (max-width: 767px) {
+  [data-howit-line],
+  [data-impact-line],
+  [data-blog-line],
+  [data-footer-line],
+  [data-howit-tmark],
+  [data-impact-tmark],
+  [data-blog-tmark],
+  [data-footer-marker] {
+    display: none !important;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <section class="bg-[var(--color-bg)] py-12 md:py-[6rem]" data-test-section="">
+      <div class="mx-auto w-full max-w-[68rem] px-4">
+        <div class="grid grid-cols-1 gap-x-[2rem] gap-y-4 md:grid-cols-2 md:gap-y-[2rem] lg:gap-x-[3.75rem] lg:gap-y-[3.75rem]">
+          <!-- Left column: Header + 2 cards -->
+          <div class="flex flex-col gap-y-4 md:gap-y-[2rem] lg:gap-y-[3.75rem]">
+            <div class="flex flex-col gap-4 font-mono font-normal uppercase md:gap-[0.75rem]">
+              <p class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[var(--color-accent)]" data-test-eyebrow="">
+                [ Testimonials ]
+              </p>
+              <h2 class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[2.5rem] md:tracking-[4.8px]" data-test-headline="">
+                What engineering teams say
+              </h2>
+              <p class="text-[0.875rem] leading-[1.2857] text-white/60" data-test-subhead="">
+                Trusted by teams shipping AI products at scale.
+              </p>
+            </div>
+
+            <article class="relative flex flex-col items-start justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]" data-test-card="">
+              <p class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white" data-test-quote="">
+                "Vaultix cut our pipeline debugging time by 80%. We shipped our ML model to production in days, not months."
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author="">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/testimonials/priya.webp" alt="Priya Mehta" width="72" height="72" loading="lazy" decoding="async" class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover">
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">Priya Mehta</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    Staff Engineer, Arcline
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner=""></span>
+            </article>
+
+            <article class="relative flex flex-col items-start justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]" data-test-card="">
+              <p class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white" data-test-quote="">
+                "The anomaly detection alone saved us 20 hours per week. Our on-call engineers can sleep again."
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author="">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/testimonials/kadin.webp" alt="Kadin Korsgaard" width="72" height="72" loading="lazy" decoding="async" class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover">
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">Kadin Korsgaard</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    VP Engineering, Lumen Labs
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner=""></span>
+            </article>
+          </div>
+
+          <!-- Right column: 2 cards -->
+          <div class="flex flex-col gap-y-4 md:gap-y-[2rem] lg:gap-y-[3.75rem]">
+            <article class="relative flex flex-col items-start justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]" data-test-card="">
+              <p class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white" data-test-quote="">
+                "Finally, infrastructure that scales with us. We went from 10K to 2M daily events without a single config change."
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author="">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/testimonials/dulce.webp" alt="Dulce Baptista" width="72" height="72" loading="lazy" decoding="async" class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover">
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">Dulce Baptista</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    ML Platform Lead, Cipher Stack
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner=""></span>
+            </article>
+
+            <article class="relative flex flex-col items-start justify-center gap-6 border border-[var(--color-border)] bg-[#010101] p-6 md:gap-[3rem] md:p-[2rem]" data-test-card="">
+              <p class="font-mono text-[1.125rem] uppercase leading-[1.5556] tracking-[2.16px] text-white" data-test-quote="">
+                "We replaced four disconnected tools with Vaultix. Less context-switching, better signal — and a single place to debug when something breaks."
+              </p>
+              <div class="flex w-full items-center gap-[1.5rem]" data-test-author="">
+                <img src="https://d173woph5zl366.cloudfront.net/vaultix/testimonials/jaxson.webp" alt="Jaxson George" width="72" height="72" loading="lazy" decoding="async" class="h-[4.5rem] w-[4.5rem] shrink-0 bg-[#1a1a1a] object-cover">
+                <div class="flex flex-1 flex-col gap-[0.75rem] font-mono uppercase">
+                  <p class="text-[1rem] leading-[1.25] text-white">Jaxson George</p>
+                  <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                    Head of Data, Northwind AI
+                  </p>
+                </div>
+              </div>
+              <span class="corner-marker corner-tl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-tr" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-bl" aria-hidden="true" data-test-corner=""></span>
+              <span class="corner-marker corner-br" aria-hidden="true" data-test-corner=""></span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <script src="eases.js"></script>
+    <script src="script.js"></script>
+  
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

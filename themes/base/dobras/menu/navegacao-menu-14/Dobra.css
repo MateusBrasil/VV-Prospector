@@ -1,0 +1,104 @@
+[data-dobra="menu-navegacao-menu-14"] *{ margin: 0; padding: 0; box-sizing: border-box; }
+[data-dobra="menu-navegacao-menu-14"],[data-dobra="menu-navegacao-menu-14"]{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background: var(--base-100);
+   font-family: var(--fonte-corpo);
+   color: var(--base-600);
+   -webkit-font-smoothing: antialiased;
+}
+[data-dobra="menu-navegacao-menu-14"] a{ color: inherit; text-decoration: none; }
+[data-dobra="menu-navegacao-menu-14"] button{
+   font: inherit;
+   color: inherit;
+   background: none;
+   border: 0;
+   cursor: pointer;
+}
+[data-dobra="menu-navegacao-menu-14"] .hero{
+   position: fixed;
+   inset: 0;
+   z-index: 1;
+   display: grid;
+   place-items: center;
+   padding: 40px;
+}
+[data-dobra="menu-navegacao-menu-14"] .hero h1{
+   max-width: 18ch;
+   font-size: clamp(48px, 7vw, 104px);
+   font-weight: 500;
+   letter-spacing: -0.035em;
+   line-height: 1.05;
+   text-align: center;
+}
+[data-dobra="menu-navegacao-menu-14"] .menu{
+   position: fixed;
+   inset: 0;
+   z-index: 30;
+   background: var(--base-100);
+   display: grid;
+   place-items: center;
+   opacity: 0;
+   pointer-events: none;
+}
+[data-dobra="menu-navegacao-menu-14"] .menu.is-open{
+   opacity: 1;
+   pointer-events: auto;
+}
+[data-dobra="menu-navegacao-menu-14"] .menu nav{
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+   text-align: center;
+}
+[data-dobra="menu-navegacao-menu-14"] .menu a{
+   display: inline-block;
+   font-size: clamp(48px, 7vw, 104px);
+   font-weight: 500;
+   letter-spacing: -0.03em;
+   line-height: 1;
+   color: var(--base-600);
+   transition: opacity 0.3s ease;
+}
+[data-dobra="menu-navegacao-menu-14"] .menu nav:has(a:hover) a:not(:hover){
+   opacity: 0.2;
+}
+[data-dobra="menu-navegacao-menu-14"] .pixel-grid{
+   position: fixed;
+   inset: 0;
+   z-index: 40;
+   pointer-events: none;
+   overflow: hidden;
+}
+[data-dobra="menu-navegacao-menu-14"] .pixel-block{
+   position: absolute;
+   background: var(--base-600);
+   opacity: 0;
+   will-change: opacity;
+}
+[data-dobra="menu-navegacao-menu-14"] header{
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 60;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 28px 36px;
+   color: var(--base-600);
+   font-size: 15px;
+   font-weight: 500;
+   letter-spacing: -0.01em;
+}
+[data-dobra="menu-navegacao-menu-14"] header button{
+   letter-spacing: -0.01em;
+}
+@media (max-width: 720px){[data-dobra="menu-navegacao-menu-14"] header{ padding: 18px 20px; font-size: 13px; }
+[data-dobra="menu-navegacao-menu-14"] .hero h1{ font-size: 40px; }
+[data-dobra="menu-navegacao-menu-14"] .menu a{ font-size: 40px; }
+
+}
+
+

@@ -1,0 +1,9 @@
+/* hirely-process — local overrides only.
+   Toda la estética de la sección (section_process, process_timeline-wrap,
+   timeline_step, timeline-svg, timeline_path, timeline-text, tipografía, tokens)
+   vive en la hoja compartida /hirely/styles.css. Aquí solo un reset mínimo del
+   body para que el fragmento standalone no herede márgenes del user-agent. */
+
+body {
+  margin: 0;
+}

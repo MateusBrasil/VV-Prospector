@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stayli — Property Hero</title>
+
+  <!-- Fonts: Inter (replaces the template's @fontsource/inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Flag the document before first paint so scroll-reveal start states only
+       apply when scripting is on. This is a secondary-navbar hero on a light
+       background: the gallery strip, title/tags, description and booking widget
+       all reveal via [data-reveal] (IntersectionObserver) — fail-safe (content
+       stays visible if JS is off, no inline opacity:0 in the markup). -->
+  <script>document.documentElement.classList.add("reveal-js");</script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (stayli-navbar) -->
+    <div data-navbar-root="">
+          <div class="navbar" data-navbar="" role="banner">
+            <div class="padding-global is-navbar">
+              <div class="container-large">
+                <div class="navbar_content">
+                  <div class="nav_wrap">
+                    <a href="/" aria-label="Stayli, home" class="navbar_logo-link w-inline-block">
+                      <img src="https://d173woph5zl366.cloudfront.net/stayli/images/stayli-black-logo.svg" loading="eager" alt="Stayli" class="navbar_logo">
+                    </a>
+                  </div>
+
+                  <!-- Desktop links (≥992) -->
+                  <nav role="navigation" class="nav_mobile" aria-label="Primary">
+                    <div class="navbar_list">
+                      <a href="/about" class="nav_links">About</a>
+                      <a href="/listings" class="nav_links">Listings</a>
+                      <a href="/blog" class="nav_links">Blog</a>
+                      <a href="/contact" class="nav_links">Contact</a>
+                    </div>
+                  </nav>
+    
+                  <div class="nav_buttons-wrap">
+                    <div class="login-wrap hide-mobile-landscape">
+                      <a href="/listings" class="button w-button">Get started</a>
+                    </div>
+    
+                    <!-- Hamburger (≤991) — pill that scales to a card. CSS-only via data-navigation-status. -->
+                    <div class="hamburger-anchor" data-nav-theme="dark">
+                      <div class="hamburger-nav">
+                        <div class="hamburger-nav__bg" aria-hidden="true"></div>
+                        <div class="hamburger-nav__group">
+                          <p class="hamburger-nav__menu-p">Menu</p>
+                          <ul class="hamburger-nav__ul">
+                            <li class="hamburger-nav__li">
+                              <a href="/about" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">About</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/listings" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Listings</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/blog" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Blog</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/contact" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Contact</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" class="hamburger-nav__toggle">
+                          <div class="hamburger-nav__toggle-bar"></div>
+                          <div class="hamburger-nav__toggle-bar"></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Dim backdrop: darkens the page while the menu is open; click to close. -->
+          <div data-navigation-toggle="close" class="navigation__dark-bg" aria-hidden="true"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <div class="section_hero">
+      <div class="padding-global is-listing">
+        <div class="listing_content">
+          <!-- 5-image gallery strip. Property "Cityscape Lofts" provides
+               main/second/third + thumbnail; padded to 5 by cycling. -->
+          <div class="listing_top" data-reveal>
+            <div class="listing_hero-item">
+              <div class="listing_hero-item_img">
+                <img src="https://d173woph5zl366.cloudfront.net/stayli/images/cms/cover-2.webp" loading="lazy" alt="Cityscape Lofts" class="img" />
+              </div>
+            </div>
+            <div class="listing_hero-item">
+              <div class="listing_hero-item_img">
+                <img src="https://d173woph5zl366.cloudfront.net/stayli/images/cms/cover.webp" loading="lazy" alt="Cityscape Lofts" class="img" />
+              </div>
+            </div>
+            <div class="listing_hero-item">
+              <div class="listing_hero-item_img">
+                <img src="https://d173woph5zl366.cloudfront.net/stayli/images/cms/cover-1.webp" loading="lazy" alt="Cityscape Lofts" class="img" />
+              </div>
+            </div>
+            <div class="listing_hero-item">
+              <div class="listing_hero-item_img">
+                <img src="https://d173woph5zl366.cloudfront.net/stayli/images/cms/prop.webp" loading="lazy" alt="Cityscape Lofts" class="img" />
+              </div>
+            </div>
+            <div class="listing_hero-item">
+              <div class="listing_hero-item_img">
+                <img src="https://d173woph5zl366.cloudfront.net/stayli/images/cms/cover-2.webp" loading="lazy" alt="Cityscape Lofts" class="img" />
+              </div>
+            </div>
+          </div>
+
+          <div class="listing_bottom">
+            <div class="padding-global">
+              <div class="container-large">
+                <div class="listing_bottom-content">
+                  <div class="listing_left-wrap">
+                    <div class="listing_title-wrap" data-reveal>
+                      <h1 class="heading-style-h2 text-color-primary">Cityscape Lofts</h1>
+                      <div class="listing_tag-list">
+                        <div class="listing_tag">
+                          <img src="https://d173woph5zl366.cloudfront.net/stayli/images/location-svg.svg" loading="lazy" alt="" class="icon-1x1-xmedium" />
+                          <div>New York Downtown</div>
+                        </div>
+                        <div class="listing_tag">
+                          <img src="https://d173woph5zl366.cloudfront.net/stayli/images/bed-svg.svg" loading="lazy" alt="" class="icon-1x1-xmedium" />
+                          <div class="listing_wrap">
+                            <div>1</div>
+                            <div>Bedroom</div>
+                          </div>
+                        </div>
+                        <div class="listing_tag">
+                          <img src="https://d173woph5zl366.cloudfront.net/stayli/images/people.svg" loading="lazy" alt="" class="icon-1x1-xmedium" />
+                          <div class="listing_wrap">
+                            <div>2</div>
+                            <div>Guest</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-rich-text w-richtext">
+                      <p>Stay in the heart of the action with Cityscape Lofts, designed for urban explorers and business travelers.</p>
+                      <ul>
+                        <li>Walking distance to iconic landmarks.</li>
+                        <li>Sleek contemporary design.</li>
+                        <li>Rooftop terrace access.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Booking widget (BookingForm.astro inlined). Stub form. -->
+                  <div class="listing_right-wrap">
+                    <div class="listing_form w-form">
+                      <form data-stub-form>
+                        <div class="listing_form-content">
+                          <div class="listing_form-top">
+                            <div class="listing_wrap is-price">
+                              <div class="text-pricing is-pricing">$</div>
+                              <div class="text-pricing is-pricing">180</div>
+                              <div class="text-pricing">/night</div>
+                            </div>
+                            <div class="listing_discount-tag" data-reveal>
+                              <div>20% OFF</div>
+                            </div>
+                          </div>
+                          <div class="listing_stars-wrap" data-reveal>
+                            <div class="stars_list">
+                              <div class="start_item"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/star.svg" loading="lazy" width="16" alt="" /></div>
+                              <div class="start_item"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/star.svg" loading="lazy" alt="" /></div>
+                              <div class="start_item"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/star.svg" loading="lazy" alt="" /></div>
+                              <div class="start_item"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/star.svg" loading="lazy" alt="" /></div>
+                              <div class="start_item"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/star.svg" loading="lazy" alt="" /></div>
+                            </div>
+                            <div class="text-color-primary text-weight-normal">25 reviews</div>
+                          </div>
+                          <div>
+                            <div class="text-weight-normal">Type</div>
+                            <div class="spacer-rem"></div>
+                            <div class="listing_type">
+                              <label class="listing_button w-radio">
+                                <div class="w-form-formradioinput w-form-formradioinput--inputType-custom listing_radio-button w-radio-input"></div>
+                                <input type="radio" name="Type" id="Standard-Room" value="Standard Room" class="listing_radio-native" />
+                                <span class="w-form-label" for="Standard-Room">Standard Room</span>
+                              </label>
+                              <label class="listing_button w-radio">
+                                <div class="w-form-formradioinput w-form-formradioinput--inputType-custom listing_radio-button w-radio-input"></div>
+                                <input type="radio" name="Type" id="Deluxe-Room" value="Deluxe Room" class="listing_radio-native" />
+                                <span class="w-form-label" for="Deluxe-Room">Deluxe Room</span>
+                              </label>
+                              <label class="listing_button w-radio">
+                                <div class="w-form-formradioinput w-form-formradioinput--inputType-custom listing_radio-button w-radio-input"></div>
+                                <input type="radio" name="Type" id="Suite-Room" value="Suite Room" checked class="listing_radio-native" />
+                                <span class="w-form-label" for="Suite-Room">Suite Room</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="text-weight-normal">Night</div>
+                            <div class="spacer-rem"></div>
+                            <select id="Nights" name="Nights" class="form_input is-select-input w-select">
+                              <option value="">Select one...</option>
+                              <option value="First">1</option>
+                              <option value="Second">2</option>
+                              <option value="Third">3</option>
+                            </select>
+                          </div>
+                          <input type="submit" class="button w-button" value="Reserve" />
+                        </div>
+                      </form>
+                      <p class="form_message" data-form-message hidden>Thanks! We'll be in touch.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="navbar.js"></script>
+  <script src="forms.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

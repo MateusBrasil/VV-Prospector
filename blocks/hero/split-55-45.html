@@ -1,0 +1,39 @@
+<style>
+.hero{padding-block:var(--space-6) var(--space-6)}
+.hero__grid{display:grid;gap:var(--space-4);align-items:center}
+@media (min-width:900px){.hero__grid{grid-template-columns:55fr 45fr;gap:var(--space-5)}}
+.hero__kicker{font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:var(--space-2)}
+.hero h1{margin-bottom:var(--space-2)}
+.hero__sub{font-size:var(--step-1);color:var(--ink-muted);line-height:1.45;margin-bottom:var(--space-3)}
+.hero__prova{display:flex;align-items:center;gap:.5rem;font-size:var(--step--1);color:var(--ink-muted);margin-bottom:var(--space-3)}
+.hero__prova strong{color:var(--ink);font-weight:600}
+.hero__nota{display:inline-flex;align-items:center;gap:.25rem;color:var(--brand-ink);font-weight:600}
+.hero__media{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--ring)}
+.hero__media img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+@media (max-width:899px){.hero__media img{aspect-ratio:3/2}}
+.hero__acoes{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
+.hero__tel{font-weight:600;text-decoration:none;border-bottom:1px solid var(--hairline);padding-bottom:2px}
+.hero__tel:hover{border-color:var(--brand-cta)}
+</style>
+<section class="hero" data-hero>
+  <div class="wrap hero__grid">
+    <div>
+      {{#kicker}}<p class="hero__kicker">{{kicker}}</p>{{/kicker}}
+      <h1 data-motion="linhas">{{headline}}</h1>
+      <p class="hero__sub">{{subheadline}}</p>
+      {{#nota}}
+      <p class="hero__prova">
+        <span class="hero__nota" aria-hidden="true">★ {{nota}}</span>
+        <span><strong>{{avaliacoes}} avaliações</strong> no Google</span>
+      </p>
+      {{/nota}}
+      <div class="hero__acoes">
+        <a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a>
+        {{#telefone}}<a class="hero__tel" href="tel:{{telefoneRaw}}">{{telefone}}</a>{{/telefone}}
+      </div>
+    </div>
+    <figure class="hero__media">
+      <img class="foto" src="{{fotoHero}}" alt="{{fotoHeroAlt}}" width="800" height="1000" fetchpriority="high">
+    </figure>
+  </div>
+</section>

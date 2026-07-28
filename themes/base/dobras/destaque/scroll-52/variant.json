@@ -1,0 +1,148 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-52",
+  "scope": "destaque-scroll-52",
+  "origem": "bank/_componentes/scroll/scroll-52",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "serene"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "drift"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Inspired visuals for creators of calm and beauty"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "elevating"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "serenity"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "crafted calm"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "and beauty"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./assets/img6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./assets/img7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "./assets/img8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "./assets/img9.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "./assets/img10.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "./assets/img11.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "./assets/img12.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "./assets/img1.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "./assets/img2.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "./assets/img3.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "./assets/hero.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "./assets/footer.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 17
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #05364c → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

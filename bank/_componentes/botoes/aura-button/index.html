@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Botão Alpha Premium</title>
+    <style>
+        /* 1. Animação do Gradiente de Fundo */
+        @keyframes gradient-bg {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* 2. Animação da Onda/Shimmer (Baseada no seu código) */
+        @keyframes shinery {
+            0% { left: -20%; opacity: 0; }
+            20% { opacity: 0.6; }
+            48% { left: 140%; opacity: 0.6; }
+            51%, 100% { left: 140%; opacity: 0; }
+        }
+
+        /* 3. Animação do Ícone de Clique */
+        @keyframes click-loop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.75); }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(-45deg, #D1FAE5, #10B981, #059669, #10B981, #D1FAE5);
+            background-size: 400% 400%;
+            animation: gradient-bg 5s infinite cubic-bezier(.62, .28, .23, .99) both;
+        }
+
+        .shimmer-effect {
+            content: '';
+            background: linear-gradient(100deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 80%);
+            width: 100px;
+            height: 200%;
+            position: absolute;
+            top: -50%;
+            transform: translateX(-50%) skew(-25deg);
+            pointer-events: none;
+            user-select: none;
+            mix-blend-mode: overlay;
+            animation: shinery 4s infinite ease-in-out;
+        }
+
+        .group:hover .animate-click-icon {
+            animation: click-loop 0.8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen">
+
+    <!-- Botão com múltiplos efeitos combinados -->
+    <button class="group animated-gradient relative overflow-hidden font-medium text-green-950 pt-4 pr-8 pb-4 pl-8 shadow-lg transition-all duration-300 hover:shadow-green-500/50" 
+            style="box-shadow: 0 15px 33px -12px rgba(16,185,129,0.9), inset 0 4px 6.3px rgba(209,250,229,1), inset 0 -5px 6.3px rgba(5,150,105,1); border-radius: 9999px;">
+        
+        <!-- Elemento do Shimmer (Onda de luz passando) -->
+        <div class="shimmer-effect"></div>
+
+        <!-- Overlay de brilho no Hover (Sobe devagar) -->
+        <div class="group-hover:translate-y-0 transition-transform duration-1000 ease-out bg-white/40 absolute top-0 right-0 bottom-0 left-0 translate-y-full"></div>
+        
+        <span class="relative flex items-center gap-2">
+            Alpha's Botton
+            
+            <!-- Ícone com animação de clique lenta -->
+            <div class="animate-click-icon flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-pointer-click w-5 h-5">
+                    <path d="m9 9 5 12 1.774-5.226L21 14Z"/>
+                    <path d="m16.071 16.071 4.243 4.243"/>
+                    <path d="m7.188 2.239.777 2.897"/>
+                    <path d="m2.239 7.188 2.897.777"/>
+                    <path d="M5.226 5.226 8.05 8.05"/>
+                    <path d="m11 1V4"/>
+                    <path d="M1 11h3"/>
+                </svg>
+            </div>
+        </span>
+    </button>
+
+</body>
+</html>

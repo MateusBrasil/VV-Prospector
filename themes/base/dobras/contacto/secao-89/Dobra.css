@@ -1,0 +1,194 @@
+/* PORTADO À MÃO em 2026-07-28. A folha da esteira tinha 181 KB de CSS de Webflow, com
+ * quatro problemas:
+ *
+ *  1. LINHA 1 PARTIDA: o resto de um `@import url(...&display=swap")` do Google Fonts que
+ *     o escopador cortou pelo meio. CDN de fonte, proibida, e declaração inválida a abrir.
+ *  2. Um `:root` GLOBAL com a paleta do template (`--swatch--dark`, `--swatch--white`) e
+ *     uma escala de espaçamento própria, a competir com a paleta do documento. Nada aqui
+ *     sai de `[data-dobra=...]` agora.
+ *  3. Cores de sistema e hex crus: `fill="white"` nos ícones, `background: #0b0b0b` no
+ *     wrapper, `border-color: rgba(255,255,255,0.12)` nos campos.
+ *  4. `transition: all .3s` nos botões, proibido no motor.
+ *
+ * O que sobrou é a grelha de fichas de contacto, que é o que valia.
+ */
+
+[data-dobra="contacto-secao-89"] {
+  display: block;
+  width: 100%;
+  background-color: var(--base-100);
+}
+
+[data-dobra="contacto-secao-89"] .contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: var(--respiro);
+}
+
+[data-dobra="contacto-secao-89"] .contacto__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 34ch;
+}
+
+[data-dobra="contacto-secao-89"] .contacto__kicker {
+  color: var(--acento);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[data-dobra="contacto-secao-89"] .contacto__header h2 {
+  font-family: var(--fonte-display);
+  font-size: var(--h2);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--cor-texto);
+}
+
+[data-dobra="contacto-secao-89"] .contacto__grelha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1px;
+  background-color: var(--base-300);
+  border: 1px solid var(--base-300);
+}
+
+[data-dobra="contacto-secao-89"] .ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 2.25rem 1.75rem;
+  background-color: var(--base-100);
+}
+
+[data-dobra="contacto-secao-89"] .ficha__icone {
+  display: inline-flex;
+  color: var(--acento);
+}
+
+[data-dobra="contacto-secao-89"] .ficha__rotulo {
+  color: var(--cor-texto-tenue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+[data-dobra="contacto-secao-89"] .ficha__valor {
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-md);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--cor-texto);
+  text-decoration: none;
+  /* A morada chega como um só valor com quebras de linha: numa clínica lê-se de uma vez. */
+  white-space: pre-line;
+}
+
+[data-dobra="contacto-secao-89"] a.ficha__valor {
+  border-bottom: 1px solid transparent;
+  align-self: flex-start;
+  transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="contacto-secao-89"] a.ficha__valor:hover {
+  border-bottom-color: var(--acento);
+}
+
+[data-dobra="contacto-secao-89"] .contacto__painel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 2.5rem 2rem;
+  background-color: var(--base-200);
+}
+
+[data-dobra="contacto-secao-89"] .painel__horario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 18rem;
+}
+
+[data-dobra="contacto-secao-89"] .painel__rotulo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cor-texto-tenue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+[data-dobra="contacto-secao-89"] .painel__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+[data-dobra="contacto-secao-89"] .painel__lista li {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--base-300);
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  color: var(--cor-texto-suave);
+}
+
+[data-dobra="contacto-secao-89"] .painel__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+[data-dobra="contacto-secao-89"] .painel__acao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid var(--base-600);
+  border-radius: 999px;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--base-600);
+  text-decoration: none;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="contacto-secao-89"] .painel__acao:hover {
+  background-color: var(--base-600);
+  color: var(--base-100);
+}
+
+[data-dobra="contacto-secao-89"] .contacto__nota {
+  color: var(--cor-texto-tenue);
+}
+
+@media (max-width: 1000px) {
+  [data-dobra="contacto-secao-89"] .contacto {
+    padding: var(--respiro-compacto);
+    gap: 2rem;
+  }
+  [data-dobra="contacto-secao-89"] .contacto__grelha {
+    grid-template-columns: 1fr;
+  }
+  [data-dobra="contacto-secao-89"] .contacto__painel {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem 1.5rem;
+  }
+  [data-dobra="contacto-secao-89"] .painel__horario {
+    min-width: 0;
+  }
+}

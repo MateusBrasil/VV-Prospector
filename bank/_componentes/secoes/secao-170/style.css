@@ -1,0 +1,5 @@
+/* Congra — Meet Speakers
+   Sin overrides locales: todos los estilos de esta sección viven en el
+   cascade compartido /congra/styles.css (clases .section_meet, .meet_*,
+   .arrow_group, .swiper, etc.). Este archivo existe solo como hook para
+   ajustes futuros específicos de este componente. */

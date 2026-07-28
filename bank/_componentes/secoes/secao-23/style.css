@@ -1,0 +1,9 @@
+/* vetic-faq — local overrides only. All the real styling (section_faq, discover_wrap,
+   header, cta_box, faq_content, accordion open/close states via [data-open]) lives in the
+   shared /vetic/styles.css. The entrance reveals (data-reveal="view") are driven by the
+   shared /vetic/scripts/scroll-reveal.js; the single-open accordion logic is local in script.js. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

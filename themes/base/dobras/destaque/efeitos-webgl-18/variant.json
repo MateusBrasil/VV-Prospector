@@ -1,0 +1,33 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-18",
+  "scope": "destaque-efeitos-webgl-18",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-18",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis",
+    "three"
+  ],
+  "fontesDescartadas": 3,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "The end"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "a origem usava 3 famílias de fonte e o sistema fornece display + corpo: a peça apoiava-se num contraste tipográfico que o nosso par não reproduz. Confirmar no ecrã que a hierarquia se mantém",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,26 @@
+{
+  "slot": "botao",
+  "nome": "dione-button",
+  "scope": "botao-dione-button",
+  "origem": "bank/_componentes/botoes/dione-button",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Dione"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #1352d1 → var(--acento)): confirmar no ecrã que o contraste se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #efeeeb);
+  color: var(--text-color--text-primary, #000);
+  font-family: Inter, sans-serif;
+  min-height: 100svh;
+}
+
+/* ── Scoped marquee styles (ported verbatim from the .astro <style> block) ──
+   Two duplicate 5-card grids are wrapped in .testimonials_track so the loop
+   can translateX(-50%) seamlessly for a continuous horizontal scroll. */
+.section_testimonials .testimonials_content {
+  position: relative;
+  overflow: hidden;
+}
+
+.section_testimonials .testimonials_track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: testimonials-scroll 60s linear infinite;
+}
+
+@keyframes testimonials-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 0.75rem)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section_testimonials .testimonials_track { animation: none; }
+}

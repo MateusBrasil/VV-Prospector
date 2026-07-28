@@ -1,0 +1,654 @@
+{
+  "slot": "vitrine",
+  "nome": "animacao-grid-3",
+  "scope": "vitrine-animacao-grid-3",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-3",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "assets/40.webp"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "assets/40.webp"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "assets/40.webp"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem76",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem77",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem78",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem79",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "imagem80",
+      "tipo": "imagem",
+      "exemplo": "assets/40.webp"
+    },
+    {
+      "nome": "imagem81",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem82",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem83",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem84",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem85",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem86",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem87",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem88",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem89",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem90",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem91",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem92",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem93",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem94",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem95",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem96",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem97",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem98",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem99",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "imagem100",
+      "tipo": "imagem",
+      "exemplo": "assets/40.webp"
+    },
+    {
+      "nome": "imagem101",
+      "tipo": "imagem",
+      "exemplo": "assets/21.webp"
+    },
+    {
+      "nome": "imagem102",
+      "tipo": "imagem",
+      "exemplo": "assets/22.webp"
+    },
+    {
+      "nome": "imagem103",
+      "tipo": "imagem",
+      "exemplo": "assets/23.webp"
+    },
+    {
+      "nome": "imagem104",
+      "tipo": "imagem",
+      "exemplo": "assets/24.webp"
+    },
+    {
+      "nome": "imagem105",
+      "tipo": "imagem",
+      "exemplo": "assets/25.webp"
+    },
+    {
+      "nome": "imagem106",
+      "tipo": "imagem",
+      "exemplo": "assets/26.webp"
+    },
+    {
+      "nome": "imagem107",
+      "tipo": "imagem",
+      "exemplo": "assets/27.webp"
+    },
+    {
+      "nome": "imagem108",
+      "tipo": "imagem",
+      "exemplo": "assets/28.webp"
+    },
+    {
+      "nome": "imagem109",
+      "tipo": "imagem",
+      "exemplo": "assets/29.webp"
+    },
+    {
+      "nome": "imagem110",
+      "tipo": "imagem",
+      "exemplo": "assets/30.webp"
+    },
+    {
+      "nome": "imagem111",
+      "tipo": "imagem",
+      "exemplo": "assets/31.webp"
+    },
+    {
+      "nome": "imagem112",
+      "tipo": "imagem",
+      "exemplo": "assets/32.webp"
+    },
+    {
+      "nome": "imagem113",
+      "tipo": "imagem",
+      "exemplo": "assets/33.webp"
+    },
+    {
+      "nome": "imagem114",
+      "tipo": "imagem",
+      "exemplo": "assets/34.webp"
+    },
+    {
+      "nome": "imagem115",
+      "tipo": "imagem",
+      "exemplo": "assets/35.webp"
+    },
+    {
+      "nome": "imagem116",
+      "tipo": "imagem",
+      "exemplo": "assets/36.webp"
+    },
+    {
+      "nome": "imagem117",
+      "tipo": "imagem",
+      "exemplo": "assets/37.webp"
+    },
+    {
+      "nome": "imagem118",
+      "tipo": "imagem",
+      "exemplo": "assets/38.webp"
+    },
+    {
+      "nome": "imagem119",
+      "tipo": "imagem",
+      "exemplo": "assets/39.webp"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Elastic Grid Scroll"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "V01"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "V02"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "V03"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "V04"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Symmetrical outer column lag"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 119
+  },
+  "_rever": [
+    "9 cor(es) mapeadas para tokens por luminância (acento da origem #d63937 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

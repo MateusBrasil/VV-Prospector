@@ -1,0 +1,249 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-25",
+  "scope": "destaque-scroll-25",
+  "origem": "bank/_componentes/scroll/scroll-25",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "http://tympdPixels/"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Demo 1"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Demo 2"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Demo 3"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Mia Farkas"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Designer &amp; Visual Story Teller"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Mia is a multi-disciplinary designer who creates artful web experiences with a focus on interactive blissfulness and organic motion integration."
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "According to this mystic interpretation, the legend of the three men in the fiery furnace appears as a magic fire ceremony by means of which the Son of God reve"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Phœbus"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Hearken"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "See all projects"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Of all passions, that which is least known to ourselves is indolence: it is the most ardent and malignant of them all, although its violence may be insensible, "
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "This amazing growth has proceeded steadily in an ever-widening fashion despite opposition as violent as any of which we have knowledge in the past. The criticis"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "It is not a simple matter to come out boldly and state that every individual is to a large extent the determiner of his own destiny, for only by poets and philo"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Astrø"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Butterflies"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Hot Stuff"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Mr. Chekhov"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Modern Man"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Vedic Pi"
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "Search of Soul"
+    },
+    {
+      "nome": "acao12",
+      "tipo": "texto",
+      "exemplo": "Nidanakatha"
+    },
+    {
+      "nome": "acao13",
+      "tipo": "texto",
+      "exemplo": "Sankhya Dub"
+    },
+    {
+      "nome": "acao14",
+      "tipo": "texto",
+      "exemplo": "Good Heart"
+    },
+    {
+      "nome": "acao15",
+      "tipo": "texto",
+      "exemplo": "Good Mind"
+    },
+    {
+      "nome": "acao16",
+      "tipo": "texto",
+      "exemplo": "The Skanda Purana"
+    },
+    {
+      "nome": "acao17",
+      "tipo": "texto",
+      "exemplo": "Mio"
+    },
+    {
+      "nome": "acao18",
+      "tipo": "texto",
+      "exemplo": "Mèahuasca"
+    },
+    {
+      "nome": "acao19",
+      "tipo": "texto",
+      "exemplo": "Dhammapada"
+    },
+    {
+      "nome": "acao20",
+      "tipo": "texto",
+      "exemplo": "Eternal"
+    },
+    {
+      "nome": "acao21",
+      "tipo": "texto",
+      "exemplo": "Prev demo"
+    },
+    {
+      "nome": "acao22",
+      "tipo": "texto",
+      "exemplo": "About me"
+    },
+    {
+      "nome": "acao23",
+      "tipo": "texto",
+      "exemplo": "Projects"
+    },
+    {
+      "nome": "acao24",
+      "tipo": "texto",
+      "exemplo": "Writing"
+    },
+    {
+      "nome": "acao25",
+      "tipo": "texto",
+      "exemplo": "Mind Lab"
+    },
+    {
+      "nome": "acao26",
+      "tipo": "texto",
+      "exemplo": "Reading list"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Mia Farkas"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 7
+  },
+  "_rever": [
+    "13 cor(es) mapeadas para tokens por luminância (acento da origem #4ebbfb → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (http://tympdPixels/)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

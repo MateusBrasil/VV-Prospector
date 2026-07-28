@@ -1,0 +1,161 @@
+{
+  "slot": "vitrine",
+  "nome": "the-craft-of-ui",
+  "scope": "vitrine-the-craft-of-ui",
+  "origem": "bank/_componentes/carrossel/the-craft-of-ui",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Rainforests"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Deep Oceans"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Plunge into the mysterious underwater world, brimming with fascinating marine life and unexplored coral reefs."
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Snowy Mountains"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Feel the crisp, icy breeze and admire the vastness of the world's most dramatic and challenging high peaks."
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Wild Deserts"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Venture across shifting sand dunes where absolute silence reigns under the glowing dome of the sun."
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Northern Lights"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Marvel at the surreal, dancing curtains of colorful neon light painting the polar night sky in pure magic."
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "African Savannas"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Witness wild fauna roaming their natural habitats in breathtaking golden-hour light across endless plains."
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Ancient Caves"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Delve deep underground to explore massive stalactites and chambers carved by water over millions of years."
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Explore"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1579033461380-adb47c3eb938?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=720&auto=format&fit=crop"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1507163546643-097561f36e84?q=80&w=720&auto=format&fit=crop"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 7
+  },
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "7 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=720&auto=format&fit=crop https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=720&auto=format&fit=crop)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://unpkg.com/normalize.css)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

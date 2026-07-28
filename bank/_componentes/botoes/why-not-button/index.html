@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Verde - Compre Agora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<button class="group relative inline-flex min-w-[160px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[3px] hover:text-white shadow-[0_2.8px_2.2px_rgba(16,185,129,0.2),_0_6.7px_5.3px_rgba(16,185,129,0.25),_0_12.5px_10px_rgba(16,185,129,0.3)] overflow-hidden font-semibold text-emerald-100 tracking-tight bg-emerald-700 border-emerald-500 border rounded-full pt-[12px] pr-[24px] pb-[12px] pl-[24px] items-center justify-center">
+  
+  <!-- Texto Original (desliza para baixo no hover) -->
+  <span class="relative z-10 font-medium rounded-full transition-all duration-500 ease-out group-hover:transform group-hover:translate-y-8 group-hover:opacity-0 group-hover:blur-md">
+    Compre agora
+  </span>
+  
+  <!-- Texto Clone (desliza do topo para o centro no hover) -->
+  <span class="absolute inset-0 z-10 flex items-center justify-center transition-all duration-300 ease-in-out transform -translate-y-8 group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-none font-medium opacity-0 rounded-full blur-md">
+    Porquê não?
+  </span>
+
+  <!-- Linha de brilho inferior (substitui o antigo ::before) -->
+  <span aria-hidden="true" class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 bg-gradient-to-r from-transparent via-emerald-200 to-transparent rounded-full blur-[2px]"></span>
+  
+  <!-- Gradiente de luz de fundo no hover -->
+  <span aria-hidden="true" class="absolute bottom-0 left-0 right-0 h-[100%] group-hover:opacity-60 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] pointer-events-none bg-gradient-to-t from-white/20 via-white/5 to-transparent rounded-full"></span>
+</button>
+
+</body>
+</html>

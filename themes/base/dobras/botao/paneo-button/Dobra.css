@@ -1,0 +1,55 @@
+[data-dobra="botao-paneo-button"] *,[data-dobra="botao-paneo-button"] *::after,[data-dobra="botao-paneo-button"] *::before{
+            box-sizing: border-box;
+        }
+[data-dobra="botao-paneo-button"]{
+            margin: 0;
+            display: flex;
+            background-color: var(--base-100);
+            font-family: var(--fonte-corpo);
+        }
+[data-dobra="botao-paneo-button"] .button{
+            pointer-events: auto;
+            cursor: pointer;
+            background: var(--base-100);
+            border: none;
+            padding: 1.5rem 3rem;
+            margin: 0;
+            font-family: var(--fonte-corpo);
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+            outline: none;
+        }
+[data-dobra="botao-paneo-button"] .button::before,[data-dobra="botao-paneo-button"] .button::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+[data-dobra="botao-paneo-button"] .button--pan{
+            font-weight: 700;
+            border: 2px solid var(--acento);
+            border-radius: 3rem;
+            overflow: hidden;
+            color: var(--base-100);
+        }
+[data-dobra="botao-paneo-button"] .button--pan span{
+            position: relative;
+            display: block;
+            z-index: 10;
+            transition: color 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+[data-dobra="botao-paneo-button"] .button--pan:hover span{
+            color: var(--acento);
+        }
+[data-dobra="botao-paneo-button"] .button--pan::before{
+            content: '';
+            background: var(--acento);
+            transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+[data-dobra="botao-paneo-button"] .button--pan:hover::before{
+            transform: translate3d(0, -100%, 0);
+        }
+
+    

@@ -1,0 +1,68 @@
+{
+  "slot": "precos",
+  "nome": "secao-12",
+  "scope": "precos-secao-12",
+  "origem": "bank/_componentes/secoes/secao-12",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Simple &amp; transparent pricing"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Simple &amp; transparent pricing"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "/month"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "/month"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "/month"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "40 cor(es) mapeadas para tokens por luminância (acento da origem #0158ff → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.temlis.com/ https://www.temlis.com/)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

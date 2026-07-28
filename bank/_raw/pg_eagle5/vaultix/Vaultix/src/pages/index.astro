@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroLoader from "../components/HeroLoader.astro";
+import Hero from "../components/Hero.astro";
+import ProblemPainPoints from "../components/ProblemPainPoints.astro";
+import SolutionRecursos from "../components/SolutionFeatures.astro";
+import SolutionRecursosVertical from "../components/SolutionFeaturesVertical.astro";
+import ImpactSection from "../components/ImpactSection.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Depoimentos from "../components/Testimonials.astro";
+import BlogsSection from "../components/BlogsSection.astro";
+import OrganizationSchema from "../components/seo/OrganizationSchema.astro";
+---
+
+<BaseLayout
+  title="Eagle — Infrastructure for serious AI teams"
+  description="Terminal-grade data & AI ops platform. Publique faster. Escale safer. Built for serious engineering teams."
+>
+  <OrganizationSchema slot="head" />
+  <HeroLoader />
+  <Hero />
+  <ProblemPainPoints />
+  <SolutionRecursos />
+  <SolutionRecursosVertical />
+  <ImpactSection />
+  <HowItWorks />
+  <Depoimentos />
+  <BlogsSection />
+</BaseLayout>

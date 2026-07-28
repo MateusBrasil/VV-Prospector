@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWWARDS PAGE REVEAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Host Grotesk", sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+        }
+
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+
+        .copy {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .blocks {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .block {
+            position: fixed;
+            width: 50%;
+            height: 100vh;
+            z-index: 0;
+            background: #f1f0ee;
+        }
+
+        .block-left {
+            left: 0;
+        }
+
+        .block-right {
+            right: 0;
+        }
+
+        .letter {
+            position: absolute;
+            z-index: 10000;
+            padding: 0 0.2em;
+            font-size: 8em;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        .row {
+            width: 100%;
+            height: 50vh;
+        }
+
+        .top-left,
+        .top-right,
+        .bottom-right {
+            position: absolute;
+            z-index: 10000;
+        }
+
+        .top-left {
+            top: 32%;
+            left: 42%;
+        }
+
+        .top-right {
+            top: 32%;
+            right: 42%;
+        }
+
+        .bottom-right {
+            bottom: 32%;
+            right: 42%;
+        }
+
+        @media (max-width: 900px) {
+            .letter {
+                font-size: 2em;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <video autoplay playinline muted loop>
+            <source src="https://videos.pexels.com/video-files/3403228/3403228-uhd_2732_1440_25fps.mp4"
+                type="video/mp4" />
+        </video>
+        <div class="wrapper">
+            <div class="copy">
+                <p>FR 3435, <br> TYO 98234</p>
+                <p>paris design agency</p>
+                <p>enter <br> universe®</p>
+            </div>
+            <div class="blocks">
+                <div class="block block-left"></div>
+                <div class="block block-right"></div>
+            </div>
+            <div class="letters">
+                <div class="row">
+                    <div class="letter top-left">P</div>
+                    <div class="letter top-right">D</div>
+                </div>
+                <div class="row">
+                    <div class="letter bottom-right">7</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tl = gsap.timeline();
+
+        // 1. Letters appear
+        tl.from(".letter", {
+            y: -20,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.inOut",
+            stagger: 0.1
+        })
+            // 2. Letters move to corners, starting 2 seconds into the timeline
+            .to(".top-left, .top-right", {
+                top: "0",
+                duration: 2,
+                ease: "power3.inOut"
+            }, 2)
+            .to(".bottom-right", {
+                bottom: "0",
+                duration: 2,
+                ease: "power3.inOut"
+            }, "<") // "<" makes it start at the same time as the previous animation
+            .to(".top-left", {
+                left: "0",
+                duration: 2,
+                ease: "power3.inOut"
+            }, "<").to(".top-right", {
+                right: "0",
+                duration: 2,
+                ease: "power3.inOut"
+            }, "<").to(".bottom-right", {
+                right: "0",
+                duration: 2,
+                ease: "power3.inOut"
+            }, "<")
+            // 3. White blocks slide away, starting 4 seconds into the timeline
+            .to(".block-left", {
+                left: "-50%",
+                duration: 2,
+                ease: "power3.inOut"
+            }, 4)
+            .to(".block-right", {
+                right: "-50%",
+                duration: 2,
+                ease: "power3.inOut"
+            }, "<"); // Starts at the same time as the left block animation
+    </script>
+</body>
+
+</html>

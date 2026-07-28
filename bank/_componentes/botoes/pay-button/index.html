@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Botão de Pagamento</title>
+</head>
+<body class="bg-zinc-100 flex items-center justify-center min-h-screen">
+
+    <!-- Início do componente reproduzido -->
+    <button
+      class="group relative inline-flex items-center justify-center gap-2 w-[130px] h-[40px] rounded-xl cursor-pointer overflow-hidden transition-transform duration-300 active:translate-x-[5px] active:translate-y-[5px] outline outline-0 hover:outline hover:outline-1 hover:outline-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/30 text-white"
+      style="background-color: rgb(15, 15, 15); box-shadow: 5px 5px 10px rgba(0,0,0,0.103);"
+      aria-label="Pay"
+    >
+      <span class="text-sm font-semibold tracking-tight select-none">Pay</span>
+
+      <!-- Lucide: credit-card (1.5 stroke width) -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+        class="pointer-events-none"
+        aria-hidden="true"
+      >
+        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+        <line x1="2" y1="10" x2="22" y2="10"></line>
+      </svg>
+
+      <!-- Hover sweep overlay (mix-blend difference) -->
+      <span
+        aria-hidden="true"
+        class="absolute top-0 -left-[100%] h-[130px] w-[130px] rounded-full transform transition-transform duration-300 ease-linear group-hover:-translate-y-1/2 group-hover:translate-x-full group-hover:rounded-none"
+        style="background-color: white; mix-blend-mode: difference;"
+      ></span>
+    </button>
+    <!-- Fim do componente reproduzido -->
+
+</body>
+</html>

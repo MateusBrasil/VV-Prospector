@@ -72,7 +72,25 @@ export function escoparCss(css, prefixo) {
 
 export function tokenizarCss(cssBruto, scope, { mapearCor = true } = {}) {
   let css = cortarComentarios(cssBruto);
-  const relatorio = { fontesTrocadas: 0, pesosTrocados: 0, hexEncontrados: [], importantsRemovidos: 0, coresMapeadas: 0, acentoOrigem: null };
+  const relatorio = { fontesTrocadas: 0, pesosTrocados: 0, hexEncontrados: [], importantsRemovidos: 0, coresMapeadas: 0, acentoOrigem: null, importsFonteRemovidos: 0, urlsExternas: [] };
+
+  // ACHADO REAL (66 de 552 dobras, 2026-07-27): a esteira já descartava a fonte de origem
+  // que vinha por `<link href="fonts.googleapis...">` no HTML, mas não a que vinha por
+  // `@import url("...fonts.googleapis...")` dentro do próprio CSS. A fonte da origem voltava
+  // pela porta dos fundos e trazia com ela um pedido a CDN de terceiro para dentro do site
+  // do cliente — exatamente o que a regra de zero-CDN existe para proibir (gate E8). O
+  // sistema fornece as fontes (tokens.mjs/fonts.mjs), portanto este @import nunca tem razão
+  // para sobreviver: remover é mecânico e sem julgamento.
+  css = css.replace(/@import\s+(?:url\()?\s*["']?[^"';)]*(?:fonts\.googleapis|fonts\.gstatic|typekit|cdnfonts|fontawesome)[^"';)]*["']?\s*\)?[^;]*;/gi,
+    () => { relatorio.importsFonteRemovidos++; return ''; });
+
+  // `url(http...)` que sobra no CSS é foto/vídeo de demonstração servida pelo host da origem.
+  // NÃO se remove sozinha: apagar um background-image pode partir a peça, porque o elemento
+  // às vezes existe só para mostrar a imagem e sem ela fica um bloco vazio. Regista-se para
+  // que a revisão saiba exatamente quais substituir por slot ou por asset local.
+  for (const m of css.matchAll(/url\(\s*["']?(https?:\/\/[^"')\s]+)["']?\s*\)/gi))
+    if (!relatorio.urlsExternas.includes(m[1])) relatorio.urlsExternas.push(m[1]);
+
   css = css.replace(/font-family\s*:\s*([^;}]+)([;}])/gi, (m, valor, fim) => {
     if (/var\(--fonte-/.test(valor)) return m;
     relatorio.fontesTrocadas++;

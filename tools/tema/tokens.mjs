@@ -91,7 +91,7 @@ export function gerarTokens(design = {}, fontes = {}) {
 
   const linhas = [
     '/* GERADO por tools/tema/tokens.mjs — não editar à mão.',
-    '   Fonte: cliente.json → design. Editar aqui é trabalho que o próximo build apaga. */',
+    '   Fonte: direção de arte + sobreposição de design do cliente. Editar aqui é trabalho que o próximo build apaga. */',
     ':root {',
     '  /* paleta */',
     ...Object.entries(d.cores).map(([k, v]) => `  --${kebab(k)}: ${v};`),
@@ -107,6 +107,13 @@ export function gerarTokens(design = {}, fontes = {}) {
     `  --display-lh: ${d.display.lh};`,
     `  --display-lh-multilinha: ${d.display.lhMultilinha};`,
     `  --display-caixa: ${d.display.caixa};`,
+    // ACRESCENTADO 2026-07-27: o sistema emitia `--corpo-tracking` mas NUNCA um tracking de
+    // display, e nenhuma das três direções de nicho o declarava. A um h1 de 5 a 7rem, o
+    // tracking por omissão fica solto, e isso é um dos sinais de tipografia não pensada que
+    // o passe visual apanha como "cara de IA" (2 avisos IA1 no tema odontologia foram o que
+    // revelou o buraco). A unidade é `em` e não `rem` de propósito: tem de escalar com o
+    // `clamp()` do tamanho, senão um h1 responsivo fica bem a 1440 e apertado a 375.
+    `  --display-tracking: ${d.display.tracking ?? '0'};`,
     ...Object.entries(d.display.escala).map(([k, v]) => `  --${k}: ${v};`),
     '',
     '  /* corpo */',

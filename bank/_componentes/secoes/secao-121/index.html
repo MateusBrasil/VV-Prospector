@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stayli — Listings Hero</title>
+
+  <!-- Fonts: Inter (replaces the template's @fontsource/inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Flag the document before first paint so scroll-reveal start states only
+       apply when scripting is on (content stays visible if JS is disabled). -->
+  <script>document.documentElement.classList.add("reveal-js");</script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+    <script defer src="navbar.js"></script>
+  </head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (stayli-navbar) -->
+    <div data-navbar-root="">
+          <div class="navbar is-absolute" data-navbar="" role="banner">
+            <div class="padding-global is-navbar">
+              <div class="container-large">
+                <div class="navbar_content">
+                  <div class="nav_wrap">
+                    <a href="/" aria-label="Stayli, home" class="navbar_logo-link w-inline-block">
+                      <img src="https://d173woph5zl366.cloudfront.net/stayli/images/stayli-logo.svg" loading="eager" alt="Stayli" class="navbar_logo">
+                    </a>
+                  </div>
+    
+                  <!-- Desktop links (≥992) -->
+                  <nav role="navigation" class="nav_mobile" aria-label="Primary">
+                    <div class="navbar_list">
+                      <a href="/about" class="nav_links text-color-white">About</a>
+                      <a href="/listings" class="nav_links text-color-white">Listings</a>
+                      <a href="/blog" class="nav_links text-color-white">Blog</a>
+                      <a href="/contact" class="nav_links text-color-white">Contact</a>
+                    </div>
+                  </nav>
+    
+                  <div class="nav_buttons-wrap">
+                    <div class="login-wrap hide-mobile-landscape">
+                      <a href="/listings" class="button w-button">Get started</a>
+                    </div>
+    
+                    <!-- Hamburger (≤991) — pill that scales to a card. CSS-only via data-navigation-status. -->
+                    <div class="hamburger-anchor" data-nav-theme="light">
+                      <div class="hamburger-nav">
+                        <div class="hamburger-nav__bg" aria-hidden="true"></div>
+                        <div class="hamburger-nav__group">
+                          <p class="hamburger-nav__menu-p">Menu</p>
+                          <ul class="hamburger-nav__ul">
+                            <li class="hamburger-nav__li">
+                              <a href="/about" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">About</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/listings" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Listings</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/blog" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Blog</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/contact" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Contact</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" class="hamburger-nav__toggle">
+                          <div class="hamburger-nav__toggle-bar"></div>
+                          <div class="hamburger-nav__toggle-bar"></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Dim backdrop: darkens the page while the menu is open; click to close. -->
+          <div data-navigation-toggle="close" class="navigation__dark-bg" aria-hidden="true"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <div class="section_hero-listings">
+      <div class="padding-global is-hero-listings">
+        <div class="container-large">
+          <div class="hero_listings-content">
+            <div class="hero_listing-form" data-reveal>
+              <form class="hero_listing-form_content" data-stub-form>
+                <div class="listings_form-top">
+                  <h1 class="heading-style-h2">Top rentals</h1>
+                  <div class="listings_form-p_wrap">
+                    <p class="text-base">Explore our curated selection of the finest vacation rentals for your next getaway.</p>
+                  </div>
+                </div>
+                <div class="listings_form-tabs w-tabs" data-listings-tabs>
+                  <div class="listings_form-tabs_list w-tab-menu" role="tablist">
+                    <a data-w-tab="Tab 1" class="listings_form-tab w-inline-block w-tab-link w--current" role="tab" aria-selected="true" tabindex="0">
+                      <div>House</div>
+                    </a>
+                    <a data-w-tab="Tab 2" class="listings_form-tab w-inline-block w-tab-link" role="tab" aria-selected="false" tabindex="0">
+                      <div>Apartment</div>
+                    </a>
+                  </div>
+                  <div class="listing_tabs-content w-tab-content">
+                    <div data-w-tab="Tab 1" class="listings_tab w-tab-pane w--tab-active" role="tabpanel">
+                      <div class="listings_tab-content">
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Location</div>
+                          <select name="location" class="listings_select w-select">
+                            <option value="Tokyo">Tokyo</option>
+                            <option value="Paris">Paris</option>
+                            <option value="New York">New York</option>
+                            <option value="Bali">Bali</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Floor</div>
+                          <select name="floor" class="listings_select w-select">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Size</div>
+                          <select name="size" class="listings_select w-select">
+                            <option value="300 ft2">300 ft2</option>
+                            <option value="500 ft2">500 ft2</option>
+                            <option value="750 ft2">750 ft2</option>
+                            <option value="1000 ft2">1000 ft2</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Bedrooms</div>
+                          <select name="bedrooms" class="listings_select w-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-w-tab="Tab 2" class="listings_tab w-tab-pane" role="tabpanel">
+                      <div class="listings_tab-content">
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Location</div>
+                          <select name="location" class="listings_select w-select">
+                            <option value="Tokyo">Tokyo</option>
+                            <option value="Paris">Paris</option>
+                            <option value="New York">New York</option>
+                            <option value="Bali">Bali</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Floor</div>
+                          <select name="floor" class="listings_select w-select">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Size</div>
+                          <select name="size" class="listings_select w-select">
+                            <option value="300 ft2">300 ft2</option>
+                            <option value="500 ft2">500 ft2</option>
+                            <option value="750 ft2">750 ft2</option>
+                            <option value="1000 ft2">1000 ft2</option>
+                          </select>
+                        </div>
+                        <div class="listings_divider"></div>
+                        <div class="listings_filter">
+                          <div class="text-xs text-color-grey">Bedrooms</div>
+                          <select name="bedrooms" class="listings_select w-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="button w-button" value="Search now" />
+              </form>
+              <p class="form_message" data-form-message hidden>Thanks! We'll be in touch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="forms.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

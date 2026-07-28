@@ -1,0 +1,34 @@
+{
+  "slot": "botao",
+  "nome": "lightning-button",
+  "scope": "botao-lightning-button",
+  "origem": "bank/_componentes/botoes/lightning-button",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Lightning"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Lightning"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "10 cor(es) mapeadas para tokens por luminância (acento da origem #081649 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

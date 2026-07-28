@@ -1,0 +1,152 @@
+[data-dobra="destaque-word-scroll-effect"]{
+            --font-size-min: 14;
+            --font-size-max: 20;
+            --font-ratio-min: 1.1;
+            --font-ratio-max: 1.33;
+            --font-width-min: 375;
+            --font-width-max: 1500;
+
+            --start: 0;
+            --end: 360;
+            --lightness: 65%;
+            --base-chroma: 0.3;
+            --brand-color: var(--acento);
+        }
+[data-dobra="destaque-word-scroll-effect"]{
+            color-scheme: dark;
+        }
+[data-dobra="destaque-word-scroll-effect"] *,[data-dobra="destaque-word-scroll-effect"] *:before,[data-dobra="destaque-word-scroll-effect"] *:after{
+            box-sizing: border-box;
+        }
+[data-dobra="destaque-word-scroll-effect"]{
+            margin: 0;
+            min-height: 100vh;
+            
+            font-family: var(--fonte-corpo);
+            background-color: black;
+            color: white;
+        }
+[data-dobra="destaque-word-scroll-effect"] .fluid{
+            --fluid-min: calc(
+                var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+            );
+            --fluid-max: calc(
+                var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+            );
+            --fluid-preferred: calc(
+                (var(--fluid-max) - var(--fluid-min)) /
+                    (var(--font-width-max) - var(--font-width-min))
+            );
+
+            font-size: clamp(
+                (var(--fluid-min) / 16) * 1rem,
+                ((var(--fluid-min) / 16) * 1rem) -
+                    (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+                    (var(--fluid-preferred) * 100vi),
+                (var(--fluid-max) / 16) * 1rem
+            );
+        }
+[data-dobra="destaque-word-scroll-effect"] .section-centered{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll{
+            --font-level: 5;
+            width: 100%;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll-inner{
+            display: flex;
+            justify-content: center;
+            line-height: 1.25;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll-inner h2{
+            position: sticky;
+            top: calc(50vh - 0.5lh);
+            margin: 0;
+            font-size: inherit;
+            font-weight: 500;
+            height: fit-content;
+            white-space: nowrap; 
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll-inner ul{
+            font-weight: 500;
+            list-style: none;
+            margin: 0;
+            padding-block: calc(50vh - 0.5lh);
+            padding-left: 0;
+            --step: calc((var(--end) - var(--start)) / (var(--count) - 1));
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll[data-snap="true"]{
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y proximity;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll[data-snap="true"] li{
+            scroll-snap-align: center;
+        }
+[data-dobra="destaque-word-scroll-effect"] [data-sync-scrollbar="true"]{
+            scrollbar-color: var(--brand-color) transparent;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll li:not(:last-of-type){
+            color: oklch(
+                var(--lightness) var(--base-chroma)
+                    calc(var(--start) + (var(--step) * var(--i)))
+            );
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll h2{
+            color: white;
+        }
+[data-dobra="destaque-word-scroll-effect"] .word-scroll li:last-of-type{
+            background: linear-gradient(
+                var(--brand-color) 40%,
+                var(--base-200) 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+@supports (animation-timeline: scroll()) and (animation-range: 0% 100%){[data-dobra="destaque-word-scroll-effect"] [data-animate="true"] li{
+                opacity: 0.2;
+                animation-name: brighten;
+                animation-fill-mode: both;
+                animation-timing-function: linear;
+                animation-range: cover calc(50% - 1lh) calc(50% + 1lh);
+                animation-timeline: view();
+            }
+[data-dobra="destaque-word-scroll-effect"] [data-animate="true"] li:first-of-type{
+                --start-opacity: 1;
+            }
+[data-dobra="destaque-word-scroll-effect"] [data-animate="true"] li:last-of-type{
+                --brightness: 1;
+                --end-opacity: 1;
+            }
+@keyframes brighten{
+                0% {
+                    opacity: var(--start-opacity, 0.2);
+                }
+                50% {
+                    opacity: 1;
+                    color: var(--brand-color);
+                    text-shadow: 0 0 20px rgba(252, 1, 110, 0.4);
+                }
+                100% {
+                    opacity: var(--end-opacity, 0.2);
+                }
+            }
+
+        }
+[data-dobra="destaque-word-scroll-effect"] .sr-only{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+    

@@ -1,0 +1,155 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-12",
+  "scope": "destaque-scroll-12",
+  "origem": "bank/_componentes/scroll/scroll-12/webgl-progressive-blur-main/src",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "lenis"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "WebGL / OGL"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Santa Marta"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Curramba"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Spheres"
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "Catedral"
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "The Bird"
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "Tricycle"
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "Fashion"
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "NINI9"
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "Tote bags"
+    },
+    {
+      "nome": "item10",
+      "tipo": "texto",
+      "exemplo": "Window"
+    },
+    {
+      "nome": "item11",
+      "tipo": "texto",
+      "exemplo": "Monteria"
+    },
+    {
+      "nome": "item12",
+      "tipo": "texto",
+      "exemplo": "Sky"
+    },
+    {
+      "nome": "item13",
+      "tipo": "texto",
+      "exemplo": "Clothes"
+    },
+    {
+      "nome": "item14",
+      "tipo": "texto",
+      "exemplo": "Buildings"
+    },
+    {
+      "nome": "item15",
+      "tipo": "texto",
+      "exemplo": "Nature"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/img/6.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "/img/1.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "/img/2.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "/img/3.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "/img/4.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "/img/5.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "/img/0.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "/img/7.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "/img/8.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "/img/9.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

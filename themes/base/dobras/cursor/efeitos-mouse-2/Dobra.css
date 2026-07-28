@@ -1,0 +1,88 @@
+[data-dobra="cursor-efeitos-mouse-2"] *{ margin: 0; padding: 0; box-sizing: border-box; }
+[data-dobra="cursor-efeitos-mouse-2"],[data-dobra="cursor-efeitos-mouse-2"]{
+   width: 100%;
+   background: var(--base-600);
+   color: var(--base-100);
+   font-family: var(--fonte-corpo);
+}
+[data-dobra="cursor-efeitos-mouse-2"] img{
+   display: block;
+   max-width: 100%;
+}
+[data-dobra="cursor-efeitos-mouse-2"] p{ font-family: var(--fonte-corpo); }
+[data-dobra="cursor-efeitos-mouse-2"] .gallery{
+   position: relative;
+   width: 100%;
+   height: 120vh;
+   
+   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+   overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-2"] .gallery__bg{
+   position: relative;
+   width: 100%;
+   height: 100%;
+   
+}
+[data-dobra="cursor-efeitos-mouse-2"] .gallery__bg img{
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+[data-dobra="cursor-efeitos-mouse-2"] .vignette{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 25vw;
+   height: 30vw;
+   border-radius: 1.5vw;
+   overflow: hidden;
+   pointer-events: none;
+   will-change: transform;
+   
+}
+[data-dobra="cursor-efeitos-mouse-2"] .vignette img{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+[data-dobra="cursor-efeitos-mouse-2"] .description{
+   position: relative;
+   width: 100%;
+   height: 120vh;
+   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+   overflow: hidden;
+   background: var(--base-600);
+}
+[data-dobra="cursor-efeitos-mouse-2"] .description__list{
+   position: absolute;
+   inset: 0;
+   z-index: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 0;
+}
+[data-dobra="cursor-efeitos-mouse-2"] .description__list p{
+   font-size: 7vw;
+   font-weight: 400;
+   text-transform: uppercase;
+   letter-spacing: -0.02em;
+   line-height: 1.05;
+   cursor: default;
+   color: var(--base-100);
+}
+[data-dobra="cursor-efeitos-mouse-2"] .description .vignette img{
+   position: absolute;
+   inset: 0;
+   opacity: 0;
+   transition: opacity 0.25s ease;
+}
+[data-dobra="cursor-efeitos-mouse-2"] .description .vignette img.is-active{
+   opacity: 1;
+}
+
+

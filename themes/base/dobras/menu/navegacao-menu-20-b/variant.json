@@ -1,0 +1,161 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-20-b",
+  "scope": "menu-navegacao-menu-20-b",
+  "origem": "bank/_componentes/menu/navegacao-menu-20/files",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "AGENCY"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Approach"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "About us"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Email"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Get in touch with us"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Get a free audit"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Headquarter"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Route du Jura 49"
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "1700 Fribourg"
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "Switzerland"
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "Phone"
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "+41 (0) 79 510 28 70"
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "Legal"
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "Privacy & Cookies"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Creating unique brands is"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "what we do."
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Curology"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "A custom formula for your skin’s unique needs"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Yourspace"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Open space floor plans for you next venture"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Lumin"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "For your best look ever"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "assets/curology-min.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "assets/yourspace-min.png"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "assets/lumin-min.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

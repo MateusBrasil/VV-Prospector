@@ -1,0 +1,1685 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import HalftoneCanvas from "../components/HalftoneCanvas.astro";
+import HalftoneImage from "../components/HalftoneImage.astro";
+import EagleMarker from "../components/VaultixMarker.astro";
+import EaglePixelGlow from "../components/VaultixPixelGlow.astro";
+import AccentButton from "../components/AccentButton.astro";
+import CtaSection from "../components/CtaSection.astro";
+
+const team = (await getCollection("team")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const values = [
+  {
+    title: "Confiabilidade primeiro",
+    body: "Your pipelines never sleep. Neither does our infrastructure. Boring is the goal.",
+  },
+  {
+    title: "Empatia com engenharia",
+    body: "Every API, doc, and error message comes from engineers we'd want as teammates.",
+  },
+  {
+    title: "Composicao por padrao",
+    body: "No lock-in. Bring your storage, your sources, your stack. We integrate, we don't capture.",
+  },
+  {
+    title: "Padroes abertos",
+    body: "Open formats, open protocols, open metrics. Your data should outlive your vendors — including us.",
+  },
+];
+
+const journeyMetrics = [
+  { value: "2M+", label: "Eventos/segundo" },
+  { value: "99%", label: "SLA de disponibilidade" },
+  { value: "10B+", label: "Registros processados" },
+  { value: "2K+", label: "AI Teams" },
+];
+---
+
+<BaseLayout
+  title="Sobre — Eagle"
+  description="The team behind Eagle. Engineers from Datadog, Google, Stripe and Snowflake building infrastructure for serious AI teams."
+>
+  {/* ========================================================================
+       SECTION 01 — Hero (Figma 1:3277)
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("about-hero-pre-anim");
+    }
+  </script>
+
+  <section
+    class="relative overflow-hidden bg-[var(--color-bg)] pb-[3rem]"
+    data-about-hero
+  >
+    {/* navbar-flush hero: section sin pt (arranca al ras del navbar bottom).
+        El bordered block no tiene línea horizontal top — la del navbar la
+        cumple. Top markers usan offset especial `+0.5px` para que la barra
+        del marker quede 1px debajo del border-b del navbar. Bottom markers
+        usan offset normal `-0.5px`. Markers a z-20, el navbar (z-40) manda. */}
+    <div class="relative z-10 mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-about-hero-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-about-hero-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-about-hero-line="bottom"
+        aria-hidden="true"></span>
+
+      <EagleMarker type="tip-down" data-about-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-about-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-up" data-about-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-4 z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-about-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] right-4 z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      <div
+        class="flex min-h-[calc(100svh-var(--nav-height)-3rem)] flex-col items-comeca justify-end gap-[2.5rem] md:p-[1.25rem]"
+      >
+        <div class="flex flex-col items-comeca gap-[0.75rem]">
+          <span
+            class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60"
+            data-about-hero-eyebrow
+          >
+            Nossa Story
+          </span>
+          <h1
+            class="font-mono text-[2.75rem] font-normal uppercase leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem] lg:max-w-[35rem]"
+            data-about-hero-headline
+          >
+            We build what AI teams rely on
+          </h1>
+          <p
+            class="max-w-[29.8125rem] font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60"
+            data-about-hero-subhead
+          >
+            We're on a mission to make data infrastructure invisible for AI
+            teams.
+          </p>
+        </div>
+        <AccentButton data-about-hero-cta>
+          Fale conosco
+        </AccentButton>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about-hero-pre-anim [data-about-hero-eyebrow],
+    .about-hero-pre-anim [data-about-hero-headline],
+    .about-hero-pre-anim [data-about-hero-subhead],
+    .about-hero-pre-anim [data-about-hero-cta] {
+      visibility: hidden;
+    }
+    .about-hero-pre-anim [data-about-hero-line],
+    .about-hero-pre-anim [data-about-hero-tmark] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../lib/eases";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+
+    const init = () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("about-hero-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-about-hero]");
+      if (!section) return;
+
+      const eyebrow = section.querySelector<HTMLElement>("[data-about-hero-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-about-hero-headline]");
+      const subhead = section.querySelector<HTMLElement>("[data-about-hero-subhead]");
+      const cta = section.querySelector<HTMLElement>("[data-about-hero-cta]");
+      const lines = gsap.utils.toArray<HTMLElement>("[data-about-hero-line]", section);
+      const tmarks = gsap.utils.toArray<SVGElement>("[data-about-hero-tmark]", section);
+
+      // SplitText is enabled at all viewports — the title's max-w / parent
+      // width is wide enough that lines wrap naturally (3-4 words per line)
+      // even on mobile/tablet. The previous gate was a workaround for narrower
+      // headers that has since been fixed by widening the parent.
+      const useSplit = true;
+
+      const eyebrowSplit = useSplit && eyebrow ? new SplitText(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = useSplit && headline ? new SplitText(headline, { type: "lines", mask: "lines" }) : null;
+      const subheadSplit = useSplit && subhead ? new SplitText(subhead, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+      else if (eyebrow) gsap.set(eyebrow, { opacity: 0, y: 14 });
+      if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+      else if (headline) gsap.set(headline, { opacity: 0, y: 14 });
+      if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+      else if (subhead) gsap.set(subhead, { opacity: 0, y: 14 });
+      if (cta) gsap.set(cta, { opacity: 0, y: 14 });
+
+      lines.forEach((l) => {
+        const o = l.dataset.aboutHeroLine;
+        if (o === "top" || o === "bottom") {
+          gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        } else {
+          gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+        }
+      });
+      gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      document.documentElement.classList.remove("about-hero-pre-anim");
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      const horizontals = lines.filter((l) => ["top", "bottom"].includes(l.dataset.aboutHeroLine || ""));
+      const verticals = lines.filter((l) => ["left", "right"].includes(l.dataset.aboutHeroLine || ""));
+      tl.to(horizontals, { scaleX: 1, duration: 0.85, ease: "eagleStructure", stagger: 0.06 }, 0);
+      tl.to(verticals, { scaleY: 1, duration: 0.7, ease: "eagleStructure", stagger: 0.06 }, 0.15);
+      tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.55);
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0.3);
+      else if (eyebrow) tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.3);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.45);
+      else if (headline) tl.to(headline, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal" }, 0.45);
+      if (subheadSplit) tl.to(subheadSplit.lines, { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 }, 0.65);
+      else if (subhead) tl.to(subhead, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.65);
+      if (cta) tl.to(cta, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.85);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  </script>
+
+  {/* ========================================================================
+       SECTION 02 — Nossa Story (Figma 1:3324)
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("about-story-pre-anim");
+    }
+  </script>
+
+  <section
+    class="relative bg-[var(--color-bg)] py-[5rem] md:py-[6.375rem]"
+    data-about-story
+  >
+    <div
+      class="mx-auto flex w-full max-w-[70.5rem] flex-col gap-[2.5rem] px-4 lg:flex-row lg:items-comeca lg:justify-between lg:gap-[1.5rem] lg:px-0"
+    >
+      <span
+        class="hidden shrink-0 font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[1.68px] text-[#b5d2ff] md:block"
+        data-about-story-eyebrow
+      >
+        [ Nossa Story ]
+      </span>
+      <p
+        class="max-w-[40.5rem] font-mono text-[1.25rem] font-normal uppercase leading-[1.4] text-white md:text-[2rem] md:leading-[2.25rem]"
+        data-about-story-body
+      >
+        Founded in 2023 by Aspen Westervelt and Alex Morgan — a former Datadog
+        engineer and an ex-Google ML lead — Eagle was born from a simple
+        frustration: why is building data pipelines still so painful? Today, our
+        team continues that mission: building infrastructure that just works. No
+        YAML hell. No 3am pages. Just reliable data flowing to where it needs to
+        go.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .about-story-pre-anim [data-about-story-eyebrow],
+    .about-story-pre-anim [data-about-story-body] {
+      visibility: hidden;
+    }
+  </style>
+
+  <script>
+    import { gsap as gsapStory } from "gsap";
+    import { ScrollTrigger as STStory } from "gsap/ScrollTrigger";
+    import { SplitText as SplitStory } from "gsap/SplitText";
+    import { registerEagleEases as regStory } from "../lib/eases";
+
+    gsapStory.registerPlugin(STStory, SplitStory);
+    regStory();
+
+    const initStory = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("about-story-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-about-story]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-about-story-eyebrow]");
+      const body = section.querySelector<HTMLElement>("[data-about-story-body]");
+      const eyebrowSplit = eyebrow ? new SplitStory(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const bodySplit = body ? new SplitStory(body, { type: "lines", mask: "lines" }) : null;
+      if (eyebrowSplit) gsapStory.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (bodySplit) gsapStory.set(bodySplit.lines, { yPercent: 110 });
+      document.documentElement.classList.remove("about-story-pre-anim");
+      const tl = gsapStory.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+      if (bodySplit) tl.to(bodySplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.06 }, 0.15);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initStory);
+    else initStory();
+  </script>
+
+  {/* ========================================================================
+       SECTION 03 — Nossa Values (Figma 1:3328): tabbed values + halftone visual
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("about-values-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] py-[5rem]" data-about-values>
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-about-values-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-[22.5rem] top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-about-values-line="mid"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-about-values-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-1/2 top-0 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-about-values-line="top"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-about-values-line="bottom"
+        aria-hidden="true"></span>
+
+      {/* T markers — 4 outer corners + 2 mid (top/bottom of mid-vertical).
+          Normal offset `-0.5rem - 0.5px` for both top and bottom — these
+          markers sit on the bordered block edges, not on the navbar. */}
+      <EagleMarker type="tip-down" data-about-values-tmark class="absolute left-4 top-[calc(-0.5rem_-_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-about-values-tmark class="absolute right-4 top-[calc(-0.5rem_-_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-up" data-about-values-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-4 z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-about-values-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] right-4 z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-down" data-about-values-tmark class="absolute left-[22.5rem] top-[calc(-0.5rem_-_0.5px)] z-20 hidden -translate-x-1/2 lg:block" />
+      <EagleMarker type="tip-up" data-about-values-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-[22.5rem] z-20 hidden -translate-x-1/2 lg:block" />
+
+      <div class="grid grid-cols-1 md:grid-cols-[22.5rem_1fr]">
+        <div
+          class="flex flex-col justify-between gap-[1rem] bg-[#141414] px-[1.25rem] pb-[1.25rem] pt-[2rem] lg:gap-[2rem] lg:pt-[2.5rem]"
+        >
+          <div class="flex flex-col gap-[0.75rem] font-mono uppercase">
+            <span
+              class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#b5d2ff]"
+              data-about-values-eyebrow
+            >
+              [ core values ]
+            </span>
+            <h2
+              class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+              data-about-values-headline
+            >
+              Nossa Values
+            </h2>
+          </div>
+
+          <div class="flex flex-col gap-[1.5rem]" data-about-values-stack>
+            <div class="flex items-center justify-between">
+              <div class="flex items-comeca gap-[0.25rem]" data-about-values-pills>
+                {
+                  values.map((_, idx) => (
+                    <button
+                      type="button"
+                      aria-label={`Show value ${idx + 1}`}
+                      data-value-pill={idx}
+                      class={
+                        idx === 0
+                          ? "accent-glow-active h-[0.5rem] w-[2.5rem] cursor-pointer bg-[#fdff22] transition-all duration-300"
+                          : "size-[0.5rem] cursor-pointer bg-[#303030] transition-all duration-300"
+                      }
+                    />
+                  ))
+                }
+              </div>
+              <span
+                class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60"
+                data-about-values-counter
+              >
+                01
+              </span>
+            </div>
+
+            <div
+              class="flex flex-col gap-[1.5rem] border border-[var(--color-border)] bg-[#050505] p-[1rem]"
+              data-about-values-card
+            >
+              <EaglePixelGlow class="h-6 w-7" />
+              <div class="flex flex-col gap-[0.75rem] font-mono uppercase">
+                <h3
+                  class="text-[1.125rem] font-normal leading-[1.5556] tracking-[2.16px] text-white"
+                  data-about-values-cardtitle
+                >
+                  {values[0].title}
+                </h3>
+                <p
+                  class="text-[0.875rem] leading-[1.2857] text-white/60"
+                  data-about-values-cardbody
+                >
+                  {values[0].body}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative flex aspect-square items-center justify-center overflow-hidden lg:aspect-auto lg:h-[39rem] lg:border lg:border-[var(--color-border)]"
+          data-about-values-visual
+        >
+          <HalftoneCanvas
+            cellSize={6}
+            color="#b5d2ff"
+            cursorReactive={false}
+          />
+
+          {/* 4 panels stacked absolute encima del HalftoneCanvas. Solo el panel
+              activo (data-active) es opacity:1 + pointer-events-auto; el resto
+              opacity:0. Wired al slider via swapPanel() en el script. */}
+
+          {/* PANEL 0 — Confiabilidade primeiro (uptime equalizer + 99.99% SLA) */}
+          <div
+            class="pointer-events-auto absolute inset-0 z-10 flex items-center justify-center px-[1.25rem] lg:p-[2rem]"
+            data-value-panel="0"
+            data-active
+          >
+            <div class="flex w-full lg:max-w-[26rem] flex-col items-center gap-[1.75rem] border border-[var(--color-border)] bg-[#050505] px-[1.5rem] py-[1.75rem]">
+              <div class="flex flex-col items-center gap-[1rem]">
+                <span class="font-mono text-[0.75rem] uppercase tracking-[2.4px] text-[#b5d2ff]" data-r-eyebrow>
+                  [ Uptime · 30 days ]
+                </span>
+                <div class="flex h-[8rem] w-full items-end gap-2" data-r-bars-wrap>
+                  <span class="block h-[55%] flex-1 bg-[#474747]" data-r-bar />
+                  <span class="block h-[40%] flex-1 bg-[#313131]" data-r-bar />
+                  <span class="block h-[60%] flex-1 bg-[#474747]" data-r-bar />
+                  <span
+                    class="block h-[99%] flex-1 bg-[#b5d2ff]"
+                    style="box-shadow: 0 0 8px rgba(95,92,255,0.78), 0 0 16px rgba(95,92,255,0.5), 0 0 32px rgba(95,92,255,0.3);"
+                    data-r-bar
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-[0.5rem]">
+                <span
+                  class="accent-glow font-mono text-[2rem] font-normal leading-none tracking-[0.04em] text-[#fdff22] md:text-[2.5rem]"
+                  data-r-number
+                  data-r-target="99.99"
+                >
+                  0.00%
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* PANEL 1 — Empatia com engenharia (manifesto card with ASCII deco) */}
+          <div
+            class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-[1.25rem] lg:p-[2rem]"
+            data-value-panel="1"
+          >
+            <div class="flex w-full lg:max-w-[26rem] flex-col items-center gap-[1.25rem] border border-[var(--color-border)] bg-[#050505] px-[1.5rem] py-[1.5rem]">
+              <span class="font-mono text-[0.6875rem] uppercase tracking-[2.4px] text-[#b5d2ff]" data-e-eyebrow>
+                [ from the team ]
+              </span>
+              <span
+                class="block h-px w-full bg-[#fdff22] shadow-[0_0_8px_rgba(253,255,34,0.7),0_0_16px_rgba(253,255,34,0.35)]"
+                data-e-deco-top
+                aria-hidden="true"
+              />
+              <p
+                class="accent-glow text-center font-mono text-[1.125rem] font-normal uppercase leading-[1.25] tracking-[0.04em] text-[#fdff22] md:text-[1.375rem]"
+                data-e-quote
+              >
+                We don't ship<br />what we wouldn't use.
+              </p>
+              <span
+                class="block h-px w-full bg-[#fdff22] shadow-[0_0_8px_rgba(253,255,34,0.7),0_0_16px_rgba(253,255,34,0.35)]"
+                data-e-deco-bottom
+                aria-hidden="true"
+              />
+              <span class="font-mono text-[0.625rem] uppercase tracking-[2px] text-white/45" data-e-sig>
+                — 47 engineers · eagle 2026
+              </span>
+            </div>
+          </div>
+
+          {/* PANEL 2 — Composicao por padrao (6 nodes radiating from VX hub) */}
+          <div
+            class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-[1.25rem] lg:p-[2rem]"
+            data-value-panel="2"
+          >
+            <div class="flex w-full max-w-[20rem] flex-col items-center gap-[0.75rem] border border-[var(--color-border)] bg-[#050505] px-[1.25rem] py-[1.25rem]">
+              <span class="font-mono text-[0.6875rem] uppercase tracking-[2.4px] text-[#b5d2ff]" data-c-eyebrow>
+                [ Composable graph ]
+              </span>
+              <svg viewBox="0 0 240 240" class="h-auto w-full" fill="none" data-c-svg>
+              {/* 6 radial spokes from the VX hub to each outer node center.
+                  Drawn first so the rects layer on top via paint order. */}
+              <line data-c-line x1="120" y1="120" x2="120" y2="25" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+              <line data-c-line x1="120" y1="120" x2="202" y2="73" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+              <line data-c-line x1="120" y1="120" x2="202" y2="167" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+              <line data-c-line x1="120" y1="120" x2="120" y2="215" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+              <line data-c-line x1="120" y1="120" x2="38" y2="167" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+              <line data-c-line x1="120" y1="120" x2="38" y2="73" stroke="#b5d2ff" stroke-width="1" stroke-dasharray="3 3" />
+
+              {/* 6 outer nodes (60×26) — labels uppercase mono 8px periwinkle */}
+              <g data-c-node>
+                <rect x="90" y="12" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="120" y="28" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">STORAGE</text>
+              </g>
+              <g data-c-node>
+                <rect x="172" y="60" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="202" y="76" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">SOURCES</text>
+              </g>
+              <g data-c-node>
+                <rect x="172" y="154" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="202" y="170" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">STACK</text>
+              </g>
+              <g data-c-node>
+                <rect x="90" y="202" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="120" y="218" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">FORMATS</text>
+              </g>
+              <g data-c-node>
+                <rect x="8" y="154" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="38" y="170" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">TOOLS</text>
+              </g>
+              <g data-c-node>
+                <rect x="8" y="60" width="60" height="26" stroke="#b5d2ff" stroke-width="1" fill="#050505" />
+                <text x="38" y="76" font-family="Geist Mono, monospace" font-size="8" fill="white" text-anchor="middle" letter-spacing="1">LANGS</text>
+              </g>
+
+              {/* Central Eagle logo hub — yellow accent with HUD glow. The
+                  logo viewBox is 26×19.256; we translate+scale it to sit
+                  centered in the 50×50 hub rect (95-145, 95-145). */}
+              <g data-c-center>
+                <rect x="88" y="88" width="64" height="64" stroke="#fdff22" stroke-width="1.5" fill="#050505" />
+                <g transform="translate(102 109.5) scale(1.4)" class="accent-glow">
+                  <path
+                    d="M11.0922 19.256L0 0H7.36519L14.8191 12.8669L18.4573 6.47782L14.8191 0H22.1843L26 6.47782L22.3618 13.0444L14.8191 12.8669L11.0922 19.256Z"
+                    fill="#fdff22"
+                  />
+                </g>
+              </g>
+            </svg>
+            </div>
+          </div>
+
+          {/* PANEL 3 — Padroes abertos (3×3 format badges grid + counter + OPEN badge) */}
+          <div
+            class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-[1.25rem] lg:p-[2rem]"
+            data-value-panel="3"
+          >
+            <div class="flex w-full lg:max-w-[26rem] flex-col items-center gap-[1.25rem] border border-[var(--color-border)] bg-[#050505] px-[1.5rem] py-[1.5rem]">
+              <span class="font-mono text-[0.6875rem] uppercase tracking-[2.4px] text-[#b5d2ff]" data-o-eyebrow>
+                [ Interop matrix ]
+              </span>
+              <div class="grid w-full grid-cols-3 gap-[0.5rem]" data-o-grid>
+                {["JSON", "PARQUET", "AVRO", "PROTOBUF", "ARROW", "OPENAPI", "GRPC", "OTLP", "OPENMETRICS"].map((label) => (
+                  <div
+                    class="flex items-center justify-center gap-[0.4375rem] border border-[var(--color-border)] bg-[#050505] px-[0.5rem] py-[0.5rem]"
+                    data-o-card
+                  >
+                    <span class="block h-[0.375rem] w-[0.375rem] shrink-0 rounded-full bg-[#b5d2ff]" data-o-dot></span>
+                    <span class="font-mono text-[0.625rem] uppercase tracking-[0.5px] text-white">
+                      {label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div class="flex items-baseline gap-[0.5rem]">
+                <span class="accent-glow font-mono text-[1.5rem] font-normal leading-none text-[#fdff22]" data-o-counter data-o-target="47">
+                  0
+                </span>
+                <span class="font-mono text-[0.625rem] uppercase tracking-[2px] text-white/55">
+                  + open formats · zero lock-in
+                </span>
+              </div>
+              <div
+                class="accent-glow-active inline-flex bg-[#fdff22] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] font-normal uppercase leading-[1.25rem] tracking-[2.5px] text-[#11130e]"
+                data-o-badge
+              >
+                Open standards
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline type="application/json" data-about-values-data set:html={JSON.stringify(values)} />
+  </section>
+
+  <style>
+    .about-values-pre-anim [data-about-values-eyebrow],
+    .about-values-pre-anim [data-about-values-headline],
+    .about-values-pre-anim [data-about-values-stack],
+    .about-values-pre-anim [data-about-values-visual] {
+      visibility: hidden;
+    }
+    .about-values-pre-anim [data-about-values-line],
+    .about-values-pre-anim [data-about-values-tmark] {
+      opacity: 0;
+    }
+    /* Inactive value panels comeca hidden — only the one with [data-active]
+       (panel 0 by default) is visible at first paint. swapPanel() in the
+       script toggles the attribute when the slider rotates. */
+    [data-value-panel]:not([data-active]) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
+  <script>
+    import { gsap as gsapVal } from "gsap";
+    import { ScrollTrigger as STVal } from "gsap/ScrollTrigger";
+    import { SplitText as SplitVal } from "gsap/SplitText";
+    import { registerEagleEases as regVal } from "../lib/eases";
+
+    gsapVal.registerPlugin(STVal, SplitVal);
+    regVal();
+
+    const initVal = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("about-values-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-about-values]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-about-values-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-about-values-headline]");
+      const stack = section.querySelector<HTMLElement>("[data-about-values-stack]");
+      const visual = section.querySelector<HTMLElement>("[data-about-values-visual]");
+      const lines = gsapVal.utils.toArray<HTMLElement>("[data-about-values-line]", section);
+      const tmarks = gsapVal.utils.toArray<SVGElement>("[data-about-values-tmark]", section);
+
+      const eyebrowSplit = eyebrow ? new SplitVal(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitVal(headline, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsapVal.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsapVal.set(headlineSplit.lines, { yPercent: 110 });
+      if (stack) gsapVal.set(stack, { opacity: 0, y: 14 });
+      if (visual) gsapVal.set(visual, { opacity: 0 });
+      if (tmarks.length) gsapVal.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      const introCardEl = section.querySelector<HTMLElement>("[data-about-values-card]");
+      const introPixels = introCardEl
+        ? gsapVal.utils.toArray<SVGRectElement>("[data-vx-pixel]", introCardEl)
+        : [];
+      if (introPixels.length) {
+        gsapVal.set(introPixels, { opacity: 0, scale: 0, transformOrigin: "center center" });
+      }
+      const playPixelsIntro = () => {
+        if (!introPixels.length) return;
+        gsapVal.to(introPixels, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.35,
+          ease: "power2.out",
+          stagger: { each: 0.018, from: "random" },
+        });
+      };
+
+      lines.forEach((l) => {
+        const o = l.dataset.aboutValuesLine;
+        if (o === "top" || o === "bottom") gsapVal.set(l, { scaleX: 0, transformOrigin: "left center" });
+        else gsapVal.set(l, { scaleY: 0, transformOrigin: "center top" });
+      });
+
+      document.documentElement.classList.remove("about-values-pre-anim");
+
+      const tl = gsapVal.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      tl.to(lines, { scaleX: 1, scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.05 }, 0);
+      if (tmarks.length) tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.5);
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0.3);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.45);
+      if (stack) tl.to(stack, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal" }, 0.6);
+      if (visual) tl.to(visual, { opacity: 1, duration: 1, ease: "eagleStructure" }, 0.4);
+      tl.add(playPixelsIntro, 0.85);
+
+      const dataEl = section.querySelector<HTMLElement>("[data-about-values-data]");
+      const valuesData = dataEl ? JSON.parse(dataEl.textContent || "[]") : [];
+      const pills = section.querySelectorAll<HTMLButtonElement>("[data-value-pill]");
+      const counterEl = section.querySelector<HTMLElement>("[data-about-values-counter]");
+      const cardEl = section.querySelector<HTMLElement>("[data-about-values-card]");
+      const titleEl = section.querySelector<HTMLElement>("[data-about-values-cardtitle]");
+      const bodyEl = section.querySelector<HTMLElement>("[data-about-values-cardbody]");
+
+      const AUTO_MS = 2800;
+      const ANIM_DUR = 0.5;
+      let current = 0;
+      let timer: ReturnType<typeof setInterval> | null = null;
+      let animating = false;
+
+      const updateUI = (idx: number) => {
+        pills.forEach((p, i) => {
+          p.className =
+            i === idx
+              ? "accent-glow-active h-[0.5rem] w-[2.5rem] cursor-pointer bg-[#fdff22] transition-all duration-300"
+              : "size-[0.5rem] cursor-pointer bg-[#303030] transition-all duration-300 hover:bg-[#505050]";
+        });
+        if (counterEl) counterEl.textContent = String(idx + 1).padStart(2, "0");
+        if (titleEl) titleEl.textContent = valuesData[idx].title;
+        if (bodyEl) bodyEl.textContent = valuesData[idx].body;
+      };
+
+      const pixels = cardEl
+        ? gsapVal.utils.toArray<SVGRectElement>("[data-vx-pixel]", cardEl)
+        : [];
+
+      const playPixels = () => {
+        if (!pixels.length) return;
+        gsapVal.fromTo(
+          pixels,
+          { opacity: 0, scale: 0 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.35,
+            ease: "power2.out",
+            stagger: { each: 0.018, from: "random" },
+            transformOrigin: "center center",
+          },
+        );
+      };
+
+      // ===== Panel revelars — one entry per value (Reliability / Empathy /
+      // Composable / Padroes abertos). Each entry has `set` (instant initial
+      // state) and `play` (animation timeline). swapPanel() runs both: set
+      // first to reset, then play on next frame so the set has taken effect.
+      const visualEl = section.querySelector<HTMLElement>("[data-about-values-visual]");
+      const panels: HTMLElement[] = visualEl
+        ? Array.from(visualEl.querySelectorAll<HTMLElement>("[data-value-panel]"))
+        : [];
+      const q = <T extends Element = HTMLElement>(panel: HTMLElement, sel: string) =>
+        Array.from(panel.querySelectorAll<T>(sel));
+
+      type PanelReveal = {
+        set: (panel: HTMLElement) => void;
+        play: (panel: HTMLElement) => void;
+      };
+
+      // Panel 0 — Confiabilidade primeiro: equalizer bars grow up + 99.99% count-up
+      const reliabilityReveal: PanelReveal = {
+        set: (panel) => {
+          const bars = q<HTMLElement>(panel, "[data-r-bar]");
+          const number = panel.querySelector<HTMLElement>("[data-r-number]");
+          const eyebrow = panel.querySelector<HTMLElement>("[data-r-eyebrow]");
+          if (bars.length) gsapVal.set(bars, { opacity: 0, scaleY: 0, transformOrigin: "bottom" });
+          if (number) {
+            gsapVal.set(number, { opacity: 0 });
+            number.textContent = "0.00%";
+          }
+          if (eyebrow) gsapVal.set(eyebrow, { opacity: 0, y: -4 });
+        },
+        play: (panel) => {
+          const tl = gsapVal.timeline();
+          const eyebrow = panel.querySelector<HTMLElement>("[data-r-eyebrow]");
+          const bars = q<HTMLElement>(panel, "[data-r-bar]");
+          const number = panel.querySelector<HTMLElement>("[data-r-number]");
+          const target = parseFloat(number?.dataset.rTarget || "99.99");
+          if (eyebrow) tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.4, ease: "eagleReveal" }, 0);
+          if (bars.length) {
+            tl.to(bars, {
+              opacity: 1,
+              scaleY: 1,
+              duration: 0.5,
+              ease: "eagleStructure",
+              stagger: { each: 0.04 },
+            }, 0.15);
+          }
+          if (number) {
+            const proxy = { val: 0 };
+            tl.to(number, { opacity: 1, duration: 0.2, ease: "eagleReveal" }, 1.1);
+            tl.to(proxy, {
+              val: target,
+              duration: 1.0,
+              ease: "eagleReveal",
+              onUpdate: () => {
+                number.textContent = proxy.val.toFixed(2) + "%";
+              },
+            }, 1.1);
+          }
+        },
+      };
+
+      // Panel 1 — Empatia com engenharia: manifesto card with deco char stagger + quote revelar
+      const empathyReveal: PanelReveal = {
+        set: (panel) => {
+          const eyebrow = panel.querySelector<HTMLElement>("[data-e-eyebrow]");
+          const decoChars = q<HTMLElement>(panel, "[data-e-deco-char]");
+          const quote = panel.querySelector<HTMLElement>("[data-e-quote]");
+          const sig = panel.querySelector<HTMLElement>("[data-e-sig]");
+          if (eyebrow) gsapVal.set(eyebrow, { opacity: 0, y: -4 });
+          if (decoChars.length) gsapVal.set(decoChars, { opacity: 0 });
+          if (quote) gsapVal.set(quote, { opacity: 0, y: 8 });
+          if (sig) gsapVal.set(sig, { opacity: 0 });
+        },
+        play: (panel) => {
+          const tl = gsapVal.timeline();
+          const eyebrow = panel.querySelector<HTMLElement>("[data-e-eyebrow]");
+          const decoTopRow = panel.querySelector<HTMLElement>("[data-e-deco-top]");
+          const decoBottomRow = panel.querySelector<HTMLElement>("[data-e-deco-bottom]");
+          const decoTopChars = decoTopRow
+            ? Array.from(decoTopRow.querySelectorAll<HTMLElement>("[data-e-deco-char]"))
+            : [];
+          const decoBottomChars = decoBottomRow
+            ? Array.from(decoBottomRow.querySelectorAll<HTMLElement>("[data-e-deco-char]"))
+            : [];
+          const quote = panel.querySelector<HTMLElement>("[data-e-quote]");
+          const sig = panel.querySelector<HTMLElement>("[data-e-sig]");
+
+          if (eyebrow) tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.4, ease: "eagleReveal" }, 0);
+          if (decoTopChars.length) {
+            tl.to(decoTopChars, {
+              opacity: 1,
+              duration: 0.05,
+              ease: "none",
+              stagger: 0.025,
+            }, 0.2);
+          }
+          if (quote) tl.to(quote, { opacity: 1, y: 0, duration: 0.65, ease: "eagleReveal" }, 0.7);
+          if (decoBottomChars.length) {
+            tl.to(decoBottomChars, {
+              opacity: 1,
+              duration: 0.05,
+              ease: "none",
+              stagger: 0.025,
+            }, 1.15);
+          }
+          if (sig) tl.to(sig, { opacity: 1, duration: 0.4, ease: "eagleReveal" }, 1.55);
+        },
+      };
+
+      // Panel 2 — Composable: drawSVG-style line draw + node pop-in + center pulse
+      const composableReveal: PanelReveal = {
+        set: (panel) => {
+          const svgLines = q<SVGLineElement>(panel, "[data-c-line]");
+          svgLines.forEach((line) => {
+            const length = line.getTotalLength();
+            gsapVal.set(line, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+            });
+          });
+          const nodes = q<SVGGElement>(panel, "[data-c-node]");
+          const center = panel.querySelector<SVGGElement>("[data-c-center]");
+          if (nodes.length) gsapVal.set(nodes, { opacity: 0, scale: 0.7, transformOrigin: "center" });
+          if (center) gsapVal.set(center, { opacity: 0, scale: 0.5, transformOrigin: "center" });
+        },
+        play: (panel) => {
+          const tl = gsapVal.timeline();
+          const svgLines = q<SVGLineElement>(panel, "[data-c-line]");
+          const nodes = q<SVGGElement>(panel, "[data-c-node]");
+          const center = panel.querySelector<SVGGElement>("[data-c-center]");
+          if (svgLines.length) {
+            tl.to(svgLines, {
+              strokeDashoffset: 0,
+              duration: 0.6,
+              ease: "eagleStructure",
+              stagger: 0.1,
+            }, 0);
+          }
+          if (nodes.length) {
+            tl.to(nodes, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "eagleDecor",
+              stagger: 0.08,
+            }, 0.3);
+          }
+          if (center) {
+            tl.to(center, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              ease: "back.out(1.7)",
+            }, 0.7);
+          }
+        },
+      };
+
+      // Panel 3 — Padroes abertos: 9-badge grid stagger + counter count-up + OPEN badge
+      const openReveal: PanelReveal = {
+        set: (panel) => {
+          const eyebrow = panel.querySelector<HTMLElement>("[data-o-eyebrow]");
+          const cards = q<HTMLElement>(panel, "[data-o-card]");
+          const dots = q<HTMLElement>(panel, "[data-o-dot]");
+          const counter = panel.querySelector<HTMLElement>("[data-o-counter]");
+          const badge = panel.querySelector<HTMLElement>("[data-o-badge]");
+          if (eyebrow) gsapVal.set(eyebrow, { opacity: 0, y: -4 });
+          if (cards.length) gsapVal.set(cards, { opacity: 0, y: 8 });
+          if (dots.length) gsapVal.set(dots, { scale: 0, transformOrigin: "center" });
+          if (counter) {
+            gsapVal.set(counter, { opacity: 0 });
+            counter.textContent = "0";
+          }
+          if (badge) gsapVal.set(badge, { opacity: 0, scale: 0.85 });
+        },
+        play: (panel) => {
+          const tl = gsapVal.timeline();
+          const eyebrow = panel.querySelector<HTMLElement>("[data-o-eyebrow]");
+          const cards = q<HTMLElement>(panel, "[data-o-card]");
+          const dots = q<HTMLElement>(panel, "[data-o-dot]");
+          const counter = panel.querySelector<HTMLElement>("[data-o-counter]");
+          const badge = panel.querySelector<HTMLElement>("[data-o-badge]");
+          const target = parseInt(counter?.dataset.oTarget || "47", 10);
+
+          if (eyebrow) tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.4, ease: "eagleReveal" }, 0);
+          if (cards.length) {
+            tl.to(cards, {
+              opacity: 1,
+              y: 0,
+              duration: 0.45,
+              ease: "eagleReveal",
+              stagger: { each: 0.05, from: "random" },
+            }, 0.2);
+          }
+          if (dots.length) {
+            tl.to(dots, {
+              scale: 1,
+              duration: 0.3,
+              ease: "eagleDecor",
+              stagger: { each: 0.05, from: "random" },
+            }, 0.35);
+          }
+          if (counter) {
+            const proxy = { val: 0 };
+            tl.to(counter, { opacity: 1, duration: 0.2, ease: "eagleReveal" }, 1.05);
+            tl.to(proxy, {
+              val: target,
+              duration: 0.85,
+              ease: "eagleReveal",
+              snap: { val: 1 },
+              onUpdate: () => {
+                counter.textContent = String(proxy.val);
+              },
+            }, 1.05);
+          }
+          if (badge) {
+            tl.to(badge, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              ease: "back.out(1.5)",
+            }, 1.5);
+          }
+        },
+      };
+
+      const revelars: PanelReveal[] = [
+        reliabilityReveal,
+        empathyReveal,
+        composableReveal,
+        openReveal,
+      ];
+
+      // Pre-paint set: hide internal contents of every panel so the intro
+      // (and later swaps) animate from a clean state.
+      panels.forEach((p, i) => revelars[i]?.set(p));
+
+      const swapPanel = (idx: number) => {
+        panels.forEach((p, i) => {
+          if (i === idx) {
+            p.setAttribute("data-active", "");
+            gsapVal.set(p, { opacity: 1, pointerEvents: "auto" });
+            revelars[i]?.set(p);
+            // rAF so the set lands before play kicks off (otherwise the
+            // first frame of `play` could overwrite the set with the in-
+            // flight tween value of the previous revelar).
+            requestAnimationFrame(() => revelars[i]?.play(p));
+          } else {
+            p.removeAttribute("data-active");
+            gsapVal.set(p, { opacity: 0, pointerEvents: "none" });
+          }
+        });
+      };
+
+      // Initial revelar of panel 0 fires near the end of the intro timeline,
+      // after the visual fade-in finishes.
+      tl.add(() => revelars[0]?.play(panels[0]), 1.0);
+
+      const goTo = (idx: number, dir: 1 | -1 = 1) => {
+        if (animating || idx === current || !valuesData[idx] || !cardEl) return;
+        animating = true;
+        const offset = dir === 1 ? -32 : 32;
+        gsapVal.to(cardEl, {
+          x: offset,
+          opacity: 0,
+          duration: ANIM_DUR / 2,
+          ease: "power2.in",
+          onComplete: () => {
+            current = idx;
+            updateUI(idx);
+            playPixels();
+            swapPanel(idx);
+            gsapVal.fromTo(
+              cardEl,
+              { x: -offset, opacity: 0 },
+              {
+                x: 0,
+                opacity: 1,
+                duration: ANIM_DUR / 2,
+                ease: "power2.out",
+                onComplete: () => {
+                  animating = false;
+                },
+              },
+            );
+          },
+        });
+      };
+
+      const comeca = () => {
+        stop();
+        timer = setInterval(() => {
+          goTo((current + 1) % valuesData.length, 1);
+        }, AUTO_MS);
+      };
+      const stop = () => {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      };
+
+      pills.forEach((pill, i) =>
+        pill.addEventListener("click", () => {
+          const dir: 1 | -1 = i > current ? 1 : -1;
+          goTo(i, dir);
+          comeca();
+        }),
+      );
+
+      // Touch swipe on the visual card — drag horizontally to navigate
+      const swipeVisualEl = section.querySelector<HTMLElement>("[data-about-values-visual]");
+      if (swipeVisualEl) {
+        let touchStartX = 0;
+        swipeVisualEl.addEventListener(
+          "touchcomeca",
+          (e) => {
+            touchStartX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        swipeVisualEl.addEventListener(
+          "touchend",
+          (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) < 40) return;
+            const dir: 1 | -1 = dx < 0 ? 1 : -1;
+            const next = (current + dir + valuesData.length) % valuesData.length;
+            goTo(next, dir);
+            comeca();
+          },
+          { passive: true },
+        );
+      }
+
+      section.addEventListener("mouseenter", stop);
+      section.addEventListener("mouseleave", comeca);
+
+      // Start the auto-rotate only when the section enters the viewport,
+      // and pause when it leaves to avoid background work off-screen.
+      STVal.create({
+        trigger: section,
+        comeca: "top 90%",
+        end: "bottom 10%",
+        onEnter: comeca,
+        onEnterBack: comeca,
+        onLeave: stop,
+        onLeaveBack: stop,
+      });
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initVal);
+    else initVal();
+  </script>
+
+  {/* ========================================================================
+       SECTION 04 — Nossa Journey (Figma 1:3457)
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("about-journey-pre-anim");
+    }
+  </script>
+
+  <section
+    class="relative overflow-hidden bg-[#141414] py-[5rem] md:py-[5.875rem]"
+    data-about-journey
+  >
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      <div class="relative z-10 flex max-w-[30.5rem] flex-col gap-[0.75rem] font-mono uppercase">
+        <span
+          class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#b5d2ff]"
+          data-about-journey-eyebrow
+        >
+          [ our journey ]
+        </span>
+        <h2
+          class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+          data-about-journey-headline
+        >
+          Nossa Journey
+        </h2>
+      </div>
+
+      <div
+        class="relative z-10 mt-[2rem] flex flex-col gap-[2rem] lg:mt-[3.5rem] lg:flex-row lg:items-end lg:justify-between lg:gap-[2rem]"
+      >
+        <div
+          class="w-full lg:max-w-[23.4375rem] lg:border lg:border-[var(--color-border)] lg:bg-[#010101] lg:p-[1.5rem]"
+          data-about-journey-box
+        >
+          <p class="font-mono text-[1rem] uppercase leading-[1.5] text-white/60 md:text-[1.25rem] md:leading-[1.5rem]">
+            Today, we serve over 2,000 AI teams across 40 countries, processing
+            more than 10 billion records daily. But we're just getting comecaed.
+          </p>
+        </div>
+
+        <div class="grid w-full grid-cols-2 gap-x-[1.5rem] gap-y-[2.5rem] lg:max-w-[24rem]">
+          {
+            journeyMetrics.map((m) => (
+              <div class="flex flex-col items-comeca gap-[1.5rem]" data-about-journey-metric>
+                <span class="hidden h-px w-full bg-[var(--color-border)] lg:block" />
+                <span class="font-mono text-[2.25rem] font-normal uppercase leading-none tracking-[4.32px] text-[#fdff22] md:text-[3rem] md:tracking-[5.76px]">
+                  {m.value}
+                </span>
+                <span class="font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[1.68px] text-white/60">
+                  {m.label}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about-journey-pre-anim [data-about-journey-eyebrow],
+    .about-journey-pre-anim [data-about-journey-headline],
+    .about-journey-pre-anim [data-about-journey-box],
+    .about-journey-pre-anim [data-about-journey-metric] {
+      visibility: hidden;
+    }
+  </style>
+
+  <script>
+    import { gsap as gsapJ } from "gsap";
+    import { ScrollTrigger as STJ } from "gsap/ScrollTrigger";
+    import { SplitText as SplitJ } from "gsap/SplitText";
+    import { registerEagleEases as regJ } from "../lib/eases";
+
+    gsapJ.registerPlugin(STJ, SplitJ);
+    regJ();
+
+    const initJ = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("about-journey-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-about-journey]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-about-journey-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-about-journey-headline]");
+      const box = section.querySelector<HTMLElement>("[data-about-journey-box]");
+      const metrics = gsapJ.utils.toArray<HTMLElement>("[data-about-journey-metric]", section);
+      const eyebrowSplit = eyebrow ? new SplitJ(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitJ(headline, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsapJ.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsapJ.set(headlineSplit.lines, { yPercent: 110 });
+      if (box) gsapJ.set(box, { opacity: 0, y: 14 });
+      gsapJ.set(metrics, { opacity: 0, y: 14 });
+
+      document.documentElement.classList.remove("about-journey-pre-anim");
+
+      const tl = gsapJ.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.15);
+      if (box) tl.to(box, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal" }, 0.4);
+      tl.to(metrics, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal", stagger: 0.1 }, 0.55);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initJ);
+    else initJ();
+  </script>
+
+  {/* ========================================================================
+       SECTION 05 — Team (Figma 1:3489): CMS-driven grid
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("about-team-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[#010101] py-[5rem] md:py-[5.875rem]" data-about-team>
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+
+      {/* DESKTOP / TABLET LAYOUT — header is the first cell of the grid */}
+      <div class="hidden sm:grid sm:grid-cols-2 sm:gap-[2rem] md:grid-cols-3 lg:gap-[1.5rem]">
+        <div
+          class="flex flex-col items-comeca gap-[0.75rem] p-[0] font-mono uppercase"
+          data-about-team-header
+        >
+          <span
+            class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+            data-about-team-eyebrow
+          >
+            [ our team ]
+          </span>
+          <h2
+            class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+            data-about-team-headline
+          >
+            Meet the team
+          </h2>
+          <p
+            class="text-[0.875rem] leading-[1.2857] text-white/60"
+            data-about-team-subhead
+          >
+            The engineers building the future of data infrastructure.
+          </p>
+        </div>
+        {
+          team.map((member) => (
+            <a
+              href={`/team/${member.id}`} class="group team-card flex flex-col gap-[1.5rem] outline-none focus-visible:ring-1 focus-visible:ring-[#fdff22]"
+              data-about-team-card
+            >
+              {/* relative without overflow-hidden — markers (negative-positioned)
+                  must render outside the visible image area; HalftoneImage
+                  clips its own canvas internally. */}
+              <div class="relative aspect-[346.667/368] w-full bg-[#0a0a0a]">
+                {member.data.image ? (
+                  <HalftoneImage
+                    src={member.data.image}
+                    alt={member.data.name}
+                    cellSize={1}
+                    dotColor="#b5d2ff"
+                    bgColor="#0a0a0a"
+                    gamma={1.6}
+                    spread={1}
+                    hoverSpreadMin={0.95}
+                    hoverSpreadMax={1.05}
+                    hoverPulseSpeed={1.8}
+                    hoverGlow="#b5d2ff"
+                    hoverGlowIntensity={0.5}
+                    class="absolute inset-0 size-full"
+                  />
+                ) : (
+                  <div class="absolute inset-0 flex items-center justify-center font-mono text-[0.625rem] uppercase tracking-[1.68px] text-white/20">
+                    [ avatar gris — Edgar reemplaza ]
+                  </div>
+                )}
+
+                {/* Corner markers — yellow with glow on hover. Centered on
+                    each corner via -top-2/-left-2 etc. (the 16×16 marker has
+                    its center at the card edge). Visibility + glow handled
+                    by `.team-card-marker` CSS class below. */}
+                <EagleMarker type="corner-tl" data-team-marker class="team-card-marker absolute -top-2 -left-2 z-10" style="color:#b5d2ff" />
+                <EagleMarker type="corner-tr" data-team-marker class="team-card-marker absolute -top-2 -right-2 z-10" style="color:#b5d2ff" />
+                <EagleMarker type="corner-bl" data-team-marker class="team-card-marker absolute -bottom-2 -left-2 z-10" style="color:#b5d2ff" />
+                <EagleMarker type="corner-br" data-team-marker class="team-card-marker absolute -bottom-2 -right-2 z-10" style="color:#b5d2ff" />
+              </div>
+              <div class="flex items-comeca gap-[0.75rem]">
+                <span
+                  class="team-card-dot mt-[0.375rem] inline-block size-[0.75rem] shrink-0 bg-[#b5d2ff]"
+                  aria-hidden="true"
+                />
+                <div class="flex flex-col font-mono uppercase">
+                  <span class="text-[1.25rem] leading-[1.2] text-white">
+                    {member.data.name}
+                  </span>
+                  <span class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white/60">
+                    {member.data.role}
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      {/* MOBILE LAYOUT — header above + horizontal slider below */}
+      <div class="sm:hidden">
+        <div
+          class="flex flex-col items-comeca gap-[0.75rem] p-[0] font-mono uppercase"
+        >
+          <span class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]">
+            [ our team ]
+          </span>
+          <h2 class="text-[2.5rem] leading-none tracking-[4.8px] text-white">
+            Meet the team
+          </h2>
+          <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+            The engineers building the future of data infrastructure.
+          </p>
+        </div>
+
+        <div
+          class="team-cards-track mt-[2.5rem] flex snap-x snap-mandatory gap-4 overflow-x-auto"
+          data-about-team-cards
+        >
+          {
+            team.map((member) => (
+              <a
+                href={`/team/${member.id}`} class="group team-card flex w-full shrink-0 snap-center [scroll-snap-stop:always] flex-col gap-[1.5rem] outline-none focus-visible:ring-1 focus-visible:ring-[#fdff22]"
+                data-about-team-card
+              >
+                <div class="relative aspect-[346.667/368] w-full bg-[#0a0a0a]">
+                  {member.data.image ? (
+                    <HalftoneImage
+                      src={member.data.image}
+                      alt={member.data.name}
+                      cellSize={1}
+                      dotColor="#b5d2ff"
+                      bgColor="#0a0a0a"
+                      gamma={1.6}
+                      spread={1}
+                      hoverSpreadMin={0.95}
+                      hoverSpreadMax={1.05}
+                      hoverPulseSpeed={1.8}
+                      hoverGlow="#b5d2ff"
+                      hoverGlowIntensity={0.5}
+                      class="absolute inset-0 size-full"
+                    />
+                  ) : (
+                    <div class="absolute inset-0 flex items-center justify-center font-mono text-[0.625rem] uppercase tracking-[1.68px] text-white/20">
+                      [ avatar gris — Edgar reemplaza ]
+                    </div>
+                  )}
+                  <EagleMarker type="corner-tl" data-team-marker class="team-card-marker absolute -top-2 -left-2 z-10" style="color:#b5d2ff" />
+                  <EagleMarker type="corner-tr" data-team-marker class="team-card-marker absolute -top-2 -right-2 z-10" style="color:#b5d2ff" />
+                  <EagleMarker type="corner-bl" data-team-marker class="team-card-marker absolute -bottom-2 -left-2 z-10" style="color:#b5d2ff" />
+                  <EagleMarker type="corner-br" data-team-marker class="team-card-marker absolute -bottom-2 -right-2 z-10" style="color:#b5d2ff" />
+                </div>
+                <div class="flex items-comeca gap-[0.75rem]">
+                  <span
+                    class="team-card-dot mt-[0.375rem] inline-block size-[0.75rem] shrink-0 bg-[#b5d2ff]"
+                    aria-hidden="true"
+                  />
+                  <div class="flex flex-col font-mono uppercase">
+                    <span class="text-[1.25rem] leading-[1.2] text-white">
+                      {member.data.name}
+                    </span>
+                    <span class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white/60">
+                      {member.data.role}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about-team-pre-anim [data-about-team-eyebrow],
+    .about-team-pre-anim [data-about-team-headline],
+    .about-team-pre-anim [data-about-team-subhead],
+    .about-team-pre-anim [data-about-team-card] {
+      visibility: hidden;
+    }
+
+    /* Team card hover affordances — periwinkle corner markers + dot glow.
+       3-layer drop-shadow stack mirrors `.periwinkle-glow` global util.
+       On mobile slider, [data-active] simulates hover for the centered card. */
+    .team-card-marker {
+      opacity: 0;
+      transition:
+        opacity 0.3s ease,
+        filter 0.3s ease;
+    }
+    .group:hover .team-card-marker,
+    .team-card[data-active="true"] .team-card-marker {
+      opacity: 1;
+      filter:
+        drop-shadow(0 0 4px rgba(181, 210, 255, 0.85))
+        drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+        drop-shadow(0 0 18px rgba(181, 210, 255, 0.2));
+    }
+    .team-card-dot {
+      transition: filter 0.3s ease;
+    }
+    .group:hover .team-card-dot,
+    .team-card[data-active="true"] .team-card-dot {
+      filter:
+        drop-shadow(0 0 4px rgba(181, 210, 255, 0.85))
+        drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+        drop-shadow(0 0 18px rgba(181, 210, 255, 0.2));
+    }
+
+    /* Mobile slider — hide scrollbar */
+    .team-cards-track::-webkit-scrollbar { display: none; }
+    .team-cards-track { scrollbar-width: none; -ms-overflow-style: none; }
+  </style>
+
+  <script>
+    import { gsap as gsapT } from "gsap";
+    import { ScrollTrigger as STT } from "gsap/ScrollTrigger";
+    import { SplitText as SplitT } from "gsap/SplitText";
+    import { registerEagleEases as regT } from "../lib/eases";
+
+    gsapT.registerPlugin(STT, SplitT);
+    regT();
+
+    const initTeam = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("about-team-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-about-team]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-about-team-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-about-team-headline]");
+      const subhead = section.querySelector<HTMLElement>("[data-about-team-subhead]");
+      const cards = gsapT.utils.toArray<HTMLElement>("[data-about-team-card]", section);
+
+      const eyebrowSplit = eyebrow ? new SplitT(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitT(headline, { type: "lines", mask: "lines" }) : null;
+      const subheadSplit = subhead ? new SplitT(subhead, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsapT.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsapT.set(headlineSplit.lines, { yPercent: 110 });
+      if (subheadSplit) gsapT.set(subheadSplit.lines, { yPercent: 110 });
+      gsapT.set(cards, { opacity: 0, y: 24 });
+
+      document.documentElement.classList.remove("about-team-pre-anim");
+
+      const tl = gsapT.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.15);
+      if (subheadSplit) tl.to(subheadSplit.lines, { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 }, 0.4);
+      tl.to(cards, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.13 }, 0.55);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initTeam);
+    else initTeam();
+  </script>
+
+  <style is:global>
+    /* === Team mobile slider — global rules =====================================
+       Two reasons we need is:global here:
+       1) `.tm-mobile-nav` is JS-injected, so it doesn't carry an Astro CID.
+       2) `.halftone-image canvas` is scoped to the HalftoneImage component's
+          CID, not about.astro's. We must reach into the component's scope to
+          override the `:hover` filter and to apply our active-state filter.
+
+       Mobile hover-mimic: when a team-card is `[data-active="true"]` (snapped
+       at center, idle), apply the same drop-shadow stack the desktop `:hover`
+       would. We also kill the `:hover` rules on touch viewports so the mouse
+       in dev tools / preview MCP doesn't trigger the effect mid-scroll.
+    */
+    @media (max-width: 639px) {
+      /* 1) Neutralize `:hover` markers + dot glow on touch viewports */
+      .team-card.group:hover .team-card-marker {
+        opacity: 0;
+        filter: none;
+      }
+      .team-card.group:hover .team-card-dot {
+        filter: none;
+      }
+      /* 2) Neutralize `:hover` halftone glow filter */
+      .team-card .halftone-image:hover canvas,
+      .team-card a:hover .halftone-image canvas,
+      .team-card article:hover .halftone-image canvas,
+      a.team-card:hover .halftone-image canvas {
+        filter: none !important;
+      }
+      /* 3) Active card (snapped center) gets full hover-equivalent effect */
+      .team-card[data-active="true"] .team-card-marker {
+        opacity: 1 !important;
+        filter:
+          drop-shadow(0 0 4px rgba(181, 210, 255, 0.85))
+          drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+          drop-shadow(0 0 18px rgba(181, 210, 255, 0.2)) !important;
+      }
+      .team-card[data-active="true"] .team-card-dot {
+        filter:
+          drop-shadow(0 0 4px rgba(181, 210, 255, 0.85))
+          drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+          drop-shadow(0 0 18px rgba(181, 210, 255, 0.2)) !important;
+      }
+      .team-card[data-active="true"] .halftone-image canvas {
+        filter: var(--halftone-hover-filter) !important;
+      }
+    }
+
+    /* Team mobile slider nav — JS-injected, must use global selectors. */
+    @media (max-width: 639px) {
+      .tm-mobile-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 2.5rem auto 0;
+        padding: 0 1rem;
+      }
+      .tm-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border: 0;
+        background: var(--color-accent);
+        color: #050505;
+        cursor: pointer;
+        transition: filter 0.18s ease, transform 0.12s ease;
+      }
+      .tm-arrow svg { width: 1.25rem; height: 1.25rem; }
+      .tm-arrow:active { transform: scale(0.94); filter: brightness(0.9); }
+      .tm-arrow:disabled {
+        background: #343434;
+        color: rgba(255, 255, 255, 0.4);
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+      .tm-mobile-count {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 1.125rem;
+        letter-spacing: 0.18rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-variant-numeric: tabular-nums;
+        padding: 0 0.5rem;
+        text-transform: uppercase;
+      }
+    }
+    @media (min-width: 640px) {
+      .tm-mobile-nav { display: none; }
+    }
+  </style>
+
+  <script>
+    // Mobile-only team slider: inject prev/next arrows + counter, sync the
+    // [data-active] card based on which one is centered in the scroll-snap track.
+    const initTeamSlider = () => {
+      const track = document.querySelector<HTMLElement>("[data-about-team-cards]");
+      if (!track) return;
+      const cards = Array.from(track.querySelectorAll<HTMLElement>("[data-about-team-card]"));
+      if (!cards.length) return;
+
+      // Inject nav (counter + arrows) once
+      const nav = document.createElement("div");
+      nav.className = "tm-mobile-nav";
+      nav.innerHTML = `
+        <button type="button" class="tm-arrow tm-arrow--prev" aria-label="Previous">
+          <svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+            <path d="M11.25 5.25L7.5 9l3.75 3.75V5.25z" />
+          </svg>
+        </button>
+        <button type="button" class="tm-arrow tm-arrow--next" aria-label="Next">
+          <svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+            <path d="M7.5 5.25L11.25 9 7.5 12.75V5.25z" />
+          </svg>
+        </button>
+      `;
+      track.parentElement?.appendChild(nav);
+
+      const prev = nav.querySelector<HTMLButtonElement>(".tm-arrow--prev");
+      const next = nav.querySelector<HTMLButtonElement>(".tm-arrow--next");
+
+      const isMobile = () => window.matchMedia("(max-width: 639px)").matches;
+
+      const indexOfCentered = () => {
+        if (!isMobile()) return -1;
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0;
+        let bestDist = Infinity;
+        cards.forEach((c, i) => {
+          const cc = c.offsetLeft + c.offsetWidth / 2;
+          const d = Math.abs(cc - center);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        return best;
+      };
+
+      // Fire synthetic mouseenter/mouseleave so HalftoneImage's hover loop
+      // (pulse + glow + spread) comecas/stops on the active card. The events
+      // are dispatched at the card itself; HalftoneImage listens on its
+      // closest <a>/<article> ancestor, which is the card.
+      const fireHover = (card: HTMLElement, type: "mouseenter" | "mouseleave") => {
+        card.dispatchEvent(new MouseEvent(type, { bubbles: false }));
+      };
+
+      const setActive = (idx: number) => {
+        cards.forEach((c, i) => {
+          const wasActive = c.dataset.active === "true";
+          const willBeActive = i === idx;
+          if (willBeActive && !wasActive) {
+            c.dataset.active = "true";
+            fireHover(c, "mouseenter");
+          } else if (!willBeActive && wasActive) {
+            delete c.dataset.active;
+            fireHover(c, "mouseleave");
+          }
+        });
+        if (prev) prev.disabled = idx <= 0;
+        if (next) next.disabled = idx >= cards.length - 1;
+      };
+
+      // Block real mouse hover on mobile so HalftoneImage only reacts to our
+      // synthetic events (which have isTrusted=false). User-generated mouse
+      // events on a touch device shouldn't trigger the hover loop.
+      cards.forEach((c) => {
+        (["mouseenter", "mouseleave"] as const).forEach((t) => {
+          c.addEventListener(
+            t,
+            (e) => {
+              if (!isMobile()) return;
+              if (e.isTrusted) e.stopImmediatePropagation();
+            },
+            { capture: true },
+          );
+        });
+      });
+
+      const scrollToIdx = (i: number) => {
+        const target = cards[Math.max(0, Math.min(cards.length - 1, i))];
+        if (!target) return;
+        const left = target.offsetLeft + target.offsetWidth / 2 - track.clientWidth / 2;
+        track.scrollTo({ left, behavior: "smooth" });
+      };
+
+      prev?.addEventListener("click", () => {
+        const i = indexOfCentered();
+        scrollToIdx(Math.max(0, i - 1));
+      });
+      next?.addEventListener("click", () => {
+        const i = indexOfCentered();
+        scrollToIdx(Math.min(cards.length - 1, i + 1));
+      });
+
+      // While scrolling: clear any active card so the effect doesn't trail
+      // mid-transit. After scroll settles (debounce ~140ms), apply active to
+      // the card that snapped into the center.
+      let scrollEndTimer = 0;
+      const clearActive = () => {
+        cards.forEach((c) => {
+          if (c.dataset.active === "true") {
+            delete c.dataset.active;
+            fireHover(c, "mouseleave");
+          }
+        });
+      };
+      track.addEventListener(
+        "scroll",
+        () => {
+          if (!isMobile()) return;
+          clearActive();
+          window.clearTimeout(scrollEndTimer);
+          scrollEndTimer = window.setTimeout(() => {
+            const i = indexOfCentered();
+            if (i >= 0) setActive(i);
+          }, 140);
+        },
+        { passive: true },
+      );
+
+      // Initial active state on mobile
+      if (isMobile()) setActive(0);
+      // Reset on resize crossing the breakpoint
+      window.addEventListener("resize", () => {
+        if (!isMobile()) {
+          cards.forEach((c) => delete c.dataset.active);
+        } else if (!cards.some((c) => c.dataset.active)) {
+          setActive(indexOfCentered() || 0);
+        }
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initTeamSlider);
+    } else {
+      initTeamSlider();
+    }
+  </script>
+
+  {/* ========================================================================
+       SECTION 06 — CTA (shared CtaSection component)
+     ======================================================================== */}
+  <CtaSection
+    headline="Pronta para build the future<br class='hidden lg:inline' /> of your data stack?"
+  />
+</BaseLayout>

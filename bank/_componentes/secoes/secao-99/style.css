@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.blog-post__card {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 48px */
+  padding: 52px;
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-container);
+  /* Intentionally NOT `overflow: clip` — sidebar uses position: sticky on
+       desktop and any clipping ancestor would break it (gotcha #4 / #15).
+       Children keep their own rounded clipping where needed. */
+}
+
+.blog-post__heading {
+  color: var(--color-text-primary);
+  max-width: 48.5rem; /* 776px */
+}
+
+/* ── Layout (Acelia recipe: grid + display:contents reorder) ────────────
+     Desktop uses a 2-col grid so sidebar gets a fixed track. At landscape
+     we collapse both this container AND .blog-post__main to `display:
+     contents` so all children become direct flex items of `.blog-post__card`,
+     enabling visual reorder via `order` (title → aside → image → body). */
+.blog-post__body {
+  display: grid;
+  grid-template-columns: 776fr 304fr;
+  align-items: start; /* sidebar sticky needs natural-position alignment */
+  gap: 3rem; /* 48px */
+  width: 100%;
+}
+
+/* Left column: image + prose */
+.blog-post__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 48px */
+}
+
+.blog-post__media {
+  width: 100%;
+  height: 25rem; /* 400px */
+  border-radius: var(--radius-card);
+  overflow: clip;
+  margin: 0;
+}
+.blog-post__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Prose */
+.blog-post__prose {
+  font-family: var(--font-body);
+  /* OPT-OUT: prose body uses paragraph-size 16px from Figma */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-placeholder);
+}
+.blog-post__prose p {
+  margin: 0 0 1rem 0;
+}
+.blog-post__prose p:last-child {
+  margin-bottom: 0;
+}
+.blog-post__prose h2 {
+  /* OPT-OUT: section title inside prose — 24px Inter Medium black */
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 1.5rem 0 0.75rem;
+}
+.blog-post__prose h2:first-child {
+  margin-top: 0;
+}
+
+/* Right column: sidebar. Sticky on desktop so meta/author stay in view while
+     scrolling the long prose. The card intentionally has NO `overflow: clip`
+     so sticky works (gotcha #4 / #15). Top offset 20px matches body padding-top. */
+.blog-post__sidebar {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 32px */
+  position: sticky;
+  top: calc(20px + 2rem); /* body padding + a bit of breathing room from card top */
+}
+
+.blog-post__meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+  width: 100%;
+}
+
+.blog-post__meta-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  /* OPT-OUT: sidebar label 16px Inter Light */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.blog-post__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* 12px */
+}
+.blog-post__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.625rem; /* 4px 10px */
+  background-color: var(--color-bg-gray-1);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  /* OPT-OUT: tag pill 14px Inter Regular — matches Blog list pills */
+  font-size: 0.875rem;
+  line-height: 1.43;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.blog-post__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 16px */
+  width: 100%;
+}
+.blog-post__author-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.blog-post__author-text {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+.blog-post__author-name {
+  font-family: var(--font-body);
+  /* OPT-OUT: author name 20px Inter Regular -0.06em */
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.06em;
+  color: var(--color-text-primary);
+}
+.blog-post__author-role {
+  font-family: var(--font-body);
+  /* OPT-OUT: author role 14px Inter Regular */
+  font-size: 0.875rem;
+  line-height: 1.43;
+  color: var(--color-text-placeholder);
+}
+
+/* ───── Tablet ≤991 — narrow sidebar track, sticky still active ─────── */
+@media (max-width: 991px) {
+  .blog-post__card {
+    padding: 40px;
+    gap: 2.5rem; /* 40px */
+  }
+  .blog-post__body {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+  }
+  .blog-post__main {
+    gap: 2.5rem;
+  }
+  .blog-post__sidebar {
+    gap: 1.75rem;
+  }
+}
+
+/* ───── Landscape ≤767 — flatten grid+main with `display: contents`,
+            reorder: title → aside → image → body (Acelia recipe) ───────── */
+@media (max-width: 767px) {
+  .blog-post__card {
+    padding: 24px 20px 20px;
+    gap: 1.75rem;
+  }
+  .blog-post__body {
+    display: contents;
+  }
+  .blog-post__main {
+    display: contents;
+  }
+  .blog-post__heading {
+    order: 1;
+  }
+  .blog-post__sidebar {
+    order: 2;
+  }
+  .blog-post__media {
+    order: 3;
+  }
+  .blog-post__prose {
+    order: 4;
+    word-break: break-word;
+  }
+
+  .blog-post__media {
+    height: auto;
+    aspect-ratio: 776 / 400;
+  }
+  /* Aside becomes a horizontal strip (Category | Written by) that wraps
+       when the row overflows. No sticky once it sits above the body. */
+  .blog-post__sidebar {
+    position: static;
+    top: auto;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.25rem; /* 20px between rows when wrapping */
+  }
+  .blog-post__meta-group {
+    flex: 1;
+    min-width: 8rem;
+  }
+  /* Avatar hidden at landscape — only name + role show (Acelia recipe) */
+  .blog-post__author-avatar {
+    display: none;
+  }
+  .blog-post__author-name {
+    /* OPT-OUT: author name 18px Inter at landscape (Acelia recipe floor) */
+    font-size: 1.125rem;
+  }
+}
+
+/* ───── Portrait ≤479 ───── */
+@media (max-width: 479px) {
+  .blog-post__card {
+    padding: 24px 16px 16px;
+    gap: 1.5rem;
+  }
+  .blog-post__author {
+    gap: 0.5rem;
+  }
+}

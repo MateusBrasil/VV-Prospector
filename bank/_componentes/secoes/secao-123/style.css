@@ -1,0 +1,11 @@
+/* congra-speaker-hero — overrides locales solamente. Toda la estructura/estilo
+   vive en el cascade compartido /congra/styles.css (webflow.css aplanado:
+   speaker_layout en grid 2 columnas, social_list y el tema oscuro). El navbar
+   fijo necesita el padding superior propio de la sección (ya en el cascade). */
+
+/* ===== TEMLIS-INLINED-NAVBAR: congra-navbar styles ===== */
+/* congra-navbar — overrides locales solamente. Toda la estructura/estilo del
+   navbar vive en el cascade compartido /congra/styles.css (webflow.css +
+   components.css aplanados). El navbar es fixed top full-width sobre el bg
+   oscuro del template; acá solo damos altura de stage para que el drawer
+   móvil (≤991) tenga espacio al expandirse. */

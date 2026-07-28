@@ -1,0 +1,62 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-24",
+  "scope": "destaque-scroll-24",
+  "origem": "bank/_componentes/scroll/scroll-24/animated-continuous-sections-with-gsap-observer/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "splittext"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://codepen.io/BrianCross/pen/PoWapLP"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Original Inspiration"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Scroll down"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Animated with GSAP"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "GreenSock"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Animation platform"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Keep scrolling"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://codepen.io/BrianCross/pen/PoWapLP)",
+    "5 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://assets.codepen.io/16327/site-landscape-1.jpg https://assets.codepen.io/16327/site-landscape-2.jpg)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,36 @@
+{
+  "slot": "hero",
+  "nome": "hero-25",
+  "scope": "hero-hero-25",
+  "origem": "bank/_componentes/hero-section/hero-25",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "CLICK TO REVEAL"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "WEBGL LOADER"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"hero\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

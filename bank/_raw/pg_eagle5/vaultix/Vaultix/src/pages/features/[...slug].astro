@@ -1,0 +1,549 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HalftoneCanvas from "../../components/HalftoneCanvas.astro";
+import EagleMarker from "../../components/VaultixMarker.astro";
+import RecursosCoreChart from "../../components/FeaturesCoreChart.astro";
+import CtaSection from "../../components/CtaSection.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const features = await getCollection("features");
+  return features.map((feature) => ({
+    params: { slug: feature.id },
+    props: { feature },
+  }));
+}
+
+const { feature } = Astro.props;
+const { data } = feature;
+
+// Map each feature slug → the chart variant rendered on top of the
+// halftone bg in the hero. Mirrors the mapping used by /features Core
+// Recursos section so the same feature shows the same chart in both
+// places.
+const slugToChart: Record<string, "reporting" | "anomaly" | "trust" | "meter"> = {
+  "pipeline-monitoring": "reporting",
+  "anomaly-detection": "anomaly",
+  "security": "trust",
+  "vector-database": "meter",
+};
+const chartVariant = slugToChart[feature.id] ?? "reporting";
+---
+
+<BaseLayout title={`${data.title} — Eagle`} description={data.heroCopy}>
+  {/* ========================================================================
+       SECTION 01 — Hero (Figma 1:12675): visual left + title + bullets right
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("feature-hero-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] pb-[3rem]" data-feature-hero>
+    {/* navbar-flush hero (about pattern): section sin pt, container con
+        verticals + top + bottom horizontals que se extienden full-viewport.
+        Top horizontal coincide con el border-b del navbar. Markers sit on
+        the corners of the bordered block. */}
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      {/* Verticals — full height of the inner block. */}
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-feature-hero-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-feature-hero-line="right"
+        aria-hidden="true"></span>
+      {/* Top + bottom horizontals — extend to viewport edges (w-screen). */}
+      <span
+        class="pointer-events-none absolute left-1/2 top-0 z-10 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-feature-hero-line="top"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 z-10 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-feature-hero-line="bottom"
+        aria-hidden="true"></span>
+
+      {/* 4 T markers — top tip-down sit on the top horizontal (+0.5px),
+          bottom tip-up sit on the bottom horizontal (-0.5px). */}
+      <EagleMarker type="tip-down" data-feature-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-feature-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-up" data-feature-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-4 z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-feature-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] right-4 z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      <div class="grid grid-cols-1 gap-0 lg:min-h-[calc(100svh-var(--nav-height)-3rem)] lg:grid-cols-[1fr_22rem]">
+        {/* Visual left — animated halftone bg + the feature's chart on top.
+            Mirrors the Core Recursos card pattern from /features. Fills the
+            grid row height (no fixed h) so it scales with the available
+            viewport space. */}
+        <div
+          class="feature-hero-visual relative order-last h-[24rem] w-full self-stretch overflow-hidden border border-[var(--color-border)] bg-[#050505] lg:order-none lg:h-auto lg:min-h-[24rem]"
+          data-feature-hero-visual
+        >
+          {/* Periwinkle halftone bg — same color/cell as Core Recursos cards. */}
+          <HalftoneCanvas
+            cellSize={8}
+            color="#b5d2ff"
+            cursorReactive={false}
+          />
+
+          {/* Chart card centered on top — the variant matches the feature's
+              slug. RecursosCoreChart's `.fcc-wrap` is `position:absolute;
+              inset:0; display:grid; place-items:center` so it fills the
+              visual block and centers `.chart` inside. No extra wrapper —
+              that one had 0×0 dims and made the chart overflow into a
+              corner. */}
+          <RecursosCoreChart
+            variant={chartVariant}
+            class="feature-hero-chart"
+          />
+        </div>
+
+        {/* Title block right — slightly grayer bg differentiates from the
+            visual and from the page bg. `justify-between` pins the title
+            block (eyebrow + headline + bullets) to the top and the copy
+            paragraph to the bottom of the column, with empty breathing
+            space between. */}
+        <div
+          class="flex flex-col justify-between gap-[2rem] p-[1.5rem] font-mono uppercase md:p-[2rem]"
+          data-feature-hero-text
+        >
+          {/* Top group: eyebrow + headline + bullets */}
+          <div class="flex flex-col gap-[1.5rem]">
+            <span
+              class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+              data-feature-hero-eyebrow
+            >
+              {data.eyebrow}
+            </span>
+            <h1
+              class="text-[2.75rem] font-normal leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem]"
+              data-feature-hero-headline
+            >
+              {data.title}
+            </h1>
+            <ul class="flex flex-col gap-[1.25rem]">
+              {
+                data.bullets.map((b) => (
+                  <li class="flex items-center gap-[1rem]" data-feature-hero-bullet>
+                    <span class="size-[0.75rem] shrink-0 bg-[#fdff22]" aria-hidden="true" />
+                    <span class="flex-1 text-[0.875rem] leading-[1.2857] text-white/60">
+                      {b}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          {/* Bottom: CMS-driven hero copy paragraph (per-feature). */}
+          <p
+            class="text-[0.875rem] leading-[1.5] text-white/60"
+            data-feature-hero-copy
+          >
+            {data.heroCopy}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Halftone bg sits behind the chart card. The chart itself uses the
+       RecursosCoreChart's intrinsic sizing (fixed rem dimensions) so it
+       doesn't grow with the wrap. */
+    .feature-hero-visual canvas {
+      opacity: 0.6;
+    }
+    /* Mobile + tablet: same scale-down + center pattern as Core Recursos cards.
+       The chart's natural 26.8125rem footprint doesn't fit the column at
+       narrow widths, so it gets translated + scaled around its center while
+       the .fcc-wrap padding keeps a halftone-bg ring visible. */
+    @media (max-width: 1023px) {
+      .feature-hero-visual :global(.fcc-wrap) {
+        padding: 1.5rem;
+      }
+      .feature-hero-visual :global(.chart) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.78);
+        transform-origin: center center;
+      }
+    }
+    @media (max-width: 767px) {
+      .feature-hero-visual :global(.chart) {
+        transform: translate(-50%, -50%) scale(0.62);
+      }
+    }
+  </style>
+
+  <style>
+    .feature-hero-pre-anim [data-feature-hero-visual],
+    .feature-hero-pre-anim .feature-hero-chart,
+    .feature-hero-pre-anim [data-feature-hero-eyebrow],
+    .feature-hero-pre-anim [data-feature-hero-headline],
+    .feature-hero-pre-anim [data-feature-hero-bullet],
+    .feature-hero-pre-anim [data-feature-hero-copy] {
+      visibility: hidden;
+    }
+    .feature-hero-pre-anim [data-feature-hero-line],
+    .feature-hero-pre-anim [data-feature-hero-tmark] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../../lib/eases";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+
+    const init = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("feature-hero-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-feature-hero]");
+      if (!section) return;
+
+      const visual = section.querySelector<HTMLElement>("[data-feature-hero-visual]");
+      const chart = section.querySelector<HTMLElement>(".feature-hero-chart");
+      const eyebrow = section.querySelector<HTMLElement>("[data-feature-hero-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-feature-hero-headline]");
+      const copy = section.querySelector<HTMLElement>("[data-feature-hero-copy]");
+      const bullets = gsap.utils.toArray<HTMLElement>("[data-feature-hero-bullet]", section);
+      const lines = gsap.utils.toArray<HTMLElement>("[data-feature-hero-line]", section);
+      const tmarks = gsap.utils.toArray<SVGElement>("[data-feature-hero-tmark]", section);
+
+      const eyebrowSplit = eyebrow ? new SplitText(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitText(headline, { type: "lines", mask: "lines" }) : null;
+
+      // Pre-anim: scale-only on lines/markers, opacity-only on text/visual.
+      lines.forEach((l) => {
+        const o = l.dataset.featureHeroLine;
+        if (o === "top") gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        else if (o === "bottom") gsap.set(l, { scaleX: 0, transformOrigin: "right center" });
+        else gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+      });
+      gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+      // Visual block + chart: NO opacity tween here. Both appear via the
+      // pre-anim `visibility: hidden` → visible flip when classList drops,
+      // so the chart's own internal animations (counters, mask revelar,
+      // bars) play visibly. A parent opacity fade was clipping them — by
+      // the time the opacity reached 1, the internal anims had finished.
+      if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+      gsap.set(bullets, { opacity: 0 });
+      if (copy) gsap.set(copy, { opacity: 0 });
+
+      document.documentElement.classList.remove("feature-hero-pre-anim");
+
+      const tl = gsap.timeline();
+      // Frame: outer lines drawn-in, then markers pop.
+      tl.to(lines, { scaleX: 1, scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.05 }, 0);
+      tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.5);
+      // (Visual + chart appear via visibility flip; no opacity tween — see
+      // gsap.set above for why.) Text — SplitText revelar + opacity bullets.
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0.35);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.5);
+      tl.to(bullets, { opacity: 1, duration: 0.55, ease: "eagleReveal", stagger: 0.08 }, 0.75);
+      if (copy) tl.to(copy, { opacity: 1, duration: 0.55, ease: "eagleReveal" }, 0.95);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  </script>
+
+  {/* ========================================================================
+       SECTION 02 — Core Recursos (Figma 1:13089): bg gris + big text
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("feature-core-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[#141414] py-[5rem] md:py-[4.5rem]" data-feature-core>
+    <div class="mx-auto flex w-full max-w-[70.5rem] flex-col gap-[3rem] px-4 lg:gap-[6.25rem] lg:px-0">
+      <div class="flex max-w-[42rem] flex-col gap-[0.75rem] font-mono uppercase">
+        <span
+          class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+          data-feature-core-eyebrow
+        >
+          [ core features ]
+        </span>
+        <h2
+          class="text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+          data-feature-core-headline
+        >
+          {data.coreTitle}
+        </h2>
+      </div>
+      <p
+        class="font-mono text-[1rem] uppercase leading-[1.5] text-white/60 md:text-[1.125rem] md:leading-[1.6] lg:text-[1.5rem] lg:leading-[2rem]"
+        data-feature-core-body
+      >
+        {data.coreBody}
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .feature-core-pre-anim [data-feature-core-eyebrow],
+    .feature-core-pre-anim [data-feature-core-headline],
+    .feature-core-pre-anim [data-feature-core-body] {
+      visibility: hidden;
+    }
+  </style>
+
+  <script>
+    import { gsap as gsapCore } from "gsap";
+    import { ScrollTrigger as STCore } from "gsap/ScrollTrigger";
+    import { SplitText as SplitCore } from "gsap/SplitText";
+    import { registerEagleEases as regCore } from "../../lib/eases";
+
+    gsapCore.registerPlugin(STCore, SplitCore);
+    regCore();
+
+    const initCore = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("feature-core-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-feature-core]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-feature-core-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-feature-core-headline]");
+      const body = section.querySelector<HTMLElement>("[data-feature-core-body]");
+
+      const eyebrowSplit = eyebrow ? new SplitCore(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitCore(headline, { type: "lines", mask: "lines" }) : null;
+      const bodySplit = body ? new SplitCore(body, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsapCore.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsapCore.set(headlineSplit.lines, { yPercent: 110 });
+      if (bodySplit) gsapCore.set(bodySplit.lines, { yPercent: 110 });
+
+      document.documentElement.classList.remove("feature-core-pre-anim");
+
+      const tl = gsapCore.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.15);
+      if (bodySplit) tl.to(bodySplit.lines, { yPercent: 0, duration: 0.85, ease: "eagleReveal", stagger: 0.06 }, 0.4);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initCore);
+    else initCore();
+  </script>
+
+  {/* ========================================================================
+       SECTION 03 — Benefits (Figma 1:13095): 2-col title left + cards right
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("feature-benefits-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] py-[5rem]" data-feature-benefits>
+    <div class="mx-auto grid w-full max-w-[70.5rem] grid-cols-1 gap-[2.5rem] px-4 md:grid-cols-2 md:gap-[1.5rem] lg:px-0">
+      <div class="flex flex-col gap-[0.75rem] font-mono uppercase">
+        <span
+          class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+          data-feature-benefits-eyebrow
+        >
+          [ benefits ]
+        </span>
+        <h2
+          class="max-w-[28.6875rem] text-[2.5rem] leading-none tracking-[4.8px] text-white md:text-[3rem] md:tracking-[5.76px]"
+          data-feature-benefits-headline
+        >
+          {data.benefitsTitle}
+        </h2>
+      </div>
+      <div class="flex flex-col gap-[1.5rem]">
+        {
+          data.benefits.map((b) => (
+            <div
+              class="benefit-card relative bg-[#050505] p-[1.5rem]"
+              data-feature-benefit-card
+            >
+              {/* 4 border lines drawn-in by GSAP via scaleX/scaleY (replaces
+                  CSS `border`). Mirrors the pricing tier card pattern. */}
+              <span class="benefit-line benefit-line--top" data-feature-benefit-line="top" aria-hidden="true" />
+              <span class="benefit-line benefit-line--right" data-feature-benefit-line="right" aria-hidden="true" />
+              <span class="benefit-line benefit-line--bottom" data-feature-benefit-line="bottom" aria-hidden="true" />
+              <span class="benefit-line benefit-line--left" data-feature-benefit-line="left" aria-hidden="true" />
+
+              {/* 4 corner-bracket markers (Figma Union nodes). */}
+              <EagleMarker type="corner-tl" data-feature-benefit-tmark class="absolute -top-2 -left-2 z-10" />
+              <EagleMarker type="corner-tr" data-feature-benefit-tmark class="absolute -top-2 -right-2 z-10" />
+              <EagleMarker type="corner-bl" data-feature-benefit-tmark class="absolute -bottom-2 -left-2 z-10" />
+              <EagleMarker type="corner-br" data-feature-benefit-tmark class="absolute -bottom-2 -right-2 z-10" />
+              <div class="flex flex-col gap-[1.5rem] font-mono uppercase" data-feature-benefit-content>
+                <h3 class="text-[1.125rem] font-normal leading-[1.5556] tracking-[2.16px] text-white">
+                  {b.title}
+                </h3>
+                <p class="text-[0.875rem] leading-[1.2857] text-white/60">
+                  {b.body}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Benefit card border lines — 4 hairline spans replace CSS `border` so
+       each side draws-in independently via scaleX/scaleY (mirrors the
+       pricing tier card pattern). */
+    .benefit-line {
+      position: absolute;
+      background: var(--color-border);
+      pointer-events: none;
+      z-index: 5;
+    }
+    .benefit-line--top,
+    .benefit-line--bottom {
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+    .benefit-line--top {
+      top: 0;
+      transform-origin: left center;
+    }
+    .benefit-line--bottom {
+      bottom: 0;
+      transform-origin: right center;
+    }
+    .benefit-line--left,
+    .benefit-line--right {
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+    .benefit-line--right {
+      right: 0;
+      transform-origin: center top;
+    }
+    .benefit-line--left {
+      left: 0;
+      transform-origin: center bottom;
+    }
+
+    .feature-benefits-pre-anim [data-feature-benefits-eyebrow],
+    .feature-benefits-pre-anim [data-feature-benefits-headline],
+    .feature-benefits-pre-anim [data-feature-benefit-content] {
+      visibility: hidden;
+    }
+    .feature-benefits-pre-anim [data-feature-benefit-line],
+    .feature-benefits-pre-anim [data-feature-benefit-tmark] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap as gsapBen } from "gsap";
+    import { ScrollTrigger as STBen } from "gsap/ScrollTrigger";
+    import { SplitText as SplitBen } from "gsap/SplitText";
+    import { registerEagleEases as regBen } from "../../lib/eases";
+
+    gsapBen.registerPlugin(STBen, SplitBen);
+    regBen();
+
+    const initBen = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("feature-benefits-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-feature-benefits]");
+      if (!section) return;
+      const eyebrow = section.querySelector<HTMLElement>("[data-feature-benefits-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-feature-benefits-headline]");
+      const cards = gsapBen.utils.toArray<HTMLElement>("[data-feature-benefit-card]", section);
+      const eyebrowSplit = eyebrow ? new SplitBen(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitBen(headline, { type: "lines", mask: "lines" }) : null;
+
+      // Per-card parts: 4 line spans + 4 corner markers + content wrapper.
+      type CardParts = {
+        lines: HTMLElement[];
+        markers: SVGElement[];
+        content: HTMLElement | null;
+      };
+      const cardParts: CardParts[] = cards.map((card) => ({
+        lines: gsapBen.utils.toArray<HTMLElement>("[data-feature-benefit-line]", card),
+        markers: gsapBen.utils.toArray<SVGElement>("[data-feature-benefit-tmark]", card),
+        content: card.querySelector<HTMLElement>("[data-feature-benefit-content]"),
+      }));
+
+      if (eyebrowSplit) gsapBen.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsapBen.set(headlineSplit.lines, { yPercent: 110 });
+      cardParts.forEach(({ lines, markers, content }) => {
+        lines.forEach((line) => {
+          const side = line.dataset.featureBenefitLine;
+          const isHorizontal = side === "top" || side === "bottom";
+          gsapBen.set(line, isHorizontal ? { scaleX: 0 } : { scaleY: 0 });
+        });
+        gsapBen.set(markers, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+        if (content) gsapBen.set(content, { opacity: 0 });
+      });
+
+      document.documentElement.classList.remove("feature-benefits-pre-anim");
+
+      const tl = gsapBen.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.15);
+
+      // Per-card: lines draw, markers pop, content fades. Stagger 130ms per card.
+      cardParts.forEach(({ lines, markers, content }, idx) => {
+        const cardStart = 0.4 + idx * 0.13;
+        lines.forEach((line, lineIdx) => {
+          const side = line.dataset.featureBenefitLine;
+          const isHorizontal = side === "top" || side === "bottom";
+          tl.to(line, {
+            [isHorizontal ? "scaleX" : "scaleY"]: 1,
+            duration: 0.55,
+            ease: "eagleStructure",
+          }, cardStart + lineIdx * 0.06);
+        });
+        tl.to(markers, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "eagleDecor",
+          stagger: 0.05,
+        }, cardStart + 0.3);
+        if (content) {
+          tl.to(content, {
+            opacity: 1,
+            duration: 0.5,
+            ease: "eagleReveal",
+          }, cardStart + 0.4);
+        }
+      });
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initBen);
+    else initBen();
+  </script>
+
+  {/* ========================================================================
+       SECTION 04 — CTA (shared component)
+     ======================================================================== */}
+  <CtaSection />
+</BaseLayout>

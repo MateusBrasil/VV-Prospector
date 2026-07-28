@@ -1,0 +1,102 @@
+{
+  "slot": "cursor",
+  "nome": "efeitos-mouse-12",
+  "scope": "cursor-efeitos-mouse-12",
+  "origem": "bank/_componentes/cursor/efeitos-mouse-12/The-Spirit-master/app",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "flip",
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.youtube.com/watch?v=lcHAtTGzQE8"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://github.com/edankwan/The-Spirit"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "http://www.edankwan.com/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "http://www.edankwan.com/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://github.com/edankwan/The-Spirit"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://www.youtube.com/watch?v=lcHAtTGzQE8"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "here"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "video capture"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Github"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Sorry for any inconvenience caused."
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Cheers,"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Edan Kwan"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Edan Kwan"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Github"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Youtube"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "9 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.youtube.com/watch?v=lcHAtTGzQE8 https://github.com/edankwan/The-Spirit)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

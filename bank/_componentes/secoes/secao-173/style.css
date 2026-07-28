@@ -1,0 +1,6 @@
+/* Aeline — Team Member Hero — local preview overrides only. All section structure/styling lives
+   in the shared /aeline/styles.css cascade; animations run from /aeline/scripts/. */
+body { margin: 0; }
+/* Edgar: ventana completa con calc (navbar in-flow ~66px + margin-top 12px). SIN centrar — el
+   contenido va pegado al nav como el contact-hero; el thumbnail no cambia (encuadra el contenido). */
+.sec_hero-team { min-height: calc(100svh - 78px); }

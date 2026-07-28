@@ -1,0 +1,268 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-57",
+  "scope": "destaque-scroll-57",
+  "origem": "bank/_componentes/scroll/scroll-57",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/19.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/02.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/17.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/07.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/11.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/03.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/18.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/01.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/20.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/09.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/16.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/05.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/12.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/08.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/15.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/06.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/13.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/10.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/04.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "assets/landscape/14.webp"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.instagram.com/p/DT-snsfDakn/?img_index=1"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=116660"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/RotatingOnScrollAnimations"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/tag/scroll/"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/tag/gsap/"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Jason Booth"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "#scroll"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "#gsap"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Variation 1"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Variation 2"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Variation 3"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Variation 4"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Variation 5"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Haruto Saito"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Yuna Mori"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Itsuki Hayashi"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Akari Shimizu"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Sota Okada"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Misaki Takeda"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Riku Arai"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Nanami Hoshino"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Daichi Sugimoto"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Koharu Nishimura"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 20
+  },
+  "_rever": [
+    "12 cor(es) mapeadas para tokens por luminância (acento da origem #5f4f0f → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.instagram.com/p/DT-snsfDakn/?img_index=1 https://tympanus.net/codrops/?p=116660)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

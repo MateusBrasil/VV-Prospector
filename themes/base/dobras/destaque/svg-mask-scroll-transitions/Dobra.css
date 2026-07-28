@@ -1,0 +1,106 @@
+[data-dobra="destaque-svg-mask-scroll-transitions"] 1&family=Shippori+Mincho&display=swap');
+    
+    
+    html,[data-dobra="destaque-svg-mask-scroll-transitions"],[data-dobra="destaque-svg-mask-scroll-transitions"] div,[data-dobra="destaque-svg-mask-scroll-transitions"] span,[data-dobra="destaque-svg-mask-scroll-transitions"] applet,[data-dobra="destaque-svg-mask-scroll-transitions"] object,[data-dobra="destaque-svg-mask-scroll-transitions"] iframe,[data-dobra="destaque-svg-mask-scroll-transitions"] h1,[data-dobra="destaque-svg-mask-scroll-transitions"] h2,[data-dobra="destaque-svg-mask-scroll-transitions"] h3,[data-dobra="destaque-svg-mask-scroll-transitions"] h4,[data-dobra="destaque-svg-mask-scroll-transitions"] h5,[data-dobra="destaque-svg-mask-scroll-transitions"] h6,[data-dobra="destaque-svg-mask-scroll-transitions"] p,[data-dobra="destaque-svg-mask-scroll-transitions"] blockquote,[data-dobra="destaque-svg-mask-scroll-transitions"] pre,[data-dobra="destaque-svg-mask-scroll-transitions"] a,[data-dobra="destaque-svg-mask-scroll-transitions"] abbr,[data-dobra="destaque-svg-mask-scroll-transitions"] acronym,[data-dobra="destaque-svg-mask-scroll-transitions"] address,[data-dobra="destaque-svg-mask-scroll-transitions"] big,[data-dobra="destaque-svg-mask-scroll-transitions"] cite,[data-dobra="destaque-svg-mask-scroll-transitions"] code,[data-dobra="destaque-svg-mask-scroll-transitions"] del,[data-dobra="destaque-svg-mask-scroll-transitions"] dfn,[data-dobra="destaque-svg-mask-scroll-transitions"] img,[data-dobra="destaque-svg-mask-scroll-transitions"] ins,[data-dobra="destaque-svg-mask-scroll-transitions"] kbd,[data-dobra="destaque-svg-mask-scroll-transitions"] q,[data-dobra="destaque-svg-mask-scroll-transitions"] s,[data-dobra="destaque-svg-mask-scroll-transitions"] samp,[data-dobra="destaque-svg-mask-scroll-transitions"] small,[data-dobra="destaque-svg-mask-scroll-transitions"] strike,[data-dobra="destaque-svg-mask-scroll-transitions"] sub,[data-dobra="destaque-svg-mask-scroll-transitions"] sup,[data-dobra="destaque-svg-mask-scroll-transitions"] tt,[data-dobra="destaque-svg-mask-scroll-transitions"] var,[data-dobra="destaque-svg-mask-scroll-transitions"] b,[data-dobra="destaque-svg-mask-scroll-transitions"] u,[data-dobra="destaque-svg-mask-scroll-transitions"] i,[data-dobra="destaque-svg-mask-scroll-transitions"] center,[data-dobra="destaque-svg-mask-scroll-transitions"] dl,[data-dobra="destaque-svg-mask-scroll-transitions"] dt,[data-dobra="destaque-svg-mask-scroll-transitions"] dd,[data-dobra="destaque-svg-mask-scroll-transitions"] ol,[data-dobra="destaque-svg-mask-scroll-transitions"] ul,[data-dobra="destaque-svg-mask-scroll-transitions"] li,[data-dobra="destaque-svg-mask-scroll-transitions"] fieldset,[data-dobra="destaque-svg-mask-scroll-transitions"] form,[data-dobra="destaque-svg-mask-scroll-transitions"] label,[data-dobra="destaque-svg-mask-scroll-transitions"] legend,[data-dobra="destaque-svg-mask-scroll-transitions"] table,[data-dobra="destaque-svg-mask-scroll-transitions"] caption,[data-dobra="destaque-svg-mask-scroll-transitions"] tbody,[data-dobra="destaque-svg-mask-scroll-transitions"] tfoot,[data-dobra="destaque-svg-mask-scroll-transitions"] thead,[data-dobra="destaque-svg-mask-scroll-transitions"] tr,[data-dobra="destaque-svg-mask-scroll-transitions"] th,[data-dobra="destaque-svg-mask-scroll-transitions"] td,[data-dobra="destaque-svg-mask-scroll-transitions"] article,[data-dobra="destaque-svg-mask-scroll-transitions"] aside,[data-dobra="destaque-svg-mask-scroll-transitions"] canvas,[data-dobra="destaque-svg-mask-scroll-transitions"] details,[data-dobra="destaque-svg-mask-scroll-transitions"] embed,[data-dobra="destaque-svg-mask-scroll-transitions"] figure,[data-dobra="destaque-svg-mask-scroll-transitions"] figcaption,[data-dobra="destaque-svg-mask-scroll-transitions"] footer,[data-dobra="destaque-svg-mask-scroll-transitions"] header,[data-dobra="destaque-svg-mask-scroll-transitions"] hgroup,[data-dobra="destaque-svg-mask-scroll-transitions"] menu,[data-dobra="destaque-svg-mask-scroll-transitions"] nav,[data-dobra="destaque-svg-mask-scroll-transitions"] output,[data-dobra="destaque-svg-mask-scroll-transitions"] ruby,[data-dobra="destaque-svg-mask-scroll-transitions"] section,[data-dobra="destaque-svg-mask-scroll-transitions"] summary,[data-dobra="destaque-svg-mask-scroll-transitions"] time,[data-dobra="destaque-svg-mask-scroll-transitions"] mark,[data-dobra="destaque-svg-mask-scroll-transitions"] audio,[data-dobra="destaque-svg-mask-scroll-transitions"] video{
+      margin: 0; padding: 0; border: 0; font: inherit; vertical-align: baseline;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] article,[data-dobra="destaque-svg-mask-scroll-transitions"] aside,[data-dobra="destaque-svg-mask-scroll-transitions"] details,[data-dobra="destaque-svg-mask-scroll-transitions"] figcaption,[data-dobra="destaque-svg-mask-scroll-transitions"] figure,[data-dobra="destaque-svg-mask-scroll-transitions"] footer,[data-dobra="destaque-svg-mask-scroll-transitions"] header,[data-dobra="destaque-svg-mask-scroll-transitions"] hgroup,[data-dobra="destaque-svg-mask-scroll-transitions"] menu,[data-dobra="destaque-svg-mask-scroll-transitions"] nav,[data-dobra="destaque-svg-mask-scroll-transitions"] section{ display: block; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] *{ box-sizing: border-box; }
+[data-dobra="destaque-svg-mask-scroll-transitions"]{
+      font-size: 11px;
+      color: var(--base-100);
+      --color-link: var(--base-100);
+      --color-link-hover: var(--base-100);
+      --page-padding: 3vw;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"]{
+      margin: 0;
+      padding: 0;
+      font-family: var(--fonte-corpo);
+      background-color: var(--base-600);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .spacer{
+      height: 100vh;
+      font-size: 1.25rem;
+      display: grid;
+      text-align: center;
+      place-items: center;
+      align-content: space-between;
+      padding: 40vh 0 0;
+      font-family: var(--fonte-corpo);
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .spacer h1{
+      font-size: 3rem;
+      letter-spacing: -0.025em;
+      line-height: 0.85;
+      font-weight: 300;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .spacer h1 span{
+      opacity: 0.6;
+      line-height: 1.2;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .info{
+      max-width: 20ch;
+      opacity: 0.6;
+      margin-bottom: 4rem;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .info::after{
+      content: '';
+      width: 1px;
+      height: 2rem;
+      background: var(--base-100);
+      position: absolute;
+      top: 100%;
+      left: 50%;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .stage{ height: 500vh; position: relative; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .layers{ position: sticky; top: 0; width: 100vw; height: 100vh; overflow: hidden; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .layer{ position: absolute; inset: 0; width: 100%; height: 100%; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .layer image{ width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .texts{ padding: 3vw; pointer-events: none; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .txt{
+      position: absolute; width: 100%; color: var(--base-100); text-transform: uppercase;
+      clip-path: inset(100% 0 0 0); transform: translateY(40px);
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .txt h1{ margin-top: 10vh; font-size: clamp(4.8rem, 6.8vw, 13.6rem); letter-spacing: -0.025em; line-height: 0.85; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .txt h2{ margin-top: 6vw; font-size: clamp(1.4rem, 1.067vw, 1.8rem); letter-spacing: 0.24em; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .txt span{ display: block; font-size: clamp(1.1rem, 0.8vw, 1.2rem); width: 20%; margin-top: 30px; line-height: 1.8; letter-spacing: normal; text-transform: none; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .progress-bar{ position: absolute; bottom: 0; width: 100%; padding: 4rem; display: flex; gap: 1rem; z-index: 20; pointer-events: none; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .segment{ flex: 1; height: 2px; background: rgba(255, 255, 255, 0.2); overflow: hidden; position: relative; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .fill{ position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: var(--base-100); }
+@media screen and (max-width: 1024px){[data-dobra="destaque-svg-mask-scroll-transitions"] .txt span{ width: 35%; }
+ }
+@media screen and (max-width: 599px){[data-dobra="destaque-svg-mask-scroll-transitions"] .txt span{ width: 50%; }
+ }
+[data-dobra="destaque-svg-mask-scroll-transitions"] a{
+      text-decoration: none; color: var(--color-link); outline: none; cursor: pointer; transition: color 0.2s;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] a:hover,[data-dobra="destaque-svg-mask-scroll-transitions"] a.current{ text-decoration: underline; color: var(--color-link-hover); }
+[data-dobra="destaque-svg-mask-scroll-transitions"] a:focus{ outline: none; background: lightgrey; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] a:focus:not(:focus-visible){ background: transparent; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] a:focus-visible{ outline: 2px solid red; background: transparent; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .demo-btn{
+      background: none; border: none; padding: 0; font: inherit; color: var(--color-link); cursor: pointer; text-decoration: none; transition: color 0.2s;
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .demo-btn:hover,[data-dobra="destaque-svg-mask-scroll-transitions"] .demo-btn.current{ text-decoration: underline; color: var(--color-link-hover); }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .frame{
+      height: auto; position: fixed; top: 0; left: 0; width: 100%;
+      font-family: var(--fonte-corpo);
+      font-size: 1.25rem; padding: var(--page-padding); display: flex; z-index: 1000;
+      pointer-events: none; justify-content: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .frame button{ pointer-events: auto; }
+[data-dobra="destaque-svg-mask-scroll-transitions"] .frame__demos{ display: flex; flex-wrap: wrap; gap: 2rem; pointer-events: auto; }
+@media screen and (min-width: 53em){[data-dobra="destaque-svg-mask-scroll-transitions"] .frame{
+        height: auto; align-items: center; justify-content: flex-end;
+        background: transparent;
+      }
+
+    }
+
+  

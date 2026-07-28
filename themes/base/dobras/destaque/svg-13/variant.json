@@ -1,0 +1,128 @@
+{
+  "slot": "destaque",
+  "nome": "svg-13",
+  "scope": "destaque-svg-13",
+  "origem": "bank/_componentes/animacoes-svg/svg-13",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/MenuHoverEffects/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=31976"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/MorphingPageTransition/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://goo.gl/rdSoMC"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Morphing Page Transition"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Demo 1"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Demo 2"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Demo 3"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Demo 4"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Edgar Jacquet"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Fashion Designer"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "enter"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Sponsored by"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Build a website."
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Create it. Change it."
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "The website creator you'll love to use."
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Spring/Summer 2018"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Autumn/Winter 2018"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "pater/PageCloud_logo.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "pater/phone.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "25 cor(es) mapeadas para tokens por luminância (acento da origem #002068 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/Development/MenuHoverEffects/ https://tympanus.net/codrops/?p=31976)",
+    "4 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.aboutCompany {
+  width: 100%;
+  background-color: var(--color-bg-cream);
+}
+
+.aboutCompany__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3.25em;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.aboutCompany__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  flex-shrink: 0;
+}
+
+.aboutCompany__labelDot {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.aboutCompany__labelText {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.aboutCompany__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;          /* 80px between blocks (statement → stats → logos) */
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 61em;   /* 976px */
+}
+
+.aboutCompany__statement {
+  font-family: var(--font-heading);
+  font-size: 2.25em;       /* 36px */
+  font-weight: 400;
+  line-height: 1.222;      /* 44/36 */
+  letter-spacing: -2.16px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Stats — 4 equal columns separated by left borders */
+.aboutCompany__stats {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.aboutCompany__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625em;            /* 10px */
+  flex: 1 1 0;
+  padding: 0 1.25em;
+  border-left: 1px solid var(--color-divider);
+}
+
+.aboutCompany__statValue {
+  font-family: var(--font-heading);
+  font-size: 2.25em;
+  font-weight: 400;
+  line-height: 1.222;
+  letter-spacing: -2.16px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.aboutCompany__statDesc {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+  margin: 0;
+}
+
+/* Client logos — infinite right-to-left marquee.
+   The viewport clips the overflowing track and a soft horizontal mask
+   fades both edges so logos enter / exit gracefully without hard cuts. */
+.aboutCompany__logosViewport {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 4em,
+    #000 calc(100% - 4em),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 4em,
+    #000 calc(100% - 4em),
+    transparent 100%
+  );
+}
+
+.aboutCompany__logosTrack {
+  display: flex;
+  align-items: center;
+  gap: 6em;             /* 96px — uniform breathing room between every logo */
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+}
+
+.aboutCompany__logosTrack li {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutCompany__logo {
+  height: 2em;             /* 32px */
+  width: auto;
+  display: block;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+/* Mirrors the home `About.astro` responsive structure for the shared
+   elements (label, statement, stats grid). Only the colour palette
+   differs between sections — the layout language is identical so the
+   rhythm reads as a single design idiom across pages. The logos
+   marquee is the one piece that lives only here and gets its own
+   overrides so it spans the full content column. */
+
+@media (max-width: 991px) {
+  .aboutCompany__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2em;
+    padding: 3em var(--container-padding);
+    text-align: center;
+  }
+
+  .aboutCompany__content {
+    align-items: center;
+    width: 100%;
+    gap: 2.5em;
+  }
+
+  .aboutCompany__statement {
+    font-size: 2em;
+  }
+
+  /* Stats — 2×2 grid, capped at 50em and centred so the columns stay
+     readable on tablet without spreading edge-to-edge of the content
+     column. `text-align: left` on each stat keeps value + description
+     left-aligned inside the centred grid (mirrors home About). */
+  .aboutCompany__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em 0;
+    width: 100%;
+    max-width: 50em;
+    margin-inline: auto;
+  }
+
+  .aboutCompany__stat {
+    flex: initial;
+    text-align: left;
+  }
+
+  /* Logos marquee — unique to this section. Spans the full content
+     column (NO max-width cap like the stats) so the loop reads as a
+     continuous trusted-by strip across the page width. From tablet
+     onward each logo shrinks slightly (×0.95) and the gap widens so the
+     row reads as a calmer, more breathable strip on the smaller column. */
+  .aboutCompany__logosViewport {
+    width: 100%;
+  }
+
+  /* Tablet — logos shrink with a moderate scale and the gap widens so
+     the row reads calmer in the narrower content column. */
+  .aboutCompany__logosTrack {
+    gap: 7em;
+  }
+
+  .aboutCompany__logo {
+    height: 1.75em;       /* 32 × 0.875 → 28px */
+  }
+}
+
+@media (max-width: 767px) {
+  .aboutCompany__statement {
+    font-size: 1.75em;
+  }
+
+  .aboutCompany__stat {
+    min-width: 12em;
+    padding: 0 1em;
+  }
+
+  /* Landscape — logos shrink further; gap stays generous. */
+  .aboutCompany__logosTrack {
+    gap: 7em;
+  }
+
+  .aboutCompany__logo {
+    height: 1.5em;        /* 32 × 0.75 → 24px */
+  }
+}
+
+@media (max-width: 479px) {
+  /* Stay 2×2 even at the smallest viewport — dropping to 1 column makes
+     the section feel unevenly long compared to the preceding content.
+     Override the ≤767px `min-width: 12em` so the grid track shrinks
+     with the viewport (otherwise two 12em columns push past 390px and
+     create a horizontal scroll). */
+  .aboutCompany__statement {
+    font-size: 1.5em;
+  }
+
+  .aboutCompany__stat {
+    padding: 0.5em 1em;
+    min-width: 0;
+  }
+
+  /* Portrait — smallest logos. Gap pulled in so at least 3 logos fit
+     inside the viewport at once; without that the marquee reads as
+     one-logo-at-a-time and loses its trusted-by-many feel. */
+  .aboutCompany__logosTrack {
+    gap: 3em;
+  }
+
+  .aboutCompany__logo {
+    height: 1.25em;       /* 32 × 0.625 → 20px */
+  }
+}

@@ -1,0 +1,79 @@
+[data-dobra="botao-hyperion-button"] *,[data-dobra="botao-hyperion-button"] *::after,[data-dobra="botao-hyperion-button"] *::before{
+            box-sizing: border-box;
+        }
+[data-dobra="botao-hyperion-button"]{
+            margin: 0;
+            display: flex;
+            background-color: var(--base-100);
+            font-family: var(--fonte-mono);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+[data-dobra="botao-hyperion-button"] .button{
+            pointer-events: auto;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 1.5rem 3rem;
+            margin: 0;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+            outline: none;
+        }
+[data-dobra="botao-hyperion-button"] .button::before,[data-dobra="botao-hyperion-button"] .button::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion{
+            font-weight: 500;
+            padding: 1rem 1.75rem;
+            border: 1px solid var(--acento);
+            overflow: hidden;
+            color: var(--base-100); 
+            transition: color 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion:hover{
+            color: var(--acento);
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion span{
+            display: block;
+            position: relative;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion > span{
+            overflow: hidden;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion > span > span{
+            overflow: hidden;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion:hover > span > span{
+            animation: MoveUpInitial 0.2s forwards, MoveUpEnd 0.2s forwards 0.2s;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion::before{
+            content: '';
+            background: var(--acento);
+            transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+            transform-origin: 100% 50%;
+        }
+[data-dobra="botao-hyperion-button"] .button--hyperion:hover::before{
+            transform: scale3d(0, 1, 1);
+            transform-origin: 0% 50%;
+        }
+@keyframes MoveUpInitial{
+            to {
+                transform: translate3d(0, -105%, 0);
+            }
+        }
+@keyframes MoveUpEnd{
+            from {
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+    

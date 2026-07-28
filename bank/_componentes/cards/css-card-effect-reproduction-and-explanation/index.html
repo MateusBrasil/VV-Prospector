@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Cartão X</title>
+    <style>
+        /* Estilos adicionais para centralizar e embelezar o corpo da página */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Fundo branco */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row; /* Alinha os cards horizontalmente no desktop */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- CÓDIGO FORNECIDO PELO USUÁRIO (com pequenos ajustes necessários) --- */
+        
+        .card-efeitoxpai {
+            padding: 0px;
+            display: flex; /* Flex para permitir a sobreposição dos itens lado a lado */
+        }
+        
+        .x {
+            margin-right: 0px !important;
+        }
+        
+        .card-efeitox {
+            position: relative; /* ADICIONADO: Essencial para ::before e ::after funcionarem dentro do card */
+            margin-right: -200px;
+            width: 400px !important;
+            min-height: 450px;
+            border-radius: 40px;
+            overflow: hidden;
+            padding: 150px 30px;
+            background: #FC016E;
+            box-shadow: -20px 20px 35px 20px rgba(0,0,0,0.15); /* Sombra mais suave para fundo branco */
+            transition: 0.5s !important;
+            cursor: pointer;
+            z-index: 1; /* Para gerenciar quem fica por cima */
+            text-align: center;
+            box-sizing: border-box; /* Para que o padding não quebre a largura */
+        }
+        
+        /* Ajuste do z-index ao passar o mouse para o card saltar à frente */
+        .card-efeitox:hover {
+            margin-right: -50px;
+            transform: rotate(-5deg) translatey(-50px);
+            z-index: 10; 
+        }
+        
+        .card-efeitox::after {
+            content: "";
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            opacity: 0.3;
+            width: 400px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            background: #ffffff; /* Brilho branco para combinar com o rosa */
+            border-radius: 100%;
+            filter: blur(80px);
+            transition: 1s;
+            pointer-events: none; /* Para não atrapalhar o hover */
+        }
+        
+        .card-efeitox:hover:after {
+            opacity: 1;
+        }
+        
+        .card-efeitox::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 2px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom, #ffffff, #ffb3d1); /* Borda adaptada ao tema */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none; /* Para não atrapalhar o hover */
+        }
+        
+        @media(max-width: 767px) {
+            .card-efeitoxpai {
+                flex-direction: column; /* Muda para coluna no mobile */
+                padding-top: 100px;
+                padding-bottom: 300px;
+            }
+            .card-efeitox {
+                width: 300px !important;
+                min-height: 400px;
+                padding: 100px 30px;
+                margin-right: 0px;
+                margin-bottom: -300px; /* Sobreposição vertical */
+            }
+            .card-efeitox:hover {
+                margin-right: 0px;
+                transform: rotate(0deg) translatey(-250px);
+            }
+        }
+
+        /* --- Estilos para o conteúdo interno (textos fictícios) --- */
+        .card-content h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .card-content p {
+            color: #a0a0b5;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Pai dos cartões -->
+        <div class="card-efeitoxpai">
+            
+            <!-- Cartão 1 -->
+            <div class="card-efeitox">
+                <div class="card-content">
+                    <h2>Basic Plan</h2>
+                    <p>Essential features to start your project on the right foot.</p>
+                </div>
+            </div>
+
+            <!-- Cartão 2 -->
+            <div class="card-efeitox">
+                <div class="card-content">
+                    <h2>Pro Plan</h2>
+                    <p>Advanced tools for those who want to scale their results.</p>
+                </div>
+            </div>
+
+            <!-- Cartão 3 (Com a classe .x para remover a margem direita negativa) -->
+            <div class="card-efeitox x">
+                <div class="card-content">
+                    <h2>Ultra Plan</h2>
+                    <p>Maximum performance and 24/7 dedicated support for your business.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

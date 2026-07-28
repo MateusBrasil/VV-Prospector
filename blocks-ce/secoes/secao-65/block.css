@@ -1,0 +1,1604 @@
+[data-blk="secoes-secao-65"] /* Upmind bundled styles — cascade order; /images/ -> /upmind/images/ */
+
+/* ===== normalize.css ===== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,[data-blk="secoes-secao-65"] *    without disabling user zoom.
+ */
+html{
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}[data-blk="secoes-secao-65"] /**
+ * Remove default margin.
+ */
+body{
+  margin: 0;
+}[data-blk="secoes-secao-65"] /* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+section{
+  display: block;
+}[data-blk="secoes-secao-65"] /**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome,[data-blk="secoes-secao-65"] Firefox,[data-blk="secoes-secao-65"] and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11,[data-blk="secoes-secao-65"] Safari,[data-blk="secoes-secao-65"] and Firefox < 22.
+ */
+[hidden],[data-blk="secoes-secao-65"] template{
+  display: none;
+}[data-blk="secoes-secao-65"] /* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a{
+  background-color: transparent;
+}[data-blk="secoes-secao-65"] /**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,[data-blk="secoes-secao-65"] a:hover{
+  outline: 0;
+}[data-blk="secoes-secao-65"] /* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11,[data-blk="secoes-secao-65"] Safari,[data-blk="secoes-secao-65"] and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+,[data-blk="secoes-secao-65"] Safari,[data-blk="secoes-secao-65"] and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+,[data-blk="secoes-secao-65"] Safari,[data-blk="secoes-secao-65"] and Chrome.
+ */
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default,[data-blk="secoes-secao-65"] Chrome and Safari on OS X allow very limited
+ * styling of `select`,[data-blk="secoes-secao-65"] unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+,[data-blk="secoes-secao-65"] Safari,[data-blk="secoes-secao-65"] and Chrome.
+ */
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox,[data-blk="secoes-secao-65"] IE 8/9/10/11,[data-blk="secoes-secao-65"] and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing,[data-blk="secoes-secao-65"] padding,[data-blk="secoes-secao-65"] or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`,[data-blk="secoes-secao-65"] it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border,[data-blk="secoes-secao-65"] margin,[data-blk="secoes-secao-65"] and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+
+
+/* ===== tokens.css ===== */
+:root{
+  --new-base_typography---xs--font-size: var(--new-base_sizes---fixed--0-75rem);
+  --new-base_typography---font-weight--semibold: 600;
+  --new-base---base--black: #1d1d1d;
+  --base--soft-green: #f7f9f2;
+  --_typography---font-family--body: Geist, sans-serif;
+  --text-color--text-primary: var(--base--dark-green);
+  --_sizes---fixed--medium: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--none: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--headers);
+  --_typography---h1--font-size: 4.5rem;
+  --_typography---h1--line-height: 1.03;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.135rem;
+  --_typography---h2--font-family: var(--_typography---font-family--headers);
+  --_typography---h2--font-size: 4rem;
+  --_typography---h2--line-height: 1.125;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.24rem;
+  --_typography---h3--font-family: var(--_typography---font-family--headers);
+  --_typography---h3--font-size: 3rem;
+  --_typography---h3--line-height: 1.23;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.13rem;
+  --_typography---h4--font-family: var(--_typography---font-family--headers);
+  --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+  --_typography---h4--line-height: 1.08;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: -.12rem;
+  --_typography---h5--font-family: var(--_typography---font-family--headers);
+  --_typography---h5--font-size: var(--_sizes---fixed--huge);
+  --_typography---h5--line-height: 1.38;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: -.12rem;
+  --_typography---h6--font-family: var(--_typography---font-family--headers);
+  --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---h6--line-height: 1.33;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: -.045rem;
+  --_sizes---fixed--xlarge: 1.5rem;
+  --_sizes---fixed--xxsmall: .25rem;
+  --_sizes---fixed--large: 1.25rem;
+  --bg-color--bg-subtle: var(--base--soft-grey);
+  --_sizes---fixed--huge: 2rem;
+  --_typography---font-weight--semibold: 600;
+  --bg-color--bg-primary: var(--base--dark-green);
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---padding-section--small: 3.25rem;
+  --_typography---font-weight--medium: 500;
+  --border-color--border-primary: #efeff2;
+  --_typography---xl--font-size: var(--_sizes---fixed--large);
+  --_typography---xl--line-height: 1.5;
+  --_typography---xl--letter-spacing: 0em;
+  --_typography---font-weight--light: 300;
+  --_typography---base--font-size: var(--_sizes---fixed--medium);
+  --_typography---base--line-height: 1.5;
+  --_typography---base--letter-spacing: -.03rem;
+  --_sizes---fixed--xsmall: .5rem;
+  --_typography---lg--font-size: 1.125rem;
+  --_typography---lg--line-height: 1.5;
+  --_typography---lg--letter-spacing: 0em;
+  --bg-color--bg-secondary: var(--base--grey);
+  --_sizes---fixed--xxlarge: 1.75rem;
+  --_sizes---fixed--small: .75rem;
+  --bg-color--bg-default: var(--base--white);
+  --base--black: black;
+  --base--white: #fff;
+  --_sizes---padding-section--large: 6.25rem;
+  --_typography---xs--font-size: var(--_sizes---fixed--small);
+  --_typography---xs--line-height: 1.5;
+  --_typography---xs--letter-spacing: 0em;
+  --main--primary: var(--base--soft-black);
+  --_typography---button--font-family: var(--_typography---font-family--mono);
+  --_typography---button--font-size: var(--_sizes---fixed--regular);
+  --_typography---button--line-height: 1.5;
+  --_typography---button--font-weight: var(--_typography---font-weight--regular);
+  --_typography---button--letter-spacing: .14rem;
+  --main--hover-primary: var(--base--soft-green);
+  --base--neon-green: #b7fe02;
+  --border-color--border-alternate: var(--base-color-neutral--neutral-darker);
+  --_typography---sm--font-size: var(--_sizes---fixed--regular);
+  --_typography---sm--line-height: 1.43;
+  --_typography---sm--letter-spacing: -.0175rem;
+  --_sizes---padding-section--medium: 4.5rem;
+  --_sizes---fixed--xhuge: 2.5rem;
+  --_sizes---fixed--tiny: .125rem;
+  --_typography---2xl--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---2xl--line-height: 1.3;
+  --_typography---2xl--letter-spacing: -.045rem;
+  --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+  --_typography---3xl--line-height: 1.5;
+  --_typography---3xl--letter-spacing: 0em;
+  --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+  --_typography---4xl--line-height: 1.5;
+  --_typography---4xl--letter-spacing: -.12rem;
+  --_typography---5xl--font-size: 2.25rem;
+  --_typography---5xl--line-height: 1.5;
+  --_typography---5xl--letter-spacing: 0em;
+  --_typography---font-weight--bold: 700;
+  --_typography---font-family--mono: "Geist Mono", sans-serif;
+  --grey--grey-400: #515151;
+  --_sizes---fixed--regular: .875rem;
+  --base--dark-green: #101604;
+  --base--soft-black: #131313;
+  --bg-color--bg-neon: var(--base--neon-green);
+  --grey--grey-100: #ddd;
+  --text-color--text-on-primary: var(--base--white);
+  --bg-color--bg-white: var(--base--white);
+  --text-color--neon-green: var(--base--neon-green);
+  --text-color--green: var(--base--green);
+  --bg-color--bg-mint: var(--base--mint);
+  --base--soft-beige: #eef3e4;
+  --base--mint: #e6ecd6;
+  --base--soft-grey: #a8a8a8;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --base--grey: #595959;
+  --base--green: #a0c347;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_typography---font-family--headers: Geist, sans-serif;
+  --grey--grey-200: #b6b6b6;
+  --grey--grey-300: grey;
+  --grey--grey-500: #333;
+  --grey--grey-600: #292929;
+  --grey--grey-700: #171717;
+  --grey--grey-800: #0f0f0f;
+  --grey--grey-900: #0a0a0a;
+  --bg-color--bg-dark: var(--base--black);
+  --new-base_sizes---fixed--0-75rem: .75rem;
+  --base-color-neutral--neutral-darker: #27272a;
+}[data-blk="secoes-secao-65"] /* Fixed-navbar height — = 77px,[data-blk="secoes-secao-65"] the live nav height (measured from the source).
+   Used to offset base-variant page content so the solid fixed nav doesn't
+   overlap it. The transparent (HOME) nav sits over the hero by design,[data-blk="secoes-secao-65"] no offset. */
+:root{
+  --nav-height: 4.8125rem;
+}
+
+
+/* ===== webflow.css ===== */
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBiUAAAC8AAAAYGNtYXDpP+a4AAABHAAAAFxnYXNwAAAAEAAAAXgAAAAIZ2x5ZmhS2XEAAAGAAAADHGhlYWQTFw3HAAAEnAAAADZoaGVhCXYFgQAABNQAAAAkaG10eCe4A1oAAAT4AAAAMGxvY2EDtALGAAAFKAAAABptYXhwABAAPgAABUQAAAAgbmFtZSoCsMsAAAVkAAABznBvc3QAAwAAAAAHNAAAACAAAwP4AZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAQAAAAAwACAACAAQAAQAg5gPpA//9//8AAAAAACDmAOkA//3//wAB/+MaBBcIAAMAAQAAAAAAAAAAAAAAAAABAAH//wAPAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEBIAAAAyADgAAFAAAJAQcJARcDIP5AQAGA/oBAAcABwED+gP6AQAABAOAAAALgA4AABQAAEwEXCQEH4AHAQP6AAYBAAcABwED+gP6AQAAAAwDAAOADQALAAA8AHwAvAAABISIGHQEUFjMhMjY9ATQmByEiBh0BFBYzITI2PQE0JgchIgYdARQWMyEyNj0BNCYDIP3ADRMTDQJADRMTDf3ADRMTDQJADRMTDf3ADRMTDQJADRMTAsATDSANExMNIA0TwBMNIA0TEw0gDRPAEw0gDRMTDSANEwAAAAABAJ0AtAOBApUABQAACQIHCQEDJP7r/upcAXEBcgKU/usBFVz+fAGEAAAAAAL//f+9BAMDwwAEAAkAABcBJwEXAwE3AQdpA5ps/GZsbAOabPxmbEMDmmz8ZmwDmvxmbAOabAAAAgAA/8AEAAPAAB0AOwAABSInLgEnJjU0Nz4BNzYzMTIXHgEXFhUUBw4BBwYjNTI3PgE3NjU0Jy4BJyYjMSIHDgEHBhUUFx4BFxYzAgBqXV6LKCgoKIteXWpqXV6LKCgoKIteXWpVSktvICEhIG9LSlVVSktvICEhIG9LSlVAKCiLXl1qal1eiygoKCiLXl1qal1eiygoZiEgb0tKVVVKS28gISEgb0tKVVVKS28gIQABAAABwAIAA8AAEgAAEzQ3PgE3NjMxFSIHDgEHBhUxIwAoKIteXWpVSktvICFmAcBqXV6LKChmISBvS0pVAAAAAgAA/8AFtgPAADIAOgAAARYXHgEXFhUUBw4BBwYHIxUhIicuAScmNTQ3PgE3NjMxOAExNDc+ATc2MzIXHgEXFhcVATMJATMVMzUEjD83NlAXFxYXTjU1PQL8kz01Nk8XFxcXTzY1PSIjd1BQWlJJSXInJw3+mdv+2/7c25MCUQYcHFg5OUA/ODlXHBwIAhcXTzY1PTw1Nk8XF1tQUHcjIhwcYUNDTgL+3QFt/pOTkwABAAAAAQAAmM7nP18PPPUACwQAAAAAANciZKUAAAAA1yJkpf/9/70FtgPDAAAACAACAAAAAAAAAAEAAAPA/8AAAAW3//3//QW2AAEAAAAAAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAgAAAAQAASAEAADgBAAAwAQAAJ0EAP/9BAAAAAQAAAAFtwAAAAAAAAAKABQAHgAyAEYAjACiAL4BFgE2AY4AAAABAAAADAA8AAMAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADQAAAAEAAAAAAAIABwCWAAEAAAAAAAMADQBIAAEAAAAAAAQADQCrAAEAAAAAAAUACwAnAAEAAAAAAAYADQBvAAEAAAAAAAoAGgDSAAMAAQQJAAEAGgANAAMAAQQJAAIADgCdAAMAAQQJAAMAGgBVAAMAAQQJAAQAGgC4AAMAAQQJAAUAFgAyAAMAAQQJAAYAGgB8AAMAAQQJAAoANADsd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzUmVndWxhcgBSAGUAZwB1AGwAYQByd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}[data-blk="secoes-secao-65"] *{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}[data-blk="secoes-secao-65"]{
+  height: 100%;
+}[data-blk="secoes-secao-65"]{
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}[data-blk="secoes-secao-65"] .w-inline-block{
+  max-width: 100%;
+  display: inline-block;
+}[data-blk="secoes-secao-65"][data-w-dynpage] [data-w-cloak]{
+  color: transparent !important;
+}[data-blk="secoes-secao-65"] h2,[data-blk="secoes-secao-65"] h3,[data-blk="secoes-secao-65"] h6{
+  font-weight: bold;
+  margin-bottom: 10px;
+}[data-blk="secoes-secao-65"] h2{
+  font-size: 32px;
+  line-height: 36px;
+  margin-top: 20px;
+}[data-blk="secoes-secao-65"] h3{
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 20px;
+}[data-blk="secoes-secao-65"] h6{
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 10px;
+}[data-blk="secoes-secao-65"] .w-form-done{
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}[data-blk="secoes-secao-65"] .w-form-fail{
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}[data-blk="secoes-secao-65"] .w-input:focus,[data-blk="secoes-secao-65"] .w-select:focus{
+  border-color: #3898EC;
+  outline: 0;
+}[data-blk="secoes-secao-65"] .w-slider-dot:focus{
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}[data-blk="secoes-secao-65"] .w-slider-dot:focus.w-active{
+  box-shadow: none;
+}[data-blk="secoes-secao-65"] .w-slider-arrow-left:focus,[data-blk="secoes-secao-65"] .w-slider-arrow-right:focus{
+  outline: 0;
+}[data-blk="secoes-secao-65"] .w-dropdown-toggle:focus{
+  outline: 0;
+}[data-blk="secoes-secao-65"] .w-dropdown-link:focus{
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {[data-blk="secoes-secao-65"] /* .w-lightbox-content */
+  .w-lightbox-control:hover{
+    opacity: 1;
+  }
+}[data-blk="secoes-secao-65"] .w-lightbox-inactive:hover{
+  opacity: 0;
+}[data-blk="secoes-secao-65"] [data-nav-menu-open]{
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}[data-blk="secoes-secao-65"] .w--nav-link-open{
+  display: block;
+  position: relative;
+}[data-blk="secoes-secao-65"] .w-nav-button:focus{
+  outline: 0;
+}[data-blk="secoes-secao-65"] .w--nav-dropdown-open{
+  display: block;
+}[data-blk="secoes-secao-65"] .w--nav-dropdown-toggle-open{
+  display: block;
+}[data-blk="secoes-secao-65"] .w--nav-dropdown-list-open{
+  position: static;
+}[data-blk="secoes-secao-65"] /**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus{
+  outline: 0;
+}[data-blk="secoes-secao-65"] .w--tab-active{
+  display: block;
+}@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}[data-blk="secoes-secao-65"]{
+  --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+  --new-base---base--black\<deleted\|variable-7cd51d88-f9da-d70a-a434-fb302e5e60d1\>: #1d1d1d;
+  --base--soft-green: #f7f9f2;
+  --_typography---font-family--body: Geist, sans-serif;
+  --text-color--text-primary: var(--base--dark-green);
+  --_sizes---fixed--medium: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--none: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--headers);
+  --_typography---h1--font-size: 4.5rem;
+  --_typography---h1--line-height: 1.03;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.135rem;
+  --_typography---h2--font-family: var(--_typography---font-family--headers);
+  --_typography---h2--font-size: 4rem;
+  --_typography---h2--line-height: 1.125;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.24rem;
+  --_typography---h3--font-family: var(--_typography---font-family--headers);
+  --_typography---h3--font-size: 3rem;
+  --_typography---h3--line-height: 1.23;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.13rem;
+  --_typography---h4--font-family: var(--_typography---font-family--headers);
+  --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+  --_typography---h4--line-height: 1.08;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: -.12rem;
+  --_typography---h5--font-family: var(--_typography---font-family--headers);
+  --_typography---h5--font-size: var(--_sizes---fixed--huge);
+  --_typography---h5--line-height: 1.38;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: -.12rem;
+  --_typography---h6--font-family: var(--_typography---font-family--headers);
+  --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---h6--line-height: 1.33;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: -.045rem;
+  --_sizes---fixed--xlarge: 1.5rem;
+  --_sizes---fixed--xxsmall: .25rem;
+  --_sizes---fixed--large: 1.25rem;
+  --bg-color--bg-subtle: var(--base--soft-grey);
+  --_sizes---fixed--huge: 2rem;
+  --_typography---font-weight--semibold: 600;
+  --bg-color--bg-primary: var(--base--dark-green);
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---padding-section--small: 3.25rem;
+  --_typography---font-weight--medium: 500;
+  --border-color--border-primary\<deleted\|variable-d4c54ba4-ee41-67ce-58a5-5216ca039f83\>: #efeff2;
+  --_typography---xl--font-size: var(--_sizes---fixed--large);
+  --_typography---xl--line-height: 1.5;
+  --_typography---xl--letter-spacing: 0em;
+  --_typography---font-weight--light: 300;
+  --_typography---base--font-size: var(--_sizes---fixed--medium);
+  --_typography---base--line-height: 1.5;
+  --_typography---base--letter-spacing: -.03rem;
+  --_sizes---fixed--xsmall: .5rem;
+  --_typography---lg--font-size: 1.125rem;
+  --_typography---lg--line-height: 1.5;
+  --_typography---lg--letter-spacing: 0em;
+  --bg-color--bg-secondary: var(--base--grey);
+  --_sizes---fixed--xxlarge: 1.75rem;
+  --_sizes---fixed--small: .75rem;
+  --bg-color--bg-default: var(--base--white);
+  --base--black: black;
+  --base--white: #fff;
+  --_sizes---padding-section--large: 6.25rem;
+  --_typography---xs--font-size: var(--_sizes---fixed--small);
+  --_typography---xs--line-height: 1.5;
+  --_typography---xs--letter-spacing: 0em;
+  --main--primary\<deleted\|variable-2961fe78-a0a9-462c-1940-35d81b071e20\>: var(--base--soft-black);
+  --_typography---button--font-family: var(--_typography---font-family--mono);
+  --_typography---button--font-size: var(--_sizes---fixed--regular);
+  --_typography---button--line-height: 1.5;
+  --_typography---button--font-weight: var(--_typography---font-weight--regular);
+  --_typography---button--letter-spacing: .14rem;
+  --main--hover-primary\<deleted\|variable-eea538eb-e03e-aec5-44e0-3340cd5939ca\>: var(--base--soft-green);
+  --base--neon-green: #b7fe02;
+  --border-color--border-alternate\<deleted\|variable-551aa6d2-4bf8-6036-137a-78e1c71841a4\>: var(--base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>);
+  --_typography---sm--font-size: var(--_sizes---fixed--regular);
+  --_typography---sm--line-height: 1.43;
+  --_typography---sm--letter-spacing: -.0175rem;
+  --_sizes---padding-section--medium: 4.5rem;
+  --_sizes---fixed--xhuge: 2.5rem;
+  --_sizes---fixed--tiny: .125rem;
+  --_typography---2xl--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---2xl--line-height: 1.3;
+  --_typography---2xl--letter-spacing: -.045rem;
+  --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+  --_typography---3xl--line-height: 1.5;
+  --_typography---3xl--letter-spacing: 0em;
+  --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+  --_typography---4xl--line-height: 1.5;
+  --_typography---4xl--letter-spacing: -.12rem;
+  --_typography---5xl--font-size: 2.25rem;
+  --_typography---5xl--line-height: 1.5;
+  --_typography---5xl--letter-spacing: 0em;
+  --_typography---font-weight--bold: 700;
+  --_typography---font-family--mono: "Geist Mono", sans-serif;
+  --grey--grey-400: #515151;
+  --_sizes---fixed--regular: .875rem;
+  --base--dark-green: #101604;
+  --base--soft-black: #131313;
+  --bg-color--bg-neon: var(--base--neon-green);
+  --grey--grey-100: #ddd;
+  --text-color--text-on-primary: var(--base--white);
+  --bg-color--bg-white: var(--base--white);
+  --text-color--neon-green: var(--base--neon-green);
+  --text-color--green: var(--base--green);
+  --bg-color--bg-mint: var(--base--mint);
+  --base--soft-beige: #eef3e4;
+  --base--mint: #e6ecd6;
+  --base--soft-grey: #a8a8a8;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --base--grey: #595959;
+  --base--green: #a0c347;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_typography---font-family--headers: Geist, sans-serif;
+  --grey--grey-200: #b6b6b6;
+  --grey--grey-300: grey;
+  --grey--grey-500: #333;
+  --grey--grey-600: #292929;
+  --grey--grey-700: #171717;
+  --grey--grey-800: #0f0f0f;
+  --grey--grey-900: #0a0a0a;
+  --bg-color--bg-dark: var(--base--black);
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+  --base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>: #27272a;
+}[data-blk="secoes-secao-65"] .new-base--t-button-secondary:hover{
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}[data-blk="secoes-secao-65"] .new-base--t-button:hover{
+  transform: scale(.95);
+}[data-blk="secoes-secao-65"]{
+  background-color: var(--base--soft-green);
+  font-family: var(--_typography---font-family--body);
+  color: var(--text-color--text-primary);
+  font-size: var(--_sizes---fixed--medium);
+  line-height: 1.4;
+  font-weight: var(--_typography---font-weight--regular);
+  letter-spacing: -.02rem;
+  overscroll-behavior: none;
+}[data-blk="secoes-secao-65"] h2{
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}[data-blk="secoes-secao-65"] h3{
+  font-family: var(--_typography---h3--font-family);
+  font-size: var(--_typography---h3--font-size);
+  line-height: var(--_typography---h3--line-height);
+  font-weight: var(--_typography---h3--font-weight);
+  letter-spacing: var(--_typography---h3--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}[data-blk="secoes-secao-65"] h6{
+  font-family: var(--_typography---h6--font-family);
+  font-size: var(--_typography---h6--font-size);
+  line-height: var(--_typography---h6--line-height);
+  font-weight: var(--_typography---h6--font-weight);
+  letter-spacing: var(--_typography---h6--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}[data-blk="secoes-secao-65"] a{
+  color: inherit;
+  text-decoration: none;
+}[data-blk="secoes-secao-65"] .text-color-secondary{
+  color: var(--text-color--text-secondary);
+}[data-blk="secoes-secao-65"] .h3{
+  font-family: var(--_typography---h3--font-family);
+  font-size: var(--_typography---h3--font-size);
+  line-height: var(--_typography---h3--line-height);
+  font-weight: var(--_typography---h3--font-weight);
+  letter-spacing: var(--_typography---h3--letter-spacing);
+}[data-blk="secoes-secao-65"] .padding-global{
+  padding-left: 3.24rem;
+  padding-right: 3.24rem;
+}[data-blk="secoes-secao-65"] .padding-global.is-navbar{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}[data-blk="secoes-secao-65"] .text-color-subtle{
+  color: #aeaeae;
+}[data-blk="secoes-secao-65"] .h6{
+  font-family: var(--_typography---h6--font-family);
+  font-size: var(--_typography---h6--font-size);
+  line-height: var(--_typography---h6--line-height);
+  font-weight: var(--_typography---h6--font-weight);
+  letter-spacing: var(--_typography---h6--letter-spacing);
+}[data-blk="secoes-secao-65"] .text-xs{
+  font-size: var(--_typography---xs--font-size);
+  line-height: var(--_typography---xs--line-height);
+  letter-spacing: var(--_typography---xs--letter-spacing);
+}[data-blk="secoes-secao-65"] .h2{
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+}[data-blk="secoes-secao-65"] .page-wrapper{
+  overflow: clip;
+}[data-blk="secoes-secao-65"] .container-large{
+  width: 100%;
+  max-width: 73.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}[data-blk="secoes-secao-65"] .button:hover{
+  background-color: var(--main--hover-primary\<deleted\|variable-eea538eb-e03e-aec5-44e0-3340cd5939ca\>);
+}[data-blk="secoes-secao-65"] .text-sm{
+  font-size: var(--_typography---sm--font-size);
+  line-height: var(--_typography---sm--line-height);
+  letter-spacing: var(--_typography---sm--letter-spacing);
+}[data-blk="secoes-secao-65"] .padding-section-medium{
+  padding-top: var(--_sizes---padding-section--medium);
+}[data-blk="secoes-secao-65"] .spacer-medium{
+  width: 100%;
+  padding-top: var(--_sizes---fixed--medium);
+}[data-blk="secoes-secao-65"] .nav-button_component:hover{
+  opacity: 1;
+}[data-blk="secoes-secao-65"] .nav_dropdown-link:hover{
+  opacity: 100;
+}[data-blk="secoes-secao-65"] .arrow:hover{
+  transform: scale(.97)translate(-60%);
+}[data-blk="secoes-secao-65"] .arrow.is-right:hover{
+  transform: scale(.97)translate(60%);
+}[data-blk="secoes-secao-65"] .button_component{
+  min-height: 2.75rem;
+  padding: var(--_sizes---fixed--small) var(--_sizes---fixed--xxlarge);
+  background-color: var(--base--dark-green);
+  font-family: var(--_typography---button--font-family);
+  color: var(--base--neon-green);
+  font-size: var(--_typography---button--font-size);
+  line-height: var(--_typography---button--line-height);
+  font-weight: var(--_typography---button--font-weight);
+  text-align: center;
+  letter-spacing: var(--_typography---button--letter-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 3rem;
+  overflow: hidden;
+}[data-blk="secoes-secao-65"] .max-heading.is-50rem{
+  max-width: 50rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-57rem{
+  max-width: 57rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-38rem{
+  max-width: 38rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-24rem{
+  max-width: 24rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-18rem{
+  width: 18rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-52rem{
+  max-width: 52rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-49rem{
+  max-width: 48.5rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-rem{
+  max-width: 25.6875rem;
+}[data-blk="secoes-secao-65"] .max-heading.is-30rem{
+  max-width: 30rem;
+}[data-blk="secoes-secao-65"] .max-description.is-31rem{
+  max-width: 31rem;
+}[data-blk="secoes-secao-65"] .max-description.is-25rem{
+  max-width: 25rem;
+}[data-blk="secoes-secao-65"] .max-description.is-36rem{
+  max-width: 36.25rem;
+}[data-blk="secoes-secao-65"] .max-description.is-32rem{
+  max-width: 32rem;
+}[data-blk="secoes-secao-65"] .max-description.is-26rem{
+  max-width: 26rem;
+}[data-blk="secoes-secao-65"] .title-dot{
+  width: var(--_sizes---fixed--xxsmall);
+  height: var(--_sizes---fixed--xxsmall);
+  background-color: var(--base--dark-green);
+  border-radius: 2rem;
+}[data-blk="secoes-secao-65"] .title-dot.bg-neon:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c){
+  background-color: var(--bg-color--bg-primary);
+}[data-blk="secoes-secao-65"] .section_title{
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  font-family: var(--_typography---font-family--mono);
+  color: var(--text-color--neon-green);
+  font-size: var(--_sizes---fixed--regular);
+  letter-spacing: .14rem;
+  text-transform: uppercase;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 1.43;
+  display: flex;
+}[data-blk="secoes-secao-65"] .section_title:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c){
+  color: var(--text-color--text-primary);
+  flex: none;
+}[data-blk="secoes-secao-65"] .bg-neon{
+  background-color: var(--bg-color--bg-neon);
+}[data-blk="secoes-secao-65"] .footer_link:hover{
+  color: var(--base--neon-green);
+  transform: scale(.95);
+}[data-blk="secoes-secao-65"] .about_left{
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 2.5rem;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 40rem;
+  display: flex;
+}[data-blk="secoes-secao-65"] .about_layout{
+  grid-column-gap: var(--_sizes---fixed--medium);
+  grid-row-gap: var(--_sizes---fixed--medium);
+  justify-content: space-between;
+  align-items: stretch;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_card{
+  max-width: 19.4375rem;
+  max-height: 20.3125rem;
+  padding: var(--_sizes---fixed--xsmall);
+  grid-column-gap: var(--_sizes---fixed--huge);
+  grid-row-gap: var(--_sizes---fixed--huge);
+  border-radius: var(--_sizes---fixed--xlarge);
+  background-color: var(--bg-color--bg-primary);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  flex-flow: column;
+  flex: none;
+  justify-content: space-between;
+  display: flex;
+  overflow: hidden;
+}[data-blk="secoes-secao-65"] .performance_card-top{
+  padding: var(--_sizes---fixed--regular);
+  border-radius: var(--_sizes---fixed--medium);
+  background-color: var(--bg-color--bg-mint);
+}[data-blk="secoes-secao-65"] .performance_stat-wrap{
+  padding-right: var(--_sizes---fixed--xsmall);
+  padding-left: var(--_sizes---fixed--xsmall);
+}[data-blk="secoes-secao-65"] .performance_stat-badge{
+  padding: var(--_sizes---fixed--tiny) var(--_sizes---fixed--xsmall);
+  border-radius: var(--_sizes---fixed--small);
+  background-color: var(--bg-color--bg-mint);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_stat{
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  justify-content: flex-start;
+  align-items: flex-end;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_stat-text{
+  color: var(--bg-color--bg-neon);
+  letter-spacing: -.11625rem;
+  font-size: 3rem;
+  line-height: 1;
+}[data-blk="secoes-secao-65"] .performance_loop-wrapper{
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  flex-flow: column;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_loop-row{
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_loop{
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  flex: none;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_loop-item{
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  flex: none;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_loop-text{
+  border-radius: var(--_sizes---fixed--xhuge);
+  color: var(--text-color--text-on-primary);
+  background-color: #ffffff29;
+  border: 1px solid #ffffff29;
+  padding: .5rem 1.25rem;
+}[data-blk="secoes-secao-65"] .button_mask{
+  position: relative;
+  overflow: hidden;
+}[data-blk="secoes-secao-65"] .button_text{
+  z-index: 1;
+  text-shadow: 0 1.5rem 0 var(--base--neon-green);
+  position: relative;
+}[data-blk="secoes-secao-65"] .button-wrap{
+  display: flex;
+}[data-blk="secoes-secao-65"] .performance_card-wrapper{
+  display: flex;
+}@media screen and (max-width: 991px) {[data-blk="secoes-secao-65"]{
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: 3rem;
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 5rem;
+    --_sizes---padding-section--medium: 4rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 3.5rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 3rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: 2.75rem;
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--large);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: var(--_sizes---fixed--huge);
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+  }[data-blk="secoes-secao-65"] .padding-global{
+    padding-right: var(--_sizes---fixed--huge);
+    padding-left: var(--_sizes---fixed--huge);
+  }[data-blk="secoes-secao-65"] .padding-global.is-navbar{
+    padding-bottom: 1rem;
+  }[data-blk="secoes-secao-65"] .about_left{
+    grid-column-gap: var(--_sizes---fixed--xlarge);
+    grid-row-gap: var(--_sizes---fixed--xlarge);
+    max-width: none;
+  }[data-blk="secoes-secao-65"] .about_layout{
+    grid-column-gap: var(--_sizes---fixed--huge);
+    grid-row-gap: var(--_sizes---fixed--huge);
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}@media screen and (max-width: 767px) {[data-blk="secoes-secao-65"]{
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 3rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 2.75rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: var(--_sizes---fixed--huge);
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--huge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--medium);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: 2rem;
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: var(--_sizes---fixed--huge);
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 4rem;
+    --_sizes---padding-section--medium: 3rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+  }[data-blk="secoes-secao-65"] .padding-global{
+    padding-right: var(--_sizes---fixed--medium);
+    padding-left: var(--_sizes---fixed--medium);
+  }[data-blk="secoes-secao-65"] .padding-global.is-navbar{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }[data-blk="secoes-secao-65"] .padding-section-medium{
+    padding-top: var(--_sizes---padding-section--medium);
+  }
+}@media screen and (max-width: 479px) {[data-blk="secoes-secao-65"]{
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: var(--_sizes---fixed--huge);
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 4rem;
+    --_sizes---padding-section--medium: 3rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 2.75rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 2.75rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: var(--_sizes---fixed--huge);
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--huge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--medium);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: 2rem;
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+  }[data-blk="secoes-secao-65"] .container-large{
+    max-width: 100%;
+  }[data-blk="secoes-secao-65"] .button_component{
+    width: 100%;
+  }[data-blk="secoes-secao-65"] .section_title:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c){
+    justify-content: center;
+    align-items: center;
+  }[data-blk="secoes-secao-65"] .performance_card{
+    width: 100%;
+  }[data-blk="secoes-secao-65"] .button-wrap{
+    flex-flow: column;
+    width: 100%;
+  }[data-blk="secoes-secao-65"] .performance_card-wrapper{
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}[data-blk="secoes-secao-65"] /* ===== global-styles.css ===== */
+/* Make text look crisper and more legible in all browsers */
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}[data-blk="secoes-secao-65"] /* Focus state style for keyboard navigation for the focusable elements */
+/* Set color style to inherit */
+/* Get rid of top margin on first element in any rich text element */
+/* Get rid of bottom margin on last element in any rich text element */
+/* Make sure containers never lose their center alignment */
+ .container-large{
+	margin-right: auto !important;
+  margin-left: auto !important;
+}[data-blk="secoes-secao-65"] /* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,[data-blk="secoes-secao-65"] .w-input,[data-blk="secoes-secao-65"] .w-select,[data-blk="secoes-secao-65"] .w-tab-link,[data-blk="secoes-secao-65"] .w-nav-link,[data-blk="secoes-secao-65"] .w-dropdown-btn,[data-blk="secoes-secao-65"] .w-dropdown-toggle,[data-blk="secoes-secao-65"] .w-dropdown-link{
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}[data-blk="secoes-secao-65"] */
+/* Apply "..." after 3 lines of text */
+/* Apply "..." after 2 lines of text */
+/* Adds inline flex display */
+/* These classes are never overwritten */
+/* Hide scrollbar for Chrome,[data-blk="secoes-secao-65"] Safari and Opera */
+/* Hide scrollbar for IE,[data-blk="secoes-secao-65"] Edge and Firefox */
+
+
+/* ===== components.css ===== */
+/* Component-specific overrides — added during section build */
+
+/* Fixed-nav content offset — base-variant pages carry a solid fixed navbar that
+   would otherwise cover the top of the page content. Push their main-wrapper
+   below the nav by exactly one nav-height. HOME is excluded: its transparent nav
+   sits over the hero by design (no .has-fixed-nav class,[data-blk="secoes-secao-65"] no offset). */
+.has-fixed-nav{
+  padding-top: var(--nav-height);
+}[data-blk="secoes-secao-65"] /* h5 line-height override → 1.2 (source token was 1.38). Loaded after webflow.css,[data-blk="secoes-secao-65"] so this base :root declaration wins at every breakpoint (webflow re-declares the
+   token to 1.38 in its media queries,[data-blk="secoes-secao-65"] but those come earlier in source order). */
+:root,[data-blk="secoes-secao-65"]{
+  --_typography---h5--line-height: 1.2;
+}[data-blk="secoes-secao-65"] /* Mask the team-detail + blog-detail + service-detail hero images' zoom-in entrance
+   (hero-load.ts scales the .img inside). The other hero image wrappers already clip
+   in webflow.css. */
+
+/* Team hero on mobile portrait (≤479): the source keeps the desktop fixed height
+   (calc(100vh - 5rem) + min-height: 40rem) after the grid collapses to one column,[data-blk="secoes-secao-65"] which squashes the portrait into a thin band. Let the hero size to content and move
+   the photo BELOW the name/role/bio/socials so the Join section follows it naturally.
+   The .img is position:absolute,[data-blk="secoes-secao-65"] so the wrapper needs an explicit box — aspect-ratio
+   keeps the (≈square,[data-blk="secoes-secao-65"] 1.02) portrait proportional to the column width. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Responsive heading scale (global typography fix)
+
+   Problem: this template decouples semantic tag from visual class (Client-First
+   pattern: a page H1 may carry class .h3,[data-blk="secoes-secao-65"] a section H2 may carry class .h1,[data-blk="secoes-secao-65"] etc.).
+   On desktop that intent is fine,[data-blk="secoes-secao-65"] but webflow.css's responsive token blocks
+   collapsed .h3/.h4/.h5 onto the SAME `huge` (2rem) value at ≤767/≤479 and let
+   the page-title classes (.h3 / .text-6xl,[data-blk="secoes-secao-65"] ~2rem) shrink BELOW larger section
+   classes — inverting the visual hierarchy on mobile/tablet.
+
+   Fix: redefine the six heading font-size TOKENS with a clean,[data-blk="secoes-secao-65"] strictly
+   monotonic ramp at each breakpoint (h1 > h2 > h3 > h4 > h5 > h6),[data-blk="secoes-secao-65"] and keep the
+   page-h1 floor at 2.25rem so it never shrinks to an awkward size. Because every
+   .h1–.h6 / .text-* class resolves its size from these tokens,[data-blk="secoes-secao-65"] fixing the tokens
+   fixes the scale everywhere. Loaded after webflow.css; `:root` (specificity
+   0,[data-blk="secoes-secao-65"] 1,[data-blk="secoes-secao-65"] 0) wins over webflow's `body{}` blocks (0,0,1). Desktop is UNCHANGED.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 991px) {[data-blk="secoes-secao-65"],[data-blk="secoes-secao-65"]{
+    --_typography---h1--font-size: 3.75rem;
+    --_typography---h2--font-size: 3.25rem;
+    --_typography---h3--font-size: 2.75rem;
+    --_typography---h4--font-size: 2.25rem;
+    --_typography---h5--font-size: 1.875rem;
+    --_typography---h6--font-size: 1.5rem;
+  }
+  /* .text-6xl is a hardcoded page-title display class (not token-driven). Keep
+     its ramp aligned just above the h3 token so it stays a credible page h1. */
+}@media screen and (max-width: 767px) {[data-blk="secoes-secao-65"],[data-blk="secoes-secao-65"]{
+    --_typography---h1--font-size: 3.25rem;
+    --_typography---h2--font-size: 2.875rem;
+    --_typography---h3--font-size: 2.5rem;
+    --_typography---h4--font-size: 2.125rem;
+    --_typography---h5--font-size: 1.75rem;
+    --_typography---h6--font-size: 1.5rem;
+  }
+}@media screen and (max-width: 479px) {[data-blk="secoes-secao-65"],[data-blk="secoes-secao-65"]{
+    --_typography---h1--font-size: 2.875rem;
+    --_typography---h2--font-size: 2.5rem;
+    --_typography---h3--font-size: 2.25rem;
+    --_typography---h4--font-size: 1.875rem;
+    --_typography---h5--font-size: 1.625rem;
+    --_typography---h6--font-size: 1.375rem;
+  }
+}[data-blk="secoes-secao-65"] /* Button hover lives in src/scripts/button-hover.ts (GSAP SplitText,[data-blk="secoes-secao-65"] per-letter
+   slide + button scale). The text-shadow on .button_text (webflow.css) is the
+   resting "clone" each letter swaps with. No CSS :hover here on purpose — a CSS
+   transform would fight GSAP's per-frame writes. */
+
+/* Nav link hover — same per-letter SplitText swap as the buttons (driven by
+   button-hover.ts). `.nav_link-text` is the mask (overflow:hidden) AND carries the
+   resting clone via `text-shadow: 0 1.5em 0 currentColor`. currentColor is the whole
+   point: unlike `.button_text` (fixed label colour),[data-blk="secoes-secao-65"] the navbar ships in multiple
+   colour variants,[data-blk="secoes-secao-65"] so the clone must inherit whatever colour the link currently is.
+   Offset 1.5em (> line-height 1.43) keeps the clone clipped below until hover. */
+
+/* Pricing "before" price (struck-through old price): the source's --bg-color--bg-subtle
+   (#a8a8a8) only reaches 2.24:1 on the light pricing card — below WCAG AA. Use the
+   secondary text token (#595959,[data-blk="secoes-secao-65"] ~6.5:1) so it stays muted but legible. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Blog card hover (a-40 — CSS approximation,[data-blk="secoes-secao-65"] Phase 5B)
+
+   Source IX2 (12 items) = image scale 1.1 + the circular arrow button swapping
+   its icon on a diagonal + a bg shift. Reconstructed as CSS (it's a hover): the
+   photo zooms to 1.1 (clipped by .blog_card-img's overflow),[data-blk="secoes-secao-65"] and inside the
+   overflow:hidden .blog_arrow circle the resting arrow (.is-one,[data-blk="secoes-secao-65"] centred) shoots
+   out top-right while the hidden one (.is-two,[data-blk="secoes-secao-65"] parked bottom-left) flies in to
+   take its place. Easing matches the source's outQuart-ish curve. Only the
+   .is-two listing variant carries the arrow button. */
+
+/* Image zoom — both the home teaser (.blog_card > .blog_img) and the /blog listing
+   (.blog_card.is-two > .blog_card-img); both clip the overflow. */
+.blog_card:hover .img{
+  transform: scale(1.1);
+}[data-blk="secoes-secao-65"] /* Arrow button bg → neon on hover (the arrow glyph is black → strong contrast). */
+.blog_card.is-two:hover .blog_arrow{
+  background-color: var(--base--neon-green);
+}[data-blk="secoes-secao-65"] .blog_card.is-two:hover .blog_arrow-icon.is-one{
+  transform: translate(150%, -150%);
+}[data-blk="secoes-secao-65"] .blog_card.is-two:hover .blog_arrow-icon.is-two{
+  /* parked at bottom-left (-48px,+48px from centre); same diagonal vector as is-one
+     lands it dead-centre as the resting arrow shoots out — measured, not guessed. */
+  transform: translate(150%, -150%);
+}[data-blk="secoes-secao-65"] /* /blog listing grid: 2 columns on tablet (768–991; ≤767 becomes a Swiper via
+   data-slider-mq="767"). The source kept 3 cramped columns here. */
+
+/* The per-card arrow button is a desktop hover affordance (swap + bg). Hide it on
+   tablet + mobile where there's no hover. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Slider arrow press feedback (Phase 5B): scale 0.95 on hover AND while pressed.
+   Covers every `.arrow-group` prev/next (grid sliders + home testimonials). These
+   buttons carry no other transform,[data-blk="secoes-secao-65"] so a plain scale is safe. The About
+   testimonials use a different `.arrow` element (its own scoped rule). */
+.arrow-group > .swiper-button-prev:hover,[data-blk="secoes-secao-65"] .arrow-group > .swiper-button-next:hover,[data-blk="secoes-secao-65"] .arrow-group > .swiper-button-prev:active,[data-blk="secoes-secao-65"] .arrow-group > .swiper-button-next:active{
+  transform: scale(0.95);
+}[data-blk="secoes-secao-65"] /* About-testimonials chevrons use the `.arrow` element instead. On desktop they
+   take webflow.css's base `.arrow:hover{ scale(.97) translate(±60%) }[data-blk="secoes-secao-65"] `; bump to
+   0.95 and add :active,[data-blk="secoes-secao-65"] preserving the side-positioning translate. (≤479px is
+   handled by the component's own scoped block.) Loads after webflow.css → wins. */
+.arrow:hover,[data-blk="secoes-secao-65"] .arrow:active{
+  transform: scale(0.95) translate(-60%);
+}[data-blk="secoes-secao-65"] .arrow.is-right:hover,[data-blk="secoes-secao-65"] .arrow.is-right:active{
+  transform: scale(0.95) translate(60%);
+}[data-blk="secoes-secao-65"] /* ──────────────────────────────────────────────────────────────────────────
+   Team card hover (a-42/43,[data-blk="secoes-secao-65"] Phase 5B): the photo zooms inside its clipped wrapper
+   (.team_card-img is overflow:clip — like the blog cards),[data-blk="secoes-secao-65"] and the arrow self-swaps
+   inside its icon box: is-one shoots out top-right while the parked is-two flies in
+   to centre. (Source IX2 scaled the whole card; per Edgar only the image zooms — so
+   nothing overflows the cell,[data-blk="secoes-secao-65"] no grid-overflow/z-index workaround needed.) */
+.team_card:hover .team_card-img .img{
+  transform: scale(1.1);
+}[data-blk="secoes-secao-65"] .team_card:hover .team_arrow.is-one{
+  transform: translate(150%, -150%); /* shoots out top-right */
+}[data-blk="secoes-secao-65"] .team_card:hover .team_arrow.is-two{
+  transform: translate(0%, 0%); /* flies in to centre */
+}[data-blk="secoes-secao-65"] /* ──────────────────────────────────────────────────────────────────────────
+   Footer link hover (a-59/60): tween to the neon accent (.footer_link already
+   transitions colour in webflow.css). */
+.footer_link:hover{
+  color: var(--base--neon-green);
+}[data-blk="secoes-secao-65"] /* ──────────────────────────────────────────────────────────────────────────
+   Social icon buttons (contact "Follow Us" + footer): on hover the wrap fills
+   with the neon accent and scales up; the SVG icon — an <img> (white in contact,[data-blk="secoes-secao-65"] light-green #D8FF85 in footer),[data-blk="secoes-secao-65"] so not CSS-colourable via fill — is flipped to
+   black with `filter: brightness(0)` so it stays high-contrast on the bright fill.
+   A light icon on a light bg would vanish; inverting it keeps the contrast. */
+.social-icons_grid .card-icon-wrap:hover,[data-blk="secoes-secao-65"] .footer_icon-wrap:hover{
+  background-color: var(--base--neon-green);
+  transform: scale(1.1);
+}[data-blk="secoes-secao-65"] .social-icons_grid .card-icon-wrap:hover .card-icon,[data-blk="secoes-secao-65"] .footer_icon-wrap:hover .footer_social{
+  filter: brightness(0);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   OSMO scaling-hamburger navigation (tablet + mobile) — ported from Advisora,
+   restyled to Upmind (dark-green card, white text, neon current-page dot, Geist).
+   The pill lives INSIDE the navbar (absolute) so the navbar keeps its height; on
+   activation the bg scales up to reveal the menu card anchored top-right. A fixed
+   sibling (.navigation__dark-bg) dims the page. State lives on
+   <html data-navigation-status>, set by src/scripts/navbar.ts.
+   Desktop (≥992) uses the inline links, so the hamburger + backdrop hide there. */
+@media (max-width: 991px) {
+  /* Mobile chrome is just logo + hamburger — drop the desktop CTA. */
+}[data-blk="secoes-secao-65"] .hamburger-nav .hamburger-nav__a:hover .hamburger-nav__dot{
+  transform: scale(1);
+  opacity: 0.5;
+}[data-blk="secoes-secao-65"] .hamburger-nav__toggle:hover .hamburger-nav__toggle-bar{
+  transform: translateY(0.15em);
+}[data-blk="secoes-secao-65"] .hamburger-nav__toggle:hover .hamburger-nav__toggle-bar:nth-child(2){
+  transform: translateY(-0.15em);
+}
+
+
+/* ===== grid-slider.css ===== */
+/* =========================================================================
+   grid-slider.css — responsive grid→slider enhancement (reviewer request)
+
+   ADDITIVE, source-true. The Webflow source turned several card grids into a
+   plain `display:flex; overflow:auto` drag strip on tablet/mobile (no arrows).
+   We upgrade those to a real Swiper slider WITH arrows below each grid's own
+   degrade breakpoint, while the desktop CSS grid is left exactly as-is and is
+   NEVER driven by Swiper.
+
+   Two breakpoint families, matching where the SOURCE grid degraded:
+     • default (services, team)  → slider ≤991 / grid ≥992   [no data-slider-mq]
+     • expertise, blog list      → slider ≤767 / grid ≥768   [data-slider-mq="767"]
+
+   Markup contract (per target grid):
+     <div class="<grid-class> swiper" data-grid-slider data-spv data-gap
+          [data-slider-mq="767"]>
+       <div class="swiper-wrapper">
+         <div class="<item-class> swiper-slide"> …card… </div> …
+       </div>
+       <div class="arrow-group">
+         <div class="swiper-button-prev" data-prev>…</div>
+         <div class="swiper-button-next" data-next>…</div>
+       </div>
+     </div>
+
+   Init/destroy handled by src/scripts/grid-slider.ts (matchMedia per breakpoint).
+   ========================================================================= */
+
+/* ---- Shared "is a slider" rules (applied at/below the breakpoint) -------- */
+/* These neutralize the source drag-strip rules so Swiper fully controls the
+   track, and render the arrow group. Wrapped per-breakpoint below. */
+
+/* === Family A: default grids — slider ≤991, plain grid ≥992 ============== */
+@media screen and (min-width: 992px) {[data-blk="secoes-secao-65"] /* Stay a grid on desktop. Swiper's swiper.css sets .swiper{display:block}[data-blk="secoes-secao-65"] and
+     .swiper-wrapper{display:flex}; undo both so the source grid layout applies
+     straight to the cards. Targets WITHOUT a 767 override (i.e. the 991 family). */
+}[data-blk="secoes-secao-65"] /* === Family B: expertise / blog — slider ≤767,[data-blk="secoes-secao-65"] plain grid ≥768 ========== */
+
+/* ---- Preserve source item display under Swiper -------------------------- */
+/* Swiper's swiper.css sets .swiper-slide{display:block},[data-blk="secoes-secao-65"] which flattens the
+   source `.expertise_item{display:flex;flex-flow:column;row-gap:xlarge}[data-blk="secoes-secao-65"] ` to block
+   so its icon→title gap collapses to 0 (all viewports). Restore the source
+   flex-column (higher specificity than .swiper-slide) so the 1.5rem row-gap
+   between the icon and the title applies again — grid item AND slide alike. */
+
+/* ---- Arrow buttons (same look as the testimonial slider arrows) --------- */
+/* Swiper's swiper.css absolutely-positions .swiper-button-prev/next and gives
+   them their own ::after glyph. Re-anchor them into the static arrow-group row
+   and suppress the default glyph so our arrow-left/right SVGs show — mirroring
+   how the testimonial slider renders these buttons. Breakpoint-agnostic: only
+   ever visible inside a displayed .arrow-group (gated above). */
+[data-grid-slider] > .arrow-group > .swiper-button-prev::after,[data-blk="secoes-secao-65"] [data-grid-slider] > .arrow-group > .swiper-button-next::after{
+  content: none;
+}
+
+
+/* ===== reveal.css ===== */
+/* Scroll-reveal initial states — paired with scroll-reveal.ts (Phase 5B).
+ *
+ * Gated on `html.reveal-on` (added by an inline <head> script before first paint,
+ * Webflow `w-mod-js` style) so the hidden state applies ONLY when JS is running.
+ * JS off  → class never added → content visible (no FOUC, no blank page).
+ *
+ * The media query MUST match scroll-reveal.ts exactly: only desktop with motion
+ * allowed hides anything. On ≤991px the card grids become Swiper sliders, so a
+ * hidden initial state would blank off-screen slides — reveals are desktop-only. */
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {[data-blk="secoes-secao-65"].reveal-on .scroll-into-view,[data-blk="secoes-secao-65"].reveal-on [data-reveal]{
+    opacity: 0;
+    transform: translateY(0.9375rem); /* 15px @ 16px root — source slideInUp */
+  }[data-blk="secoes-secao-65"].reveal-on [data-reveal-img]{
+    transform: scale(1.5); /* source scaleIn (a-61) */
+  }[data-blk="secoes-secao-65"].reveal-on [data-reveal-rotate]{
+    opacity: 0;
+    transform: rotate(-5deg); /* source rotateIn (a-35) */
+  }
+
+  /* join social-proof avatars + "+20k customers" label: pre-shift right + hidden;
+     scroll-reveal.ts staggers them back to x:0 (slide in from the right). */
+}
+
+/* Page-load intro guard — paired with hero-load.ts. No !important so gsap.set wins.
+ * NOT gated on min-width: the hero/nav intro runs on all viewports (load, not scroll
+ * → no grid-slider conflict). Source kept these `visibility:hidden` until JS ran. */
+@media (prefers-reduced-motion: no-preference) {[data-blk="secoes-secao-65"].reveal-on [data-navbar]{
+    visibility: hidden;
+  }
+  /* Hero image: scale-only entrance — ALWAYS visible (no opacity/visibility), just
+     zooms. Pre-scale here so it's zoomed before first paint (no flash); hero-load.ts
+     animates it back to 1. Masked by the wrapper's overflow:clip. */
+}[data-blk="secoes-secao-65"] /* ===== Navbar.astro scoped styles (inlined navbar) ===== */
+/* Reviewer request: nav links UPPERCASE (desktop + mobile overlay share
+   .nav_links). Source webflow.css .nav_links has no text-transform,[data-blk="secoes-secao-65"] so set it
+   here. Keeps the source mono font + .14rem letter-spacing intact. */
+
+/* --- Fixed navbar (reviewer request — source was sticky/absolute) ---
+   Pinned to the top for BOTH variants. .navbar.w-nav (specificity 0,[data-blk="secoes-secao-65"] 2,[data-blk="secoes-secao-65"] 0)
+   overrides webflow.css's `.navbar{ position: sticky }[data-blk="secoes-secao-65"] ` (0,[data-blk="secoes-secao-65"] 1,[data-blk="secoes-secao-65"] 0) AND
+   `.navbar:where(.w-variant-…){ position: absolute }[data-blk="secoes-secao-65"] ` (:where is 0,[data-blk="secoes-secao-65"] so 0,[data-blk="secoes-secao-65"] 1,[data-blk="secoes-secao-65"] 0).
+   Colors still come from webflow.css's variant rules — we only set geometry. */
+
+/* --- Hide-on-scroll (navbar.js toggles .is-hidden) --- */
+
+/* The mobile menu is now the OSMO scaling hamburger (.hamburger-anchor /
+   .hamburger-nav,[data-blk="secoes-secao-65"] styled in components.css,[data-blk="secoes-secao-65"] wired by navbar.js via
+   data-navigation-status). Webflow's data-collapse="medium" still hides the
+   desktop links (.w-nav-menu) at ≤991px — only the hamburger shows there. */
+
+    
+
+body{
+  margin: 0;
+  min-height: 100svh;
+}[data-blk="secoes-secao-65"] /* --- Performance card tag marquees (Webflow IX2 continuous loops a-47/a-64) ---
+   Folded in verbatim from the AboutSection.astro scoped <style is:global> — these
+   rules are NOT in the shared styles.css.
+
+   Each .performance_loop-row is the animated TRACK and holds TWO identical
+   .performance_loop sets,[data-blk="secoes-secao-65"] so translateX(-50%) lands set 2 exactly where set 1
+   began = seamless. For -50% to be an exact period the strip must be uniformly
+   periodic: every tag (incl. the last of each set) needs a trailing gap. The
+   shared sheet renders the 0.5rem spacing as flex `gap`,[data-blk="secoes-secao-65"] which only sits BETWEEN
+   items,[data-blk="secoes-secao-65"] leaving the last tag with no trailing gap -> -50% lands half-a-gap short
+   -> a reset jump. Fix: render the gap as margin-right on every .performance_loop-item
+   and zero the flex column-gap on the row/loop.
+
+   Edge bleed: the marquee reaches the CARD edge,[data-blk="secoes-secao-65"] not the card's inner padding
+   (--xsmall = 0.5rem). Pull the wrapper out by that padding and clip at the edge.
+
+   Rows scroll OPPOSITE directions: row 1 forward,[data-blk="secoes-secao-65"] row 2 reverse. Respects
+   reduced-motion. No pause-on-hover (not in source). */
+.performance_loop-wrapper{
+  margin-inline: calc(-1 * var(--_sizes---fixed--xsmall)); /* -0.5rem = card padding */
+  overflow: hidden;
+}[data-blk="secoes-secao-65"] .performance_loop-row,[data-blk="secoes-secao-65"] .performance_loop{
+  column-gap: 0;
+}[data-blk="secoes-secao-65"] .performance_loop-row .performance_loop-item{
+  margin-right: var(--_sizes---fixed--xsmall); /* 0.5rem — was the flex gap */
+}[data-blk="secoes-secao-65"] .performance_loop-row{
+  width: max-content;
+  will-change: transform;
+  animation: performance-marquee 30s linear infinite;
+}[data-blk="secoes-secao-65"] .performance_loop-row:nth-child(2){
+  animation-name: performance-marquee-reverse;
+}@keyframes performance-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}@keyframes performance-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}@media (prefers-reduced-motion: reduce) {[data-blk="secoes-secao-65"] .performance_loop-row{
+    animation: none;
+  }
+}

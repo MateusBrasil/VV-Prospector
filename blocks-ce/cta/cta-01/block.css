@@ -1,0 +1,93 @@
+[data-blk="cta-cta-01"] {
+  --c01-bg: var(--color-bg-page, #f3efe7);
+  --c01-text: var(--color-text-primary, #1c1a16);
+  --c01-text-muted: var(--color-text-secondary, #6b6558);
+  --c01-accent: var(--color-primary, #b08d57);
+  --c01-accent-hover: var(--color-primary-hover, #96773f);
+  --c01-on-accent: var(--color-text-white, #fbfaf7);
+  --c01-font-heading: var(--font-heading, 'Fraunces', Georgia, serif);
+  --c01-font-body: var(--font-body, 'Inter', system-ui, sans-serif);
+
+  display: block;
+  background: var(--c01-bg);
+  color: var(--c01-text);
+  font-family: var(--c01-font-body);
+}
+
+[data-blk="cta-cta-01"] .cta-01__inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 6vw + 2rem, 8rem) var(--container-padding, 1.5rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-blk="cta-cta-01"] .cta-01__eyebrow {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c01-accent);
+  font-weight: 600;
+}
+
+[data-blk="cta-cta-01"] .cta-01__headline {
+  margin: 0 0 1.25rem;
+  font-family: var(--c01-font-heading);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--c01-text);
+}
+
+[data-blk="cta-cta-01"] .cta-01__subheadline {
+  margin: 0 0 2.5rem;
+  max-width: 38ch;
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--c01-text-muted);
+}
+
+[data-blk="cta-cta-01"] .cta-01__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 2.75rem;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--c01-accent);
+  color: var(--c01-on-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color .25s ease, transform .25s ease;
+}
+
+[data-blk="cta-cta-01"] .cta-01__button:hover {
+  background: var(--c01-accent-hover);
+  transform: translateY(-2px);
+}
+
+[data-blk="cta-cta-01"] .cta-01__button:active {
+  transform: translateY(0);
+}
+
+[data-blk="cta-cta-01"] .cta-01__microcopy {
+  margin: 1.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--c01-text-muted);
+  opacity: 0.85;
+}
+
+@media (max-width: 560px) {
+  [data-blk="cta-cta-01"] .cta-01__inner {
+    padding-left: var(--spacing-md, 1.25rem);
+    padding-right: var(--spacing-md, 1.25rem);
+  }
+  [data-blk="cta-cta-01"] .cta-01__button {
+    width: 100%;
+  }
+}

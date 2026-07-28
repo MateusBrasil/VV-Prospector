@@ -1,0 +1,10 @@
+/* hirely-blog-detail — local overrides only.
+   Toda la estética de la sección (section_internal-blog, internal_blog-heading,
+   internal-blog_img, container-large, container-small, text-rich-text/.w-richtext,
+   padding-global, padding-section-medium, spacer-medium, tipografía y tokens) vive
+   en la hoja compartida /hirely/styles.css. Aquí solo un reset mínimo del body para
+   que el fragmento standalone no herede márgenes del user-agent. */
+
+body {
+  margin: 0;
+}

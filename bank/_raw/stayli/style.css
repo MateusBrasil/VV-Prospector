@@ -1,0 +1,8 @@
+/* stayli-testimonials — local overrides only. All section structure/styling
+   (the .section_testimonials layout, the slide, the arrows) lives in the shared
+   /stayli/styles.css cascade (webflow.css + global-styles.css + components.css).
+   Only the minimal body reset goes here. */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}

@@ -1,0 +1,87 @@
+{
+  "slot": "destaque",
+  "nome": "interactive-slideshow",
+  "scope": "destaque-interactive-slideshow",
+  "origem": "bank/_componentes/parallax/interactive-slideshow",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/red-0.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/RED-2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/RED-1.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/pink-0.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 12
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #001 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "12 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://moussamamadou.github.io/slideshow-clip-path/images/red-0.jpg https://moussamamadou.github.io/slideshow-clip-path/images/RED-2.jpg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

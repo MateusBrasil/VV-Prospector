@@ -1,0 +1,93 @@
+[data-dobra="destaque-anim-hover-1"] *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+[data-dobra="destaque-anim-hover-1"],[data-dobra="destaque-anim-hover-1"]{
+  width: 100%;
+  min-height: 100%;
+}
+[data-dobra="destaque-anim-hover-1"]{
+  margin: 0;
+  background: var(--base-600);
+  color: var(--base-100);
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="destaque-anim-hover-1"] img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="destaque-anim-hover-1"] .main{
+  margin-top: 5vh;
+  padding-bottom: 10vh;
+}
+[data-dobra="destaque-anim-hover-1"] .main h1{
+  padding: 20px;
+  max-width: 80%;
+  font-size: 5vw;
+  font-weight: 400;
+  line-height: 1.02;
+}
+[data-dobra="destaque-anim-hover-1"] .gallery{
+  width: 100%;
+}
+[data-dobra="destaque-anim-hover-1"] .double{
+  display: flex;
+  margin-top: 10vh;
+  height: 45vw;
+}
+[data-dobra="destaque-anim-hover-1"] .image-container{
+  overflow: hidden;
+}
+[data-dobra="destaque-anim-hover-1"] .double[data-reversed="false"] .image-container:first-child{
+  width: 66.66%;
+}
+[data-dobra="destaque-anim-hover-1"] .double[data-reversed="false"] .image-container:last-child{
+  width: 33.33%;
+}
+[data-dobra="destaque-anim-hover-1"] .double[data-reversed="true"] .image-container:first-child{
+  width: 33.33%;
+}
+[data-dobra="destaque-anim-hover-1"] .double[data-reversed="true"] .image-container:last-child{
+  width: 66.66%;
+}
+[data-dobra="destaque-anim-hover-1"] .stretchy-wrapper{
+  position: relative;
+  width: 100%;
+  padding-bottom: 66%;
+}
+[data-dobra="destaque-anim-hover-1"] .body{
+  padding: 10px;
+  font-size: 16px;
+}
+[data-dobra="destaque-anim-hover-1"] .body h3{
+  margin: 0 0 5px;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+[data-dobra="destaque-anim-hover-1"] .body p{
+  margin: 0;
+  font-size: 1em;
+  color: rgb(187, 187, 187);
+}
+[data-dobra="destaque-anim-hover-1"] .body p:last-child{
+  color: rgb(101, 101, 101);
+}
+@media (max-width: 900px){[data-dobra="destaque-anim-hover-1"] .main h1{
+    max-width: 100%;
+    font-size: 10vw;
+  }
+[data-dobra="destaque-anim-hover-1"] .double{
+    flex-direction: column;
+    height: auto;
+    gap: 2rem;
+  }
+[data-dobra="destaque-anim-hover-1"] .double .image-container,[data-dobra="destaque-anim-hover-1"] .double[data-reversed="false"] .image-container:first-child,[data-dobra="destaque-anim-hover-1"] .double[data-reversed="false"] .image-container:last-child,[data-dobra="destaque-anim-hover-1"] .double[data-reversed="true"] .image-container:first-child,[data-dobra="destaque-anim-hover-1"] .double[data-reversed="true"] .image-container:last-child{
+    width: 100%;
+  }
+
+}
+
+

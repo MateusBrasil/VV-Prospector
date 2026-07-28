@@ -1,0 +1,7 @@
+[data-dobra="fundo-aurora"] *,[data-dobra="fundo-aurora"] *::before,[data-dobra="fundo-aurora"] *::after{box-sizing:border-box}
+[data-dobra="fundo-aurora"],[data-dobra="fundo-aurora"]{margin:0;padding:0;background:hsla(220,60%,3%,1);overflow:hidden;min-height:100vh}
+[data-dobra="fundo-aurora"]{font-family: var(--fonte-corpo);color:var(--acento)}
+[data-dobra="fundo-aurora"] .content--canvas{position:fixed;inset:0;width:100vw;height:100vh}
+[data-dobra="fundo-aurora"] .label{position:fixed;top:50%;left:0;right:0;text-align:center;transform:translateY(-50%);font-size:10vw;color:var(--base-100);line-height:1;z-index:2;pointer-events:none}
+
+

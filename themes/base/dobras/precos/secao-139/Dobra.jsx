@@ -1,0 +1,703 @@
+"use client";
+/* DOBRA gerada pela esteira a partir de bank/_componentes/secoes/secao-139
+ *
+ * O que foi arrancado da origem: fonte, peso, cor e todo o texto e foto do template.
+ * O que ficou: a estrutura e a mecânica de animação, que é o material que vale.
+ * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).
+ */
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import './Dobra.css';
+gsap.registerPlugin(ScrollTrigger);
+export default function Dobra({ slots: s = {} }) {
+  const raiz = useRef(null);
+  /* ⚠ REVER: o JS de origem está abaixo em bruto (categoria: global-duro).
+   * A esteira NÃO o converte sozinha, e nesta categoria escopar ao `raiz.current` NÃO
+   * chega: o código assume que é dono da página (window/document.body/listeners de
+   * load|resize|scroll), ou traz import/export, ou monta um canvas WebGL. Converter às
+   * cegas produz animação que corre no elemento errado, que é pior que animação
+   * nenhuma. Precisa de reescrita, não de troca de prefixo. */
+  useGSAP(() => {
+  //   /* Upmind — Services Hero
+  //      Standalone component stub. Reveal/entrance animations are driven by the
+  //      shared scripts (hero-load.js, scroll-reveal.js, navbar.js, button-hover.js)
+  //      loaded ahead of this file, which read the `animation="…"` and `data-navbar`
+  //      hooks already present in the markup. No component-specific JS is required. */
+  //   
+  //   // Button hover -- per-letter slide + button press (Phase 5B).
+  //   //
+  //   // Source effect (driven by the GSAP-attribute custom code that wasn't exported;
+  //   // reconstructed to the remembered spec): the label is split into letters; on hover
+  //   // each letter slides up 1.5rem (staggered) while the button scales down to 0.95.
+  //   // `.button_text` carries `text-shadow: 0 1.5rem 0 <text colour>` (webflow.css) -- a
+  //   // clone of each letter 1.5rem below, clipped by `.button_mask` (overflow:hidden) --
+  //   // so as a letter slides up, its shadow lands exactly where it was: a per-letter
+  //   // self-swap. Letters move UP (negative) so the +1.5rem shadow takes their place.
+  //   //
+  //   // GSAP-only (no CSS :hover) -- a CSS transform-transition would fight the per-frame
+  //   // writes (same class of bug as the navbar intro). prefers-reduced-motion -> static.
+  //   (function () {
+  //     gsap.registerPlugin(SplitText);
+  //   
+  //     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  //   
+  //     const MOVE = '-1.5rem';
+  //     // Nav links use em (not rem): the clone offset is `1.5em` in CSS (relative to the
+  //     // link's own font-size), so the GSAP travel must match in the same unit.
+  //     const NAV_MOVE = '-1.5em';
+  //     const TEXT = { duration: 0.635, ease: 'power4.inOut', stagger: { amount: 0.1 } };
+  //     const SCALE = { duration: 0.5, ease: 'sine.inOut' };
+  //   
+  //     function initButtonHovers() {
+  //       if (reduce) return;
+  //   
+  //       document.querySelectorAll('.button_component').forEach((btn) => {
+  //         const textEl = btn.querySelector('.button_text');
+  //         if (!textEl) return;
+  //   
+  //         const chars = new SplitText(textEl, { type: 'chars' }).chars;
+  //   
+  //         btn.addEventListener('mouseenter', () => {
+  //           gsap.to(chars, { y: MOVE, ...TEXT, overwrite: 'auto' });
+  //           gsap.to(btn, { scale: 0.95, ...SCALE, overwrite: 'auto' });
+  //         });
+  //         btn.addEventListener('mouseleave', () => {
+  //           gsap.to(chars, { y: 0, ...TEXT, overwrite: 'auto' });
+  //           gsap.to(btn, { scale: 1, ...SCALE, overwrite: 'auto' });
+  //         });
+  //       });
+  //     }
+  //   
+  //     // Nav links -- same per-letter swap as the buttons (no button scale). The clone is
+  //     // `.nav_link-text`'s `text-shadow: ...currentColor` (components.css), masked by its
+  //     // overflow:hidden. Hover is bound on the whole `<a>` so the full link is the target.
+  //     function initNavLinkHovers() {
+  //       if (reduce) return;
+  //   
+  //       document.querySelectorAll('.nav_links').forEach((link) => {
+  //         const textEl = link.querySelector('.nav_link-text');
+  //         if (!textEl) return;
+  //   
+  //         const chars = new SplitText(textEl, { type: 'chars' }).chars;
+  //   
+  //         link.addEventListener('mouseenter', () => {
+  //           gsap.to(chars, { y: NAV_MOVE, ...TEXT, overwrite: 'auto' });
+  //         });
+  //         link.addEventListener('mouseleave', () => {
+  //           gsap.to(chars, { y: 0, ...TEXT, overwrite: 'auto' });
+  //         });
+  //       });
+  //     }
+  //   
+  //     function init() {
+  //       initButtonHovers();
+  //       initNavLinkHovers();
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', init);
+  //     } else {
+  //       init();
+  //     }
+  //   })();
+  //   
+  //   // Global scroll-reveal engine -- decorative layer (Phase 5B animations pass).
+  //   //
+  //   // Source: every Webflow IX2 SCROLL_INTO_VIEW action on the surviving pages collapses
+  //   // to one preset. The opt-in hook `.scroll-into-view` is preserved verbatim in the
+  //   // markup, so the engine consumes it directly (1:1 with source -- no guessing which
+  //   // elements reveal). `[data-reveal*]` attributes are manual hooks for the two
+  //   // non-class presets whose `data-w-id` was stripped in S3.
+  //   //
+  //   //   .scroll-into-view / [data-reveal]  -> slideInUp  (opacity 0->1, y 15px->0, 700ms outQuart)
+  //   //   [data-reveal-img]                  -> scaleIn    (scale 1.5->1, 1s outQuart)        a-61
+  //   //   [data-reveal-rotate]               -> rotateIn   (opacity 0->1, rotate -5deg->0, 600ms) a-35
+  //   //
+  //   // Trigger = IntersectionObserver (NOT ScrollTrigger). The browser computes
+  //   // intersection live, so reveals fire reliably regardless of scroll speed, instant
+  //   // jumps (anchor links), or layout shifts from late fonts / the hero SplitText. With
+  //   // ScrollTrigger.batch those shifts left cached trigger positions stale, so far-down
+  //   // elements (e.g. the FAQ) could stay hidden-but-interactive -- clicking an accordion
+  //   // "did nothing" because the whole item was still opacity:0. IO eliminates that.
+  //   //
+  //   // Initial (hidden) state lives in reveal.css, gated on `html.reveal-on` + the SAME
+  //   // media query used here, so JS-off / reduced-motion / mobile users never see a
+  //   // hidden element. Mobile (<=991px) is intentionally excluded: there the card grids
+  //   // become Swiper sliders (grid-slider) and a hidden initial state would blank the
+  //   // off-screen slides.
+  //   (function () {
+  //     // Reveal ~10% into the viewport (matches the old ScrollTrigger "top 90%").
+  //     const ROOT_MARGIN = '0px 0px -10% 0px';
+  //   
+  //     // Observe a set, run `reveal` on each batch of entering elements (once), unobserve.
+  //     function observe(selector, reveal, rootMargin = ROOT_MARGIN) {
+  //       const io = new IntersectionObserver(
+  //         (entries) => {
+  //           const entering = entries
+  //             .filter((e) => e.isIntersecting)
+  //             .map((e) => e.target);
+  //           if (entering.length) {
+  //             reveal(entering);
+  //             entering.forEach((el) => io.unobserve(el));
+  //           }
+  //         },
+  //         { rootMargin, threshold: 0 }
+  //       );
+  //       document.querySelectorAll(selector).forEach((el) => io.observe(el));
+  //       return io;
+  //     }
+  //   
+  //     function initReveals() {
+  //       const mm = gsap.matchMedia();
+  //   
+  //       // Desktop + motion allowed -- the only context where reveal.css hides elements.
+  //       mm.add('(min-width: 992px) and (prefers-reduced-motion: no-preference)', () => {
+  //         // slideInUp -- a cluster entering in the same observer callback staggers as a group.
+  //         const ioText = observe('.scroll-into-view, [data-reveal]', (els) =>
+  //           gsap.to(els, {
+  //             opacity: 1,
+  //             y: 0,
+  //             duration: 0.7,
+  //             ease: 'power4.out',
+  //             stagger: 0.08,
+  //             overwrite: 'auto',
+  //           })
+  //         );
+  //   
+  //         // scaleIn -- image zoom-out (a-61).
+  //         const ioImg = observe('[data-reveal-img]', (els) =>
+  //           els.forEach((el) => gsap.to(el, { scale: 1, duration: 1, ease: 'power4.out' }))
+  //         );
+  //   
+  //         // rotateIn -- join/CTA card (a-35), fires slightly later (off 20%).
+  //         const ioRot = observe(
+  //           '[data-reveal-rotate]',
+  //           (els) =>
+  //             els.forEach((el) =>
+  //               gsap.to(el, { opacity: 1, rotation: 0, duration: 0.6, ease: 'sine.out' })
+  //             ),
+  //           '0px 0px -20% 0px'
+  //         );
+  //   
+  //         // join social-proof avatars -- slide in from the right in a staircase (the source
+  //         // `animation="join-user-list"` / `join-user-img` hooks; exact IX2 values weren't in
+  //         // the export, reconstructed per Edgar). Observe the list, stagger its avatars.
+  //         const ioUsers = observe('[animation="join-user-list"]', (els) =>
+  //           els.forEach((el) => {
+  //             // avatars (x3) + the "+20k customers" label, in DOM order -> the label lands
+  //             // last in the staircase.
+  //             const items = el.querySelectorAll('.user-image, .users-count');
+  //             gsap.to(items, {
+  //               x: 0,
+  //               opacity: 1,
+  //               duration: 0.7,
+  //               ease: 'power4.out',
+  //               stagger: 0.12,
+  //               overwrite: 'auto',
+  //             });
+  //           })
+  //         );
+  //   
+  //         // matchMedia cleanup (e.g. resize down to mobile): stop observing.
+  //         return () => {
+  //           ioText.disconnect();
+  //           ioImg.disconnect();
+  //           ioRot.disconnect();
+  //           ioUsers.disconnect();
+  //         };
+  //       });
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', initReveals);
+  //     } else {
+  //       initReveals();
+  //     }
+  //   })();
+  //   
+  //   // Navbar behaviour: OSMO scaling-hamburger menu (tablet/mobile) + sticky
+  //   // hide-on-scroll. Menu state lives on <html data-navigation-status> so the
+  //   // hamburger pill (inside the navbar) and the dim backdrop (sibling) react
+  //   // together. No GSAP -- pure CSS transitions keyed off the status attribute.
+  //   (function () {
+  //     function initNavbar() {
+  //       const html = document.documentElement;
+  //       const toggleEls = document.querySelectorAll('[data-navigation-toggle="toggle"]');
+  //       const closeEls = document.querySelectorAll('[data-navigation-toggle="close"]');
+  //       const menuLinks = document.querySelectorAll('.hamburger-nav__a');
+  //   
+  //       const setStatus = (active) => {
+  //         html.setAttribute('data-navigation-status', active ? 'active' : 'not-active');
+  //         html.style.overflow = active ? 'hidden' : '';
+  //         toggleEls.forEach((el) => el.setAttribute('aria-expanded', String(active)));
+  //       };
+  //       setStatus(false);
+  //   
+  //       toggleEls.forEach((btn) => {
+  //         btn.addEventListener('click', (e) => {
+  //           e.stopPropagation();
+  //           setStatus(html.getAttribute('data-navigation-status') !== 'active');
+  //         });
+  //       });
+  //       closeEls.forEach((el) => el.addEventListener('click', () => setStatus(false)));
+  //       menuLinks.forEach((link) => link.addEventListener('click', () => setStatus(false)));
+  //       document.addEventListener('keydown', (e) => {
+  //         if (e.key === 'Escape' && html.getAttribute('data-navigation-status') === 'active') {
+  //           setStatus(false);
+  //         }
+  //       });
+  //   
+  //       // Sticky hide-on-scroll-down / show-on-scroll-up (IX2 PAGE_SCROLL equivalent).
+  //       // Scroll is locked while the menu is open, so the two never fight.
+  //       const navbar = document.querySelector('[data-navbar]');
+  //       if (navbar) {
+  //         let lastY = window.scrollY;
+  //         window.addEventListener(
+  //           'scroll',
+  //           () => {
+  //             const y = window.scrollY;
+  //             if (y > lastY && y > 200) navbar.classList.add('is-hidden');
+  //             else navbar.classList.remove('is-hidden');
+  //             lastY = y;
+  //           },
+  //           { passive: true }
+  //         );
+  //       }
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', initNavbar);
+  //     } else {
+  //       initNavbar();
+  //     }
+  //   })();
+  //   
+  //   // Page-load intro choreography (Phase 5B) -- reconstructed from the source hooks.
+  //   //
+  //   // The Webflow source drove this with a GSAP-attribute library (animation="hero-first"
+  //   // | "ani-button" | "badge-appear", floating="up|down", nav="") loaded as project
+  //   // custom code that was NOT included in the static export -- only the hooks + a
+  //   // `visibility:hidden` FOUC guard survived. The exact durations/eases are therefore a
+  //   // faithful reconstruction (SplitText was loaded by the source -> the heading was a
+  //   // line reveal), tuned cinematic per Edgar. Tune freely; this is the signature moment.
+  //   //
+  //   //   nav            -> slides down on load (every page)
+  //   //   heading (h1)   -> SplitText lines mask up, staggered
+  //   //   description    -> fade-up
+  //   //   buttons        -> fade-up, staggered
+  //   //   badges         -> scale/fade in (back.out) -> then continuous float loop (up/down)
+  //   //
+  //   // Initial hidden state lives in reveal.css (`html.reveal-on ... { visibility:hidden }`,
+  //   // no !important so gsap.set can override). JS off / reduced-motion -> never hidden.
+  //   (function () {
+  //     gsap.registerPlugin(SplitText);
+  //   
+  //     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  //   
+  //     // SplitText line reveal helper (heading): make container visible, split into masked
+  //     // lines, park them below, return the lines for the caller to tween up.
+  //     function splitLines(heading) {
+  //       gsap.set(heading, { autoAlpha: 1 });
+  //       const split = new SplitText(heading, { type: 'lines', mask: 'lines' });
+  //       gsap.set(split.lines, { yPercent: 110 });
+  //       return split.lines;
+  //     }
+  //   
+  //     function run() {
+  //       const nav = document.querySelector('[data-navbar]');
+  //   
+  //       // HOME hero (`/`).
+  //       const home = document.querySelector('.section_home.is-one');
+  //       const hHeading = home?.querySelector('.hero_heading h1') ?? null;
+  //       const hDesc = home?.querySelector('.max-description') ?? null;
+  //       const hButtons = home
+  //         ? Array.from(home.querySelectorAll('.hero_buttons .button_component'))
+  //         : [];
+  //       const badges = home
+  //         ? Array.from(home.querySelectorAll('.hero_badge-wrap'))
+  //         : [];
+  //   
+  //       // ABOUT hero (`/about`) -- same load language as home (SplitText h1 + fade-ups).
+  //       const about = document.querySelector('.section_about-hero');
+  //       const aEyebrow = about?.querySelector('.about_content-left .section_title') ?? null;
+  //       const aH1 = about?.querySelector('h1') ?? null;
+  //       const aImg = about?.querySelector('.about_hero-img .img') ?? null;
+  //       const aDesc = about?.querySelector('.text-color-subtle') ?? null;
+  //       const aMono = about?.querySelector('.about_hero-content .font-mono') ?? null;
+  //       const aH2 = about?.querySelector('.about_hero-content h2') ?? null;
+  //       const aButtons = about
+  //         ? Array.from(about.querySelectorAll('.hero_buttons .button_component'))
+  //         : [];
+  //   
+  //       // SERVICES hero (`/services`) -- like about, plus floating badges + stats.
+  //       const services = document.querySelector('.section_services-hero');
+  //       const sEyebrow = services?.querySelector('.services-hero_top .section_title') ?? null;
+  //       const sH1 = services?.querySelector('h1') ?? null;
+  //       const sDesc = services?.querySelector('.services-hero_top .text-color-subtle') ?? null;
+  //       const sImg = services?.querySelector('.services-hero_img .img') ?? null;
+  //       const sH2 = services?.querySelector('.service-hero_stats h2') ?? null;
+  //       const sStats = services
+  //         ? Array.from(services.querySelectorAll('.stat-wrap'))
+  //         : [];
+  //       const sButtons = services
+  //         ? Array.from(services.querySelectorAll('.hero_buttons .button_component'))
+  //         : [];
+  //       const sBadges = services
+  //         ? Array.from(services.querySelectorAll('.badge_wrapper'))
+  //         : [];
+  //   
+  //       // BLOG hero (`/blog`) -- top (eyebrow + h1 + desc) + a featured-post card.
+  //       const blog = document.querySelector('.section_blogs-hero');
+  //       const bEyebrow = blog?.querySelector('.section_title') ?? null;
+  //       const bH1 = blog?.querySelector('h1') ?? null;
+  //       const bDesc = blog?.querySelector('.text-color-subtle') ?? null;
+  //       const bImg = blog?.querySelector('.blog-hero_img .img') ?? null;
+  //       const bCard = blog
+  //         ? Array.from(blog.querySelectorAll('.blog_content > *'))
+  //         : [];
+  //   
+  //       // TEAM hero (`/team/[slug]`) -- portrait + name + role + bio + socials.
+  //       const team = document.querySelector('.section_team-hero');
+  //       const tImg = team?.querySelector('.team-hero_img .img') ?? null;
+  //       const tH1 = team?.querySelector('.team-hero_right h1') ?? null;
+  //       const tText = team
+  //         ? Array.from(team.querySelectorAll('.team-hero_right .text-color-secondary, .team-hero_right .w-richtext'))
+  //         : [];
+  //       const tSocials = team
+  //         ? Array.from(team.querySelectorAll('.socials_grid .social_item'))
+  //         : [];
+  //   
+  //       // CONTACT hero (`/contact`) -- left info column + the form (no image).
+  //       const contact = document.querySelector('.section_contact');
+  //       const cEyebrow = contact?.querySelector('.contact-hero_left .section_title') ?? null;
+  //       const cH1 = contact?.querySelector('h1') ?? null;
+  //       const cDesc = contact?.querySelector('.contact-hero_left .text-color-secondary') ?? null;
+  //       const cData = contact
+  //         ? Array.from(contact.querySelectorAll('.contact_data'))
+  //         : [];
+  //       const cForm = contact?.querySelector('.form_wrapper') ?? null;
+  //   
+  //       // BLOG DETAIL hero (`/blog/[slug]`) -- simple fade-ups + image zoom (no SplitText,
+  //       // per Edgar). The article rich text is intentionally NOT animated.
+  //       const blogDetail = document.querySelector('.section_blog-hero');
+  //       const bdDate = blogDetail?.querySelector('.font-mono') ?? null;
+  //       const bdH1 = blogDetail?.querySelector('h1') ?? null;
+  //       const bdDesc = blogDetail?.querySelector('.blog-hero_desc') ?? null;
+  //       const bdImg = blogDetail?.querySelector('.blog-hero_visual .img') ?? null;
+  //   
+  //       // SERVICE DETAIL hero (`/services/[slug]`) -- source hooks animation="hero-icon"
+  //       // (icon), "hero-first" (h1 + body), "hero-img" (image). The by-attribute GSAP lib
+  //       // wasn't exported -> reconstructed in the site's established hero language.
+  //       const svcDetail = document.querySelector('.section_service');
+  //       const sdIcon = svcDetail?.querySelector('[animation="hero-icon"]') ?? null;
+  //       const sdH1 = svcDetail?.querySelector('h1') ?? null;
+  //       const sdBody = svcDetail?.querySelector('[animation="hero-first"]:not(h1)') ?? null;
+  //       const sdButtons = svcDetail
+  //         ? Array.from(svcDetail.querySelectorAll('.hero_buttons .button_component'))
+  //         : [];
+  //       const sdImg = svcDetail?.querySelector('.service-hero_img .img') ?? null;
+  //   
+  //       const guarded = [
+  //         nav, hHeading, hDesc, ...hButtons, ...badges,
+  //         aEyebrow, aH1, aImg, aDesc, aMono, aH2, ...aButtons,
+  //         sEyebrow, sH1, sImg, sDesc, sH2, ...sStats, ...sButtons, ...sBadges,
+  //         bEyebrow, bH1, bDesc, bImg, ...bCard,
+  //         tImg, tH1, ...tText, ...tSocials,
+  //         cEyebrow, cH1, cDesc, ...cData, cForm,
+  //         bdDate, bdH1, bdDesc, bdImg,
+  //         sdIcon, sdH1, sdBody, ...sdButtons, sdImg,
+  //       ].filter(Boolean);
+  //   
+  //       // Reduced motion: just reveal everything in place, no choreography.
+  //       if (reduce) {
+  //         gsap.set(guarded, { autoAlpha: 1, clearProps: 'transform' });
+  //         return;
+  //       }
+  //   
+  //       // Set each element's FROM state (offset + autoAlpha:0) up front, so nothing is ever
+  //       // painted at its resting position first -- that was the nav "snap up then down" bug.
+  //       // .to() then animates into place. autoAlpha drives visibility+opacity together.
+  //       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  //   
+  //       // Nav drops in from above (every page). The navbar carries a CSS `transition:
+  //       // transform .3s` (sticky hide/show); left on it fights GSAP's per-frame transform
+  //       // (settle -> jump up -> drop). Disable for the intro, restore on complete.
+  //       if (nav) {
+  //         nav.style.transition = 'none';
+  //         tl.fromTo(
+  //           nav,
+  //           { y: -110, autoAlpha: 0 },
+  //           { y: 0, autoAlpha: 1, duration: 1.1, clearProps: 'transform', onComplete: () => { nav.style.transition = ''; } },
+  //           0
+  //         );
+  //       }
+  //   
+  //       // ---- HOME ----
+  //       if (hHeading) tl.to(splitLines(hHeading), { yPercent: 0, duration: 1.2, stagger: 0.18 }, 0.2);
+  //       if (hDesc) { gsap.set(hDesc, { y: 32, autoAlpha: 0 }); tl.to(hDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.6); }
+  //       if (hButtons.length) { gsap.set(hButtons, { y: 28, autoAlpha: 0 }); tl.to(hButtons, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.14 }, 0.85); }
+  //       if (badges.length) {
+  //         gsap.set(badges, { scale: 0.5, autoAlpha: 0 });
+  //         tl.to(badges, { scale: 1, autoAlpha: 1, duration: 1.1, stagger: 0.12, ease: 'back.out(1.5)' }, 0.7);
+  //         // Continuous float loop after the appear settles (source `floating=up|down`).
+  //         badges.forEach((b, i) => {
+  //           const dir = b.dataset.float === 'up' ? -1 : 1;
+  //           gsap.to(b, { y: 10 * dir, duration: 2.6 + i * 0.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 + i * 0.15 });
+  //         });
+  //       }
+  //   
+  //       // ---- ABOUT ----
+  //       if (aEyebrow) { gsap.set(aEyebrow, { y: 20, autoAlpha: 0 }); tl.to(aEyebrow, { y: 0, autoAlpha: 1, duration: 1 }, 0.2); }
+  //       if (aH1) tl.to(splitLines(aH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       // Image enters with a zoom-out ONLY (no fade -- always visible, per Edgar) inside its
+  //       // clipped wrapper (source scaleIn / hero-user-img). Initial scale 1.25 is set in
+  //       // reveal.css so it's pre-zoomed before paint; here we just animate it back to 1.
+  //       if (aImg) { gsap.set(aImg, { scale: 1.25 }); tl.to(aImg, { scale: 1, duration: 1.4 }, 0.4); }
+  //       if (aDesc) { gsap.set(aDesc, { y: 32, autoAlpha: 0 }); tl.to(aDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.6); }
+  //       if (aMono) { gsap.set(aMono, { y: 24, autoAlpha: 0 }); tl.to(aMono, { y: 0, autoAlpha: 1, duration: 1 }, 0.7); }
+  //       if (aH2) { gsap.set(aH2, { y: 28, autoAlpha: 0 }); tl.to(aH2, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.8); }
+  //       if (aButtons.length) { gsap.set(aButtons, { y: 28, autoAlpha: 0 }); tl.to(aButtons, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.14 }, 0.95); }
+  //   
+  //       // ---- SERVICES ----
+  //       if (sEyebrow) { gsap.set(sEyebrow, { y: 20, autoAlpha: 0 }); tl.to(sEyebrow, { y: 0, autoAlpha: 1, duration: 1 }, 0.2); }
+  //       if (sH1) tl.to(splitLines(sH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       if (sDesc) { gsap.set(sDesc, { y: 32, autoAlpha: 0 }); tl.to(sDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.45); }
+  //       // Image: zoom-out only (no fade -- always visible), initial scale in reveal.css.
+  //       if (sImg) { gsap.set(sImg, { scale: 1.25 }); tl.to(sImg, { scale: 1, duration: 1.4 }, 0.45); }
+  //       if (sH2) { gsap.set(sH2, { y: 28, autoAlpha: 0 }); tl.to(sH2, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.6); }
+  //       if (sStats.length) { gsap.set(sStats, { y: 24, autoAlpha: 0 }); tl.to(sStats, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.12 }, 0.7); }
+  //       if (sButtons.length) { gsap.set(sButtons, { y: 28, autoAlpha: 0 }); tl.to(sButtons, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.14 }, 0.75); }
+  //       if (sBadges.length) { gsap.set(sBadges, { scale: 0.5, autoAlpha: 0 }); tl.to(sBadges, { scale: 1, autoAlpha: 1, duration: 1, stagger: 0.1, ease: 'back.out(1.5)' }, 0.65); }
+  //   
+  //       // ---- BLOG ----
+  //       if (bEyebrow) { gsap.set(bEyebrow, { y: 20, autoAlpha: 0 }); tl.to(bEyebrow, { y: 0, autoAlpha: 1, duration: 1 }, 0.2); }
+  //       if (bH1) tl.to(splitLines(bH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       if (bDesc) { gsap.set(bDesc, { y: 32, autoAlpha: 0 }); tl.to(bDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.45); }
+  //       if (bImg) { gsap.set(bImg, { scale: 1.25 }); tl.to(bImg, { scale: 1, duration: 1.4 }, 0.45); }
+  //       if (bCard.length) { gsap.set(bCard, { y: 28, autoAlpha: 0 }); tl.to(bCard, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.1 }, 0.6); }
+  //   
+  //       // ---- TEAM ----
+  //       if (tImg) { gsap.set(tImg, { scale: 1.25 }); tl.to(tImg, { scale: 1, duration: 1.4 }, 0.3); }
+  //       if (tH1) tl.to(splitLines(tH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       if (tText.length) { gsap.set(tText, { y: 28, autoAlpha: 0 }); tl.to(tText, { y: 0, autoAlpha: 1, duration: 1.1, stagger: 0.12 }, 0.5); }
+  //       if (tSocials.length) { gsap.set(tSocials, { y: 24, autoAlpha: 0 }); tl.to(tSocials, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.1 }, 0.7); }
+  //   
+  //       // ---- CONTACT ----
+  //       if (cEyebrow) { gsap.set(cEyebrow, { y: 20, autoAlpha: 0 }); tl.to(cEyebrow, { y: 0, autoAlpha: 1, duration: 1 }, 0.2); }
+  //       if (cH1) tl.to(splitLines(cH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       if (cDesc) { gsap.set(cDesc, { y: 32, autoAlpha: 0 }); tl.to(cDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.45); }
+  //       if (cForm) { gsap.set(cForm, { y: 32, autoAlpha: 0 }); tl.to(cForm, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.5); }
+  //       if (cData.length) { gsap.set(cData, { y: 24, autoAlpha: 0 }); tl.to(cData, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.1 }, 0.55); }
+  //   
+  //       // ---- BLOG DETAIL ---- (simple: meta + title + desc fade up, image zooms)
+  //       if (bdDate) { gsap.set(bdDate, { y: 20, autoAlpha: 0 }); tl.to(bdDate, { y: 0, autoAlpha: 1, duration: 1 }, 0.2); }
+  //       if (bdH1) { gsap.set(bdH1, { y: 28, autoAlpha: 0 }); tl.to(bdH1, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.3); }
+  //       if (bdDesc) { gsap.set(bdDesc, { y: 32, autoAlpha: 0 }); tl.to(bdDesc, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.45); }
+  //       if (bdImg) { gsap.set(bdImg, { scale: 1.25 }); tl.to(bdImg, { scale: 1, duration: 1.4 }, 0.4); }
+  //   
+  //       // ---- SERVICE DETAIL ---- (icon pop, SplitText h1, body + button fade-up, image zoom)
+  //       if (sdIcon) { gsap.set(sdIcon, { scale: 0.5, autoAlpha: 0 }); tl.to(sdIcon, { scale: 1, autoAlpha: 1, duration: 1, ease: 'back.out(1.5)' }, 0.2); }
+  //       if (sdH1) tl.to(splitLines(sdH1), { yPercent: 0, duration: 1.2, stagger: 0.15 }, 0.3);
+  //       if (sdBody) { gsap.set(sdBody, { y: 32, autoAlpha: 0 }); tl.to(sdBody, { y: 0, autoAlpha: 1, duration: 1.1 }, 0.5); }
+  //       if (sdButtons.length) { gsap.set(sdButtons, { y: 28, autoAlpha: 0 }); tl.to(sdButtons, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.14 }, 0.65); }
+  //       if (sdImg) { gsap.set(sdImg, { scale: 1.25 }); tl.to(sdImg, { scale: 1, duration: 1.4 }, 0.4); }
+  //     }
+  //   
+  //     function start() {
+  //       // Wait for fonts so SplitText measures correct line breaks; fall back after 1.5s.
+  //       const fontsReady =
+  //         'fonts' in document ? document.fonts.ready : Promise.resolve();
+  //       Promise.race([fontsReady, new Promise((r) => setTimeout(r, 1500))]).then(() => {
+  //         try {
+  //           run();
+  //         } catch {
+  //           // Never leave the hero hidden if anything throws.
+  //           document.documentElement.classList.remove('reveal-on');
+  //         }
+  //       });
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', start);
+  //     } else {
+  //       start();
+  //     }
+  //   })();
+  //   
+  //   (function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();
+  }, { scope: raiz });
+  return (
+    <section className="dobra" data-dobra="precos-secao-139" ref={raiz}>
+      <div className="page-wrapper">
+          <div data-navbar="" data-animation="default" data-collapse="medium" data-wf--navbar--variant="base" className="navbar  w-nav" role="banner">
+            <div className="padding-global is-navbar">
+              <div className="container-large">
+                <div className="navbar_content ">
+                  <a href="/" aria-label="Upmind, home" className="navbar_logo-link w-nav-brand">
+                    <img loading="lazy" src={s.imagem} alt="" className="navbar_logo" />
+                  </a>
+                  <div className="nav_wrap">
+                    <nav role="navigation" data-nav-menu="" className="nav_mobile w-nav-menu">
+                      <div className="navbar_list">
+                        <a href="/about" className="nav_links  w-inline-block">
+                          <div className="nav_link-text">About</div>
+                        </a>
+                        <a href="/services" className="nav_links  w-inline-block">
+                          <div className="nav_link-text">Services</div>
+                        </a>
+                        <a href="/blog" className="nav_links  w-inline-block">
+                          <div className="nav_link-text">Blog</div>
+                        </a>
+                        <a href="/pricing" className="nav_links  w-inline-block">
+                          <div className="nav_link-text">Pricing</div>
+                        </a>
+                        <a href="/contact" className="nav_links  w-inline-block">
+                          <div className="nav_link-text">Contact</div>
+                        </a>
+                      </div>
+                    </nav>
+                  </div>
+                  <div className="nav_buttons-wrap">
+                    <div className="login-wrap hide-mobile-landscape">
+                      <a href="/contact" className="button_component w-inline-block">
+                        <div className="button_mask">
+                          <div className="button_text">Get Started</div>
+                        </div>
+                      </a>
+                    </div>
+                    <div className="hamburger-anchor">
+                      <div className="hamburger-nav">
+                        <div className="hamburger-nav__bg" aria-hidden="true"></div>
+                        <div className="hamburger-nav__group">
+                          <p className="hamburger-nav__menu-p">{s.texto}</p>
+                          <ul className="hamburger-nav__ul">
+                            <li className="hamburger-nav__li">
+                              <a href="/about" className="hamburger-nav__a">
+                                <p className="hamburger-nav__p">{s.texto2}</p>
+                                <div className="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li className="hamburger-nav__li">
+                              <a href="/services" className="hamburger-nav__a">
+                                <p className="hamburger-nav__p">{s.texto3}</p>
+                                <div className="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li className="hamburger-nav__li">
+                              <a href="/blog" className="hamburger-nav__a">
+                                <p className="hamburger-nav__p">{s.texto4}</p>
+                                <div className="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li className="hamburger-nav__li">
+                              <a href="/pricing" className="hamburger-nav__a">
+                                <p className="hamburger-nav__p">{s.texto5}</p>
+                                <div className="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li className="hamburger-nav__li">
+                              <a href="/contact" className="hamburger-nav__a">
+                                <p className="hamburger-nav__p">{s.texto6}</p>
+                                <div className="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" className="hamburger-nav__toggle" onClick={s.onClick}>
+                          <div className="hamburger-nav__toggle-bar"></div>
+                          <div className="hamburger-nav__toggle-bar"></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div data-navigation-toggle="close" className="navigation__dark-bg" aria-hidden="true"></div>
+      
+          <section className="section_services-hero bg-mint">
+            <div className="services-hero_wrap">
+              <div id="w-node-_520d1f40-cabf-a8e8-57be-0a73c0ba9205-52e5b217" className="services-hero_top">
+                <div animation="hero-first" className="text-color-subtle">We offer a comprehensive range of services designed to meet the unique needs of your business. From strategy development to risk management, our expert team is dedicated to driving your success.</div>
+                <div>
+                  <div animation="hero-title">
+                    <div data-wf--section-title--variant="white" className="section_title w-variant-536c827e-fe7a-ca18-f9ff-925ace1cafb9">
+                      <div className="title-dot bg-neon w-variant-536c827e-fe7a-ca18-f9ff-925ace1cafb9"></div>
+                      <div>About upmind</div>
+                    </div>
+                  </div>
+                  <div className="spacer-small"></div>
+                  <h1 animation="hero-first" className="text-6xl text-color-on-primary">{s.titulo}</h1>
+                  <div className="spacer-xhuge"></div>
+                  <div className="hero_buttons">
+                    <a button="" data-wf--button--variant="green" href="/contact" className="button_component w-variant-62c86aa8-15d0-dc6b-786e-c05471c0a18d w-inline-block">
+                      <div className="button_mask">
+                        <div button-text="" className="button_text w-variant-62c86aa8-15d0-dc6b-786e-c05471c0a18d">Book a Call</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div id="w-node-_4e23df9d-8f0c-5147-0406-c5df9237f6d8-52e5b217" className="services-hero_bottom">
+                <div className="service-hero_stats">
+                  <h2 animation="hero-first" className="text-5xl">{s.titulo2}</h2>
+                  <div className="stats_grid two-column">
+                    <div contact-form="" className="stat-wrap">
+                      <div className="h4">95%</div>
+                      <div className="text-sm">Customer satisfaction</div>
+                    </div>
+                    <div contact-form="" className="stat-wrap">
+                      <div className="h4">20+</div>
+                      <div className="text-sm">Startups supported</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="services-hero_img"><img src={s.imagem2} loading="lazy" video="" alt="Open palm of a hand with a faint rainbow light reflecting on the palm against a muted={true} green background." className="img" />
+                  <div className="services_badge-wrap text-color-on-primary">
+                    <div className="badge-row-top">
+                      <div animation="badge-appear" className="badge_wrapper">
+                        <div data-wf--hero-badge--variant="blue" className="hero_badge w-variant-abd75cb7-f1bf-f22b-f94b-fc0d61545309">
+                          <div className="hero_badge-icon w-variant-abd75cb7-f1bf-f22b-f94b-fc0d61545309"><img src={s.imagem3} loading="lazy" alt="" className="badge_icon" /></div>
+                          <div className="badge_text w-variant-abd75cb7-f1bf-f22b-f94b-fc0d61545309">Build Smart</div>
+                        </div>
+                      </div>
+                      <div animation="badge-appear" className="badge_wrapper">
+                        <div data-wf--hero-badge--variant="soft-green" className="hero_badge">
+                          <div className="hero_badge-icon w-variant-94cc4296-fdde-1ca5-7744-167bb3a7206c"><img src={s.imagem4} loading="lazy" alt="" className="badge_icon" /></div>
+                          <div className="badge_text w-variant-94cc4296-fdde-1ca5-7744-167bb3a7206c">Strategic</div>
+                        </div>
+                      </div>
+                      <div animation="badge-appear" className="badge_wrapper">
+                        <div data-wf--hero-badge--variant="pink" className="hero_badge">
+                          <div className="hero_badge-icon w-variant-dbec6776-3b9a-0984-68d7-e028ca9d439a"><img src={s.imagem5} loading="lazy" alt="" className="badge_icon" /></div>
+                          <div className="badge_text w-variant-dbec6776-3b9a-0984-68d7-e028ca9d439a">Professional</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="badge-row-bottom">
+                      <div animation="badge-appear" className="badge_wrapper">
+                        <div data-wf--hero-badge--variant="green" className="hero_badge">
+                          <div className="hero_badge-icon"><img src={s.imagem6} loading="lazy" alt="" className="badge_icon" /></div>
+                          <div className="badge_text">Grow Faster</div>
+                        </div>
+                      </div>
+                      <div animation="badge-appear" className="badge_wrapper">
+                        <div data-wf--hero-badge--variant="soft-pink" className="hero_badge">
+                          <div className="hero_badge-icon w-variant-7288e8bb-3980-fc03-d3d3-58472631214a"><img src={s.imagem7} loading="lazy" alt="" className="badge_icon" /></div>
+                          <div className="badge_text w-variant-7288e8bb-3980-fc03-d3d3-58472631214a">Startup Feel</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    </section>
+  );
+}

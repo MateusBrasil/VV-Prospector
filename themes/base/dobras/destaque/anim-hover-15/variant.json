@@ -1,0 +1,88 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-15",
+  "scope": "destaque-anim-hover-15",
+  "origem": "bank/_componentes/animacoes/hover-15",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "matter"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Silhouette"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Chroma"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Persona"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/service_1_img_1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "/service_1_img_2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "/service_1_img_3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "/service_2_img_1.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "/service_2_img_2.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "/service_2_img_3.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "/service_3_img_1.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "/service_3_img_2.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "/service_3_img_3.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 9,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #ff3831 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

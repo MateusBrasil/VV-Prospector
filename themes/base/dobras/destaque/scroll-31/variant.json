@@ -1,0 +1,31 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-31",
+  "scope": "destaque-scroll-31",
+  "origem": "bank/_componentes/scroll/scroll-31",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "1.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

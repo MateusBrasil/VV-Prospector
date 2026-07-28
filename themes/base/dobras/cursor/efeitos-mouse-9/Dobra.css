@@ -1,0 +1,46 @@
+[data-dobra="cursor-efeitos-mouse-9"] *{
+  box-sizing: border-box;
+}
+[data-dobra="cursor-efeitos-mouse-9"],[data-dobra="cursor-efeitos-mouse-9"]{
+  height: 100%;
+}
+[data-dobra="cursor-efeitos-mouse-9"]{
+  color: var(--base-600);
+  background-color: black;
+  margin: 0;
+}
+[data-dobra="cursor-efeitos-mouse-9"] .content{
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+[data-dobra="cursor-efeitos-mouse-9"] .content__title{
+  font-family: var(--fonte-corpo);
+  text-transform: uppercase;
+  z-index: 10000;
+  font-size: 4vw;
+  color: white;
+  user-select: none;
+}
+[data-dobra="cursor-efeitos-mouse-9"] .content__img{
+  max-width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@media screen and (min-width: 50em){[data-dobra="cursor-efeitos-mouse-9"]{
+    overflow: hidden;
+  }
+[data-dobra="cursor-efeitos-mouse-9"] .content{
+    height: 100vh;
+    overflow: hidden;
+  }
+
+}
+
+

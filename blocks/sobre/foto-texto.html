@@ -1,0 +1,23 @@
+<style>
+.sobre__grid{display:grid;gap:var(--space-4);align-items:center}
+@media (min-width:900px){.sobre__grid{grid-template-columns:42fr 58fr;gap:var(--space-5)}}
+.sobre__media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--ring)}
+.sobre__media img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.sobre h2{margin-bottom:var(--space-2)}
+.sobre__texto p{color:var(--ink-muted);margin-bottom:var(--space-2)}
+.sobre__creds{list-style:none;padding:0;margin-top:var(--space-3);display:grid;gap:.5rem}
+.sobre__creds li{padding-left:1rem;position:relative;font-size:var(--step--1)}
+.sobre__creds li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--brand-cta);border-radius:50%}
+</style>
+<section class="sobre" id="sobre">
+  <div class="wrap sobre__grid">
+    <figure class="sobre__media reveal">
+      <img class="foto" src="{{foto}}" alt="{{fotoAlt}}" width="700" height="875" loading="lazy">
+    </figure>
+    <div class="sobre__texto reveal">
+      <h2>{{titulo}}</h2>
+      {{{paragrafos}}}
+      {{#credenciais}}<ul class="sobre__creds">{{{credenciais}}}</ul>{{/credenciais}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stack to Content Layout Transition | Codrops</title>
+    <meta name="description" content="An experimental layout transition where a stack of images animates to a gallery view, showing some more content." />
+    <meta name="keywords" content="stack, layout transition, menu, gallery, gsap, javascript" />
+    <meta name="author" content="Codrops" />
+    <link rel="stylesheet" href="https://use.typekit.net/mai4fgw.css">
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 15px;
+            margin: 0;
+            position: relative;
+            --color-text: #fff;
+            --color-text-alt: #787878;
+            --color-bg: #000;
+            --color-link: #fff;
+            --color-link-hover: #ccc;
+            --page-padding: 2rem;
+
+            /* Stack and slideshow */
+            --stack-margin: 10rem;
+            --slide-gap: 2vh;
+            --stack-width: 38vw;
+            --stack-item-height: 8vh;
+            --slide-width: 40vw;
+            --slide-height: 50vh;
+        }
+
+        body {
+            margin: 0;
+            position: relative;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: acumin-pro, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Page Loader */
+        .js .loading::before,
+        .js .loading::after {
+            content: '';
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .js .loading::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+        }
+
+        .js .loading::after {
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: var(--color-link);
+            animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+        }
+
+        @keyframes loaderAnim {
+            to {
+                opacity: 1;
+                transform: scale3d(0.5,0.5,1);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-link);
+            outline: none;
+        }
+
+        a:hover {
+            color: var(--color-link-hover);
+            outline: none;
+        }
+
+        /* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+        a:focus {
+            /* Provide a fallback style for browsers
+             that don't support :focus-visible */
+            outline: none;
+            background: lightgrey;
+        }
+
+        a:focus:not(:focus-visible) {
+            /* Remove the focus indicator on mouse-focus for browsers
+             that do support :focus-visible */
+            background: transparent;
+        }
+
+        a:focus-visible {
+            /* Draw a very noticeable focus style for
+             keyboard-focus on browsers that do support
+             :focus-visible */
+            outline: 2px solid red;
+            background: transparent;
+        }
+
+        .oh {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oh__inner {
+            display: inline-block;
+            will-change: transform;
+        }
+
+        .unbutton {
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            color: inherit;
+            font: inherit;
+        }
+
+        .unbutton:focus {
+            outline: none;
+        }
+
+        .frame {
+            padding: 1.5rem 5vw 0;
+            z-index: 100;
+            text-align: center;
+            position: relative;
+            position: absolute;
+            width: 100%;
+        }
+
+        .frame__title {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .frame__title-main {
+            font-size: 1rem;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .frame__title-back {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .frame__title-back span {
+            display: none;
+        }
+
+        .frame__title-back svg {
+            fill: #fff;
+        }
+
+        .frame__title-prev {
+            width: 100%;
+        }
+
+        .frame__logo {
+            line-height: 0.9;
+        }
+
+        .frame__logo-title {
+            font-family: wayfinder-cf, serif;
+            font-weight: 100;
+            font-style: normal;
+            font-size: 2.75rem;
+            margin: 0;
+        }
+
+        .frame__logo-subtitle {
+            margin-left: 0.75rem;
+        }
+
+        .stack-wrap {
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        .stack {
+            margin: 0 auto;
+            width: var(--stack-width);
+            min-width: 300px;
+            grid-gap: 2vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .stack__item {
+            opacity: 0.2;
+            width: 100%;
+            height: var(--stack-item-height);
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            will-change: width, height, transform, opacity;
+            transition: opacity 0.3s;
+        }
+
+        .stack__item:hover {
+            opacity: 0.5;
+        }
+
+        .stack__item--empty {
+            pointer-events: none;
+            height: var(--stack-margin);
+        }
+
+        .slides {
+            width: 100%;
+            position: relative;
+            background: var(--color-bg);
+        }
+
+        .slides .stack {
+            width: 100%;
+            margin-left: auto;
+            margin-right: var(--slide-gap);
+        }
+
+        .slides .stack__item {
+            pointer-events: none;
+            opacity: 0.5;
+            height: var(--slide-height);
+        }
+
+        .slides .stack__item--current {
+            opacity: 0.6;
+        }
+
+        .title {
+            position: fixed;
+            bottom: 0;
+            left: 50vw;
+            margin-bottom: 15vh;
+            pointer-events: none;
+        }
+
+        .title__main {
+            font-size: 11vw;
+            margin: 0;
+            font-family: wayfinder-cf, serif;
+            font-weight: 100;
+            line-height: 1;
+        }
+
+        .title__sub {
+            display: block;
+            margin-top: -1.5vw;
+            line-height: 1;
+            font-size: clamp(1rem,2.5vw,2.5rem);
+            margin-left: 0.25vw;
+            font-weight: 200;
+        }
+
+        .content {
+            position: fixed;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: grid;
+            height: 100vh;
+            width: 100%;
+            padding: var(--page-padding);
+            grid-template-areas: '...' 'back' 'slides' '...';
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            grid-gap: var(--slide-gap);
+        }
+
+        .content__item {
+            grid-area: slides;
+            overflow: hidden;
+            position: absolute;
+            height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .content__item--current {
+            overflow: visible;
+            position: relative;
+            pointer-events: auto;
+            height: auto;
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content__item-title {
+            font-family: wayfinder-cf, serif;
+            font-weight: 100;
+            line-height: 1;
+            font-size: clamp(2rem,9vw,10rem);
+            margin: 0 0 2rem 0;
+            color: #c87e4f;
+        }
+
+        .content__item-title > span {
+            display: block;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        .content__item-title > span:not(:first-child) {
+            margin-top: -1vw;
+        }
+
+        .content__back {
+            grid-area: back;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .content__back svg {
+            fill: #fff;
+            margin-right: 0.5rem;
+        }
+
+        .content__nav-wrap {
+            grid-area: 1 / 1 / -1 / -1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content__nav {
+            z-index: 100;
+            cursor: pointer;
+            opacity: 0;
+            flex: none;
+            align-self: center;
+            pointer-events: none;
+            height: calc((100vh - var(--slide-height) - var(--slide-gap) * 4) / 3);
+        }
+
+        .content__nav svg {
+            stroke: #fff;
+            stroke-width: 3px;
+            width: auto;
+            height: 100%;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .content__nav:hover svg,
+        .content__nav:focus-visible svg {
+            opacity: 1;
+        }
+
+        .content__nav--next svg {
+            transform: scale(-1);
+        }
+
+        .content--open .content__back,
+        .content--open .content__nav {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media screen and (min-width: 53em) {
+            :root {
+                --stack-margin: 50vh;
+            }
+            .frame {
+                text-align: left;
+                top: 0;
+                left: 0;
+                display: grid;
+                align-content: space-between;
+                max-width: none;
+                position: fixed;
+                height: 100vh;
+                z-index: 1000;
+                padding: var(--page-padding);
+                pointer-events: none;
+                grid-template-columns: auto auto 1fr;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: 'logo ... sponsor'
+                                    '... ...   ...'
+                                    'title title ...';
+            }
+            .frame__title {
+                grid-area: title;
+                justify-content: flex-start;
+                color: var(--color-text-alt);
+            }
+            .frame__logo {
+                grid-area: logo;
+            }
+            .frame a {
+                pointer-events: auto;
+            }
+            .content {
+                grid-template-areas: 'back slides'
+                                    'title slides'	
+                                    '... slides';
+                grid-template-columns: 1fr 50vw;
+                grid-template-rows: auto 1fr 10vh;
+                grid-column-gap: var(--page-padding);
+                padding: var(--page-padding) var(--slide-gap) var(--page-padding) var(--page-padding);
+            }
+            .content__item {
+                grid-area: title;
+                align-self: end;
+                text-align: left;
+            }
+            .content__item-title {
+                display: inline-flex;
+                flex-direction: column;
+            }
+            .content__item-title > span:first-child {
+                padding-right: 2rem;
+            }
+            .content__item-title > span:last-child {
+                margin-left: auto;
+            }
+            .content__item-description {
+                max-width: 300px;
+            }
+            .content__back {
+                grid-area: back;
+                justify-self: end;
+            }
+            .content__nav-wrap {
+                grid-area: slides; 
+            }
+            .slides {
+                background: transparent;
+                width: 50vw;
+                margin-left: auto;
+                margin-right: var(--slide-gap);
+            }
+            .slides .stack__item--current {
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        document.documentElement.className="js";
+        var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};
+        supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");
+    </script>
+    
+    <!-- Dependencies: GSAP, Flip, Observer & imagesLoaded -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Observer.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+</head>
+<body class="demo-1 loading">
+    <main>
+        <div class="frame">
+            <div class="frame__title">
+                <h1 class="frame__title-main">Stack to Content Layout Transition</h1>
+                <a aria-label="Back to the article" class="frame__title-back" href="#">
+                    <span class="oh__inner">Back to the article</span>
+                    <svg width="18px" height="18px" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M18.25 15.5a.75.75 0 00.75-.75v-9a.75.75 0 00-.75-.75h-9a.75.75 0 000 1.5h7.19L6.22 16.72a.75.75 0 101.06 1.06L17.5 7.56v7.19c0 .414.336.75.75.75z"/></svg>
+                </a>
+                <br/>
+                <a class="frame__title-prev" href="#">Previous demo</a>
+            </div>
+            <div class="frame__logo">
+                <h2 class="frame__logo-title">Jonas Tanaka</h2>
+                <span class="frame__logo-subtitle">フォトグラフィー</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__item">
+                <h2 class="content__item-title">
+                    <span class="oh"><span class="oh__inner">Queen of </span></span><span class="oh"><span class="oh__inner">the Sea</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Osaka, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">Hidesato felt very sorry for the Dragon King on hearing his story, and readily promised to do what he could to help him.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Hinata's</span></span><span class="oh"><span class="oh__inner">Trouble</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Kyoto, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">His power was immense, for he was the ruler of all sea creatures both great and small, and in his keeping were the Jewels of the Ebb and Flow of the Tide.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Dragon's</span></span><span class="oh"><span class="oh__inner">Journey</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Nagoya, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">Calling all his fish retainers together, he chose several of them as ambassadors to go through the sea and seek for a young Dragon Princess who would be his bride.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Prince</span></span><span class="oh"><span class="oh__inner">Yamato</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Tokyo, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">The King fell in love with her at once, and the wedding ceremony was celebrated with great splendor. </span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Kumaso</span></span><span class="oh"><span class="oh__inner">&amp; Haru</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Sapporo, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">When the hare heard these kind words he felt very grateful to the man, and encouraged by his gentle manner the hare told him all that had befallen him.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Botan's</span></span><span class="oh"><span class="oh__inner">Dream</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Sendai, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">Okuni-nushi-no-Mikoto is worshiped by the people in some parts of Japan, as a god, and the hare has become famous as “The White Hare of Inaba”. </span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">The Gate</span></span><span class="oh"><span class="oh__inner">of Rashoi</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Kyoto, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">Nearly two thousand years ago this sword was kept at the shrines of Ite, the temples dedicated to the worship of Amaterasu, the great and beautiful Sun Goddess from whom the Japanese Emperors are said to be descended.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Faithful</span></span><span class="oh"><span class="oh__inner">Knights</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Kobe, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">At last King Keiko ordered his younger son Prince Yamato to subdue the brigands and, if possible, to rid the land of their evil lives.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Five Colors</span></span><span class="oh"><span class="oh__inner">for Jokwa</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Hiroshima, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">There is a story of knightly adventure and daring which explains why the name of the sword was changed from that of Murakumo to Kasanagi, which means grass clearing.</span></p>
+                </div>
+            </div>
+            <div class="content__item">
+                <h2 class="content__item-title"><span class="oh"><span class="oh__inner">Shikuyu's</span></span><span class="oh"><span class="oh__inner">Charm</span></span></h2>
+                <div class="content__item-description">
+                    <p class="oh"><strong class="oh__inner">Kumamoto, 1986</strong></p>
+                    <p class="oh"><span class="oh__inner">He at once made ready to start, and great was the stir in the precincts of the Palace as he and his trusty followers gathered together and prepared for the expedition, and polished up their armor and donned it.</span></p>
+                </div>
+            </div>
+            <button class="content__back unbutton">
+                <svg aria-hidden="true" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.4939 20.5644C11.1821 20.8372 10.7083 20.8056 10.4356 20.4939L3.43557 12.4939C3.18814 12.2111 3.18814 11.7889 3.43557 11.5061L10.4356 3.50613C10.7083 3.1944 11.1822 3.16281 11.4939 3.43557C11.8056 3.70834 11.8372 4.18216 11.5644 4.49388L5.65283 11.25L20 11.25C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75L5.65283 12.75L11.5644 19.5061C11.8372 19.8179 11.8056 20.2917 11.4939 20.5644Z"/>
+                </svg>
+                <span class="oh__inner">Back</span>
+            </button>
+            <nav class="content__nav-wrap">
+                <button class="content__nav content__nav--prev unbutton">
+                    <svg width="100" height="267" viewBox="0 0 100 267"><path d="M49.894 2.766v262.979" stroke-linecap="square"/><path fill="none" d="M99.75 76.596C73.902 76.596 52.62 43.07 49.895 0 47.168 43.07 25.886 76.596.036 76.596"/></svg>
+                </button>
+                <button class="content__nav content__nav--next unbutton">
+                    <svg width="100" height="267" viewBox="0 0 100 267"><path d="M49.894 2.766v262.979" stroke-linecap="square"/><path fill="none" d="M99.75 76.596C73.902 76.596 52.62 43.07 49.895 0 47.168 43.07 25.886 76.596.036 76.596"/></svg>
+                </button>
+            </nav>
+        </div>
+        <div class="slides"></div>
+        <div class="stack-wrap">
+            <div class="stack">
+                <div class="stack__item stack__item--empty"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/101/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/102/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/103/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/104/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/105/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/106/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/107/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/108/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/109/800/1000);"></div>
+                <div class="stack__item" style="background-image:url(https://picsum.photos/seed/110/800/1000);"></div>
+                <div class="stack__item stack__item--empty"></div>
+            </div>
+        </div>
+        <div class="title">
+            <h2 class="title__main oh"><span class="oh__inner">Photography</span></h2>
+            <span class="title__sub oh"><span class="oh__inner">1986 &mdash; 2022</span></span>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // --- utils.js ---
+            const preloadImages = (selector = 'img') => {
+                return new Promise((resolve) => {
+                    if (window.imagesLoaded) {
+                        imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
+                    } else {
+                        resolve();
+                    }
+                });
+            };
+
+            // --- contentItem.js ---
+            class ContentItem {
+                constructor(DOM_el) {
+                    this.DOM = {
+                        el: null,
+                        title: null,
+                        description: null,
+                        texts: null
+                    };
+                    this.DOM.el = DOM_el;
+                    this.DOM.title = this.DOM.el.querySelector('.content__item-title');
+                    this.DOM.description = this.DOM.el.querySelector('.content__item-description');
+                    this.DOM.texts = [...this.DOM.el.querySelectorAll('.oh > .oh__inner')];
+                }
+            }
+
+            // --- slideshow.js ---
+            gsap.registerPlugin(Flip);
+            gsap.registerPlugin(Observer);
+
+            const body = document.body;
+            let winsize = {width: window.innerWidth, height: window.innerHeight};
+            
+            window.addEventListener('resize', () => {
+                winsize = {width: window.innerWidth, height: window.innerHeight};
+            });
+
+            class Slideshow {
+                constructor(DOM_el) {
+                    this.DOM = {
+                        el: null,
+                        items: null,
+                        stackWrap: document.querySelector('.stack-wrap'),
+                        slides: document.querySelector('.slides'),
+                        content: document.querySelector('.content'),
+                        contentItems: [...document.querySelectorAll('.content__item')],
+                        mainTitleTexts: [...document.querySelectorAll('.title > .oh > .oh__inner')],
+                        backCtrl: document.querySelector('.content__back'),
+                        nav: document.querySelector('.content__nav-wrap'),
+                        navArrows: {
+                            prev: document.querySelector('.content__nav--prev'),
+                            next: document.querySelector('.content__nav--next'),
+                        }
+                    };
+                    
+                    this.contentItems = [];
+                    this.isOpen = false;
+                    this.current = -1;
+                    this.totalItems = 0;
+                    this.gap = getComputedStyle(document.documentElement).getPropertyValue('--slide-gap');
+
+                    this.DOM.el = DOM_el;
+                    this.DOM.items = [...this.DOM.el.querySelectorAll('.stack__item:not(.stack__item--empty)')];
+                    this.totalItems = this.DOM.items.length;
+                    
+                    this.DOM.contentItems.forEach(item => this.contentItems.push(new ContentItem(item)));
+
+                    this.initEvents();
+                }
+
+                initEvents() {
+                    this.DOM.items.forEach((item, position) => {
+                        item.addEventListener('click', () => {
+                            this.open(item);
+                        });
+                    });
+
+                    this.DOM.backCtrl.addEventListener('click', () => {
+                        this.close();
+                    });
+
+                    this.DOM.navArrows.next.addEventListener('click', () => {
+                        this.navigate('next');
+                    });
+
+                    this.DOM.navArrows.prev.addEventListener('click', () => {
+                        this.navigate('prev');
+                    });
+
+                    const scrollFn = () => {
+                        if ( this.isOpen && !this.isAnimating ) {
+                            this.close();
+                            this.scrollObserver.disable();
+                        }
+                    }
+                    
+                    this.scrollObserver = Observer.create({
+                        type: 'wheel,touch,pointer',
+                        wheelSpeed: -1,
+                        onDown: scrollFn,
+                        onUp: scrollFn,
+                        tolerance: 10,
+                        preventDefault: true,
+                    });
+                    this.scrollObserver.disable();
+                }
+
+                open(stackItem) {
+                    if ( this.isAnimating || this.isOpen ) {
+                        return;
+                    }
+                    this.isAnimating = true;
+                    this.current = this.DOM.items.indexOf(stackItem);
+                    this.scrollObserver.enable();
+
+                    const scrollY = window.scrollY;
+                    body.classList.add('oh');
+                    this.DOM.content.classList.add('content--open');
+                    
+                    this.contentItems[this.current].DOM.el.classList.add('content__item--current');
+                    this.DOM.items[this.current].classList.add('stack__item--current');
+
+                    const state = Flip.getState(this.DOM.items, {props: 'opacity'});
+                    this.DOM.slides.appendChild(this.DOM.el);
+
+                    const itemCenter = stackItem.offsetTop + stackItem.offsetHeight/2;
+                    
+                    document.documentElement.scrollTop = document.body.scrollTop = 0;
+                    gsap.set(this.DOM.el, {
+                        y: winsize.height/2 - itemCenter + scrollY
+                    });		
+                    document.documentElement.scrollTop = document.body.scrollTop = 0;
+
+                    Flip.from(state, {
+                        duration: 1,
+                        ease: 'expo',
+                        onComplete: () => {
+                            this.isOpen = true;
+                            this.isAnimating = false;
+                        },
+                        onStart: () => document.documentElement.scrollTop = document.body.scrollTop = scrollY,
+                        absoluteOnLeave: true,
+                    })
+                    .to(this.DOM.mainTitleTexts, {
+                        duration: .9,
+                        ease: 'expo',
+                        yPercent: -101
+                    }, 0)
+                    .to(this.contentItems[this.current].DOM.texts, {
+                        duration: 1,
+                        ease: 'expo',
+                        startAt: {yPercent: 101},
+                        yPercent: 0
+                    }, 0)
+                    .to(this.DOM.backCtrl, {
+                        duration: 1,
+                        ease: 'expo',
+                        startAt: {opacity: 0},
+                        opacity: 1
+                    }, 0)
+                    .to([this.DOM.navArrows.prev, this.DOM.navArrows.next], {
+                        duration: 1,
+                        ease: 'expo',
+                        startAt: {
+                            opacity: 0,
+                            y: pos => pos ? -150 : 150
+                        },
+                        y: 0,
+                        opacity: pos => this.current === 0 && !pos || this.current === this.totalItems-1 && pos ? 0 : 1
+                    }, 0);
+                }
+
+                close() {
+                    if ( this.isAnimating || !this.isOpen ) {
+                        return;
+                    }
+                    this.isAnimating = true;
+                    this.scrollObserver.disable();
+                    this.DOM.items[this.current].classList.remove('stack__item--current');
+                    body.classList.remove('oh');
+                    
+                    const state = Flip.getState(this.DOM.items, {props: 'opacity'});
+                    this.DOM.stackWrap.appendChild(this.DOM.el);
+
+                    gsap.set(this.DOM.el, { y: 0 });
+
+                    Flip.from(state, {
+                        duration: 1,
+                        ease: 'expo',
+                        onComplete: () => {
+                            this.DOM.content.classList.remove('content--open');
+                            this.contentItems[this.current].DOM.el.classList.remove('content__item--current');
+                            this.current = -1;
+                            this.isOpen = false;
+                            this.isAnimating = false;
+                        },
+                        absoluteOnLeave: true
+                    })
+                    .to(this.DOM.mainTitleTexts, {
+                        duration: .9,
+                        ease: 'expo',
+                        startAt: {yPercent: 101},
+                        yPercent: 0
+                    }, 0)
+                    .to(this.contentItems[this.current].DOM.texts, {
+                        duration: 1,
+                        ease: 'expo',
+                        yPercent: -101
+                    }, 0)
+                    .to(this.DOM.backCtrl, {
+                        duration: 1,
+                        ease: 'expo',
+                        opacity: 0
+                    }, 0)
+                    .to([this.DOM.navArrows.prev, this.DOM.navArrows.next], {
+                        duration: 1,
+                        ease: 'expo',
+                        y: pos => pos ? 100 : -100,
+                        opacity: 0
+                    }, 0);
+                }
+
+                navigate(direction) {
+                    if ( this.isAnimating || (direction === 'next' && this.current === this.totalItems-1) || (direction === 'prev' && this.current === 0) ) return;
+                    this.isAnimating = true;
+
+                    const previousCurrent = this.current;
+                    const currentItem = this.DOM.items[previousCurrent];
+                    this.current = direction === 'next' ? this.current+1 : this.current-1
+                    const upcomingItem = this.DOM.items[this.current];
+                    
+                    currentItem.classList.remove('stack__item--current');
+                    upcomingItem.classList.add('stack__item--current');
+
+                    gsap.set(this.DOM.navArrows.prev, {opacity: this.current > 0 ? 1 : 0});
+                    gsap.set(this.DOM.navArrows.next, {opacity: this.current < this.totalItems-1 ? 1 : 0});
+                    
+                    gsap.timeline()
+                    .to(this.DOM.el, {
+                        duration: 1,
+                        ease: 'expo',
+                        y: direction === 'next' ? `-=${winsize.height/2 + winsize.height*.02}` : `+=${winsize.height/2 + winsize.height*.02}`,
+                        onComplete: () => {
+                            this.isAnimating = false;
+                        }
+                    })
+                    .to(this.contentItems[previousCurrent].DOM.texts, {
+                        duration: .2,
+                        ease: 'power1',
+                        yPercent: direction === 'next' ? 101 : -101,
+                        onComplete: () => this.contentItems[previousCurrent].DOM.el.classList.remove('content__item--current')
+                    }, 0)
+                    .to(this.contentItems[this.current].DOM.texts, {
+                        duration: .9,
+                        ease: 'expo',
+                        startAt: {yPercent: direction === 'next' ? -101 : 101},
+                        onStart: () => this.contentItems[this.current].DOM.el.classList.add('content__item--current'),
+                        yPercent: 0
+                    }, .2);
+                }
+            }
+
+            // --- index.js ---
+            const slideshow = new Slideshow(document.querySelector('.stack'));
+            preloadImages('.stack__item').then(() => document.body.classList.remove('loading'));
+        });
+    </script>
+</body>
+</html>

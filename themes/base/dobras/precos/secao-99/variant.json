@@ -1,0 +1,124 @@
+{
+  "slot": "precos",
+  "nome": "secao-99",
+  "scope": "precos-secao-99",
+  "origem": "bank/_componentes/secoes/secao-99",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "How async data pipelines unlock real-time decisions at scale"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "The shift from batch to streaming"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "For years, data teams have leaned on nightly batch jobs to keep dashboards\n                fresh. That cadence made sense when business questions waited until m"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Streaming pipelines flip the model. Events become first-class citizens, each\n                one processed the moment it lands. Downstream systems subscribe to "
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Designing for backpressure"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "The hardest part of running a streaming pipeline is what happens when\n                producers outpace consumers. Backpressure is the safety valve that lets th"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Most teams adopt one of three strategies: bounded queues with explicit drop\n                policies, rate-limited producers, or elastic worker pools that scale"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Observability is non-negotiable"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "A pipeline you cannot see is a pipeline you cannot trust. Per-stage metrics,\n                end-to-end traces, and structured logs are the minimum viable telem"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "The goal is not zero incidents. It is a system whose health is legible to\n                anyone on the team, at any hour, without needing the engineer who buil"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Category"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Engineering"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Data Platform"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Streaming"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Written by"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Maren Ortiz"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Staff Data Engineer"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/blog-detail-cta.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-1.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/blog-detail-cta.avif https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-1.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

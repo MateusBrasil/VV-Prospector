@@ -1,0 +1,405 @@
+---
+// Animated halftone dots + floating popup canvas.
+// Must be placed inside a position:relative parent — fills it via inset:0.
+---
+
+<div class="stage" id="stage"></div>
+
+<style>
+  .stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #010101;
+  }
+
+  :global(.popup) {
+    position: absolute;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: scale(0.9);
+    transition:
+      opacity 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: opacity, transform;
+    pointer-events: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  }
+  :global(.popup.enter) {
+    opacity: 1;
+    transform: scale(1);
+  }
+  :global(.popup.exit) {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  :global(.popup-header) {
+    background: var(--color-surface-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  :global(.popup-status) {
+    width: 7px;
+    height: 7px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    animation: statusPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes statusPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 1px 0 rgba(253, 255, 34, 0.35);
+    }
+    50% {
+      box-shadow:
+        0 0 3px 0 rgba(253, 255, 34, 0.95),
+        0 0 7px 0 rgba(253, 255, 34, 0.55),
+        0 0 12px 0 rgba(253, 255, 34, 0.25);
+    }
+  }
+  :global(.popup-title) {
+    flex: 1 0 0;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 8.5px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-fg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  :global(.popup-title .sep) {
+    color: var(--color-dim);
+    margin: 0 5px;
+  }
+  :global(.popup-bars) {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+  :global(.popup-bars .bar) {
+    width: 4px;
+    height: 11px;
+    flex-shrink: 0;
+    background: var(--color-accent);
+    animation: barSweep 1.6s linear infinite;
+  }
+  @keyframes barSweep {
+    0%,
+    100% {
+      box-shadow: none;
+    }
+    15% {
+      box-shadow:
+        0 0 2px 0 rgba(253, 255, 34, 0.9),
+        0 0 6px 0 rgba(253, 255, 34, 0.55),
+        0 0 10px 0 rgba(253, 255, 34, 0.25);
+    }
+  }
+  :global(.popup-body) {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+  :global(.popup-body canvas) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const stage = document.getElementById("stage");
+    if (!stage) return;
+
+    const PRESET = {
+      color: "#b5d2ff",
+      bg: "#010101",
+      scaleX: 0.05,
+      scaleY: 0.05,
+      octaves: 1,
+      warp: 0.46,
+      speed: 1.66,
+      driftX: -0.4,
+      driftY: -0.32,
+      threshold: 0.67,
+      softness: 0.22,
+      maxSize: 1,
+      glow: 10,
+      glowIntensity: 0.5,
+      glowOn: false,
+    };
+
+    const CELL = 7;
+    const GAP = 1.5;
+    const DOT = CELL - GAP;
+
+    function hash3(x, y, z) {
+      const n = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453;
+      return n - Math.floor(n);
+    }
+    function vnoise3(x, y, z) {
+      const xi = Math.floor(x),
+        yi = Math.floor(y),
+        zi = Math.floor(z);
+      const xf = x - xi,
+        yf = y - yi,
+        zf = z - zi;
+      const sx = xf * xf * (3 - 2 * xf),
+        sy = yf * yf * (3 - 2 * yf),
+        sz = zf * zf * (3 - 2 * zf);
+      const c000 = hash3(xi, yi, zi);
+      const c100 = hash3(xi + 1, yi, zi);
+      const c010 = hash3(xi, yi + 1, zi);
+      const c110 = hash3(xi + 1, yi + 1, zi);
+      const c001 = hash3(xi, yi, zi + 1);
+      const c101 = hash3(xi + 1, yi, zi + 1);
+      const c011 = hash3(xi, yi + 1, zi + 1);
+      const c111 = hash3(xi + 1, yi + 1, zi + 1);
+      const x00 = c000 * (1 - sx) + c100 * sx;
+      const x10 = c010 * (1 - sx) + c110 * sx;
+      const x01 = c001 * (1 - sx) + c101 * sx;
+      const x11 = c011 * (1 - sx) + c111 * sx;
+      const y0 = x00 * (1 - sy) + x10 * sy;
+      const y1 = x01 * (1 - sy) + x11 * sy;
+      return y0 * (1 - sz) + y1 * sz;
+    }
+    function smoothstep(e0, e1, x) {
+      const t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0)));
+      return t * t * (3 - 2 * t);
+    }
+
+    const POPUP_W = 165;
+    const POPUP_H = 115;
+    const SLOTS = 12;
+    const SPAWN_EVERY = 900;
+    const ALIVE_AT_ONCE = SLOTS - 3;
+    const LIFESPAN_MS = SPAWN_EVERY * ALIVE_AT_ONCE;
+    let spawnIdx = 0;
+
+    const globalCanvas = document.createElement("canvas");
+    const gctx = globalCanvas.getContext("2d");
+    let STAGE_W = 0,
+      STAGE_H = 0;
+
+    function resizeGlobal() {
+      const r = stage.getBoundingClientRect();
+      STAGE_W = Math.floor(r.width);
+      STAGE_H = Math.floor(r.height);
+      globalCanvas.width = STAGE_W;
+      globalCanvas.height = STAGE_H;
+      gctx.imageSmoothingEnabled = false;
+      // Reposition live popups so they stay centered when the stage width changes
+      stage.querySelectorAll(".popup").forEach((p) => {
+        const slot = parseInt(p.dataset.slot || "0", 10);
+        const { x, y } = slotPosition(slot, r);
+        p.style.left = x + "px";
+        p.style.top = y + "px";
+      });
+    }
+    window.addEventListener("resize", resizeGlobal);
+    resizeGlobal();
+
+    const gT0 = performance.now();
+    function renderGlobalHalftone(now) {
+      const t = (now - gT0) * 0.001;
+      gctx.clearRect(0, 0, STAGE_W, STAGE_H);
+      gctx.fillStyle = PRESET.color;
+
+      const cols = Math.floor(STAGE_W / CELL);
+      const rows = Math.floor(STAGE_H / CELL);
+      const maxSide = DOT * PRESET.maxSize;
+      const lo = PRESET.threshold - PRESET.softness;
+      const hi = PRESET.threshold + PRESET.softness;
+      const dx = t * PRESET.driftX;
+      const dy = t * PRESET.driftY;
+      const nz = t * PRESET.speed;
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          let nx = x * PRESET.scaleX + dx;
+          let ny = y * PRESET.scaleY + dy;
+          if (PRESET.warp > 0) {
+            nx +=
+              (vnoise3(nx * 1.3 + 11, ny * 1.3, nz * 0.7) - 0.5) *
+              PRESET.warp *
+              4;
+            ny +=
+              (vnoise3(nx * 1.3, ny * 1.3 + 23, nz * 0.7 + 7) - 0.5) *
+              PRESET.warp *
+              4;
+          }
+          let n = vnoise3(nx, ny, nz);
+          if (PRESET.octaves >= 2) {
+            n = n * 0.6 + vnoise3(nx * 2.1, ny * 2.1, nz * 1.3) * 0.4;
+          }
+          if (PRESET.octaves >= 3) {
+            n = n * 0.75 + vnoise3(nx * 4.3, ny * 4.3, nz * 1.7) * 0.25;
+          }
+          const side = smoothstep(lo, hi, n) * maxSide;
+          if (side < 0.6) continue;
+          const cx = x * CELL + CELL / 2;
+          const cy = y * CELL + CELL / 2;
+          gctx.fillRect(cx - side / 2, cy - side / 2, side, side);
+        }
+      }
+      requestAnimationFrame(renderGlobalHalftone);
+    }
+    requestAnimationFrame(renderGlobalHalftone);
+
+    function popupTemplate(label) {
+      return `
+        <div class="popup-header">
+          <div class="popup-status"></div>
+          <div class="popup-title">${label}</div>
+          <div class="popup-bars" aria-hidden="true">
+            <span class="bar" style="animation-delay:0.00s"></span>
+            <span class="bar" style="animation-delay:0.18s"></span>
+            <span class="bar" style="animation-delay:0.36s"></span>
+            <span class="bar" style="animation-delay:0.54s"></span>
+            <span class="bar" style="animation-delay:0.72s"></span>
+            <span class="bar" style="animation-delay:0.90s"></span>
+          </div>
+        </div>
+        <div class="popup-body"><canvas></canvas></div>
+      `;
+    }
+
+    const LABELS = [
+      "ROUTE",
+      "INFER",
+      "DEPLOY",
+      "INGEST",
+      "STREAM",
+      "VAULT",
+      "CACHE",
+      "PROXY",
+      "TRACE",
+      "MODEL",
+      "EDGE",
+      "SHARD",
+    ];
+
+    function makeLabel() {
+      const word = LABELS[spawnIdx % LABELS.length];
+      return `${word}<span class="sep">//</span>`;
+    }
+
+    const popupCanvases = new Set();
+
+    function hexToRgba(hex, a) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+
+    function applyGlowToCanvas(canvas) {
+      if (!PRESET.glowOn) {
+        canvas.style.filter = "";
+        return;
+      }
+      const g = PRESET.glow,
+        gi = PRESET.glowIntensity;
+      const inner = (g * 0.35).toFixed(1);
+      const outer = g.toFixed(1);
+      const c1 = hexToRgba(PRESET.color, Math.min(1, gi).toFixed(2));
+      const c2 = hexToRgba(PRESET.color, Math.min(1, gi * 0.55).toFixed(2));
+      canvas.style.filter = `drop-shadow(0 0 ${inner}px ${c1}) drop-shadow(0 0 ${outer}px ${c2})`;
+    }
+
+    function comecaClipFromGlobal(canvas) {
+      const ctx = canvas.getContext("2d");
+      const dpr = window.devicePixelRatio || 1;
+      const r = canvas.getBoundingClientRect();
+      const W = Math.floor(r.width);
+      const H = Math.floor(r.height);
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+      applyGlowToCanvas(canvas);
+      popupCanvases.add(canvas);
+
+      let alive = true;
+      function frame() {
+        if (!alive) return;
+        const pRect = canvas.getBoundingClientRect();
+        const sRect = stage.getBoundingClientRect();
+        const sx = pRect.left - sRect.left;
+        const sy = pRect.top - sRect.top;
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(globalCanvas, sx, sy, W, H, 0, 0, W, H);
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      return {
+        stop() {
+          alive = false;
+          popupCanvases.delete(canvas);
+        },
+      };
+    }
+
+    function slotPosition(slotIdx, rect) {
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const R = Math.min(rect.width, rect.height) * 0.26;
+      const ang = (slotIdx / SLOTS) * Math.PI * 2 - Math.PI / 2;
+      return {
+        x: cx + Math.cos(ang) * R - POPUP_W / 2,
+        y: cy + Math.sin(ang) * R - POPUP_H / 2,
+      };
+    }
+
+    function spawn() {
+      const rect = stage.getBoundingClientRect();
+      const slotIdx = spawnIdx % SLOTS;
+      const { x, y } = slotPosition(slotIdx, rect);
+
+      const el = document.createElement("div");
+      el.className = "popup";
+      el.dataset.slot = String(slotIdx);
+      el.style.width = POPUP_W + "px";
+      el.style.height = POPUP_H + "px";
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+      el.innerHTML = popupTemplate(makeLabel());
+      stage.appendChild(el);
+
+      requestAnimationFrame(() => {
+        const canvas = el.querySelector("canvas");
+        const handle = comecaClipFromGlobal(canvas);
+        requestAnimationFrame(() => el.classList.add("enter"));
+        setTimeout(() => {
+          el.classList.remove("enter");
+          el.classList.add("exit");
+          setTimeout(() => {
+            handle.stop();
+            el.remove();
+          }, 500);
+        }, LIFESPAN_MS);
+      });
+
+      spawnIdx++;
+    }
+
+    spawn();
+    setInterval(spawn, SPAWN_EVERY);
+
+    stage.style.setProperty("--stage-bg", PRESET.bg);
+    stage.style.filter = "";
+  })();
+</script>

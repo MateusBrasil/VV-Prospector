@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://temlis-eagle.james-71d.workers.dev/sitemap-index.xml

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Vórtice Cósmico</title>
+  
+  <!-- Tailwind CSS para estilização moderna -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP para a animação das partículas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+      background: rgb(10, 11, 10);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Ocultar barra de rolagem de forma limpa */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Animação suave para o painel flutuante de feedback */
+    .glass-panel {
+      background: rgba(15, 17, 16, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Cursor personalizado sobre a área interativa */
+    canvas {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="text-zinc-200">
+
+  <main class="relative w-full h-screen flex items-center justify-center">
+    <!-- Canvas Principal -->
+    <canvas id="vortexCanvas" class="absolute inset-0 w-full h-full block"></canvas>
+
+    <!-- Overlay de Gradiente Sutil de Vinheta para dar profundidade de cinema -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_30%,rgba(5,6,5,0.8)_100%)] pointer-events-none"></div>
+
+    <!-- UI: Indicador de Play/Pause Flutuante Temporário -->
+    <div id="playStateIndicator" class="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-0 transition-all duration-300 transform scale-75">
+      <div class="glass-panel p-5 rounded-full flex items-center justify-center text-white">
+        <i id="indicatorIcon" data-lucide="play" class="w-8 h-8"></i>
+      </div>
+    </div>
+
+    <!-- UI: Menu de Instrução Rápido de Toque -->
+    <div class="absolute bottom-6 left-6 z-10 text-[10px] text-zinc-500 uppercase tracking-widest hidden md:block select-none pointer-events-none">
+      <span class="text-zinc-400 font-semibold">Dica:</span> Pressione <kbd class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300">Espaço</kbd> ou toque na tela para Pausar / Iniciar
+    </div>
+  </main>
+
+  <script>
+    // Inicialização do Canvas
+    const canvas = document.getElementById("vortexCanvas");
+    const ctx = canvas.getContext("2d");
+    let cw = (canvas.width = window.innerWidth);
+    let ch = (canvas.height = window.innerHeight);
+    let radius = Math.max(cw, ch);
+
+    // Variáveis de Controle de Estado Estáveis
+    let particleCount = 99;
+    let swirlMultiplier = 10;
+    let currentMode = 'original'; // Utiliza imagens originais com fallback automático
+    let currentPalette = 'nebula';
+
+    // Paleta de Cor Procedural para caso de falha de conexão com os assets externos
+    const colorPalettes = {
+      nebula: { c1: 'rgba(0, 229, 255, 0.85)', c2: 'rgba(168, 85, 247, 0.45)' }
+    };
+
+    // Coleção de Partículas
+    const particles = Array(particleCount);
+
+    // Geração de Sprite Procedural em caso de fallback
+    function createProceduralParticleCanvas(paletteKey, size = 128) {
+      const pCanvas = document.createElement('canvas');
+      pCanvas.width = size;
+      pCanvas.height = size;
+      const pCtx = pCanvas.getContext('2d');
+      const center = size / 2;
+      const colors = colorPalettes[paletteKey];
+
+      const grad = pCtx.createRadialGradient(center, center, 0, center, center, center * 0.9);
+      grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      grad.addColorStop(0.12, colors.c1);
+      grad.addColorStop(0.45, colors.c2);
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      pCtx.fillStyle = grad;
+      pCtx.beginPath();
+      pCtx.arc(center, center, center * 0.9, 0, Math.PI * 2);
+      pCtx.fill();
+
+      pCtx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      pCtx.lineWidth = 1.5;
+      pCtx.beginPath();
+      pCtx.moveTo(size * 0.15, center);
+      pCtx.lineTo(size * 0.85, center);
+      pCtx.moveTo(center, size * 0.15);
+      pCtx.lineTo(center, size * 0.85);
+      pCtx.stroke();
+
+      pCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+      pCtx.beginPath();
+      pCtx.arc(center, center, center * 0.08, 0, Math.PI * 2);
+      pCtx.fill();
+
+      return pCanvas;
+    }
+
+    let fallbackSprite = createProceduralParticleCanvas('nebula');
+
+    // Inicializando as partículas
+    for (let i = 0; i < particles.length; i++) {
+      particles[i] = {
+        x: 0,
+        y: 0,
+        scale: 0, 
+        rotate: 0,
+        img: new Image()
+      };
+      
+      particles[i].img.crossOrigin = "anonymous";
+      particles[i].img.src = "https://assets.codepen.io/16327/flair-" + (2 + i % 21) + ".png";
+    }
+
+    // Instanciação da Timeline GSAP
+    let tl;
+
+    function buildTimeline() {
+      if (tl) tl.kill();
+
+      tl = gsap.timeline({ onUpdate: draw })
+        .fromTo(particles, {
+          x: (i) => {
+            const angle = (i / particles.length * Math.PI * 2) - Math.PI / 2;
+            return Math.cos(angle * swirlMultiplier) * radius;
+          },
+          y: (i) => {
+            const angle = (i / particles.length * Math.PI * 2) - Math.PI / 2;
+            return Math.sin(angle * swirlMultiplier) * radius;
+          },
+          scale: 1.1,
+          rotate: 0
+        }, {
+          duration: 5,
+          ease: "sine.inOut",
+          x: 0,
+          y: 0,
+          scale: 0,
+          rotate: -3,
+          stagger: { each: -0.05, repeat: -1 }
+        }, 0)
+        .seek(99)
+        .timeScale(0.5); // Ajustado para iniciar a rotação em 0.5x
+    }
+
+    // Função de Desenho no Canvas
+    function draw() {  
+      particles.sort((a, b) => a.scale - b.scale);  
+      ctx.clearRect(0, 0, cw, ch);
+      
+      particles.forEach((p) => {
+        let source;
+        let w, h;
+
+        if (p.img.complete && p.img.naturalWidth !== 0) {
+          source = p.img;
+          w = p.img.naturalWidth;
+          h = p.img.naturalHeight;
+        } else {
+          source = fallbackSprite;
+          w = source.width;
+          h = source.height;
+        }
+
+        ctx.translate(cw / 2, ch / 2);
+        ctx.rotate(p.rotate);
+        
+        ctx.drawImage(
+          source,
+          p.x,
+          p.y,
+          w * p.scale,
+          h * p.scale
+        );
+        ctx.resetTransform();
+      });
+    }
+
+    // Inicialização
+    buildTimeline();
+
+    // Redimensionamento Inteligente
+    window.addEventListener("resize", () => {
+      cw = canvas.width = window.innerWidth;
+      ch = canvas.height = window.innerHeight;
+      radius = Math.max(cw, ch);
+      buildTimeline();
+    });
+
+    // Toggle Play/Pause ao clicar ou apertar espaço
+    function togglePlayState() {
+      const isCurrentlyPlaying = tl.timeScale() > 0;
+      const nextTimeScale = isCurrentlyPlaying ? 0 : 0.5; // Alterna entre pausa (0) e a velocidade padrão (0.5x)
+      
+      gsap.to(tl, { 
+        timeScale: nextTimeScale,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+
+      // Feedback visual central sutil
+      const indicator = document.getElementById("playStateIndicator");
+      const indIcon = document.getElementById("indicatorIcon");
+      
+      if (isCurrentlyPlaying) {
+        indIcon.setAttribute("data-lucide", "pause");
+      } else {
+        indIcon.setAttribute("data-lucide", "play");
+      }
+      lucide.createIcons();
+
+      indicator.style.opacity = "1";
+      indicator.style.transform = "scale(1)";
+      
+      setTimeout(() => {
+        indicator.style.opacity = "0";
+        indicator.style.transform = "scale(0.8)";
+      }, 500);
+    }
+
+    // Clique/Toque no canvas
+    canvas.addEventListener('pointerup', (e) => {
+      if (e.target.tagName === 'CANVAS') {
+        togglePlayState();
+      }
+    });
+
+    // Espaço para pausar/iniciar
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlayState();
+      }
+    });
+
+    // Inicialização dos ícones do feedback
+    lucide.createIcons();
+  </script>
+</body>
+</html>

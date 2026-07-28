@@ -1,0 +1,21 @@
+[data-dobra="destaque-orb-animation"],[data-dobra="destaque-orb-animation"]{
+      margin: 0;
+      padding: 0;
+    }
+[data-dobra="destaque-orb-animation"]{
+      background: var(--base-600);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+[data-dobra="destaque-orb-animation"] svg{
+      width: 80%;
+      height: 80%;
+      
+      opacity: 0; 
+    }
+
+  

@@ -1,0 +1,50 @@
+.lead {
+  width: 100%;
+  background-color: var(--base-100);
+}
+
+.lead-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: var(--respiro);
+}
+
+.lead-kicker {
+  color: var(--acento);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* 62ch e line-height 1.6: a direção de arte do nicho pede leitura generosa, porque quem
+   chega com medo lê devagar. Não é preferência, está escrito no `direcoes.json`. */
+.lead-texto {
+  max-width: 62ch;
+  line-height: 1.6;
+  color: var(--cor-texto);
+}
+
+.lead-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.lead-etiqueta {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--base-200);
+  border-radius: 999px;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  color: var(--cor-texto-suave);
+}
+
+@media (max-width: 1000px) {
+  .lead-inner {
+    padding: var(--respiro-compacto);
+  }
+}

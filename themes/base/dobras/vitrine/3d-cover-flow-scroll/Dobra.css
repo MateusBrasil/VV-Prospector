@@ -1,0 +1,231 @@
+[data-dobra="vitrine-3d-cover-flow-scroll"] *{
+      box-sizing: border-box;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] h1{
+      position: fixed;
+      color: black;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      font-family: var(--fonte-corpo);
+      text-align: center;
+      z-index: 1000;
+      pointer-events: none;
+    }
+@supports (animation-timeline: view()){[data-dobra="vitrine-3d-cover-flow-scroll"] h1{ display: none; }
+
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"]{
+      display: grid;
+      background: white;
+      margin: 0;
+      font-family: var(--fonte-corpo);
+      overflow: hidden;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] ul{
+      width: 90vw;
+      height: 100%;
+      display: flex;
+      list-style-type: none;
+      padding: 1rem 0;
+      margin: 0;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      contain: inline-size;
+      align-items: center;
+      
+      scrollbar-width: none; 
+      -ms-overflow-style: none;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] ul::-webkit-scrollbar{
+      display: none;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] li{
+      width: 15%;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      flex: 1 0 15cqw;
+      position: relative;
+      height: 15cqw;
+      width: 15cqw;
+      view-timeline: --cover;
+      view-timeline-axis: inline;
+      transform-style: preserve-3d;
+      perspective: 100vmin;
+      background: transparent;
+      
+      
+      animation: z both linear;
+      animation-timeline: --cover;
+      animation-range: cover;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] li img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: hsl(10 80% 80%);
+      -webkit-box-reflect: below 1vmin linear-gradient(transparent 0 50%, hsl(0 0% 100% / 0.75) 100%);
+      
+      
+      animation: cover-flow both linear;
+      animation-timeline: --cover;
+      animation-range: cover;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .image-wrapper{
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 1;
+      transform-origin: 100% 50%;
+      transform-style: preserve-3d;
+      perspective: 100vmin;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      
+      
+      animation: shrink both linear;
+      animation-timeline: --cover;
+      animation-range: cover;
+    }
+@keyframes shrink{
+      0% {
+        scale: 0.75;
+        opacity: 0;
+        transform-origin: -150% 50%;
+      }
+      5% {
+        opacity: 1;
+      }
+      10% {
+        opacity: 1;
+        scale: 1;
+        transform-origin: 50% 50%;
+      }
+      40% {
+        scale: 1;
+        opacity: 1;
+        transform: translate3d(0, 0, 0vmin);
+      }
+      50% {
+        scale: 1.2;
+        opacity: 1;
+        transform: translate3d(0, 0, 15vmin);
+      }
+      60% {
+        scale: 1;
+        opacity: 1;
+        transform: translate3d(0, 0, 0vmin);
+      }
+      90% {
+        opacity: 1;
+        transform-origin: 50% 50%;
+        scale: 1;
+      }
+      95% {
+        opacity: 1;
+      }
+      100% {
+        scale: 0.75;
+        opacity: 0;
+        transform-origin: 250% 50%;
+      }
+    }
+@keyframes z{
+      0%, 100% {
+        z-index: 1;
+      }
+      50% {
+        z-index: 100;
+      }
+    }
+@keyframes cover-flow{
+      0% {
+        z-index: 1;
+        transform: translate(-80%, 0) rotateY(-33deg);
+      }
+      20% {
+        scale: 1;
+        transform: translate(0%, 0) rotateY(-33deg);
+      }
+      40% {
+        transform: translate(15%, 0) rotateY(-20deg);
+      }
+      
+      50% {
+        scale: 1.2;
+        transform: translate(0, 0) rotateY(0deg);
+      }
+      60% {
+        transform: translate(-15%, 0) rotateY(20deg);
+      }
+      80% {
+        scale: 1;
+        transform: translate(0%, 0) rotateY(33deg);
+      }
+      100% {
+        z-index: 1;
+        transform: translate(80%, 0) rotateY(33deg);
+      }
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] li:not([aria-hidden]){
+      scroll-snap-align: center;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn{
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      z-index: 1010;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn:hover{
+      background: rgba(0, 0, 0, 0.1);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn:active{
+      transform: translateY(-50%) scale(0.95);
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn svg{
+      width: 28px;
+      height: 28px;
+      fill: var(--base-500);
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .prev-btn{
+      left: 2.5rem;
+    }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .next-btn{
+      right: 2.5rem;
+    }
+@media (max-width: 768px){[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn{
+        width: 46px;
+        height: 46px;
+      }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .prev-btn{
+        left: 1rem;
+      }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .next-btn{
+        right: 1rem;
+      }
+[data-dobra="vitrine-3d-cover-flow-scroll"] .nav-btn svg{
+        width: 22px;
+        height: 22px;
+      }
+
+    }
+
+
+  

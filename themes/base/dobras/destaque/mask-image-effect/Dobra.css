@@ -1,0 +1,50 @@
+[data-dobra="destaque-mask-image-effect"] *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+[data-dobra="destaque-mask-image-effect"]{
+      min-height: 100vh;
+      color: var(--base-600);
+      background-color: var(--base-100);
+      font-size: clamp(1rem, 2vw + 0.5rem, 2rem);
+      
+      font-family: var(--fonte-corpo);
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+[data-dobra="destaque-mask-image-effect"] .image{
+      width: 500px;
+      aspect-ratio: 16/9;
+      background: url(https://images.unsplash.com/photo-1472214103451-9374bd1c798e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600) no-repeat center / cover;
+      
+      
+      mask: 
+        radial-gradient(var(--base-600) 70%, transparent 0),
+        radial-gradient(var(--base-600) 70%, transparent 0),
+        radial-gradient(var(--base-600) 70%, transparent 0);
+      mask-repeat: no-repeat;
+      mask-position: 20% 50%, 50% 50%, 80% 50%;
+      mask-size: 40% 80%;
+      transition: mask-position 0.5s, -webkit-mask-position 0.5s;
+      
+      
+      -webkit-mask: 
+        radial-gradient(var(--base-600) 70%, transparent 0),
+        radial-gradient(var(--base-600) 70%, transparent 0),
+        radial-gradient(var(--base-600) 70%, transparent 0);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: 20% 50%, 50% 50%, 80% 50%;
+      -webkit-mask-size: 40% 80%;
+      
+      cursor: crosshair;
+      filter: drop-shadow(2px 2px 12px var(--base-600));
+    }
+[data-dobra="destaque-mask-image-effect"] .image:hover{
+      mask-position: 10% 50%, 50% 50%, 90% 50%;
+      -webkit-mask-position: 10% 50%, 50% 50%, 90% 50%;
+    }
+
+  

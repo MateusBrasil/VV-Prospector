@@ -1,0 +1,62 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-17",
+  "scope": "destaque-efeitos-webgl-17",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-17",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "lenis",
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "IRONHILL"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Section rebuilt by Animmaster"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "There's a place not far from here the maps won't show, known to some as the Ironhill."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/mask-1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/mask-2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/hero-bg.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #fec81d → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,44 @@
+/* Luzen — Home Hero
+   Casi todo el styling (layout .section_home, .max-heading is-49rem,
+   .max-description is-38rem, fila de stats .home_bottom, spacers, botón primary
+   y estados de entrada [hero=...]/[animation="zoom"]/.wf-anim) vive en el cascade
+   compartido /luzen/styles.css.
+
+   ÚNICO override local: el fondo del hero. En el styles.css compartido la regla
+   .home_one-bg apunta a url('/images/home1-hero-bg_1.avif') (path original del
+   template); en el Taller los assets viven bajo /luzen/images/, así que re-apuntamos
+   la imagen aquí para que el preview standalone la cargue. Las animaciones (scale
+   1.5→1 + blur on-load) las sigue resolviendo el motor compartido. */
+body { margin: 0; min-height: 100svh; }
+
+.home_one-bg {
+  background-image: url('https://d173woph5zl366.cloudfront.net/luzen/images/home1-hero-bg_1.avif');
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: luzen-navbar styles ===== */
+/* luzen-navbar — local reset only.
+   Todo el estilo real (navbar glass, links, button hover, hamburger OSMO y los
+   --navbar-menu-* del tema bold-black) vive en /luzen/styles.css. No dupliques
+   CSS de webflow aquí. */
+
+/* Standalone demo stage: banda corta para que el navbar fijo se vea en aislado.
+   El shared styles.css es dueño del navbar + hamburger; esto solo da fondo. */
+.navbar-demo_stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60svh;
+  padding: 12rem 1.5rem 4rem;
+  background: var(--bg-color--bg-default, #fff);
+}
+
+.navbar-demo_hint {
+  max-width: 32rem;
+  margin: 0;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--text-color--text-primary, #0e0e0e);
+  opacity: 0.55;
+}

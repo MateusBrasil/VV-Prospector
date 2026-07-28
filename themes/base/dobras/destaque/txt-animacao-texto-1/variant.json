@@ -1,0 +1,160 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-1",
+  "scope": "destaque-txt-animacao-texto-1",
+  "origem": "bank/_componentes/textos/animacao-texto-1",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2024/06/terminalhover_feat.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2024/04/blurrytext_featured.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2024/04/TextHighlight.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2024/04/expandimage_feat.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2023/07/textbocktransitions.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2023/02/typeshuffle.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2022/04/TextRep_feat.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://tympanus.net/codrops/wp-content/uploads/2021/09/KineticTypePageTransition_featured.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/LineTextHoverAnimations/index.html"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/ScrollBlurTypography/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/OnScrollTextHighlight/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/ImageExpansionTypography/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/TextBlockTransitions/index.html"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/TypeShuffleAnimation/"
+    },
+    {
+      "nome": "destino7",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/TextRepetitionEffect/index.html"
+    },
+    {
+      "nome": "destino8",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/KineticTypePageTransition/"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Mens Absens"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "You might also like"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Hover Animations for Terminal-like Typography"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Blurry Text Reveal on Scroll"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Some On-Scroll Text Highlight Animations"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Expanding Image Animation within Typography"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Inspiration for Text Block Transitions"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Shuffling Typography Animation"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Text Repetition Animation"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Kinetic Typography Page Transition"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "16 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/codrops/wp-content/uploads/2024/06/terminalhover_feat.jpg https://tympanus.net/codrops/wp-content/uploads/2024/04/blurrytext_featured.jpg)",
+    "8 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

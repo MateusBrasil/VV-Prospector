@@ -1,0 +1,105 @@
+{
+  "slot": "precos",
+  "nome": "secao-102",
+  "scope": "precos-secao-102",
+  "origem": "bank/_componentes/secoes/secao-102",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.temlis.com/"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Features"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Pricing"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Build &amp; growth with scalable tools"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/Clayo-icon.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/hero-one---image-one.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/hero-one---image-two.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/hero-one---image-three.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/hero-one---main-image_1.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/clayo/images/hero-one---balance.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "45 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "8 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.temlis.com/ https://www.temlis.com/)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

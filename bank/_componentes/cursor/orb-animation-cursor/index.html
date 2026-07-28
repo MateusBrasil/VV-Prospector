@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Interativo de Pontos</title>
+    
+    <!-- Importando a fonte Roboto Slab conforme o CSS original -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    
+    <!-- Importando a biblioteca GSAP necessária para o código JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* Estilos originais providenciados */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background: #ffffff; /* Fundo alterado para branco */
+            font-family: 'Roboto Slab', serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        #fixed-bg {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+        }
+
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 1;
+            width: auto;
+            height: 100%;
+        }
+
+        @media (min-aspect-ratio: 1) {
+            canvas {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="fixed-bg">
+        <canvas id="c"></canvas>
+    </div>
+
+    <script>
+        // Configurações iniciais do Canvas e matrizes
+        const dots = [];
+        const c = document.querySelector('#c');
+        const ctx = c.getContext('2d');
+        const cw = 1100;
+        const ch = 1100;
+        const T = Math.PI * 2;
+
+        // Estado do "mouse"
+        const m = { x: cw/2, y: ch/2, smx: cw/2, smy: ch/2, r: 52 };
+        
+        // Utilizando gsap.quickTo para criar um seguimento suave do ponteiro
+        const xTo = gsap.quickTo(m, "x", {duration: 1, ease: "power2"});
+        const yTo = gsap.quickTo(m, "y", {duration: 1, ease: "power2"});
+        
+        let cBox = c.getBoundingClientRect();
+        
+        // Atualiza as dimensões ao redimensionar a janela
+        window.addEventListener('resize', () => cBox = c.getBoundingClientRect());
+
+        // Função de captura do movimento do ponteiro
+        function mMove(e) {
+            m.smx = (e.clientX - cBox.left) * c.width / cBox.width;
+            m.smy = (e.clientY - cBox.top) * c.height / cBox.height;
+            xTo(m.smx);
+            yTo(m.smy);
+        }
+
+        // Define tamanho fixo da resolução interna do canvas (mantém qualidade alta)
+        c.width = cw;
+        c.height = ch;
+
+        // Animação de entrada (explosão de interação inicial)
+        gsap.from(m, {
+            duration: 2,
+            r: 1,
+            ease: 'back.out(9)',
+            onComplete: () => window.addEventListener('pointermove', mMove)
+        });
+
+        // Geração do grid de pontos
+        for (let x = 0, i = 0; x < cw; x += 9) {
+            for (let y = 0; y < ch; y += 9) {
+                dots.push({
+                    i: i,
+                    r: 1.2,
+                    x: x + 4.5,
+                    y: y + 4.5,
+                    h: gsap.utils.random(150, 200, 1),
+                    a: .7,
+                    s: 1
+                });
+                i++;
+            }
+        }
+
+        // Função que desenha cada ponto afetado pelo raio do ponteiro
+        function drawDot(c) {
+            // Calcula distância entre o ponto e o cursor
+            const d = Math.sqrt((c.x - m.x)**2 + (c.y - m.y)**2);
+            
+            // Se o ponto estiver dentro do raio de alcance
+            if (d < m.r) {
+                c.s = 5 + d / m.r / 1.5;
+                c.h = gsap.utils.wrap(150, 200, c.h += .3);
+            }
+            
+            // Animação de retorno (diminui o ponto) ou pular renderização
+            if (c.s > 1) {
+                c.s -= 0.1;
+                c.h = gsap.utils.clamp(0, 200, c.h += .5);
+            } else {
+                c.h = gsap.utils.random(150, 200, 1);
+                return; // Otimização: não desenha o ponto se ele estiver em tamanho normal
+            }
+            
+            // Desenho do círculo
+            ctx.fillStyle = 'hsla(' + c.h + ', 100%, 50%,' + c.a + ')';
+            ctx.beginPath();
+            ctx.arc(c.x, c.y, c.r * c.s, 0, T);
+            ctx.fill();
+        }
+
+        // Loop de renderização com ticker do GSAP
+        function render() {
+            // Fundo alterado para branco para combinar com o CSS
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, cw, ch);
+            
+            // Desenhar os pontos ativos
+            dots.forEach(drawDot);
+        }
+
+        // Adicionar o loop no ticker do GSAP para rodar a cada frame
+        gsap.ticker.add(render);
+    </script>
+</body>
+</html>

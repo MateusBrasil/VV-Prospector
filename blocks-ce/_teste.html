@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teste de composição — menu-20 + hero-14</title>
+<link rel="stylesheet" href="https://use.typekit.net/ydc6mft.css">
+<!-- CSS dos blocos, escopado por [data-blk] — não deve colidir -->
+<link rel="stylesheet" href="menu/navegacao-menu-20/block.css">
+<link rel="stylesheet" href="hero-section/hero-14/block.css">
+<style>
+  /* o motor: reset mínimo e fundo, para ver os blocos conviverem */
+  body{margin:0;background:#0e0e10;font-family:system-ui}
+  .teste-nota{position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#c0472b;color:#fff;
+    font:12px system-ui;padding:6px 12px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- BLOCO 1: menu-20 (o markup isolado) -->
+<div data-blk-host="menu">__MENU__</div>
+
+<!-- BLOCO 2: hero-14 (o markup isolado) -->
+<div data-blk-host="hero">__HERO__</div>
+
+<div class="teste-nota">Teste: menu-20 + hero-14 no mesmo HTML. Se os dois aparecem sem se destruir e animam, a arquitetura funciona.</div>
+
+<!-- libs partilhadas, carregadas UMA vez -->
+<script src="_libs/gsap.min.js"></script>
+<script src="_libs/Flip.min.js"></script>
+<script src="_libs/lenis.min.js"></script>
+<script src="_libs/imagesloaded.pkgd.min.js"></script>
+
+<!-- JS dos blocos -->
+<script src="menu/navegacao-menu-20/block.js"></script>
+<script src="hero-section/hero-14/block.js"></script>
+</body>
+</html>

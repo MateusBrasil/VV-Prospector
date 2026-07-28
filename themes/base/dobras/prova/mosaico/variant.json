@@ -1,0 +1,143 @@
+{
+  "slot": "prova",
+  "nome": "mosaico",
+  "scope": "prova-mosaico",
+  "origem": "bank/_componentes/secoes/secao-185",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "What we build"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "50 projects"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "10 Clients"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Technology"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Web apps"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Designing intuitive and scalable web-based applications with user-centric interfaces."
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "SaaS Dashboard"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Crafting clear and actionable dashboards for managing SaaS products and data."
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Product UX Audit"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "A deep analysis of user experience to identify friction points and opportunities for improvement."
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Business"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Construction advisory"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Guided a major financial restructuring that saved $1 million."
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Hospitality Solutions"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Crafting Actionable Strategies to Achieve Your Goals Tailored Plans for Sustainable Growth and Long-Term Success."
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Firefighting communication"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Developed robust communication protocols that reduced response times by 40%."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-laptop-yellow.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-dashboard-yellow.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-audit-yellow.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-home-yellow.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-hospital-yellow.svg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-fire-yellow.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-laptop-yellow.svg https://d173woph5zl366.cloudfront.net/pipely/assets/images/icon-dashboard-yellow.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

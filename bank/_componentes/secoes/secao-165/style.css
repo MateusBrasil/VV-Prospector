@@ -1,0 +1,129 @@
+/* Fondo de la página en vista aislada. El grueso de los estilos de la sección
+   (.section_team, .padding-global, .content-wrapper, .team_card, .button-svg,
+   .icon-1x1-main, tokens, etc.) vive en la hoja compartida /firmo/styles.css.
+   Aquí solo va el <style> scoped que vivía dentro de TeamSection.astro. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }
+
+/* ===== Inlined scoped styles from TeamSection.astro ===== */
+
+/* The slider column stacks the track over the arrows.
+   `gap: 0` neutralises the 3.75rem flex gap webflow.css gives `.team_slider`
+   (arrow spacing is handled by .team_arrows margin-top); `overflow: visible`
+   lets the track bleed past this wrapper to the viewport edges. */
+.team_slider {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  overflow: visible;
+}
+
+/* ---- Scroll-snap track ----
+   Geometry mirrors the original Webflow slider: the track box spans the full
+   VIEWPORT width (negative inline margins break it out of the padded wrapper)
+   while inner padding insets the cards back to the content edges. So at rest
+   the first card aligns with the heading (page padding respected), and when
+   you advance the neighbouring cards bleed out to both viewport edges instead
+   of clipping at the content padding.
+
+   --gap  spacing between cards
+   --pad  current page padding — mirrors .padding-global per breakpoint so the
+          bleed and the rest alignment land exactly on the viewport/content edges */
+.team_track {
+  --gap: 0.75rem;
+  --pad: 3.25rem; /* = .padding-global at ≥992 */
+  --cards: 3.63; /* desktop: tuned so ~3.5 cards are visible in the viewport
+                    (the track's first card is inset from the page edge) */
+  display: flex;
+  gap: var(--gap);
+  width: calc(100% + 2 * var(--pad));
+  margin-inline: calc(-1 * var(--pad));
+  padding-inline: var(--pad);
+  scroll-padding-inline: var(--pad);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+.team_track::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+.team_slide {
+  /* card width = content area / --cards (so --cards cards fill the content area) */
+  flex: 0 0 calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards));
+  scroll-snap-align: start;
+}
+
+.team_card-title .text-color-secondary {
+  font-size: 1rem; /* lawyer role */
+}
+
+/* Tablet down: card width = content area / --cards.
+   flex-basis % resolves against the track's CONTENT box (already inside the
+   inline padding), so --cards cards fill the content area exactly — do NOT
+   subtract --pad here. --pad stays in sync with .padding-global per breakpoint. */
+@media screen and (max-width: 991px) {
+  .team_track {
+    --cards: 2.5; /* tablet */
+    --pad: 2.5rem;
+  }
+  .team_slide {
+    flex: 0 0 calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards));
+  }
+}
+@media screen and (max-width: 767px) {
+  .team_track {
+    --cards: 2; /* mobile landscape */
+    --pad: 1.25rem;
+  }
+}
+@media screen and (max-width: 479px) {
+  .team_track {
+    --cards: 1; /* mobile portrait */
+    --pad: 1rem;
+  }
+}
+
+/* ---- Nav arrows ---- */
+.team_arrows {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+/* Desktop + tablet keep the arrows left-aligned; from landscape down they are
+   centred and sit a touch closer to the track (1.5rem instead of 2rem). */
+@media screen and (max-width: 767px) {
+  .team_arrows {
+    align-self: center;
+    margin-top: 1.5rem;
+  }
+}
+.team_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0.5rem;
+  border: 1px solid var(--bg-color--bg-tertiary);
+  background-color: var(--bg-color--bg-tertiary);
+  color: #fff;
+  border-radius: 99rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  /* webflow.css bakes an IX2 initial transform onto .team_arrow at ≤767px
+     (`translate(-60%) scale(.97)`), which shoves the buttons ~24px left of
+     their centred container. Neutralise it — there's no slider animation in
+     the Structure phase. (Same situation as the .section_logos transform.) */
+  transform: none;
+}
+.team_arrow:hover {
+  transform: none; /* ≤767 also re-applies the translate on :hover */
+}
+.team_arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}

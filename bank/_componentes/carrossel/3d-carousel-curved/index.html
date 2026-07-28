@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Image Carousel</title>
+    <style>
+        /* ====== Embelezamento geral da página e layout ====== */
+        html, body { 
+            display: grid; 
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body { 
+            background: white; 
+        }
+
+        /* ====== CSS Relevante ====== */
+        .scene, .a3d { 
+            display: grid; 
+        }
+
+        .scene {
+            /* previne barras de rolagem */
+            overflow: hidden;
+            /* para visual 3D; menor = efeito mais extremo */
+            perspective: 35em;
+            /* desvanecimento lateral */
+            -webkit-mask: linear-gradient(90deg, #0000, red 20% 80%, #0000);
+            mask: linear-gradient(90deg, #0000, red 20% 80%, #0000);
+            width: 100%;
+            height: 100%;
+        }
+
+        .a3d {
+            place-self: center; /* alinhamento central */
+            /* não achata filhos com transformação 3D deste pai que tem sua própria transformação 3D */
+            transform-style: preserve-3d;
+            animation: ry 32s linear infinite;
+        }
+
+        /* rotação mais simples no eixo y */
+        @keyframes ry { 
+            to { rotate: y 1turn; } 
+        }
+
+        .card {
+            /* largura base do cartão, você pode alterar isso */
+            --w: 17.5em;
+            /* calcula o ângulo base correspondente a um cartão */
+            --ba: calc(1turn / var(--n)); 
+            grid-area: 1 / 1; /* empilha na mesma célula da grade */
+            width: var(--w);
+            aspect-ratio: 7 / 10;
+            object-fit: cover;
+            border-radius: 1.5em;
+            /* não queremos ver a parte de trás dos cartões na frente do plano da tela */
+            backface-visibility: hidden;
+            /* precisamos usar uma cadeia de transformações aqui, não podemos usar propriedades separadas 
+             * de rotação e translação porque elas seriam aplicadas 
+             * na ordem errada (translação, depois rotação) para o que precisamos */
+            transform: 
+                /* rotaciona em torno do eixo y */
+                rotateY(calc(var(--i) * var(--ba)))
+                /* só depois disso translada ao longo do eixo z com sinal negativo */
+                translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))));
+        }
+
+        /* Adiciona um stroke fino e sutil na segunda imagem (e suas repetições) */
+        .card:nth-child(even) {
+            border: 2px solid rgba(0, 0, 0, 0.2); /* Borda um pouco mais grossa e visível, sem exagerar */
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .a3d { 
+                animation-duration: 128s; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scene">
+        <!-- Passamos o total de itens para o CSS usando a variável --n -->
+        <div class="a3d" style="--n: 12">
+            <!-- Imagens alternando entre os dois links fornecidos -->
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 0" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 1" alt="imagem 2"/>
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 2" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 3" alt="imagem 2"/>
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 4" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 5" alt="imagem 2"/>
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 6" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 7" alt="imagem 2"/>
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 8" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 9" alt="imagem 2"/>
+            <img class="card" src="https://i.postimg.cc/g2xg536T/2-3-2.png" style="--i: 10" alt="imagem 1"/>
+            <img class="card" src="https://i.postimg.cc/hjWZVhv6/2-3.png" style="--i: 11" alt="imagem 2"/>
+        </div>
+    </div>
+
+</body>
+</html>

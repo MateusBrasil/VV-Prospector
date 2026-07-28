@@ -1,0 +1,91 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-11",
+  "scope": "destaque-efeitos-webgl-11",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-11",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympafrollLetterAnimations/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tymf2932"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://gitfBlobs"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://twitter.com/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://twitter.com/marioecg"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "The main reliance, however, in the Emmanuel treatment is on faith, reinforced first by hetero-suggestion and then by patient and persistent auto-suggestion. The"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "&var(--base-300);"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "5 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympafrollLetterAnimations/ https://tymf2932)",
+    "5 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

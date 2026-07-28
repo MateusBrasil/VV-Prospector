@@ -1,0 +1,44 @@
+/* Folded from AboutHero.astro's scoped <style> block.
+   Hero fits the viewport under the now-fixed nav (--nav-height = 4.8125rem).
+   Defined defensively in case the var isn't present yet. The grid placement
+   keys (id="w-node-..." in index.html) re-enable the existing #w-node-...
+   grid-area rules in styles.css. */
+:root {
+  --nav-height: 4.8125rem;
+}
+
+.section_about-hero .about_hero-grid {
+  /* Fill the viewport minus the fixed nav; keep the source 40rem (640px) floor. */
+  height: calc(100svh - var(--nav-height));
+  min-height: max(40rem, calc(100svh - var(--nav-height)));
+}
+
+/* Mask the hero image's zoom-in entrance (hero-load.js scales .img inside it).
+   The image fills the wrapper exactly, so clip is a no-op at rest. */
+.section_about-hero .about_hero-img {
+  overflow: clip;
+}
+
+/* Desktop: top content as a 2-col grid — headline 1fr / description 1fr (source
+   used a flex row with space-between, which squeezed the h1 column). ≤991 keeps
+   styles.css's flex-column stack untouched. */
+@media (min-width: 992px) {
+  .section_about-hero .about-hero_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+  .section_about-hero .about_content-left {
+    max-width: none;
+  }
+}
+
+/* Standalone-component fix: the inlined Upmind navbar uses position:fixed in the
+   template (offset by a page-level padding that doesn't exist here), so it overlapped
+   the hero. Pin it into normal flow so it sits above the hero content instead. */
+.navbar.w-nav {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}

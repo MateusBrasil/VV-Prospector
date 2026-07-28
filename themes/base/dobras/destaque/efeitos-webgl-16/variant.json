@@ -1,0 +1,29 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-16",
+  "scope": "destaque-efeitos-webgl-16",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-16",
+  "registo": "cinematografico",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Animmaster"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "/Experiment 0381"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

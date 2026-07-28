@@ -1,0 +1,94 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-19",
+  "scope": "destaque-3d-animacao-3d-19",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-19",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis",
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Transform Your Brand Identity"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Experience the next generation of digital product design. We craft\n        immersive experiences that blend innovation with functionality, helping\n        brand"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Brand Strategy"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "User Experience"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Digital Products"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Innovation Lab"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "We believe in creating digital products that not only look exceptional\n        but drive real business growth and user engagement through thoughtful\n        des"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Our approach combines cutting-edge technology with human-centered design\n        principles. We transform complex challenges into seamless digital\n        exper"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "var(--base-300)"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Transform Your Digital Identity"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Innovation Verified"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Join the revolution where innovative experience meets strategic\n        thinking. Let's create products that don't just exist in digital space -\n        they de"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/barcode.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

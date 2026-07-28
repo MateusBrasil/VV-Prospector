@@ -1,0 +1,147 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-23",
+  "scope": "transicao-transicao-pagina-23",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-23",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "three",
+    "matter",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "2.3ca6bb44.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "3.a433b89d.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "4.c6d96be5.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://twitter.com/wrongakram/status/1279204900661071875"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/MagneticButtons/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=50733"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/ThumbFullTransition/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://www.twitter.com/codrops"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Image Animation &amp; Scroll"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Akram Khalid's animation"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Gnostic Love"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Gnostic Love"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Then they opened the firmaments and the Light descended below to the lower regions and to those who were without form, having no true likeness. It was thus that"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Now in the Space of the Indivisible Atom are twelve Founts, above which are the twelve Paternities who surround the Indivisible [Queen] like Deeps or like Skies"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "© Codrops 2020"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Next Project"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Into Light"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Surrender"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "1.dc197a9a.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "5 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://twitter.com/wrongakram/status/1279204900661071875 https://tympanus.net/Development/MagneticButtons/)",
+    "5 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

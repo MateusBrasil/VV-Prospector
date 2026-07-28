@@ -1,0 +1,259 @@
+[data-dobra="transicao-transicao-pagina-21"] *,[data-dobra="transicao-transicao-pagina-21"] *::after,[data-dobra="transicao-transicao-pagina-21"] *::before{
+    box-sizing: border-box;
+}
+[data-dobra="transicao-transicao-pagina-21"]{
+    font-size: 15px;
+}
+[data-dobra="transicao-transicao-pagina-21"]{
+    margin: 0;
+    --color-text: var(--base-100);
+    --color-bg: var(--base-600);
+    --color-link: var(--base-100);
+    --color-link-hover: var(--base-100);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: var(--fonte-corpo);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(120,120,120,0.2),rgba(120,120,120,0.2)), url(../img/bg.jpg);
+    background-size: cover;
+}
+[data-dobra="transicao-transicao-pagina-21"] .demo-2{
+    background-image: linear-gradient(rgba(120,120,120,0.2),rgba(120,120,120,0.2)), url(../img/bg2.jpg);
+}
+[data-dobra="transicao-transicao-pagina-21"] .demo-3{
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(../img/bg3.jpg);
+}
+[data-dobra="transicao-transicao-pagina-21"] .demo-4{
+    background-image: linear-gradient(rgba(120,120,120,0.2),rgba(120,120,120,0.2)), url(../img/bg7.jpg);
+}
+[data-dobra="transicao-transicao-pagina-21"] .demo-5{
+    background-image: linear-gradient(rgba(120,120,120,0.2),rgba(120,120,120,0.2)), url(../img/bg5.jpg);
+}
+[data-dobra="transicao-transicao-pagina-21"] .js .loading::before,[data-dobra="transicao-transicao-pagina-21"] .js .loading::after{
+    content: '';
+    position: fixed;
+    z-index: 1000;
+}
+[data-dobra="transicao-transicao-pagina-21"] .js .loading::before{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+}
+[data-dobra="transicao-transicao-pagina-21"] .js .loading::after{
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border-radius: 50%;
+    opacity: 0.4;
+    background: var(--color-link);
+    animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+@keyframes loaderAnim{
+    to {
+        opacity: 1;
+        transform: scale3d(0.5,0.5,1);
+    }
+}
+[data-dobra="transicao-transicao-pagina-21"] a{
+    text-decoration: none;
+    color: var(--color-link);
+    outline: none;
+    opacity: 0.7;
+}
+[data-dobra="transicao-transicao-pagina-21"] a:hover,[data-dobra="transicao-transicao-pagina-21"] a:focus{
+    color: var(--color-link-hover);
+    outline: none;
+    text-decoration: underline;
+    opacity: 1;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame{
+    padding: 3rem 5vw;
+    text-align: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__title{
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    font-weight: normal;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__links{
+    display: inline;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__links a:not(:last-child),[data-dobra="transicao-transicao-pagina-21"] .frame__demos a:not(:last-child){
+    margin-right: 1rem;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__demos{
+    margin: 1rem 0;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__demos-text{
+    margin-right: 2rem;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__demo--current,[data-dobra="transicao-transicao-pagina-21"] .frame__demo--current:hover{
+    color: var(--color-text);
+    opacity: 0.5;
+    text-decoration: underline;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__button{
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    fill: var(--base-100);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__button:focus{
+    outline: none;
+    opacity: 0.9;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__content{
+    text-align: center;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__content-title{
+    margin: 0;
+    padding-bottom: 1rem;
+    line-height: 1;
+    font-size: 8vw;
+    font-weight: 300;
+    font-family: var(--fonte-corpo);
+    color: var(--base-100);
+    position: relative;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__content-title::after{
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 1px;
+    background: var(--base-100);
+    left: 40%;
+    top: 100%;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__content-text{
+    max-width: 600px;
+    font-size: 1rem;
+    margin: 2rem auto 3rem;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__switch-item{
+    cursor: pointer;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--base-100);
+    font-family: var(--fonte-corpo);
+    font-weight: 300;
+    font-size: 1.85rem;
+    margin: 0 1rem;
+    transition: opacity 0.3s;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__switch-item--current,[data-dobra="transicao-transicao-pagina-21"] .frame__switch-item:hover,[data-dobra="transicao-transicao-pagina-21"] .frame__switch-item:focus{
+    text-decoration: none;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__switch-item--current{
+    pointer-events: none;
+    opacity: 1;
+}
+[data-dobra="transicao-transicao-pagina-21"] .frame__content-text,[data-dobra="transicao-transicao-pagina-21"] .frame__switch{
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+[data-dobra="transicao-transicao-pagina-21"] .video-started .frame__content-text,[data-dobra="transicao-transicao-pagina-21"] .video-started .frame__switch{
+    opacity: 1;
+}
+[data-dobra="transicao-transicao-pagina-21"] .video{
+    pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-21"] #canvas{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+[data-dobra="transicao-transicao-pagina-21"] .wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    pointer-events: none;
+}
+[data-dobra="transicao-transicao-pagina-21"] .plane{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 100;
+}
+[data-dobra="transicao-transicao-pagina-21"] .plane video{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    display: none;
+}
+@media screen and (min-width: 53em){[data-dobra="transicao-transicao-pagina-21"] .frame{
+        text-align: left;
+        display: grid;
+        padding: 3rem;
+        pointer-events: none;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-areas: 'title links links'
+                            '... play ...'
+                            'content content content'
+                            '... demos demos';
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__title{
+        margin: 0;
+        grid-area: title;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__button{
+        grid-area: play;
+        align-self: end;
+        justify-self: center;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__content{
+        grid-area: content;
+        align-self: end;
+        justify-self: center;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__tagline{
+        position: relative;
+        margin: 0 0 0 1rem;
+        padding: 0 0 0 1rem;
+        opacity: 0.5;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__demos{
+        margin: 0;
+        grid-area: demos;
+        justify-self: end;
+        align-self: end;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame__links{
+        grid-area: links;
+        padding: 0;
+        justify-self: end;
+    }
+[data-dobra="transicao-transicao-pagina-21"] .frame a,[data-dobra="transicao-transicao-pagina-21"] .frame button{
+        pointer-events: auto;
+    }
+
+}
+

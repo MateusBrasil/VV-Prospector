@@ -1,0 +1,93 @@
+{
+  "slot": "cursor",
+  "nome": "efeitos-mouse-9",
+  "scope": "cursor-efeitos-mouse-9",
+  "origem": "bank/_componentes/cursor/efeitos-mouse-9",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "artworld"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185574/01_compressed_dlglp7.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185571/02_compressed_vl2zfa.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185570/03_compressed_zke5uv.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185569/04_compressed_powoby.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185570/05_compressed_zthlxd.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185570/06_compressed_w6o2vk.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185572/07_compressed_linhww.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185572/08_compressed_wo1ylq.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185573/09_compressed_penohm.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185573/10_compressed_x4ifst.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185573/11_compressed_zztgvu.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185574/12_compressed_vfinpv.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 12
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "12 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185574/01_compressed_dlglp7.jpg https://res.cloudinary.com/dbpwbtkis/image/upload/v1649185571/02_compressed_vl2zfa.jpg)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"cursor\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

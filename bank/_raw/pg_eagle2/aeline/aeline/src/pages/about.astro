@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import SobreHero from "../components/AboutHero.astro";
+import SobreIntro from "../components/AboutIntro.astro";
+import TeamSection from "../components/TeamSection.astro";
+import JourneySection from "../components/JourneySection.astro";
+import CtaSection from "../components/CtaSection.astro";
+---
+<BaseLayout title="Sobre Eagle — AI Consulting" description="We are a consulting and AI innovation firm dedicated to helping organizations think smarter, move faster, and grow stronger through strategy and AI.">
+  <Navbar variant="secondary" />
+  <main class="main-wrapper">
+    <SobreHero /><SobreIntro /><TeamSection /><JourneySection /><CtaSection />
+    <Footer />
+  </main>
+</BaseLayout>

@@ -1,0 +1,134 @@
+[data-dobra="destaque-anim-interactive-chip-switches"] input:where(.chip[type="checkbox"]){
+      --color: var(--acento);
+      font-size: 1rem;
+      appearance: none;
+      position: relative;
+      border: 1px solid var(--base-300);
+      border-radius: 100em;
+      overflow: clip;
+      margin: 0;
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 0;
+      cursor: pointer;
+      
+      &::after {
+        content: attr(value);
+        white-space: pre;
+        line-height: 1;
+        position: relative;
+        padding: 0.5em 1em 0.5em 2em;
+        display: block;
+      }
+      
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 0.75em;
+        aspect-ratio: 1;
+        background: linear-gradient(currentcolor 0 0), linear-gradient(currentcolor 0 0);
+        background-position: -200% -2em, 2em -200%, 50% 50%;
+        background-size: 1em 0.125em, 0.125em 1em;
+        background-repeat: no-repeat;
+        background-color: var(--color);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 1.125em;
+        translate: -50% -50%;
+        rotate: 45deg;
+        transition: width 0.25s, background-position 0.5s;
+      }
+      
+      &.grow, &.bounce {
+        &::before {
+          background-position: 50% 50%, 50% 50%, 50% 50%;
+          background-size: 0 0, 0 0;
+          transition: width 0.25s, background-size 0.5s;
+        }
+      }
+      
+      &.bounce {
+        &::before {
+          transition-timing-function: ease-in-out, cubic-bezier(0.75, 0, 0.5, 2);
+        }
+      }
+      
+      &:checked {
+        &::before {
+          width: 200%;
+          background-position: 50% 50%, 50% 50%, 50% 50%;
+          background-size: 1em 0.125em, 0.125em 1em;
+        }
+      }
+      
+      &:disabled {
+        --color: var(--base-100);
+        color: var(--base-300);
+        border-color: var(--base-300);
+        cursor: not-allowed;
+      }
+      
+      &:hover:not(:disabled) {
+        border-color: var(--base-300);
+        background-color: rgb(from var(--color) r g b / 10%);
+        transition: 0.4s;
+      }
+    }
+@media print{[data-dobra="destaque-anim-interactive-chip-switches"] input:where(.chip[type="checkbox"]){
+        &, &::before, &::after {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+
+    }
+@media (prefers-reduced-motion){[data-dobra="destaque-anim-interactive-chip-switches"] input:where(.chip[type="checkbox"]){
+        &, &::before, &::after {
+          transition: none;
+        }
+      }
+
+    }
+@media (prefers-contrast: more){[data-dobra="destaque-anim-interactive-chip-switches"] input:where(.chip[type="checkbox"]){
+        &::before {
+          background: highlight;
+        }
+        
+        &:disabled {
+          border-color: gray-text;
+          
+          &::before {
+            background: graytext;
+          }
+          
+          &::after {
+            color: graytext;
+          }
+        }
+      }
+
+    }
+[data-dobra="destaque-anim-interactive-chip-switches"]{
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 3em;
+      font-family: var(--fonte-corpo);
+      background-color: var(--base-100);
+    }
+[data-dobra="destaque-anim-interactive-chip-switches"] fieldset{
+      border-color: var(--base-300);
+
+      & legend {
+        color: var(--base-300);
+        font-weight: 500;
+      }
+    }
+
+    
+  

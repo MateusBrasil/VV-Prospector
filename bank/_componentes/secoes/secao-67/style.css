@@ -1,0 +1,43 @@
+/* coverly-history — component-scoped overrides.
+ * The shared Coverly stylesheet (/coverly/styles.css) handles tokens,
+ * webflow base, .section_history, .header_grid, .history_layout,
+ * .statistic_layout, .statistic_item, .about_img, .tag, typography, etc.
+ *
+ * This file re-establishes the standalone body baseline so the section
+ * renders correctly when opened on its own outside the BaseLayout. It also
+ * guarantees the image and stat counters render as a complete, readable
+ * section before any scroll-driven animation fires — without that
+ * fallback, a static screenshot (or a user with broken JS) would see an
+ * empty image well and missing numbers.
+ */
+
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #fbfbf9);
+  color: var(--text-color--text-primary, #000);
+  font-family: var(--_typography---font-family--secondary, Inter, sans-serif);
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fallback visibility: if scroll-reveal hasn't initialised yet (or fails to
+ * load), keep everything visible by default. GSAP will still take control
+ * via inline styles once it runs, so this only affects the pre-animation
+ * paint. */
+.section_history .scroll-slide-left {
+  opacity: 1;
+  transform: none;
+}
+
+.section_history [data-reveal-image] .img-wrapper {
+  transform: translate3d(0, 0, 0);
+}
+
+.section_history [data-reveal-image] .img {
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  filter: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

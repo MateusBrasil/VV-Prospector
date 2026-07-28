@@ -1,0 +1,140 @@
+{
+  "slot": "contacto",
+  "nome": "secao-158",
+  "scope": "contacto-secao-158",
+  "origem": "bank/_componentes/secoes/secao-158",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "splittext",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Success stories"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Explore how our tailored strategies have transformed businesses and driven measurable success for our clients."
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "95%"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Complete customer"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "10+"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Innovation insight"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "50m"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Users worldwide"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/dark-logo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Hero-ca.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/dark-logo.svg https://d173woph5zl366.cloudfront.net/acelia/assets/images/Hero-ca.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

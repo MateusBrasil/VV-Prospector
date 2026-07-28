@@ -1,0 +1,66 @@
+[data-dobra="destaque-efeitos-de-fisica-5"] *,[data-dobra="destaque-efeitos-de-fisica-5"] *::before,[data-dobra="destaque-efeitos-de-fisica-5"] *::after{ box-sizing: border-box; margin: 0; padding: 0; }
+[data-dobra="destaque-efeitos-de-fisica-5"],[data-dobra="destaque-efeitos-de-fisica-5"]{
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background: var(--base-100);          
+   color: var(--base-600);
+   font-family: var(--fonte-corpo);
+   -webkit-font-smoothing: antialiased;
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] button{
+   font: inherit;
+   color: inherit;
+   background: none;
+   border: 0;
+   cursor: pointer;
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] .reset{
+   position: fixed;
+   top: 24px;
+   right: 24px;
+   z-index: 80;
+   padding: 12px 22px;
+   border: 1.5px solid var(--base-600);
+   border-radius: 999px;
+   font-family: var(--fonte-corpo);
+   font-weight: 900;
+   font-size: 13px;
+   letter-spacing: 0.05em;
+   text-transform: uppercase;
+   color: var(--base-600);
+   transition: background 0.3s, color 0.3s;
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] .reset:hover{
+   background: var(--base-600);
+   color: var(--base-100);
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] .stage{
+   position: fixed;
+   inset: 0;
+   z-index: 5;
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] .word{
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 14px 32px;
+   font-family: var(--fonte-corpo);
+   font-size: clamp(48px, 8vw, 120px);
+   font-weight: 900;
+   letter-spacing: -0.04em;
+   line-height: 1;
+   color: var(--base-600);
+   user-select: none;
+   white-space: nowrap;
+   transform-origin: 50% 50%;
+   will-change: transform;
+   cursor: grab;
+}
+[data-dobra="destaque-efeitos-de-fisica-5"] .word.is-grabbing{ cursor: grabbing; }
+@media (max-width: 760px){[data-dobra="destaque-efeitos-de-fisica-5"] .reset{ top: 16px; right: 16px; padding: 9px 16px; font-size: 11px; }
+[data-dobra="destaque-efeitos-de-fisica-5"] .word{ font-size: 44px; padding: 10px 22px; }
+
+}
+
+

@@ -1,0 +1,92 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-38",
+  "scope": "destaque-scroll-38",
+  "origem": "bank/_componentes/scroll/scroll-38",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "flip",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Scroll down and watch everything fall into place"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "First Frame"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Start here"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A single moment, held in place before everything begins to move."
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Final Hold"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Everything settles into place, leaving a lasting frame that feels\n            complete."
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Layered Time"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Moments stack, overlap, and reveal themselves slowly as the scroll\n            continues."
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Weight & Flow"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Elements carry presence, easing in and out with balance, never\n            rushed, never still."
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Soft Motion"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Subtle shifts and gentle transitions that build a quiet sense of\n            rhythm as you move forward."
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "A quiet progression of motion and stillness, where each layer reveals\n        itself with intention and nothing feels out of place."
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância (acento da origem #fd4400 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,53 @@
+body { margin: 0; min-height: 100svh; }
+
+/* ===== FaqSection.astro scoped <style is:global> (folded in) =====
+   The shared styles.css covers the closed accordion (bg-mint, dark text),
+   .accordion_answer { overflow:hidden } and the +/- icon lines, but NOT the
+   JS-driven open/close behavior or the open-state color inversion. Those were
+   recreated minimally in the source component, so they live here. */
+
+/* JS-driven accordion open/close. accordion.js sets max-height to the measured
+   scrollHeight on open and back to 0 on close. */
+.accordion_answer {
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+/* Morph "+" -> "-": hide the vertical line when the item is open. */
+.accordion.is-open .line-vertical {
+  transform: scaleY(0);
+}
+.line-vertical {
+  transition: transform 0.3s ease;
+}
+
+/* Open-state color inversion (from live source):
+   CLOSED bg = --bg-color--bg-mint (#e6ecd6 / rgb(230,236,214)), text dark.
+   OPEN bg = #101604 (rgb(16,22,4)), question/icon/answer text white. */
+.accordion {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.accordion.is-open {
+  background-color: #101604;
+}
+.accordion.is-open .font-mono,
+.accordion.is-open .h6,
+.accordion.is-open .accordion_answer,
+.accordion.is-open .text-color-subtle {
+  color: #fff;
+}
+/* The +/- icon lines are drawn with background-color -- invert them to white. */
+.accordion.is-open .line-horizontal,
+.accordion.is-open .line-vertical {
+  background-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion_answer {
+    transition: none;
+  }
+  .line-vertical,
+  .accordion {
+    transition: none;
+  }
+}

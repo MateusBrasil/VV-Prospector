@@ -1,0 +1,19 @@
+/* stayli-hero — local overrides only. All hero structure/styling lives in the
+   shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css, which owns the load-entrance keyframes). */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: stayli-navbar styles ===== */
+/* stayli-navbar — local overrides only. All navbar structure/styling lives in the
+   shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   hamburger-nav.css). The base ("is-absolute") variant is transparent with white
+   text because it normally floats over a hero image — so in this standalone card
+   we paint a dark backdrop behind it so the white logo/links stay legible. */
+
+.page-wrapper {
+  position: relative;
+  min-height: 22rem;
+}

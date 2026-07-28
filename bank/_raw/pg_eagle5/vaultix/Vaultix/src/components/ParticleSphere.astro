@@ -1,0 +1,427 @@
+---
+// Three.js point-cloud sphere — futuristic data-viz visual.
+// Renders ~5,000 white particles distributed across a sphere via Fibonacci
+// lattice (uniform, no polar clustering). Auto-rotates on Y, with subtle
+// mouse-pointer inertia. Transparent canvas, fills its parent container.
+//
+// Used as the decorative center of Section 04 — Nossa Journey (Sobre). Could
+// be reused on any dark section that needs a "structured noise" focal point.
+
+interface Props {
+  class?: string;
+  /** Particle count. Default 5000. Higher = denser sphere but more GPU work. */
+  count?: number;
+  /** Particle size in pixels at the screen scale. Default 1.4. */
+  particleSize?: number;
+  /** Particle color. Default periwinkle #b5d2ff (Eagle accent). */
+  color?: string;
+  /** Auto-rotation speed in radians per second. Default 0.04 (slow). */
+  rotationSpeed?: number;
+  /** How much the mouse moves the sphere (0 = ignore mouse, 1 = strong pull).
+   *  Default 0.18. */
+  mouseInfluence?: number;
+  /** Mount the live-tune debug panel (Shift+P toggle). Default false. */
+  debug?: boolean;
+}
+
+const {
+  class: className = "",
+  count = 5000,
+  particleSize = 1.4,
+  color = "#b5d2ff",
+  rotationSpeed = 0.04,
+  mouseInfluence = 0.18,
+  debug = false,
+} = Astro.props;
+---
+
+<div
+  class:list={["particle-sphere", className]}
+  data-particle-sphere
+  data-count={count}
+  data-particle-size={particleSize}
+  data-color={color}
+  data-rotation-speed={rotationSpeed}
+  data-mouse-influence={mouseInfluence}
+  data-debug={debug ? "true" : "false"}
+></div>
+
+<style>
+  .particle-sphere {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .particle-sphere canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Debug panel (singleton, mirrors HalftoneImage debug for consistency) */
+  :global(.particle-sphere-debug) {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 280px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(17, 17, 17, 0.96);
+    border: 1px solid #343434;
+    padding: 16px 18px;
+    z-index: 9999;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #d0d0d0;
+    display: none;
+  }
+  :global(.particle-sphere-debug.is-open) { display: block; }
+  :global(.particle-sphere-debug h2) {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(181, 210, 255, 0.7);
+    margin-bottom: 12px;
+  }
+  :global(.particle-sphere-debug .row) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  :global(.particle-sphere-debug label) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b0b0b0;
+  }
+  :global(.particle-sphere-debug .v) {
+    font-variant-numeric: tabular-nums;
+    color: #b5d2ff;
+  }
+  :global(.particle-sphere-debug input[type="range"]) {
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #343434;
+    outline: none;
+    cursor: pointer;
+  }
+  :global(.particle-sphere-debug input[type="range"]::-webkit-slider-thumb) {
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    background: #b5d2ff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  :global(.particle-sphere-debug input[type="color"]) {
+    width: 32px;
+    height: 22px;
+    border: 1px solid #343434;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+  :global(.particle-sphere-debug .row.color) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  :global(.particle-sphere-debug .hint) {
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    text-align: right;
+  }
+  :global(.particle-sphere-debug .copy) {
+    margin-top: 10px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #343434;
+    color: #b0b0b0;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  :global(.particle-sphere-debug .copy:hover) {
+    border-color: #b5d2ff;
+    color: #b5d2ff;
+  }
+</style>
+
+<script>
+  import * as THREE from "three";
+
+  type Inst = {
+    el: HTMLElement;
+    renderer: THREE.WebGLRenderer;
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    points: THREE.Points;
+    config: {
+      rotationSpeed: number;
+      mouseInfluence: number;
+    };
+    mouseTarget: { x: number; y: number };
+    mouseCurrent: { x: number; y: number };
+    rafId: number;
+    lastT: number;
+  };
+
+  const instances: Inst[] = [];
+
+  /** Fibonacci lattice — distributes N points uniformly on a unit sphere.
+   *  Uses the golden angle to spread points so they don't cluster at the
+   *  poles (a common problem with naive lat/lon distribution). */
+  function fibonacciSphere(count: number): Float32Array {
+    const positions = new Float32Array(count * 3);
+    const PHI = Math.PI * (3 - Math.sqrt(5)); // golden angle ≈ 2.39996323
+    for (let i = 0; i < count; i++) {
+      // y goes from 1 to -1, evenly spaced.
+      const y = 1 - (i / (count - 1)) * 2;
+      const radius = Math.sqrt(1 - y * y);
+      const theta = PHI * i;
+      const x = Math.cos(theta) * radius;
+      const z = Math.sin(theta) * radius;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+    }
+    return positions;
+  }
+
+  function setup(el: HTMLElement) {
+    const ds = el.dataset;
+    const count = parseInt(ds.count || "5000", 10);
+    const particleSize = parseFloat(ds.particleSize || "1.4");
+    const colorHex = ds.color || "#ffffff";
+    const rotationSpeed = parseFloat(ds.rotationSpeed || "0.12");
+    const mouseInfluence = parseFloat(ds.mouseInfluence || "0.18");
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true, // transparent bg so the section's #141414 shows through
+      powerPreference: "low-power",
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0); // fully transparent
+    el.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    // z=4 leaves margin so the sphere never clips the canvas edges (was
+    // z=3 + radius 1.2 → top/bottom got cut on near-square containers).
+    camera.position.z = 4;
+
+    // Geometry — Fibonacci-distributed unit sphere, scaled to a comfortable
+    // visible radius (1.2 fits inside a 45° FOV at z=4 with breathing room).
+    const geometry = new THREE.BufferGeometry();
+    const basePositions = fibonacciSphere(count);
+    const positions = new Float32Array(basePositions.length);
+    for (let i = 0; i < basePositions.length; i++) positions[i] = basePositions[i] * 1.2;
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: new THREE.Color(colorHex),
+      size: particleSize,
+      sizeAttenuation: false, // fixed pixel size regardless of camera distance
+      transparent: true,
+      opacity: 0.9,
+      depthWrite: false,
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    const inst: Inst = {
+      el,
+      renderer,
+      scene,
+      camera,
+      points,
+      config: { rotationSpeed, mouseInfluence },
+      mouseTarget: { x: 0, y: 0 },
+      mouseCurrent: { x: 0, y: 0 },
+      rafId: 0,
+      lastT: performance.now(),
+    };
+
+    // Resize — track parent container size, not viewport.
+    const resize = () => {
+      const r = el.getBoundingClientRect();
+      const w = Math.max(1, r.width);
+      const h = Math.max(1, r.height);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(el);
+
+    // Mouse — store normalized (-1..1) target, lerp current toward it each frame.
+    const onMouseMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect();
+      // Only react when the cursor is roughly over/around the element.
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const dx = (e.clientX - cx) / r.width;
+      const dy = (e.clientY - cy) / r.height;
+      // Clamp so far-away cursors don't keep pulling.
+      inst.mouseTarget.x = Math.max(-1, Math.min(1, dx * 2));
+      inst.mouseTarget.y = Math.max(-1, Math.min(1, dy * 2));
+    };
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+    // Pause render loop when the element scrolls offscreen — saves GPU.
+    let visible = true;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) visible = e.isIntersecting;
+      },
+      { threshold: 0 },
+    );
+    io.observe(el);
+
+    // Honour reduced-motion: skip animation entirely, just render a static frame.
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const animate = (t: number) => {
+      inst.rafId = requestAnimationFrame(animate);
+      if (!visible) return;
+      const dt = Math.min(0.05, (t - inst.lastT) / 1000);
+      inst.lastT = t;
+
+      if (!reduceMotion) {
+        // Auto-rotate around Y.
+        points.rotation.y += inst.config.rotationSpeed * dt;
+        // Mouse-driven inertia: lerp current toward target, then apply a small
+        // additive offset to rotation. The lerp creates the inertial feel.
+        const lerp = 0.05;
+        inst.mouseCurrent.x += (inst.mouseTarget.x - inst.mouseCurrent.x) * lerp;
+        inst.mouseCurrent.y += (inst.mouseTarget.y - inst.mouseCurrent.y) * lerp;
+        points.rotation.y += inst.mouseCurrent.x * inst.config.mouseInfluence * dt * 4;
+        points.rotation.x = inst.mouseCurrent.y * inst.config.mouseInfluence * 0.6;
+      }
+
+      renderer.render(scene, camera);
+    };
+    inst.rafId = requestAnimationFrame(animate);
+
+    instances.push(inst);
+  }
+
+  /* ---------- Debug panel (singleton, Shift+P toggles) ---------- */
+  function buildPanel() {
+    if (document.querySelector(".particle-sphere-debug")) return;
+    const panel = document.createElement("div");
+    panel.className = "particle-sphere-debug";
+    panel.innerHTML = `
+      <h2>Particle Sphere Debug</h2>
+      <div class="row">
+        <label>Particle size <span class="v" id="ps-vSize"></span></label>
+        <input type="range" id="ps-size" min="0.5" max="6" step="0.1">
+      </div>
+      <div class="row">
+        <label>Rotation (rad/s) <span class="v" id="ps-vRot"></span></label>
+        <input type="range" id="ps-rot" min="0" max="0.5" step="0.005">
+      </div>
+      <div class="row">
+        <label>Mouse influence <span class="v" id="ps-vMouse"></span></label>
+        <input type="range" id="ps-mouse" min="0" max="1" step="0.01">
+      </div>
+      <div class="row">
+        <label>Opacity <span class="v" id="ps-vOpacity"></span></label>
+        <input type="range" id="ps-opacity" min="0.1" max="1" step="0.05">
+      </div>
+      <div class="row color">
+        <label>Color</label>
+        <input type="color" id="ps-color">
+      </div>
+      <button class="copy" id="ps-copy">Copy current values</button>
+      <div class="hint">Shift + P to close</div>
+    `;
+    document.body.appendChild(panel);
+
+    const target = () => instances[0];
+    const sync = () => {
+      const i = target();
+      if (!i) return;
+      const mat = i.points.material as THREE.PointsMaterial;
+      (panel.querySelector("#ps-size") as HTMLInputElement).value = String(mat.size);
+      (panel.querySelector("#ps-vSize") as HTMLElement).textContent = mat.size.toFixed(1);
+      (panel.querySelector("#ps-rot") as HTMLInputElement).value = String(i.config.rotationSpeed);
+      (panel.querySelector("#ps-vRot") as HTMLElement).textContent = i.config.rotationSpeed.toFixed(3);
+      (panel.querySelector("#ps-mouse") as HTMLInputElement).value = String(i.config.mouseInfluence);
+      (panel.querySelector("#ps-vMouse") as HTMLElement).textContent = i.config.mouseInfluence.toFixed(2);
+      (panel.querySelector("#ps-opacity") as HTMLInputElement).value = String(mat.opacity);
+      (panel.querySelector("#ps-vOpacity") as HTMLElement).textContent = mat.opacity.toFixed(2);
+      (panel.querySelector("#ps-color") as HTMLInputElement).value = "#" + mat.color.getHexString();
+    };
+
+    (panel.querySelector("#ps-size") as HTMLInputElement).addEventListener("input", (e) => {
+      const v = parseFloat((e.target as HTMLInputElement).value);
+      instances.forEach((i) => ((i.points.material as THREE.PointsMaterial).size = v));
+      (panel.querySelector("#ps-vSize") as HTMLElement).textContent = v.toFixed(1);
+    });
+    (panel.querySelector("#ps-rot") as HTMLInputElement).addEventListener("input", (e) => {
+      const v = parseFloat((e.target as HTMLInputElement).value);
+      instances.forEach((i) => (i.config.rotationSpeed = v));
+      (panel.querySelector("#ps-vRot") as HTMLElement).textContent = v.toFixed(3);
+    });
+    (panel.querySelector("#ps-mouse") as HTMLInputElement).addEventListener("input", (e) => {
+      const v = parseFloat((e.target as HTMLInputElement).value);
+      instances.forEach((i) => (i.config.mouseInfluence = v));
+      (panel.querySelector("#ps-vMouse") as HTMLElement).textContent = v.toFixed(2);
+    });
+    (panel.querySelector("#ps-opacity") as HTMLInputElement).addEventListener("input", (e) => {
+      const v = parseFloat((e.target as HTMLInputElement).value);
+      instances.forEach((i) => ((i.points.material as THREE.PointsMaterial).opacity = v));
+      (panel.querySelector("#ps-vOpacity") as HTMLElement).textContent = v.toFixed(2);
+    });
+    (panel.querySelector("#ps-color") as HTMLInputElement).addEventListener("input", (e) => {
+      const v = (e.target as HTMLInputElement).value;
+      instances.forEach((i) => (i.points.material as THREE.PointsMaterial).color.set(v));
+    });
+    panel.querySelector("#ps-copy")?.addEventListener("click", () => {
+      const i = target();
+      if (!i) return;
+      const mat = i.points.material as THREE.PointsMaterial;
+      const out = `particleSize={${mat.size.toFixed(1)}} color="#${mat.color.getHexString()}" rotationSpeed={${i.config.rotationSpeed.toFixed(3)}} mouseInfluence={${i.config.mouseInfluence.toFixed(2)}}`;
+      navigator.clipboard?.writeText(out);
+      const btn = panel.querySelector("#ps-copy") as HTMLButtonElement;
+      const old = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => (btn.textContent = old), 1200);
+    });
+
+    sync();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.shiftKey && (e.key === "P" || e.key === "p")) {
+        e.preventDefault();
+        panel.classList.toggle("is-open");
+        if (panel.classList.contains("is-open")) sync();
+      }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-particle-sphere]").forEach(setup);
+  // Debug panel is opt-in: only mount if at least one instance has
+  // data-debug="true". Produtoion sections skip this.
+  const anyDebug = document.querySelector('[data-particle-sphere][data-debug="true"]');
+  if (instances.length && anyDebug) buildPanel();
+</script>

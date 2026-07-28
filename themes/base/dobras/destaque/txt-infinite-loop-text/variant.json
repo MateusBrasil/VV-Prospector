@@ -1,0 +1,73 @@
+{
+  "slot": "destaque",
+  "nome": "txt-infinite-loop-text",
+  "scope": "destaque-txt-infinite-loop-text",
+  "origem": "bank/_componentes/textos/infinite-loop-text",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Welcome"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "to"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Eagle"
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "the"
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "ultimate"
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "code"
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "repository"
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "for"
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "developers"
+    },
+    {
+      "nome": "item10",
+      "tipo": "texto",
+      "exemplo": "🦅"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://unpkg.com/normalize.css)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

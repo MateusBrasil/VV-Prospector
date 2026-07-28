@@ -1,0 +1,115 @@
+{
+  "slot": "vitrine",
+  "nome": "sticky-grid-scroll",
+  "scope": "vitrine-sticky-grid-scroll",
+  "origem": "bank/_componentes/parallax/sticky-grid-scroll",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Sticky Grid Scroll"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Sticky Grid Scroll"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A structured scroll-driven image grid where movement unfolds progressively within a sticky layout."
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Read the tutorial"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/intro/1920/1080"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/600/600"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/600/600"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/600/600"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/600/600"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/600/600"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/600/600"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/600/600"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/600/600"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/600/600"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/600/600"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/600/600"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/600/600"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 13
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "13 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/intro/1920/1080 https://picsum.photos/seed/1/600/600)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

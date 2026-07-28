@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --nav-height: 3.25rem;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --nav-height: 4.8125rem;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(253, 255, 34, 0.7);
+}
+
+/* Char roll-up hover (Osmo `btn-animate-chars` pattern).
+   Inner wrapper inherits parent's line-height so the parent's vertical centering
+   is preserved (no shrinking the button). overflow:hidden + clip-path keep the
+   text-shadow clone hidden until the char rolls up. */
+.hover-stagger__inner {
+  display: inline-block;
+  overflow: hidden;
+  clip-path: inset(0);
+  line-height: inherit;
+  vertical-align: top;
+}
+.hover-stagger__inner > span {
+  display: inline-block;
+  position: relative;
+  text-shadow: 0 1.4em currentColor;
+  transform: translateY(0) rotate(0.001deg);
+  transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  white-space: pre;
+}
+.hover-stagger:hover .hover-stagger__inner > span,
+.hover-stagger.is-stagger-hovered .hover-stagger__inner > span {
+  transform: translateY(-1.4em) rotate(0.001deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-stagger__inner > span {
+    transition: none;
+  }
+  .hover-stagger:hover .hover-stagger__inner > span,
+  .hover-stagger.is-stagger-hovered .hover-stagger__inner > span {
+    transform: none;
+  }
+}
+
+/* Accent glow on hover — same 3-layer pattern as HeroLoader bars `.is-lit`. */
+.btn-accent-glow {
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.btn-accent-glow:hover {
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+
+/* Always-on accent glow — same 3-layer stack as `.btn-accent-glow:hover`.
+   Apply to elements that should glow whenever they are visible (e.g. the
+   active pill in the Sobre / Nossa Values slider, hero loader bars). */
+.accent-glow-active {
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+
+/* Periwinkle (#B5D2FF) glow as a CSS drop-shadow stack — works on SVGs and
+   text. Companion to `.accent-glow-active` but for the secondary blue
+   accent used in pixel-art icons / eyebrows. */
+.periwinkle-glow {
+  filter:
+    drop-shadow(0 0 4px rgba(181, 210, 255, 0.85))
+    drop-shadow(0 0 10px rgba(181, 210, 255, 0.5))
+    drop-shadow(0 0 18px rgba(181, 210, 255, 0.2));
+}
+
+/* Yellow accent glow as a CSS drop-shadow stack — for SVG paths and text
+   (HUD style). Use when the element is yellow and you want it to "emit"
+   light. Box-shadow companion is `.accent-glow-active`. */
+.accent-glow {
+  filter:
+    drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+    drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+    drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+}
+
+/* Eagle logo — yellow accent glow on hover, applied ONLY to the icon
+   (svg in Navbar, img in Footer). The wordmark stays clean.
+   Wrapped in `@media (hover: hover)` so touch devices (tablet/phone)
+   never get a sticky hover state from a tap. */
+@media (hover: hover) and (pointer: fine) {
+  .eagle-logo svg,
+  .eagle-logo img {
+    transition: filter 0.3s ease;
+  }
+  .eagle-logo:hover svg,
+  .eagle-logo:hover img {
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eagle-logo svg,
+  .eagle-logo img {
+    transition: none;
+  }
+}
+
+/* Touch devices: kill hover-driven transforms / shadows / filters by
+   neutralizing the most common patterns. Components scoped under `@media
+   (hover: hover)` are already safe; this catches the rest as a guardrail. */
+@media (hover: none), (pointer: coarse) {
+  .btn-accent-glow:hover {
+    box-shadow: none !important;
+  }
+  .hover-stagger:hover .hover-stagger__inner > span,
+  .hover-stagger.is-stagger-hovered .hover-stagger__inner > span {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Mobile (<768px): drop the structural decoration layer.
+   Markers (T-marks / corner dots), animated frame lines, and the
+   side borders of containers are all desktop-only language. On
+   phones each section reads cleanly without that scaffolding.
+   ============================================================ */
+@media (max-width: 767px) {
+  [data-howit-line],
+  [data-impact-line],
+  [data-blog-line],
+  [data-footer-line],
+  [data-howit-tmark],
+  [data-impact-tmark],
+  [data-blog-tmark],
+  [data-footer-marker] {
+    display: none !important;
+  }
+}

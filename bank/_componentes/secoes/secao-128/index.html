@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stayli — About Hero</title>
+
+  <!-- Fonts: Inter (replaces the template's @fontsource/inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Flag the document before first paint so scroll-reveal start states only
+       apply when scripting is on. The hero title/button entrance is pure CSS
+       keyframes (heroRise) inside prefers-reduced-motion:no-preference, and the
+       rating/lead/since row reveals via [data-reveal] (IntersectionObserver) —
+       both fail-safe (content stays visible if JS is off). -->
+  <script>document.documentElement.classList.add("reveal-js");</script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (stayli-navbar) -->
+    <div data-navbar-root="">
+          <div class="navbar" data-navbar="" role="banner">
+            <div class="padding-global is-navbar">
+              <div class="container-large">
+                <div class="navbar_content">
+                  <div class="nav_wrap">
+                    <a href="/" aria-label="Stayli, home" class="navbar_logo-link w-inline-block">
+                      <img src="https://d173woph5zl366.cloudfront.net/stayli/images/stayli-black-logo.svg" loading="eager" alt="Stayli" class="navbar_logo">
+                    </a>
+                  </div>
+
+                  <!-- Desktop links (≥992) -->
+                  <nav role="navigation" class="nav_mobile" aria-label="Primary">
+                    <div class="navbar_list">
+                      <a href="/about" aria-current="page" class="nav_links">About</a>
+                      <a href="/listings" class="nav_links">Listings</a>
+                      <a href="/blog" class="nav_links">Blog</a>
+                      <a href="/contact" class="nav_links">Contact</a>
+                    </div>
+                  </nav>
+    
+                  <div class="nav_buttons-wrap">
+                    <div class="login-wrap hide-mobile-landscape">
+                      <a href="/listings" class="button w-button">Get started</a>
+                    </div>
+    
+                    <!-- Hamburger (≤991) — pill that scales to a card. CSS-only via data-navigation-status. -->
+                    <div class="hamburger-anchor" data-nav-theme="dark">
+                      <div class="hamburger-nav">
+                        <div class="hamburger-nav__bg" aria-hidden="true"></div>
+                        <div class="hamburger-nav__group">
+                          <p class="hamburger-nav__menu-p">Menu</p>
+                          <ul class="hamburger-nav__ul">
+                            <li class="hamburger-nav__li">
+                              <a href="/about" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">About</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/listings" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Listings</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/blog" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Blog</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/contact" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Contact</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" class="hamburger-nav__toggle">
+                          <div class="hamburger-nav__toggle-bar"></div>
+                          <div class="hamburger-nav__toggle-bar"></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Dim backdrop: darkens the page while the menu is open; click to close. -->
+          <div data-navigation-toggle="close" class="navigation__dark-bg" aria-hidden="true"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <div class="about-hero_section">
+      <div class="padding-global is-about-hero">
+        <div class="container-large">
+          <div class="about-hero_content">
+            <div class="about-hero_title-wrap">
+              <div class="max">
+                <h1 class="heading-style-h1" data-hero-reveal>Connecting travelers with unforgettable stays</h1>
+              </div>
+              <a href="/listings" class="button w-button" data-hero-reveal>Get started</a>
+            </div>
+            <div class="about-hero_bottom">
+              <div class="about-hero_t-wrap is-first">
+                <div class="text-base text-color-grey" data-reveal><span class="text-color-primary text-weight-medium">4.9</span>/5.0</div>
+              </div>
+              <div class="about-hero_p-wrap">
+                <p class="text-base text-color-grey" data-reveal>At Stayli, we believe that finding the perfect place to stay should be as exciting as the journey itself. Whether you’re looking for a luxurious beachfront villa, a charming boutique hotel, or a cozy city apartment, we make it easy to book unique stays that suit every traveler’s needs.</p>
+              </div>
+              <div class="about-hero_t-wrap is-sec">
+                <div class="text-base text-color-grey" data-reveal>SINCE 2021</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about_img-wrap_parent">
+      <div class="about_img-wrap">
+        <img
+          src="https://d173woph5zl366.cloudfront.net/stayli/images/img_1.webp"
+          loading="lazy"
+          sizes="(max-width: 2560px) 100vw, 2560px"
+          srcset="https://d173woph5zl366.cloudfront.net/stayli/images/img_1img.webp 500w, https://d173woph5zl366.cloudfront.net/stayli/images/img_1img.webp 800w, https://d173woph5zl366.cloudfront.net/stayli/images/img_1img.webp 1080w, https://d173woph5zl366.cloudfront.net/stayli/images/img_1img.webp 1600w, https://d173woph5zl366.cloudfront.net/stayli/images/img_1img.webp 2000w, https://d173woph5zl366.cloudfront.net/stayli/images/img_1.webp 2560w"
+          alt=""
+          class="img is-about"
+        />
+      </div>
+      <div class="about_img-shadow"></div>
+    </div>
+  </div>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="navbar.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "slot": "cta",
+  "nome": "secao-48",
+  "scope": "cta-secao-48",
+  "origem": "bank/_componentes/secoes/secao-48",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Join us"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Ready to elevate your business?"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Partner with us to take your digital presence to the next level."
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Get Started"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Get Started"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/join.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/join.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,19 @@
+/* stayli-contact-hero — local overrides only. All section structure/styling
+   (the beige hero, the two-column contact layout, the info cards, the stub form)
+   lives in the shared /stayli/styles.css cascade (webflow.css + global-styles.css
+   + components.css). Only the body reset is local here. */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: stayli-navbar styles ===== */
+/* stayli-navbar — local overrides only. All navbar structure/styling lives in the
+   shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   hamburger-nav.css). This contact hero has a light beige background, so the navbar
+   was converted to the SECONDARY variant (black logo, dark links, in-flow — not the
+   transparent "is-absolute" base) so it stays legible over the beige section. */
+
+.page-wrapper {
+  position: relative;
+}

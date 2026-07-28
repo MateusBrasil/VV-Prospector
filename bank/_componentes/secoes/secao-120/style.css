@@ -1,0 +1,23 @@
+/* luzen-about-hero — local overrides only. Casi toda la estructura/estilo
+   (.section_about-hero, .about_hero*, .loop*, navbar, hamburger) vive en el
+   cascade compartido /luzen/styles.css. Aquí solo: reset del body + la
+   animación del marquee de partners. */
+body { margin: 0; min-height: 100svh; }
+
+/* El track de logos "Our partners" usaba un <style scoped> de Astro
+   (data-astro-cid-h2jlyvcc) que NO está aplanado en /luzen/styles.css.
+   Se reinyecta scoped al atributo del componente para no filtrar a otras
+   secciones; verbatim del dist. */
+.logo-marquee[data-astro-cid-h2jlyvcc] { overflow: hidden; }
+.logo-marquee_track[data-astro-cid-h2jlyvcc] {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee-scroll 20s linear infinite;
+}
+@keyframes logo-marquee-scroll {
+  0%   { transform: translate(0); }
+  to   { transform: translate(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee_track[data-astro-cid-h2jlyvcc] { animation: none; }
+}

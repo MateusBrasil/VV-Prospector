@@ -1,0 +1,49 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-49",
+  "scope": "destaque-scroll-49",
+  "origem": "bank/_componentes/scroll/scroll-49",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 3,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/01.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/02.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/03.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/01.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #ee2625 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "a origem usava 3 famílias de fonte e o sistema fornece display + corpo: a peça apoiava-se num contraste tipográfico que o nosso par não reproduz. Confirmar no ecrã que a hierarquia se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

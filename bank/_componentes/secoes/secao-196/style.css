@@ -1,0 +1,14 @@
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }
+
+/* El grueso de los estilos (.section_testimonials-two, .testimonials-two_grid,
+   .testimonials-two_card, .testimonials-two_card-content, .testimonials-two_card-info,
+   .text-2xl, .label, etc.) vive en la hoja compartida /firmo/styles.css.
+   Aquí solo va el override scoped que la sección Astro definía inline. */
+
+/* From landscape down the cards stack in one column — give them a 3rem row gap
+   (overrides webflow.css's 2.5rem @≤767 / 2rem @≤479). */
+@media screen and (max-width: 767px) {
+  .testimonials-two_grid {
+    row-gap: 3rem;
+  }
+}

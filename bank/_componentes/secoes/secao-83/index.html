@@ -1,0 +1,1636 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advisora — Contact Section</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+
+    <style data-bundled-from="/advisora/styles.css">
+/* Advisora bundled styles — concatenated in cascade order, /images/ rewritten to /advisora/images/. */
+
+/* ===== normalize.css ===== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+section {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+button,
+html input[type="button"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+
+
+/* ===== tokens.css ===== */
+:root {
+  --bg-color--bg-secondary: var(--brand--neutral-light);
+  --text-color--text-primary: var(--brand--black);
+  --text-color--text-secondary: var(--brand--neutral);
+  --brand--primary: #083630;
+  --bg-color--bg-primary: var(--brand--neutral-lighter);
+  --brand--soft-white: #fffc;
+  --brand--neutral-light: #dad6c9;
+  --brand--gray: #787878;
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-lighter: #efeeeb;
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --brand--white: #fff;
+  --brand--secondary: #fb4d17;
+  --brand--black: #000;
+  --bg-color--bg-alternate: var(--brand--primary);
+  --brand--light-gray: #fafafa;
+  --brand--neutral-dark: #111;
+  --brand--primary-light: #1f514a;
+  --brand--opaque-white: #ffffff80;
+  --brand--neutral: #11111180;
+  --new-base---white: #fff;
+  --new-base---black: #050505;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---text-primary: #fff;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --border-color--border-secondary: #d4d4d8;
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: white;
+  --text-color--text-tertiary: var(--brand--soft-white);
+}
+
+
+/* ===== webflow.css ===== */
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+.w-button {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #3898EC;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+input.w-button {
+  -webkit-appearance: button;
+}
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
+h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h1 {
+  font-size: 38px;
+  line-height: 44px;
+  margin-top: 20px;
+}
+button,
+[type='button'] {
+  border: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+.w-form {
+  margin: 0 0 15px;
+}
+.w-form-done {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}
+.w-form-fail {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.w-input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+.w-input::placeholder {
+  color: #999;
+}
+.w-input:focus,
+.w-select:focus {
+  border-color: #3898EC;
+  outline: 0;
+}
+textarea.w-input {
+  height: auto;
+}
+.w-slider-dot:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+.w-slider-dot:focus.w-active {
+  box-shadow: none;
+}
+.w-slider-arrow-left:focus,
+.w-slider-arrow-right:focus {
+  outline: 0;
+}
+.w-dropdown-toggle:focus {
+  outline: 0;
+}
+.w-dropdown-link:focus {
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {
+  /* .w-lightbox-content */
+  .w-lightbox-control:hover {
+    opacity: 1;
+  }
+}
+
+.w-lightbox-inactive:hover {
+  opacity: 0;
+}
+[data-nav-menu-open] {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}
+.w--nav-link-open {
+  display: block;
+  position: relative;
+}
+.w-nav-button:focus {
+  outline: 0;
+}
+.w--nav-dropdown-open {
+  display: block;
+}
+.w--nav-dropdown-toggle-open {
+  display: block;
+}
+.w--nav-dropdown-list-open {
+  position: static;
+}
+/**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus {
+  outline: 0;
+}
+.w--tab-active {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+:root {
+  --new-base_typography---xs--font-size\<deleted\|variable-3229a6f7-766d-f484-4d85-2350228b7d7b\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-276754bc-3869-414f-28e5-97c7c9a05d78\>: 600;
+  --new-base---base--black\<deleted\|variable-5f8e2b32-f683-3dbf-c8bf-1079d00cf65c\>: #1d1d1d;
+  --bg-color--bg-secondary: var(--brand--neutral-light);
+  --text-color--text-primary: var(--brand--black);
+  --text-color--text-secondary: var(--brand--neutral);
+  --brand--primary: #083630;
+  --bg-color--bg-primary: var(--brand--neutral-lighter);
+  --brand--soft-white: #fffc;
+  --brand--neutral-light: #dad6c9;
+  --brand--gray: #787878;
+  --border-color--border-primary: #efeff2;
+  --brand--neutral-lighter: #efeeeb;
+  --bg-color--bg-tertiary: var(--brand--neutral-dark);
+  --brand--white: #fff;
+  --brand--secondary: #fb4d17;
+  --brand--black: #000;
+  --bg-color--bg-alternate: var(--brand--primary);
+  --brand--light-gray: #fafafa;
+  --brand--neutral-dark: #111;
+  --brand--primary-light: #1f514a;
+  --brand--opaque-white: #ffffff80;
+  --brand--neutral: #11111180;
+  --new-base---white: #fff;
+  --new-base---black: #050505;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---text-primary: #fff;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --border-color--border-secondary: #d4d4d8;
+  --border-color--border-alternate: white;
+  --link-color--link-primary: var(--brand--black);
+  --link-color--link-alternate: white;
+  --text-color--text-tertiary: var(--brand--soft-white);
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>: .75rem;
+}
+
+.w-commerce-commercecartquantity:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commerceaddtocartquantityinput:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutemailinput:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingfullname:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingstreetaddress:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingstreetaddressoptional:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingcity:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingstateprovince:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingzippostalcode:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutshippingcountryselector:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutcardnumber:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutcardexpirationdate:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutcardsecuritycode:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingfullname:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingstreetaddress:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingstreetaddressoptional:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingcity:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingstateprovince:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingzippostalcode:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.w-commerce-commercecheckoutbillingcountryselector:focus {
+  border-color: #3898ec;
+  outline-style: none;
+}
+
+.new-base--t-button-secondary:hover {
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}
+
+.new-base--t-button:hover {
+  transform: scale(.95);
+}
+
+body {
+  background-color: var(--bg-color--bg-secondary);
+  color: var(--text-color--text-primary);
+  overscroll-behavior: none;
+  font-family: Inter, sans-serif;
+  font-size: .875rem;
+  line-height: 1.42;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+label {
+  margin-bottom: .25rem;
+  font-weight: 500;
+}
+
+.form_message-success {
+  background-color: #0000;
+  width: 100%;
+  padding: 100% 0 0;
+  position: relative;
+}
+
+.padding-global {
+  padding-left: 3.62rem;
+  padding-right: 3.62rem;
+}
+
+.padding-global.is-navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.padding-global.is-main {
+  padding-top: 2.5rem;
+}
+
+.form_label {
+  letter-spacing: -.008em;
+  margin-bottom: .5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form_input {
+  border: 1px solid var(--border-color--border-primary);
+  height: auto;
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+  color: var(--text-color--text-primary);
+  letter-spacing: -.008em;
+  background-color: #f3f3f3;
+  border-radius: 99rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: .75rem;
+  padding: .25rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: border-color .3s;
+}
+
+.form_input:hover, .form_input:focus {
+  border-color: var(--brand--neutral-light);
+}
+
+.form_input:focus-visible, .form_input[data-wf-focus-visible] {
+  color: var(--text-color--text-primary);
+}
+
+.form_input::placeholder {
+  color: #1116;
+}
+
+.form_input.is-select-input {
+  color: var(--text-color--text-secondary);
+}
+
+.form_input.is-text-area {
+  border-radius: 1.5rem;
+  min-height: 13rem;
+  padding-top: .75rem;
+}
+
+.form_input.is-text-area.is-contact {
+  flex: 1;
+  min-height: 17.44rem;
+  max-height: none;
+}
+
+.padding-section-large {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.page-wrapper {
+  grid-column-gap: .75rem;
+  grid-row-gap: .75rem;
+  flex-flow: column;
+  padding: .75rem;
+  overflow: clip;
+}
+
+.page-wrapper.is-large {
+  min-height: 100vh;
+}
+
+.container-large {
+  width: 100%;
+  max-width: 72.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form_message-error {
+  background-color: #0000;
+  margin-top: .75rem;
+  padding: 0 .75rem;
+}
+
+.form_component {
+  margin-bottom: 0;
+}
+
+.button {
+  background-color: var(--bg-color--bg-tertiary);
+  min-height: 3.25rem;
+  color: var(--brand--white);
+  text-align: center;
+  letter-spacing: -.008em;
+  border-radius: 99rem;
+  justify-content: center;
+  align-items: center;
+  padding: .25rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  transition: transform .3s;
+  display: flex;
+}
+
+.button:hover {
+  transform: scale(.975);
+}
+
+.button.is-form-submit {
+  border-radius: .75rem;
+  width: 100%;
+  height: 2.725rem;
+  padding: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color .2s;
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.button.is-outline {
+  border: 1px solid var(--brand--secondary);
+  color: var(--brand--secondary);
+  background-color: #0000;
+  margin-top: 0;
+  transition: color .3s, background-color .3s, transform .3s;
+}
+
+.button.is-outline:hover {
+  background-color: var(--brand--secondary);
+  color: var(--brand--white);
+}
+
+.button.is-pay {
+  background-color: var(--brand--black);
+}
+
+.button.is-primary {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  background-color: var(--brand--secondary);
+  align-items: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: clip;
+}
+
+.button.is-white {
+  border: 1px solid var(--brand--white);
+  background-color: var(--brand--white);
+  color: var(--text-color--text-primary);
+  transition: color .3s, border-color .3s, transform .3s;
+}
+
+.button.is-white:hover {
+  border-color: var(--brand--secondary);
+  color: var(--brand--secondary);
+}
+
+.button.is-tertiary {
+  background-color: var(--brand--secondary);
+  transition: background-color .3s, transform .3s;
+}
+
+.button.is-tertiary:hover {
+  background-color: var(--brand--primary);
+}
+
+.text-6xl {
+  letter-spacing: -.06em;
+  font-size: 3.75rem;
+  line-height: 1.2;
+}
+
+.temlis {
+  grid-column-gap: 1.37rem;
+  grid-row-gap: 1.37rem;
+  color: #fff;
+  background-color: #0158ff;
+  border: 1px solid #126df299;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25rem 1.25rem;
+  transition: background-color .2s;
+  display: flex;
+}
+
+.temlis:hover {
+  background-color: #0b64e6;
+}
+
+.button-wrapper {
+  flex-flow: column;
+  display: flex;
+}
+
+.nav-button_component:hover {
+  opacity: 1;
+}
+
+.nav_links:hover {
+  opacity: 1;
+}
+
+.cart-button:hover {
+  opacity: 100;
+}
+
+.arrow:hover {
+  background-color: var(--brand--primary-light);
+  color: #fff;
+}
+
+.footer_media-link:hover {
+  border-color: var(--brand--secondary);
+  color: var(--brand--secondary);
+}
+
+.footer_input:hover, .footer_input:focus {
+  background-color: #ffffff12;
+}
+
+.footer_link:hover {
+  color: #fff;
+}
+
+.features-hero_input:hover, .features-hero_input:focus {
+  border-color: var(--brand--neutral-light);
+}
+
+.team_card-link:hover {
+  box-shadow: 0 0 0 1px var(--brand--secondary);
+}
+
+.section_contact {
+  background-color: var(--bg-color--bg-primary);
+  border-radius: 1.5rem;
+  overflow: clip;
+}
+
+.section_contact.is-secondary {
+  background-color: var(--bg-color--bg-alternate);
+  margin-bottom: 1rem;
+}
+
+.contact_grid {
+  grid-column-gap: 5rem;
+  grid-row-gap: 5rem;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.contact_grid.is-secondary {
+  background-color: var(--brand--white);
+  border-radius: 1.5rem;
+  padding: 3.12rem;
+}
+
+.contact_grid.is-tertiary {
+  grid-column-gap: 2.25rem;
+  grid-row-gap: 2.25rem;
+  background-color: var(--brand--white);
+  border-radius: 1.5rem;
+  padding: 3.12rem;
+}
+
+.contact_content {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.contact_info-wrapper {
+  grid-column-gap: .88rem;
+  grid-row-gap: .88rem;
+  flex-flow: column;
+  display: flex;
+}
+
+.contact_info-wrapper.is-last {
+  margin-top: auto;
+}
+
+.contact_info-title {
+  color: var(--text-color--text-secondary);
+  font-size: 1.25rem;
+}
+
+.contact_info-title.is-tertiary {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.contact_info-description {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.contact_info-description.is-tertiary {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.contact_info-socials {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  display: flex;
+}
+
+.contact_social-link {
+  height: 1.5rem;
+  transition: color .3s;
+  display: flex;
+}
+
+.contact_social-link:hover {
+  color: var(--brand--secondary);
+}
+
+.contact_social-link.is-secondary {
+  background-color: var(--brand--secondary);
+  width: 3.13rem;
+  height: 3.13rem;
+  color: var(--brand--white);
+  border-radius: 99rem;
+  padding: .9rem;
+  transition: background-color .3s, color .3s;
+}
+
+.contact_social-link.is-secondary:hover {
+  background-color: var(--brand--primary);
+}
+
+.contact_social-link.is-tertiary {
+  background-color: var(--brand--secondary);
+  width: 3.75rem;
+  height: 3.75rem;
+  color: var(--brand--white);
+  border-radius: 99rem;
+  padding: .9rem;
+}
+
+.form_top {
+  grid-column-gap: .88rem;
+  grid-row-gap: .88rem;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.contact_form {
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  flex-flow: column;
+  height: 100%;
+  display: flex;
+}
+
+.form_textarea-wrapper {
+  flex-flow: column;
+  flex: 1;
+  display: flex;
+}
+
+.success_arrow:hover {
+  background-color: var(--brand--primary-light);
+  color: #fff;
+}
+
+.features_arrow:hover {
+  background-color: var(--brand--primary-light);
+  color: #fff;
+}
+
+.team_arrow:hover {
+  background-color: var(--brand--white);
+  color: var(--brand--secondary);
+}
+
+.nav_dropdown-link:hover {
+  opacity: 100;
+}
+
+.custom:hover {
+  background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-3229a6f7-766d-f484-4d85-2350228b7d7b\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-276754bc-3869-414f-28e5-97c7c9a05d78\>: 600;
+  }
+
+  .padding-global {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+
+  .form_input.is-text-area.is-contact {
+    min-height: 14rem;
+  }
+
+  .text-6xl {
+    font-size: 3.125rem;
+  }
+
+  .section_contact {
+    border-radius: 1.25rem;
+  }
+
+  .contact_grid {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .contact_grid.is-secondary {
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+  }
+
+  .contact_grid.is-tertiary {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+  }
+
+  .contact_info-title {
+    font-size: 1rem;
+  }
+
+  .contact_info-description {
+    font-size: 1.125rem;
+  }
+
+  .form_top {
+    grid-template-columns: 1fr;
+  }
+
+  .contact_form {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    --new-base_typography---xs--font-size\<deleted\|variable-3229a6f7-766d-f484-4d85-2350228b7d7b\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-276754bc-3869-414f-28e5-97c7c9a05d78\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>: .75rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .padding-global {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .padding-global.is-navbar {
+    padding-left: 1.5rem;
+  }
+
+  .padding-section-large {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-wrapper {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    padding: .5rem;
+  }
+
+  .text-6xl {
+    font-size: 3rem;
+  }
+
+  .section_contact {
+    border-radius: 1rem;
+  }
+
+  .contact_grid {
+    grid-column-gap: 3.5rem;
+    grid-row-gap: 3.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contact_grid.is-secondary {
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .contact_grid.is-tertiary {
+    border-radius: 1rem;
+    padding: 1.25rem;
+  }
+
+  .contact_content {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .contact_info-wrapper {
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+  }
+
+  .contact_info-title {
+    font-size: 1rem;
+  }
+
+  .contact_info-socials.is-secondary {
+    margin-top: .25rem;
+  }
+
+  .contact_social-link.is-secondary, .contact_social-link.is-tertiary {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-3229a6f7-766d-f484-4d85-2350228b7d7b\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-7393ae31-0723-3578-ae78-a6719caf261f\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-276754bc-3869-414f-28e5-97c7c9a05d78\>: 600;
+  }
+
+  .padding-global.is-navbar {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+  }
+
+  .container-large {
+    max-width: 100%;
+  }
+
+  .text-6xl {
+    font-size: 2.325rem;
+  }
+
+  .contact_grid {
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+  }
+
+  .contact_grid.is-secondary {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  .contact_grid.is-tertiary {
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    padding: 1rem;
+  }
+
+  .contact_info-socials.is-secondary {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .form_top {
+    grid-column-gap: .25rem;
+    grid-row-gap: .25rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contact_form {
+    grid-column-gap: .25rem;
+    grid-row-gap: .25rem;
+  }
+}
+
+
+
+
+/* ===== global-styles.css ===== */
+/* CSS Fluid Responsive */
+  html { font-size: calc(0.5991091314031181rem + 0.4454342984409799vw); }
+  @media screen and (max-width:1440px) { html { font-size: calc(0.5991091314031181rem + 0.4454342984409799vw); } }
+  @media screen and (max-width:991px) { html { font-size: calc(0.44698660714285715rem + 0.8928571428571428vw); } }
+  @media screen and (max-width:767px) { html { font-size: calc(0.6671006944444444rem + 0.6944444444444444vw); } }
+  @media screen and (max-width:479px) { html { font-size: calc(0.7494769874476988rem + 0.8368200836820083vw); } }
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Focus state style for keyboard navigation for the focusable elements */
+/* Set color style to inherit */
+/* Get rid of top margin on first element in any rich text element */
+/* Get rid of bottom margin on last element in any rich text element */
+/* Make sure containers never lose their center alignment */
+ .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+/* Apply "..." after 3 lines of text */
+/* Apply "..." after 2 lines of text */
+/* Adds inline flex display */
+/* These classes are never overwritten */
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+
+/* ===== components.css ===== */
+/* ===========================================================================
+   Advisora — Component styles
+   Loaded last in the cascade (after webflow.css + global-styles.css).
+   Only add rules here that are NEW post-Webflow migration — not overrides
+   of styles that already exist in the original export.
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Viewport visibility utilities for the navbar split
+   - .is-desktop-only       → shown ≥992px, hidden below
+   - .is-mobile-only        → hidden ≥992px, shown below (used by OSMO nav)
+   --------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .is-desktop-only { display: none !important; }
+}
+@media (min-width: 992px) {
+  .is-mobile-only { display: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   OSMO scaling-hamburger navigation (tablet + mobile)
+   Pattern: the pill lives INSIDE the navbar (absolute) so the navbar keeps
+   its natural height; on activation the bg scales up to reveal the menu card
+   anchored at top-right. A separate fixed sibling (.navigation__dark-bg)
+   dims the page behind. State lives on <html data-navigation-status> so
+   both elements (inside + outside the navbar) react together.
+   Adapted from the OSMO snippet provided by the user.
+   --------------------------------------------------------------------------- */
+
+/* Anchor wrapper inside the navbar flex row — reserves 2.75em × 2.75em so the
+   navbar's natural height tracks the pill, and provides the positioning
+   context for the absolute .hamburger-nav inside. overflow:visible lets the
+   expanded card stick out below the navbar. flex-shrink:0 prevents the
+   anchor from collapsing under flex pressure. */
+
+.hamburger-nav .hamburger-nav__a:hover .hamburger-nav__dot {
+  transform: scale(1);
+  opacity: 0.25;
+}
+
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar {
+  transform: translateY(0.15em);
+}
+
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar:nth-child(2) {
+  transform: translateY(-0.15em);
+}
+
+/* Mobile portrait — slightly smaller link size + tighter card padding.
+   Position stays at top:0/right:0 relative to the anchor (no overrides). */
+
+/* ---------------------------------------------------------------------------
+   Button is-primary — OSMO button-009 hover pattern adapted to Advisora.
+   The Webflow markup ships an <img class="button-icon"> after .button-text-wrap;
+   we keep it as a real flex child (so the button auto-expands and the arrow
+   never collides with the text), animate it with translate/opacity on hover,
+   and add a mirrored ::before for the left arrow that slides in from the
+   padding-left zone. Combined with the existing scale .975 from webflow.css:4229.
+   Same timing/easing across every .button.is-primary so all CTAs feel like
+   one component (one CSS rule → all instances).
+   --------------------------------------------------------------------------- */
+.button.is-primary {
+  position: relative;
+  gap: 0.5rem;
+}
+
+.button.is-primary::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  background-image: url("https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  translate: -1.25em -50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: translate 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.15s ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button.is-primary:hover .button-icon {
+    translate: 1.5em 0;
+    opacity: 0;
+    transition: translate 0.5s 0.05s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.15s 0.075s ease-out;
+  }
+
+  .button.is-primary:hover::before {
+    translate: 0 -50%;
+    opacity: 1;
+    transition: translate 0.5s 0.075s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.15s 0.075s ease-out;
+  }
+
+  /* Shift text-wrap right by (icon-size + gap) so it clears the incoming
+     left arrow without overlapping. */
+  .button.is-primary:hover .button-text-wrap {
+    translate: 1.625rem 0;
+    transition: translate 0.5s 0.075s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Footer links wrapper — equal 3-column grid on desktop + tablet
+   Webflow default at ≥992px uses flex space-between, which pins the rightmost
+   column to the far edge. Switch to grid so the 3 groups sit in equal 1fr
+   columns and the right-side links align with their column start, not the
+   container edge. Tablet already overrides to grid 1fr×3 (webflow.css:10008);
+   mobile keeps the 2-col grid override (webflow.css:11126).
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   Link hover polish — adapted from a-33/a-34 (IX2 mouseover/out → plain CSS).
+
+   Navbar (desktop): Webflow base sets `.nav_links { opacity: .8 }` and
+   `:hover { opacity: 1 }`. We layer "focus the hovered link, dim its siblings"
+   by lowering :not(:hover) opacity while the parent list is hovered. The
+   hovered link inherits Webflow's :hover (opacity 1, full dark).
+
+   Footer + dropdown: keep the simple opacity fade-on-hover.
+   --------------------------------------------------------------------------- */
+
+@media (min-width: 992px) {
+  .navbar_list:hover .nav_links:not(:hover) {
+    opacity: 0.4;
+  }
+}
+
+.nav_dropdown-link:hover,
+.footer_link:hover {
+  opacity: 0.7;
+}
+
+/* ---------------------------------------------------------------------------
+   Blog cards — image scale on hover (Webflow IX2 zoom-in replicated).
+   The parent `*-card-image` already has `overflow: clip` + border-radius, so
+   the scaled image stays bounded. Covers both blog card variants used in the
+   template: the teaser (.slider-blogs_card) and the /blog grid (.articles_card).
+   Update once → applies to every blog card.
+   --------------------------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .slider-blogs_card:hover .slider-blogs_card-image .img,
+  .articles_card:hover .articles_card-image .img {
+    transform: scale(1.06);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile blogs grid — single column under 767px
+   Original Webflow grid is 1fr × 3 desktop / 1fr × 2 tablet. On mobile the
+   2-col layout squeezes cards into unreadable widths; stack vertically.
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------
+   Hero load — CSS keyframes "escalera" pattern (Coverly default).
+   Two visual groups (left content + right visual) animate IN PARALLEL, each
+   running its own stagger ladder (100ms between siblings via `data-stair`).
+   CSS keyframes (not GSAP) because the GSAP ticker can stall in Astro's
+   hoisted-script pipeline on initial page load. Reduce-motion handled below.
+   --------------------------------------------------------------------------- */
+
+@keyframes hero-reveal-in {
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Stage B — prefers-reduced-motion safety net
+   scroll-reveal.ts already short-circuits when reduce is preferred, but for
+   any non-JS-driven micro-transitions, neutralize durations.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+    </style>
+  </head>
+<body>
+  <div class="page-wrapper">
+    <section class="section_contact">
+      <div class="padding-global padding-section-large">
+        <div class="container-large">
+          <div class="contact_grid">
+            <div class="contact_content">
+              <h1 data-reveal="up" class="text-6xl">Get in touch</h1>
+              <div class="contact_info-wrapper" data-reveal="up" data-reveal-delay="150">
+                <div class="contact_info-title">Email:</div>
+                <div class="contact_info-description">Advisora@gmail.com</div>
+              </div>
+              <div class="contact_info-wrapper" data-reveal="up" data-reveal-delay="250">
+                <div class="contact_info-title">Phone:</div>
+                <div class="contact_info-description">(123) 1221 2323</div>
+              </div>
+              <div class="contact_info-wrapper" data-reveal="up" data-reveal-delay="350">
+                <div class="contact_info-title">Address:</div>
+                <div class="contact_info-description">123 Innovation Avenue, Suite 456<br>Tech District, San Francisco, CA 94107<br>United States</div>
+              </div>
+              <div class="contact_info-wrapper" data-reveal="up" data-reveal-delay="450">
+                <div class="contact_info-title">Follow Us</div>
+                <div class="contact_info-socials">
+                  <a href="https://www.temlis.com/" target="_blank" class="contact_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 22" fill="none">
+                      <path d="M29.561 5.03124C29.561 5.03124 29.2694 2.97265 28.3713 2.06873C27.2341 0.879061 25.9628 0.873229 25.3796 0.803249C21.2041 0.5 14.935 0.5 14.935 0.5H14.9234C14.9234 0.5 8.65426 0.5 4.47876 0.803249C3.89558 0.873229 2.62427 0.879061 1.48709 2.06873C0.589003 2.97265 0.303249 5.03124 0.303249 5.03124C0.303249 5.03124 0 7.4514 0 9.86573V12.1284C0 14.5428 0.297417 16.9629 0.297417 16.9629C0.297417 16.9629 0.589003 19.0215 1.48126 19.9254C2.61844 21.1151 4.11136 21.0743 4.77617 21.2026C7.16718 21.43 14.9292 21.5 14.9292 21.5C14.9292 21.5 21.2041 21.4883 25.3796 21.1909C25.9628 21.1209 27.2341 21.1151 28.3713 19.9254C29.2694 19.0215 29.561 16.9629 29.561 16.9629C29.561 16.9629 29.8584 14.5486 29.8584 12.1284V9.86573C29.8584 7.4514 29.561 5.03124 29.561 5.03124ZM11.8442 14.8752V6.48334L19.9095 10.6938L11.8442 14.8752Z" fill="currentColor"></path>
+                    </svg></a>
+                  <a href="https://www.temlis.com/" target="_blank" class="contact_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 25 24" fill="none">
+                      <path d="M12.856 2.16121C16.0627 2.16121 16.4424 2.17528 17.7035 2.23153C18.8755 2.2831 19.5084 2.48 19.9304 2.64409C20.4882 2.85974 20.8914 3.12227 21.3087 3.53951C21.7306 3.96144 21.9884 4.35993 22.2041 4.91781C22.3682 5.33974 22.5651 5.97732 22.6166 7.14466C22.6729 8.41045 22.687 8.79018 22.687 11.9922C22.687 15.1988 22.6729 15.5786 22.6166 16.8396C22.5651 18.0117 22.3682 18.6446 22.2041 19.0665C21.9884 19.6244 21.7259 20.0276 21.3087 20.4448C20.8867 20.8667 20.4882 21.1246 19.9304 21.3402C19.5084 21.5043 18.8709 21.7012 17.7035 21.7528C16.4377 21.809 16.058 21.8231 12.856 21.8231C9.64937 21.8231 9.26963 21.809 8.00853 21.7528C6.83651 21.7012 6.20361 21.5043 5.78168 21.3402C5.2238 21.1246 4.82062 20.862 4.40338 20.4448C3.98145 20.0229 3.72361 19.6244 3.50796 19.0665C3.34387 18.6446 3.14697 18.007 3.0954 16.8396C3.03915 15.5739 3.02508 15.1941 3.02508 11.9922C3.02508 8.7855 3.03915 8.40576 3.0954 7.14466C3.14697 5.97264 3.34387 5.33974 3.50796 4.91781C3.72361 4.35993 3.98614 3.95675 4.40338 3.53951C4.82531 3.11759 5.2238 2.85974 5.78168 2.64409C6.20361 2.48 6.84119 2.2831 8.00853 2.23153C9.26963 2.17528 9.64937 2.16121 12.856 2.16121ZM12.856 0C9.5978 0 9.18993 0.0140643 7.91008 0.0703215C6.63492 0.126579 5.75824 0.332855 4.99877 0.628205C4.20648 0.93762 3.53608 1.34548 2.87037 2.01588C2.19998 2.68159 1.79211 3.35199 1.4827 4.13959C1.18735 4.90375 0.981071 5.77574 0.924814 7.0509C0.868556 8.33544 0.854492 8.7433 0.854492 12.0015C0.854492 15.2598 0.868556 15.6676 0.924814 16.9475C0.981071 18.2226 1.18735 19.0993 1.4827 19.8588C1.79211 20.6511 2.19998 21.3215 2.87037 21.9872C3.53608 22.6529 4.20648 23.0654 4.99408 23.3702C5.75824 23.6655 6.63023 23.8718 7.90539 23.9281C9.18524 23.9843 9.59311 23.9984 12.8513 23.9984C16.1096 23.9984 16.5174 23.9843 17.7973 23.9281C19.0724 23.8718 19.9491 23.6655 20.7086 23.3702C21.4962 23.0654 22.1666 22.6529 22.8323 21.9872C23.498 21.3215 23.9106 20.6511 24.2153 19.8635C24.5106 19.0993 24.7169 18.2273 24.7732 16.9522C24.8294 15.6723 24.8435 15.2644 24.8435 12.0062C24.8435 8.74799 24.8294 8.34013 24.7732 7.06028C24.7169 5.78511 24.5106 4.90844 24.2153 4.14897C23.9199 3.35199 23.5121 2.68159 22.8417 2.01588C22.176 1.35017 21.5056 0.93762 20.718 0.632893C19.9538 0.337543 19.0818 0.131267 17.8067 0.0750096C16.5221 0.0140643 16.1143 0 12.856 0Z" fill="currentColor"></path>
+                      <path d="M12.8572 5.83594C9.45367 5.83594 6.69238 8.59723 6.69238 12.0008C6.69238 15.4043 9.45367 18.1656 12.8572 18.1656C16.2608 18.1656 19.0221 15.4043 19.0221 12.0008C19.0221 8.59723 16.2608 5.83594 12.8572 5.83594ZM12.8572 15.9997C10.6491 15.9997 8.85828 14.2089 8.85828 12.0008C8.85828 9.79269 10.6491 8.00184 12.8572 8.00184C15.0653 8.00184 16.8562 9.79269 16.8562 12.0008C16.8562 14.2089 15.0653 15.9997 12.8572 15.9997Z" fill="currentColor"></path>
+                      <path d="M20.7061 5.59182C20.7061 6.38892 20.059 7.03129 19.2666 7.03129C18.4695 7.03129 17.8271 6.38423 17.8271 5.59182C17.8271 4.79471 18.4742 4.15234 19.2666 4.15234C20.059 4.15234 20.7061 4.7994 20.7061 5.59182Z" fill="currentColor"></path>
+                    </svg></a>
+                  <a href="https://www.temlis.com/" target="_blank" class="contact_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 25 24" fill="none">
+                      <g clip-path="url(#clip0_103_10795)">
+                        <path d="M17.9377 0H13.8925V16.3499C13.8925 18.298 12.3367 19.8982 10.4005 19.8982C8.46433 19.8982 6.90849 18.298 6.90849 16.3499C6.90849 14.4366 8.42976 12.8712 10.2968 12.8016V8.69678C6.18242 8.76632 2.86328 12.1407 2.86328 16.3499C2.86328 20.594 6.25157 24.0031 10.4351 24.0031C14.6186 24.0031 18.0068 20.5592 18.0068 16.3499V7.96622C19.5281 9.07942 21.3951 9.74038 23.3659 9.77518V5.67029C20.3234 5.56593 17.9377 3.06126 17.9377 0Z" fill="currentColor"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_103_10795">
+                          <rect width="24.0031" height="24.0031" fill="currentColor" transform="translate(0.861328)"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg></a>
+                  <a href="https://www.temlis.com/" target="_blank" class="contact_social-link w-inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 25 24" fill="none">
+                      <g clip-path="url(#clip0_103_10796)">
+                        <path d="M8.41733 21.7532C17.4729 21.7532 22.4272 14.249 22.4272 7.7433C22.4272 7.53233 22.4226 7.31668 22.4132 7.10571C23.377 6.40873 24.2087 5.54541 24.8693 4.55633C23.9717 4.95568 23.0187 5.21649 22.0428 5.32986C23.0703 4.71396 23.8397 3.7464 24.2083 2.60654C23.2416 3.17941 22.1845 3.58351 21.0822 3.80154C20.3395 3.01239 19.3576 2.48988 18.2881 2.31479C17.2187 2.1397 16.1213 2.32179 15.1658 2.8329C14.2102 3.34401 13.4496 4.15568 13.0016 5.14241C12.5536 6.12915 12.4431 7.23598 12.6872 8.2918C10.73 8.19358 8.81516 7.68513 7.06698 6.79941C5.31881 5.91369 3.77628 4.67048 2.53939 3.15036C1.91074 4.23423 1.71838 5.5168 2.00139 6.7374C2.2844 7.958 3.02155 9.02505 4.06302 9.72167C3.28115 9.69685 2.5164 9.48634 1.83196 9.10753V9.16848C1.83126 10.3059 2.22448 11.4085 2.94479 12.2888C3.66509 13.1691 4.66802 13.7728 5.78309 13.9972C5.0588 14.1954 4.29863 14.2243 3.5614 14.0816C3.87605 15.0598 4.48825 15.9154 5.31255 16.5289C6.13685 17.1424 7.13213 17.4833 8.15949 17.5039C6.41534 18.874 4.26082 19.6171 2.04292 19.6136C1.6496 19.613 1.25666 19.5889 0.866211 19.5414C3.11935 20.9869 5.74036 21.7546 8.41733 21.7532Z" fill="currentColor"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_103_10796">
+                          <rect width="24.0031" height="24.0031" fill="currentColor" transform="translate(0.864258)"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+            <div class="form_component w-form" data-reveal="up" data-reveal-delay="200">
+              <form name="wf-form-Form" data-name="Form" method="get" class="contact_form">
+                <div class="form_top">
+                  <div class="form_field-wrapper"><label for="Name" class="form_label">Your Name</label><input class="form_input w-input" maxlength="256" name="Name" data-name="Name" placeholder="Your name" type="text" id="Name" required=""></div>
+                  <div class="form_field-wrapper"><label for="Email" class="form_label">Email address</label><input class="form_input w-input" maxlength="256" name="Email" data-name="Email" placeholder="Your email address" type="email" id="Email" required=""></div>
+                </div>
+                <div class="form_textarea-wrapper"><label for="Message-5" class="form_label">Message</label><textarea id="Message-5" name="Message" maxlength="5000" data-name="Message" placeholder="Write something...." required="" class="form_input is-text-area is-contact w-input"></textarea></div>
+                <div class="button-wrapper"><input type="submit" data-wait="Please wait..." class="button is-tertiary w-button" value="Send Message"></div>
+              </form>
+              <div class="form_message-success w-form-done">
+                <div>Thank you! Your submission has been received!</div>
+              </div>
+              <div class="form_message-error w-form-fail">
+                <div>Oops! Something went wrong while submitting the form.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="scroll-reveal.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

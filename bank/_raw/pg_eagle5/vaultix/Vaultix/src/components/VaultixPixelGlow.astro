@@ -1,0 +1,88 @@
+---
+// Pixel-art arrow icon with stacked blue dropshadow glow.
+// Consolidates the 26 individual filters from the Figma export into a single
+// shared filter referenced by every rect — preserves the per-pixel glow effect
+// (the filter is re-evaluated for each rect's bounding box) at a fraction of
+// the markup size.
+//
+// The 26 rects form a pixelated arrow pointing up-right (the Figma asset for
+// "Nossa Values" cards). Color #B5D2FF (periwinkle), 24x24px viewport.
+
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+
+// (x, y) of every pixel rect, in SVG units.
+const PIXELS = [
+  [20.5193, 2.69312], [23.2126, 2.69312],
+  [17.8262, 5.38647], [20.5193, 5.38647], [23.2126, 5.38647],
+  [1.66675, 8.07959], [15.1328, 8.07959], [17.8262, 8.07959], [20.5193, 8.07959],
+  [1.66675, 10.7729], [4.35986, 10.7729], [12.4397, 10.7729], [15.1328, 10.7729], [17.8262, 10.7729],
+  [1.66675, 13.4661], [4.35986, 13.4661], [7.05322, 13.4661], [9.74634, 13.4661], [12.4397, 13.4661], [15.1328, 13.4661],
+  [4.35986, 16.1594], [7.05322, 16.1594], [9.74634, 16.1594], [12.4397, 16.1594],
+  [7.05322, 18.8525], [9.74634, 18.8525],
+];
+---
+
+<svg
+  width="28"
+  height="24"
+  viewBox="0 0 28 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  aria-hidden="true"
+>
+  <defs>
+    {/* Object-bounding-box units with overflow margin so the 5-layer
+        dropshadow stack isn't clipped around each tiny 2.4×2.4 rect. */}
+    <filter
+      id="vx-pixelglow"
+      x="-200%"
+      y="-200%"
+      width="500%"
+      height="500%"
+      color-interpolation-filters="sRGB"
+    >
+      <feGaussianBlur stdDeviation="0.25" in="SourceAlpha" result="b1" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.372549 0 0 0 0 0.360784 0 0 0 0 1 0 0 0 0.78 0" in="b1" result="s1" />
+
+      <feOffset dy="0.166667" in="SourceAlpha" result="o2" />
+      <feGaussianBlur stdDeviation="0.5" in="o2" result="b2" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.372549 0 0 0 0 0.360784 0 0 0 0 1 0 0 0 0.67 0" in="b2" result="s2" />
+
+      <feOffset dy="0.333333" in="SourceAlpha" result="o3" />
+      <feGaussianBlur stdDeviation="0.666667" in="o3" result="b3" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.372549 0 0 0 0 0.360784 0 0 0 0 1 0 0 0 0.4 0" in="b3" result="s3" />
+
+      <feOffset dy="0.666667" in="SourceAlpha" result="o4" />
+      <feGaussianBlur stdDeviation="0.75" in="o4" result="b4" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.372549 0 0 0 0 0.360784 0 0 0 0 1 0 0 0 0.12 0" in="b4" result="s4" />
+
+      <feOffset dy="1" in="SourceAlpha" result="o5" />
+      <feGaussianBlur stdDeviation="0.833333" in="o5" result="b5" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.372549 0 0 0 0 0.360784 0 0 0 0 1 0 0 0 0.01 0" in="b5" result="s5" />
+
+      <feMerge>
+        <feMergeNode in="s5" />
+        <feMergeNode in="s4" />
+        <feMergeNode in="s3" />
+        <feMergeNode in="s2" />
+        <feMergeNode in="s1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  {PIXELS.map(([x, y]) => (
+    <rect
+      x={x}
+      y={y}
+      width="2.44833"
+      height="2.44833"
+      fill="#B5D2FF"
+      filter="url(#vx-pixelglow)"
+      data-vx-pixel
+    />
+  ))}
+</svg>

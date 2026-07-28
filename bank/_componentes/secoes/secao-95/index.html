@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stayli — Contact Hero</title>
+
+  <!-- Fonts: Inter (replaces the template's @fontsource/inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Flag the document before first paint so scroll-reveal start states only
+       apply when scripting is on (fail-safe: hidden state needs html.reveal-js). -->
+  <script>document.documentElement.classList.add("reveal-js");</script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+    <script defer src="navbar.js"></script>
+  </head>
+<body>
+    <!-- TEMLIS-INLINED-NAVBAR (stayli-navbar) -->
+    <div data-navbar-root="">
+          <div class="navbar" data-navbar="" role="banner">
+            <div class="padding-global is-navbar">
+              <div class="container-large">
+                <div class="navbar_content">
+                  <div class="nav_wrap">
+                    <a href="/" aria-label="Stayli, home" class="navbar_logo-link w-inline-block">
+                      <img src="https://d173woph5zl366.cloudfront.net/stayli/images/stayli-black-logo.svg" loading="eager" alt="Stayli" class="navbar_logo">
+                    </a>
+                  </div>
+    
+                  <!-- Desktop links (≥992) -->
+                  <nav role="navigation" class="nav_mobile" aria-label="Primary">
+                    <div class="navbar_list">
+                      <a href="/about" class="nav_links">About</a>
+                      <a href="/listings" class="nav_links">Listings</a>
+                      <a href="/blog" class="nav_links">Blog</a>
+                      <a href="/contact" aria-current="page" class="nav_links">Contact</a>
+                    </div>
+                  </nav>
+    
+                  <div class="nav_buttons-wrap">
+                    <div class="login-wrap hide-mobile-landscape">
+                      <a href="/listings" class="button w-button">Get started</a>
+                    </div>
+    
+                    <!-- Hamburger (≤991) — pill that scales to a card. CSS-only via data-navigation-status. -->
+                    <div class="hamburger-anchor" data-nav-theme="dark">
+                      <div class="hamburger-nav">
+                        <div class="hamburger-nav__bg" aria-hidden="true"></div>
+                        <div class="hamburger-nav__group">
+                          <p class="hamburger-nav__menu-p">Menu</p>
+                          <ul class="hamburger-nav__ul">
+                            <li class="hamburger-nav__li">
+                              <a href="/about" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">About</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/listings" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Listings</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/blog" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Blog</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                            <li class="hamburger-nav__li">
+                              <a href="/contact" class="hamburger-nav__a">
+                                <p class="hamburger-nav__p">Contact</p>
+                                <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" class="hamburger-nav__toggle">
+                          <div class="hamburger-nav__toggle-bar"></div>
+                          <div class="hamburger-nav__toggle-bar"></div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Dim backdrop: darkens the page while the menu is open; click to close. -->
+          <div data-navigation-toggle="close" class="navigation__dark-bg" aria-hidden="true"></div>
+        </div>
+
+  <div class="page-wrapper">
+    <div class="section_hero is-beige">
+      <div class="padding-global is-contact-1">
+        <div class="container-large">
+          <div class="contact-1_content">
+            <div class="contact-1_left-column">
+              <div class="listing_about-list">
+                <div class="listing_about-item_wrap" data-reveal>
+                  <div class="listing_about-item">
+                    <div class="custom_icon"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/email.svg" loading="lazy" alt="" class="icon-1x1-medium"></div>
+                    <div class="text-2xl">Email to Us</div>
+                  </div>
+                  <div class="listing_about-item_p-wrap">
+                    <p class="text-base text-color-grey">stayli@company.com</p>
+                  </div>
+                </div>
+                <div class="listing_about-item_wrap" data-reveal>
+                  <div class="listing_about-item">
+                    <div class="custom_icon"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/food.svg" loading="lazy" alt="" class="icon-1x1-medium"></div>
+                    <div class="text-2xl">Phone number</div>
+                  </div>
+                  <div class="listing_about-item_p-wrap">
+                    <p class="text-base text-color-grey">+173681638</p>
+                  </div>
+                </div>
+                <div class="listing_about-item_wrap" data-reveal>
+                  <div class="listing_about-item">
+                    <div class="custom_icon"><img src="https://d173woph5zl366.cloudfront.net/stayli/images/office.svg" loading="lazy" alt="" class="icon-1x1-medium"></div>
+                    <div class="text-2xl">Office</div>
+                  </div>
+                  <div class="listing_about-item_p-wrap">
+                    <p class="text-base text-color-grey">123 Sample St, Sydney NSW 2000 AU</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="contact-1_right-column w-form">
+              <form name="email-form-2" class="contact-1_form-content" data-reveal data-stub-form>
+                <div class="contact-1_top-form">
+                  <div class="text-subtitle">Contact</div>
+                  <h1 class="heading-style-h2">Get in touch</h1>
+                  <div class="text-base text-color-grey">We&#x27;d love to hear from you!</div>
+                </div>
+                <div class="form-field_wrap">
+                  <div class="text-base text-weight-normal">Name</div><input class="form_input is-regular w-input" maxlength="256" name="Name" placeholder="Your full name" type="text" id="Name" required>
+                </div>
+                <div class="form-field_wrap">
+                  <div class="text-base text-weight-normal">Your email</div><input class="form_input is-regular w-input" maxlength="256" name="Email" placeholder="Your email address" type="email" id="Email" required>
+                </div>
+                <div class="form-field_wrap">
+                  <div class="text-base text-weight-normal">Your messages</div><textarea placeholder="Your messages here" maxlength="5000" id="Your-message-2" name="Your-message" class="form_input is-regular is-text-area w-input"></textarea>
+                </div><input type="submit" class="button w-button" value="Submit">
+              </form>
+              <p class="form_message" data-form-message hidden>Thanks! We'll be in touch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="forms.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

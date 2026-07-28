@@ -1,0 +1,173 @@
+[data-dobra="cursor-sketch-016-custom-cursor"] *,[data-dobra="cursor-sketch-016-custom-cursor"] *::after,[data-dobra="cursor-sketch-016-custom-cursor"] *::before{
+			box-sizing: border-box;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"]{
+			font-size: 15px;
+			--color-text: var(--base-200);
+			--color-text-alt: var(--base-300);
+			--color-bg: var(--base-100); 
+			--color-link: var(--base-600);
+			--color-link-hover: var(--acento);
+			--cursor-fill: var(--acento);
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"]{
+			margin: 0;
+			color: var(--color-text);
+			background: var(--color-bg);
+			font-family: var(--fonte-corpo);
+			font-weight: 500;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			overflow-x: hidden;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			transition: background-color 0.3s ease;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a{
+			text-decoration: none;
+			color: var(--color-link);
+			outline: none;
+			transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+			position: relative;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a::after{
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: 1px;
+			bottom: -2px;
+			left: 0;
+			background-color: var(--color-link-hover);
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a:hover::after{
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a:hover{
+			color: var(--color-link-hover);
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a:focus{
+			outline: none;
+			background: rgba(0, 0, 0, 0.05);
+			border-radius: 3px;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a:focus:not(:focus-visible){
+			background: transparent;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] a:focus-visible{
+			outline: 2px solid var(--color-link-hover);
+			background: transparent;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] main{
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			z-index: 2;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .frame{
+			padding: 2rem;
+			text-align: center; 
+			position: relative;
+			z-index: 5;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .frame__title{
+			margin: 0;
+			font-size: 1.15rem;
+			font-weight: 600;
+			color: var(--base-500);
+			letter-spacing: -0.02em;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .menu{
+			flex: 1;
+			display: grid;
+			place-content: center;
+			grid-gap: 5vh;
+			font-size: 2.5rem;
+			font-family: var(--fonte-corpo);
+			font-style: italic;
+			font-weight: 400;
+			text-align: center;
+			padding: 2rem 0;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .menu__item{
+			color: var(--base-600);
+			padding: 0.5rem 1.5rem;
+			position: relative;
+			transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .menu__item::after{
+			display: none; 
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .menu__item:hover{
+			transform: scale(1.08) rotate(-1deg);
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .cursor{
+			display: none;
+		}
+@media screen and (min-width: 53em){[data-dobra="cursor-sketch-016-custom-cursor"] .menu{
+				font-size: 4.5vw;
+				grid-auto-flow: column;
+				grid-gap: 6vw;
+				max-width: min-content;
+				align-self: center;
+			}
+[data-dobra="cursor-sketch-016-custom-cursor"] .frame{
+				padding: 2rem 3rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text-align: left;
+			}
+
+		}
+@media (any-pointer: fine){[data-dobra="cursor-sketch-016-custom-cursor"] .cursor{
+				position: fixed;
+				top: 0;
+				left: 0;
+				display: block;
+				pointer-events: none;
+				z-index: 10000;
+				mix-blend-mode: multiply; 
+			}
+[data-dobra="cursor-sketch-016-custom-cursor"] .cursor__inner{
+				fill: var(--cursor-fill);
+				transition: fill 0.3s ease;
+			}
+[data-dobra="cursor-sketch-016-custom-cursor"]{
+				
+				cursor: none;
+			}
+[data-dobra="cursor-sketch-016-custom-cursor"] a,[data-dobra="cursor-sketch-016-custom-cursor"] button{
+				cursor: none;
+			}
+
+		}
+[data-dobra="cursor-sketch-016-custom-cursor"] .touch-alert{
+			position: fixed;
+			bottom: 1rem;
+			right: 1rem;
+			background: rgba(26, 26, 26, 0.9);
+			color: var(--base-100);
+			padding: 0.75rem 1.25rem;
+			border-radius: 8px;
+			font-size: 0.8rem;
+			max-width: 300px;
+			pointer-events: none;
+			transform: translateY(150%);
+			transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			z-index: 999;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+		}
+@media (any-pointer: coarse){[data-dobra="cursor-sketch-016-custom-cursor"] .touch-alert{
+				transform: translateY(0);
+			}
+
+		}
+
+	

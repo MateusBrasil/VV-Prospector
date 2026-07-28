@@ -1,0 +1,155 @@
+{
+  "slot": "destaque",
+  "nome": "on-scroll-svg-path-animations",
+  "scope": "destaque-on-scroll-svg-path-animations",
+  "origem": "bank/_componentes/parallax/on-scroll-svg-path-animations",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1515462277126-270d878326e5?q=80&w=1200"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1000"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200"
+    },
+    {
+      "nome": "destino7",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200"
+    },
+    {
+      "nome": "destino8",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1200"
+    },
+    {
+      "nome": "destino9",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Path Animations"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Crafting"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Transcendence"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Mastering the Now"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Sit down, and I shall tell thee. The thirst for love, without love of learning, sinks into simpleness. Love of knowledge, without love of learning, sinks into v"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Studies of"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Discipline"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Virtues of"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Excellence"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Language of"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Awakening"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Without Longing"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Fluid Design &amp; Motion Art"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #744229 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "12 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.unsplash.com/photo-1515462277126-270d878326e5?q=80&w=1200 https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200)",
+    "9 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

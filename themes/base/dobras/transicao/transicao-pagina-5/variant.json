@@ -1,0 +1,221 @@
+{
+  "slot": "transicao",
+  "nome": "transicao-pagina-5",
+  "scope": "transicao-transicao-pagina-5",
+  "origem": "bank/_componentes/transicoes-de-pagina/transicao-pagina-5",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/1_big.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/2_big.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/3_big.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/MakeWayGridEffect/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://dribbble.com/shots/16788118-Design-Conference-Promo-Animation"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Cover Page Transition"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Dribbble shot"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Alex Moulder"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "I am only waiting for love to give myself up at last into his hands. That is why it is so late and why I have been guilty of such omissions."
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "view"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Aria Bennett"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "They come with their laws and their codes to bind me fast; but I evade them ever, for I am only waiting for love to give myself up at last into his hands."
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "view"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Jimmy Hughes"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Clouds heap upon clouds and it darkens. Ah, love, why dost thou let me wait outside at the door all alone?"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "view"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Moulder"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Alex Moulder"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Location"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "And if it rains, a closed car at four. And we shall play a game of chess, pressing lidless eyes and waiting for a knock upon the door."
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Material"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "At the violet hour, when the eyes and back, turn upward from the desk, when the human engine waits."
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Bennett"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Aria Bennett"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Location"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "And if it rains, a closed car at four. And we shall play a game of chess, pressing lidless eyes and waiting for a knock upon the door."
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Material"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "At the violet hour, when the eyes and back, turn upward from the desk, when the human engine waits."
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Hughes"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Jimmy Hughes"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Location"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "And if it rains, a closed car at four. And we shall play a game of chess, pressing lidless eyes and waiting for a knock upon the door."
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Material"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "At the violet hour, when the eyes and back, turn upward from the desk, when the human engine waits."
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância (acento da origem #a17445 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/Development/MakeWayGridEffect/ https://dribbble.com/shots/16788118-Design-Conference-Promo-Animation)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

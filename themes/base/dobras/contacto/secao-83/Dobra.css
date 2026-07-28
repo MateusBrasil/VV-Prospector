@@ -1,0 +1,241 @@
+/* PORTADA À MÃO em 2026-07-28.
+ *
+ * A folha da origem tinha 1026 linhas e foi substituída por estas. Não é preguiça de
+ * adaptar: é que a maior parte dela não era reaproveitável, e o que lá estava tinha
+ * quatro defeitos que nenhum ajuste resolvia sem reescrever na mesma.
+ *
+ *  1. UM `@font-face` GLOBAL com `font-family: var(--fonte-corpo)` e um `src` com a fonte
+ *     de ícones do Webflow embutida em base64. O tokenizador da esteira substituiu o NOME
+ *     da família dentro de um `@font-face`, que é onde o nome tem de ser literal. Na
+ *     melhor das hipóteses a regra é descartada; na pior, a fonte de corpo do site inteiro
+ *     passa a ser um alfabeto de ícones. Vale procurar o mesmo padrão no resto do acervo.
+ *  2. `--brand--soft-white: var(--base-100)c;` — um "c" perdido no fim do valor, resto de
+ *     um hex de 8 dígitos (`#rrggbbcc`) mal cortado. O valor é inválido, a variável fica
+ *     por resolver, e quem a usar fica sem cor nenhuma.
+ *  3. `--border-color--border-alternate: white;` e `--link-color--link-alternate: white;`
+ *     — cor crua que escapou à tokenização.
+ *  4. Uma `background-image: url("https://d173woph5zl366.cloudfront.net/.../arrow-right.svg")`
+ *     no `.button.is-primary::before`: asset de CDN externo, proibido pelo gate, e um 404
+ *     à espera de acontecer no dia em que a origem apagar o ficheiro.
+ *
+ * Ficou a estrutura, que é o que valia: grelha de duas colunas, pares rótulo/valor na
+ * coluna esquerda, painel de ação na direita. Os nomes de classe da origem mantêm-se.
+ */
+
+[data-dobra="contacto-secao-83"] * {
+  box-sizing: border-box;
+}
+
+[data-dobra="contacto-secao-83"] {
+  display: block;
+  background-color: var(--base-100);
+  color: var(--cor-texto);
+  font-family: var(--fonte-corpo);
+}
+
+[data-dobra="contacto-secao-83"] .section_contact {
+  background-color: var(--base-100);
+}
+
+[data-dobra="contacto-secao-83"] .padding-global {
+  padding-inline: var(--respiro-compacto);
+}
+
+[data-dobra="contacto-secao-83"] .padding-section-large {
+  padding-block: var(--respiro);
+}
+
+[data-dobra="contacto-secao-83"] .container-large {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-inline: auto;
+}
+
+[data-dobra="contacto-secao-83"] .contact_grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 3.75rem;
+  align-items: start;
+}
+
+[data-dobra="contacto-secao-83"] .contact_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+[data-dobra="contacto-secao-83"] .contact_kicker {
+  color: var(--acento);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+[data-dobra="contacto-secao-83"] .text-6xl {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-size: var(--h3);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--cor-texto);
+}
+
+[data-dobra="contacto-secao-83"] .contact_info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--base-200);
+}
+
+[data-dobra="contacto-secao-83"] .contact_info-title {
+  font-size: var(--corpo-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-texto-tenue);
+}
+
+[data-dobra="contacto-secao-83"] .contact_info-description {
+  display: flex;
+  flex-direction: column;
+  min-height: 44px;
+  justify-content: center;
+  font-size: var(--corpo-md);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--cor-texto);
+  text-decoration: none;
+  transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="contacto-secao-83"] a.contact_info-description:hover {
+  color: var(--acento);
+}
+
+[data-dobra="contacto-secao-83"] .contact_info-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+[data-dobra="contacto-secao-83"] .contact_social-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--base-200);
+  border-radius: 999px;
+  font-size: var(--corpo-sm);
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+  transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="contacto-secao-83"] .contact_social-link:hover {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+[data-dobra="contacto-secao-83"] .contact_painel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.25rem;
+  background-color: var(--base-200);
+  border-radius: 1rem;
+}
+
+[data-dobra="contacto-secao-83"] .contact_painel-titulo {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-size: var(--h5);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--cor-texto);
+}
+
+[data-dobra="contacto-secao-83"] .contact_horarios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+[data-dobra="contacto-secao-83"] .contact_horario {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--base-400) 22%, transparent);
+  font-size: var(--corpo-sm);
+}
+
+[data-dobra="contacto-secao-83"] .contact_horario dt {
+  color: var(--cor-texto-suave);
+}
+
+[data-dobra="contacto-secao-83"] .contact_horario dd {
+  margin: 0;
+  font-weight: 500;
+  color: var(--cor-texto);
+}
+
+[data-dobra="contacto-secao-83"] .contact_acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+[data-dobra="contacto-secao-83"] .button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 0.55rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="contacto-secao-83"] .button.is-primary {
+  background-color: var(--acento);
+  color: var(--base-100);
+}
+
+[data-dobra="contacto-secao-83"] .button.is-primary:hover {
+  background-color: var(--base-600);
+}
+
+[data-dobra="contacto-secao-83"] .button.is-outline {
+  border-color: var(--base-400);
+  color: var(--cor-texto);
+}
+
+[data-dobra="contacto-secao-83"] .button.is-outline:hover {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+[data-dobra="contacto-secao-83"] .contact_nota {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  [data-dobra="contacto-secao-83"] .contact_grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  [data-dobra="contacto-secao-83"] .padding-section-large {
+    padding-block: var(--respiro-compacto);
+  }
+}

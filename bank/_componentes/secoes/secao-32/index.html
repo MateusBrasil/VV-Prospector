@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plasticity — Colored Pill Navbar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="plasticity-nav" data-nav>
+      <a
+        href="#"
+        class="plasticity-nav__logo"
+        aria-label="Plasticity, home"
+        data-stagger
+      >
+        <svg
+          class="plasticity-nav__logo-mark"
+          viewBox="0 0 106 20"
+          role="img"
+          aria-label="Plasticity"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M11.0922 19.256L0 0H7.36519L14.8191 12.8669L18.4573 6.47782L14.8191 0H22.1843L26 6.47782L22.3618 13.0444L14.8191 12.8669L11.0922 19.256Z" fill="currentColor" />
+          <path d="M98.7272 14.486L101.471 9.48796L98.7832 4.54596H100.183L102.241 8.53596L104.299 4.54596H105.671L102.983 9.50196L105.727 14.486H104.327L102.213 10.44L100.099 14.486H98.7272Z" fill="currentColor" />
+          <path d="M89.0726 14.486V13.31H91.5506V5.72196H89.0726V4.54596H95.2326V5.72196H92.7546V13.31H95.2326V14.486H89.0726Z" fill="currentColor" />
+          <path d="M81.4761 14.486V5.72196H78.4381V4.54596H85.7181V5.72196H82.6801V14.486H81.4761Z" fill="currentColor" />
+          <path d="M69.2036 14.486V4.54596H70.4076V13.926L69.8056 13.31H75.3636V14.486H69.2036Z" fill="currentColor" />
+          <path d="M61.929 14.71C60.8836 14.71 60.0623 14.3786 59.465 13.716C58.8676 13.0533 58.569 12.1526 58.569 11.014V4.54596H59.773V11.014C59.773 11.8353 59.955 12.4606 60.319 12.89C60.6923 13.3193 61.229 13.534 61.929 13.534C62.629 13.534 63.161 13.3193 63.525 12.89C63.8983 12.4606 64.085 11.8353 64.085 11.014V4.54596H65.289V11.014C65.289 12.1526 64.9903 13.0533 64.393 13.716C63.7956 14.3786 62.9743 14.71 61.929 14.71Z" fill="currentColor" />
+          <path d="M48.0184 14.486L51.0424 4.54596H52.6664L55.6904 14.486H54.4024L51.8544 5.63796L49.3064 14.486H48.0184ZM49.5444 11.658L49.9644 10.482H53.7444L54.1644 11.658H49.5444Z" fill="currentColor" />
+          <path d="M40.996 14.486L38 4.54596H39.288L41.948 13.702H41.612L44.272 4.54596H45.56L42.564 14.486H40.996Z" fill="currentColor" />
+        </svg>
+      </a>
+
+      <button
+        class="plasticity-nav__toggle"
+        type="button"
+        data-toggle
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="plasticity-menu"
+      >
+        <span class="plasticity-nav__toggle-line plasticity-nav__toggle-line--top" aria-hidden="true"></span>
+        <span class="plasticity-nav__toggle-line plasticity-nav__toggle-line--mid" aria-hidden="true"></span>
+        <span class="plasticity-nav__toggle-line plasticity-nav__toggle-line--bot" aria-hidden="true"></span>
+      </button>
+
+      <nav class="plasticity-nav__nav" id="plasticity-menu" aria-label="Primary" data-menu>
+        <ul class="plasticity-nav__list">
+          <li class="plasticity-nav__item plasticity-nav__item--emerald" data-stagger>
+            <a href="#features" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">Features</span>
+            </a>
+          </li>
+          <li class="plasticity-nav__item plasticity-nav__item--pink" data-stagger>
+            <a href="#models" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">Models</span>
+            </a>
+          </li>
+          <li class="plasticity-nav__item plasticity-nav__item--orange" data-stagger>
+            <a href="#pricing" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">Pricing</span>
+            </a>
+          </li>
+          <li class="plasticity-nav__item plasticity-nav__item--yellow" data-stagger>
+            <a href="#api" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">API Docs</span>
+            </a>
+          </li>
+          <li class="plasticity-nav__item plasticity-nav__item--teal" data-stagger>
+            <a href="#enterprise" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">Enterprise</span>
+            </a>
+          </li>
+          <li class="plasticity-nav__item plasticity-nav__item--white" data-stagger>
+            <a href="#login" class="plasticity-nav__link">
+              <span class="plasticity-nav__dot" aria-hidden="true"></span>
+              <span class="plasticity-nav__label">Login</span>
+            </a>
+          </li>
+        </ul>
+
+        <a href="#try" class="plasticity-nav__cta" data-stagger>
+          <span class="plasticity-nav__cta-label">Try for free</span>
+          <svg
+            class="plasticity-nav__cta-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 5l7 7-7 7"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </nav>
+    </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

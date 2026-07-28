@@ -1,0 +1,17 @@
+/* stayli-about-hero — local overrides only. All section structure/styling lives
+   in the shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css, which owns the [data-hero-reveal] heroRise keyframe and the
+   [data-reveal] reveal states). This is the light, in-flow about hero
+   (secondary navbar variant: black logo + black links on a light background). */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: stayli-navbar styles =====
+   Navbar converted to the SECONDARY (light) variant for this about page: in-flow
+   (no is-absolute), black logo + black links on a light background — matching
+   about.astro's <Navbar variant="secondary" />. All navbar structure/styling
+   lives in the shared /stayli/styles.css cascade (webflow.css + global-styles.css
+   + hamburger-nav.css); no local override needed beyond the variant swap in the
+   markup. */

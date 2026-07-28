@@ -1,0 +1,61 @@
+<style>
+/* unidades 2×2 — a foto é o card, agora na passada do hero:
+   · chip glass numerado sobre a foto (mesma receita do chip de prova do hero — G1);
+   · "Ver clínica" com a mecânica do ButtonSlide do Museu Triângulo (seta entra pela
+     esquerda, rótulo desliza, seta de saída some) portada para CSS puro;
+   · hover do card: lift por transform + sombra pré-renderizada que faz FADE por
+     opacity num ::after — nunca box-shadow animado (Lei M1). */
+.uniF__kicker{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:var(--space-2)}
+.uniF__kicker svg{flex:none}
+.uniF__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:var(--space-2) var(--space-4);margin-bottom:var(--space-4)}
+.uniF__head>p{color:var(--ink-muted);max-width:52ch}
+.uniF__grid{display:grid;gap:var(--space-3);counter-reset:uni}
+@media (min-width:700px){.uniF__grid{grid-template-columns:1fr 1fr;gap:var(--space-3)}}
+.uniF__card{position:relative;display:flex;flex-direction:column;border-radius:var(--radius-lg);
+  background:var(--surface);box-shadow:var(--ring);text-decoration:none;counter-increment:uni;
+  transition:transform 200ms var(--ease)}
+.uniF__card:hover{transform:translateY(-4px)}
+.uniF__card::after{content:"";position:absolute;inset:0;border-radius:var(--radius-lg);pointer-events:none;
+  box-shadow:0 20px 44px -20px color-mix(in srgb, var(--ink) 38%, transparent);
+  opacity:0;transition:opacity 200ms var(--ease)}
+.uniF__card:hover::after{opacity:1}
+.uniF__card:focus-visible{outline:2px solid var(--brand-cta);outline-offset:3px}
+.uniF__media{position:relative;overflow:hidden;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.uniF__media img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;transition:transform 200ms var(--ease)}
+.uniF__card:hover .uniF__media img{transform:scale(1.03)}
+.uniF__media::after{content:"0" counter(uni);position:absolute;top:var(--space-2);left:var(--space-2);
+  padding:.32rem .7rem;border-radius:999px;font-size:var(--step--1);font-weight:600;letter-spacing:.06em;
+  font-variant-numeric:tabular-nums;color:var(--ink-on-dusk);
+  background:color-mix(in srgb, var(--dusk) 72%, transparent);
+  -webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);
+  border:1px solid var(--hairline-on-dusk)}
+@supports not (backdrop-filter:blur(1px)){.uniF__media::after{background:var(--dusk)}}
+.uniF__body{padding:var(--space-3);display:flex;flex-direction:column;gap:.35rem;flex:1}
+.uniF__nome{font-family:var(--font-display);font-size:var(--step-2);letter-spacing:-0.02em;line-height:1.15;color:var(--ink)}
+.uniF__morada{font-size:var(--step--1);color:var(--ink-muted);line-height:1.5;flex:1}
+.uniF__ver{position:relative;margin-top:var(--space-1);display:inline-flex;align-items:center;overflow:clip;
+  align-self:flex-start;font-weight:600;font-size:var(--step--1);color:var(--brand-ink)}
+.uniF__ver-entra{position:absolute;left:0;opacity:0;transform:translateX(-14px);
+  transition:transform 200ms var(--ease),opacity 200ms var(--ease)}
+.uniF__ver-rotulo{display:inline-flex;align-items:center;gap:.45rem;transition:transform 200ms var(--ease)}
+.uniF__ver-rotulo svg{transition:transform 200ms var(--ease),opacity 200ms var(--ease)}
+.uniF__card:hover .uniF__ver-entra{opacity:1;transform:none}
+.uniF__card:hover .uniF__ver-rotulo{transform:translateX(22px)}
+.uniF__card:hover .uniF__ver-rotulo svg{opacity:0;transform:translateX(10px)}
+</style>
+<section id="clinicas">
+  <div class="wrap">
+    <div class="uniF__head reveal">
+      <div>
+        {{#kicker}}<p class="uniF__kicker"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>{{kicker}}</p>{{/kicker}}
+        <h2>{{titulo}}</h2>
+      </div>
+      <p>{{intro}}</p>
+    </div>
+    <div class="uniF__grid reveal" data-motion="cards">
+      {{{cards}}}
+    </div>
+  </div>
+</section>

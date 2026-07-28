@@ -1,0 +1,22 @@
+{
+  "slot": "servicos",
+  "nome": "cartoes",
+  "scope": "servicos-cartoes",
+  "origem": "bank/_componentes/cards/css-card-effect-reproduction-and-explanation",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    { "nome": "rotulo", "tipo": "texto", "exemplo": "Tratamentos" },
+    { "nome": "titulo", "tipo": "texto", "exemplo": "O que fazemos, e para quem faz sentido" },
+    { "nome": "itens", "tipo": "lista", "exemplo": "[{ titulo, texto, acao, destino }] — um por tratamento" }
+  ],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. MUDOU DE SLOT: estava em `diferenciais`, que era o único ocupante desse slot; a classificação automática viu três cartões com título e descrição e chamou-lhes diferenciais, mas estruturalmente é uma lista de ofertas lado a lado, ou seja `servicos`. Mesma correção que odontologia fez em destaque/scroll-29 → servicos/arcos. Cinco alterações: (1) três cartões fixos → lista `s.itens`; (2) `rotate(-5deg) translateY(-50px)` no hover substituído por um deslocamento de 8px sem rotação, porque `direcoes.json → clinica-estetica.negacoes` proíbe animação de espetáculo; (3) `filter: blur(80px)` e a borda em gradiente com mask-composite removidas, as negações do nicho proíbem as duas por nome; (4) `color: white`, `text-shadow` e `box-shadow` em rgba() eram três hex fora de token; (5) `transition: 0.5s` sem propriedade é `transition: all`, proibido no motor, passou a listar as três propriedades. A superfície do cartão saiu de `var(--acento)` com texto claro (4,70:1 com o acento deste nicho, falha AA em texto pequeno) para `--base-200` com texto `--base-600`, 14,8:1. Contrastes todos medidos por código: o acento só aparece como texto sobre `--base-100` (4,70:1) e como seta/elemento gráfico sobre `--base-200` (4,00:1, acima dos 3:1 que elementos não textuais exigem). A sobreposição dos cartões, que é o gesto que veio do banco, ficou intacta no ecrã grande e desdobra em coluna abaixo de 1000px."
+}

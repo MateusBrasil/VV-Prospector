@@ -1,0 +1,16 @@
+{
+  "ref": "secoes/secao-172",
+  "scope": "secoes-secao-172",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip"
+  ],
+  "fontesCdn": [
+    "https://fonts.googleapis.com",
+    "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+  ],
+  "tem_js": true,
+  "n_assets": 0,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

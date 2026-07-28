@@ -1,0 +1,182 @@
+{
+  "slot": "menu",
+  "nome": "infinite-menu",
+  "scope": "menu-infinite-menu",
+  "origem": "bank/_componentes/menu/infinite-menu",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=400&q=80"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=400&q=80"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1511497584788-876760111969?w=400&q=80"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1444464666168-49b62d85b5cb?w=400&q=80"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1511497584788-876760111969?w=400&q=80"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1444464666168-49b62d85b5cb?w=400&q=80"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=80"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&q=80"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&q=80"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Immersive Menu Experience"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Tokyo 2026"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "autumn / winter catalog"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Lumina"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Chronicles"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "discover"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "nature"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "urban"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "lifestyle"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "creative"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "vision"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "deep"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "emotions"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 18
+  },
+  "_rever": [
+    "10 cor(es) mapeadas para tokens por luminância (acento da origem #128b47 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "18 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=400&q=80 https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=400&q=80)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

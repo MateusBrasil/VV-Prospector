@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS-only Marquee Menu Effect</title>
+	<meta name="description" content="A menu with a css-only marquee hover effect recreated elegantly" />
+	<meta name="keywords" content="marquee, css, animation, loop, infinite, hover, menu, navigation" />
+	
+	<!-- Google Fonts for Modern Typography -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+	<style>
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+
+		:root {
+			font-size: 15px;
+			--color-text: #111;
+			--color-bg: #f8ecde;
+			--color-link: #b19e7f;
+			--color-link-hover: #000;
+			--font-primary: 'Plus Jakarta Sans', sans-serif;
+			--font-display: 'Syne', sans-serif;
+		}
+
+		body {
+			margin: 0;
+			color: var(--color-text);
+			background-color: var(--color-bg);
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-family: var(--font-primary);
+			overflow-x: hidden;
+		}
+
+		/* Smooth fade-in on load */
+		main {
+			opacity: 0;
+			animation: fadeIn 0.8s ease-out forwards;
+		}
+
+		@keyframes fadeIn {
+			to { opacity: 1; }
+		}
+
+		/* Dynamic SVG Grainy texture animation */
+		main::before {
+			animation: grain 8s steps(10) infinite;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+			content: '';
+			height: 300%;
+			left: -50%;
+			opacity: 0.06; /* Subtle premium organic grain overlay */
+			position: fixed;
+			top: -100%;
+			width: 300%;
+			pointer-events: none;
+			z-index: 9999;
+		}
+
+		@keyframes grain {
+			0%, 100% { transform: translate(0, 0); }
+			10% { transform: translate(-5%, -10%); }
+			20% { transform: translate(-15%, 5%); }
+			30% { transform: translate(7%, -25%); }
+			40% { transform: translate(-5%, 25%); }
+			50% { transform: translate(-15%, 10%); }
+			60% { transform: translate(15%, 0%); }
+			70% { transform: translate(0%, 15%); }
+			80% { transform: translate(3%, 35%); }
+			90% { transform: translate(-10%, 10%); }
+		}
+
+		a {
+			text-decoration: none;
+			color: var(--color-link);
+			outline: none;
+			transition: color 0.3s ease;
+		}
+
+		a:hover,
+		a:focus {
+			color: var(--color-link-hover);
+			outline: none;
+		}
+
+		/* Frame Layout */
+		.frame {
+			padding: 3rem 5vw;
+			text-align: center;
+			position: relative;
+			z-index: 1000;
+			line-height: 1.4;
+		}
+
+		.frame__title {
+			font-size: 1.15rem;
+			margin: 0;
+			font-weight: 700;
+			font-family: var(--font-primary);
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: var(--color-text);
+		}
+
+		.frame__info {
+			font-size: 0.95rem;
+			margin: 0;
+			color: var(--color-link);
+		}
+
+		.frame__info a {
+			text-decoration: underline;
+		}
+
+		/* Interactive Menu Area */
+		.menu {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			padding: 10vh 0 15vh;
+			--marquee-width: 100vw;
+			--offset: 20vw;
+			--move-initial: calc(-25% + var(--offset));
+			--move-final: calc(-50% + var(--offset));
+			--item-font-size: 9.5vw;
+			counter-reset: menu;
+			position: relative;
+			z-index: 100;
+		}
+
+		.menu__item {
+			cursor: default;
+			position: relative;
+			padding: 0 5vw;
+			margin: 1.5rem 0;
+		}
+
+		.menu__item-link {
+			display: inline-block;
+			cursor: pointer;
+			position: relative;
+			-webkit-text-stroke: 1.5px var(--color-text);
+			text-stroke: 1.5px var(--color-text);
+			-webkit-text-fill-color: transparent;
+			text-fill-color: transparent;
+			color: transparent;
+			transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+			font-family: var(--font-display);
+			font-weight: 800;
+			text-transform: uppercase;
+		}
+
+		/* Number Counter Layout */
+		.menu__item-link::before {
+			counter-increment: menu;
+			content: counter(menu, decimal-leading-zero);
+			position: absolute;
+			bottom: 55%;
+			left: -2.5rem;
+			pointer-events: none;
+			font-family: var(--font-primary);
+			font-size: 1.2rem;
+			font-weight: 600;
+			color: var(--color-link);
+			-webkit-text-stroke: 0;
+			-webkit-text-fill-color: var(--color-link);
+		}
+
+		.menu__item-link:hover {
+			transition-duration: 0.1s;
+			opacity: 0;
+		}
+
+		/* Hover Display Image */
+		.menu__item-img {
+			pointer-events: none;
+			position: absolute;
+			height: 45vh;
+			max-height: 380px;
+			aspect-ratio: 3/4;
+			object-fit: cover;
+			opacity: 0;
+			left: 100%;
+			top: 50%;
+			transform: translate3d(calc(-100% - 6vw), -30%, 0) translate3d(0, 30px, 0) scale(0.95);
+			transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			border-radius: 6px;
+			box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+			z-index: 5;
+		}
+
+		.menu__item-link:hover + .menu__item-img {
+			opacity: 1;
+			transform: translate3d(calc(-100% - 6vw), -30%, 0) rotate3d(0, 0, 1, 4deg) scale(1);
+		}
+
+		/* Marquee Slider Layout */
+		.marquee {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: var(--marquee-width);
+			overflow: hidden;
+			pointer-events: none;
+			mix-blend-mode: color-burn;
+			height: 100%;
+			display: flex;
+			align-items: center;
+		}
+
+		.marquee__inner {
+			width: fit-content;
+			display: flex;
+			position: relative;
+			transform: translate3d(var(--move-initial), 0, 0);
+			animation: marquee 7s linear infinite;
+			animation-play-state: paused;
+			opacity: 0;
+			transition: opacity 0.15s ease-out;
+		}
+
+		.menu__item-link:hover ~ .marquee .marquee__inner {
+			animation-play-state: running;
+			opacity: 1;
+			transition-duration: 0.35s;
+			transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		.marquee span {
+			text-align: center;
+		}
+
+		.menu__item-link,
+		.marquee span {
+			white-space: nowrap;
+			font-size: var(--item-font-size);
+			padding: 0 1vw;
+			font-weight: 800;
+			line-height: 1.1;
+		}
+
+		.marquee span {
+			font-family: var(--font-display);
+			font-style: italic;
+			text-transform: uppercase;
+			color: var(--color-text);
+		}
+
+		@keyframes marquee {
+			0% {
+				transform: translate3d(var(--move-initial), 0, 0);
+			}
+			100% {
+				transform: translate3d(var(--move-final), 0, 0);
+			}
+		}
+
+		/* Responsive Adaptation */
+		@media screen and (min-width: 53em) {
+			.frame {
+				text-align: left;
+				display: grid;
+				align-content: space-between;
+				width: 100%;
+				padding: 3rem 6vw;
+				pointer-events: none;
+				grid-template-columns: 100%;
+				grid-template-rows: auto;
+			}
+
+			.frame__title-wrap {
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+			}
+
+			.frame a {
+				pointer-events: auto;
+			}
+		}
+
+		@media screen and (max-width: 52.9em) {
+			.menu {
+				--item-font-size: 11vw;
+				--offset: 10vw;
+				padding: 8vh 0 15vh;
+			}
+			
+			.menu__item-link::before {
+				font-size: 1rem;
+				left: -1.8rem;
+				bottom: 50%;
+			}
+
+			.menu__item-img {
+				height: 28vh;
+				max-height: 260px;
+				transform: translate3d(calc(-100% - 2vw), -35%, 0) translate3d(0, 15px, 0) scale(0.95);
+			}
+
+			.menu__item-link:hover + .menu__item-img {
+				transform: translate3d(calc(-100% - 2vw), -35%, 0) rotate3d(0, 0, 1, 3deg) scale(1);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<!-- Header Frame -->
+		<div class="frame">
+			<div class="frame__title-wrap">
+				<h1 class="frame__title">CSS-only Marquee Menu</h1>
+			</div>
+		</div>
+
+		<!-- Interactive Navigation Menu -->
+		<nav class="menu">
+			<!-- Menu Item 1 -->
+			<div class="menu__item">
+				<a class="menu__item-link">Showreel</a>
+				<img class="menu__item-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=800&q=80" alt="Showreel Cover" onerror="handleImgError(this)"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+						<span>Showreel</span>
+						<span>Showreel</span>
+						<span>Showreel</span>
+						<span>Showreel</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu Item 2 -->
+			<div class="menu__item">
+				<a class="menu__item-link">Case Studies</a>
+				<img class="menu__item-img" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&h=800&q=80" alt="Case Studies Cover" onerror="handleImgError(this)"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+						<span>Case Studies</span>
+						<span>Case Studies</span>
+						<span>Case Studies</span>
+						<span>Case Studies</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu Item 3 -->
+			<div class="menu__item">
+				<a class="menu__item-link">Experiments</a>
+				<img class="menu__item-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&h=800&q=80" alt="Experiments Cover" onerror="handleImgError(this)"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+						<span>Experiments</span>
+						<span>Experiments</span>
+						<span>Experiments</span>
+						<span>Experiments</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu Item 4 -->
+			<div class="menu__item">
+				<a class="menu__item-link">Our Crew</a>
+				<img class="menu__item-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&h=800&q=80" alt="Our Crew Cover" onerror="handleImgError(this)"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+						<span>The Crew</span>
+						<span>The Crew</span>
+						<span>The Crew</span>
+						<span>The Crew</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu Item 5 -->
+			<div class="menu__item">
+				<a class="menu__item-link">Contact</a>
+				<img class="menu__item-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=800&q=80" alt="Contact Cover" onerror="handleImgError(this)"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+						<span>Contact</span>
+						<span>Contact</span>
+						<span>Contact</span>
+						<span>Contact</span>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Footer Frame -->
+		<div class="frame" style="padding-top: 0; padding-bottom: 4rem;">
+			<p class="frame__info">Images via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</p>
+		</div>
+	</main>
+
+	<script>
+		// Fallback in case image fails to load
+		function handleImgError(image) {
+			image.style.display = 'none';
+			const text = image.alt ? image.alt.replace(' Cover', '') : 'Menu Cover';
+			image.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='100%25' height='100%25' fill='%23b19e7f'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23f8ecde'%3E${text}%3C/text%3E%3C/svg%3E`;
+			image.style.display = 'block';
+		}
+
+		// Ensure modern CSS variables feature check doesn't prompt disruptive alerts
+		document.addEventListener("DOMContentLoaded", () => {
+			const supportsCssVars = () => {
+				const style = document.createElement("style");
+				style.innerHTML = ":root { --tmp-var: bold; }";
+				document.head.appendChild(style);
+				const supports = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)"));
+				style.parentNode.removeChild(style);
+				return supports;
+			};
+			
+			if (!supportsCssVars()) {
+				console.warn("This browser may not fully support CSS Variables.");
+			}
+		});
+	</script>
+</body>
+
+</html>

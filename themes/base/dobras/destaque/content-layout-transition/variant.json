@@ -1,0 +1,269 @@
+{
+  "slot": "destaque",
+  "nome": "content-layout-transition",
+  "scope": "destaque-content-layout-transition",
+  "origem": "bank/_componentes/parallax/content-layout-transition",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "flip",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/101/800/1000"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/102/800/1000"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/103/800/1000"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/104/800/1000"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/105/800/1000"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/106/800/1000"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/107/800/1000"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/108/800/1000"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/109/800/1000"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/110/800/1000"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Stack to Content Layout Transition"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Jonas Tanaka"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "フォトグラフィー"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Queen of"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "the Sea"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Hidesato felt very sorry for the Dragon King on hearing his story, and readily promised to do what he could to help him."
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Hinata's"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Trouble"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "His power was immense, for he was the ruler of all sea creatures both great and small, and in his keeping were the Jewels of the Ebb and Flow of the Tide."
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Dragon's"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Journey"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Calling all his fish retainers together, he chose several of them as ambassadors to go through the sea and seek for a young Dragon Princess who would be his bri"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Prince"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Yamato"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "The King fell in love with her at once, and the wedding ceremony was celebrated with great splendor."
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Kumaso"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "&amp; Haru"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "When the hare heard these kind words he felt very grateful to the man, and encouraged by his gentle manner the hare told him all that had befallen him."
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Botan's"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Dream"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Okuni-nushi-no-Mikoto is worshiped by the people in some parts of Japan, as a god, and the hare has become famous as “The White Hare of Inaba”."
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "The Gate"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "of Rashoi"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Nearly two thousand years ago this sword was kept at the shrines of Ite, the temples dedicated to the worship of Amaterasu, the great and beautiful Sun Goddess "
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Faithful"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Knights"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "At last King Keiko ordered his younger son Prince Yamato to subdue the brigands and, if possible, to rid the land of their evil lives."
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "Five Colors"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "for Jokwa"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "There is a story of knightly adventure and daring which explains why the name of the sword was changed from that of Murakumo to Kasanagi, which means grass clea"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Shikuyu's"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Charm"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "He at once made ready to start, and great was the stir in the precincts of the Palace as he and his trusty followers gathered together and prepared for the expe"
+    },
+    {
+      "nome": "rotulo33",
+      "tipo": "texto",
+      "exemplo": "Back"
+    },
+    {
+      "nome": "rotulo34",
+      "tipo": "texto",
+      "exemplo": "Photography"
+    },
+    {
+      "nome": "rotulo35",
+      "tipo": "texto",
+      "exemplo": "1986 &mdash; 2022"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 10
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #c87e4f → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "10 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/101/800/1000 https://picsum.photos/seed/102/800/1000)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,10 @@
+/* vetic-team-about — local overrides only. The real styles live in the shared
+   /vetic/styles.css (.section_team, .team_grid.is-about, .team_item, .team_box,
+   .header, .tag). The section animates via data-reveal="view" entrances handled
+   by /vetic/scripts/scroll-reveal.js (GSAP + ScrollTrigger). No scoped <style>
+   in the source TeamSection.astro, so nothing is inlined here. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

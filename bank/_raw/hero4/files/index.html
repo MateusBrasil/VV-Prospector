@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>AURELIA &mdash; Premium Motion Studio</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600&display=swap" rel="stylesheet" />
+
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+   <!-- ===== LOADER ===== -->
+   <div class="loader" id="js-loader">
+      <span class="half half--top" id="js-half-top"></span>
+      <span class="half half--bottom" id="js-half-bottom"></span>
+
+      <div class="loader__title" id="js-title">
+         <span class="loader__word">AU</span>
+         <span class="loader__dot"></span>
+         <span class="loader__word">RELIA</span>
+      </div>
+   </div>
+
+   <!-- ===== STAGE ===== -->
+   <div class="stage">
+      <div class="frame" id="js-frame">
+         <video poster="./img/poster.jpg" preload="auto" autoplay muted loop playsinline disablepictureinpicture
+            disableremoteplayback>
+            <source src="https://de-puydt.b-cdn.net/de-puydt-moodfilm-compressed.mp4" type="video/mp4" />
+         </video>
+      </div>
+
+      <div class="shell" id="js-shell">
+         <header class="head">
+            <a href="#" class="head__link head__contact">Get in Touch</a>
+
+            <a href="#" class="head__logo">
+               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40"
+                  aria-hidden="true">
+                  <path fill="currentColor"
+                     d="M20 0c11.046 0 20 8.954 20 20v14a6 6 0 0 1-6 6H21v-8.774c0-2.002.122-4.076 1.172-5.78a10 10 0 0 1 6.904-4.627l.383-.062a.8.8 0 0 0 0-1.514l-.383-.062a10 10 0 0 1-8.257-8.257l-.062-.383a.8.8 0 0 0-1.514 0l-.062.383a9.999 9.999 0 0 1-4.627 6.904C12.85 18.878 10.776 19 8.774 19H.024C.547 8.419 9.29 0 20 0Z" />
+                  <path fill="currentColor"
+                     d="M0 21h8.774c2.002 0 4.076.122 5.78 1.172a10.02 10.02 0 0 1 3.274 3.274C18.878 27.15 19 29.224 19 31.226V40H6a6 6 0 0 1-6-6V21ZM40 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+               </svg>
+               <p class="head__wordmark">AURELIA</p>
+               <span class="head__tag">PREMIUM MOTION STUDIO</span>
+            </a>
+
+            <span class="head__menu">
+               <span>Explore</span>
+               <span class="hamburger" aria-hidden="true">
+                  <span class="hamburger__line hamburger__line--short"></span>
+                  <span class="hamburger__line"></span>
+               </span>
+            </span>
+         </header>
+
+         <div class="hero">
+            <p class="hero__title" data-hero>Elegant Motion for Modern Brands</p>
+            <span class="hero__sub" data-hero>
+               Cinematic digital experiences crafted with clarity, rhythm and premium visual detail
+            </span>
+         </div>
+      </div>
+   </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>

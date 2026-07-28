@@ -1,0 +1,128 @@
+{
+  "slot": "contacto",
+  "nome": "secao-126",
+  "scope": "contacto-secao-126",
+  "origem": "bank/_componentes/secoes/secao-126",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Products"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Products"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "wellness"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/vetic-logo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/ball-2.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/ball-3.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/ball.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/ball-1.svg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/Frame-2147226657_1.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/Frame-2147226656_1.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vetic/images/Frame-2147226624_1.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "86 cor(es) mapeadas para tokens por luminância (acento da origem #ffe500 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "8 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/vetic/images/vetic-logo.svg https://d173woph5zl366.cloudfront.net/vetic/images/ball-2.svg)",
+    "6 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/vetic/images/arrow-pink.webp)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,696 @@
+"use client";
+/* DOBRA gerada pela esteira a partir de bank/_componentes/parallax/interactive-slideshow
+ *
+ * O que foi arrancado da origem: fonte, peso, cor e todo o texto e foto do template.
+ * O que ficou: a estrutura e a mecânica de animação, que é o material que vale.
+ * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).
+ */
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import './Dobra.css';
+export default function Dobra({ slots: s = {} }) {
+  const raiz = useRef(null);
+  /* ⚠ REVER: o JS de origem está abaixo em bruto (categoria: global-duro).
+   * A esteira NÃO o converte sozinha, e nesta categoria escopar ao `raiz.current` NÃO
+   * chega: o código assume que é dono da página (window/document.body/listeners de
+   * load|resize|scroll), ou traz import/export, ou monta um canvas WebGL. Converter às
+   * cegas produz animação que corre no elemento errado, que é pior que animação
+   * nenhuma. Precisa de reescrita, não de troca de prefixo. */
+  useGSAP(() => {
+  //   
+  //       gsap.registerPlugin(Observer, CustomEase);
+  //   
+  //       CustomEase.create(
+  //         'expoDecay',
+  //         'M0,0 C0.126,0.382 0.282,0.674 0.44,0.822 0.632,1.002 0.818,1.001 1,1'
+  //       );
+  //   
+  //       /**
+  //       * Constantes de configuração de animação controlando tempo, escala e movimento
+  //       * Todas as durações estão em segundos, transformações em pixels/porcentagens
+  //       */
+  //       const ANIMATION = {
+  //         DURATION: {
+  //           MIDDLE_CLIP: 0.5, // Duração para a animação de clipe da imagem central
+  //           SIDE_CLIP: 1.25, // Duração para a animação de clipe dos painéis laterais
+  //           SCALE: 1, // Duração para o efeito de escala da imagem
+  //           TEXT: 0.75, // Duração para a animação do texto
+  //         },
+  //         TIMING: {
+  //           SIDE_DELAY: 0.25, // Atraso antes dos painéis laterais animarem
+  //           TEXT_STAGGER: 0.035, // Atraso entre a animação de cada caractere
+  //           TEXT_RIGHT_DELAY: 0.35, // Atraso adicional para o texto do painel direito
+  //         },
+  //         TRANSFORM: {
+  //           SCALE: 1.25, // Fator máximo de escala para a imagem central
+  //           SIDE_MOVEMENT: 30, // Distância que os painéis laterais movem horizontalmente
+  //           TEXT_OFFSET: 150, // Deslocamento inicial para a animação do texto
+  //         },
+  //       };
+  //   
+  //       /**
+  //       * Função utilitária para contornar índices de array, garantindo que fiquem dentro dos limites
+  //       * Exemplo: Em um array de 3 itens, o índice 3 volta para 0, o índice -1 vai para 2
+  //       */
+  //       const wrapIndex = (index, length) => ((index % length) + length) % length;
+  //   
+  //       /**
+  //       * Gerencia um slideshow com transições animadas entre slides
+  //       * Recursos:
+  //       * - Design de três painéis (esquerdo, centro, direito) para cada slide
+  //       * - Animações de clip-path para revelar o conteúdo
+  //       * - Animações de texto com tempo caractere por caractere
+  //       * - Suporte para navegação por toque/roda do mouse
+  //       */
+  //       class SlideshowManager {
+  //           constructor() {
+  //               // Gerenciamento de estado principal para o slideshow
+  //               this.state = {
+  //                   currentIndex: 0, // Índice atual do slide
+  //                   isAnimating: false, // Trava para prevenir animações simultâneas
+  //                   totalSlides: 0, // Número total de slides
+  //                   direction: 0, // Direção da animação (1 = avançar, -1 = voltar)
+  //               };
+  //               this.initialElements = null; // Armazenamento temporário durante inicialização
+  //               this.elements = null; // Armazenará todos os elementos do DOM
+  //               this.tl = null; // Timeline do GSAP para animações
+  //           }
+  //   
+  //           /**
+  //            * Inicializa o slideshow configurando todos os componentes necessários
+  //            * Chamado uma vez quando o slideshow é criado
+  //            */
+  //           init() {
+  //               this.setupInitialElements(); // Obter elementos DOM iniciais
+  //               this.extractContainers(); // Criar estrutura de containers
+  //               this.setupSlideElements(); // Configurar componentes dos slides
+  //               this.initializeSlideStates(); // Definir estados iniciais
+  //               this.setupInteraction(); // Adicionar manipuladores de interação 
+  //           }
+  //   
+  //           /**
+  //            * Coleta todos os elementos DOM iniciais necessários para o slideshow
+  //            * Agrupa elementos pelo seu papel (slides, wraps) para fácil acesso
+  //            */
+  //           setupInitialElements() {
+  //               this.container = document.querySelector('[data-slideshow="container"]');
+  //               this.initialElements = {
+  //                   slides: this.container.querySelectorAll('[data-slideshow="slide"]'),
+  //                   slidesCenterWrap: this.container.querySelectorAll('[data-slideshow="slide-center-wrap"]'),
+  //                   slidesLeftWrap: this.container.querySelectorAll('[data-slideshow="slide-left-wrap"]'),
+  //                   slidesRightWrap: this.container.querySelectorAll('[data-slideshow="slide-right-wrap"]'),
+  //               };
+  //               this.state.totalSlides = this.initialElements.slides.length;
+  //           }
+  //   
+  //           /**
+  //            * Cria um elemento de container com classe e estilos especificados
+  //            * Usado para criar os três containers principais (esquerdo, centro, direito)
+  //            */
+  //           createContainer(className, styles) {
+  //               const container = document.createElement('div');
+  //               gsap.set(container, { className, ...styles });
+  //               return container;
+  //           }
+  //   
+  //           /**
+  //            * Extrai elementos dos slides para containers separados
+  //            * Cria três containers:
+  //            * - Centro: Container com largura total para o conteúdo principal do slide
+  //            * - Esquerdo/Direito: Containers de meia-largura para os painéis laterais
+  //            */
+  //           extractContainers() {
+  //               const baseContainerStyles = {
+  //                   position: 'absolute',
+  //                   overflow: 'hidden',
+  //                   pointerEvents: 'none',
+  //                   top: 0,
+  //                   height: '100%',
+  //               };
+  //               // Criar containers com posicionamento específico
+  //               const containers = {
+  //                   center: this.createContainer('center-container', {
+  //                   ...baseContainerStyles,
+  //                   left: 0,
+  //                   width: '100%',
+  //                   }),
+  //                   left: this.createContainer('left-container', {
+  //                   ...baseContainerStyles,
+  //                   left: 0,
+  //                   width: '50vw',
+  //                   }),
+  //                   right: this.createContainer('right-container', {
+  //                   ...baseContainerStyles,
+  //                   right: 0,
+  //                   width: '50vw',
+  //                   }),
+  //               };
+  //               // Função auxiliar para mover elementos para seus respectivos containers
+  //               const extractElements = (elements, container) => {
+  //                   elements.forEach(element => {
+  //                   const clone = element.cloneNode(true);
+  //                   element.remove();
+  //                   container.appendChild(clone);
+  //                   });
+  //               };
+  //               // Mover elementos para seus novos containers
+  //               extractElements(this.initialElements.slidesCenterWrap, containers.center);
+  //               extractElements(this.initialElements.slidesLeftWrap, containers.left);
+  //               extractElements(this.initialElements.slidesRightWrap, containers.right);
+  //               // Adicionar containers ao elemento principal do slideshow
+  //               Object.values(containers).forEach(container => {
+  //                   this.container.prepend(container);
+  //               });
+  //           }
+  //   
+  //           /**
+  //            * Configura as referências de todos os elementos dos slides e inicializa a divisão do texto
+  //            * Usa SplitType para dividir o texto em caracteres individuais para animação
+  //            */
+  //           setupSlideElements() {
+  //               this.elements = {
+  //                   slidesCenter: this.container.querySelectorAll('[data-slideshow="slide-center-wrap"]'),
+  //                   slidesLeft: this.container.querySelectorAll('[data-slideshow="slide-left-wrap"]'),
+  //                   slidesRight: this.container.querySelectorAll('[data-slideshow="slide-right-wrap"]'),
+  //                   slidesCenterImg: this.container.querySelectorAll('[data-slideshow="slide-center-wrap"] img'),
+  //                   slidesLeftImg: this.container.querySelectorAll('[data-slideshow="slide-left-wrap"] img'),
+  //                   slidesRightImg: this.container.querySelectorAll('[data-slideshow="slide-right-wrap"] img'),
+  //   
+  //                   // Divide texto em caracteres para animação
+  //                   slidesLeftHeading: gsap.utils
+  //                       .toArray('[data-slideshow="slide-right-heading"]')
+  //                       .map(item => new SplitType(item, { types: 'chars' })),
+  //                   slidesRightHeading: gsap.utils
+  //                       .toArray('[data-slideshow="slide-left-heading"]')
+  //                       .map(item => new SplitType(item, { types: 'chars' })),
+  //               };
+  //           }
+  //   
+  //           /**
+  //            * Define estados iniciais para todos os slides
+  //            * - Posiciona todos os slides de forma absoluta
+  //            * - Corta (clipe) todos os slides, exceto o primeiro
+  //            */
+  //           initializeSlideStates() {
+  //               // Remove slides originais após a clonagem
+  //               this.initialElements.slides.forEach(element => element.remove());
+  //   
+  //               // Posiciona todos os slides de forma absoluta
+  //               for (let i = 0; i < this.state.totalSlides; i++) {
+  //                   gsap.set(
+  //                   [
+  //                       this.elements.slidesCenter[i],
+  //                       this.elements.slidesRight[i],
+  //                       this.elements.slidesLeft[i],
+  //                   ],
+  //                   { position: 'absolute' }
+  //                   );
+  //               }
+  //               // Corta todos os slides exceto o primeiro
+  //               for (let i = 1; i < this.state.totalSlides; i++) {
+  //                   gsap.set(this.elements.slidesCenter[i], {
+  //                       clipPath: 'inset(50% 50% 50% 50%)', // Corta a partir do centro
+  //                   });
+  //                   gsap.set(this.elements.slidesRight[i], {
+  //                       clipPath: 'inset(0% 100% 0% 0%)', // Corta a partir da esquerda
+  //                   });
+  //                   gsap.set(this.elements.slidesLeft[i], {
+  //                       clipPath: 'inset(0% 0% 0% 100%)', // Corta a partir da direita
+  //                   });
+  //               }
+  //           }
+  //   
+  //           /**
+  //            * Gerencia a ordenação do z-index dos slides durante as transições
+  //            * Garante o empilhamento adequado dos elementos baseado na direção da animação
+  //            */
+  //           setSlideZIndexes(nextIndex) {
+  //               const isForward = this.state.direction > 0;
+  //   
+  //               // Reinicia todos os z-indexes
+  //               for (let i = 0; i < this.state.totalSlides; i++) {
+  //                   gsap.set(
+  //                   [
+  //                       this.elements.slidesLeft[i],
+  //                       this.elements.slidesRight[i],
+  //                       this.elements.slidesCenter[i],
+  //                   ],
+  //                   { zIndex: null }
+  //                   );
+  //               }
+  //   
+  //               // Define os z-indexes baseados na direção da animação
+  //               if (isForward) {
+  //                   // Animação para frente: novos slides aparecem por cima
+  //                   gsap.set(
+  //                       [
+  //                           this.elements.slidesLeft[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                       ],
+  //                       { zIndex: 2 }
+  //                   );
+  //                   gsap.set(
+  //                       [
+  //                           this.elements.slidesLeft[this.state.currentIndex],
+  //                           this.elements.slidesRight[this.state.currentIndex],
+  //                       ],
+  //                       { zIndex: 1 }
+  //                   );
+  //                   gsap.set(this.elements.slidesCenter[nextIndex], { zIndex: 4 });
+  //                   gsap.set(this.elements.slidesCenter[this.state.currentIndex], {
+  //                   zIndex: 3,
+  //                   });
+  //               } else {
+  //                   // Animação para trás: slides atuais ficam por cima por mais tempo
+  //                   gsap.set(
+  //                       [
+  //                           this.elements.slidesLeft[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                       ],
+  //                       { zIndex: 1 }
+  //                   );
+  //                   gsap.set(
+  //                       [
+  //                           this.elements.slidesLeft[this.state.currentIndex],
+  //                           this.elements.slidesRight[this.state.currentIndex],
+  //                       ],
+  //                       { zIndex: 2 }
+  //                   );
+  //                   gsap.set(this.elements.slidesCenter[nextIndex], { zIndex: 3 });
+  //                   gsap.set(this.elements.slidesCenter[this.state.currentIndex], {
+  //                       zIndex: 4,
+  //                   });
+  //               }
+  //           }
+  //   
+  //           /**
+  //            * Cria a sequência de animação principal para transição entre slides
+  //            * Lida tanto com animações para frente quanto para trás
+  //            */
+  //           createSlideAnimation(nextIndex) {
+  //               this.setSlideZIndexes(nextIndex);
+  //   
+  //               this.tl = gsap.timeline({
+  //                   ease: 'expoDecay',
+  //                   onComplete: () => {
+  //                       this.state.currentIndex = nextIndex;
+  //                       this.state.isAnimating = false;
+  //                   },
+  //               });
+  //   
+  //               // Escolhe a direção da animação
+  //               if (this.state.direction > 0) {
+  //                   this.createForwardTimeline();
+  //               } else {
+  //                   this.createBackwardTimeline();
+  //               }
+  //           }
+  //   
+  //           /**
+  //            * Cria a timeline de animação para transições para frente
+  //            * Sequência:
+  //            * 1. Painel central se revela do centro para fora
+  //            * 2. Painéis laterais deslizam e revelam das bordas
+  //            * 3. Texto anima caractere por caractere
+  //            */
+  //           createForwardTimeline() {
+  //               const { DURATION, TIMING, TRANSFORM } = ANIMATION;
+  //               const nextIndex = wrapIndex(
+  //                   this.state.currentIndex + 1,
+  //                   this.state.totalSlides
+  //               );
+  //               this.tl
+  //                   // Animar painel central
+  //                   .fromTo(
+  //                       this.elements.slidesCenter[nextIndex],
+  //                       { clipPath: 'inset(50% 50% 50% 50%)' },
+  //                       { clipPath: 'inset(0% 0% 0% 0%)', duration: DURATION.MIDDLE_CLIP },
+  //                       0
+  //                   )
+  //                   // Escalar imagem central
+  //                   .fromTo(
+  //                       this.elements.slidesCenterImg[nextIndex],
+  //                       { scale: 1 },
+  //                       { scale: TRANSFORM.SCALE, duration: DURATION.SCALE },
+  //                       0
+  //                   )
+  //                   // Animar painéis laterais
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeft[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                       ],
+  //                       {
+  //                           clipPath: index =>
+  //                           index === 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)',
+  //                       },
+  //                       { clipPath: 'inset(0% 0% 0% 0%)', duration: DURATION.SIDE_CLIP },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeftImg[nextIndex],
+  //                           this.elements.slidesRightImg[nextIndex],
+  //                       ],
+  //                       {
+  //                           xPercent: index =>
+  //                           index === 0 ? TRANSFORM.SIDE_MOVEMENT : -TRANSFORM.SIDE_MOVEMENT,
+  //                       },
+  //                       { xPercent: 0, duration: DURATION.SIDE_CLIP },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Mover slides atuais para fora
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeftImg[this.state.currentIndex],
+  //                           this.elements.slidesRightImg[this.state.currentIndex],
+  //                       ],
+  //                       { xPercent: 0 },
+  //                       {
+  //                           xPercent: index =>
+  //                           index === 0 ? -TRANSFORM.SIDE_MOVEMENT : TRANSFORM.SIDE_MOVEMENT,
+  //                           duration: DURATION.SIDE_CLIP,
+  //                       },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Animar texto com revelações de caracteres em cascata
+  //                   .fromTo(
+  //                       this.elements.slidesLeftHeading[nextIndex].chars,
+  //                       {
+  //                           yPercent:
+  //                           nextIndex % 2 ? -TRANSFORM.TEXT_OFFSET : TRANSFORM.TEXT_OFFSET,
+  //                       },
+  //                       {
+  //                           yPercent: 0,
+  //                           stagger: { from: 'end', each: TIMING.TEXT_STAGGER },
+  //                           duration: DURATION.TEXT,
+  //                       },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   .fromTo(
+  //                       this.elements.slidesRightHeading[nextIndex].chars,
+  //                       {
+  //                           yPercent:
+  //                           nextIndex % 2 ? TRANSFORM.TEXT_OFFSET : -TRANSFORM.TEXT_OFFSET,
+  //                       },
+  //                       {
+  //                           yPercent: 0,
+  //                           stagger: { from: 'start', each: TIMING.TEXT_STAGGER },
+  //                           duration: DURATION.TEXT,
+  //                       },
+  //                       TIMING.TEXT_RIGHT_DELAY
+  //                   )
+  //                   // Limpar cortes após animação
+  //                   .add(() => {
+  //                       gsap.set(
+  //                           [
+  //                           this.elements.slidesLeft[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                           ],
+  //                           {
+  //                           clipPath: null,
+  //                           }
+  //                       );
+  //                   });
+  //           }
+  //   
+  //           /**
+  //            * Cria a timeline de animação para transições para trás
+  //            * Semelhante à animação para frente, mas com tempo reverso e tratamento diferente de z-index
+  //            */
+  //           createBackwardTimeline() {
+  //               const { DURATION, TIMING, TRANSFORM } = ANIMATION;
+  //               const nextIndex = wrapIndex(
+  //                   this.state.currentIndex - 1,
+  //                   this.state.totalSlides
+  //               );
+  //   
+  //               // Inicializa a timeline com a revelação do slide anterior
+  //               this.tl
+  //                   .set(
+  //                       [
+  //                           this.elements.slidesCenter[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                           this.elements.slidesLeft[nextIndex],
+  //                       ],
+  //                       { clipPath: 'inset(0% 0% 0% 0%)' }
+  //                   )
+  //                   // Esconder o slide central atual com animação de clip
+  //                   .fromTo(
+  //                       this.elements.slidesCenter[this.state.currentIndex],
+  //                       { clipPath: 'inset(0% 0% 0% 0%)' },
+  //                       {
+  //                           clipPath: 'inset(50% 50% 50% 50%)',
+  //                           duration: DURATION.MIDDLE_CLIP + 0.25,
+  //                       },
+  //                       TIMING.SIDE_DELAY + 0.55
+  //                   )
+  //                   // Retornar a escala da imagem central do slide anterior ao normal
+  //                   .fromTo(
+  //                       this.elements.slidesCenterImg[nextIndex],
+  //                       { scale: TRANSFORM.SCALE },
+  //                       { scale: 1, duration: DURATION.SCALE },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Cortar os painéis laterais atuais para fora
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeft[this.state.currentIndex],
+  //                           this.elements.slidesRight[this.state.currentIndex],
+  //                       ],
+  //                       { clipPath: 'inset(0% 0% 0% 0%)' },
+  //                       {
+  //                           clipPath: index =>
+  //                           index === 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)',
+  //                           duration: DURATION.SIDE_CLIP - 0.25,
+  //                       },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Mover painéis laterais atuais para fora
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeftImg[this.state.currentIndex],
+  //                           this.elements.slidesRightImg[this.state.currentIndex],
+  //                       ],
+  //                       { xPercent: 0 },
+  //                       {
+  //                           xPercent: index =>
+  //                           index === 0 ? TRANSFORM.SIDE_MOVEMENT : -TRANSFORM.SIDE_MOVEMENT,
+  //                           duration: DURATION.SIDE_CLIP - 0.25,
+  //                       },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Mover painéis laterais anteriores de volta ao centro
+  //                   .fromTo(
+  //                       [
+  //                           this.elements.slidesLeftImg[nextIndex],
+  //                           this.elements.slidesRightImg[nextIndex],
+  //                       ],
+  //                       {
+  //                           xPercent: index =>
+  //                           index === 0 ? -TRANSFORM.SIDE_MOVEMENT : TRANSFORM.SIDE_MOVEMENT,
+  //                       },
+  //                       { xPercent: 0, duration: DURATION.SIDE_CLIP - 0.25 },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Animar revelação de textos do painel esquerdo
+  //                   .fromTo(
+  //                       this.elements.slidesLeftHeading[nextIndex].chars,
+  //                       {
+  //                           yPercent:
+  //                           nextIndex % 2 ? -TRANSFORM.TEXT_OFFSET : TRANSFORM.TEXT_OFFSET,
+  //                       },
+  //                       {
+  //                           yPercent: 0,
+  //                           stagger: { from: 'end', each: TIMING.TEXT_STAGGER },
+  //                           duration: DURATION.TEXT,
+  //                       },
+  //                       TIMING.SIDE_DELAY
+  //                   )
+  //                   // Animar revelação de textos do painel direito
+  //                   .fromTo(
+  //                       this.elements.slidesRightHeading[nextIndex].chars,
+  //                       {
+  //                           yPercent:
+  //                           nextIndex % 2 ? TRANSFORM.TEXT_OFFSET : -TRANSFORM.TEXT_OFFSET,
+  //                       },
+  //                       {
+  //                           yPercent: 0,
+  //                           stagger: { from: 'start', each: TIMING.TEXT_STAGGER },
+  //                           duration: DURATION.TEXT,
+  //                       },
+  //                       TIMING.TEXT_RIGHT_DELAY
+  //                   )
+  //                   // Limpar cortes após animação
+  //                   .add(() => {
+  //                       gsap.set(
+  //                           [
+  //                           this.elements.slidesLeft[nextIndex],
+  //                           this.elements.slidesRight[nextIndex],
+  //                           ],
+  //                           {
+  //                           clipPath: null,
+  //                           }
+  //                       );
+  //                   });
+  //           }
+  //   
+  //           /**
+  //            * Método público para engatilhar as transições de slides
+  //            * Gerencia o estado da animação e sua direção
+  //            * @param {number} nextIndex - Índice do slide alvo
+  //            * @param {number} direction - Direção da animação (1 para frente, -1 para trás)
+  //            */
+  //           goToSlide(nextIndex, direction) {
+  //               // Previne a animação caso já esteja animando ou tentado ir ao slide atual
+  //               if (this.state.isAnimating || nextIndex === this.state.currentIndex) return;
+  //   
+  //               this.state.isAnimating = true;
+  //               this.state.direction = direction;
+  //               this.createSlideAnimation(nextIndex);
+  //           }
+  //   
+  //           /**
+  //            * Configura o tratamento da interação do usuário
+  //            * Usa GSAP Observer para lidar com a roda do mouse e toques de dedos
+  //            * Suporta navegação tanto para frente como para trás
+  //            */
+  //           setupInteraction() {
+  //               Observer.create({
+  //                   target: this.elements?.container || this.container, 
+  //                   type: 'wheel,touch,pointer',
+  //                   wheelSpeed: -1,
+  //                   onDown: () => {
+  //                       if (!this.state.isAnimating) {
+  //                           const nextIndex = wrapIndex(
+  //                           this.state.currentIndex - 1,
+  //                           this.state.totalSlides
+  //                           );
+  //                           this.goToSlide(nextIndex, -1);
+  //                       }
+  //                   },
+  //                   onUp: () => {
+  //                       if (!this.state.isAnimating) {
+  //                           const nextIndex = wrapIndex(
+  //                           this.state.currentIndex + 1,
+  //                           this.state.totalSlides
+  //                           );
+  //                           this.goToSlide(nextIndex, 1);
+  //                       }
+  //                   },
+  //                   tolerance: 10, // Movimento mínimo requerido para registrar a interação
+  //                   preventDefault: true, // Prevenir comportamento padrão da rolagem
+  //                   ignoreMobileScrolling: true, // Evitar conflito com a rolagem do mobile
+  //               });
+  //           }
+  //       }
+  //   
+  //       /**
+  //       * Inicializa a aplicação
+  //       * Configura o slideshow e o comportamento da rolagem da página
+  //       */
+  //       function initializeApp() {
+  //           // Exibir o elemento body (oculto durante o carregamento)
+  //           const body = document.querySelector('body');
+  //           body.classList.remove('hidden');
+  //           
+  //           // Criar e inicializar o slideshow
+  //           const slideshowManager = new SlideshowManager();
+  //           slideshowManager.init();
+  //           
+  //           // Evitar que o navegador recupere a posição da rolagem
+  //           history.scrollRestoration = 'manual';
+  //       }
+  //   
+  //       // Começar inicialização quando o DOM estiver pronto
+  //       document.addEventListener('DOMContentLoaded', initializeApp);
+  //     
+  }, { scope: raiz });
+  return (
+    <section className="dobra" data-dobra="destaque-interactive-slideshow" ref={raiz}>
+      <section className="section">
+          <div className="slideshow" data-slideshow="container">
+            <div className="slide" data-slideshow="slide">
+              <div className="slide_center-wrap" data-slideshow="slide-center-wrap"><img src={s.imagem} width="1620" alt="" draggable="false" sizes="20vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/red-0-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/red-0-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/red-0-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/red-0-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/red-0-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/red-0.jpg 2114w" /></div>
+              <div className="slide_left-wrap" data-slideshow="slide-left-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem2} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-2600.jpg 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2-p-3200.jpg 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-2.jpg 3443w" /></div>
+                <div className="slide_content">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-left-heading">The Holder</div>
+                  </div>
+                </div>
+              </div>
+              <div className="slide_right-wrap" data-slideshow="slide-right-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem3} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-2600.jpg 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1-p-3200.jpg 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/RED-1.jpg 3447w" /></div>
+                <div className="slide_content inverse">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-right-heading">Of Roses</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="slide" data-slideshow="slide">
+              <div className="slide_center-wrap" data-slideshow="slide-center-wrap"><img src={s.imagem4} width="1620" alt="" draggable="false" sizes="20vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/goyave-0.jpg 2115w" /></div>
+              <div className="slide_left-wrap" data-slideshow="slide-left-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem5} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-1.webp 3456w" /></div>
+                <div className="slide_content inverse">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-left-heading">The Lover</div>
+                  </div>
+                </div>
+              </div>
+              <div className="slide_right-wrap" data-slideshow="slide-right-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem6} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/GREEN-2.webp 3456w" /></div>
+                <div className="slide_content">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-right-heading">Of Leaves</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="slide" data-slideshow="slide">
+              <div className="slide_center-wrap" data-slideshow="slide-center-wrap"><img src={s.imagem7} width="1620" alt="" draggable="false" sizes="20vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/yellow-0.jpg 2114w" /></div>
+              <div className="slide_left-wrap" data-slideshow="slide-left-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem8} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-1.webp 3456w" /></div>
+                <div className="slide_content">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-left-heading">The Savior</div>
+                  </div>
+                </div>
+              </div>
+              <div className="slide_right-wrap" data-slideshow="slide-right-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem9} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/YELLOW-2.webp 3456w" /></div>
+                <div className="slide_content inverse">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-right-heading">Of Tulips</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="slide" data-slideshow="slide">
+              <div className="slide_center-wrap" data-slideshow="slide-center-wrap">
+                <div className="slide_center-inner"><img src={s.imagem10} width="1620" alt="" draggable="false" sizes="20vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/pink-0-p-500.jpg 500w, https://moussamamadou.github.io/slideshow-clip-path/images/pink-0-p-800.jpg 800w, https://moussamamadou.github.io/slideshow-clip-path/images/pink-0-p-1080.jpg 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/pink-0-p-1600.jpg 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/pink-0-p-2000.jpg 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/pink-0.jpg 2112w" /></div>
+              </div>
+              <div className="slide_left-wrap" data-slideshow="slide-left-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem11} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-2.webp 3456w" /></div>
+                <div className="slide_content inverse">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-left-heading">The Gazer</div>
+                  </div>
+                </div>
+              </div>
+              <div className="slide_right-wrap" data-slideshow="slide-right-wrap">
+                <div className="slide_image-wrap"><img src={s.imagem12} width="1620" alt="" draggable="false" sizes="50vw" loading="lazy" srcSet="https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-500.webp 500w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-800.webp 800w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-1080.webp 1080w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-1600.webp 1600w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-2000.webp 2000w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-2600.webp 2600w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1-p-3200.webp 3200w, https://moussamamadou.github.io/slideshow-clip-path/images/PINK-1.webp 3456w" /></div>
+                <div className="slide_content">
+                  <div className="slide_content-heading-wrap">
+                    <div className="slide_content-heading" data-slideshow="slide-right-heading">Of Poppy</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </section>
+  );
+}

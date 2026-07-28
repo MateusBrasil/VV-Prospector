@@ -1,0 +1,57 @@
+[data-dobra="cursor-shooting-star-cursor"],[data-dobra="cursor-shooting-star-cursor"]{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--base-600);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+[data-dobra="cursor-shooting-star-cursor"] canvas#canvas{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+[data-dobra="cursor-shooting-star-cursor"] body.o-start canvas#canvas{
+      cursor: none;
+    }
+[data-dobra="cursor-shooting-star-cursor"] #message{
+      position: absolute;
+      right: 0;
+      bottom: 2rem;
+      left: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: var(--fonte-corpo);
+      font-size: 0.95rem;
+      text-align: center;
+      letter-spacing: 0.15em;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1000ms ease, transform 1000ms ease;
+    }
+[data-dobra="cursor-shooting-star-cursor"] body.o-start #message{
+      opacity: 1;
+      transform: translateY(0);
+    }
+[data-dobra="cursor-shooting-star-cursor"] .dg.ac{
+      z-index: 10;
+    }
+[data-dobra="cursor-shooting-star-cursor"] .dg.main{
+      font-family: var(--fonte-corpo);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+[data-dobra="cursor-shooting-star-cursor"] .dg .cr.number input[type=text],[data-dobra="cursor-shooting-star-cursor"] .dg .cr.string input[type=text]{
+      background: var(--base-600);
+      color: var(--base-200);
+    }
+[data-dobra="cursor-shooting-star-cursor"] .dg .title{
+      background: var(--base-600);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+  

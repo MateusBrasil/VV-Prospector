@@ -1,0 +1,1898 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upmind — Join Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Webflow `w-mod-js` style guard: add `reveal-on` before first paint so the
+       scroll-reveal hidden start-states in styles.css apply ONLY when JS runs. JS
+       off -> class never added -> content stays visible (no FOUC, no blank). -->
+  <script>document.documentElement.classList.add("reveal-on");</script>
+
+    <style data-bundled-from="/upmind/styles.css">
+/* Upmind bundled styles — cascade order; /images/ -> /upmind/images/ */
+
+/* ===== normalize.css ===== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+section {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+[hidden] {
+  display: none;
+}
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+button {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+
+
+/* ===== tokens.css ===== */
+:root {
+  --new-base_typography---xs--font-size: var(--new-base_sizes---fixed--0-75rem);
+  --new-base_typography---font-weight--semibold: 600;
+  --new-base---base--black: #1d1d1d;
+  --base--soft-green: #f7f9f2;
+  --_typography---font-family--body: Geist, sans-serif;
+  --text-color--text-primary: var(--base--dark-green);
+  --_sizes---fixed--medium: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--none: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--headers);
+  --_typography---h1--font-size: 4.5rem;
+  --_typography---h1--line-height: 1.03;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.135rem;
+  --_typography---h2--font-family: var(--_typography---font-family--headers);
+  --_typography---h2--font-size: 4rem;
+  --_typography---h2--line-height: 1.125;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.24rem;
+  --_typography---h3--font-family: var(--_typography---font-family--headers);
+  --_typography---h3--font-size: 3rem;
+  --_typography---h3--line-height: 1.23;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.13rem;
+  --_typography---h4--font-family: var(--_typography---font-family--headers);
+  --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+  --_typography---h4--line-height: 1.08;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: -.12rem;
+  --_typography---h5--font-family: var(--_typography---font-family--headers);
+  --_typography---h5--font-size: var(--_sizes---fixed--huge);
+  --_typography---h5--line-height: 1.38;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: -.12rem;
+  --_typography---h6--font-family: var(--_typography---font-family--headers);
+  --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---h6--line-height: 1.33;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: -.045rem;
+  --_sizes---fixed--xlarge: 1.5rem;
+  --_sizes---fixed--xxsmall: .25rem;
+  --_sizes---fixed--large: 1.25rem;
+  --bg-color--bg-subtle: var(--base--soft-grey);
+  --_sizes---fixed--huge: 2rem;
+  --_typography---font-weight--semibold: 600;
+  --bg-color--bg-primary: var(--base--dark-green);
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---padding-section--small: 3.25rem;
+  --_typography---font-weight--medium: 500;
+  --border-color--border-primary: #efeff2;
+  --_typography---xl--font-size: var(--_sizes---fixed--large);
+  --_typography---xl--line-height: 1.5;
+  --_typography---xl--letter-spacing: 0em;
+  --_typography---font-weight--light: 300;
+  --_typography---base--font-size: var(--_sizes---fixed--medium);
+  --_typography---base--line-height: 1.5;
+  --_typography---base--letter-spacing: -.03rem;
+  --_sizes---fixed--xsmall: .5rem;
+  --_typography---lg--font-size: 1.125rem;
+  --_typography---lg--line-height: 1.5;
+  --_typography---lg--letter-spacing: 0em;
+  --bg-color--bg-secondary: var(--base--grey);
+  --_sizes---fixed--xxlarge: 1.75rem;
+  --_sizes---fixed--small: .75rem;
+  --bg-color--bg-default: var(--base--white);
+  --base--black: black;
+  --base--white: #fff;
+  --_sizes---padding-section--large: 6.25rem;
+  --_typography---xs--font-size: var(--_sizes---fixed--small);
+  --_typography---xs--line-height: 1.5;
+  --_typography---xs--letter-spacing: 0em;
+  --main--primary: var(--base--soft-black);
+  --_typography---button--font-family: var(--_typography---font-family--mono);
+  --_typography---button--font-size: var(--_sizes---fixed--regular);
+  --_typography---button--line-height: 1.5;
+  --_typography---button--font-weight: var(--_typography---font-weight--regular);
+  --_typography---button--letter-spacing: .14rem;
+  --main--hover-primary: var(--base--soft-green);
+  --base--neon-green: #b7fe02;
+  --border-color--border-alternate: var(--base-color-neutral--neutral-darker);
+  --_typography---sm--font-size: var(--_sizes---fixed--regular);
+  --_typography---sm--line-height: 1.43;
+  --_typography---sm--letter-spacing: -.0175rem;
+  --_sizes---padding-section--medium: 4.5rem;
+  --_sizes---fixed--xhuge: 2.5rem;
+  --_sizes---fixed--tiny: .125rem;
+  --_typography---2xl--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---2xl--line-height: 1.3;
+  --_typography---2xl--letter-spacing: -.045rem;
+  --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+  --_typography---3xl--line-height: 1.5;
+  --_typography---3xl--letter-spacing: 0em;
+  --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+  --_typography---4xl--line-height: 1.5;
+  --_typography---4xl--letter-spacing: -.12rem;
+  --_typography---5xl--font-size: 2.25rem;
+  --_typography---5xl--line-height: 1.5;
+  --_typography---5xl--letter-spacing: 0em;
+  --_typography---font-weight--bold: 700;
+  --_typography---font-family--mono: "Geist Mono", sans-serif;
+  --grey--grey-400: #515151;
+  --_sizes---fixed--regular: .875rem;
+  --base--dark-green: #101604;
+  --base--soft-black: #131313;
+  --bg-color--bg-neon: var(--base--neon-green);
+  --grey--grey-100: #ddd;
+  --text-color--text-on-primary: var(--base--white);
+  --bg-color--bg-white: var(--base--white);
+  --text-color--neon-green: var(--base--neon-green);
+  --text-color--green: var(--base--green);
+  --bg-color--bg-mint: var(--base--mint);
+  --base--soft-beige: #eef3e4;
+  --base--mint: #e6ecd6;
+  --base--soft-grey: #a8a8a8;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --base--grey: #595959;
+  --base--green: #a0c347;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_typography---font-family--headers: Geist, sans-serif;
+  --grey--grey-200: #b6b6b6;
+  --grey--grey-300: grey;
+  --grey--grey-500: #333;
+  --grey--grey-600: #292929;
+  --grey--grey-700: #171717;
+  --grey--grey-800: #0f0f0f;
+  --grey--grey-900: #0a0a0a;
+  --bg-color--bg-dark: var(--base--black);
+  --new-base_sizes---fixed--0-75rem: .75rem;
+  --base-color-neutral--neutral-darker: #27272a;
+}
+
+/* Fixed-navbar height — = 77px, the live nav height (measured from the source).
+   Used to offset base-variant page content so the solid fixed nav doesn't
+   overlap it. The transparent (HOME) nav sits over the hero by design, no offset. */
+:root {
+  --nav-height: 4.8125rem;
+}
+
+
+/* ===== webflow.css ===== */
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBiUAAAC8AAAAYGNtYXDpP+a4AAABHAAAAFxnYXNwAAAAEAAAAXgAAAAIZ2x5ZmhS2XEAAAGAAAADHGhlYWQTFw3HAAAEnAAAADZoaGVhCXYFgQAABNQAAAAkaG10eCe4A1oAAAT4AAAAMGxvY2EDtALGAAAFKAAAABptYXhwABAAPgAABUQAAAAgbmFtZSoCsMsAAAVkAAABznBvc3QAAwAAAAAHNAAAACAAAwP4AZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAQAAAAAwACAACAAQAAQAg5gPpA//9//8AAAAAACDmAOkA//3//wAB/+MaBBcIAAMAAQAAAAAAAAAAAAAAAAABAAH//wAPAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEBIAAAAyADgAAFAAAJAQcJARcDIP5AQAGA/oBAAcABwED+gP6AQAABAOAAAALgA4AABQAAEwEXCQEH4AHAQP6AAYBAAcABwED+gP6AQAAAAwDAAOADQALAAA8AHwAvAAABISIGHQEUFjMhMjY9ATQmByEiBh0BFBYzITI2PQE0JgchIgYdARQWMyEyNj0BNCYDIP3ADRMTDQJADRMTDf3ADRMTDQJADRMTDf3ADRMTDQJADRMTAsATDSANExMNIA0TwBMNIA0TEw0gDRPAEw0gDRMTDSANEwAAAAABAJ0AtAOBApUABQAACQIHCQEDJP7r/upcAXEBcgKU/usBFVz+fAGEAAAAAAL//f+9BAMDwwAEAAkAABcBJwEXAwE3AQdpA5ps/GZsbAOabPxmbEMDmmz8ZmwDmvxmbAOabAAAAgAA/8AEAAPAAB0AOwAABSInLgEnJjU0Nz4BNzYzMTIXHgEXFhUUBw4BBwYjNTI3PgE3NjU0Jy4BJyYjMSIHDgEHBhUUFx4BFxYzAgBqXV6LKCgoKIteXWpqXV6LKCgoKIteXWpVSktvICEhIG9LSlVVSktvICEhIG9LSlVAKCiLXl1qal1eiygoKCiLXl1qal1eiygoZiEgb0tKVVVKS28gISEgb0tKVVVKS28gIQABAAABwAIAA8AAEgAAEzQ3PgE3NjMxFSIHDgEHBhUxIwAoKIteXWpVSktvICFmAcBqXV6LKChmISBvS0pVAAAAAgAA/8AFtgPAADIAOgAAARYXHgEXFhUUBw4BBwYHIxUhIicuAScmNTQ3PgE3NjMxOAExNDc+ATc2MzIXHgEXFhcVATMJATMVMzUEjD83NlAXFxYXTjU1PQL8kz01Nk8XFxcXTzY1PSIjd1BQWlJJSXInJw3+mdv+2/7c25MCUQYcHFg5OUA/ODlXHBwIAhcXTzY1PTw1Nk8XF1tQUHcjIhwcYUNDTgL+3QFt/pOTkwABAAAAAQAAmM7nP18PPPUACwQAAAAAANciZKUAAAAA1yJkpf/9/70FtgPDAAAACAACAAAAAAAAAAEAAAPA/8AAAAW3//3//QW2AAEAAAAAAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAgAAAAQAASAEAADgBAAAwAQAAJ0EAP/9BAAAAAQAAAAFtwAAAAAAAAAKABQAHgAyAEYAjACiAL4BFgE2AY4AAAABAAAADAA8AAMAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADQAAAAEAAAAAAAIABwCWAAEAAAAAAAMADQBIAAEAAAAAAAQADQCrAAEAAAAAAAUACwAnAAEAAAAAAAYADQBvAAEAAAAAAAoAGgDSAAMAAQQJAAEAGgANAAMAAQQJAAIADgCdAAMAAQQJAAMAGgBVAAMAAQQJAAQAGgC4AAMAAQQJAAUAFgAyAAMAAQQJAAYAGgB8AAMAAQQJAAoANADsd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzUmVndWxhcgBSAGUAZwB1AGwAYQByd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
+
+h2,
+h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 32px;
+  line-height: 36px;
+  margin-top: 20px;
+}
+h3 {
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 20px;
+}
+button {
+  border: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+.w-form-done {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}
+.w-form-fail {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+.w-input:focus,
+.w-select:focus {
+  border-color: #3898EC;
+  outline: 0;
+}
+.w-slider-dot:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+.w-slider-dot:focus.w-active {
+  box-shadow: none;
+}
+.w-slider-arrow-left:focus,
+.w-slider-arrow-right:focus {
+  outline: 0;
+}
+.w-dropdown-toggle:focus {
+  outline: 0;
+}
+.w-dropdown-link:focus {
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {
+  /* .w-lightbox-content */
+  .w-lightbox-control:hover {
+    opacity: 1;
+  }
+}
+
+.w-lightbox-inactive:hover {
+  opacity: 0;
+}
+[data-nav-menu-open] {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}
+.w--nav-link-open {
+  display: block;
+  position: relative;
+}
+.w-nav-button:focus {
+  outline: 0;
+}
+.w--nav-dropdown-open {
+  display: block;
+}
+.w--nav-dropdown-toggle-open {
+  display: block;
+}
+.w--nav-dropdown-list-open {
+  position: static;
+}
+/**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus {
+  outline: 0;
+}
+.w--tab-active {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+:root {
+  --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+  --new-base---base--black\<deleted\|variable-7cd51d88-f9da-d70a-a434-fb302e5e60d1\>: #1d1d1d;
+  --base--soft-green: #f7f9f2;
+  --_typography---font-family--body: Geist, sans-serif;
+  --text-color--text-primary: var(--base--dark-green);
+  --_sizes---fixed--medium: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--none: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--headers);
+  --_typography---h1--font-size: 4.5rem;
+  --_typography---h1--line-height: 1.03;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.135rem;
+  --_typography---h2--font-family: var(--_typography---font-family--headers);
+  --_typography---h2--font-size: 4rem;
+  --_typography---h2--line-height: 1.125;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.24rem;
+  --_typography---h3--font-family: var(--_typography---font-family--headers);
+  --_typography---h3--font-size: 3rem;
+  --_typography---h3--line-height: 1.23;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.13rem;
+  --_typography---h4--font-family: var(--_typography---font-family--headers);
+  --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+  --_typography---h4--line-height: 1.08;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: -.12rem;
+  --_typography---h5--font-family: var(--_typography---font-family--headers);
+  --_typography---h5--font-size: var(--_sizes---fixed--huge);
+  --_typography---h5--line-height: 1.38;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: -.12rem;
+  --_typography---h6--font-family: var(--_typography---font-family--headers);
+  --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---h6--line-height: 1.33;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: -.045rem;
+  --_sizes---fixed--xlarge: 1.5rem;
+  --_sizes---fixed--xxsmall: .25rem;
+  --_sizes---fixed--large: 1.25rem;
+  --bg-color--bg-subtle: var(--base--soft-grey);
+  --_sizes---fixed--huge: 2rem;
+  --_typography---font-weight--semibold: 600;
+  --bg-color--bg-primary: var(--base--dark-green);
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---padding-section--small: 3.25rem;
+  --_typography---font-weight--medium: 500;
+  --border-color--border-primary\<deleted\|variable-d4c54ba4-ee41-67ce-58a5-5216ca039f83\>: #efeff2;
+  --_typography---xl--font-size: var(--_sizes---fixed--large);
+  --_typography---xl--line-height: 1.5;
+  --_typography---xl--letter-spacing: 0em;
+  --_typography---font-weight--light: 300;
+  --_typography---base--font-size: var(--_sizes---fixed--medium);
+  --_typography---base--line-height: 1.5;
+  --_typography---base--letter-spacing: -.03rem;
+  --_sizes---fixed--xsmall: .5rem;
+  --_typography---lg--font-size: 1.125rem;
+  --_typography---lg--line-height: 1.5;
+  --_typography---lg--letter-spacing: 0em;
+  --bg-color--bg-secondary: var(--base--grey);
+  --_sizes---fixed--xxlarge: 1.75rem;
+  --_sizes---fixed--small: .75rem;
+  --bg-color--bg-default: var(--base--white);
+  --base--black: black;
+  --base--white: #fff;
+  --_sizes---padding-section--large: 6.25rem;
+  --_typography---xs--font-size: var(--_sizes---fixed--small);
+  --_typography---xs--line-height: 1.5;
+  --_typography---xs--letter-spacing: 0em;
+  --main--primary\<deleted\|variable-2961fe78-a0a9-462c-1940-35d81b071e20\>: var(--base--soft-black);
+  --_typography---button--font-family: var(--_typography---font-family--mono);
+  --_typography---button--font-size: var(--_sizes---fixed--regular);
+  --_typography---button--line-height: 1.5;
+  --_typography---button--font-weight: var(--_typography---font-weight--regular);
+  --_typography---button--letter-spacing: .14rem;
+  --main--hover-primary\<deleted\|variable-eea538eb-e03e-aec5-44e0-3340cd5939ca\>: var(--base--soft-green);
+  --base--neon-green: #b7fe02;
+  --border-color--border-alternate\<deleted\|variable-551aa6d2-4bf8-6036-137a-78e1c71841a4\>: var(--base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>);
+  --_typography---sm--font-size: var(--_sizes---fixed--regular);
+  --_typography---sm--line-height: 1.43;
+  --_typography---sm--letter-spacing: -.0175rem;
+  --_sizes---padding-section--medium: 4.5rem;
+  --_sizes---fixed--xhuge: 2.5rem;
+  --_sizes---fixed--tiny: .125rem;
+  --_typography---2xl--font-size: var(--_sizes---fixed--xlarge);
+  --_typography---2xl--line-height: 1.3;
+  --_typography---2xl--letter-spacing: -.045rem;
+  --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+  --_typography---3xl--line-height: 1.5;
+  --_typography---3xl--letter-spacing: 0em;
+  --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+  --_typography---4xl--line-height: 1.5;
+  --_typography---4xl--letter-spacing: -.12rem;
+  --_typography---5xl--font-size: 2.25rem;
+  --_typography---5xl--line-height: 1.5;
+  --_typography---5xl--letter-spacing: 0em;
+  --_typography---font-weight--bold: 700;
+  --_typography---font-family--mono: "Geist Mono", sans-serif;
+  --grey--grey-400: #515151;
+  --_sizes---fixed--regular: .875rem;
+  --base--dark-green: #101604;
+  --base--soft-black: #131313;
+  --bg-color--bg-neon: var(--base--neon-green);
+  --grey--grey-100: #ddd;
+  --text-color--text-on-primary: var(--base--white);
+  --bg-color--bg-white: var(--base--white);
+  --text-color--neon-green: var(--base--neon-green);
+  --text-color--green: var(--base--green);
+  --bg-color--bg-mint: var(--base--mint);
+  --base--soft-beige: #eef3e4;
+  --base--mint: #e6ecd6;
+  --base--soft-grey: #a8a8a8;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --base--grey: #595959;
+  --base--green: #a0c347;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_typography---font-family--headers: Geist, sans-serif;
+  --grey--grey-200: #b6b6b6;
+  --grey--grey-300: grey;
+  --grey--grey-500: #333;
+  --grey--grey-600: #292929;
+  --grey--grey-700: #171717;
+  --grey--grey-800: #0f0f0f;
+  --grey--grey-900: #0a0a0a;
+  --bg-color--bg-dark: var(--base--black);
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+  --base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>: #27272a;
+}
+
+.new-base--t-button-secondary:hover {
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}
+
+.new-base--t-button:hover {
+  transform: scale(.95);
+}
+
+body {
+  background-color: var(--base--soft-green);
+  font-family: var(--_typography---font-family--body);
+  color: var(--text-color--text-primary);
+  font-size: var(--_sizes---fixed--medium);
+  line-height: 1.4;
+  font-weight: var(--_typography---font-weight--regular);
+  letter-spacing: -.02rem;
+  overscroll-behavior: none;
+}
+
+h2 {
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-family: var(--_typography---h3--font-family);
+  font-size: var(--_typography---h3--font-size);
+  line-height: var(--_typography---h3--line-height);
+  font-weight: var(--_typography---h3--font-weight);
+  letter-spacing: var(--_typography---h3--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.text-color-secondary {
+  color: var(--text-color--text-secondary);
+}
+
+.h3 {
+  font-family: var(--_typography---h3--font-family);
+  font-size: var(--_typography---h3--font-size);
+  line-height: var(--_typography---h3--line-height);
+  font-weight: var(--_typography---h3--font-weight);
+  letter-spacing: var(--_typography---h3--letter-spacing);
+}
+
+.h2 {
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+}
+
+.page-wrapper {
+  overflow: clip;
+}
+
+.button {
+  grid-column-gap: var(--_sizes---fixed--medium);
+  grid-row-gap: var(--_sizes---fixed--medium);
+  background-color: var(--main--primary\<deleted\|variable-2961fe78-a0a9-462c-1940-35d81b071e20\>);
+  font-family: var(--_typography---button--font-family);
+  color: var(--base--white);
+  font-size: var(--_typography---button--font-size);
+  line-height: var(--_typography---button--line-height);
+  font-weight: var(--_typography---button--font-weight);
+  letter-spacing: var(--_typography---button--letter-spacing);
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1.5rem;
+  transition: background-color .2s;
+  display: flex;
+}
+
+.button:hover {
+  background-color: var(--main--hover-primary\<deleted\|variable-eea538eb-e03e-aec5-44e0-3340cd5939ca\>);
+}
+
+.button.is-form-submit {
+  padding-top: var(--_sizes---fixed--small);
+  padding-bottom: var(--_sizes---fixed--small);
+  color: var(--base--neon-green);
+  text-transform: uppercase;
+  border-radius: 3rem;
+}
+
+.button.is-secondary {
+  border: 1px solid var(--border-color--border-alternate\<deleted\|variable-551aa6d2-4bf8-6036-137a-78e1c71841a4\>);
+  color: var(--text-color--text-primary);
+  background-color: #0000;
+}
+
+.spacer-medium {
+  width: 100%;
+  padding-top: var(--_sizes---fixed--medium);
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.nav-button_component:hover {
+  opacity: 1;
+}
+
+.nav_dropdown-link:hover {
+  opacity: 100;
+}
+
+.arrow:hover {
+  transform: scale(.97)translate(-60%);
+}
+
+.arrow.is-right:hover {
+  transform: scale(.97)translate(60%);
+}
+
+.text-color-on-primary {
+  color: var(--text-color--text-on-primary);
+}
+
+.button_component {
+  min-height: 2.75rem;
+  padding: var(--_sizes---fixed--small) var(--_sizes---fixed--xxlarge);
+  background-color: var(--base--dark-green);
+  font-family: var(--_typography---button--font-family);
+  color: var(--base--neon-green);
+  font-size: var(--_typography---button--font-size);
+  line-height: var(--_typography---button--line-height);
+  font-weight: var(--_typography---button--font-weight);
+  text-align: center;
+  letter-spacing: var(--_typography---button--letter-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.title-dot {
+  width: var(--_sizes---fixed--xxsmall);
+  height: var(--_sizes---fixed--xxsmall);
+  background-color: var(--base--dark-green);
+  border-radius: 2rem;
+}
+
+.title-dot.bg-neon:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c) {
+  background-color: var(--bg-color--bg-primary);
+}
+
+.section_title {
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--xsmall);
+  font-family: var(--_typography---font-family--mono);
+  color: var(--text-color--neon-green);
+  font-size: var(--_sizes---fixed--regular);
+  letter-spacing: .14rem;
+  text-transform: uppercase;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 1.43;
+  display: flex;
+}
+
+.section_title:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c) {
+  color: var(--text-color--text-primary);
+  flex: none;
+}
+
+.bg-neon {
+  background-color: var(--bg-color--bg-neon);
+}
+
+.bg-mint {
+  background-color: var(--bg-color--bg-mint);
+}
+
+.text-color-black {
+  color: var(--base--black);
+}
+
+.footer_link:hover {
+  color: var(--base--neon-green);
+  transform: scale(.95);
+}
+
+.users-list {
+  grid-column-gap: var(--_sizes---fixed--medium);
+  grid-row-gap: var(--_sizes---fixed--medium);
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.join_grid {
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  place-items: stretch stretch;
+  min-height: calc(100dvh - 5rem);
+  display: grid;
+}
+
+.join_grid-left {
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 3.25rem;
+  display: flex;
+}
+
+.join_content {
+  grid-column-gap: var(--_sizes---fixed--xhuge);
+  grid-row-gap: var(--_sizes---fixed--xhuge);
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.join_grid-right {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3.25rem;
+  padding-left: 2.375rem;
+  padding-right: 2.375rem;
+  display: flex;
+  position: relative;
+}
+
+.join_gradient {
+  z-index: 1;
+  background-image: linear-gradient(90deg, #101604, #10160400 50%, #1016040a);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.join_card {
+  z-index: 2;
+  max-width: 19.625rem;
+  padding: var(--_sizes---fixed--xlarge);
+  grid-column-gap: var(--_sizes---fixed--xsmall);
+  grid-row-gap: var(--_sizes---fixed--none);
+  border-radius: var(--_sizes---fixed--xlarge);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  color: #fff6;
+  background-color: #00000029;
+  border: 1px solid #ffffff29;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.join_icon-wrap {
+  width: var(--_sizes---fixed--xxlarge);
+  height: var(--_sizes---fixed--xxlarge);
+  padding: var(--_sizes---fixed--xsmall);
+  background-color: var(--base--neon-green);
+  border-radius: 3.75rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+}
+
+.join_icon {
+  width: var(--_sizes---fixed--regular);
+  height: var(--_sizes---fixed--regular);
+  overflow: hidden;
+}
+
+.user-visuals {
+  grid-column-gap: var(--_sizes---fixed--none);
+  grid-row-gap: var(--_sizes---fixed--none);
+  display: flex;
+}
+
+.user-image {
+  width: var(--_sizes---fixed--xhuge);
+  height: var(--_sizes---fixed--xhuge);
+  border: 1px solid var(--bg-color--bg-default);
+  border-radius: 60rem;
+}
+
+.user-image.negative-margin {
+  margin-left: -1rem;
+}
+
+.join-text {
+  font-size: var(--_typography---4xl--font-size);
+  line-height: var(--_typography---4xl--line-height);
+  letter-spacing: var(--_typography---4xl--letter-spacing);
+}
+
+.button_mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.button_text {
+  z-index: 1;
+  text-shadow: 0 1.5rem 0 var(--base--neon-green);
+  position: relative;
+}
+
+.button-wrap {
+  display: flex;
+}
+
+.max-title.is-22rem {
+  max-width: 22rem;
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: 3rem;
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 5rem;
+    --_sizes---padding-section--medium: 4rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 3.5rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 3rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: 2.75rem;
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--xhuge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--large);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--huge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: var(--_sizes---fixed--huge);
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+  }
+
+  .join_grid {
+    justify-items: stretch;
+  }
+
+  .join_grid-left {
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 3rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 2.75rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: var(--_sizes---fixed--huge);
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--huge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--medium);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: 2rem;
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: var(--_sizes---fixed--huge);
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 4rem;
+    --_sizes---padding-section--medium: 3rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+  }
+
+  .join_grid {
+    flex-flow: column;
+    grid-template-rows: minmax(auto, 21rem);
+    grid-template-columns: 1fr;
+    min-height: auto;
+    display: flex;
+  }
+
+  .join_grid-left {
+    padding: 3rem var(--_sizes---fixed--medium) 2rem;
+    grid-column-gap: var(--_sizes---fixed--huge);
+    grid-row-gap: var(--_sizes---fixed--huge);
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  .join_content {
+    grid-column-gap: var(--_sizes---fixed--medium);
+    grid-row-gap: var(--_sizes---fixed--medium);
+  }
+
+  .join_grid-right {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-6d217cd1-099b-e346-445e-c24e1bd0d1b8\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-ccf4219f-5252-0c39-6244-1a55b64ae5e1\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-5f9b87a2-0231-7af8-5f42-14765ea03161\>: 600;
+    --_sizes---fixed--medium: 1rem;
+    --_sizes---fixed--none: 0rem;
+    --_sizes---fixed--xlarge: 1.5rem;
+    --_sizes---fixed--xxsmall: .25rem;
+    --_sizes---fixed--large: 1.25rem;
+    --_sizes---fixed--huge: 2rem;
+    --_sizes---padding-section--small: var(--_sizes---fixed--huge);
+    --_sizes---fixed--xsmall: .5rem;
+    --_sizes---fixed--xxlarge: 1.75rem;
+    --_sizes---fixed--small: .75rem;
+    --_sizes---padding-section--large: 4rem;
+    --_sizes---padding-section--medium: 3rem;
+    --_sizes---fixed--xhuge: 2.5rem;
+    --_sizes---fixed--tiny: .125rem;
+    --_sizes---fixed--regular: .875rem;
+    --_typography---font-family--body: Geist, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--headers);
+    --_typography---h1--font-size: 2.75rem;
+    --_typography---h1--line-height: 1.03;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.135rem;
+    --_typography---h2--font-family: var(--_typography---font-family--headers);
+    --_typography---h2--font-size: 2.75rem;
+    --_typography---h2--line-height: 1.125;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.24rem;
+    --_typography---h3--font-family: var(--_typography---font-family--headers);
+    --_typography---h3--font-size: var(--_sizes---fixed--huge);
+    --_typography---h3--line-height: 1.23;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.13rem;
+    --_typography---h4--font-family: var(--_typography---font-family--headers);
+    --_typography---h4--font-size: var(--_sizes---fixed--huge);
+    --_typography---h4--line-height: 1.08;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: -.12rem;
+    --_typography---h5--font-family: var(--_typography---font-family--headers);
+    --_typography---h5--font-size: var(--_sizes---fixed--huge);
+    --_typography---h5--line-height: 1.38;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: -.12rem;
+    --_typography---h6--font-family: var(--_typography---font-family--headers);
+    --_typography---h6--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---h6--line-height: 1.33;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: -.045rem;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---xl--font-size: var(--_sizes---fixed--large);
+    --_typography---xl--line-height: 1.5;
+    --_typography---xl--letter-spacing: 0em;
+    --_typography---font-weight--light: 300;
+    --_typography---base--font-size: var(--_sizes---fixed--medium);
+    --_typography---base--line-height: 1.5;
+    --_typography---base--letter-spacing: -.03rem;
+    --_typography---lg--font-size: 1.125rem;
+    --_typography---lg--line-height: 1.5;
+    --_typography---lg--letter-spacing: 0em;
+    --_typography---xs--font-size: var(--_sizes---fixed--small);
+    --_typography---xs--line-height: 1.5;
+    --_typography---xs--letter-spacing: 0em;
+    --_typography---button--font-family: var(--_typography---font-family--mono);
+    --_typography---button--font-size: var(--_sizes---fixed--regular);
+    --_typography---button--line-height: 1.5;
+    --_typography---button--font-weight: var(--_typography---font-weight--regular);
+    --_typography---button--letter-spacing: .14rem;
+    --_typography---sm--font-size: var(--_sizes---fixed--regular);
+    --_typography---sm--line-height: 1.43;
+    --_typography---sm--letter-spacing: -.0175rem;
+    --_typography---2xl--font-size: var(--_sizes---fixed--medium);
+    --_typography---2xl--line-height: 1.3;
+    --_typography---2xl--letter-spacing: -.045rem;
+    --_typography---3xl--font-size: var(--_sizes---fixed--xxlarge);
+    --_typography---3xl--line-height: 1.5;
+    --_typography---3xl--letter-spacing: 0em;
+    --_typography---4xl--font-size: var(--_sizes---fixed--xlarge);
+    --_typography---4xl--line-height: 1.5;
+    --_typography---4xl--letter-spacing: -.12rem;
+    --_typography---5xl--font-size: 2rem;
+    --_typography---5xl--line-height: 1.5;
+    --_typography---5xl--letter-spacing: 0em;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-family--mono: "Geist Mono", sans-serif;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+    --_typography---font-family--headers: Geist, sans-serif;
+  }
+
+  .button.is-form-submit {
+    width: 100%;
+  }
+
+  .button_component {
+    width: 100%;
+  }
+
+  .section_title:where(.w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c) {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .join_grid-left {
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    padding: 1.7rem 1rem 1rem;
+  }
+
+  .join-text {
+    font-size: var(--_sizes---fixed--xxlarge);
+  }
+
+  .button-wrap {
+    flex-flow: column;
+    width: 100%;
+  }
+}
+
+ #w-node-bef957b9-427a-376a-30dc-4c5bb652f6bd-b652f6a8 {
+  justify-self: stretch;
+}
+
+
+
+
+/* ===== global-styles.css ===== */
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+/* Focus state style for keyboard navigation for the focusable elements */
+/* Set color style to inherit */
+/* Get rid of top margin on first element in any rich text element */
+/* Get rid of bottom margin on last element in any rich text element */
+/* Make sure containers never lose their center alignment */
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+/* Apply "..." after 3 lines of text */
+/* Apply "..." after 2 lines of text */
+/* Adds inline flex display */
+/* These classes are never overwritten */
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+
+/* ===== components.css ===== */
+/* Component-specific overrides — added during section build */
+
+/* Fixed-nav content offset — base-variant pages carry a solid fixed navbar that
+   would otherwise cover the top of the page content. Push their main-wrapper
+   below the nav by exactly one nav-height. HOME is excluded: its transparent nav
+   sits over the hero by design (no .has-fixed-nav class, no offset). */
+.has-fixed-nav {
+  padding-top: var(--nav-height);
+}
+
+/* h5 line-height override → 1.2 (source token was 1.38). Loaded after webflow.css,
+   so this base :root declaration wins at every breakpoint (webflow re-declares the
+   token to 1.38 in its media queries, but those come earlier in source order). */
+:root,
+body {
+  --_typography---h5--line-height: 1.2;
+}
+
+/* Mask the team-detail + blog-detail + service-detail hero images' zoom-in entrance
+   (hero-load.ts scales the .img inside). The other hero image wrappers already clip
+   in webflow.css. */
+
+/* Team hero on mobile portrait (≤479): the source keeps the desktop fixed height
+   (calc(100vh - 5rem) + min-height: 40rem) after the grid collapses to one column,
+   which squashes the portrait into a thin band. Let the hero size to content and move
+   the photo BELOW the name/role/bio/socials so the Join section follows it naturally.
+   The .img is position:absolute, so the wrapper needs an explicit box — aspect-ratio
+   keeps the (≈square, 1.02) portrait proportional to the column width. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Responsive heading scale (global typography fix)
+
+   Problem: this template decouples semantic tag from visual class (Client-First
+   pattern: a page H1 may carry class .h3, a section H2 may carry class .h1, etc.).
+   On desktop that intent is fine, but webflow.css's responsive token blocks
+   collapsed .h3/.h4/.h5 onto the SAME `huge` (2rem) value at ≤767/≤479 and let
+   the page-title classes (.h3 / .text-6xl, ~2rem) shrink BELOW larger section
+   classes — inverting the visual hierarchy on mobile/tablet.
+
+   Fix: redefine the six heading font-size TOKENS with a clean, strictly
+   monotonic ramp at each breakpoint (h1 > h2 > h3 > h4 > h5 > h6), and keep the
+   page-h1 floor at 2.25rem so it never shrinks to an awkward size. Because every
+   .h1–.h6 / .text-* class resolves its size from these tokens, fixing the tokens
+   fixes the scale everywhere. Loaded after webflow.css; `:root` (specificity
+   0,1,0) wins over webflow's `body {}` blocks (0,0,1). Desktop is UNCHANGED.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 991px) {
+  :root, body {
+    --_typography---h1--font-size: 3.75rem;
+    --_typography---h2--font-size: 3.25rem;
+    --_typography---h3--font-size: 2.75rem;
+    --_typography---h4--font-size: 2.25rem;
+    --_typography---h5--font-size: 1.875rem;
+    --_typography---h6--font-size: 1.5rem;
+  }
+  /* .text-6xl is a hardcoded page-title display class (not token-driven). Keep
+     its ramp aligned just above the h3 token so it stays a credible page h1. */
+}
+
+@media screen and (max-width: 767px) {
+  :root, body {
+    --_typography---h1--font-size: 3.25rem;
+    --_typography---h2--font-size: 2.875rem;
+    --_typography---h3--font-size: 2.5rem;
+    --_typography---h4--font-size: 2.125rem;
+    --_typography---h5--font-size: 1.75rem;
+    --_typography---h6--font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  :root, body {
+    --_typography---h1--font-size: 2.875rem;
+    --_typography---h2--font-size: 2.5rem;
+    --_typography---h3--font-size: 2.25rem;
+    --_typography---h4--font-size: 1.875rem;
+    --_typography---h5--font-size: 1.625rem;
+    --_typography---h6--font-size: 1.375rem;
+  }
+}
+
+/* Button hover lives in src/scripts/button-hover.ts (GSAP SplitText, per-letter
+   slide + button scale). The text-shadow on .button_text (webflow.css) is the
+   resting "clone" each letter swaps with. No CSS :hover here on purpose — a CSS
+   transform would fight GSAP's per-frame writes. */
+
+/* Nav link hover — same per-letter SplitText swap as the buttons (driven by
+   button-hover.ts). `.nav_link-text` is the mask (overflow:hidden) AND carries the
+   resting clone via `text-shadow: 0 1.5em 0 currentColor`. currentColor is the whole
+   point: unlike `.button_text` (fixed label colour), the navbar ships in multiple
+   colour variants, so the clone must inherit whatever colour the link currently is.
+   Offset 1.5em (> line-height 1.43) keeps the clone clipped below until hover. */
+
+/* Pricing "before" price (struck-through old price): the source's --bg-color--bg-subtle
+   (#a8a8a8) only reaches 2.24:1 on the light pricing card — below WCAG AA. Use the
+   secondary text token (#595959, ~6.5:1) so it stays muted but legible. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Blog card hover (a-40 — CSS approximation, Phase 5B)
+
+   Source IX2 (12 items) = image scale 1.1 + the circular arrow button swapping
+   its icon on a diagonal + a bg shift. Reconstructed as CSS (it's a hover): the
+   photo zooms to 1.1 (clipped by .blog_card-img's overflow), and inside the
+   overflow:hidden .blog_arrow circle the resting arrow (.is-one, centred) shoots
+   out top-right while the hidden one (.is-two, parked bottom-left) flies in to
+   take its place. Easing matches the source's outQuart-ish curve. Only the
+   .is-two listing variant carries the arrow button. */
+
+/* Image zoom — both the home teaser (.blog_card > .blog_img) and the /blog listing
+   (.blog_card.is-two > .blog_card-img); both clip the overflow. */
+.blog_card:hover .img {
+  transform: scale(1.1);
+}
+
+/* Arrow button bg → neon on hover (the arrow glyph is black → strong contrast). */
+.blog_card.is-two:hover .blog_arrow {
+  background-color: var(--base--neon-green);
+}
+
+.blog_card.is-two:hover .blog_arrow-icon.is-one {
+  transform: translate(150%, -150%);
+}
+
+.blog_card.is-two:hover .blog_arrow-icon.is-two {
+  /* parked at bottom-left (-48px,+48px from centre); same diagonal vector as is-one
+     lands it dead-centre as the resting arrow shoots out — measured, not guessed. */
+  transform: translate(150%, -150%);
+}
+
+/* /blog listing grid: 2 columns on tablet (768–991; ≤767 becomes a Swiper via
+   data-slider-mq="767"). The source kept 3 cramped columns here. */
+
+/* The per-card arrow button is a desktop hover affordance (swap + bg). Hide it on
+   tablet + mobile where there's no hover. */
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Slider arrow press feedback (Phase 5B): scale 0.95 on hover AND while pressed.
+   Covers every `.arrow-group` prev/next (grid sliders + home testimonials). These
+   buttons carry no other transform, so a plain scale is safe. The About
+   testimonials use a different `.arrow` element (its own scoped rule). */
+.arrow-group > .swiper-button-prev:hover,
+.arrow-group > .swiper-button-next:hover,
+.arrow-group > .swiper-button-prev:active,
+.arrow-group > .swiper-button-next:active {
+  transform: scale(0.95);
+}
+
+/* About-testimonials chevrons use the `.arrow` element instead. On desktop they
+   take webflow.css's base `.arrow:hover { scale(.97) translate(±60%) }`; bump to
+   0.95 and add :active, preserving the side-positioning translate. (≤479px is
+   handled by the component's own scoped block.) Loads after webflow.css → wins. */
+.arrow:hover,
+.arrow:active {
+  transform: scale(0.95) translate(-60%);
+}
+.arrow.is-right:hover,
+.arrow.is-right:active {
+  transform: scale(0.95) translate(60%);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Team card hover (a-42/43, Phase 5B): the photo zooms inside its clipped wrapper
+   (.team_card-img is overflow:clip — like the blog cards), and the arrow self-swaps
+   inside its icon box: is-one shoots out top-right while the parked is-two flies in
+   to centre. (Source IX2 scaled the whole card; per Edgar only the image zooms — so
+   nothing overflows the cell, no grid-overflow/z-index workaround needed.) */
+.team_card:hover .team_card-img .img {
+  transform: scale(1.1);
+}
+.team_card:hover .team_arrow.is-one {
+  transform: translate(150%, -150%); /* shoots out top-right */
+}
+.team_card:hover .team_arrow.is-two {
+  transform: translate(0%, 0%); /* flies in to centre */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Footer link hover (a-59/60): tween to the neon accent (.footer_link already
+   transitions colour in webflow.css). */
+.footer_link:hover {
+  color: var(--base--neon-green);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Social icon buttons (contact "Follow Us" + footer): on hover the wrap fills
+   with the neon accent and scales up; the SVG icon — an <img> (white in contact,
+   light-green #D8FF85 in footer), so not CSS-colourable via fill — is flipped to
+   black with `filter: brightness(0)` so it stays high-contrast on the bright fill.
+   A light icon on a light bg would vanish; inverting it keeps the contrast. */
+.social-icons_grid .card-icon-wrap:hover,
+.footer_icon-wrap:hover {
+  background-color: var(--base--neon-green);
+  transform: scale(1.1);
+}
+.social-icons_grid .card-icon-wrap:hover .card-icon,
+.footer_icon-wrap:hover .footer_social {
+  filter: brightness(0);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   OSMO scaling-hamburger navigation (tablet + mobile) — ported from Advisora,
+   restyled to Upmind (dark-green card, white text, neon current-page dot, Geist).
+   The pill lives INSIDE the navbar (absolute) so the navbar keeps its height; on
+   activation the bg scales up to reveal the menu card anchored top-right. A fixed
+   sibling (.navigation__dark-bg) dims the page. State lives on
+   <html data-navigation-status>, set by src/scripts/navbar.ts.
+   Desktop (≥992) uses the inline links, so the hamburger + backdrop hide there. */
+@media (max-width: 991px) {
+  /* Mobile chrome is just logo + hamburger — drop the desktop CTA. */
+}
+.hamburger-nav .hamburger-nav__a:hover .hamburger-nav__dot {
+  transform: scale(1);
+  opacity: 0.5;
+}
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar {
+  transform: translateY(0.15em);
+}
+.hamburger-nav__toggle:hover .hamburger-nav__toggle-bar:nth-child(2) {
+  transform: translateY(-0.15em);
+}
+
+
+/* ===== grid-slider.css ===== */
+/* =========================================================================
+   grid-slider.css — responsive grid→slider enhancement (reviewer request)
+
+   ADDITIVE, source-true. The Webflow source turned several card grids into a
+   plain `display:flex; overflow:auto` drag strip on tablet/mobile (no arrows).
+   We upgrade those to a real Swiper slider WITH arrows below each grid's own
+   degrade breakpoint, while the desktop CSS grid is left exactly as-is and is
+   NEVER driven by Swiper.
+
+   Two breakpoint families, matching where the SOURCE grid degraded:
+     • default (services, team)  → slider ≤991 / grid ≥992   [no data-slider-mq]
+     • expertise, blog list      → slider ≤767 / grid ≥768   [data-slider-mq="767"]
+
+   Markup contract (per target grid):
+     <div class="<grid-class> swiper" data-grid-slider data-spv data-gap
+          [data-slider-mq="767"]>
+       <div class="swiper-wrapper">
+         <div class="<item-class> swiper-slide"> …card… </div> …
+       </div>
+       <div class="arrow-group">
+         <div class="swiper-button-prev" data-prev>…</div>
+         <div class="swiper-button-next" data-next>…</div>
+       </div>
+     </div>
+
+   Init/destroy handled by src/scripts/grid-slider.ts (matchMedia per breakpoint).
+   ========================================================================= */
+
+/* ---- Shared "is a slider" rules (applied at/below the breakpoint) -------- */
+/* These neutralize the source drag-strip rules so Swiper fully controls the
+   track, and render the arrow group. Wrapped per-breakpoint below. */
+
+/* === Family A: default grids — slider ≤991, plain grid ≥992 ============== */
+@media screen and (min-width: 992px) {
+  /* Stay a grid on desktop. Swiper's swiper.css sets .swiper{display:block} and
+     .swiper-wrapper{display:flex}; undo both so the source grid layout applies
+     straight to the cards. Targets WITHOUT a 767 override (i.e. the 991 family). */
+}
+
+/* === Family B: expertise / blog — slider ≤767, plain grid ≥768 ========== */
+
+/* ---- Preserve source item display under Swiper -------------------------- */
+/* Swiper's swiper.css sets .swiper-slide{display:block}, which flattens the
+   source `.expertise_item{display:flex;flex-flow:column;row-gap:xlarge}` to block
+   so its icon→title gap collapses to 0 (all viewports). Restore the source
+   flex-column (higher specificity than .swiper-slide) so the 1.5rem row-gap
+   between the icon and the title applies again — grid item AND slide alike. */
+
+/* ---- Arrow buttons (same look as the testimonial slider arrows) --------- */
+/* Swiper's swiper.css absolutely-positions .swiper-button-prev/next and gives
+   them their own ::after glyph. Re-anchor them into the static arrow-group row
+   and suppress the default glyph so our arrow-left/right SVGs show — mirroring
+   how the testimonial slider renders these buttons. Breakpoint-agnostic: only
+   ever visible inside a displayed .arrow-group (gated above). */
+[data-grid-slider] > .arrow-group > .swiper-button-prev::after,
+[data-grid-slider] > .arrow-group > .swiper-button-next::after {
+  content: none;
+}
+
+
+/* ===== reveal.css ===== */
+/* Scroll-reveal initial states — paired with scroll-reveal.ts (Phase 5B).
+ *
+ * Gated on `html.reveal-on` (added by an inline <head> script before first paint,
+ * Webflow `w-mod-js` style) so the hidden state applies ONLY when JS is running.
+ * JS off  → class never added → content visible (no FOUC, no blank page).
+ *
+ * The media query MUST match scroll-reveal.ts exactly: only desktop with motion
+ * allowed hides anything. On ≤991px the card grids become Swiper sliders, so a
+ * hidden initial state would blank off-screen slides — reveals are desktop-only. */
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  html.reveal-on .scroll-into-view,
+  html.reveal-on [data-reveal] {
+    opacity: 0;
+    transform: translateY(0.9375rem); /* 15px @ 16px root — source slideInUp */
+  }
+
+  html.reveal-on [data-reveal-img] {
+    transform: scale(1.5); /* source scaleIn (a-61) */
+  }
+
+  html.reveal-on [data-reveal-rotate] {
+    opacity: 0;
+    transform: rotate(-5deg); /* source rotateIn (a-35) */
+  }
+
+  /* join social-proof avatars + "+20k customers" label: pre-shift right + hidden;
+     scroll-reveal.ts staggers them back to x:0 (slide in from the right). */
+  html.reveal-on [animation="join-user-list"] .user-image,
+  html.reveal-on [animation="join-user-list"] .users-count {
+    opacity: 0;
+    transform: translateX(2.5rem);
+  }
+}
+
+/* Page-load intro guard — paired with hero-load.ts. No !important so gsap.set wins.
+ * NOT gated on min-width: the hero/nav intro runs on all viewports (load, not scroll
+ * → no grid-slider conflict). Source kept these `visibility:hidden` until JS ran. */
+@media (prefers-reduced-motion: no-preference) {
+  html.reveal-on [data-navbar] {
+    visibility: hidden;
+  }
+  /* Hero image: scale-only entrance — ALWAYS visible (no opacity/visibility), just
+     zooms. Pre-scale here so it's zoomed before first paint (no flash); hero-load.ts
+     animates it back to 1. Masked by the wrapper's overflow:clip. */
+}
+
+
+/* ===== Navbar.astro scoped styles (inlined navbar) ===== */
+/* Reviewer request: nav links UPPERCASE (desktop + mobile overlay share
+   .nav_links). Source webflow.css .nav_links has no text-transform, so set it
+   here. Keeps the source mono font + .14rem letter-spacing intact. */
+
+/* --- Fixed navbar (reviewer request — source was sticky/absolute) ---
+   Pinned to the top for BOTH variants. .navbar.w-nav (specificity 0,2,0)
+   overrides webflow.css's `.navbar { position: sticky }` (0,1,0) AND
+   `.navbar:where(.w-variant-…) { position: absolute }` (:where is 0, so 0,1,0).
+   Colors still come from webflow.css's variant rules — we only set geometry. */
+
+/* --- Hide-on-scroll (navbar.js toggles .is-hidden) --- */
+
+/* The mobile menu is now the OSMO scaling hamburger (.hamburger-anchor /
+   .hamburger-nav, styled in components.css, wired by navbar.js via
+   data-navigation-status). Webflow's data-collapse="medium" still hides the
+   desktop links (.w-nav-menu) at ≤991px — only the hamburger shows there. */
+
+    </style>
+  </head>
+<body>
+  <div class="page-wrapper">
+    <section class="section_join bg-mint">
+      <div class="join_grid">
+        <div class="join_grid-left">
+          <div class="join_content">
+            <div class="scroll-into-view">
+              <div animation="" data-wf--section-title--variant="black" class="section_title w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c">
+                <div class="title-dot bg-neon w-variant-dbb4a0a6-0c21-a050-cfd8-50437556227c"></div>
+                <div>Join us</div>
+              </div>
+            </div>
+            <div class="scroll-into-view">
+              <div class="max-title is-22rem">
+                <h2 class="h3 text-color-black">Ready to elevate your business?</h2>
+              </div>
+              <div class="spacer-medium"></div>
+              <div class="text-color-secondary">Partner with us to take your digital presence to the next level.</div>
+            </div>
+            <div class="button-wrap">
+              <div class="scroll-into-view">
+                <a button="" data-wf--button--variant="base" href="/contact" class="button_component w-inline-block">
+                  <div class="button_mask">
+                    <div button-text="" class="button_text">Book a Call</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div animation="join-user-list" class="users-list">
+            <div class="user-visuals"><img src="https://d173woph5zl366.cloudfront.net/upmind/images/user-01.avif" loading="lazy" animation="join-user-img" alt="Portrait of a young man with short light brown hair wearing a blue blazer and light blue shirt, smiling slightly against an outdoor blurred background." class="user-image"><img src="https://d173woph5zl366.cloudfront.net/upmind/images/user-02.avif" loading="lazy" animation="join-user-img" alt="Close-up portrait of a young man with dark skin and short hair wearing a black shirt." class="user-image negative-margin"><img src="https://d173woph5zl366.cloudfront.net/upmind/images/user-03.avif" loading="lazy" animation="join-user-img" alt="Young man with curly brown hair and a slight smile wearing a dark jacket against a rustic background." class="user-image negative-margin"></div>
+            <div class="users-count">+20k customers</div>
+          </div>
+        </div>
+        <div id="w-node-bef957b9-427a-376a-30dc-4c5bb652f6bd-b652f6a8" class="join_grid-right"><img src="https://d173woph5zl366.cloudfront.net/upmind/images/join-img.avif" loading="lazy" sizes="100vw" srcset="https://d173woph5zl366.cloudfront.net/upmind/images/join-img-p-500.avif 500w, https://d173woph5zl366.cloudfront.net/upmind/images/join-img-p-800.avif 800w, https://d173woph5zl366.cloudfront.net/upmind/images/join-img.avif 1280w" alt="Rolling green sand dunes fading into a misty, pale green sky." class="img">
+          <div class="join_gradient"></div>
+          <div class="join_card" data-reveal-rotate="">
+            <div class="join-text text-color-on-primary">Expertise</div>
+            <div class="join_icon-wrap"><img src="https://d173woph5zl366.cloudfront.net/upmind/images/join-icon.svg" loading="lazy" alt="" class="join_icon"></div>
+            <div class="join-text">that</div>
+            <div class="join-text">Combines</div>
+            <div class="join-text">Strategy,</div>
+            <div class="join-text text-color-on-primary">Data,</div>
+            <div class="join-text">and</div>
+            <div class="join-text">Artificial</div>
+            <div class="join-text text-color-on-primary">Intelligence</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+  <script src="scroll-reveal.js"></script>
+  <script src="button-hover.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

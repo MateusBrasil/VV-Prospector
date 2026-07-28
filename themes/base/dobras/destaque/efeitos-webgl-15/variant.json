@@ -1,0 +1,56 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-15",
+  "scope": "destaque-efeitos-webgl-15",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-15",
+  "registo": "cinematografico",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "&var(--base-300); Glassform"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Experiments"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Objects"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Exhibits"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Designed for the space between silence and noise."
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Developed by Codegrid"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/img/hero.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

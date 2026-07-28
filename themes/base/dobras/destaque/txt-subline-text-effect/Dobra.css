@@ -1,0 +1,89 @@
+@font-face{
+      font-family: var(--fonte-corpo);
+      src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+[data-dobra="destaque-txt-subline-text-effect"]{
+      background-color: var(--base-100);
+      font-family: var(--fonte-corpo);
+      color: var(--acento); 
+      font-size: 1vw;
+      margin: 0;
+      padding: 0;
+      overscroll-behavior: none;
+      min-height: 100%;
+      cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b239d7aeb290a31ac5_cursor-default%402x.svg") 2 0, auto;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] a,[data-dobra="destaque-txt-subline-text-effect"] button{
+      cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b212e6b71494aa67ff_cursor-pointer%402x.svg") 12 0, pointer;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .cloneable{
+      padding: 5% 5%; 
+      justify-content: center;
+      align-items: center;
+      min-height: 100svh;
+      display: flex;
+      position: relative;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .text-draw{
+      color: var(--acento);
+      margin-left: 1em;
+      margin-right: 1em;
+      font-size: 3.5vw;
+      text-decoration: none;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .text-draw__p{
+      margin-bottom: 0;
+      font-size: 1.5em;
+      font-weight: 500;
+      line-height: 1.1;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .text-draw__box{
+      color: var(--base-300);
+      width: 100%;
+      height: .625em;
+      position: relative;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .text-draw__box-svg{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: visible;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .osmo-credits{
+      z-index: 999;
+      pointer-events: none;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 4em;
+      padding: 1em;
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      font-size: 1vw;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .osmo-credits__p{
+      pointer-events: auto;
+      color: rgba(19, 19, 19, 0.5);
+      text-align: center;
+      margin: 0;
+      font-family: var(--fonte-corpo);
+      font-size: 1.125em;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+[data-dobra="destaque-txt-subline-text-effect"] .osmo-credits__p-a{
+      color: var(--acento);
+    }
+@media (max-width: 768px){[data-dobra="destaque-txt-subline-text-effect"]{ font-size: 3vw; }
+[data-dobra="destaque-txt-subline-text-effect"] .text-draw{ font-size: 8vw; }
+[data-dobra="destaque-txt-subline-text-effect"] .cloneable{ flex-direction: column; gap: 2rem; }
+
+    }
+
+  

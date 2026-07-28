@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  background: var(--color-bg-cream, #fafafa);
+  color: var(--color-text-primary, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+/* ── Section ───────────────────────────────────────────────────────────── */
+
+.cases {
+  width: 100%;
+  background-color: var(--color-bg-cream);
+  /* Cards entrance primes them at translateX(60px), which would extend
+     the document's scroll width and let the page scroll horizontally
+     until each card's ScrollTrigger fires. Clipping the section's X
+     overflow contains the primed transform without affecting vertical
+     scrolling or the rest of the page. */
+  overflow-x: clip;
+}
+
+.cases__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3.25em;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.cases__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  flex-shrink: 0;
+  position: sticky;
+  top: 4em;
+  align-self: flex-start;
+}
+
+.cases__labelDot {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.cases__labelText {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.cases__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 61em; /* 976px */
+  flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  .cases__inner {
+    flex-direction: column;
+    gap: 2em;
+    padding: 3em var(--container-padding);
+  }
+
+  /* Disable sticky once the layout stacks — the label sits at the top anyway. */
+  .cases__label {
+    position: static;
+    top: auto;
+  }
+
+  .cases__list {
+    width: 100%;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .cases__list {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .cases__list {
+    gap: 1.5rem;
+  }
+}
+
+/* ── Card (inlined from CaseStudyCard.astro) ──────────────────────────── */
+
+.csCard {
+  display: flex;
+  align-items: stretch;
+  gap: 3em; /* 48px */
+  width: 100%;
+}
+
+.csCard__imageWrap {
+  flex-shrink: 0;
+  width: 29.75em; /* 476px */
+  height: 25em; /* 400px */
+  background-color: var(--color-bg-placeholder);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.csCard__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Crop keeps the upper portion visible so faces don't get cut off. */
+  object-position: center 20%;
+}
+
+.csCard__body {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem; /* min gap between text block and CTA — rem so it
+                  stays constant across breakpoints, not compounding
+                  with the body's fluid em scaling */
+}
+
+.csCard__textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.csCard__title {
+  font-family: var(--font-heading);
+  font-size: 2.25em; /* 36px */
+  font-weight: 400;
+  line-height: 1.222;
+  letter-spacing: -2.16px;
+  color: var(--color-text-primary);
+}
+
+.csCard__desc {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+}
+
+.csCard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.csCard__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em 0.625em; /* 4px 10px */
+  font-family: var(--font-body);
+  font-size: 0.875em; /* 14px */
+  font-weight: 400;
+  line-height: 1.429; /* 20/14 */
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-gray);
+  border-radius: var(--radius-xs);
+}
+
+/* ── Card responsive ──────────────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .csCard {
+    gap: 2rem; /* 32px constant — rem so it doesn't compound with
+                  the fluid em scaling at tablet width */
+  }
+
+  /* Keep `justify-content: space-between` from desktop so the title sits
+     at the top and the CTA at the bottom, regardless of available height.
+     Padding/gap stay in rem so they don't compound with the fluid em
+     scaling at smaller viewports. */
+  .csCard__body {
+    gap: 1.5rem;
+  }
+
+  .csCard__imageWrap {
+    width: 22em;
+    height: 20em;
+  }
+
+  .csCard__title {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 767px) {
+  .csCard {
+    flex-direction: column;
+    gap: 1.5rem; /* 24px between image and content — rem so
+                    it stays constant under the fluid em
+                    scaling at narrower viewports */
+  }
+
+  /* Use the image's natural aspect (952 / 800 ≈ 6/5) so no faces are cropped. */
+  .csCard__imageWrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 6 / 5;
+  }
+
+  /* Phone: center everything inside the card body. */
+  .csCard__body {
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .csCard__tags {
+    justify-content: center;
+  }
+
+  .csCard__cta {
+    width: 100%;
+  }
+
+  .csCard__title {
+    font-size: 1.75em;
+  }
+}
+
+@media (max-width: 479px) {
+  .csCard {
+    gap: 1rem;
+  }
+
+  .csCard__title {
+    font-size: 1.5em;
+  }
+
+  .csCard__imageWrap {
+    height: auto;
+    aspect-ratio: 6 / 5;
+  }
+
+  .csCard__body {
+    gap: 1rem;
+  }
+}

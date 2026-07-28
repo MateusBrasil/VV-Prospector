@@ -1,0 +1,90 @@
+/* Pre-anim FOUC protection */
+.test-pre-anim [data-test-eyebrow],
+.test-pre-anim [data-test-headline],
+.test-pre-anim [data-test-subhead] {
+  visibility: hidden;
+}
+.test-pre-anim [data-test-card] {
+  visibility: hidden;
+}
+
+.corner-marker {
+  position: absolute;
+  width: 0.53rem;
+  height: 0.4375rem;
+  pointer-events: none;
+}
+.corner-marker::before,
+.corner-marker::after {
+  content: "";
+  position: absolute;
+  background: #d9d9d9;
+}
+/* ┌ */
+.corner-tl {
+  top: 0;
+  left: 0;
+}
+.corner-tl::before {
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+.corner-tl::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+/* ┐ */
+.corner-tr {
+  top: 0;
+  right: 0;
+}
+.corner-tr::before {
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+.corner-tr::after {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+/* └ */
+.corner-bl {
+  bottom: 0;
+  left: 0;
+}
+.corner-bl::before {
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+.corner-bl::after {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+/* ┘ */
+.corner-br {
+  bottom: 0;
+  right: 0;
+}
+.corner-br::before {
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+.corner-br::after {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}

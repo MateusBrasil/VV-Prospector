@@ -1,0 +1,235 @@
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] *,[data-dobra="cursor-crosshair-mouse-cursor-distortion"] *::after,[data-dobra="cursor-crosshair-mouse-cursor-distortion"] *::before{
+            box-sizing: border-box;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"]{
+            font-size: 16px;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"]{
+            margin: 0;
+            --color-text: var(--base-600);
+            --color-bg: var(--base-100);
+            --color-link: var(--acento);
+            --color-link-hover: var(--base-600);
+            --color-menu: var(--base-600);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: var(--fonte-corpo);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            --cursor-stroke: var(--base-600);
+            --cursor-stroke-width: 1px;
+            overflow-x: hidden;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .js .loading::before,[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .js .loading::after{
+            content: '';
+            position: fixed;
+            z-index: 1000;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .js .loading::before{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            transition: opacity 0.5s ease;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .js .loading::after{
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: var(--color-link);
+            animation: loaderAnim 0.7s linear infinite alternate forwards;
+        }
+@keyframes loaderAnim{
+            to {
+                opacity: 1;
+                transform: scale3d(0.5, 0.5, 1);
+            }
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] a{
+            text-decoration: underline;
+            color: var(--color-link);
+            outline: none;
+            transition: color 0.2s ease;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] a:hover{
+            color: var(--color-link-hover);
+            outline: none;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] a:focus{
+            outline: none;
+            background: var(--base-100);
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] a:focus:not(:focus-visible){
+            background: transparent;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] a:focus-visible{
+            outline: 2px solid red;
+            background: transparent;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .unbutton{
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .unbutton:focus{
+            outline: none;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame{
+            padding: 3rem 5vw;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__title{
+            font-size: 1.15rem;
+            margin: 0 0 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__links{
+            display: inline-block;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__links a:not(:last-child),[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demos a:not(:last-child){
+            margin-right: 1.5rem;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demos{
+            margin: 1rem 0;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demo{
+            font-weight: 500;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demo--current,[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demo--current:hover{
+            color: var(--color-text);
+            text-decoration: none;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .menu{
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: calc(100vh - 13rem);
+            position: relative;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding-top: 8vh;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .menu__item{
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            text-decoration: none;
+            color: var(--color-menu);
+            font-family: var(--fonte-corpo);
+            font-weight: 800;
+            cursor: pointer;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .menu__item-title{
+            line-height: 1;
+            font-size: 8vw;
+            display: block;
+            text-transform: uppercase;
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .menu__item-sub{
+            font-size: 1.4vw;
+            display: block;
+            font-family: var(--fonte-corpo);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+@media screen and (min-width: 53em){[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame{
+                position: fixed;
+                text-align: left;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                display: grid;
+                align-content: space-between;
+                width: 100%;
+                max-width: none;
+                height: 100vh;
+                padding: 2.5rem 3rem;
+                pointer-events: none;
+                grid-template-columns: 75% 25%;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: 
+                    'title links'
+                    '... ...'
+                    '... demos';
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__title-wrap{
+                grid-area: title;
+                display: flex;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__title{
+                margin: 0;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__demos{
+                margin: 0;
+                grid-area: demos;
+                justify-self: end;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame__links{
+                grid-area: links;
+                padding: 0;
+                justify-self: end;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .frame a{
+                pointer-events: auto;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .menu{
+                height: 100vh;
+                justify-content: center;
+                padding-top: 0;
+            }
+
+        }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor{
+            display: none;
+        }
+@media (any-pointer: fine){[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor{
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: block;
+                pointer-events: none;
+                z-index: 1001;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .no-js .cursor{
+                display: none;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor__line{
+                position: fixed;
+                display: block;
+                will-change: transform, opacity;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor__line--horizontal{
+                top: -10px;
+                left: -10%;
+                width: 120%;
+                height: 20px;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor__line--vertical{
+                left: -10px;
+                top: -10%;
+                height: 120%;
+                width: 20px;
+            }
+[data-dobra="cursor-crosshair-mouse-cursor-distortion"] .cursor__line-element{
+                fill: none;
+                stroke: var(--cursor-stroke);
+                stroke-width: var(--cursor-stroke-width);
+            }
+
+        }
+
+    

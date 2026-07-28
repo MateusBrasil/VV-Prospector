@@ -1,0 +1,31 @@
+[data-dobra="cursor-block-cursor"]{
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: var(--base-100); 
+      overflow: hidden; 
+      font-family: var(--fonte-corpo);
+      color: var(--base-600); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+[data-dobra="cursor-block-cursor"] h1{
+      pointer-events: none; 
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+[data-dobra="cursor-block-cursor"] .square{
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      border-radius: 0%;
+      background-color: var(--base-600); 
+      pointer-events: none;
+      z-index: 99999999;
+      transition: opacity 0.3s ease;
+      transform: translate(-50%, -50%); 
+    }
+
+  

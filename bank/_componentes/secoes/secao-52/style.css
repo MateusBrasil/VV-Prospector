@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.about {
+}
+.about__card {
+  background-color: var(--color-bg-gray-1);
+  border-radius: var(--radius-container);
+  padding: 52px;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 7.5rem; /* 120px */
+}
+
+.about__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1 1 0;                /* fluid: grow/shrink with available space */
+  min-width: 0;               /* allow shrinking below content's intrinsic width */
+  max-width: 42.3125em;       /* cap at 677px */
+}
+.about__heading {
+  color: var(--color-text-primary);
+}
+
+/* Marquee — infinite horizontal scroll loop.
+   Using margin-right (not gap) so each item carries its trailing gap; the math
+   for a -50% translate is then exactly one repeat unit, with no seams. */
+.about__marquee {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: clip;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 2rem,
+    black calc(100% - 2rem),
+    transparent 100%
+  );
+}
+.about__marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-scroll 24s linear infinite;
+}
+.about__marquee-track img {
+  height: 1.5rem;
+  width: auto;
+  flex-shrink: 0;
+  margin-right: 3rem;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  /* 4 sets of logos in the track; translating exactly 1 set = -25% lines the copy
+     up with the original, while the remaining 3 sets always fill the viewport. */
+  to   { transform: translateX(-25%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about__marquee-track { animation: none; }
+}
+
+/* Stats grid — fills container width.
+   Desktop: 3 cols. Tablet/Landscape: 2 cols. Portrait: 1 col.
+   If the last row has a single odd card, it spans the full row width. */
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+@media (max-width: 991px) {
+  .about__card {
+    padding: 40px;
+    gap: 5rem;
+  }
+  .about__header {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .about__intro {
+    width: 100%;
+  }
+  .about__marquee {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  .about__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  /* Only span the 3rd card to fill the row when grid is 2-col (tablet + landscape) */
+  .about__stats > :nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__card {
+    padding: 24px 20px 20px;
+    gap: 3rem;
+  }
+  .about__header {
+    gap: 2rem;
+  }
+  .about__stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .about__card {
+    padding: 24px 16px 16px;
+  }
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+  .about__stats > :nth-child(3):last-child {
+    grid-column: auto; /* reset span from tablet/landscape block above */
+  }
+}
+
+/* === StatCard (inlined from StatCard.astro) === */
+.stat-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;          /* 64px — inner gap between label and value (desktop) */
+  padding: 1.25rem;   /* 20px */
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-white);
+}
+.stat-card__label {
+  color: var(--color-text-secondary);
+  max-width: 200px;
+}
+.stat-card__value {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+@media (max-width: 991px) {
+  .stat-card { gap: 2.5rem; }
+}
+@media (max-width: 767px) {
+  .stat-card { gap: 2rem; }
+}
+@media (max-width: 479px) {
+  .stat-card { gap: 1.5rem; }
+}

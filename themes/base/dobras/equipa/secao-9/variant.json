@@ -1,0 +1,69 @@
+{
+  "slot": "equipa",
+  "nome": "secao-9",
+  "scope": "equipa-secao-9",
+  "origem": "bank/_componentes/secoes/secao-9",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "A unified pipeline for global logistics"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "When the operations team needed to coordinate fleet data across three continents,\n                  they were juggling six spreadsheets and a half-dozen dashboa"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Breakthroughs the team didn't expect"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "The bigger surprise wasn't the dashboards — it was the shift in how teams talked to\n                  each other. With everyone reading the same numbers in the "
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Six months in, the platform is processing roughly four million events a day and the\n                  finance team is using the same feed to validate carrier in"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-detail-overview.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-detail-breakthroughs.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-detail-growth.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-detail-overview.avif https://d173woph5zl366.cloudfront.net/pipely/assets/images/case-detail-breakthroughs.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

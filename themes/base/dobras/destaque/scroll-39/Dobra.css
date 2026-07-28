@@ -1,0 +1,151 @@
+[data-dobra="destaque-scroll-39"] 0,[data-dobra="destaque-scroll-39"] 400;0,[data-dobra="destaque-scroll-39"] 500;1,[data-dobra="destaque-scroll-39"] 300;1,[data-dobra="destaque-scroll-39"] 400;1,[data-dobra="destaque-scroll-39"] 500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@200..800&display=swap");
+
+:root{
+  --base-100: var(--base-100);
+  --base-200: var(--base-500);
+  --base-300: var(--base-600);
+  --base-400: var(--base-600);
+  --base-500: var(--base-600);
+}
+[data-dobra="destaque-scroll-39"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="destaque-scroll-39"]{
+  font-family: var(--fonte-corpo);
+  background-color: var(--base-500);
+  color: var(--base-100);
+}
+[data-dobra="destaque-scroll-39"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="destaque-scroll-39"] h1{
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 500;
+  line-height: 0.9;
+}
+[data-dobra="destaque-scroll-39"] p{
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+[data-dobra="destaque-scroll-39"] section{
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+}
+[data-dobra="destaque-scroll-39"] .intro,[data-dobra="destaque-scroll-39"] .outro{
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+[data-dobra="destaque-scroll-39"] .intro h1,[data-dobra="destaque-scroll-39"] .outro h1{
+  width: 40%;
+}
+[data-dobra="destaque-scroll-39"] .spotlight-content,[data-dobra="destaque-scroll-39"] .header{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+[data-dobra="destaque-scroll-39"] .spotlight-bg{
+  position: absolute;
+  transform: scale(0.8);
+  opacity: 0.25;
+}
+[data-dobra="destaque-scroll-39"] .spotlight-content h1{
+  width: 40%;
+}
+[data-dobra="destaque-scroll-39"] .header-content{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  will-change: transform, opacity;
+  transform: translateY(-100px);
+  opacity: 0;
+}
+[data-dobra="destaque-scroll-39"] .feature{
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  padding: 1rem 1.5rem;
+  transform: translate(-50%, -50%);
+  will-change: top, left;
+}
+[data-dobra="destaque-scroll-39"] .feature-bg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-400);
+  border: 0.125rem solid var(--base-300);
+  border-radius: 0.5rem;
+  will-change: width, height, border-radius, border-width;
+}
+[data-dobra="destaque-scroll-39"] .feature-content{
+  position: relative;
+  will-change: opacity;
+}
+[data-dobra="destaque-scroll-39"] .feature-content p{
+  text-transform: uppercase;
+  font-family: var(--fonte-mono);
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+[data-dobra="destaque-scroll-39"] .search-bar{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 25rem;
+  border: 0.35rem solid var(--base-300);
+  background-color: var(--base-400);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  will-change: opacity, width, height, transform;
+}
+[data-dobra="destaque-scroll-39"] .search-bar p{
+  position: relative;
+  opacity: 0;
+  transform: translateX(2rem);
+  will-change: opacity;
+}
+@media (max-width: 1000px){[data-dobra="destaque-scroll-39"] h1{
+    font-size: 2.5rem;
+  }
+[data-dobra="destaque-scroll-39"] .intro h1,[data-dobra="destaque-scroll-39"] .outro h1,[data-dobra="destaque-scroll-39"] .spotlight-content h1,[data-dobra="destaque-scroll-39"] .header-content{
+    width: 100%;
+    padding: 2rem;
+  }
+[data-dobra="destaque-scroll-39"] .spotlight-bg{
+    transform: scale(2);
+  }
+[data-dobra="destaque-scroll-39"] .feature{
+    padding: 1rem;
+  }
+[data-dobra="destaque-scroll-39"] .feature-content p{
+    font-size: 0.7rem;
+  }
+
+}
+
+

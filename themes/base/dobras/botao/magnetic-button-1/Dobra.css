@@ -1,0 +1,9 @@
+[data-dobra="botao-magnetic-button-1"]{
+            background-color: var(--base-100);
+            color: var(--acento);
+        }
+[data-dobra="botao-magnetic-button-1"] .no-pointer{
+            pointer-events: none;
+        }
+
+    

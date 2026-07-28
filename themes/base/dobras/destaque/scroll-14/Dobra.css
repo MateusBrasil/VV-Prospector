@@ -1,0 +1,21 @@
+[data-dobra="destaque-scroll-14"],[data-dobra="destaque-scroll-14"]{ 
+  margin: 0;
+  background: black;
+}
+[data-dobra="destaque-scroll-14"] section{
+  height: 100svh;
+  display: grid;
+  place-content: center;
+}
+[data-dobra="destaque-scroll-14"] h2{
+  font-size: 20vw;
+  color: white;
+}
+[data-dobra="destaque-scroll-14"] img{
+  position: absolute;
+  width: 100%;
+  height: 300svh;
+  object-fit: cover;
+  opacity: 0.15;
+}
+

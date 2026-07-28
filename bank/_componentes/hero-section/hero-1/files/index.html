@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Aurelia Moreau</title>
+
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+   <!-- ====== FIXED NAV ====== -->
+   <header class="topbar">
+      <a href="#" class="topbar__name">Aurelia Moreau</a>
+
+      <nav class="topbar__nav">
+         <a href="#">Archive</a>
+      </nav>
+   </header>
+
+   <!-- ====== HERO ====== -->
+   <section class="stage">
+
+      <!-- Dark overlay + cycling intro labels -->
+      <div class="veil" id="js-veil">
+     
+      </div>
+
+      <!-- Image strip: 5 portraits; center one becomes the feature -->
+      <div class="strip" id="js-strip">
+         <figure class="tile"><img src="./img/1.jpg" alt="" /></figure>
+         <figure class="tile"><img src="./img/2.jpg" alt="" /></figure>
+         <figure class="tile tile--feature" id="js-feature">
+            <img src="./img/3.jpg" alt="" />
+         </figure>
+         <figure class="tile"><img src="./img/4.jpg" alt="" /></figure>
+         <figure class="tile"><img src="./img/5.jpg" alt="" /></figure>
+      </div>
+
+      <!-- Hero title at the bottom; words revealed via mask lift -->
+      <div class="title">
+         <h1 id="js-title">FASHION</h1>
+      </div>
+   </section>
+
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>

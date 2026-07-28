@@ -1,16 +1,12 @@
 /**
- * Gera `src/theme/fontes.generated.js` — os imports de `next/font` do cliente.
+ * Gera `src/theme/fontes.generated.js` — as fontes locais do cliente.
  *
  * O PROBLEMA QUE ISTO RESOLVE
- * `next/font/google` exige o identificador ESTÁTICO: `import { Fraunces } from "next/font/google"`.
- * Não aceita `next/font/google[familia]`. As três saídas óbvias são todas más:
- *   - declarar todas as famílias do allowlist e escolher por string → o next/font BAIXA e emite
- *     preload de TODAS, usadas ou não. Com 15 famílias, 15 fontes por build.
- *   - <link> para o Google Fonts → perde o self-host e junta um pedido a terceiro, que é
- *     exatamente o vício do CDN que já queimou nos 13 blocos de blocks-ce.
- *   - @font-face à mão → funciona, mas obriga a gerir ficheiros e unicode-range manualmente.
- * A saída boa é GERAR o ficheiro com os imports literais só das famílias daquele cliente.
- * O código gerado é estático para o bundler; o que é dinâmico é quem o escreve.
+ * Uma obra precisa de compilar em QA isolado, sem rede. `next/font/google` faz fetch durante
+ * `next build`; por isso uma fonte Google declarada na direção de arte é uma INTENÇÃO
+ * tipográfica, não uma dependência de runtime. O gerador mapeia-a para uma pilha de sistema
+ * compatível. Para a família exata, o cliente deve fornecer ficheiros licenciados com
+ * `origem: "local"`, que `next/font/local` self-hosta sem chamadas externas.
  */
 
 /** Famílias Google permitidas. Entrar aqui é decisão do tema, não do cliente: uma família
@@ -26,9 +22,32 @@ export const PERMITIDAS = {
   'Playfair Display': { importName: 'Playfair_Display', pesos: null },
   'Cormorant Garamond': { importName: 'Cormorant_Garamond', pesos: ['300', '400', '500', '600', '700'] },
   'Inter': { importName: 'Inter', pesos: null },
+  // Entrou em 2026-07-28 para o nicho `clinica-estetica`: `direcoes.json` fixa Jost como
+  // fonte de corpo desse nicho (geométrica limpa, SIL OFL), e sem estar aqui o gerador
+  // rebentava o build com "Unknown font". Adição, não troca: nada existente muda.
+  'Jost': { importName: 'Jost', pesos: null },
   'Geist': { importName: 'Geist', pesos: null },
   'Geist Mono': { importName: 'Geist_Mono', pesos: null },
   'JetBrains Mono': { importName: 'JetBrains_Mono', pesos: null },
+};
+
+/** Fallbacks locais por classe tipográfica. Mantêm a hierarquia do nicho quando a obra é
+ * gerada sem rede: serifas editoriais continuam serifas; grotescas continuam sans; mono
+ * continua mono. Nunca substituímos silenciosamente por uma CDN. */
+const FALLBACKS_OFFLINE = {
+  'Fraunces': { familia: 'Georgia', fallback: 'serif' },
+  'Instrument Serif': { familia: 'Georgia', fallback: 'serif' },
+  'Newsreader': { familia: 'Georgia', fallback: 'serif' },
+  'Lora': { familia: 'Georgia', fallback: 'serif' },
+  'Playfair Display': { familia: 'Georgia', fallback: 'serif' },
+  'Cormorant Garamond': { familia: 'Georgia', fallback: 'serif' },
+  'Host Grotesk': { familia: 'Arial', fallback: 'sans-serif' },
+  'Inter': { familia: 'Arial', fallback: 'sans-serif' },
+  'Jost': { familia: 'Arial', fallback: 'sans-serif' },
+  'Geist': { familia: 'Arial', fallback: 'sans-serif' },
+  'DM Mono': { familia: 'Courier New', fallback: 'monospace' },
+  'Geist Mono': { familia: 'Courier New', fallback: 'monospace' },
+  'JetBrains Mono': { familia: 'Courier New', fallback: 'monospace' },
 };
 
 const varDe = familia => '--fonte-' + familia.toLowerCase().replace(/\s+/g, '-');
@@ -51,7 +70,7 @@ const PADRAO = {
  */
 export function gerarFontes(fontes = {}) {
   const f = { ...PADRAO, ...fontes };
-  const imports = new Map();     // importName -> { pesos, variavel }
+  const imports = new Map();     // fonte local -> { local, variavel }
   const cssImports = [];
   const valores = {};
   const erros = [];
@@ -62,8 +81,7 @@ export function gerarFontes(fontes = {}) {
     const generico = papel === 'mono' ? 'monospace' : (d.fallback || 'sans-serif');
 
     if (d.origem === 'google') {
-      const meta = PERMITIDAS[d.familia];
-      if (!meta) {
+      if (!PERMITIDAS[d.familia]) {
         erros.push(
           `fonte "${d.familia}" (${papel}) não está na allowlist do tema.\n` +
           `  Permitidas: ${Object.keys(PERMITIDAS).join(', ')}\n` +
@@ -71,12 +89,14 @@ export function gerarFontes(fontes = {}) {
           `ela se comporta na escala do sistema antes de a deixar entrar.`);
         continue;
       }
-      const variavel = varDe(d.familia);
-      imports.set(meta.importName, {
-        pesos: d.pesos || meta.pesos, variavel,
-        subsets: d.subsets || ['latin'],
-      });
-      valores[papel] = `var(${variavel}), ${generico}`;
+      // `mono` é um papel semântico: mesmo que uma fixture o tenha declarado com uma
+      // sans Google, o fallback offline não pode transformar código/telemetria em sans.
+      const fallbackOffline = papel === 'mono'
+        ? { familia: 'Courier New', fallback: 'monospace' }
+        : FALLBACKS_OFFLINE[d.familia];
+      // A allowlist e o campo `familia` continuam a validar a direção de arte. O build,
+      // porém, nunca importa `next/font/google`: só uma fonte `local` pode exigir ficheiros.
+      valores[papel] = `"${d.fallback || fallbackOffline.familia}", ${d.fallbackGenerico || fallbackOffline.fallback || generico}`;
 
     } else if (d.origem === 'system') {
       valores[papel] = `"${d.familia || 'serif'}", ${generico}`;
@@ -106,29 +126,22 @@ export function gerarFontes(fontes = {}) {
     throw e;
   }
 
-  const linhasGoogle = [...imports.entries()].filter(([k]) => !k.startsWith('__local_'));
   const linhasLocal = [...imports.entries()].filter(([k]) => k.startsWith('__local_'));
 
   const js = [
     '/* GERADO por tools/tema/fonts.mjs — não editar à mão.',
-    '   Só as famílias deste cliente entram aqui: o next/font baixa e faz preload de tudo o que',
-    '   for declarado, por isso declarar o catálogo inteiro custaria uma fonte por família em',
-    '   cada build. Fonte: cliente.json → design.fontes. */',
-    linhasGoogle.length ? `import { ${linhasGoogle.map(([n]) => n).join(', ')} } from "next/font/google";` : '',
+    '   Só fontes locais entram aqui. Fontes Google da direção de arte viram fallbacks de',
+    '   sistema para que o build e o QA funcionem sem rede. Fonte: cliente.json → design.fontes. */',
     linhasLocal.length ? 'import localFont from "next/font/local";' : '',
     '',
-    ...linhasGoogle.map(([nome, o]) =>
-      `const ${nome.toLowerCase()} = ${nome}({ subsets: ${JSON.stringify(o.subsets)}` +
-      (o.pesos ? `, weight: ${JSON.stringify(o.pesos)}` : '') +
-      `, variable: "${o.variavel}", display: "swap" });`),
     ...linhasLocal.map(([chave, o]) =>
       `const ${chave.replace('__local_', 'local_')} = localFont({ src: ${JSON.stringify(o.local)}, variable: "${o.variavel}", display: "swap" });`),
     '',
     '/* vai para a className do <body>: é lá que o next/font publica as custom properties,',
     '   e é por isso que os tokens de fonte também têm de ser declarados no body. */',
     `export const classesDeFonte = ${
-      [...imports.keys()].length
-        ? [...imports.keys()].map(n => `${n.startsWith('__local_') ? n.replace('__local_', 'local_') : n.toLowerCase()}.variable`).join(' + " " + ')
+      linhasLocal.length
+        ? linhasLocal.map(([n]) => `${n.replace('__local_', 'local_')}.variable`).join(' + " " + ')
         : '""'
     };`,
     '',

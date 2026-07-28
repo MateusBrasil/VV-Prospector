@@ -1,0 +1,71 @@
+[data-dobra="botao-anthe-button"] *,[data-dobra="botao-anthe-button"] *::after,[data-dobra="botao-anthe-button"] *::before{
+        box-sizing: border-box;
+    }
+[data-dobra="botao-anthe-button"]{
+        font-size: 18px;
+    }
+[data-dobra="botao-anthe-button"]{
+        margin: 0;
+        --color-text: var(--base-600);
+        --color-bg: var(--base-100);
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        font-family: var(--fonte-corpo);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+[data-dobra="botao-anthe-button"] .button{
+        pointer-events: auto;
+        cursor: pointer;
+        background: var(--base-100);
+        border: none;
+        padding: 1.5rem 3rem;
+        margin: 0;
+        font-family: var(--fonte-corpo);
+        font-size: inherit;
+        position: relative;
+        display: inline-block;
+    }
+[data-dobra="botao-anthe-button"] .button::before,[data-dobra="botao-anthe-button"] .button::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+[data-dobra="botao-anthe-button"] .button--anthe{
+        font-family: var(--fonte-corpo);
+        color: var(--base-100);
+        background: none;
+    }
+[data-dobra="botao-anthe-button"] .button--anthe::before{
+        content: '';
+        background: var(--base-600);
+        
+        -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0, 100% 50%, 100% 100%, 0% 100%);
+        transition: clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1), -webkit-clip-path 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+[data-dobra="botao-anthe-button"] .button--anthe:hover::before{
+        background: var(--base-600);
+        
+        -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    }
+[data-dobra="botao-anthe-button"] .button--anthe span{
+        display: block;
+        mix-blend-mode: difference;
+        transition: transform 0.4s cubic-bezier(0.2, 1, 0.8, 1);
+    }
+[data-dobra="botao-anthe-button"] .button--anthe:hover span{
+        
+        transform: translate3d(-10px, 0, 0);
+    }
+
+

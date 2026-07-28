@@ -1,0 +1,133 @@
+/* PORTADO À MÃO em 2026-07-28. A folha da esteira tinha 33 KB de CSS de Webflow, com
+ * quatro problemas:
+ *
+ *  1. LINHA 1 PARTIDA: o resto de um `@import url(...&display=swap")` do Google Fonts que
+ *     o escopador cortou pelo meio. CDN de fonte, proibida, e declaração inválida a abrir.
+ *  2. Um `:root` GLOBAL com 30 variáveis próprias (`--_theme---text`, `--_spacing---1` e
+ *     companhia), a competir com a paleta do documento. Nada aqui sai de `[data-dobra=...]`.
+ *  3. Escala tipográfica fixa em rem (`.text-2xl`, `.heading-style-h1`), que ignorava a
+ *     direção de arte do nicho. Passa a ler os tokens.
+ *  4. `transition: all 300ms` em três seletores, proibido no motor.
+ *
+ * O que sobrou é a estrutura da ficha, que é o que valia: retrato + identidade em cima,
+ * depoimento no meio, frase-síntese a fechar.
+ */
+
+[data-dobra="prova-secao-192"] {
+  display: block;
+  width: 100%;
+  background-color: var(--base-100);
+}
+
+[data-dobra="prova-secao-192"] .prova {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: var(--respiro);
+}
+
+[data-dobra="prova-secao-192"] .prova__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 34ch;
+}
+
+[data-dobra="prova-secao-192"] .prova__kicker {
+  color: var(--acento);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[data-dobra="prova-secao-192"] .prova__header h2 {
+  font-family: var(--fonte-display);
+  font-size: var(--h2);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--cor-texto);
+}
+
+[data-dobra="prova-secao-192"] .prova__grelha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 1.5rem;
+}
+
+[data-dobra="prova-secao-192"] .ficha {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  /* Cartão em `--base-200` sobre secção em `--base-100`, e não o contrário: o rótulo da
+     secção é o acento (#8c6a4f), que dá 4,70:1 sobre --base-100 e só 4,00:1 sobre
+     --base-200. Medido, não estimado; a 4,00 falhava AA em texto pequeno. */
+  background-color: var(--base-200);
+  border: 1px solid var(--base-300);
+}
+
+[data-dobra="prova-secao-192"] .ficha__autor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+[data-dobra="prova-secao-192"] .ficha__retrato {
+  flex: 0 0 auto;
+  width: 3.25rem;
+  height: 3.25rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+[data-dobra="prova-secao-192"] .ficha__retrato img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-dobra="prova-secao-192"] .ficha__nome {
+  font-weight: 500;
+  color: var(--cor-texto);
+}
+
+[data-dobra="prova-secao-192"] .ficha__funcao {
+  color: var(--cor-texto-tenue);
+}
+
+[data-dobra="prova-secao-192"] .ficha__texto p {
+  color: var(--cor-texto-suave);
+  line-height: 1.7;
+}
+
+/* A frase-síntese fecha a ficha, e é a única coisa em display dentro do cartão. É o gesto
+   da origem, mantido: o cartão lê-se de baixo para cima quando se folheia a página. */
+[data-dobra="prova-secao-192"] .ficha__sintese {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--base-300);
+  font-family: var(--fonte-display);
+  font-weight: var(--display-peso);
+  line-height: 1.25;
+  color: var(--cor-texto);
+}
+
+[data-dobra="prova-secao-192"] .prova__nota {
+  color: var(--cor-texto-tenue);
+}
+
+@media (max-width: 1000px) {
+  [data-dobra="prova-secao-192"] .prova {
+    padding: var(--respiro-compacto);
+    gap: 2.5rem;
+  }
+  [data-dobra="prova-secao-192"] .prova__grelha {
+    grid-template-columns: 1fr;
+  }
+  [data-dobra="prova-secao-192"] .ficha {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ref": "menu/navegacao-menu-19",
+  "scope": "menu-navegacao-menu-19",
+  "libs": [
+    "gsap",
+    "splittext",
+    "lenis"
+  ],
+  "fontesCdn": [],
+  "tem_js": true,
+  "n_assets": 2,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

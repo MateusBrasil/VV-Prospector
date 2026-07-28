@@ -1,0 +1,10 @@
+{
+  "nome": "Circular Gallery",
+  "descricao": "Circular Gallery",
+  "categoria": "Carrossel",
+  "tags": [
+    "circular-gallery"
+  ],
+  "thumb": "https://eynifdmidipyhvdwmfes.supabase.co/storage/v1/object/public/wrepo-images/comp-thumbs/facafef5-4b71-4f75-8301-393b1f4108ff.jpg",
+  "video": "https://eynifdmidipyhvdwmfes.supabase.co/storage/v1/object/sign/eaglecode/Circular%20Gallery.mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zNDVhMWQzNS1lMTk2LTQ1OTctYjJlYi00OGFkYWJjMjg3ZTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJlYWdsZWNvZGUvQ2lyY3VsYXIgR2FsbGVyeS5tb3YiLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzgyNjA2OTk1LCJleHAiOjM1MTcwODY5OTV9.STRXvrU6ZJvICxVF1_G7QwdzM_kG3R-6VAcI_JuP8rI"
+}

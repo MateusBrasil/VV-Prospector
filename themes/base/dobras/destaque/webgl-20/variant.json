@@ -1,0 +1,142 @@
+{
+  "slot": "destaque",
+  "nome": "webgl-20",
+  "scope": "destaque-webgl-20",
+  "origem": "bank/_componentes/webgl-threejs/webgl-20",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=78948"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/jankohlbach/codrops-shader-on-scroll"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/?tag=scroll"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/?tag=three-js"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/?tag=webgl"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "On-Scroll Image Distortion and Grain Effect"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Read the tutorial"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "#scroll"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "#three.js"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "#webgl"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Kenji Sato"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Yusuke Tanaka"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Mei Yamamoto"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Natsumi Ito"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Miku Inoue"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/5.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/codrops/?p=78948 https://tympanus.net/codrops/demos/)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sketch 016: Custom Cursor (filled circle with filter effect) | Codrops Reproduction</title>
+	<meta name="description" content="A custom SVG cursor with a filled circle and a morphing displacement filter effect on hover." />
+	
+	<!-- Favicon / Styling sources -->
+	<link rel="shortcut icon" href="https://tympanus.net/Sketches/favicon.ico">
+	
+	<!-- GSAP for smooth timeline animations -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+	<style>
+		/* --- CSS Reset & Base Styling --- */
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+
+		:root {
+			font-size: 15px;
+			--color-text: #a5a5a5;
+			--color-text-alt: #747474;
+			--color-bg: #ffffff; /* Fundo alterado para branco absoluto */
+			--color-link: #111111;
+			--color-link-hover: #d6106c;
+			--cursor-fill: #d6106c;
+		}
+
+		body {
+			margin: 0;
+			color: var(--color-text);
+			background: var(--color-bg);
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			font-weight: 500;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			overflow-x: hidden;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			transition: background-color 0.3s ease;
+		}
+
+		/* Smooth anchor links */
+		a {
+			text-decoration: none;
+			color: var(--color-link);
+			outline: none;
+			transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+			position: relative;
+		}
+
+		a::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			transform: scaleX(0);
+			height: 1px;
+			bottom: -2px;
+			left: 0;
+			background-color: var(--color-link-hover);
+			transform-origin: bottom right;
+			transition: transform 0.25s ease-out;
+		}
+
+		a:hover::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+
+		a:hover {
+			color: var(--color-link-hover);
+		}
+
+		/* Modern accessibility states */
+		a:focus {
+			outline: none;
+			background: rgba(0, 0, 0, 0.05);
+			border-radius: 3px;
+		}
+
+		a:focus:not(:focus-visible) {
+			background: transparent;
+		}
+
+		a:focus-visible {
+			outline: 2px solid var(--color-link-hover);
+			background: transparent;
+		}
+
+		/* Main Content Container */
+		main {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			z-index: 2;
+		}
+
+		/* Navigation & Frame */
+		.frame {
+			padding: 2rem;
+			text-align: center; 
+			position: relative;
+			z-index: 5;
+		}
+
+		.frame__title {
+			margin: 0;
+			font-size: 1.15rem;
+			font-weight: 600;
+			color: #2c2c2c;
+			letter-spacing: -0.02em;
+		}
+
+		/* Central Experimental Menu */
+		.menu {
+			flex: 1;
+			display: grid;
+			place-content: center;
+			grid-gap: 5vh;
+			font-size: 2.5rem;
+			font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+			font-style: italic;
+			font-weight: 400;
+			text-align: center;
+			padding: 2rem 0;
+		}
+
+		.menu__item {
+			color: #1a1a1a;
+			padding: 0.5rem 1.5rem;
+			position: relative;
+			transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+		}
+
+		.menu__item::after {
+			display: none; /* Turn off base underline for custom design */
+		}
+
+		.menu__item:hover {
+			transform: scale(1.08) rotate(-1deg);
+		}
+
+		/* Custom Cursor SVG Styling */
+		.cursor {
+			display: none;
+		}
+
+		/* Responsive styling */
+		@media screen and (min-width: 53em) {
+			.menu {
+				font-size: 4.5vw;
+				grid-auto-flow: column;
+				grid-gap: 6vw;
+				max-width: min-content;
+				align-self: center;
+			}
+			.frame {
+				padding: 2rem 3rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				text-align: left;
+			}
+		}
+
+		/* Custom Cursor setup enabled only for precision pointers (Mouse) */
+		@media (any-pointer: fine) {
+			.cursor {
+				position: fixed;
+				top: 0;
+				left: 0;
+				display: block;
+				pointer-events: none;
+				z-index: 10000;
+				mix-blend-mode: multiply; /* Blends liquid cursor with the light background beautifully */
+			}
+
+			.cursor__inner {
+				fill: var(--cursor-fill);
+				transition: fill 0.3s ease;
+			}
+
+			body {
+				/* Hide native cursor when modern custom cursor handles it */
+				cursor: none;
+			}
+			a, button {
+				cursor: none !important;
+			}
+		}
+
+		/* Visual indicator for screens with no precise pointer (touchscreens) */
+		.touch-alert {
+			position: fixed;
+			bottom: 1rem;
+			right: 1rem;
+			background: rgba(26, 26, 26, 0.9);
+			color: #fff;
+			padding: 0.75rem 1.25rem;
+			border-radius: 8px;
+			font-size: 0.8rem;
+			max-width: 300px;
+			pointer-events: none;
+			transform: translateY(150%);
+			transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			z-index: 999;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+		}
+
+		@media (any-pointer: coarse) {
+			.touch-alert {
+				transform: translateY(0);
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Custom Liquid Cursor Base Structure -->
+	<svg class="cursor" width="120" height="120" viewBox="0 0 120 120">
+		<defs>
+			<filter id="cursor-filter" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+				<!-- feTurbulence generates pseudo-random fractal noise patterns simulating a liquid state -->
+				<feTurbulence type="fractalNoise" seed="1" baseFrequency="0" numOctaves="1" result="warp" />
+				<!-- feDisplacementMap distorts the base shape based on the generated turbulence map -->
+				<feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="35" in="SourceGraphic" />
+			</filter>
+		</defs>
+		<circle class="cursor__inner" cx="60" cy="60" r="10" />
+	</svg>
+
+	<main>
+		<!-- Editorial header frame (Links removidos) -->
+		<div class="frame">
+			<h1 class="frame__title">Sketch 016: Liquid Distortion Custom Cursor</h1>
+		</div>
+
+		<!-- Interactive navigation link menu -->
+		<nav class="menu">
+			<a class="menu__item" href="#rupa">Rupa</a>
+			<a class="menu__item" href="#vedana">Vedana</a>
+			<a class="menu__item" href="#samjna">Samjna</a>
+			<a class="menu__item" href="#vijnana">Vijnana</a>
+		</nav>
+	</main>
+
+	<!-- Touch Screen Fallback Display -->
+	<div class="touch-alert">
+		📱 Custom liquid hover states are designed for mouse/trackpad interfaces. Connect a pointer to feel the fluid deformation filter!
+	</div>
+
+	<!-- --- Original JavaScript Logic with Enhancements & Robust Fixes --- -->
+	<script>
+		// Safety check for modern browser variables
+		document.documentElement.className = "js";
+		const supportsCssVars = () => {
+			const t = document.createElement("style");
+			t.innerHTML = ":root { --tmp-var: bold; }";
+			document.head.appendChild(t);
+			const e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)"));
+			t.parentNode.removeChild(t);
+			return e;
+		};
+		if (!supportsCssVars()) {
+			alert("Please view this demo in a modern browser that supports CSS Variables.");
+		}
+
+		/* Linear interpolation helper */
+		const lerp = (a, b, n) => (1 - n) * a + n * b;
+
+		/* Map values helper */
+		const map = (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c;
+
+		/* Track accurate cursor position */
+		const getCursorPos = ev => {
+			return { 
+				x : ev.clientX, 
+				y : ev.clientY 
+			};
+		};
+
+		let cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+		window.addEventListener('mousemove', ev => cursor = getCursorPos(ev));
+
+		/**
+		 * Class representing the complete custom cursor system
+		 */
+		class Cursor {
+			constructor(Dom_elems, triggerSelector = 'a') {
+				this.DOM = { elements: Dom_elems };
+				this.cursorElements = [];
+
+				[...this.DOM.elements].forEach(el => this.cursorElements.push(new CursorElement(el)));
+
+				this.triggerSelector = triggerSelector;
+				this.bindTriggers();
+			}
+
+			bindTriggers() {
+				[...document.querySelectorAll(this.triggerSelector)].forEach(link => {
+					link.addEventListener('mouseenter', () => this.enter());
+					link.addEventListener('mouseleave', () => this.leave());
+				});
+			}
+
+			enter() {
+				for (const el of this.cursorElements) {
+					el.enter();
+				}
+			}
+
+			leave() {
+				for (const el of this.cursorElements) {
+					el.leave();
+				}
+			}
+		}
+
+		/**
+		 * Class representing a single Cursor SVG element
+		 */
+		class CursorElement {
+			constructor(DOM_el) {
+				this.DOM = {
+					el: DOM_el,
+					inner: DOM_el.querySelector('.cursor__inner'),
+					feTurbulence: document.querySelector('#cursor-filter > feTurbulence')
+				};
+				
+				this.filterId = '#cursor-filter';
+				this.radiusOnEnter = 32; // Expand radius size dynamically on hover
+				this.opacityOnEnter = 1;
+				this.radius = parseFloat(this.DOM.inner.getAttribute('r')) || 10;
+				
+				// Definir o tamanho fixo de 120px do SVG para evitar bugs de sincronização inicial
+				this.cursorSize = 120;
+				
+				this.renderedStyles = {
+					tx: { previous: cursor.x - this.cursorSize / 2, current: cursor.x - this.cursorSize / 2, amt: 0.15 },
+					ty: { previous: cursor.y - this.cursorSize / 2, current: cursor.y - this.cursorSize / 2, amt: 0.15 },
+					radius: { previous: this.radius, current: this.radius, amt: 0.15 },
+					opacity: { previous: 0, current: 0, amt: 0.15 }
+				};
+
+				this.primitiveValues = { turbulence: 0 };
+
+				this.createFilterTimeline();
+
+				// Smooth fade-in sequence when the first mouse movement registers
+				const onMouseMoveEv = () => {
+					this.renderedStyles.tx.previous = this.renderedStyles.tx.current = cursor.x - this.cursorSize / 2;
+					this.renderedStyles.ty.previous = this.renderedStyles.ty.current = cursor.y - this.cursorSize / 2;
+					this.renderedStyles.opacity.current = 1;
+					
+					// Boot requestAnimationFrame loop
+					requestAnimationFrame(() => this.render());
+					window.removeEventListener('mousemove', onMouseMoveEv);
+				};
+				window.addEventListener('mousemove', onMouseMoveEv);
+			}
+
+			createFilterTimeline() {
+				const turbulenceValues = { from: 0.12, to: 0.28 };
+
+				this.filterTimeline = gsap.timeline({
+					paused: true,
+					onStart: () => {
+						// Randomize seed dynamically on trigger to keep distortion unique
+						this.DOM.feTurbulence.setAttribute('seed', Math.round(gsap.utils.random(1, 40)));
+						this.DOM.inner.style.filter = `url(${this.filterId})`;
+						this.renderedStyles['opacity'].current = 1;
+					},
+					onUpdate: () => {
+						this.DOM.feTurbulence.setAttribute('baseFrequency', this.primitiveValues.turbulence);
+						// Smoothly decay opacity as turbulence morphs towards extreme points
+						this.renderedStyles['opacity'].current = this.renderedStyles['opacity'].previous = map(
+							this.primitiveValues.turbulence, 
+							turbulenceValues.from, 
+							turbulenceValues.to, 
+							1, 
+							0
+						);
+					},
+					onComplete: () => {
+						this.DOM.inner.style.filter = 'none';
+						this.renderedStyles['radius'].current = this.renderedStyles['radius'].previous = this.radius;
+					}
+				})
+				.to(this.primitiveValues, { 
+					duration: 1.4,
+					ease: 'power2.out',
+					startAt: { turbulence: turbulenceValues.from },
+					turbulence: turbulenceValues.to
+				});
+			}
+
+			enter() {
+				this.renderedStyles['radius'].current = this.radiusOnEnter;
+				this.renderedStyles['opacity'].current = this.opacityOnEnter;
+				this.filterTimeline.restart();
+			}
+
+			leave() {
+				this.DOM.inner.style.filter = 'none';
+				this.filterTimeline.kill();
+				this.renderedStyles['radius'].current = this.radius;
+				this.renderedStyles['opacity'].current = 1;
+			}
+
+			render() {
+				// Offset center calculations usando o tamanho estático correto
+				this.renderedStyles['tx'].current = cursor.x - this.cursorSize / 2;
+				this.renderedStyles['ty'].current = cursor.y - this.cursorSize / 2;
+
+				// Smooth interpolation calculations
+				for (const key in this.renderedStyles) {
+					this.renderedStyles[key].previous = lerp(
+						this.renderedStyles[key].previous, 
+						this.renderedStyles[key].current, 
+						this.renderedStyles[key].amt
+					);
+				}
+
+				// Apply styles to customized DOM variables
+				this.DOM.el.style.transform = `translate3d(${this.renderedStyles['tx'].previous}px, ${this.renderedStyles['ty'].previous}px, 0)`;
+				this.DOM.inner.setAttribute('r', this.renderedStyles['radius'].previous);
+				this.DOM.el.style.opacity = this.renderedStyles['opacity'].previous;
+
+				requestAnimationFrame(() => this.render());
+			}
+		}
+
+		// Initialize Custom Cursor instance
+		const customCursor = new Cursor(document.querySelectorAll('.cursor'));
+	</script>
+</body>
+</html>

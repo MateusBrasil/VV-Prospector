@@ -1,0 +1,20 @@
+{
+  "slot": "destaque",
+  "nome": "pancake-loader",
+  "scope": "destaque-pancake-loader",
+  "origem": "bank/_componentes/loaders/pancake-loader",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://unpkg.com/normalize.css)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

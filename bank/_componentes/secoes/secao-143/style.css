@@ -1,0 +1,8 @@
+/* Aurae — Blog Post Hero.
+   Layout, gradient overlay, heading clamp and navbar all come from the shared
+   /aurae/styles.css. The per-character headline entrance is booted in ./script.js
+   (no shared hero script matches .section_blog-hero). Nothing section-specific to add. */
+body { margin: 0; min-height: 100svh; }
+
+/* min-height instead of a rigid 100vh — fills the screen but never clips content. */
+.section_blog-hero { min-height: 100svh; height: auto; }

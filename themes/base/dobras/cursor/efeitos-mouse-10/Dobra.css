@@ -1,0 +1,100 @@
+[data-dobra="cursor-efeitos-mouse-10"] *,[data-dobra="cursor-efeitos-mouse-10"] *::after,[data-dobra="cursor-efeitos-mouse-10"] *::before{
+  box-sizing: border-box;
+}
+[data-dobra="cursor-efeitos-mouse-10"]{
+  font-size: 15px;
+}
+[data-dobra="cursor-efeitos-mouse-10"]{
+  margin: 0;
+  --color-text: var(--base-200);
+  --color-bg: var(--base-600);
+  --color-link: var(--base-100);
+  --color-link-hover: var(--base-200);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--fonte-corpo);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-10"] a{
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+}
+[data-dobra="cursor-efeitos-mouse-10"] a:hover{
+  color: var(--color-link-hover);
+  outline: none;
+}
+[data-dobra="cursor-efeitos-mouse-10"] a:focus{
+  outline: none;
+  background: lightgrey;
+}
+[data-dobra="cursor-efeitos-mouse-10"] a:focus:not(:focus-visible){
+  background: transparent;
+}
+[data-dobra="cursor-efeitos-mouse-10"] a:focus-visible{
+  outline: 2px solid red;
+  background: transparent;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .frame{
+  padding: 1.5rem 2rem 10vh;
+  text-align: center;
+  position: relative;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .frame__title{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .frame__links{
+  margin: 0.5rem 0 2rem;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .frame__links a:not(:last-child){
+  margin-right: 1rem;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .content{
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .trail{
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .no-js .trail{
+  width: 250px;
+  height: 375px;
+  background-size: cover;
+}
+[data-dobra="cursor-efeitos-mouse-10"] .trail__img{
+  max-height: 55vh;
+  position: relative;
+  will-change: transform;
+  grid-area: 1 / 1 / 2 / 2;
+  user-select: none;
+  pointer-events: none;
+}
+@media screen and (min-width: 53em){[data-dobra="cursor-efeitos-mouse-10"] main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+[data-dobra="cursor-efeitos-mouse-10"] .frame{
+    padding: 1.5rem 2rem 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'title links sponsor';
+    grid-gap: 3vw;
+    justify-content: space-between;
+    text-align: left;
+  }
+[data-dobra="cursor-efeitos-mouse-10"] .frame__links{
+    margin: 0;
+  }
+
+}
+
+

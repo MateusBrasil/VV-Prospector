@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import LogoLoop from "../components/LogoLoop.astro";
+import Sobre from "../components/About.astro";
+import Servicos from "../components/Services.astro";
+import Especialidade from "../components/Expertise.astro";
+import Planos from "../components/Pricing.astro";
+import DepoimentosSection from "../components/TestimonialsSection.astro";
+import BlogsSection from "../components/BlogsSection.astro";
+import CtaSection from "../components/CtaSection.astro";
+---
+<BaseLayout title="Eagle — AI Consulting & Automation" description="Ajudamos organizacoes a liberar crescimento e eficiencia com consultoria orientada por dados e automacao inteligente.">
+  <Navbar variant="base" />
+  <main class="main-wrapper">
+    <Hero /><LogoLoop /><Sobre /><Servicos /><Especialidade /><Planos /><DepoimentosSection /><BlogsSection /><CtaSection />
+    <Footer />
+  </main>
+</BaseLayout>

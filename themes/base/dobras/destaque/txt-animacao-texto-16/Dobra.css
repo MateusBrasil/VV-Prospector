@@ -1,0 +1,49 @@
+[data-dobra="destaque-txt-animacao-texto-16"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+[data-dobra="destaque-txt-animacao-texto-16"]{
+  background-color: var(--base-600);
+  color: var(--base-100);
+  font-family: var(--fonte-mono);
+}
+[data-dobra="destaque-txt-animacao-texto-16"] .container{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  overflow: hidden;
+}
+[data-dobra="destaque-txt-animacao-texto-16"] .anime-text{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: justify;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[data-dobra="destaque-txt-animacao-texto-16"] .anime-header{
+  font-size: 10vw;
+  font-weight: 400;
+}
+[data-dobra="destaque-txt-animacao-texto-16"] .word{
+  position: relative;
+  margin-right: 0.75em;
+  margin-bottom: 0.5em;
+  display: inline-block;
+  will-change: transform;
+}
+[data-dobra="destaque-txt-animacao-texto-16"] .letter{
+  position: relative;
+  display: inline-block;
+  will-change: transform;
+}
+
+

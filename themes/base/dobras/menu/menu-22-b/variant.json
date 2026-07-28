@@ -1,0 +1,237 @@
+{
+  "slot": "menu",
+  "nome": "menu-22-b",
+  "scope": "menu-menu-22-b",
+  "origem": "bank/_componentes/menu/menu-22",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "media/1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "media/2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "media/3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "media/4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "media/5.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "media/6.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "media/7.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "media/8.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "media/9.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "media/10.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "media/11.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "media/12.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "media/13.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "media/14.webp"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/tag/menu/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/tag/gsap/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=114731"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/hub/"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/EaseReverseMenu"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://gsap.com/blog/3-15/"
+    },
+    {
+      "nome": "destino7",
+      "tipo": "link",
+      "exemplo": "https://gsap.com/docs/v3/GSAP/Tween#easeReverse"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "#Menu"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "#GSAP"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "easeReverse"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "docs"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Toggle Menu"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "ease.reverse"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "4×"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Human"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Zero"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "NEW GAME"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "MISSIONS"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "SKILLS"
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "QUEST LOG"
+    },
+    {
+      "nome": "acao12",
+      "tipo": "texto",
+      "exemplo": "ABOUT PLAYER"
+    },
+    {
+      "nome": "acao13",
+      "tipo": "texto",
+      "exemplo": "SETTINGS"
+    },
+    {
+      "nome": "acao14",
+      "tipo": "texto",
+      "exemplo": "EXIT"
+    },
+    {
+      "nome": "video",
+      "tipo": "video",
+      "exemplo": "media/bgvideo.mp4"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 14
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #23385b → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "7 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/codrops/hub/tag/menu/ https://tympanus.net/codrops/hub/tag/gsap/)",
+    "7 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

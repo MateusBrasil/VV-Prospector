@@ -1,0 +1,62 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-41",
+  "scope": "destaque-scroll-41",
+  "origem": "bank/_componentes/scroll/scroll-41",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "History"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "In the age of knights and castles, master sculptors skillfully\n            carved stones and marbles with great artistry. From mountains and\n            forests"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "These artisans, wielding hammers and chisels, brought to life the\n            mysteries of faith and ancient tales in stone. Every stroke, with\n            prec"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./hero.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img-1.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img-2.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img-3.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,16 @@
+{
+  "ref": "secoes/secao-90",
+  "scope": "secoes-secao-90",
+  "libs": [
+    "gsap",
+    "flip",
+    "splittext",
+    "swiper"
+  ],
+  "fontesCdn": [
+    "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap"
+  ],
+  "tem_js": true,
+  "n_assets": 0,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

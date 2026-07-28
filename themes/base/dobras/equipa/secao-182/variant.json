@@ -1,0 +1,125 @@
+{
+  "slot": "equipa",
+  "nome": "secao-182",
+  "scope": "equipa-secao-182",
+  "origem": "bank/_componentes/secoes/secao-182",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three",
+    "swiper"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Testimonials"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "What they say about Us?"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Here's what they shared about their experience working with our team."
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "\"They brought clarity to complex problems and turned strategy into measurable\n                  revenue lift within a single quarter. The team felt like an exte"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "John Doe"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "CEO, Tech Innovations"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "\"Operations were rewired end-to-end without missing a single deadline. Pipely is\n                  the rare partner that ships, measures, and iterates with the "
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Isabella Tran"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Director of Ops, NovaCore"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "\"We came in with a vague brief and left with a concrete roadmap and the first\n                  three milestones already shipped. Sharp thinking, faster executi"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Marcus Chen"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Head of Strategy, Vantage"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "\"Their engineering judgment is the strongest we have seen from an outside team.\n                  Architecture decisions held up six months later as we scaled p"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Priya Shah"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "VP of Engineering, Helio"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-1.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-2.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-3.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-4.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "24 cor(es) mapeadas para tokens por luminância (acento da origem #d8df11 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-1.avif https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-2.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sticky Grid Scroll | Codrops</title>
+  <meta name="description" content="A structured scroll-driven image grid where movement unfolds progressively within a sticky layout." />
+  <meta name="author" content="Theo Plawinski" />
+  <script>
+    document.documentElement.className = 'js';
+  </script>
+  <style>
+    /* =========================================
+       BASE STYLES 
+       ========================================= */
+    :root {
+      --font-primary: Arial, sans-serif;
+      --font-secondary: Times, serif;
+
+      --color-text: #000;
+      --color-bg: #fff;
+      --color-link: #000;
+      --color-link-hover: #000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font: inherit;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    html {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ul,
+    ol,
+    menu {
+      list-style: none;
+    }
+
+    picture,
+    img,
+    svg,
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+
+    a:focus {
+      background: lightgrey;
+      outline: none;
+    }
+
+    a:focus:not(:focus-visible) {
+      background: transparent;
+    }
+
+    a:focus-visible {
+      background: transparent;
+      outline: 2px solid red;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      display: block;
+      border: 0;
+      border-radius: 0;
+      background: 0 0;
+      color: inherit;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    @media (scripting: enabled) {
+      .loading::before,
+      .loading::after {
+        content: "";
+        position: fixed;
+        z-index: 10000;
+      }
+
+      .loading::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-bg);
+      }
+
+      .loading::after {
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 1px;
+        margin: 0 0 0 -50px;
+        background: var(--color-link);
+        animation: loaderAnim 1.5s ease-in-out infinite alternate forwards;
+      }
+    }
+
+    @keyframes loaderAnim {
+      0% {
+        transform: scaleX(0);
+        transform-origin: 0% 50%;
+      }
+      50% {
+        transform: scaleX(1);
+        transform-origin: 0% 50%;
+      }
+      50.1% {
+        transform: scaleX(1);
+        transform-origin: 100% 50%;
+      }
+      100% {
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+      }
+    }
+
+    .frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: grid;
+      grid-template-areas:
+        "infos sponsor"
+        "tags author";
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      grid-gap: 24px;
+      align-content: space-between;
+      width: 100%;
+      height: 100vh;
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.5;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .frame a,
+    .frame button {
+      pointer-events: auto;
+      opacity: 0.4;
+    }
+
+    .frame a:hover,
+    .frame button:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      opacity: 1;
+    }
+
+    .frame__infos {
+      grid-area: infos;
+    }
+
+    .frame__infos > *:not(:last-child) {
+      margin-right: 24px;
+    }
+
+    .frame__infos h1 {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .frame__infos h1,
+      .frame__infos a {
+        display: inline-block;
+      }
+    }
+
+    .frame__tags {
+      grid-area: tags;
+      display: flex;
+      column-gap: 12px;
+    }
+
+    .frame__author {
+      grid-area: author;
+      justify-self: flex-end;
+      text-align: right;
+    }
+
+    .frame__author a {
+      opacity: 1;
+    }
+
+    /* =========================================
+       INDEX/GRID STYLES 
+       ========================================= */
+    html {
+      font-size: calc(100vw / 1440);
+    }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: 16rem;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    /* ---------------- Block intro ---------------- */
+    .block--intro {
+      position: relative;
+      z-index: 1;
+    }
+
+    .media {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      padding: 0 24rem;
+    }
+
+    .media__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: lightgray;
+    }
+
+    .media__caption {
+      position: relative;
+      width: 221rem;
+      font-size: 14rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10rem;
+    }
+
+    /* ---------------- Block main ---------------- */
+    .block.block--main {
+      height: 425vh;
+    }
+
+    .block__wrapper {
+      position: sticky;
+      top: 0;
+      padding: 0 24rem;
+      will-change: transform;
+      overflow: hidden;
+    }
+
+    .content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .content__title {
+      width: 924rem;
+      font-family: var(--font-secondary);
+      font-size: 104rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10rem 20rem;
+    }
+
+    .content__description {
+      width: 455rem;
+      margin-top: 24rem;
+      font-size: 14rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10rem;
+    }
+
+    .content__button {
+      margin-top: 32rem;
+      font-size: 14rem;
+      text-transform: uppercase;
+      background: #000;
+      color: #fff;
+      padding: 12rem 24rem;
+      border-radius: 24rem;
+    }
+
+    .content__button:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ---------------- Gallery ---------------- */
+    .gallery {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 736rem;
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 32rem;
+      row-gap: 40rem;
+      will-change: transform;
+    }
+
+    .gallery__item {
+      width: 100%;
+      aspect-ratio: 1;
+      will-change: transform;
+    }
+
+    .gallery__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+
+<body class="loading">
+  <header class="frame">
+    <div class="frame__infos">
+      <h1>Sticky Grid Scroll</h1>
+    </div>
+  </header>
+  
+  <main>
+    <section class="block block--intro">
+      <figure class="media">
+        <!-- Replaced local image with Picsum placeholder -->
+        <img class="media__image" src="https://picsum.photos/seed/intro/1920/1080" alt="Intro Image" crossorigin="anonymous" />
+        <figcaption class="media__caption">Scroll-driven layout experiment</figcaption>
+      </figure>
+    </section>
+    
+    <section class="block block--main">
+      <div class="block__wrapper">
+        <div class="content">
+          <h2 class="content__title">Sticky Grid Scroll</h2>
+          <p class="content__description">
+            A structured scroll-driven image grid where movement unfolds progressively within a sticky layout.
+          </p>
+          <a class="content__button" href="#">Read the tutorial</a>
+        </div>
+        <div class="gallery">
+          <ul class="gallery__grid">
+            <!-- Replaced local images with Picsum placeholders -->
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/1/600/600" alt="Image 1" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/2/600/600" alt="Image 2" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/3/600/600" alt="Image 3" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/4/600/600" alt="Image 4" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/5/600/600" alt="Image 5" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/6/600/600" alt="Image 6" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/7/600/600" alt="Image 7" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/8/600/600" alt="Image 8" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/9/600/600" alt="Image 9" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/10/600/600" alt="Image 10" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/11/600/600" alt="Image 11" crossorigin="anonymous" />
+            </li>
+            <li class="gallery__item">
+              <img class="gallery__image" src="https://picsum.photos/seed/12/600/600" alt="Image 12" crossorigin="anonymous" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- External Dependencies -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+
+  <script>
+    // Register GSAP Plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    class StickyGridScroll {
+      constructor() {
+        this.getElements();
+
+        this.initContent();
+        this.groupItemsByColumn();
+
+        this.addParallaxOnScroll();
+        this.animateTitleOnScroll();
+        this.animateGridOnScroll();
+      }
+
+      /**
+       * Select and store the DOM elements needed for the animation
+       */
+      getElements() {
+        this.block = document.querySelector(".block--main");
+
+        if (this.block) {
+          this.wrapper = this.block.querySelector(".block__wrapper");
+          this.content = this.block.querySelector(".content");
+          this.title = this.block.querySelector(".content__title");
+          this.description = this.block.querySelector(".content__description");
+          this.button = this.block.querySelector(".content__button");
+          this.grid = this.block.querySelector(".gallery__grid");
+          this.items = this.block.querySelectorAll(".gallery__item");
+        }
+      }
+
+      /**
+       * Initializes the visual state of the content before animations
+       */
+      initContent() {
+        if (this.description && this.button) {
+          gsap.set([this.description, this.button], { opacity: 0, pointerEvents: "none" });
+        }
+
+        if (this.content && this.title) {
+          const dy = (this.content.offsetHeight - this.title.offsetHeight) / 2;
+          this.titleOffsetY = (dy / this.content.offsetHeight) * 100;
+          gsap.set(this.title, { yPercent: this.titleOffsetY });
+        }
+      }
+
+      /**
+       * Group grid items into a fixed number of columns (default: 3)
+       */
+      groupItemsByColumn() {
+        this.numColumns = 3;
+        this.columns = Array.from({ length: this.numColumns }, () => []);
+
+        this.items.forEach((item, index) => {
+          this.columns[index % this.numColumns].push(item);
+        });
+      }
+
+      /**
+       * Apply a parallax effect to the wrapper when scrolling
+       */
+      addParallaxOnScroll() {
+        if (!this.block || !this.wrapper) return;
+
+        gsap.from(this.wrapper, {
+          yPercent: -100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: this.block,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          },
+        });
+      }
+
+      /**
+       * Animate the title element when the block scrolls into view
+       */
+      animateTitleOnScroll() {
+        if (!this.block || !this.title) return;
+
+        gsap.from(this.title, {
+          opacity: 0,
+          duration: 0.7,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: this.block,
+            start: "top 57%",
+            toggleActions: "play none none reset",
+          },
+        });
+      }
+
+      /**
+       * Create a GSAP timeline to reveal the grid items with vertical animation
+       */
+      gridRevealTimeline(columns = this.columns) {
+        const timeline = gsap.timeline();
+        const wh = window.innerHeight;
+        const dy = wh - (wh - this.grid.offsetHeight) / 2;
+
+        columns.forEach((column, colIndex) => {
+          const fromTop = colIndex % 2 === 0;
+
+          timeline.from(
+            column,
+            {
+              y: dy * (fromTop ? -1 : 1),
+              stagger: {
+                each: 0.06,
+                from: fromTop ? "end" : "start",
+              },
+              ease: "power1.inOut",
+            },
+            "grid-reveal"
+          );
+        });
+
+        return timeline;
+      }
+
+      /**
+       * Create a GSAP timeline to zoom the grid
+       */
+      gridZoomTimeline(columns = this.columns) {
+        const timeline = gsap.timeline({ defaults: { duration: 1, ease: "power3.inOut" } });
+
+        timeline.to(this.grid, { scale: 2.05 });
+        timeline.to(columns[0], { xPercent: -40 }, "<");
+        timeline.to(columns[2], { xPercent: 40 }, "<");
+
+        timeline.to(
+          columns[1],
+          {
+            yPercent: (index) => (index < Math.floor(columns[1].length / 2) ? -1 : 1) * 40,
+            duration: 0.5,
+            ease: "power1.inOut",
+          },
+          "-=0.5"
+        );
+
+        return timeline;
+      }
+
+      /**
+       * Toggle the visibility of content elements
+       */
+      toggleContent(isVisible = true) {
+        if (!this.title || !this.description || !this.button) return;
+
+        gsap.timeline({ defaults: { overwrite: true } })
+          .to(this.title, {
+            yPercent: isVisible ? 0 : this.titleOffsetY,
+            duration: 0.7,
+            ease: "power2.inOut",
+          })
+          .to(
+            [this.description, this.button],
+            {
+              opacity: isVisible ? 1 : 0,
+              duration: 0.4,
+              ease: `power1.${isVisible ? "inOut" : "out"}`,
+              pointerEvents: isVisible ? "all" : "none",
+            },
+            isVisible ? "-=90%" : "<"
+          );
+      }
+
+      /**
+       * Animate the grid based on scroll position
+       */
+      animateGridOnScroll() {
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: this.block,
+            start: "top 25%",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        });
+
+        timeline
+          .add(this.gridRevealTimeline())
+          .add(this.gridZoomTimeline(), "-=0.6")
+          .add(() => this.toggleContent(timeline.scrollTrigger.direction === 1), "-=0.32");
+      }
+    }
+
+    // UTILITIES
+    const preloadImages = (selector = "img") => {
+      return new Promise((resolve) => {
+        imagesLoaded(document.querySelectorAll(selector), { background: true }, resolve);
+      });
+    };
+
+    function initSmoothScrolling() {
+      const lenis = new Lenis({
+        lerp: 0.08,
+        wheelMultiplier: 1.4,
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    // INIT
+    preloadImages().then(() => {
+      document.body.classList.remove("loading");
+      initSmoothScrolling();
+      new StickyGridScroll();
+    });
+  </script>
+</body>
+</html>

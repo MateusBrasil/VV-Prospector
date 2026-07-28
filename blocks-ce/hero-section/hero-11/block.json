@@ -1,0 +1,15 @@
+{
+  "ref": "hero-section/hero-11",
+  "scope": "hero-section-hero-11",
+  "libs": [
+    "gsap",
+    "imagesloaded"
+  ],
+  "fontesCdn": [
+    "https://fonts.googleapis.com",
+    "https://fonts.googleapis.com/css2?family=Gloock&display=swap"
+  ],
+  "tem_js": true,
+  "n_assets": 25,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

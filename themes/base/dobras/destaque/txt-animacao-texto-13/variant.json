@@ -1,0 +1,113 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-13",
+  "scope": "destaque-txt-animacao-texto-13",
+  "origem": "bank/_componentes/textos/animacao-texto-13",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Address"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "19 Great Street"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Current Time"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "20:40:30 (GMT)"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "General Inquiries"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "hello@deadspacelabs.com"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "New Business Inquiries"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "business@deadspacelabs.com"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Collaborations"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Selective Connections"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Job Inquiries"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "hiring@deadspacelabs.com"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Telephone"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "+44 09 9842 2235"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Social Media"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "@Deadspace"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/icon_1.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

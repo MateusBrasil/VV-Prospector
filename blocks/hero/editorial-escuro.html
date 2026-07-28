@@ -1,0 +1,101 @@
+<style>
+/* ── Fundo premium (técnica: LightRaysCorner + GridLines do Museu Triângulo) ──
+   Neutro por construção: grade de luz + raios na cor da marca. Serve qualquer nicho.
+   CSS puro: zero JS, zero request. Os raios não piscam — respiram (Lei M11: sem loop
+   agressivo; é ambiente, não chamada de atenção) e desligam em reduced-motion. */
+.heroE{position:relative;isolation:isolate}
+.heroE__fundo{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+/* grade: hairlines da marca, esbatida do topo */
+.heroE__fundo::before{content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--brand) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--brand) 7%, transparent) 1px, transparent 1px);
+  background-size:clamp(56px,7vw,96px) clamp(56px,7vw,96px);
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, black 0%, transparent 78%);
+          mask-image:radial-gradient(120% 90% at 50% 0%, black 0%, transparent 78%)}
+/* raios: 3 feixes rotacionados a partir do canto — o "signature moment" do hero */
+.heroE__raios{position:absolute;top:-40%;left:-18%;width:min(1100px,90vw);height:170vh;
+  transform:rotate(-38deg);filter:blur(14px);
+  -webkit-mask-image:radial-gradient(50% 100%, black 0%, transparent 92%);
+          mask-image:radial-gradient(50% 100%, black 0%, transparent 92%)}
+.heroE__raio{position:absolute;top:-20%;bottom:-30%;left:50%;
+  background:radial-gradient(50% 50% at 50% 50%, var(--brand) 0%, transparent 100%);
+  transform-origin:top right;will-change:opacity}
+.heroE__raio:nth-child(1){width:34px;transform:rotate(-18deg);opacity:.16;animation:raio 9s ease-in-out infinite}
+.heroE__raio:nth-child(2){width:18px;transform:rotate(-9deg);opacity:.11;animation:raio 11s ease-in-out .8s infinite}
+.heroE__raio:nth-child(3){width:44px;transform:rotate(-2deg);opacity:.07;animation:raio 13s ease-in-out 1.6s infinite}
+@keyframes raio{0%,100%{opacity:var(--o,.14)}50%{opacity:calc(var(--o,.14) * .45)}}
+@media (prefers-reduced-motion:reduce){.heroE__raio{animation:none}}
+</style>
+<style>
+/* hero editorial escuro — a ardósia da marca como palco, o amarelo só como acento.
+   A foto domina (coluna 56%), com moldura fina da marca deslocada e chip glass de prova social.
+   No fundo, faixa-marquee de factos (mecânica do vetic: 2 cópias, translateX(-100%), linear).
+   Marquee = exceção calibrada da M11 (conteúdo factual em loop, desliga em reduced-motion). */
+.heroE{background:var(--dusk);color:var(--ink-on-dusk);padding-block:var(--space-5) 0;overflow:clip}
+.heroE__grid{display:grid;gap:var(--space-4);align-items:center;padding-bottom:var(--space-5)}
+@media (min-width:960px){.heroE__grid{grid-template-columns:minmax(0,44fr) minmax(0,56fr);gap:var(--space-5)}}
+.heroE__kicker{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--brand);margin-bottom:var(--space-3)}
+.heroE__kicker svg{flex:none}
+.heroE h1{font-size:var(--step-4);letter-spacing:-0.035em;color:var(--ink-on-dusk);margin-bottom:var(--space-3)}
+.heroE__sub{font-size:var(--step-1);line-height:1.5;color:var(--muted-on-dusk);max-width:46ch;margin-bottom:var(--space-4)}
+.heroE__acoes{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center}
+.cta--sol{background:var(--brand);color:var(--on-brand)}
+.cta--sol:focus-visible{outline-color:var(--brand)}
+.heroE__tel{font-weight:600;color:var(--ink-on-dusk);text-decoration:none;
+  border-bottom:1px solid var(--hairline-on-dusk);padding-bottom:2px}
+.heroE__tel:hover{border-color:var(--brand)}
+.heroE__media{position:relative;margin:0}
+.heroE__media::before{content:"";position:absolute;inset:var(--space-2) calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2);
+  border:1px solid color-mix(in srgb, var(--brand) 55%, transparent);border-radius:var(--radius-lg);pointer-events:none}
+.heroE__moldura{position:relative;border-radius:var(--radius-lg);overflow:hidden}
+.heroE__moldura img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+@media (min-width:960px){.heroE__moldura img{aspect-ratio:5/4}}
+.heroE__chip{position:absolute;left:var(--space-2);bottom:var(--space-2);display:flex;align-items:center;gap:.7rem;
+  padding:.7rem 1rem;border-radius:var(--radius);
+  background:color-mix(in srgb, var(--dusk) 78%, transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid var(--hairline-on-dusk)}
+@supports not (backdrop-filter:blur(1px)){.heroE__chip{background:var(--dusk)}}
+.heroE__chip svg{color:var(--brand);flex:none}
+.heroE__nota{font-family:var(--font-display);font-size:var(--step-1);line-height:1;color:var(--ink-on-dusk)}
+.heroE__conta{font-size:var(--step--1);color:var(--muted-on-dusk);line-height:1.3}
+.heroE__faixa{border-top:1px solid var(--hairline-on-dusk);padding-block:var(--space-2);display:flex;overflow:clip}
+.heroE__fita{display:flex;flex:none;width:max-content;align-items:center;gap:var(--space-4);
+  padding-right:var(--space-4);animation:heroE-marquee 48s linear infinite}
+.heroE__item{display:inline-flex;align-items:center;gap:var(--space-2);white-space:nowrap;
+  font-size:var(--step--1);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-on-dusk)}
+.heroE__item svg{color:var(--brand);flex:none}
+@keyframes heroE-marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.heroE__fita{animation:none}}
+</style>
+<section class="heroE" data-hero>
+  <div class="heroE__fundo" aria-hidden="true">
+    <div class="heroE__raios"><i class="heroE__raio"></i><i class="heroE__raio"></i><i class="heroE__raio"></i></div>
+  </div>
+  <div class="wrap heroE__grid">
+    <div>
+      {{#kicker}}<p class="heroE__kicker"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>{{kicker}}</p>{{/kicker}}
+      <h1 data-motion="linhas">{{headline}}</h1>
+      <p class="heroE__sub">{{subheadline}}</p>
+      <div class="heroE__acoes">
+        <a class="cta cta--sol" href="{{ctaHref}}">{{ctaLabel}}</a>
+        {{#telefone}}<a class="heroE__tel" href="tel:{{telefoneRaw}}">{{telefone}}</a>{{/telefone}}
+      </div>
+    </div>
+    <figure class="heroE__media">
+      <span class="heroE__moldura"><img class="foto" src="{{fotoHero}}" alt="{{fotoHeroAlt}}" width="1200" height="800" fetchpriority="high"></span>
+      {{#nota}}
+      <figcaption class="heroE__chip">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26 6.6.57-5 4.36 1.5 6.45L12 16.2 5.99 19.64l1.5-6.45-5-4.36 6.6-.57L12 2z" fill="currentColor"/></svg>
+        <span><span class="heroE__nota">{{nota}}</span><br><span class="heroE__conta">{{avaliacoes}} avaliações no Google</span></span>
+      </figcaption>
+      {{/nota}}
+    </figure>
+  </div>
+  <div class="heroE__faixa" aria-hidden="true">
+    <div class="heroE__fita">{{{fita}}}</div>
+    <div class="heroE__fita">{{{fita}}}</div>
+  </div>
+</section>

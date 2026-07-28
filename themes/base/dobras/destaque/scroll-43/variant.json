@@ -1,0 +1,89 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-43",
+  "scope": "destaque-scroll-43",
+  "origem": "bank/_componentes/scroll/scroll-43",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Enter a Universe"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Silent Veil"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "PROD8372"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Crimson Echoes"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "PROD4921"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Zenith Arc"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "PROD7586"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "shadows"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/bg.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/card-1.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/card-2.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/card-3.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #ff6b00 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

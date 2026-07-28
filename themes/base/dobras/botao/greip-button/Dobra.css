@@ -1,0 +1,92 @@
+[data-dobra="botao-greip-button"] *,[data-dobra="botao-greip-button"] *::after,[data-dobra="botao-greip-button"] *::before{
+	box-sizing: border-box;
+}
+[data-dobra="botao-greip-button"]{
+	font-size: 18px;
+}
+[data-dobra="botao-greip-button"]{
+	margin: 0;
+	--color-text: var(--base-600);
+	--color-number: var(--base-200);
+	--color-bg: var(--base-100);
+	--color-link: var(--acento);
+	--color-link-hover: var(--base-600);
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: var(--fonte-corpo);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh;
+}
+[data-dobra="botao-greip-button"] .button{
+	pointer-events: auto;
+	cursor: pointer;
+	background: var(--base-100);
+	border: none;
+	padding: 1.5rem 3rem;
+	margin: 0;
+	font-family: var(--fonte-corpo);
+	font-size: inherit;
+	position: relative;
+	display: inline-block;
+}
+[data-dobra="botao-greip-button"] .button::before,[data-dobra="botao-greip-button"] .button::after{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+[data-dobra="botao-greip-button"] .button--greip{
+	overflow: hidden;
+	color: var(--base-100);
+	font-family: var(--fonte-mono);
+	font-weight: 500;
+	padding: 1rem 2rem;
+}
+[data-dobra="botao-greip-button"] .button--greip span{
+	display: block;
+	position: relative;
+}
+[data-dobra="botao-greip-button"] .button--greip > span{
+	overflow: hidden;
+	mix-blend-mode: difference;
+}
+[data-dobra="botao-greip-button"] .button--greip:hover > span > span{
+	animation: MoveUpInitial 0.2s forwards, MoveUpEnd 0.2s forwards 0.2s;
+}
+[data-dobra="botao-greip-button"] .button--greip::before{
+	content: '';
+	background: var(--base-600);
+	width: 100%;
+	height: 100%;
+	transform-origin: 50% 100%;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	transition: clip-path 0.2s, -webkit-clip-path 0.2s;
+	transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+[data-dobra="botao-greip-button"] .button--greip:hover::before{
+	transition-duration: 0.3s;
+	-webkit-clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+	clip-path: polygon(0 0, 100% 0, 0 0, 0% 100%);
+}
+@keyframes MoveUpInitial{
+	to {
+		transform: translate3d(0,-105%,0);
+	}
+}
+@keyframes MoveUpEnd{
+	from {
+		transform: translate3d(0,100%,0);
+	}
+	to {
+		transform: translate3d(0,0,0);
+	}
+}
+
+

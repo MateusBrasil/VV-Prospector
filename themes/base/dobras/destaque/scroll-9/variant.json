@@ -1,0 +1,98 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-9",
+  "scope": "destaque-scroll-9",
+  "origem": "bank/_componentes/scroll/scroll-9",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "More Variations:"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Horizontal Blinds"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Random Grid"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Vertical Blinds"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Column Grid"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "(Horizontal Blinds)"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Scroll down"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Section transition"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "画像を複数の横長の矩形でマスクし、スクロールに連動して矩形が順番に開くことで、次の画像へ滑らかに切り替わるトランジションです。"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Section transition"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "画像を複数の横長の矩形でマスクし、スクロールに連動して矩形が順番に開くことで、次の画像へ滑らかに切り替わるトランジションです。"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Section transition"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "画像を複数の横長の矩形でマスクし、スクロールに連動して矩形が順番に開くことで、次の画像へ滑らかに切り替わるトランジションです。"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Next: Random Grid"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,18 @@
+/* Luzen — FAQ
+   Sin overrides locales. Todo el styling (layout .section_faq, grid .faq_grid /
+   .faq_grid-left / .faq_layout, imagen parallax .faq_img .img-parallax + .img-wrap,
+   acordeones nativos details.accordion con .accordion_top / .accordion_bottom y el
+   icono .line-horizontal / .line-vertical, spacers y estados ocultos [data-reveal])
+   vive en el cascade compartido /luzen/styles.css. */
+body { margin: 0; min-height: 100svh; }
+
+/* Preview standalone: la sección FAQ (764px) es más corta que la ventana → la
+   llenamos al alto del viewport y centramos su contenido vertical para que no
+   quede anclada arriba. CSS local del Taller; no afecta el template ni el
+   thumbnail. */
+.section_faq {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -52,6 +52,15 @@ cd themes/<tema>/.obras/<slug> && npx next build                # produz out/
 
 Cada `variant.json` tem um estado operacional: `experimental`, `revisar`, `aprovada` ou `em-producao`. A esteira cria `experimental` quando não há pendências e `revisar` quando gera `_rever`; só `aprovada` e `em-producao` podem entrar na composição em produção. `node tools/tema/compor-tema.mjs <slug> --modo inspecao` mantém dobras legadas visíveis para curadoria, sem lhes dar aprovação implícita.
 
+Os kits de nicho versionáveis vivem em `themes/base/kits.json`. Inspecione-os sem tocar no catálogo com:
+
+```bash
+node tools/tema/kits.mjs
+node tools/tema/kits.mjs --nicho restaurante --json
+```
+
+`restaurante` está marcado como `mvp-pronto` porque o tema `restaurante-noir` já entrega o fluxo completo. `clinica-estetica` e `clinica-dentaria` estão apenas `em-curadoria`: listam estrutura e candidatas, mas não podem ser tratadas como produção. A ferramenta falha se um kit `mvp-pronto` declarar uma dobra que não esteja promovida no respetivo `variant.json`.
+
 **Facto verificado**: o site do Kasablanca inteiro (`clientes/kasablanca/cliente.json` + `themes/restaurante-noir/`) foi regenerado a partir deste único ficheiro, e `tools/tema/regress.mjs --comparar` contra o baseline em `baseline/kasablanca/` só acusa as divergências intencionais da migração.
 
 Para operação normal, use `node tools/run.mjs briefs/<slug>.json`: basta o brief declarar `"tema"` ou existir `clientes/<slug>/cliente.json`. Os comandos `hydrate`/`next build` continuam úteis para desenvolvimento e diagnóstico isolado.

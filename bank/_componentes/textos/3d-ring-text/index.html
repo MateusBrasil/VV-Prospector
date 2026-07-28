@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Vibes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      color: #222;
+      background-color: #ececec;
+      font-family: "Cherry Bomb One", system-ui;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Evita barras de rolagem pela rotação 3D */
+    }
+
+    .wrapper {
+      position: relative;
+      /* add this to make the title included */
+      transform-style: preserve-3d;
+    }
+
+    .title {
+      font-size: 100px;
+      
+      color: #FC016E;
+      -webkit-text-stroke: 3px #fff; /* Adicionado prefixo para maior compatibilidade */
+      paint-order: stroke fill;
+      filter: drop-shadow(5px 5px 0px orange);
+      
+      letter-spacing: 3px;
+      white-space: nowrap;
+      text-box: trim-start cap alphabetic;
+    }
+
+    @media (max-width: 768px) {
+      .title {
+        font-size: 50px;
+      }
+    }
+
+    .ring {
+      --width: 100px;
+      --img-translate-x: 120%;
+      
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: var(--width);
+      aspect-ratio: 16/9;
+      
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      
+      transform: rotateX(-20deg) rotateZ(30deg) rotateY(var(--spin));
+      animation: spin 45s linear both infinite;
+      
+      --slide-deg: calc(360deg / var(--total));
+    }
+
+    .ring img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      
+      transform: rotateY(calc(var(--i) * var(--slide-deg))) translateX(var(--img-translate-x)) rotateY(90deg);
+    }
+    
+    @media (max-width: 768px) {
+      .ring {
+        --width: 70px;
+        --img-translate-x: 110%;
+      }
+    }
+
+    @property --spin {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    @keyframes spin {
+      to {
+        --spin: 360deg;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="title">code eagle</div>
+    <div class="ring" style="--total: 6">
+      <img src="https://images.unsplash.com/photo-1768745294197-00275e02c4f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg2OTJ8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 1" style="--i: 0">
+      <img src="https://images.unsplash.com/photo-1769701164899-5844b50c8aec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg3MDd8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 2" style="--i: 1">
+      <img src="https://images.unsplash.com/photo-1771301806448-5a406c7294ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg2Mzl8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 3" style="--i: 2">
+      <img src="https://images.unsplash.com/photo-1772119044027-04e80adeda6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg3MDd8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 4" style="--i: 3">
+      <img src="https://images.unsplash.com/photo-1770367214408-1b6bcacd6332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg3NjJ8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 5" style="--i: 4">
+      <img src="https://images.unsplash.com/photo-1771347030454-cfd9a6105129?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI4MTg4MTZ8&ixlib=rb-4.1.0&q=80&w=600" alt="Summer vibe 6" style="--i: 5">
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+/* Congra — Contact
+   Sin overrides locales: todo el styling (form, grid de contacto, estados
+   .w-form-done / .w-form-fail, tipografía y spacing) vive en el cascade
+   compartido /congra/styles.css. */

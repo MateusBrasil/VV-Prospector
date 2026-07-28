@@ -1,0 +1,69 @@
+[data-dobra="cursor-efeitos-mouse-6"] *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+[data-dobra="cursor-efeitos-mouse-6"],[data-dobra="cursor-efeitos-mouse-6"]{
+  width: 100%;
+  height: 100%;
+}
+[data-dobra="cursor-efeitos-mouse-6"]{
+  font-family: var(--fonte-corpo);
+  background: var(--base-100);
+  overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .main{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .text{
+  position: absolute;
+  z-index: 1;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 5.5vw;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--base-600);
+  pointer-events: none;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .text p{
+  will-change: transform, opacity;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .text .align-right{
+  align-self: flex-end;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .scene{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .scene__fallback,[data-dobra="cursor-efeitos-mouse-6"] #paint-canvas{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+[data-dobra="cursor-efeitos-mouse-6"] .scene__fallback{
+  background: var(--base-600);
+}
+[data-dobra="cursor-efeitos-mouse-6"] #paint-canvas{
+  display: block;
+  cursor: default;
+}
+@media (max-width: 900px){[data-dobra="cursor-efeitos-mouse-6"] .text{
+    width: 88vw;
+    font-size: 8vw;
+    line-height: 1;
+  }
+
+}
+
+

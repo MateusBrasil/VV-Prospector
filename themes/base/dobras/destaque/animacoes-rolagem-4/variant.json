@@ -1,0 +1,157 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-rolagem-4",
+  "scope": "destaque-animacoes-rolagem-4",
+  "origem": "bank/_componentes/animacoes-de-rolagem/animacoes-rolagem-4",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "three",
+    "splitting"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.instagram.com/adxmboni/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.nightingale.world/"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "GL."
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Adam Rosol"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "nightingale.world"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "RETRO"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Your assumptions are your windows on the world. Scrub them off every once in a while, or the light won't\n\t\t\t\t\t\tcome in."
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "MODERN"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "In this modern world it is easy to be complex but difficult to be simple. At least try to keep your mind\n\t\t\t\t\t\tsimple."
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "METAL"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "You simply have to turn your back on a culture that has gone sterile and dead and get with the program of a\n\t\t\t\t\t\tliving world and the imagination."
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "EMOTION"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Every man has his secret sorrows which the world knows not; and often times we call a man cold when he is\n\t\t\t\t\t\tonly sad."
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Loading..."
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "WELCOME"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://raw.githubusercontent.com/devloop01/webgl-slider/main/src/img/retro.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://raw.githubusercontent.com/devloop01/webgl-slider/main/src/img/modern.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://raw.githubusercontent.com/devloop01/webgl-slider/main/src/img/metal.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://raw.githubusercontent.com/devloop01/webgl-slider/main/src/img/emotion.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #5631e9 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.instagram.com/adxmboni/ https://www.nightingale.world/)",
+    "2 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

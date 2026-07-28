@@ -1,0 +1,122 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-22",
+  "scope": "destaque-scroll-22",
+  "origem": "bank/_componentes/scroll/scroll-22",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.felicityingram.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympa/?p=72089"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympeBackground/"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "this"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Introducing the ethereal masterpiece, an epitome of sartorial splendor and avant-garde elegance. Behold, the breathtaking embodiment of haute couture opulence t"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Draped in cascades of exquisite chiffon, this visionary creation embraces the essence of celestial allure. A celestial tapestry of celestial bodies unfolds, mer"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "The silhouette, a celestial dance between the divine and the divine, celebrates the human form, sculpting curves with an otherworldly grace. Each contour, metic"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Emanating an aura of refined enchantment, the color palette transcends earthly confines. Radiant hues, reminiscent of an artist's palette, collide in harmonious"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Merging haute couture craftsmanship with the spirit of celestial poetry, this divine creation is an ode to individuality and audacity. A testament to the symbio"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Prepare to embark on a celestial journey of self-expression, where boundaries fade, and possibilities unfold. This haute couture masterpiece is a celestial hymn"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.felicityingram.com/ https://tympa/?p=72089)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

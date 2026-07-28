@@ -1,0 +1,5 @@
+/* Congra — Testimonials
+   Sin overrides locales: todos los estilos de esta sección (.section_testi,
+   .testi_*, .arrow_group, swiper layout, estados .anim de los reveals) viven
+   en el cascade compartido /congra/styles.css. El CSS base de Swiper llega
+   del CDN swiper-bundle.min.css enlazado en index.html. */

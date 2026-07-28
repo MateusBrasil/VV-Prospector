@@ -1,0 +1,16 @@
+/* hirely-faq — local overrides only. The shared /hirely/styles.css carries the
+   section_faq / accordion / faq_cta / button / spacer / typography styles and the
+   design tokens. The FaqSection has no scoped <style> of its own, so there is
+   nothing to inline (Rule 4). This file only resets page chrome for the
+   standalone card so the section sits flush in the preview/thumbnail. */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color--bg-green, #0c0c0c);
+}
+
+.page-wrapper,
+.main-wrapper {
+  min-height: 100vh;
+}

@@ -1,0 +1,625 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acelia — Team</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <style data-bundled-from="/acelia/global.css">
+/* Inter Variable is self-hosted via `import '@fontsource-variable/inter'`
+   in BaseLayout.astro's frontmatter — Astro/Vite bundles the @font-face
+   declarations and emits the woff2 files into _astro/, with no third-party
+   request on page load. */
+
+/* ==========================================================================
+   Fluid Scaling System
+   Viewport-based scaling — all em values scale automatically.
+   ========================================================================== */
+
+/* Desktop */
+:root {
+  --size-unit: 16; /* body font-size in design — no px */
+  --size-container-ideal: 1280; /* capped content width (1280px / 80rem) */
+  --size-container-min: 992px;
+  --size-container-max: 1280px;     /* 80rem — content cap across the site */
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+  --container-padding: 3.25em;       /* 52px / 3.25rem — horizontal inset */
+  --section-padding-y: 4em;          /* 64px / 4rem — default vertical rhythm */
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) {
+  :root {
+    --size-container-ideal: 834;
+    --size-container-min: 768px;
+    --size-container-max: 991px;
+    --container-padding: 1.5em;
+  }
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 767px) {
+  :root {
+    --size-container-ideal: 550;
+    --size-container-min: 480px;
+    --size-container-max: 767px;
+    --container-padding: 1em;
+  }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 479px) {
+  :root {
+    --size-container-ideal: 390;
+    --size-container-min: 320px;
+    --size-container-max: 479px;
+    --container-padding: 1em;
+  }
+}
+
+/* ==========================================================================
+   Design Tokens — Acelia
+   Extracted from Figma file ENZm20V1fNXvzrSWt6M7x5
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-bg-dark: #001d21;           /* primary dark teal — hero, footer */
+  --color-bg-white: #ffffff;
+  --color-bg-cream: #f5f2ed;          /* soft alt bg */
+  --color-accent: #cdcbff;            /* lavender — heading on dark, active */
+  --color-accent-soft: #efeeff;       /* pale lavender — inactive bars */
+
+  --color-text-primary: #001d21;      /* body text on light */
+  --color-text-secondary: #909090;    /* muted text on light */
+  --color-text-white: #ffffff;
+  --color-text-white-soft: rgba(255, 255, 255, 0.8); /* nav links on dark */
+  --color-text-secondary-dark: #bfbebe; /* subheading on dark */
+  --color-text-purple: #cdcbff;       /* heading text on dark */
+
+  --color-border: #e4e4e4;
+  --color-divider: #d7d7d7;          /* light divider (about stats, outline btn) */
+  --color-text-body-dark: #4e4e4e;   /* body secondary text on light bg */
+  --color-bg-gray: #e6e6e2;          /* tag chip bg */
+  --color-bg-placeholder: #dedede;   /* image placeholder / loading */
+
+  /* Dark-surface tokens */
+  --color-surface-dark-divider: #2a3839;  /* 1px divider on dark bg */
+  --color-surface-dark-icon-bg: #142f32;  /* icon button bg on dark */
+  --color-surface-dark-icon-bg-hover: #1c3d40;
+  --color-surface-dark-icon-border: #43595b;
+  --color-text-dark-muted: #666666;        /* inactive text on dark */
+
+  /* Typography — Inter Variable (self-hosted via @fontsource-variable/inter).
+     The 'Inter Variable' family name comes from the package's @font-face
+     declarations; falls back to system fonts only if the woff2 fails to load. */
+  --font-heading: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing scale (em, 16px base) */
+  --spacing-xs: 0.25em;    /* 4px */
+  --spacing-sm: 0.5em;     /* 8px */
+  --spacing-md: 0.75em;    /* 12px */
+  --spacing-lg: 1em;       /* 16px */
+  --spacing-xl: 1.25em;    /* 20px */
+  --spacing-2xl: 1.5em;    /* 24px */
+  --spacing-3xl: 2em;      /* 32px */
+  --spacing-4xl: 2.5em;    /* 40px */
+  --spacing-5xl: 3.25em;   /* 52px */
+  --spacing-6xl: 4em;      /* 64px */
+  --spacing-7xl: 5em;      /* 80px */
+  --spacing-section: 4em;  /* 64px — default section vertical padding */
+
+  /* Border radius */
+  --radius-xs: 0.25em;     /* 4px */
+  --radius-sm: 0.5em;      /* 8px */
+  --radius-md: 0.75em;     /* 12px — buttons */
+  --radius-lg: 1em;        /* 16px — cards */
+  --radius-xl: 1.5em;      /* 24px — image containers */
+  --radius-pill: 6.25em;   /* 100px — full pill */
+  --radius-full: 9999px;
+
+  /* Shadows — multi-layer soft card shadow from Figma */
+  --shadow-card:
+    0px 4px 9px 0px rgba(0, 0, 0, 0.03),
+    0px 17px 17px 0px rgba(0, 0, 0, 0.03),
+    0px 38px 23px 0px rgba(0, 0, 0, 0.02),
+    0px 67px 27px 0px rgba(0, 0, 0, 0.01);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-font);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 400; /* Figma headings are Regular */
+  color: var(--color-text-primary);
+  overflow-wrap: break-word;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   Typography buckets — per spec
+   Sizes in rem (root 16px = 1rem, fixed across viewports).
+   line-height and letter-spacing are CONSTANT across all breakpoints.
+   !important is required because Astro scoped component CSS has higher
+   specificity (data-astro-cid attribute) and would otherwise win.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── Bucket 68px — display / hero headlines ──────────────────────────────
+   Desktop 68 → Tablet 60 → Landscape 50 → Portrait 40                   */
+
+/* ── Bucket 60px — section headings ──────────────────────────────────────
+   Desktop 60 → Tablet 52 → Landscape 44 → Portrait 36                   */
+
+.team__heading {
+  font-size: 3.75rem !important;       /* 60px */
+  line-height: 1.15 !important;
+  letter-spacing: -0.06em !important;
+}
+
+/* ── Bucket 48px — CTA heading ───────────────────────────────────────────
+   Desktop 48 (responsive sizes interpolated below)                       */
+
+/* ── Bucket 36px — statement / card titles / quote / service tab name ───
+   Desktop 36 → Tablet 32 → Landscape 28 → Portrait 24                   */
+
+/* ── Bucket SPECIAL 36px constant — about stat values ────────────────────
+   Stays at 36px on all viewports (no responsive override).               */
+
+/* ── Bucket 24px — testimonial author name / blog card title ─────────────
+   Constant 24px on all viewports.                                        */
+
+/* ── Bucket 16px — body / subhead / labels / descriptions ───────────────
+   Constant 16px on all viewports.                                        */
+
+.team__role {
+  font-size: 1rem !important;          /* 16px */
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+}
+
+/* ── Bucket BUTTON — same metrics as 16px, custom letter-spacing ────────
+   16px constant, line-height 1.5, letter-spacing 0.008em.                */
+
+/* ── Bucket SECTION BADGE — universal lock for label dot + label text ────
+   Every section header uses the same DOM contract:
+     <div class="X__label">
+       <span class="X__labelDot"></span>
+       <span class="X__labelText">Label</span>
+     </div>
+   The label text locks to 1rem / 1.5 / 0em letter-spacing on EVERY
+   viewport (no fluid scaling — these are micro-elements that read better
+   at a constant size).
+   The dot locks to 0.5rem (8px) square so the visual rhythm of every
+   section badge stays identical regardless of which component owns the
+   selector. Attribute selectors `[class$="..."]` catch every component
+   variant without listing them one by one.                              */
+[class$="__labelText"] {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+}
+
+[class$="__labelDot"] {
+  width: 0.5rem !important;       /* 8px */
+  height: 0.5rem !important;      /* 8px */
+}
+
+/* ── Number Odometer — digit-rolling counter (Counter pattern) ───────────
+   Any element marked with `[data-odometer-element]` has its digits
+   replaced at runtime with vertical roller strips. The wrapper around
+   such elements gets `[data-odometer-group]` (with optional
+   `data-odometer-trigger-start` / `-stagger`). The animation logic lives
+   site-wide in BaseLayout.astro, so any page can drop these data
+   attributes onto a stat value and get the entrance counter for free —
+   no per-component CSS / JS duplication. */
+[data-odometer-element] {
+  display: inline-flex;
+  align-items: center;
+  font-variant-numeric: tabular-nums; /* prevent jiggle as digits roll */
+}
+
+[data-odometer-element] [data-odometer-part="mask"],
+[data-odometer-element] [data-odometer-part="static"] {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.05em;
+  margin: -0.05em;
+}
+
+[data-odometer-element] [data-odometer-part="roller"] {
+  display: block;
+  white-space: pre;
+  text-align: center;
+  will-change: transform;
+}
+
+/* ── Bucket 14px — tags / chips / micro-copy ─────────────────────────────
+   Constant 14px on all viewports.                                        */
+
+/* ── Responsive sizing for variable buckets (68, 60, 48, 36) ────────────
+   line-height and letter-spacing INHERIT from the desktop rules above —
+   only font-size changes per breakpoint.                                 */
+
+@media (max-width: 991px) {
+  
+  .team__heading {
+    font-size: 3rem !important;        /* 48px */
+  }
+}
+
+@media (max-width: 767px) {
+  /* Years live inside a 4-column horizontal timeline that needs to keep
+     working at landscape / portrait. Drop the bucket size so all four
+     years still fit side-by-side within the viewport's container. */
+  
+  .team__heading {
+    font-size: 2.5rem !important;      /* 40px */
+  }
+}
+
+@media (max-width: 479px) {
+  
+  .team__heading {
+    font-size: 2.25rem !important;     /* 36px */
+  }
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+/* ==========================================================================
+   Base Utilities
+   ========================================================================== */
+
+/* Section eyebrow label — dot + text pattern from Figma (About, Expertise, Services, etc.) */
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* Button — primary light (white bg, dark text) per Figma */
+
+/* Dark-filled (green) variant of the global `.btn`. Reusable modifier:
+   any anchor / button that should read as the "green" CTA gets this class
+   in addition to `.btn`. The variant differs from the default light btn
+   in three ways:
+     1. Surface flips — dark teal background + white text
+     2. Hover ripple uses the hero's cream (#f9f9f7) instead of lavender,
+        so the surface fades from teal → cream as the disc grows
+     3. A 2px border draws on hover in dark teal — the button reads as a
+        recessed outline once the cream fills it
+   The border lives at rest as `2px solid transparent` so the layout box
+   already accounts for the border footprint; toggling `border-color` on
+   hover doesn't shift surrounding content. */
+
+/* Override the global `.btn::before` lavender ripple — only on dark
+   variants, the disc surface matches the hero cream tone instead. Same
+   easing / duration / disc geometry as the default; only color is
+   variant-local. The double-class `.btn.btn--dark::before` boosts the
+   specificity above `.btn::before` so this rule wins regardless of where
+   the two declarations sit in source order. */
+.btn.btn--dark::before {
+  background-color: #f9f9f7;
+}
+
+/* Hover treatment — gated to ≥992px so touch never sticks. Text flips
+   from white → dark teal (now legible on the cream-filled surface) and
+   the 2px border draws in dark teal so the button reads as a recessed
+   outline pill. The text color uses the same `--btn-duration` / `--btn-ease`
+   shared with the rest of `.btn`'s hover so all three pieces (ripple,
+   text, border) finish on the same beat. The `.btn.btn--dark` selector
+   matches the same specificity boost as the `::before` rule above. */
+@media (min-width: 992px) {
+  .btn.btn--dark:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-bg-dark);
+  }
+}
+
+/* Outlined variant — transparent surface with a 1px border. Used by card
+   CTAs ("View more" on case study cards) where the button should read as
+   secondary/quiet alongside the card content. Height is locked to 3rem
+   (48px) in rem so it stays constant across the fluid em scaling, just
+   like the navbar `.btn--dark` override. The default hover behavior
+   (lavender disc + char stagger + accent border) inherits from `.btn`. */
+
+/* --- Premium button hover ------------------------------------------------
+   One easing curve, one duration, everywhere — so the scale of the button,
+   the stagger of each character, and the :active press all land in sync.
+   `transform: scale()` never affects the layout box, so surrounding content
+   never reflows when the button shrinks on hover.
+-------------------------------------------------------------------------- */
+
+/* Shared easing vars — everything animated on a button hover uses these,
+   so the circle, the per-character stagger, and the colour/border all
+   resolve on the same curve and finish on the same beat. */
+
+/* Circle hover fill — a lavender disc anchored at the button's centre
+   that scales 0 → 1 on hover, growing outward to cover the entire button.
+   `width: 250%` + `aspect-ratio: 1/1` guarantees the circle's diameter
+   exceeds the button's diagonal at any sensible aspect ratio. The button
+   has `overflow: hidden`, so the excess is clipped to the rounded box.
+   Duration is `--btn-duration + 100ms` so the disc finishes at the same
+   beat as the last character of the text stagger (last char delay ≈
+   100ms for typical ~10-char button labels at the 0.01s/char increment). */
+.btn::before,
+.cases__cta::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform calc(var(--btn-duration) + 100ms) var(--btn-ease);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lift the button's content above the hover fill. Most buttons wrap
+   their text in `.btn__text` (injected by char-stagger init); this rule
+   covers any direct child element so unwrapped icons / spans also stack
+   above the disc. */
+
+/* Hovers only apply on desktop viewports (≥992px). Touch / tablet devices
+   never enter this media query, so :hover can't stick on tap. */
+@media (min-width: 992px) {
+  .btn:hover::before,
+  .cases__cta:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .btn:hover,
+  .cases__cta:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-accent);
+  }
+}
+
+.btn:active,
+.cases__cta:active {
+  transform: scale(0.97);
+}
+
+/* ── Buttons full-width at portrait only ────────────────────────────────
+   Site-wide rule: every `.btn` variant (light, dark, outline, hero, etc.)
+   stretches to 100% width at portrait so it meets the 44px touch target
+   AND fills the narrow viewport for clearer tap affordance. From landscape
+   upward the default `width: fit-content` from the base `.btn` rule
+   applies. Add new button variants by extending `.btn` — they inherit
+   this behaviour for free.
+
+   `!important` is required because Astro scoped component CSS uses
+   higher-specificity selectors (e.g. `.hero__content .btn--hero` includes
+   the data-astro-cid attribute, beating an unscoped `.btn`). Without it,
+   any component-level `width` override on a `.btn` variant would leak
+   into portrait and break the rule. The same `!important` pattern is used
+   throughout the typography buckets above for the same reason. */
+
+/* Inline text-only targets (nav links, services tabs, footer links) —
+   inherit the same easing vars so their character stagger matches. Don't
+   scale on hover (they're text, not buttons). */
+
+/* Text wrapper — uses clip-path to mask exactly the text's line box.
+   Unlike overflow: hidden with padding, clip-path doesn't create extra
+   visible area above/below where the outgoing/incoming chars could peek
+   through. Each character still slides freely; only the pixels inside
+   the current line box are painted. */
+
+/* Each character span — `text-shadow` draws a duplicate 1.3em below
+   (outside the clip). On hover the char translates up 1.3em, sliding
+   out of view while the duplicate slides in from below. */
+
+@media (min-width: 992px) {
+  .btn:hover .btn__text span,
+  .cases__cta:hover .btn__text span,
+  .navbar__link:hover .btn__text span,
+  .footer__link:hover .btn__text span {
+    transform: translateY(-1.3em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  
+  .btn::before,
+  .cases__cta::before {
+    transition: none;
+  }
+  .btn:active,
+  .cases__cta:active {
+    transform: none;
+  }
+  /* Snap the circle straight to its filled state on hover — no growth. */
+  .btn:hover::before,
+  .cases__cta:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .btn:hover .btn__text span,
+  .cases__cta:hover .btn__text span,
+  .navbar__link:hover .btn__text span,
+  .footer__link:hover .btn__text span {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Focus & Accessibility
+   ========================================================================== */
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only:focus {
+  position: fixed;
+  top: 0.5em;
+  left: 0.5em;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.75em 1.5em;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+<body>
+  <section class="team" aria-label="Our team">
+    <div class="team__inner">
+      <header class="team__header">
+        <div class="team__label">
+          <span class="team__labelDot" aria-hidden="true"></span>
+          <span class="team__labelText">Team</span>
+        </div>
+        <h2 class="team__heading">Our team</h2>
+      </header>
+
+      <div class="team__grid">
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-1.avif" alt="Zaire Dorwart, Chief Financial Officer" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Zaire Dorwart</p>
+            <p class="team__role">Chief Financial Officer</p>
+          </div>
+        </article>
+
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-2.avif" alt="Livia Saris, Head of Technology" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Livia Saris</p>
+            <p class="team__role">Head of Technology</p>
+          </div>
+        </article>
+
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-3.avif" alt="Zaire Workman, Marketing Director" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Zaire Workman</p>
+            <p class="team__role">Marketing Director</p>
+          </div>
+        </article>
+
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-4.avif" alt="Alfonso Bator, Head of Technology" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Alfonso Bator</p>
+            <p class="team__role">Head of Technology</p>
+          </div>
+        </article>
+
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-5.avif" alt="Rayna Vaccaro, Head of Technology" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Rayna Vaccaro</p>
+            <p class="team__role">Head of Technology</p>
+          </div>
+        </article>
+
+        <article class="team__card">
+          <div class="team__imageWrap">
+            <img src="https://d173woph5zl366.cloudfront.net/acelia/assets/images/Team-6.avif" alt="Marcus Schleifer, Head of Technology" width="752" height="790" class="team__image" loading="lazy">
+          </div>
+          <div class="team__overlay" aria-hidden="true"></div>
+          <div class="team__caption">
+            <p class="team__name">Marcus Schleifer</p>
+            <p class="team__role">Head of Technology</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

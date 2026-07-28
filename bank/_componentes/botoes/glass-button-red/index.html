@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Button Red - Premium</title>
+    <style>
+        :root {
+            /* Mantendo as cores originais exatamente como solicitado */
+            --primary-gradient: radial-gradient(67.54% 100.03% at 50% 0%, #FFEBEE 0%, #FFCDD2 25.48%, #E57373 62.5%, #C62828 100%);
+            --button-shadow: 0 5.98px 23.203px 0 rgba(198, 40, 40, 0.20), 0 14.352px 53.701px 0 rgba(198, 40, 40, 0.50);
+            --font-family: 'Neue Haas', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f0505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--font-family);
+        }
+
+        /* CONTAINER PARA O REFLEXO */
+        .reflection-wrapper {
+            position: relative;
+            display: inline-block;
+            -webkit-box-reflect: below 2px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+        }
+
+        /* Estrutura Principal do Botão */
+        .botao-mvm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Padding ajustado para ser simétrico (sem o ícone) */
+            padding: 20px 60px;
+            background: var(--primary-gradient);
+            border: 1.196px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15.623px;
+            box-shadow: var(--button-shadow);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Efeito de Brilho (Glint) - Mantido */
+        .botao-mvm::before {
+            content: "";
+            height: 100%;
+            width: 100px;
+            position: absolute;
+            top: 0;
+            left: -150px;
+            opacity: 0;
+            background: #ffffff;
+            box-shadow: 0 0 30px 20px #ffffffaa;
+            transform: skewX(-20deg);
+            mix-blend-mode: plus-lighter;
+            pointer-events: none;
+            animation: brilho 3s linear infinite;
+        }
+
+        /* Texto do Botão */
+        .botao-mvm .elementor-button-text {
+            transition: transform 0.5s ease;
+        }
+
+        /* ESTADOS DE HOVER */
+        .botao-mvm:hover {
+            filter: brightness(1.1) saturate(1.2);
+            /* Removido o padding assimétrico do hover */
+            transform: translateY(-8px);
+        }
+
+        .botao-mvm:active {
+            transform: scale(0.95) translateY(-2px);
+        }
+
+        .botao-mvm:hover .elementor-button-text {
+            transform: scale(1.05);
+        }
+
+        /* Animação de Brilho - Mantida */
+        @keyframes brilho {
+            0% { opacity: 0; left: -150px; }
+            20% { opacity: 0.4; }
+            50% { opacity: 0.6; left: 50%; }
+            80% { opacity: 0.4; }
+            100% { opacity: 0; left: 150%; }
+        }
+
+        /* Responsividade */
+        @media(max-width: 600px) {
+            .botao-mvm {
+                font-size: 16px;
+                padding: 15px 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reflection-wrapper">
+        <a href="#" class="botao-mvm">
+            <span class="elementor-button-text">Glass Button</span>
+        </a>
+    </div>
+
+</body>
+</html>

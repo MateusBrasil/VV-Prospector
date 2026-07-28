@@ -1,0 +1,103 @@
+{
+  "slot": "passos",
+  "nome": "secao-97",
+  "scope": "passos-secao-97",
+  "origem": "bank/_componentes/secoes/secao-97",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "swiper",
+    "matter",
+    "splitting"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Healthy, radiant skin rarely comes from a single miracle product. It is the result of a considered routine — a handful of well-formulated steps practised consis"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Start with a clean canvas"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Cleansing is the foundation of every routine. A gentle, pH-balanced cleanser lifts away the day without stripping the barrier that keeps your skin resilient. Re"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Layer from lightest to richest"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Once your skin is clean, apply products in order of texture — thinnest first. Hydrating serums and essences sink in best on damp skin, followed by treatment ser"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "The non-negotiables"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "A gentle cleanser suited to your skin type."
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "A hydrating serum to support the moisture barrier."
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "A nourishing moisturiser, day and night."
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "Broad-spectrum SPF every single morning."
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Protect what you have built"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Sunscreen is the most powerful anti-ageing step in any routine, and the one most often skipped. Apply a broad-spectrum SPF 30 or higher as the final step of you"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Give your routine time. Skin renews on its own quiet schedule, and most formulas need four to six weeks before their benefits become visible. Stay gentle, stay "
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/aurae/images/statement-img.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "34 cor(es) mapeadas para tokens por luminância (acento da origem #06b6d4 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/aurae/images/statement-img.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

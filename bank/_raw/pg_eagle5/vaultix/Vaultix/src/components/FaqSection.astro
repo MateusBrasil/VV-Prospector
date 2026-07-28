@@ -1,0 +1,411 @@
+---
+// FaqSection — shared FAQ block with the canonical Eagle entrance +
+// open/close animation. Used by /pricing and /contact (and any future
+// page that needs FAQs).
+//
+// Pattern (entrance):
+//  1. SplitText line revelar for eyebrow + headline
+//  2. Outer 4 frame lines drawn-in via scaleX/scaleY (Footer pattern)
+//  3. Per-item border-color fade transparent → token (inner divider grow)
+//  4. Corner-bracket markers scale + opacity
+//  5. Item content opacity (no `y` translate)
+//
+// Pattern (open/close):
+//  - Native <details> toggle is intercepted; GSAP animates height/opacity
+//    so close + reopen are equally smooth
+//  - `data-faq-state` flips instantly on click → chevron rotates 45°
+//    without waiting for the height anim to finish
+//  - Chevron glow on summary:hover OR while open
+
+import EagleMarker from "./VaultixMarker.astro";
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  items: FaqItem[];
+}
+
+const {
+  eyebrow = "[ duvidas ]",
+  headline = "Frequently Asked Questions",
+  items,
+} = Astro.props;
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("faq-section-pre-anim");
+  }
+</script>
+
+<section
+  class="relative bg-[var(--color-bg)] py-[5.1875rem]"
+  data-faq-section
+>
+  <div
+    class="mx-auto flex w-full max-w-[68rem] flex-col items-center gap-[4.5625rem] px-4"
+  >
+    <div
+      class="flex w-full max-w-[33.4375rem] flex-col items-center gap-4 text-center font-mono uppercase md:gap-[0.75rem]"
+    >
+      <span
+        class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-[#fdff22]"
+        data-faq-eyebrow
+      >
+        {eyebrow}
+      </span>
+      <h2
+        class="text-[2.5rem] font-normal leading-none tracking-[4.8px] text-white"
+        data-faq-headline
+      >
+        {headline}
+      </h2>
+    </div>
+
+    <div class="relative flex w-full flex-col" data-faq-list>
+      {/* Outer frame lines — drawn-in via scaleX/scaleY (Footer pattern). */}
+      <span
+        class="faq-frame-line faq-frame-line--top"
+        data-faq-frame-line="top"
+        aria-hidden="true"></span>
+      <span
+        class="faq-frame-line faq-frame-line--right"
+        data-faq-frame-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="faq-frame-line faq-frame-line--bottom"
+        data-faq-frame-line="bottom"
+        aria-hidden="true"></span>
+      <span
+        class="faq-frame-line faq-frame-line--left"
+        data-faq-frame-line="left"
+        aria-hidden="true"></span>
+
+      {/* 4 corner-bracket markers (Figma Union nodes). */}
+      <EagleMarker type="corner-tl" data-faq-tmark class="absolute -top-2 -left-2 z-10" />
+      <EagleMarker type="corner-tr" data-faq-tmark class="absolute -top-2 -right-2 z-10" />
+      <EagleMarker type="corner-bl" data-faq-tmark class="absolute -bottom-2 -left-2 z-10" />
+      <EagleMarker type="corner-br" data-faq-tmark class="absolute -bottom-2 -right-2 z-10" />
+
+      {
+        items.map((item, idx) => (
+          <details
+            class="group relative -mt-px border border-[var(--color-border)] bg-[#050505]"
+            data-faq-item
+            data-faq-state={idx === 0 ? "open" : "closed"}
+            open={idx === 0}
+          >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-[0.75rem] p-[1.5rem]">
+              <span class="flex-1 font-mono text-[1rem] uppercase leading-[1.25] text-white">
+                {item.q}
+              </span>
+              <span
+                class="faq-chevron relative inline-flex size-[1.5rem] shrink-0 items-center justify-center text-[#fdff22]"
+                aria-hidden="true"
+              >
+                <span class="absolute h-[2px] w-[14px] bg-current" />
+                <span class="absolute h-[14px] w-[2px] bg-current" />
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div>
+                <p class="px-[1.5rem] pb-[1.5rem] font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60">
+                  {item.a}
+                </p>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* === Outer frame lines drawn via scaleX/scaleY. */
+  .faq-frame-line {
+    position: absolute;
+    background: var(--color-border);
+    pointer-events: none;
+    z-index: 5;
+  }
+  .faq-frame-line--top,
+  .faq-frame-line--bottom {
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+  .faq-frame-line--top {
+    top: 0;
+    transform-origin: left center;
+  }
+  .faq-frame-line--bottom {
+    bottom: 0;
+    transform-origin: right center;
+  }
+  .faq-frame-line--left,
+  .faq-frame-line--right {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+  .faq-frame-line--right {
+    right: 0;
+    transform-origin: center top;
+  }
+  .faq-frame-line--left {
+    left: 0;
+    transform-origin: center bottom;
+  }
+
+  /* Pre-anim FOUC */
+  :global(.faq-section-pre-anim) [data-faq-eyebrow],
+  :global(.faq-section-pre-anim) [data-faq-headline],
+  :global(.faq-section-pre-anim) [data-faq-item] {
+    visibility: hidden;
+  }
+  :global(.faq-section-pre-anim) [data-faq-frame-line],
+  :global(.faq-section-pre-anim) [data-faq-tmark] {
+    opacity: 0;
+  }
+
+  /* Open/close animation — JS-driven height. The `display: block` here
+     overrides the UA `details > *:not(summary) { display: none }` so the
+     answer stays in layout while we tween its height/opacity. */
+  [data-faq-item] .faq-answer {
+    display: block;
+    overflow: hidden;
+  }
+
+  /* Chevron rotation + glow.
+     Rotation driven by `data-faq-state` (set instantly on click by JS),
+     NOT by the [open] attr — [open] flips only after the close anim
+     completes, which would lag the chevron. Glow on hover OR while open. */
+  .faq-chevron {
+    transform-origin: center;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+  [data-faq-item][data-faq-state="open"] .faq-chevron {
+    transform: rotate(45deg);
+  }
+  [data-faq-item] summary:hover .faq-chevron,
+  [data-faq-item][data-faq-state="open"] .faq-chevron {
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.9))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+
+  [data-faq-item] summary::-webkit-details-marker {
+    display: none;
+  }
+  [data-faq-item] summary::marker {
+    display: none;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  let preAnimDropped = false;
+  const dropPreAnim = () => {
+    if (preAnimDropped) return;
+    document.documentElement.classList.remove("faq-section-pre-anim");
+    preAnimDropped = true;
+  };
+
+  const initEntrance = (root: HTMLElement) => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      dropPreAnim();
+      return;
+    }
+
+    const eyebrow = root.querySelector<HTMLElement>("[data-faq-eyebrow]");
+    const headline = root.querySelector<HTMLElement>("[data-faq-headline]");
+    const items = gsap.utils.toArray<HTMLElement>("[data-faq-item]", root);
+    const tmarks = gsap.utils.toArray<SVGElement>("[data-faq-tmark]", root);
+    const frameLines = gsap.utils.toArray<HTMLElement>(
+      "[data-faq-frame-line]",
+      root
+    );
+
+    const eyebrowSplit = eyebrow
+      ? new SplitText(eyebrow, { type: "lines", mask: "lines" })
+      : null;
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+
+    if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    frameLines.forEach((l) => {
+      const side = l.dataset.faqFrameLine;
+      if (side === "top" || side === "bottom") gsap.set(l, { scaleX: 0 });
+      else gsap.set(l, { scaleY: 0 });
+    });
+    gsap.set(tmarks, {
+      opacity: 0,
+      scale: 0.4,
+      transformOrigin: "center",
+    });
+    gsap.set(items, { opacity: 0, borderColor: "transparent" });
+
+    dropPreAnim();
+
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: root, comeca: "top 80%", once: true },
+    });
+
+    if (eyebrowSplit) {
+      tl.to(
+        eyebrowSplit.lines,
+        { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 },
+        0
+      );
+    }
+    if (headlineSplit) {
+      tl.to(
+        headlineSplit.lines,
+        { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 },
+        0.15
+      );
+    }
+
+    const horizontals = frameLines.filter((l) => {
+      const s = l.dataset.faqFrameLine;
+      return s === "top" || s === "bottom";
+    });
+    const verticals = frameLines.filter((l) => {
+      const s = l.dataset.faqFrameLine;
+      return s === "left" || s === "right";
+    });
+    tl.to(
+      horizontals,
+      { scaleX: 1, duration: 1.0, ease: "eagleStructure", stagger: 0.08 },
+      0.4
+    );
+    tl.to(
+      verticals,
+      { scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.08 },
+      0.55
+    );
+    tl.to(
+      items,
+      {
+        borderColor: "var(--color-border)",
+        duration: 0.7,
+        ease: "eagleStructure",
+      },
+      0.85
+    );
+    tl.to(
+      tmarks,
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.45,
+        ease: "eagleDecor",
+        stagger: 0.06,
+      },
+      1.0
+    );
+    tl.to(
+      items,
+      {
+        opacity: 1,
+        duration: 0.5,
+        ease: "eagleReveal",
+        stagger: 0.06,
+      },
+      1.05
+    );
+  };
+
+  const initOpenClose = (root: HTMLElement) => {
+    const items = root.querySelectorAll<HTMLDetailsElement>("[data-faq-item]");
+    items.forEach((item) => {
+      const summary = item.querySelector<HTMLElement>("summary");
+      const answer = item.querySelector<HTMLElement>(".faq-answer");
+      if (!summary || !answer) return;
+
+      // Initial state — match the `open` attribute set at render time.
+      if (item.open) {
+        gsap.set(answer, { height: "auto", opacity: 1 });
+      } else {
+        gsap.set(answer, { height: 0, opacity: 0 });
+      }
+
+      const isAnimatingRef = { current: false };
+
+      summary.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (isAnimatingRef.current) return;
+        isAnimatingRef.current = true;
+
+        if (item.open) {
+          item.dataset.faqState = "closed";
+          gsap.to(answer, {
+            height: 0,
+            opacity: 0,
+            duration: 0.4,
+            ease: "eagleStructure",
+            onComplete: () => {
+              item.open = false;
+              isAnimatingRef.current = false;
+            },
+          });
+        } else {
+          item.dataset.faqState = "open";
+          item.open = true;
+          gsap.set(answer, { height: "auto" });
+          const targetHeight = answer.offsetHeight;
+          gsap.fromTo(
+            answer,
+            { height: 0, opacity: 0 },
+            {
+              height: targetHeight,
+              opacity: 1,
+              duration: 0.4,
+              ease: "eagleStructure",
+              onComplete: () => {
+                gsap.set(answer, { height: "auto" });
+                isAnimatingRef.current = false;
+              },
+            }
+          );
+        }
+      });
+    });
+  };
+
+  const init = () => {
+    document
+      .querySelectorAll<HTMLElement>("[data-faq-section]")
+      .forEach((root) => {
+        initEntrance(root);
+        initOpenClose(root);
+      });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

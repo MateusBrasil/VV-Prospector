@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #fbfbf9);
+  color: var(--text-color--text-primary, #000);
+  font-family: var(--_typography---font-family--secondary, Inter, sans-serif);
+  min-height: 100svh;
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: coverly-navbar styles ===== */
+/* Coverly — Navbar
+ * Component-scoped overrides only.
+ * The shared Coverly stylesheet (/coverly/styles.css) covers tokens, the
+ * .nav / .nav_bar / .menu / .menu_content / .nav_overlay rules, button text
+ * swap, nav_link clip-line hover, and the is-open state transitions.
+ */

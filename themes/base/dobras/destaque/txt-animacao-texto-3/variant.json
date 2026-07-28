@@ -1,0 +1,43 @@
+{
+  "slot": "destaque",
+  "nome": "txt-animacao-texto-3",
+  "scope": "destaque-txt-animacao-texto-3",
+  "origem": "bank/_componentes/textos/animacao-texto-3",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://github.com/ikeryou/sketch492"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://ikeryou.jp"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Github"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "ikeryou.jp"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://github.com/ikeryou/sketch492 https://ikeryou.jp)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

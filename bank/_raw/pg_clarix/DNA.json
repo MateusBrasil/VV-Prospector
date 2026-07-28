@@ -1,0 +1,124 @@
+{
+  "slug": "pg_clarix",
+  "nome": "Clarix",
+  "caminho": "bank/_raw/pg_clarix/clarix",
+  "origem": "Code Eagle → GetLayers template (declarado no HOW_TO_USE.md)",
+  "formato": "Vite · HTML/CSS/JS puro · index.html na raiz — compatível com remix.mjs",
+  "nicho_real": "SaaS / consultoria generica — h1 \"The clarity your business has been missing\". NAO e nicho local.",
+  "tag_code_eagle": null,
+  "_nota_tag": "A tag .ef-tag da listagem nao foi colhida — a listagem exige login (ver bank/_BLOQUEIO.md).",
+  "adn_medido": {
+    "medido_em": "1440x900, Chrome real, getComputedStyle",
+    "ratio_display_corpo": 7.64,
+    "regua_kasablanca": {
+      "ratio": 9.4,
+      "minimo_aceitavel": 8,
+      "peso": 900,
+      "line_height": 0.85,
+      "tokens_cor": 6
+    },
+    "display": {
+      "px": 100.8,
+      "peso": 200,
+      "line_height": 1,
+      "transform": "none",
+      "familia": "Sarabun",
+      "tag": "h1",
+      "texto": "The clarity your businesshas been missing"
+    },
+    "corpo": {
+      "px": 13.2,
+      "nós": 11
+    },
+    "familias": [
+      "Sarabun"
+    ],
+    "generos": [
+      "grotesca"
+    ],
+    "contraste_genero": false,
+    "tokens_cor": 8,
+    "cores": [
+      {
+        "cor": "rgb(0, 0, 0)",
+        "usos": 62
+      },
+      {
+        "cor": "rgba(0, 0, 0, 0.05)",
+        "usos": 3
+      },
+      {
+        "cor": "rgb(255, 255, 255)",
+        "usos": 2
+      },
+      {
+        "cor": "rgba(255, 255, 255, 0.1)",
+        "usos": 2
+      },
+      {
+        "cor": "rgba(255, 255, 255, 0.15)",
+        "usos": 1
+      },
+      {
+        "cor": "rgba(255, 255, 255, 0.4)",
+        "usos": 1
+      },
+      {
+        "cor": "rgba(255, 255, 255, 0.6)",
+        "usos": 1
+      },
+      {
+        "cor": "rgba(0, 0, 0, 0.1)",
+        "usos": 1
+      }
+    ],
+    "gradientes": 1,
+    "gradientes_amostra": [
+      "linear-gradient(to right, rgb(0, 145, 255), rgb(0, 170, 255), rgb(128, 0, 255), rgb(255, 0, 153), rgb(255, 0, 0))"
+    ],
+    "easings": [
+      {
+        "easing": "ease",
+        "usos": 27
+      },
+      {
+        "easing": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "usos": 3
+      },
+      {
+        "easing": "linear",
+        "usos": 2
+      }
+    ],
+    "props_animadas": [
+      {
+        "prop": "opacity",
+        "usos": 15
+      },
+      {
+        "prop": "transform",
+        "usos": 11
+      },
+      {
+        "prop": "background",
+        "usos": 5
+      }
+    ],
+    "nós_texto": 60
+  },
+  "gate": {
+    "veredicto": "REPROVADO",
+    "fails": 25,
+    "warns": 0,
+    "exit": 1,
+    "motivos": [
+      "C3 hex-fora-de-token x22",
+      "C2 gradiente-multi-matiz x1 (dH 64 graus)",
+      "E8 fonte-cdn x1 (fonts.googleapis.com)",
+      "M3 prefers-reduced-motion ausente"
+    ],
+    "_nota": "Reprovacao esperada num template cru: e material de partida, nao entrega. O remix re-skina para tokens; E8/M3 sao correcoes de 1 linha. O que NAO se corrige por re-skin e o ADN tipografico abaixo."
+  },
+  "veredicto_como_base_de_nicho": "FRACO",
+  "porque": "ratio 7,64x < minimo 8x · display peso 200 (regua 900) · lh 1,0 (regua 0,85) · sem uppercase · 1 so familia (Sarabun), zero contraste de genero. A licao paga de 2026-07-16 (REGRA-DE-BASE.md) diz que o ADN do template nao se troca: subir 200->900 e 1,0->0,85 e reconstruir a tipografia, nao re-skinar."
+}

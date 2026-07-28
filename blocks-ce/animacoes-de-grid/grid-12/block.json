@@ -1,0 +1,16 @@
+{
+  "ref": "animacoes-de-grid/grid-12",
+  "scope": "animacoes-de-grid-grid-12",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesCdn": [
+    "https://use.typekit.net/tas3jji.css"
+  ],
+  "tem_js": true,
+  "n_assets": 42,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

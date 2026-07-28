@@ -1,0 +1,15 @@
+---
+// Reusable structured data emitter.
+// Pass a plain object (no @context needed — added automatically).
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+const { data } = Astro.props;
+
+const withContext = (obj: Record<string, unknown>) =>
+  obj["@context"] ? obj : { "@context": "https://schema.org", ...obj };
+
+const payload = Array.isArray(data) ? data.map(withContext) : withContext(data);
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(payload)} is:inline />

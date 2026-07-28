@@ -1,0 +1,247 @@
+{
+  "slot": "vitrine",
+  "nome": "grid-4",
+  "scope": "vitrine-grid-4",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-4/grid-to-preview-main/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "flip"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Grid to Full Preview"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "🖥️ Seems like this demo best suited for desktop."
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "product title"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "product title"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-5.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-6.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-7.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-8.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-3.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-3-detail-1.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-3-detail-2.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-4.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-4-detail-1.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-4-detail-2.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-7.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-7-detail-1.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-7-detail-2.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-8.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-8-detail-1.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-8-detail-2.webp"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-1.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-1-detail-1.webp"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-1-detail-2.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-2.webp"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-2-detail-1.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-2-detail-2.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-5.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-5-detail-1.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-5-detail-2.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-6.webp"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-6-detail-1.webp"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "./assets/products/product-6-detail-2.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 32
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

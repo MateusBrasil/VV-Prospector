@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cosmic Explorations | Gallery</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 13px;
+        }
+
+        body {
+            margin: 0;
+            --color-text: #000002;
+            --color-bg: #EAE4DE;
+            --color-link: #000002;
+            --color-link-hover: #000;
+            --color-menu: #000002;
+            --color-menu-hover: #c12a2a;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            --title-size-fallback: 7vw;
+            --title-size: clamp(4rem, 7vw, 10rem);
+            --cursor-stroke: none;
+            --cursor-fill: #d2220e;
+            --cursor-stroke-width: 1px;
+        }
+
+        .hidden {
+            position: absolute;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+
+        /* Page Loader */
+        .js .loading::before,
+        .js .loading::after {
+            content: '';
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .js .loading::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+        }
+
+        .js .loading::after {
+            content: 'LOADING';
+            font-size: 10vw;
+            top: 50%;
+            left: 50%;
+            width: 1ch;
+            overflow: hidden;
+            font-family: monospace;
+            font-weight: 700;
+            transform: translate3d(-50%,-50%,0);
+            -webkit-text-stroke: 2px var(--color-link);
+            color: var(--color-link);
+            animation: letterSwitch 2s steps(7) infinite;
+        }
+
+        @keyframes letterSwitch {
+            to { text-indent: -7ch; }
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-link);
+            outline: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: var(--color-link-hover);
+            outline: none;
+        }
+
+        main {
+            min-height: 100vh;
+            display: grid;
+            grid-template-areas: 'frame' 'content';
+            grid-template-rows: auto auto;
+            grid-template-columns: auto;
+        }
+
+        .js main {
+            height: 100vh;
+        }
+
+        .frame {
+            text-transform: uppercase;
+            padding: 2rem 1rem;
+            font-weight: 500;
+        }
+
+        .frame a {
+            text-decoration: underline;
+        }
+
+        .frame a:hover,
+        .frame a:focus {
+            text-decoration: none;
+        }
+
+        .frame__title {
+            font-size: 1rem;
+            margin: 0 0 1rem;
+            font-weight: normal;
+        }
+
+        .frame__links {
+            display: inline;
+        }
+
+        .frame__links a:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        .bg-gallery-wrap {
+            grid-area: content;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-gallery {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 13rem);
+            max-height: 500px;
+            display: grid;
+            grid-template-columns: repeat(25,4%);
+            grid-template-rows: repeat(25,4%);
+        }
+
+        .bg-gallery__item {
+            opacity: 0;
+            position: relative;
+            max-width: 230px;
+            will-change: transform;
+            border-radius: 8px; /* Added for nicer look */
+            object-fit: cover;
+        }
+
+        .bg-gallery__item:nth-child(odd) {
+            max-width: 150px;
+        }
+
+        .bg-gallery__item:nth-child(-n+3) { align-self: start; }
+        .bg-gallery__item:nth-child(n+4) { align-self: end; }
+
+        .bg-gallery--1 .bg-gallery__item:nth-child(1) { grid-area: 3 / 2 / auto / auto;}
+        .bg-gallery--1 .bg-gallery__item:nth-child(2) { grid-area: 8 / 3 / auto / auto; }
+        .bg-gallery--1 .bg-gallery__item:nth-child(3) { grid-area: 1 / 20 / auto / auto; }
+        .bg-gallery--1 .bg-gallery__item:nth-child(4) { grid-area: 25 / 5 / auto / auto; }
+        .bg-gallery--1 .bg-gallery__item:nth-child(5) { grid-area: 25 / 18 / auto / auto; }
+        .bg-gallery--1 .bg-gallery__item:nth-child(6) { grid-area: 15 / 19 / auto / auto; }
+
+        .bg-gallery--2 .bg-gallery__item:nth-child(1) { grid-area: 1 / 2 / auto / auto; }
+        .bg-gallery--2 .bg-gallery__item:nth-child(2) { grid-area: 10 / 3 / auto / auto; }
+        .bg-gallery--2 .bg-gallery__item:nth-child(3) { grid-area: 10 / 20 / auto / auto; }
+        .bg-gallery--2 .bg-gallery__item:nth-child(4) { grid-area: 25 / 15 / auto / auto; }
+        .bg-gallery--2 .bg-gallery__item:nth-child(5) { grid-area: 7 / 16 / auto / auto; }
+        .bg-gallery--2 .bg-gallery__item:nth-child(6) { grid-area: 21 / 18 / auto / auto; }
+
+        .bg-gallery--3 .bg-gallery__item:nth-child(1) { grid-area: 3 / 3 / auto / auto; }
+        .bg-gallery--3 .bg-gallery__item:nth-child(2) { grid-area: 11 / 4 / auto / auto; }
+        .bg-gallery--3 .bg-gallery__item:nth-child(3) { grid-area: 1 / 16 / auto / auto; }
+        .bg-gallery--3 .bg-gallery__item:nth-child(4) { grid-area: 25 / 10 / auto / auto; }
+        .bg-gallery--3 .bg-gallery__item:nth-child(5) { grid-area: 4 / 22 / auto / auto; }
+        .bg-gallery--3 .bg-gallery__item:nth-child(6) { grid-area: 20 / 18 / auto / auto; }
+
+        .bg-gallery--4 .bg-gallery__item:nth-child(1) { grid-area: 1 / 9 / auto / auto; }
+        .bg-gallery--4 .bg-gallery__item:nth-child(2) { grid-area: 2 / 1 / auto / auto; }
+        .bg-gallery--4 .bg-gallery__item:nth-child(3) { grid-area: 6 / 14 / auto / auto; }
+        .bg-gallery--4 .bg-gallery__item:nth-child(4) { grid-area: 25 / 15 / auto / auto; }
+        .bg-gallery--4 .bg-gallery__item:nth-child(5) { grid-area: 23 / 22 / auto / auto; }
+        .bg-gallery--4 .bg-gallery__item:nth-child(6) { grid-area: 15 / 19 / auto / auto; }
+
+        .bg-gallery--5 .bg-gallery__item:nth-child(1) { grid-area: 7 / 1 / auto / auto; }
+        .bg-gallery--5 .bg-gallery__item:nth-child(2) { grid-area: 1 / 15 / auto / auto; }
+        .bg-gallery--5 .bg-gallery__item:nth-child(3) { grid-area: 2 / 13 / auto / auto; }
+        .bg-gallery--5 .bg-gallery__item:nth-child(4) { grid-area: 25 / 3 / auto / auto; }
+        .bg-gallery--5 .bg-gallery__item:nth-child(5) { grid-area: 18 / 19 / auto / auto; }
+        .bg-gallery--5 .bg-gallery__item:nth-child(6) { grid-area: 25 / 21 / auto / auto; }
+
+        .menu {
+            grid-area: content;
+            font-weight: 400;
+            font-size: 1.65rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            align-items: flex-start;
+            width: 100%;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .no-js .menu {
+            padding-top: 10vh;
+        }
+
+        .js .menu {
+            align-self: center;
+        }
+
+        .menu__headline {
+            margin-bottom: 3rem;
+        }
+
+        .menu__headline-deco {
+            display: block;
+            width: 3rem;
+            height: 1px;
+            margin-bottom: 1rem;
+            background: currentColor;
+            transform-origin: 0% 50%;
+        }
+
+        .menu__headline-text {
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .menu__headline-text span {
+            display: block;
+        }
+
+        .menu__item {
+            cursor: pointer;
+            display: flex;
+            margin: -2.5vh 0 0 0;
+            align-items: flex-end;
+            line-height: 1.2;
+            position: relative;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .menu__item-title {
+            font-size: var(--title-size-fallback);
+            font-size: var(--title-size);
+            font-weight: 700;
+            font-style: italic;
+            pointer-events: auto;
+            color: var(--color-menu);
+        }
+
+        .menu__item:hover .menu__item-title,
+        .menu__item--selected .menu__item-title,
+        .menu__item-cta:hover span {
+            color: var(--color-menu-hover);
+        }
+
+        .menu__item-deco {
+            font-size: var(--title-size-fallback);
+            font-size: var(--title-size);
+            font-weight: 100;
+            transform: rotate(30deg);
+            margin: 0 0.5rem 0 2rem;
+            opacity: 0;
+        }
+
+        .menu__item-cta {
+            display: block;
+            margin: 0 0 1.35vw;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu__item--selected .menu__item-deco,
+        .menu__item--selected .menu__item-cta {
+            pointer-events: auto;
+        }
+
+        .menu__item-cta span,
+        .content__title span,
+        .content__intro span,
+        .content__date span {
+            display: block;
+        }
+
+        .page {
+            grid-row-start: 2;
+            grid-column-start: 2;
+        }
+
+        .js .page {
+            grid-area: content; 
+        }
+
+        .js .page--preview {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .content {
+            margin: 0 auto;
+            padding: 2rem 0 10rem 0;
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-areas: "back" "title" "intro" "date" "gallery";
+            grid-gap: 2rem;
+        }
+
+        .js .content {
+            position: absolute;
+            top: 0;
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .js .content--current {
+            position: relative;
+            overflow: visible;
+            height: auto;
+            opacity: 1;
+        }
+
+        .js .page:not(.page--preview) .content--current {
+            pointer-events: auto;
+        }
+
+        .content__back {
+            grid-area: back;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+        }
+
+        .no-js .content__back svg {
+            transform: rotate(90deg);
+        }
+
+        .content__back:focus {
+            outline: none;
+        }
+
+        .content__back svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            stroke: #000;
+            stroke-width: 17px;
+        }
+
+        .content__back:hover svg,
+        .content__back:focus svg {
+            fill: transparent;
+        }
+
+        .content__title {
+            grid-area: title;
+            font-size: var(--title-size-fallback);
+            font-size: var(--title-size);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content__intro {
+            grid-area: intro;
+            margin: 0;
+            font-size: 1.65rem;
+            max-width: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content__date {
+            grid-area: date;
+            align-self: end;
+            justify-self: end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery {
+            margin: 2rem 0 0 0;
+            grid-area: gallery;
+            display: grid;
+            grid-gap: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .gallery__figure {
+            margin: 0;
+        }
+
+        .gallery__figure-img {
+            max-width: 100%;
+            border-radius: 6px;
+        }
+
+        .js .content__back,
+        .js .content__title,
+        .js .content__intro,
+        .js .content__date,
+        .js .gallery__figure {
+            opacity: 0;
+        }
+
+        .cursor {
+            display: none;
+        }
+
+        @media screen and (min-width: 53em) {
+            main {
+                grid-template-areas: 'content content';
+                grid-template-rows: 100vh;
+                grid-template-columns: 3rem 1fr;
+            }
+            .frame {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                display: flex;
+                z-index: 1000;
+                -webkit-writing-mode: vertical-lr;
+                -ms-writing-mode: tb-lr;
+                writing-mode: vertical-lr;
+                align-items: flex-end;
+                padding: 2rem 0.35rem 0 0;
+                transform: rotate(180deg);
+            }
+            .frame__title {
+                margin: 0;
+            }
+            .frame__links {
+                margin: 15vh 0 0 0;
+            }
+            .frame__links a {
+                margin-top: 1.25rem;
+            }
+            .bg-gallery {
+                height: 100vh;
+                max-height: none;
+            }
+            .menu,
+            .content {
+                width: 50vw;
+                max-width: 1000px;
+            }
+            .content {
+                grid-template-areas: "back back" 
+                                "title title" 
+                                "intro date"
+                                "gallery gallery";
+            }	
+        }
+
+
+        @media (any-pointer: fine) {
+            .cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: block;
+                pointer-events: none;
+                mix-blend-mode: color-burn;
+                z-index: 9999;
+            }
+            .cursor__inner {
+                fill: var(--cursor-fill);
+                stroke: var(--cursor-stroke);
+                stroke-width: var(--cursor-stroke-width);
+                opacity: 0.7;
+            }
+            .no-js .cursor {
+                display: none;
+            }
+        }
+    </style>
+    <script>document.documentElement.className = "js";</script>
+</head>
+<body class="demo-1 loading">
+    <svg class="hidden">
+        <symbol id="icon-arrow" viewBox="0 0 511.996 511.996">
+            <title>Arrow left</title>
+            <path d="M462.51 220.392H172.707l67.017-68.342a7.133 7.133 0 00.014-9.956l-39.544-40.612a7.13 7.13 0 00-10.204 0L44.383 251.028a7.128 7.128 0 000 9.941L189.99 410.514c1.338 1.375 3.176 2.15 5.099 2.15s3.76-.775 5.105-2.15l39.544-40.612a7.126 7.126 0 00-.014-9.956l-67.017-68.342H462.51c3.93 0 7.12-3.19 7.12-7.12v-56.97a7.124 7.124 0 00-7.12-7.122z"></path>
+        </symbol>
+    </svg>
+    <main>
+        <div class="frame">
+            <h1 class="frame__title">Cosmic Explorations Gallery</h1>
+        </div>
+        <div class="bg-gallery-wrap">
+            <div class="bg-gallery bg-gallery--1">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/1/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/2/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/3/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/4/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/5/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/6/400/600" alt="Some image">
+            </div>
+            <div class="bg-gallery bg-gallery--2">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/7/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/8/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/9/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/10/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/11/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/12/400/600" alt="Some image">
+            </div>
+            <div class="bg-gallery bg-gallery--3">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/13/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/14/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/15/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/16/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/17/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/18/400/600" alt="Some image">
+            </div>
+            <div class="bg-gallery bg-gallery--4">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/19/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/20/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/21/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/22/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/23/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/24/400/600" alt="Some image">
+            </div>
+            <div class="bg-gallery bg-gallery--5">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/25/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/26/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/27/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/28/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/29/400/600" alt="Some image">
+                <img class="bg-gallery__item" src="https://picsum.photos/seed/30/400/600" alt="Some image">
+            </div>
+        </div>
+        <nav class="menu" id="menu">
+            <div class="menu__headline">
+                <span class="menu__headline-deco"></span>
+                <span class="menu__headline-text"><span>Select a mission</span></span>
+            </div>
+            <a class="menu__item menu__item--selected" href="#content-1">
+                <span class="menu__item-title">Apollo</span>
+                <span class="menu__item-deco">|</span>
+                <span class="menu__item-cta"><span>explore</span></span>
+            </a>
+            <a class="menu__item" href="#content-2">
+                <span class="menu__item-title">Artemis</span>
+                <span class="menu__item-deco">|</span>
+                <span class="menu__item-cta"><span>explore</span></span>
+            </a>
+            <a class="menu__item" href="#content-3">
+                <span class="menu__item-title">Voyager</span>
+                <span class="menu__item-deco">|</span>
+                <span class="menu__item-cta"><span>explore</span></span>
+            </a>
+            <a class="menu__item" href="#content-4">
+                <span class="menu__item-title">Pioneer</span>
+                <span class="menu__item-deco">|</span>
+                <span class="menu__item-cta"><span>explore</span></span>
+            </a>
+            <a class="menu__item" href="#content-5">
+                <span class="menu__item-title">Cassini</span>
+                <span class="menu__item-deco">|</span>
+                <span class="menu__item-cta"><span>explore</span></span>
+            </a>
+        </nav>
+        <section class="page page--preview">
+            <div class="content" id="content-1" data-bgcolor="#da9b5b">
+                <a class="content__back" href="#menu" aria-label="Back to menu">
+                    <svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                <h2 class="content__title"><span>Apollo</span></h2>
+                <p class="content__intro"><span>A journey back to the golden age of space exploration and the legendary lunar landings.</span></p>
+                <span class="content__date"><span>July, 1969</span></span>
+                <div class="gallery">
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/1/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Launch Pad</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/2/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Lunar Module</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/3/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Earth Rise</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/4/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Sea of Tranquility</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/5/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Spacewalk</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/6/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Command Module</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/3/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Splashdown</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/2/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Astronauts</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/1/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Mission Control</figcaption>
+                    </figure>
+                </div>
+            </div><!-- /content -->
+            <div class="content" id="content-2" data-bgcolor="#716d6e">
+                <a class="content__back" href="#menu" aria-label="Back to menu">
+                    <svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                <h2 class="content__title"><span>Artemis</span></h2>
+                <p class="content__intro"><span>Returning humanity to the Moon and preparing for the next giant leap to Mars.</span></p>
+                <span class="content__date"><span>November, 2024</span></span>
+                <div class="gallery">
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/7/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Orion Spacecraft</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/8/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">SLS Rocket</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/9/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Lunar Gateway</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/10/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Deep Space</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/11/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Lunar South Pole</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/12/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Next Gen Suits</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/8/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Artemis Base Camp</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/9/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Lunar Rover</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/7/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Deep Space Network</figcaption>
+                    </figure>
+                </div>
+            </div><!-- /content -->
+            <div class="content" id="content-3" data-bgcolor="#a197da">
+                <a class="content__back" href="#menu" aria-label="Back to menu">
+                    <svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                <h2 class="content__title"><span>Voyager</span></h2>
+                <p class="content__intro"><span>Venturing into interstellar space, carrying the Golden Record as our cosmic greeting.</span></p>
+                <span class="content__date"><span>September, 1977</span></span>
+                <div class="gallery">
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/13/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Jupiter Flyby</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/14/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Saturn Rings</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/15/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Pale Blue Dot</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/16/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Uranus Moons</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/17/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Neptune Approach</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/18/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Heliosphere</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/13/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Golden Record</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/15/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Deep Space Anomaly</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/14/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Interstellar Boundary</figcaption>
+                    </figure>
+                </div>
+            </div><!-- /content -->
+            <div class="content" id="content-4" data-bgcolor="#d4da97">
+                <a class="content__back" href="#menu" aria-label="Back to menu">
+                    <svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                <h2 class="content__title"><span>Pioneer</span></h2>
+                <p class="content__intro"><span>The first spacecraft to traverse the asteroid belt and visit the outer solar system.</span></p>
+                <span class="content__date"><span>March, 1972</span></span>
+                <div class="gallery">
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/19/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Asteroid Belt</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/20/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Jupiter Storms</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/21/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Io Transit</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/22/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Europa Flare</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/23/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Ganymede Ice</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/24/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Callisto Crater</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/20/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Solar Wind</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/21/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Pioneer Plaque</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/19/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Deep Space Silence</figcaption>
+                    </figure>
+                </div>
+            </div><!-- /content -->
+            <div class="content" id="content-5" data-bgcolor="#ce1452">
+                <a class="content__back" href="#menu" aria-label="Back to menu">
+                    <svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                <h2 class="content__title"><span>Cassini</span></h2>
+                <p class="content__intro"><span>Revealing the mysteries of Saturn, its majestic rings, and its enigmatic moons.</span></p>
+                <span class="content__date"><span>October, 1997</span></span>
+                <div class="gallery">
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/25/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Titan Atmosphere</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/26/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Enceladus Lakes</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/27/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Ring Shadows</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/28/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Hexagon Storm</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/29/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Iapetus Dust</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/30/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Mimas Ridge</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/26/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Cassini Division</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/27/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Saturn Eclipse</figcaption>
+                    </figure>
+                    <figure class="gallery__figure">
+                        <img class="gallery__figure-img" src="https://picsum.photos/seed/25/400/600" alt="Some image">
+                        <figcaption class="gallery__figure-caption">Grand Finale</figcaption>
+                    </figure>
+                </div>
+            </div><!-- /content -->
+        </section><!-- /page -->
+    </main>
+    <svg class="cursor" width="30" height="30" viewBox="0 0 30 30">
+        <circle class="cursor__inner" cx="15" cy="15" r="7.5"></circle>
+    </svg>
+
+    <!-- Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+
+    <!-- App Logic -->
+    <script>
+        // Utilities
+        const lerp = (a, b, n) => (1 - n) * a + n * b;
+        
+        const getMousePos = e => {
+            let posx = 0, posy = 0;
+            if (!e) e = window.event;
+            if (e.pageX || e.pageY) {
+                posx = e.pageX;
+                posy = e.pageY;
+            } else if (e.clientX || e.clientY) {
+                posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+                posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            }
+            return { x: posx, y: posy };
+        };
+
+        const calcWinsize = () => ({ width: window.innerWidth, height: window.innerHeight });
+
+        const preloadImages = (selector = 'img') => {
+            return new Promise((resolve) => {
+                imagesLoaded(document.querySelectorAll(selector), {background: true}, resolve);
+            });
+        };
+
+        let winsize = calcWinsize();
+        window.addEventListener('resize', () => winsize = calcWinsize());
+
+        let mouse = { x: 0, y: 0 };
+        window.addEventListener('mousemove', ev => mouse = getMousePos(ev));
+
+        // Cursor Tracker
+        class Cursor {
+            constructor(el) {
+                this.DOM = { el: el };
+                this.DOM.el.style.opacity = 0;
+                this.bounds = this.DOM.el.getBoundingClientRect();
+                this.renderedStyles = {
+                    tx: { previous: 0, current: 0, amt: 0.2 },
+                    ty: { previous: 0, current: 0, amt: 0.2 },
+                    scale: { previous: 1, current: 1, amt: 0.15 }
+                };
+
+                this.onMouseMoveEv = () => {
+                    this.renderedStyles.tx.previous = this.renderedStyles.tx.current = mouse.x - this.bounds.width / 2;
+                    this.renderedStyles.ty.previous = this.renderedStyles.ty.current = mouse.y - this.bounds.height / 2;
+                    gsap.to(this.DOM.el, { duration: 0.9, ease: 'power3.out', opacity: 1 });
+                    requestAnimationFrame(() => this.render());
+                    window.removeEventListener('mousemove', this.onMouseMoveEv);
+                };
+                window.addEventListener('mousemove', this.onMouseMoveEv);
+            }
+            enter() {
+                this.renderedStyles['scale'].current = 2.5;
+            }
+            leave() {
+                this.renderedStyles['scale'].current = 1;
+            }
+            render() {
+                this.renderedStyles['tx'].current = mouse.x - this.bounds.width / 2;
+                this.renderedStyles['ty'].current = mouse.y - this.bounds.height / 2;
+
+                for (const key in this.renderedStyles) {
+                    this.renderedStyles[key].previous = lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+                }
+
+                this.DOM.el.style.transform = `translateX(${this.renderedStyles['tx'].previous}px) translateY(${this.renderedStyles['ty'].previous}px) scale(${this.renderedStyles['scale'].previous})`;
+                requestAnimationFrame(() => this.render());
+            }
+        }
+
+        // Content Page Reference Class
+        class ContentPage {
+            constructor(el) {
+                this.DOM = { el: el };
+                this.DOM.backCtrl = this.DOM.el.querySelector('.content__back');
+                this.DOM.title = this.DOM.el.querySelector('.content__title');
+                this.DOM.titleInner = this.DOM.title.querySelector('span');
+                this.DOM.intro = this.DOM.el.querySelector('.content__intro');
+                this.DOM.introInner = this.DOM.intro.querySelector('span');
+                this.DOM.date = this.DOM.el.querySelector('.content__date');
+                this.DOM.dateInner = this.DOM.date.querySelector('span');
+                this.DOM.gallery = this.DOM.el.querySelector('.gallery');
+                this.DOM.galleryItems = this.DOM.gallery.querySelectorAll('.gallery__figure');
+                this.bgcolor = this.DOM.el.dataset.bgcolor;
+            }
+        }
+
+        // Menu Item Logic
+        class MenuItem {
+            constructor(el, galleryEl, contentEl) {
+                this.DOM = { el: el, gallery: galleryEl, content: contentEl };
+                this.DOM.title = this.DOM.el.querySelector('.menu__item-title');
+                this.DOM.deco = this.DOM.el.querySelector('.menu__item-deco');
+                this.DOM.cta = this.DOM.el.querySelector('.menu__item-cta');
+                this.DOM.ctaInner = this.DOM.cta.querySelector('span');
+                this.DOM.galleryItems = [...this.DOM.gallery.querySelectorAll('.bg-gallery__item')];
+                this.contentPage = new ContentPage(this.DOM.content);
+                this.isCurrent = false;
+            }
+            highlight() {
+                this.toggleCurrent();
+                gsap.set([this.DOM.deco, this.DOM.cta], { opacity: 1 });
+                gsap.to(this.DOM.galleryItems, {
+                    duration: 1,
+                    ease: 'expo.out',
+                    startAt: { scale: 0.01, rotation: () => gsap.utils.random(-20, 20) },
+                    scale: 1,
+                    opacity: +this.isCurrent,
+                    rotation: 0,
+                    stagger: 0.05
+                });
+            }
+            toggleCurrent() {
+                this.DOM.el.classList[this.isCurrent ? 'remove' : 'add']('menu__item--selected');
+                this.isCurrent = !this.isCurrent;
+            }
+        }
+
+        // Main Controller
+        class MenuController {
+            constructor(el) {
+                this.DOM = { el: el };
+                this.DOM.galleries = [...document.querySelectorAll('.bg-gallery-wrap > .bg-gallery')];
+                this.DOM.pagePreview = document.querySelector('.page--preview');
+                this.DOM.content = [...this.DOM.pagePreview.querySelectorAll('.content')];
+                this.DOM.headline = {
+                    deco: this.DOM.el.querySelector('.menu__headline > .menu__headline-deco'),
+                    text: this.DOM.el.querySelector('.menu__headline > .menu__headline-text > span')
+                };
+                this.menuItems = [];
+                [...this.DOM.el.querySelectorAll('.menu__item')].forEach((item, pos) => {
+                    this.menuItems.push(new MenuItem(item, this.DOM.galleries[pos], this.DOM.content[pos]));
+                });
+                this.init();
+            }
+            init() {
+                this.current = 0;
+                this.menuItems[this.current].highlight();
+                this.initEvents();
+            }
+            initEvents() {
+                for (const [pos, item] of this.menuItems.entries()) {
+                    item.DOM.el.addEventListener('click', ev => {
+                        ev.preventDefault();
+                        if (pos === this.current || this.isAnimating) return;
+                        const direction = this.current < pos ? 'up' : 'down';
+                        this.toggleMenuItems(item, direction);
+                        this.current = pos;
+                    });
+                    item.DOM.cta.addEventListener('click', ev => {
+                        if (this.isAnimating) return;
+                        this.showContent(item);
+                    });
+                    item.contentPage.DOM.backCtrl.addEventListener('click', ev => {
+                        ev.preventDefault();
+                        this.showMenu(item);
+                    });
+                }
+            }
+            toggleMenuItems(upcomingItem, direction = 'up') {
+                const currentItem = this.menuItems[this.current];
+                const dir = direction === 'up' ? 1 : -1;
+                currentItem.toggleCurrent();
+                upcomingItem.toggleCurrent();
+
+                gsap.timeline({
+                    defaults: { duration: 1, ease: 'expo.inOut' },
+                    onStart: () => this.isAnimating = true,
+                    onComplete: () => this.isAnimating = false
+                })
+                .to(upcomingItem.DOM.title, { ease: 'expo.in', duration: 0.5, y: dir * -100 + '%' }, 0)
+                .to(upcomingItem.DOM.title, { ease: 'expo.out', duration: 0.8, startAt: { y: dir * 100 + '%' }, y: '0%' }, 0.5)
+                .to(currentItem.DOM.deco, { scaleY: 0, opacity: 0 }, 0)
+                .to(currentItem.DOM.cta, { y: '100%', opacity: 0 }, 0)
+                .to(currentItem.DOM.galleryItems, { y: dir * -winsize.height * 1.2, stagger: dir * 0.05, rotation: () => gsap.utils.random(-30, 30) }, 0)
+                .addLabel('upcomingImages', 0.1)
+                .to(upcomingItem.DOM.deco, { startAt: { scaleY: 0 }, scaleY: 1, opacity: 1 }, 'upcomingImages')
+                .to(upcomingItem.DOM.cta, { startAt: { y: dir * 100 + '%' }, y: '0%', opacity: 1 }, 'upcomingImages')
+                .to(upcomingItem.DOM.galleryItems, { startAt: { y: dir * winsize.height * 1.2, rotation: () => gsap.utils.random(-30, 30) }, y: 0, opacity: 1, rotation: 0, stagger: dir * 0.05 }, 'upcomingImages');
+            }
+            showContent(menuItem) {
+                const timelineDefaults = { duration: 0.8, ease: 'expo.inOut' };
+                gsap.timeline({
+                    defaults: timelineDefaults,
+                    onStart: () => this.isAnimating = true,
+                    onComplete: () => this.isAnimating = false
+                })
+                .to(menuItem.DOM.deco, { scaleY: 0 })
+                .to(menuItem.DOM.ctaInner, { y: '100%' }, 0)
+                .to(menuItem.DOM.galleryItems, { y: -winsize.height * 1.2, opacity: 0, stagger: 0.05, rotation: () => gsap.utils.random(-30, 30) }, 0)
+                .to(this.menuItems.map(item => item.DOM.title), { y: '100%', stagger: { each: 0.03, from: 'end' } }, 0)
+                .to(this.DOM.headline.deco, { scaleX: 0 }, 0)
+                .to(this.DOM.headline.text, { y: '100%' }, 0)
+                .addLabel('showPageContent', timelineDefaults.duration * .1)
+                .to(menuItem.contentPage.DOM.backCtrl, { startAt: { x: '50%' }, x: '0%', opacity: 1 }, 'showPageContent')
+                .to([menuItem.contentPage.DOM.titleInner, menuItem.contentPage.DOM.introInner, menuItem.contentPage.DOM.dateInner], {
+                    startAt: { y: '-100%' },
+                    onStart: () => {
+                        gsap.set([menuItem.contentPage.DOM.title, menuItem.contentPage.DOM.intro, menuItem.contentPage.DOM.date], { opacity: 1 });
+                    },
+                    y: '0%', stagger: -0.06
+                }, 'showPageContent')
+                .to(menuItem.contentPage.DOM.galleryItems, {
+                    startAt: { y: '100%', rotation: () => gsap.utils.random(-20, 20) },
+                    y: '0%', rotation: 0, opacity: 1, stagger: 0.08
+                }, 'showPageContent')
+                .to(document.body, { backgroundColor: menuItem.contentPage.bgcolor }, 0);
+
+                this.DOM.pagePreview.classList.remove('page--preview');
+                menuItem.DOM.content.classList.add('content--current');
+            }
+            showMenu(menuItem) {
+                const timelineDefaults = { duration: 0.8, ease: 'expo.inOut' };
+                // Scroll page back to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                setTimeout(() => {
+                    gsap.timeline({
+                        defaults: timelineDefaults,
+                        onStart: () => this.isAnimating = true,
+                        onComplete: () => {
+                            this.DOM.pagePreview.classList.add('page--preview');
+                            menuItem.DOM.content.classList.remove('content--current');
+                            this.isAnimating = false;
+                        }
+                    })
+                    .to(document.body, { backgroundColor: '#EAE4DE' }, 0)
+                    .to(menuItem.contentPage.DOM.galleryItems, { y: '100%', rotation: () => gsap.utils.random(-20, 20), opacity: 0, stagger: 0.08 }, 0)
+                    .to([menuItem.contentPage.DOM.titleInner, menuItem.contentPage.DOM.introInner, menuItem.contentPage.DOM.dateInner], {
+                        onComplete: () => {
+                            gsap.set([menuItem.contentPage.DOM.title, menuItem.contentPage.DOM.intro, menuItem.contentPage.DOM.date], { opacity: 0 });
+                        },
+                        y: '-100%', stagger: 0.06
+                    }, 0)
+                    .to(menuItem.contentPage.DOM.backCtrl, { x: '50%', opacity: 0 }, 0)
+                    .addLabel('showMenuItems', timelineDefaults.duration * .1)
+                    .to(this.DOM.headline.text, { y: '0%' }, 'showMenuItems')
+                    .to(this.DOM.headline.deco, { scaleX: 1 }, 'showMenuItems')
+                    .to(this.menuItems.map(item => item.DOM.title), { y: '0%', stagger: { each: 0.03, from: 'start' } }, 'showMenuItems')
+                    .to(menuItem.DOM.galleryItems, { startAt: { rotation: () => gsap.utils.random(-30, 30) }, y: 0, stagger: -0.05, rotation: 0, opacity: 1 }, 'showMenuItems')
+                    .to(menuItem.DOM.ctaInner, { y: '0%' }, 'showMenuItems')
+                    .to(menuItem.DOM.deco, { scaleY: 1 }, 'showMenuItems');
+                }, 300);
+            }
+        }
+
+        // Initialize App
+        // Added a race timeout to ensure the app doesn't hang if an image takes too long to load
+        Promise.race([
+            Promise.all([
+                preloadImages('.bg-gallery__item'),
+                preloadImages('.gallery__figure-img')
+            ]),
+            new Promise(resolve => setTimeout(resolve, 3000))
+        ]).then(() => {
+            document.body.classList.remove('loading');
+            
+            const cursor = new Cursor(document.querySelector('.cursor'));
+            new MenuController(document.querySelector('.menu'));
+            
+            [...document.querySelectorAll('a')].forEach(link => {
+                link.addEventListener('mouseenter', () => cursor.enter());
+                link.addEventListener('mouseleave', () => cursor.leave());
+            });
+        });
+    </script>
+</body>
+</html>

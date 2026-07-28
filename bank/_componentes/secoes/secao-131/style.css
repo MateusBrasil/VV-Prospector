@@ -1,0 +1,16 @@
+/* hirely-hero — local overrides only. The shared /hirely/styles.css carries the
+   hero, navbar, hamburger-nav, marquee (.loop) and token styles. This file inlines
+   the source Navbar's scoped <style> (Rule 4) and a minimal body reset. The hero
+   section already sets its own dark background (.bg-dark) via the shared sheet. */
+
+/* Inlined from Navbar.astro scoped <style>: right-side CTA + hamburger cluster. */
+.navbar_actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+body {
+  margin: 0;
+}

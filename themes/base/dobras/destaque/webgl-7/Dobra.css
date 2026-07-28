@@ -1,0 +1,13 @@
+[data-dobra="destaque-webgl-7"],[data-dobra="destaque-webgl-7"]{ height: 100%; margin: 0; }
+[data-dobra="destaque-webgl-7"]{
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+[data-dobra="destaque-webgl-7"] h1{
+  color: white;
+  font-size: 20vw;
+  font-weight: 900;
+}
+

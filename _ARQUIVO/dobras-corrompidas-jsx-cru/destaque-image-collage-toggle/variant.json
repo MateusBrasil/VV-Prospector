@@ -1,0 +1,16 @@
+{
+  "slot": "destaque",
+  "nome": "image-collage-toggle",
+  "scope": "destaque-image-collage-toggle",
+  "origem": "bank/_componentes/cards/image-collage-toggle",
+  "registo": null,
+  "libs": [],
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [
+    "registo por definir (sobrio | editorial | cinematografico)",
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "há chavetas no markup que podem precisar de escape em JSX"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. A parte mecânica está feita; o que está em _rever é julgamento e não deve ser automatizado."
+}

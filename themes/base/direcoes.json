@@ -1,0 +1,178 @@
+{
+  "_porque": "Direção de arte por NICHO. A diferença percebida entre dois sites vem mais daqui (paleta, fonte, escala, densidade) do que da lista de componentes: dois sites com o mesmo hero e tokens diferentes parecem de estúdios diferentes; dois sites com dobras todas diferentes e os mesmos tokens parecem irmãos. Isto entra em `cliente.json → design` como base do nicho, e o cliente concreto sobrepõe só o que quiser.",
+
+  "_produzido_por": "design-system-squad, 2026-07-27. Checkpoint 1 (archetype + referências) aprovado pelo Mateus. Paletas verificadas por código contra WCAG AA, não a olho.",
+
+  "_decisao_tema": "Os três saem em TEMA CLARO. Odontologia: o escuro trabalha contra a leitura de higiene e luz que o nicho precisa. Estética: a pele é o produto e precisa de luz. Restauração: o escuro é exatamente o território do Kasablanca, que este kit tem de evitar. A escada de luminância fica montada de forma a permitir escuro depois sem refazer a paleta, bastando reescrever `papeis` e `fundo`.",
+
+  "_legibilidade_de_nicho": "Pedido do Mateus (2026-07-27): quando a pessoa entra, tem de sentir que esta num site DAQUELE nicho. Ha diferenca entre CLICHE (o default que faz parecer template: azul-medico #2563eb, dourado de salao, gradiente roxo) e CODIGO DO NICHO (a familia de matiz que o publico associa e que orienta o visitante). Fugir do cliche e obrigatorio; fugir do codigo e erro. A solucao e ficar na familia de matiz certa mas num valor que nao e o default de ninguem: matiz do nicho, saturacao e luminosidade proprias. ERRO REAL COMETIDO E CORRIGIDO: ao fugir do teal-500 do Tailwind, o acento da odontologia foi parar a salvia H150, que le como wellness ou farmacia e NAO como clinica dentaria. Over-correcao. Voltou para petroleo frio H197 S52 L32, que fica na familia azul-aqua que codifica dentaria e mesmo assim tem metade da saturacao do cyan-500 (S94) e luminosidade diferente. Os neutros acompanharam: eram verdes (H160-167), passaram a frios (H196-198).",
+
+  "_faixas_de_codigo_por_nicho": {
+    "odontologia": "azul-aqua frio, H180-215. Sinaliza limpeza e clinica. Fugir de #2563eb (azul-medico de catalogo) e de #06b6d4 (cyan saturado, cara de IA).",
+    "clinica-estetica": "nude e neutros quentes de pele, H15-45. Sinaliza corpo, pele e cuidado. Fugir do rosa-salao e do dourado, que sao o cliche do nicho.",
+    "restaurante": "terra quente, H10-45. Sinaliza apetite e materia. Fugir do preto austero, que e o territorio do Kasablanca."
+  },
+
+  "_regra_base300": "ACHADO NA VERIFICAÇÃO: com os papéis de texto originais (textoTenue -> base300), os TRÊS nichos falhavam WCAG AA, a 2.58:1, 2.85:1 e 2.81:1. A correção não foi escurecer base300 (isso comprimiria a escada que a esteira usa para remapear as cores dos componentes de origem), foi reconhecer que base300 é cor de LINHA E BORDA, nunca de texto. Os papéis desceram um degrau: texto=base600, textoSuave=base500, textoTenue=base400. Nunca pôr texto em base300 ou base200.",
+
+  "odontologia": {
+    "archetype": "polaris-friendly",
+    "referencias": { "primaria": "cal", "tom": "intercom", "contraste": "binance" },
+    "negacoes": [
+      "sem tela escura",
+      "sem cor de alta voltagem",
+      "sem contador ou número a saltar",
+      "sem urgência artificial (contagem decrescente, vagas limitadas)"
+    ],
+    "registoMovimento": "sobrio",
+    "design": {
+      "cores": {
+        "base100": "#fafcfd", "base200": "#e3ebee", "base300": "#8fa2a9",
+        "base400": "#586a71", "base500": "#3b4b52", "base600": "#121c20",
+        "acento": "#27637a", "fundo": "#fafcfd"
+      },
+      "papeis": { "texto": "base600", "textoSuave": "base500", "textoTenue": "base400" },
+      "display": {
+        "peso": 600, "lh": "1.05", "tracking": "-0.015em", "lhMultilinha": "1.15", "caixa": "none",
+        "escala": {
+          "h1": "clamp(2.5rem, 5.5vw, 5rem)",
+          "h2": "clamp(2rem, 4vw, 3.5rem)",
+          "h3": "clamp(1.6rem, 3vw, 2.5rem)",
+          "h4": "clamp(1.35rem, 2.2vw, 1.85rem)",
+          "h5": "clamp(1.15rem, 1.6vw, 1.4rem)",
+          "h6": "clamp(1rem, 1.3vw, 1.2rem)"
+        }
+      },
+      "corpo": {
+        "tamanho": "1.0625rem", "peso": 400, "lh": "1.6", "tracking": "0",
+        "sm": "0.9375rem", "md": "1.1875rem", "mdTracking": "0",
+        "lg": "1.375rem", "lgTracking": "-0.01rem",
+        "compacto": { "tamanho": "1rem", "sm": "0.875rem", "md": "1.125rem", "lg": "1.25rem" }
+      },
+      "ritmo": { "larguraMax": "1200px", "respiro": "5rem", "respiroCompacto": "3rem" }
+    },
+    "fontes": {
+      "display": { "fonte": "Fraunces", "origem": "google", "licenca": "SIL OFL" },
+      "corpo": { "fonte": "Inter", "origem": "google", "licenca": "SIL OFL" }
+    },
+    "_justificacao": {
+      "paleta": "Verde-sálvia dessaturado (H150, S31) em vez do azul-clínico de catálogo. Duas fugas de uma vez: o azul médico é o cliché que faz o site parecer template de saúde, e o teal saturado (teal-500 do Tailwind, H173 S80) é a assinatura cromática de site gerado por IA. O primeiro acento escolhido foi #2f7d6f, H169, a quatro graus de matiz do teal-500; foi deslocado para sálvia depois de medido. O canvas é quase branco com um toque verde para dar sensação de higiene sem a frieza do branco puro.",
+      "tipografia": "Fraunces em peso 600, NÃO 900: a serifa dá autoridade de profissional, e o peso contido impede a monumentalidade que em saúde lê-se como arrogância. Inter no corpo porque a legibilidade em telemóvel, à noite e possivelmente com dor, vale mais que personalidade.",
+      "escala": "h1 vai a 5rem, um terço do que o Kasablanca usa. Aqui a hierarquia serve a leitura, não o espetáculo. Line-height 1.6 no corpo, generoso, porque quem chega com medo lê devagar.",
+      "ritmo": "Largura máxima 1200px e respiro de 5rem: densidade baixa. Um site apertado transmite pressa, e pressa em saúde lê-se como consulta despachada.",
+      "porque_nao_serve_os_outros": "Este par tipográfico em peso contido e esta densidade baixa deixariam um restaurante sem apetite e sem energia, e uma clínica estética sem o luxo que sustenta o preço."
+    }
+  },
+
+  "clinica-estetica": {
+    "archetype": "apple-glass",
+    "referencias": { "primaria": "apple", "tom": "airbnb", "contraste": "framer" },
+    "negacoes": [
+      "sem gradiente decorativo",
+      "sem fundo desfocado",
+      "sem animação de espetáculo disparada por scroll",
+      "sem antes/depois com moldura de anúncio ou seta gigante"
+    ],
+    "registoMovimento": "editorial",
+    "design": {
+      "cores": {
+        "base100": "#fcfaf8", "base200": "#eee7e1", "base300": "#a2938a",
+        "base400": "#6b5d55", "base500": "#4a3f39", "base600": "#1a1512",
+        "acento": "#8c6a4f", "fundo": "#fcfaf8"
+      },
+      "papeis": { "texto": "base600", "textoSuave": "base500", "textoTenue": "base400" },
+      "display": {
+        "peso": 300, "lh": "1.0", "tracking": "-0.02em", "lhMultilinha": "1.1", "caixa": "none",
+        "escala": {
+          "h1": "clamp(3rem, 7vw, 7rem)",
+          "h2": "clamp(2.25rem, 5vw, 4.5rem)",
+          "h3": "clamp(1.75rem, 3.5vw, 3rem)",
+          "h4": "clamp(1.4rem, 2.4vw, 2rem)",
+          "h5": "clamp(1.2rem, 1.8vw, 1.5rem)",
+          "h6": "clamp(1.05rem, 1.4vw, 1.25rem)"
+        }
+      },
+      "corpo": {
+        "tamanho": "1.0625rem", "peso": 350, "lh": "1.55", "tracking": "0.005rem",
+        "sm": "0.9375rem", "md": "1.25rem", "mdTracking": "0",
+        "lg": "1.5rem", "lgTracking": "-0.01rem",
+        "compacto": { "tamanho": "1rem", "sm": "0.875rem", "md": "1.15rem", "lg": "1.35rem" }
+      },
+      "ritmo": { "larguraMax": "1440px", "respiro": "7rem", "respiroCompacto": "4rem" }
+    },
+    "fontes": {
+      "display": { "fonte": "Cormorant Garamond", "origem": "google", "licenca": "SIL OFL" },
+      "corpo": { "fonte": "Jost", "origem": "google", "licenca": "SIL OFL" }
+    },
+    "_justificacao": {
+      "paleta": "Neutros quentes de pele (areia, argila, castanho tostado) em vez de rosa ou dourado, que são o cliché do nicho e o que faz uma clínica parecer salão. O acento é um castanho-âmbar dessaturado: caro sem ser dourado.",
+      "tipografia": "Cormorant Garamond em peso 300, uma serifa de alto contraste e traço fino: é o gesto de luxo editorial de revista, e o peso leve é o que separa sofisticação de ostentação. Jost no corpo, geométrica limpa, para o texto não competir com a fotografia.",
+      "escala": "h1 até 7rem, o maior dos três, porque aqui o display é gesto de moda. Mas em peso 300, então ocupa espaço sem pesar, ao contrário do Kasablanca que ocupa espaço E pesa.",
+      "ritmo": "Respiro de 7rem, o maior dos três, e largura 1440px. O espaço é o que comunica preço alto; apertar esta direção destrói o argumento inteiro.",
+      "porque_nao_serve_os_outros": "Serifa fina em peso 300 num site de odontologia leria como frágil e pouco clínica; num restaurante leria como pretensiosa e mataria o apetite."
+    }
+  },
+
+  "restaurante": {
+    "archetype": "porsche-precision",
+    "referencias": { "primaria": "airbnb", "tom": "starbucks", "contraste": "bugatti" },
+    "negacoes": [
+      "sem tela preta",
+      "sem display em caixa alta",
+      "sem line-height esmagado (nada abaixo de 1.0)",
+      "sem tipografia a dominar a fotografia",
+      "sem tracking largo em maiúsculas"
+    ],
+    "registoMovimento": "editorial",
+    "design": {
+      "cores": {
+        "base100": "#fdfaf4", "base200": "#f0e4d2", "base300": "#a89478",
+        "base400": "#6d5b45", "base500": "#52432f", "base600": "#1e1811",
+        "acento": "#b3502a", "fundo": "#fdfaf4"
+      },
+      "papeis": { "texto": "base600", "textoSuave": "base500", "textoTenue": "base400" },
+      "display": {
+        "peso": 500, "lh": "1.1", "tracking": "-0.025em", "lhMultilinha": "1.2", "caixa": "none",
+        "escala": {
+          "h1": "clamp(2.25rem, 4.5vw, 4rem)",
+          "h2": "clamp(1.85rem, 3.5vw, 3rem)",
+          "h3": "clamp(1.5rem, 2.8vw, 2.25rem)",
+          "h4": "clamp(1.3rem, 2vw, 1.75rem)",
+          "h5": "clamp(1.15rem, 1.6vw, 1.4rem)",
+          "h6": "clamp(1rem, 1.3vw, 1.2rem)"
+        }
+      },
+      "corpo": {
+        "tamanho": "1.125rem", "peso": 400, "lh": "1.5", "tracking": "0",
+        "sm": "1rem", "md": "1.3rem", "mdTracking": "0",
+        "lg": "1.5rem", "lgTracking": "-0.01rem",
+        "compacto": { "tamanho": "1.0625rem", "sm": "0.9375rem", "md": "1.2rem", "lg": "1.35rem" }
+      },
+      "ritmo": { "larguraMax": "1600px", "respiro": "4rem", "respiroCompacto": "2.5rem" }
+    },
+    "fontes": {
+      "display": { "fonte": "Bricolage Grotesque", "origem": "google", "licenca": "SIL OFL" },
+      "corpo": { "fonte": "Karla", "origem": "google", "licenca": "SIL OFL" }
+    },
+    "_justificacao": {
+      "paleta": "Creme quente, trigo e terracota tostado: cores de matéria e de forno. O acento terracota é apetite direto. Nada de preto de fundo, que é a assinatura do Kasablanca.",
+      "tipografia": "Bricolage Grotesque em peso 500, caixa NORMAL e não alta: é uma grotesca com irregularidades deliberadas no desenho, que lê como ofício e mão humana, não como corporativo. É o oposto formal do display monumental em caixa alta do Kasablanca.",
+      "escala": "h1 fica em 4rem, o MENOR dos três, e isto é a decisão central do nicho: o archetype porsche-precision manda a imagem dominar e o texto recuar. O Kasablanca resolve restaurante por tipografia gigante; este resolve por fotografia. São soluções opostas do mesmo problema, e é isso que garante que não se parecem.",
+      "ritmo": "Largura 1600px, a maior das três, com respiro de 4rem, o menor. Densidade alta e imagem larga: o olho anda pela comida, não pelo espaço em branco.",
+      "porque_nao_serve_os_outros": "Esta densidade e este calor de terracota numa clínica dentária leriam como pouco higiénico; numa clínica estética, o h1 pequeno e a densidade alta destruiriam a percepção de preço alto que o espaço em branco constrói."
+    }
+  },
+
+  "_teste_de_separacao": {
+    "_pergunta": "O que impede alguém de olhar para o site de odontologia e lembrar-se do de restaurante?",
+    "eixos": [
+      "TAMANHO DO DISPLAY: estética h1 7rem > odontologia 5rem > restaurante 4rem. Três patamares distintos, não variações.",
+      "PESO DO DISPLAY: estética 300 (fino), odontologia 600 (médio), restaurante 500 (médio mas em grotesca irregular). Nenhum usa 900.",
+      "CLASSE DE FONTE: estética serifa de alto contraste, odontologia serifa humanista, restaurante grotesca artesanal. Três famílias diferentes.",
+      "TEMPERATURA: odontologia verde-frio, estética neutro-quente rosado, restaurante quente-terra. Os três canvas quase-brancos têm subtons diferentes e não se confundem lado a lado.",
+      "DENSIDADE: respiro 7rem (estética) / 5rem (odontologia) / 4rem (restaurante). O ar na página é o sinal mais rápido que o olho lê.",
+      "MOVIMENTO: sobrio (odontologia) vs editorial (os outros dois). Um site que quase não se mexe nunca se confunde com um que se mexe."
+    ],
+    "_limite_honesto": "Estética e restauração partilham o registo editorial e ambos têm canvas quente. São o par mais próximo dos três, e é aí que a separação depende mais da tipografia (serifa fina vs grotesca) e da densidade (7rem vs 4rem) do que da cor. Se algum dia parecerem próximos demais na prática, é este par que se mexe, não o de odontologia."
+  }
+}

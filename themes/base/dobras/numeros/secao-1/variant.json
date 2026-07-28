@@ -1,0 +1,76 @@
+{
+  "slot": "numeros",
+  "nome": "secao-1",
+  "scope": "numeros-secao-1",
+  "origem": "bank/_componentes/secoes/secao-1",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Project overview"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "The client was bleeding margin on every long-cycle project — change orders, material volatility, and underutilized crews compounded into a yearly seven-figure l"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Unlocking growth with strategies that drive real results"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Beyond the numbers, the real unlock was cultural. We embedded weekly margin reviews with the project leads — every superintendent now sees the same dashboard th"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Achieving breakthroughs in project execution"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Twelve months in, the firm had banked $1.04M in net savings and lifted gross margin by 3.2 points across the active portfolio. They also won two complex public-"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-1.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-2.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-3.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 3
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-1.avif https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-2.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

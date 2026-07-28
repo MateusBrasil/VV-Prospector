@@ -1,0 +1,31 @@
+{
+  "name": "Business consulting",
+  "summary": "We help you identify opportunities for top growth and implement the right strategies.",
+  "icon": "/images/cms/698e4875214fe570673439cb_basil_chart-pie-solid.svg",
+  "card": "/images/cms/696202d02a0dce5f45a031fb_service-img-2.webp",
+  "headline": "The benefits of a strong biz strategy",
+  "subtext": "A well-defined biz strategy gives your organization clarity, direction, and measurable impact.",
+  "features": [
+    {
+      "title": "Clear Direction for New Crescimento",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you grow biz with confidence and purpose."
+    },
+    {
+      "title": "Reduced Operational Risks",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you grow biz with confidence and purpose."
+    },
+    {
+      "title": "Clear Direction for New Crescimento",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you grow biz with confidence and purpose."
+    },
+    {
+      "title": "Reduced Operational Risks",
+      "detail": "Gain a structured, step-by-step roadmap that removes uncertainty and helps you grow biz with confidence and purpose."
+    }
+  ],
+  "quote": "\"They brought success to complex projects, breaking down barriers and delivering innovative solutions.”",
+  "author": "Jane Doe",
+  "role": "Lead Consultant",
+  "avatar": "/images/cms/6961fed3966b530753b60b44_av-author.png",
+  "content": "<p>We help organizations understand where it creates the most impact and how to scale it effectively.</p><p>‍</p><p>Through strategic analysis, opportunity mapping, and leadership guidance, we design a step-by-step plan that aligns capabilities with your business goals — ensuring clarity, feasibility, and long-term value.</p><p>‍</p>"
+}

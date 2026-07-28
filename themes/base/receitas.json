@@ -1,0 +1,105 @@
+{
+  "_porque": "Uma receita diz que SECÇÕES um site daquele nicho tem e em que ORDEM, não que dobra usar. A dobra concreta é escolhida por compor-tema.mjs entre as elegíveis (registo + pré-condições + anti-repetição no CRM), e é isso que faz dois clientes do mesmo nicho e cidade receberem composições diferentes. Fixar a dobra aqui devolveria o problema que viemos resolver: todo site igual.",
+
+  "_correcao_2026_07_27": "A primeira versão listava `menu` e `rodape` como slots de dobra e por isso TODOS os nichos apareciam bloqueados. Estava errado: `Nav` e `Footer` são componentes INVARIANTES do tema (themes/<tema>/src/components/), não dobras trocáveis — já funcionam em produção. Foi por isso que o banco de 615 não tinha um único rodapé: nunca foi suposto ter. Ficam agora em `sistema`, que é garantido e não precisa de cobertura do acervo.",
+
+  "_exclusividade": {
+    "_porque": "Pedido explícito do Mateus (2026-07-27): um site de clínica dentária não pode fazer lembrar um site de restaurante. Os 3 nichos prioritários partilham quase TODOS os slots (hero, vitrine, contacto, prova, equipa...), por isso não basta boa intenção — sem reserva, o compositor escolheria a mesma dobra 'melhor' para os três e entregaria o mesmo site com cores trocadas.",
+    "regra": "Nos slots EXCLUSIVOS, uma dobra usada por um nicho fica reservada a esse nicho e não é oferecida aos outros. Nos slots PARTILHÁVEIS a repetição é aceitável e até desejável (um botão bom é um botão bom).",
+    "partilhaveis": ["botao", "cursor", "transicao", "fundo"],
+    "exclusivos": ["hero", "vitrine", "servicos", "prova", "equipa", "precos", "faq", "passos", "sobre", "cta", "numeros", "contacto", "destaque"],
+    "_limite_honesto": "A exclusividade só funciona se houver dobras prontas que cheguem: com 2 dobras prontas num slot e 3 nichos a exigi-lo, um nicho fica sem. `tools/tema/kits.mjs --exclusividade` diz exatamente onde o acervo não dá para os três."
+  },
+
+  "_direcao_de_arte": {
+    "_porque": "A diferença percebida entre dois sites vem mais da direção de arte (paleta, fonte display, escala, densidade, registo de movimento) do que da lista de componentes. Dois sites com o mesmo hero e tokens diferentes parecem de estúdios diferentes; dois sites com dobras todas diferentes e os mesmos tokens parecem irmãos.",
+    "_estado": "POR PREENCHER. Deliberadamente não inventado aqui: escolha de fonte display e de paleta é direção de arte por caso, não regra fixa da plataforma (ver memória feedback_variedade_fontes_logos). Cada nicho precisa da sua, decidida por quem sabe, e entra em `cliente.json → design` como base do nicho."
+  },
+
+  "_contrato": {
+    "sistema": "vem do tema, sempre presente, não depende do acervo de dobras",
+    "obrigatorios": "sem estes a receita não faz sentido para o nicho; o build recusa",
+    "opcionais": "entram se o cliente tiver o material (ausência produz ausência, nunca placeholder)",
+    "registoBase": "teto de intensidade estética por omissão; o cliente pode baixar, nunca subir sem decisão explícita"
+  },
+
+  "clinica-estetica": {
+    "nome": "Clínica estética",
+    "prioridade": 1,
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "servicos", "vitrine", "prova", "contacto"],
+    "opcionais": ["equipa", "precos", "faq", "passos", "numeros", "sobre", "cta", "destaque"],
+    "ordem": ["hero", "servicos", "vitrine", "passos", "prova", "equipa", "precos", "faq", "cta", "contacto"],
+    "_nota": "Vitrine é obrigatória e é o antes/depois: neste nicho o resultado visível É a oferta. Prova social obrigatória porque a decisão é de confiança no corpo. Registo editorial e não cinematográfico: estética vende sofisticação contida, e movimento a mais lê-se como clínica barata."
+  },
+
+  "restaurante": {
+    "nome": "Restauração",
+    "prioridade": 1,
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "vitrine", "contacto"],
+    "opcionais": ["sobre", "prova", "equipa", "numeros", "cta", "destaque", "precos"],
+    "ordem": ["hero", "sobre", "vitrine", "prova", "equipa", "cta", "contacto"],
+    "_nota": "A carta vive no tema (DiningMenu do restaurante-noir), não numa dobra. Vitrine obrigatória: restaurante sem foto de comida não vende. Preço fica opcional de propósito — carta com preço é decisão do dono, não do template."
+  },
+
+  "odontologia": {
+    "nome": "Odontologia / clínica dentária",
+    "prioridade": 1,
+    "registoBase": "sobrio",
+    "orcamentoDeMovimento": { "editorial": 1, "_porque": "Sobriedade nao e uniformidade. Um site onde nada se mexe le como barato, nao como serio, e o que a odontologia precisa e do oposto. A Lei de Estetica do projeto ja diz 1 signature moment, nao 1 template repetido: o registo do nicho passa a ser ORCAMENTO, nao teto. Base sobria com direito a UM momento editorial. Resolve o slot contacto sem roubar a reserva a clinica estetica e sem rebaixar o nicho inteiro." },
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "servicos", "equipa", "contacto"],
+    "_servicos_revertido_para_dobra": "REVERTIDO em 2026-07-27, no mesmo dia. A decisao de tirar servicos do banco assentava em dois erros meus. (1) DADOS VELHOS: eu disse ao squad que as 11 dobras eram TODAS cinematograficas, mas isso era o numero de ANTES de eu corrigir o sinal do blur; depois da correcao sao 10 editoriais e 1 cinematografica, e a inspecao direta confirma que so a secao-23 tem prova real de espetaculo (WebGL). (2) ARGUMENTO FALSO: eu disse que domar uma cinematografica arrancaria a unica coisa de valor nela. E falso, o valor de uma seccao e a estrutura e o layout tanto quanto a animacao. O Mateus apontou o furo: se escrevermos a mao, perdemos os componentes premium que sao a razao de ter o banco. Ele tem razao. Nota separada: 7 das 11 tem o texto About|Services|Locations|Blog, que e lista de links de rodape e nao seccao de servicos; a regra apanhou-as por conterem a palavra Services. Esse e um erro de SLOT a corrigir, nao um motivo para abandonar o banco.",
+        "opcionais": ["prova", "faq", "passos", "numeros", "precos", "sobre", "vitrine", "cta"],
+    "ordem": ["hero", "servicos", "passos", "equipa", "prova", "faq", "precos", "cta", "contacto"],
+    "_nota": "Registo SÓBRIO e isto não é gosto: em saúde, movimento a mais lê-se como pouco sério, e dentária é o nicho onde o medo do paciente é o obstáculo real. Equipa obrigatória porque a credencial do dentista É a prova social. FAQ pesa mais aqui que noutros nichos: a dúvida sobre dor e preço é o que trava a marcação."
+  },
+
+  "clinica": {
+    "nome": "Clínicas e saúde (geral)",
+    "registoBase": "sobrio",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "servicos", "equipa", "contacto"],
+    "opcionais": ["prova", "faq", "passos", "numeros", "sobre"],
+    "ordem": ["hero", "servicos", "equipa", "passos", "prova", "faq", "contacto"]
+  },
+
+  "imobiliario": {
+    "nome": "Imobiliário",
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "vitrine", "contacto"],
+    "opcionais": ["sobre", "prova", "equipa", "numeros", "passos", "cta"],
+    "ordem": ["hero", "vitrine", "numeros", "passos", "sobre", "prova", "equipa", "contacto"]
+  },
+
+  "ecommerce": {
+    "nome": "E-commerce",
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "vitrine", "prova"],
+    "opcionais": ["precos", "faq", "logos", "cta", "sobre", "destaque"],
+    "ordem": ["hero", "vitrine", "logos", "prova", "faq", "cta"]
+  },
+
+  "saas": {
+    "nome": "SaaS e produto digital",
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "servicos", "precos", "faq"],
+    "opcionais": ["prova", "logos", "numeros", "passos", "cta", "destaque"],
+    "ordem": ["hero", "logos", "servicos", "passos", "precos", "prova", "faq", "cta"]
+  },
+
+  "servicos-locais": {
+    "nome": "Serviços locais (oficina, salão, barbearia, ginásio)",
+    "registoBase": "editorial",
+    "sistema": ["nav", "rodape"],
+    "obrigatorios": ["hero", "servicos", "contacto"],
+    "opcionais": ["precos", "prova", "equipa", "vitrine", "passos", "cta"],
+    "ordem": ["hero", "servicos", "precos", "vitrine", "prova", "equipa", "cta", "contacto"]
+  }
+}

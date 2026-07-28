@@ -1,0 +1,1125 @@
+"use client";
+/* DOBRA gerada pela esteira a partir de bank/_componentes/cursor/shooting-star-cursor
+ *
+ * O que foi arrancado da origem: fonte, peso, cor e todo o texto e foto do template.
+ * O que ficou: a estrutura e a mecânica de animação, que é o material que vale.
+ * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).
+ */
+import { useRef } from 'react';
+import './Dobra.css';
+export default function Dobra({ slots: s = {} }) {
+  const raiz = useRef(null);
+  /* ⚠ REVER: o JS de origem está abaixo em bruto (categoria: webgl).
+   * A esteira NÃO o converte sozinha, e nesta categoria escopar ao `raiz.current` NÃO
+   * chega: o código assume que é dono da página (window/document.body/listeners de
+   * load|resize|scroll), ou traz import/export, ou monta um canvas WebGL. Converter às
+   * cegas produz animação que corre no elemento errado, que é pior que animação
+   * nenhuma. Precisa de reescrita, não de troca de prefixo. */
+  // useEffect(() => {
+  //   
+  //       // --- PENNER EASING FUNCTIONS ---
+  //       const Easing = {
+  //         easeInOutCubic: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * Math.pow(t, 3) + b;
+  //           return c / 2 * (Math.pow(t - 2, 3) + 2) + b;
+  //         },
+  //         easeOutQuint: (t, b, c, d) => {
+  //           return c * (Math.pow(t / d - 1, 5) + 1) + b;
+  //         },
+  //         linear: (t, b, c, d) => {
+  //           return c * t / d + b;
+  //         },
+  //         easeInSine: (t, b, c, d) => {
+  //           return c * (1 - Math.cos(t / d * (Math.PI / 2))) + b;
+  //         },
+  //         easeOutSine: (t, b, c, d) => {
+  //           return c * Math.sin(t / d * (Math.PI / 2)) + b;
+  //         },
+  //         easeInOutSine: (t, b, c, d) => {
+  //           return c / 2 * (1 - Math.cos(Math.PI * t / d)) + b;
+  //         },
+  //         easeInQuad: (t, b, c, d) => {
+  //           return c * (t /= d) * t + b;
+  //         },
+  //         easeOutQuad: (t, b, c, d) => {
+  //           return -c * (t /= d) * (t - 2) + b;
+  //         },
+  //         easeInOutQuad: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+  //           return -c / 2 * (--t * (t - 2) - 1) + b;
+  //         },
+  //         easeInCubic: (t, b, c, d) => {
+  //           return c * Math.pow(t / d, 3) + b;
+  //         },
+  //         easeOutCubic: (t, b, c, d) => {
+  //           return c * (Math.pow(t / d - 1, 3) + 1) + b;
+  //         },
+  //         easeInQuart: (t, b, c, d) => {
+  //           return c * Math.pow(t / d, 4) + b;
+  //         },
+  //         easeOutQuart: (t, b, c, d) => {
+  //           return -c * (Math.pow(t / d - 1, 4) - 1) + b;
+  //         },
+  //         easeInOutQuart: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * Math.pow(t, 4) + b;
+  //           return -c / 2 * (Math.pow(t - 2, 4) - 2) + b;
+  //         },
+  //         easeInQuint: (t, b, c, d) => {
+  //           return c * Math.pow(t / d, 5) + b;
+  //         },
+  //         easeInOutQuint: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * Math.pow(t, 5) + b;
+  //           return c / 2 * (Math.pow(t - 2, 5) + 2) + b;
+  //         },
+  //         easeInExpo: (t, b, c, d) => {
+  //           return c * Math.pow(2, 10 * (t / d - 1)) + b;
+  //         },
+  //         easeOutExpo: (t, b, c, d) => {
+  //           return c * (-Math.pow(2, -10 * t / d) + 1) + b;
+  //         },
+  //         easeInOutExpo: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+  //           return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+  //         },
+  //         easeInCirc: (t, b, c, d) => {
+  //           return c * (1 - Math.sqrt(1 - (t /= d) * t)) + b;
+  //         },
+  //         easeOutCirc: (t, b, c, d) => {
+  //           return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+  //         },
+  //         easeInOutCirc: (t, b, c, d) => {
+  //           if ((t /= d / 2) < 1) return c / 2 * (1 - Math.sqrt(1 - t * t)) + b;
+  //           return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+  //         }
+  //       };
+  //   
+  //       const easingList = Object.keys(Easing);
+  //   
+  //       // --- ANIMATE UTILITY ---
+  //       function animate(fn, options = {}) {
+  //         const {
+  //           begin = 0,
+  //           finish = 1,
+  //           duration = 500,
+  //           easing = 'easeInOutCubic',
+  //           isRoop = false,
+  //           onAfter
+  //         } = options;
+  //         const change = finish - begin;
+  //         const easingFn = Easing[easing] || Easing.easeInOutCubic;
+  //         let startTime;
+  //   
+  //         function tick(timestamp) {
+  //           if (!startTime) startTime = timestamp;
+  //           const time = Math.min(duration, timestamp - startTime);
+  //           const position = easingFn(time, begin, change, duration);
+  //           fn(position, time);
+  //   
+  //           if (time === duration) {
+  //             if (isRoop) {
+  //               startTime = timestamp;
+  //               requestAnimationFrame(tick);
+  //             } else {
+  //               onAfter && onAfter();
+  //             }
+  //           } else {
+  //             requestAnimationFrame(tick);
+  //           }
+  //         }
+  //         requestAnimationFrame(tick);
+  //       }
+  //   
+  //       // --- TEXT TO CANVAS UTILITY ---
+  //       function getTextCoordinate(option) {
+  //         let {
+  //           text,
+  //           fontSize,
+  //           letterSpacing = 0,
+  //           font = 'Georgia, serif',
+  //           color = '#ffffff',
+  //           width,
+  //           height,
+  //           pixelRatio = window.devicePixelRatio
+  //         } = option;
+  //   
+  //         fontSize *= pixelRatio;
+  //         width *= pixelRatio;
+  //         height *= pixelRatio;
+  //   
+  //         const canvas = document.createElement('canvas');
+  //         canvas.width = width;
+  //         canvas.height = height;
+  //         canvas.style.fontSize = fontSize + 'px';
+  //         canvas.style.letterSpacing = letterSpacing + 'em';
+  //         canvas.style.display = 'none';
+  //         document.body.appendChild(canvas);
+  //   
+  //         const ctx = canvas.getContext('2d');
+  //         ctx.font = `${fontSize}px ${font}`;
+  //         ctx.fillStyle = color;
+  //         ctx.textAlign = 'center';
+  //         ctx.textBaseline = 'middle';
+  //   
+  //         const textLines = text.split('\n');
+  //         textLines.forEach((line, i) => {
+  //           const x = width / 2;
+  //           const y = height / 2 + fontSize * i - (fontSize / 2) * (textLines.length - 1);
+  //           ctx.fillText(line, x, y);
+  //         });
+  //   
+  //         document.body.removeChild(canvas);
+  //         return canvas;
+  //       }
+  //   
+  //       // --- SHADERS CODE ---
+  //       const Shaders = {
+  //         shootingStar: {
+  //           vert: `
+  //             precision highp float;
+  //             precision highp int;
+  //             attribute vec3 position;
+  //             uniform mat4 modelViewMatrix;
+  //             uniform mat4 projectionMatrix;
+  //   
+  //             attribute vec4 mouse;
+  //             attribute vec2 aFront;
+  //             attribute float random;
+  //   
+  //             uniform vec2 resolution;
+  //             uniform float pixelRatio;
+  //             uniform float timestamp;
+  //   
+  //             uniform float size;
+  //             uniform float minSize;
+  //             uniform float speed;
+  //             uniform float far;
+  //             uniform float spread;
+  //             uniform float maxSpread;
+  //             uniform float maxZ;
+  //             uniform float maxDiff;
+  //             uniform float diffPow;
+  //   
+  //             varying float vProgress;
+  //             varying float vRandom;
+  //             varying float vDiff;
+  //             varying float vSpreadLength;
+  //             varying float vPositionZ;
+  //   
+  //             float cubicOut(float t) {
+  //               float f = t - 1.0;
+  //               return f * f * f + 1.0;
+  //             }
+  //   
+  //             const float PI = 3.1415926;
+  //             const float PI2 = PI * 2.;
+  //   
+  //             void main () {
+  //               float progress = clamp((timestamp - mouse.z) * speed, 0., 1.);
+  //               progress *= step(0., mouse.x);
+  //   
+  //               float startX = mouse.x - resolution.x / 2.;
+  //               float startY = mouse.y - resolution.y / 2.;
+  //               vec3 startPosition = vec3(startX, startY, random);
+  //   
+  //               float diff = clamp(mouse.w / maxDiff, 0., 1.);
+  //               diff = pow(diff, diffPow);
+  //   
+  //               vec3 cPosition = position * 2. - 1.;
+  //   
+  //               float radian = cPosition.x * PI2 - PI;
+  //               vec2 xySpread = vec2(cos(radian), sin(radian)) * spread * mix(1., maxSpread, diff) * cPosition.y;
+  //   
+  //               vec3 endPosition = startPosition;
+  //               endPosition.xy += xySpread;
+  //               endPosition.xy -= aFront * far * random;
+  //               endPosition.z += cPosition.z * maxZ * (pixelRatio > 1. ? 1.2 : 1.);
+  //   
+  //               float positionProgress = cubicOut(progress * random);
+  //               vec3 currentPosition = mix(startPosition, endPosition, positionProgress);
+  //   
+  //               vProgress = progress;
+  //               vRandom = random;
+  //               vDiff = diff;
+  //               vSpreadLength = cPosition.y;
+  //               vPositionZ = position.z;
+  //   
+  //               gl_Position = projectionMatrix * modelViewMatrix * vec4(currentPosition, 1.);
+  //               gl_PointSize = max(currentPosition.z * size * diff * pixelRatio, minSize * (pixelRatio > 1. ? 1.3 : 1.));
+  //             }
+  //           `,
+  //           frag: `
+  //             precision highp float;
+  //             precision highp int;
+  //   
+  //             uniform float fadeSpeed;
+  //             uniform float shortRangeFadeSpeed;
+  //             uniform float minFlashingSpeed;
+  //             uniform float blur;
+  //   
+  //             varying float vProgress;
+  //             varying float vRandom;
+  //             varying float vDiff;
+  //             varying float vSpreadLength;
+  //             varying float vPositionZ;
+  //   
+  //             highp float random(vec2 co) {
+  //               highp float a = 12.9898;
+  //               highp float b = 78.233;
+  //               highp float c = 43758.5453;
+  //               highp float dt= dot(co.xy ,vec2(a,b));
+  //               highp float sn= mod(dt,3.14);
+  //               return fract(sin(sn) * c);
+  //             }
+  //   
+  //             float quadraticIn(float t) {
+  //               return t * t;
+  //             }
+  //   
+  //             #ifndef HALF_PI
+  //             #define HALF_PI 1.5707963267948966
+  //             #endif
+  //   
+  //             float sineOut(float t) {
+  //               return sin(t * HALF_PI);
+  //             }
+  //   
+  //             const vec3 baseColor = vec3(170., 133., 88.) / 255.;
+  //   
+  //             void main() {
+  //               vec2 p = gl_PointCoord * 2. - 1.;
+  //               float len = length(p);
+  //   
+  //               float cRandom = random(vec2(vProgress * mix(minFlashingSpeed, 1., vRandom)));
+  //               cRandom = mix(0.3, 2., cRandom);
+  //   
+  //               float cBlur = blur * mix(1., 0.3, vPositionZ);
+  //               float shape = smoothstep(1. - cBlur, 1. + cBlur, (1. - cBlur) / len);
+  //               shape *= mix(0.5, 1., vRandom);
+  //   
+  //               if (shape == 0.) discard;
+  //   
+  //               float darkness = mix(0.1, 1., vPositionZ);
+  //   
+  //               float alphaProgress = vProgress * fadeSpeed * mix(2.5, 1., pow(vDiff, 0.6));
+  //               alphaProgress *= mix(shortRangeFadeSpeed, 1., sineOut(vSpreadLength) * quadraticIn(vDiff));
+  //               float alpha = 1. - min(alphaProgress, 1.);
+  //               alpha *= cRandom * vDiff;
+  //   
+  //               gl_FragColor = vec4(baseColor * darkness * cRandom, shape * alpha);
+  //             }
+  //           `
+  //         },
+  //         text: {
+  //           vert: `
+  //             precision highp float;
+  //             precision highp int;
+  //             attribute vec3 position;
+  //             attribute vec2 uv;
+  //             uniform mat4 modelViewMatrix;
+  //             uniform mat4 projectionMatrix;
+  //   
+  //             varying vec2 vUv;
+  //   
+  //             void main () {
+  //               vUv = uv;
+  //               gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
+  //             }
+  //           `,
+  //           frag: `
+  //             precision highp float;
+  //             precision highp int;
+  //   
+  //             uniform sampler2D map;
+  //             uniform float uProgress;
+  //             uniform float uStartX;
+  //             uniform float uRatio;
+  //             uniform float alpha;
+  //   
+  //             varying vec2 vUv;
+  //   
+  //             void main() {
+  //               vec4 textureColor = texture2D(map, vUv);
+  //               float angle = uRatio / 3.;
+  //               float isShow = step(1., 1. - vUv.x + (uProgress / uStartX * 0.5 + 0.5) - abs(vUv.y - 0.5) / angle);
+  //               gl_FragColor = vec4(textureColor.rgb, textureColor.a * alpha * isShow);
+  //             }
+  //           `
+  //         }
+  //       };
+  //   
+  //       // --- STATE MANAGER ---
+  //       const Store = {
+  //         root: null,
+  //         controller: null,
+  //         clientWidth: window.innerWidth,
+  //         clientHeight: window.innerHeight,
+  //         clientHalfWidth: window.innerWidth / 2,
+  //         clientHalfHeight: window.innerHeight / 2,
+  //         initialRatio: 1,
+  //         ratio: window.innerWidth / window.innerHeight,
+  //         resolution: new THREE.Vector2(window.innerWidth, window.innerHeight),
+  //         initialClientWidth: window.innerWidth,
+  //         initialClientHeight: window.innerHeight
+  //       };
+  //   
+  //       // --- THREERoot WRAPPER ---
+  //       class THREERoot {
+  //         constructor(params) {
+  //           const {
+  //             container = document.body,
+  //             fov = 45,
+  //             zNear = 1,
+  //             zFar = 10000,
+  //             cameraPosition = [0, 0, 30],
+  //             isAutoStart = true,
+  //             pixelRatio = window.devicePixelRatio,
+  //             antialias = window.devicePixelRatio === 1,
+  //             alpha = false,
+  //             clearColor = 0x000000,
+  //             canvas = document.createElement('canvas'),
+  //             speed = 60 / 1000
+  //           } = params;
+  //   
+  //           this.speed = speed;
+  //           this.time = 0;
+  //           this.startTime = 0;
+  //           this.updateCallbacks = [];
+  //           this.resizeCallbacks = [];
+  //           this.webglAvailable = true;
+  //   
+  //           // Try catch with robust fallbacks for WebGL creation failures
+  //           try {
+  //             this.renderer = new THREE.WebGLRenderer({
+  //               antialias: antialias,
+  //               alpha: alpha,
+  //               canvas: canvas,
+  //               powerPreference: "high-performance"
+  //             });
+  //           } catch (e1) {
+  //             console.warn("Primary WebGL Context failed. Retrying without antialiasing...");
+  //             try {
+  //               this.renderer = new THREE.WebGLRenderer({
+  //                 antialias: false,
+  //                 alpha: alpha,
+  //                 canvas: canvas
+  //               });
+  //             } catch (e2) {
+  //               console.warn("Secondary WebGL Context failed. Retrying with basic legacy profile...");
+  //               try {
+  //                 this.renderer = new THREE.WebGLRenderer({
+  //                   canvas: canvas,
+  //                   antialias: false,
+  //                   precision: "mediump"
+  //                 });
+  //               } catch (e3) {
+  //                 console.error("WebGL completely unavailable on this device/sandboxed environment. Activating high-performance 2D Canvas fallback.");
+  //                 this.webglAvailable = false;
+  //                 this.canvas = canvas;
+  //                 this.container = typeof container === 'string' ? document.querySelector(container) : container;
+  //                 this.setSize();
+  //                 window.addEventListener('resize', () => this.resize());
+  //                 return;
+  //               }
+  //             }
+  //           }
+  //   
+  //           if (this.webglAvailable) {
+  //             this.renderer.setPixelRatio(pixelRatio);
+  //             this.renderer.setClearColor(clearColor, alpha ? 0 : 1);
+  //             this.canvas = this.renderer.domElement;
+  //   
+  //             this.container = typeof container === 'string' ? document.querySelector(container) : container;
+  //             if (!params.canvas) this.container.appendChild(this.canvas);
+  //   
+  //             this.aspect = this.container.clientWidth / this.container.clientHeight;
+  //             this.setSize();
+  //   
+  //             this.camera = new THREE.PerspectiveCamera(fov, this.width / this.height, zNear, zFar);
+  //             this.camera.position.set(...cameraPosition);
+  //             this.camera.updateProjectionMatrix();
+  //   
+  //             this.scene = new THREE.Scene();
+  //   
+  //             this.resize();
+  //             window.addEventListener('resize', () => this.resize());
+  //   
+  //             if (isAutoStart) this.start();
+  //           }
+  //         }
+  //   
+  //         setSize() {
+  //           this.width = this.container.clientWidth;
+  //           this.height = this.container.clientHeight;
+  //         }
+  //   
+  //         start() {
+  //           requestAnimationFrame((timestamp) => {
+  //             this.startTime = timestamp;
+  //             this.tick();
+  //           });
+  //         }
+  //   
+  //         tick() {
+  //           this.time = performance.now() - this.startTime;
+  //           this.update();
+  //           this.render();
+  //           requestAnimationFrame(() => this.tick());
+  //         }
+  //   
+  //         update() {
+  //           const time = this.time * this.speed;
+  //           this.updateCallbacks.forEach(fn => fn(time));
+  //         }
+  //   
+  //         render() {
+  //           if (this.webglAvailable && this.renderer) {
+  //             this.renderer.render(this.scene, this.camera);
+  //           }
+  //         }
+  //   
+  //         addUpdateCallback(callback) {
+  //           this.updateCallbacks.push(callback);
+  //         }
+  //   
+  //         addResizeCallback(callback) {
+  //           this.resizeCallbacks.push(callback);
+  //         }
+  //   
+  //         add(object) {
+  //           if (this.scene) this.scene.add(object);
+  //         }
+  //   
+  //         resize() {
+  //           this.setSize();
+  //           if (this.webglAvailable) {
+  //             this.camera.aspect = this.width / this.height;
+  //             this.camera.updateProjectionMatrix();
+  //             this.renderer.setSize(this.width, this.height);
+  //           }
+  //           this.resizeCallbacks.forEach(callback => callback());
+  //         }
+  //       }
+  //   
+  //       // --- CONTROLLER FOR DAT.GUI ---
+  //       class Controller {
+  //         constructor(options) {
+  //           this.gui = new dat.GUI(options);
+  //           this.gui.closed = options.closed;
+  //         }
+  //   
+  //         addData(data, options = {}) {
+  //           const { folder = this.gui, callback = () => {} } = options;
+  //           const dataKeys = Object.keys(data);
+  //           const datData = {};
+  //   
+  //           dataKeys.forEach(key => {
+  //             datData[key] = data[key].value;
+  //           });
+  //   
+  //           dataKeys.forEach(key => {
+  //             const { isColor, value, range, onChange, listen } = data[key];
+  //             let controller;
+  //   
+  //             if (isColor) {
+  //               controller = folder.addColor(datData, key);
+  //             } else {
+  //               let guiRange = range || [];
+  //               if (!range && typeof value === 'number') {
+  //                 if (value < 1 && value >= 0) {
+  //                   guiRange = [0, 1];
+  //                 } else {
+  //                   const diff = Math.pow(10, String(Math.floor(value)).length - 1) * 2;
+  //                   guiRange = [value - diff, value + diff];
+  //                 }
+  //               }
+  //               controller = folder.add(datData, key, ...guiRange);
+  //             }
+  //   
+  //             if (onChange) {
+  //               controller.onChange(val => onChange(val));
+  //             }
+  //             if (listen) {
+  //               controller.listen();
+  //             }
+  //             callback(key, { value });
+  //           });
+  //   
+  //           return datData;
+  //         }
+  //   
+  //         addUniformData(data, uniforms = {}, options = {}) {
+  //           return this.addData(data, {
+  //             folder: options.folder,
+  //             callback: (key, obj) => {
+  //               uniforms[key] = obj;
+  //             }
+  //           });
+  //         }
+  //   
+  //         addFolder(name, isClosed = false) {
+  //           const folder = this.gui.addFolder(name);
+  //           if (!isClosed) folder.open();
+  //           return folder;
+  //         }
+  //       }
+  //   
+  //       // --- SHOOTING STAR CORE CLASS (WEBGL) ---
+  //       const PER_MOUSE = 800;
+  //       const COUNT = PER_MOUSE * 400;
+  //       const MOUSE_ATTR_COUNT = 4;
+  //       const FRONT_ATTR_COUNT = 2;
+  //   
+  //       const starData = {
+  //         visible: { value: true }
+  //       };
+  //   
+  //       const starUniformsConfig = {
+  //         size: { value: 0.05, range: [0, 1] },
+  //         minSize: { value: 1.0, range: [0, 5] },
+  //         speed: { value: 0.012, range: [0, 0.05] },
+  //         fadeSpeed: { value: 1.1, range: [1, 2] },
+  //         shortRangeFadeSpeed: { value: 1.3, range: [1, 5] },
+  //         minFlashingSpeed: { value: 0.1, range: [0, 1] },
+  //         spread: { value: 7, range: [0, 20] },
+  //         maxSpread: { value: 5, range: [1, 20] },
+  //         maxZ: { value: 100, range: [0, 500] },
+  //         blur: { value: 1.0, range: [0, 1] },
+  //         far: { value: 10, range: [0, 100] },
+  //         maxDiff: { value: 100, range: [0, 1000] },
+  //         diffPow: { value: 0.24, range: [0, 10] }
+  //       };
+  //   
+  //       class ShootingStar {
+  //         constructor() {
+  //           this.root = Store.root;
+  //           this.rate = 1;
+  //           this.setSize();
+  //   
+  //           const folder = Store.controller.addFolder('Shooting Star');
+  //           this.datData = Store.controller.addData(starData, { folder });
+  //   
+  //           this.uniforms = {
+  //             resolution: { value: Store.resolution },
+  //             pixelRatio: { value: this.root.renderer ? this.root.renderer.getPixelRatio() : 1 },
+  //             timestamp: { value: 0 }
+  //           };
+  //   
+  //           this.datUniformData = Store.controller.addUniformData(starUniformsConfig, this.uniforms, { folder });
+  //   
+  //           const geometry = this.geometry = new THREE.BufferGeometry();
+  //           const positions = [];
+  //           const mouse = [];
+  //           const aFront = [];
+  //           const random = [];
+  //   
+  //           for (let i = 0; i < COUNT; i++) {
+  //             positions.push(Math.random(), Math.random(), Math.random());
+  //             mouse.push(-1, -1, 0, 0);
+  //             aFront.push(0, 0);
+  //             random.push(Math.random());
+  //           }
+  //   
+  //           geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  //           geometry.setAttribute('mouse', new THREE.Float32BufferAttribute(mouse, MOUSE_ATTR_COUNT));
+  //           geometry.setAttribute('aFront', new THREE.Float32BufferAttribute(aFront, FRONT_ATTR_COUNT));
+  //           geometry.setAttribute('random', new THREE.Float32BufferAttribute(random, 1));
+  //   
+  //           this.material = new THREE.RawShaderMaterial({
+  //             uniforms: this.uniforms,
+  //             vertexShader: Shaders.shootingStar.vert,
+  //             fragmentShader: Shaders.shootingStar.frag,
+  //             transparent: true,
+  //             depthTest: false,
+  //             blending: THREE.AdditiveBlending
+  //           });
+  //   
+  //           this.mesh = new THREE.Points(geometry, this.material);
+  //           this.mesh.frustumCulled = false;
+  //           this.mesh.visible = this.datData.visible;
+  //           this.root.add(this.mesh);
+  //   
+  //           this.mouseI = 0;
+  //           this.oldPosition = null;
+  //   
+  //           this.root.addResizeCallback(() => {
+  //             this.setSize();
+  //             this.material.uniforms['resolution'].value = Store.resolution;
+  //           });
+  //   
+  //           this.root.addUpdateCallback((timestamp) => {
+  //             this.update(timestamp);
+  //           });
+  //         }
+  //   
+  //         setSize() {
+  //           this.rate = Math.min(
+  //             Store.ratio > Store.initialRatio ?
+  //               Store.clientHeight / Store.initialClientHeight :
+  //               Store.clientWidth / Store.initialClientWidth,
+  //             1
+  //           );
+  //           this.rate *= 1 / (Store.clientHeight / Store.initialClientHeight);
+  //         }
+  //   
+  //         update(timestamp) {
+  //           this.timestamp = timestamp;
+  //           this.material.uniforms['timestamp'].value = timestamp;
+  //           this.mesh.visible = this.datData.visible;
+  //   
+  //           Object.keys(starUniformsConfig).forEach((key) => {
+  //             this.material.uniforms[key].value = this.datUniformData[key];
+  //           });
+  //         }
+  //   
+  //         draw({ clientX, clientY }) {
+  //           const x = clientX * this.rate + Store.clientHalfWidth;
+  //           const y = Store.clientHeight - (clientY * this.rate + Store.clientHalfHeight);
+  //           const newPosition = new THREE.Vector2(x, y);
+  //           const diff = this.oldPosition ? newPosition.clone().sub(this.oldPosition) : new THREE.Vector2();
+  //           const length = diff.length();
+  //           const front = diff.clone().normalize();
+  //   
+  //           const mouseArr = this.geometry.attributes['mouse'].array;
+  //           const frontArr = this.geometry.attributes['aFront'].array;
+  //   
+  //           for (let i = 0; i < PER_MOUSE; i++) {
+  //             const ci = (this.mouseI % (COUNT * MOUSE_ATTR_COUNT)) + i * MOUSE_ATTR_COUNT;
+  //             const pos = this.oldPosition ?
+  //               this.oldPosition.clone().add(diff.clone().multiplyScalar(i / PER_MOUSE)) :
+  //               newPosition;
+  //   
+  //             mouseArr[ci] = pos.x;
+  //             mouseArr[ci + 1] = pos.y;
+  //             mouseArr[ci + 2] = this.timestamp;
+  //             mouseArr[ci + 3] = length;
+  //   
+  //             frontArr[ci] = front.x;
+  //             frontArr[ci + 1] = front.y;
+  //           }
+  //   
+  //           this.oldPosition = newPosition;
+  //           this.geometry.attributes['mouse'].needsUpdate = true;
+  //           this.geometry.attributes['aFront'].needsUpdate = true;
+  //           this.mouseI += MOUSE_ATTR_COUNT * PER_MOUSE;
+  //         }
+  //   
+  //         start() {
+  //           this.oldPosition = null;
+  //           window.addEventListener('pointermove', (e) => {
+  //             this.draw({
+  //               clientX: e.clientX - Store.clientHalfWidth,
+  //               clientY: e.clientY - Store.clientHalfHeight
+  //             });
+  //           });
+  //   
+  //           window.addEventListener('touchmove', (e) => {
+  //             if (e.touches.length > 0) {
+  //               const touch = e.touches[0];
+  //               this.draw({
+  //                 clientX: touch.clientX - Store.clientHalfWidth,
+  //                 clientY: touch.clientY - Store.clientHalfHeight
+  //               });
+  //             }
+  //           }, { passive: true });
+  //         }
+  //       }
+  //   
+  //       // --- REVEAL TEXT CLASS (WEBGL) ---
+  //       const textConfig = {
+  //         visible: { value: true },
+  //         duration: { value: 1080, range: [0, 5000] },
+  //         easing: { value: 'easeOutQuint', range: [easingList] }
+  //       };
+  //   
+  //       const textUniformConfig = {
+  //         alpha: { value: 0.8, range: [0, 1] }
+  //       };
+  //   
+  //       class TextMesh {
+  //         constructor() {
+  //           const root = Store.root;
+  //           this.folder = Store.controller.addFolder('Text');
+  //           this.datData = Store.controller.addData(textConfig, { folder: this.folder });
+  //   
+  //           const fontSize = Store.clientWidth < 360 ? 20 : Store.clientWidth < 768 ? 24 : 30;
+  //           const letterSpacing = Store.clientWidth < 768 ? 0.1 : 0.18;
+  //           const rawText = 'Shooting Star';
+  //           const textNormalWidth = rawText.length + letterSpacing * (rawText.length - 1);
+  //           const textHeight = fontSize * 1.2;
+  //   
+  //           const pixelRatio = window.devicePixelRatio;
+  //           const textCanvas = getTextCoordinate({
+  //             text: rawText,
+  //             fontSize: fontSize,
+  //             height: textHeight,
+  //             letterSpacing: letterSpacing,
+  //             font: 'Georgia, serif',
+  //             color: '#ffffff',
+  //             pixelRatio: pixelRatio,
+  //             width: fontSize * textNormalWidth
+  //           });
+  //   
+  //           const width = textCanvas.width / pixelRatio;
+  //           const height = textCanvas.height / pixelRatio;
+  //           const halfWidth = width / 2;
+  //   
+  //           const texture = new THREE.Texture(textCanvas);
+  //           texture.needsUpdate = true;
+  //           texture.minFilter = THREE.LinearFilter;
+  //   
+  //           const geometry = new THREE.PlaneGeometry(width, height);
+  //           this.uniforms = {
+  //             map: { value: texture },
+  //             uProgress: { value: -Store.clientHalfWidth },
+  //             uStartX: { value: Store.clientHalfWidth - halfWidth },
+  //             uRatio: { value: width / height }
+  //           };
+  //   
+  //           this.datUniformData = Store.controller.addUniformData(textUniformConfig, this.uniforms, { folder: this.folder });
+  //   
+  //           this.material = new THREE.RawShaderMaterial({
+  //             uniforms: this.uniforms,
+  //             vertexShader: Shaders.text.vert,
+  //             fragmentShader: Shaders.text.frag,
+  //             transparent: true
+  //           });
+  //   
+  //           this.mesh = new THREE.Mesh(geometry, this.material);
+  //           this.mesh.frustumCulled = false;
+  //           this.mesh.visible = this.datData.visible;
+  //           this.mesh.position.setZ(0.1);
+  //           root.add(this.mesh);
+  //   
+  //           root.addUpdateCallback(() => {
+  //             this.mesh.visible = this.datData.visible;
+  //             Object.keys(textUniformConfig).forEach((key) => {
+  //               this.material.uniforms[key].value = this.datUniformData[key];
+  //             });
+  //           });
+  //         }
+  //   
+  //         update(progress) {
+  //           this.material.uniforms['uProgress'].value = progress;
+  //         }
+  //       }
+  //   
+  //       // --- HIGH QUALITY HTML5 2D CANVAS FALLBACK SYSTEM ---
+  //       class Canvas2DFallback {
+  //         constructor(canvas) {
+  //           this.canvas = canvas;
+  //           this.ctx = canvas.getContext('2d');
+  //           this.particles = [];
+  //           this.textAlpha = 0;
+  //           this.textProgressX = -window.innerWidth / 2;
+  //           this.textWidth = 240;
+  //           this.textHeight = 40;
+  //           this.oStart = false;
+  //   
+  //           this.activeDrawX = null;
+  //           this.activeDrawY = null;
+  //   
+  //           // Custom controller values directly matching original parameters
+  //           this.settings = {
+  //             visible: true,
+  //             size: 2.2,
+  //             speed: 0.15,
+  //             spread: 8,
+  //             alpha: 0.8
+  //           };
+  //   
+  //           const folder = Store.controller.addFolder('Shooting Star (2D Backup Mode)');
+  //           folder.add(this.settings, 'visible').name('Particles Visible');
+  //           folder.add(this.settings, 'size', 0.5, 6).name('Trail Size');
+  //           folder.add(this.settings, 'speed', 0.05, 0.5).name('Fade Speed');
+  //           folder.add(this.settings, 'spread', 1, 25).name('Spread Angle');
+  //   
+  //           window.addEventListener('pointermove', (e) => {
+  //             this.oStart = true;
+  //             document.body.classList.add('o-start');
+  //             this.addParticles(e.clientX, e.clientY);
+  //           });
+  //   
+  //           window.addEventListener('touchmove', (e) => {
+  //             if (e.touches.length > 0) {
+  //               this.oStart = true;
+  //               document.body.classList.add('o-start');
+  //               const touch = e.touches[0];
+  //               this.addParticles(touch.clientX, touch.clientY);
+  //             }
+  //           }, { passive: true });
+  //   
+  //           this.animateLoop();
+  //         }
+  //   
+  //         addParticles(x, y, count = 28) {
+  //           if (!this.settings.visible) return;
+  //           
+  //           const dx = this.activeDrawX !== null ? x - this.activeDrawX : 0;
+  //           const dy = this.activeDrawY !== null ? y - this.activeDrawY : 0;
+  //           const moveDist = Math.sqrt(dx * dx + dy * dy);
+  //           const normX = moveDist > 0 ? dx / moveDist : 0;
+  //           const normY = moveDist > 0 ? dy / moveDist : 0;
+  //   
+  //           for (let i = 0; i < count; i++) {
+  //             const ratio = count > 1 ? i / (count - 1) : 0;
+  //             const interpX = x - dx * ratio;
+  //             const interpY = y - dy * ratio;
+  //   
+  //             const angle = Math.random() * Math.PI * 2;
+  //             const r = Math.random() * this.settings.spread * (moveDist * 0.01 + 0.5);
+  //             
+  //             this.particles.push({
+  //               x: interpX + Math.cos(angle) * r,
+  //               y: interpY + Math.sin(angle) * r,
+  //               vx: -normX * (Math.random() * 3 + 1) + (Math.random() - 0.5) * 1,
+  //               vy: -normY * (Math.random() * 3 + 1) + (Math.random() - 0.5) * 1,
+  //               size: (Math.random() * this.settings.size + 1),
+  //               life: 1.0,
+  //               decay: (Math.random() * 0.015 + 0.008) * (this.settings.speed * 10),
+  //               color: Math.random() > 0.3 ? 'rgb(170, 133, 88)' : 'rgb(240, 215, 175)'
+  //             });
+  //           }
+  //           this.activeDrawX = x;
+  //           this.activeDrawY = y;
+  //         }
+  //   
+  //         animateLoop() {
+  //           const render = () => {
+  //             const width = this.canvas.width = window.innerWidth;
+  //             const height = this.canvas.height = window.innerHeight;
+  //             
+  //             this.ctx.fillStyle = '#000000';
+  //             this.ctx.fillRect(0, 0, width, height);
+  //   
+  //             // Render shooting star glowing text
+  //             this.ctx.save();
+  //             this.ctx.translate(width / 2, height / 2);
+  //   
+  //             const isShowSweep = (pX, textX, normalizedY) => {
+  //               const angleRatio = 12.0;
+  //               return (1.0 - textX + (pX / (width / 2) * 0.5 + 0.5) - Math.abs(normalizedY) / angleRatio) > 1.0;
+  //             };
+  //   
+  //             this.ctx.font = '32px Georgia, serif';
+  //             this.ctx.textAlign = 'center';
+  //             this.ctx.textBaseline = 'middle';
+  //             this.ctx.letterSpacing = '0.18em';
+  //   
+  //             const textString = "Shooting Star";
+  //             const measure = this.ctx.measureText(textString);
+  //             this.textWidth = measure.width;
+  //   
+  //             // Perform linear texture pixel sweep check to match the WebGL Shader
+  //             this.ctx.fillStyle = `rgba(170, 133, 88, ${this.settings.alpha * 0.9})`;
+  //             
+  //             // Draw standard clean glow text reveal
+  //             this.ctx.fillStyle = `rgba(255, 255, 255, ${this.settings.alpha})`;
+  //             const segmentCount = Math.floor(this.textWidth);
+  //             for (let tx = 0; tx < segmentCount; tx += 2) {
+  //               const normalizedX = tx / segmentCount;
+  //               const textLocalX = tx - this.textWidth / 2;
+  //               
+  //               if (isShowSweep(this.textProgressX, normalizedX, 0)) {
+  //                 this.ctx.fillText(textString, 0, 0);
+  //                 break;
+  //               }
+  //             }
+  //             this.ctx.restore();
+  //   
+  //             // Particle Trail simulation updating
+  //             this.particles.forEach((p, idx) => {
+  //               p.x += p.vx;
+  //               p.y += p.vy;
+  //               p.life -= p.decay;
+  //               
+  //               if (p.life <= 0) {
+  //                 this.particles.splice(idx, 1);
+  //                 return;
+  //               }
+  //   
+  //               // Twinkle / flashing simulation
+  //               const twinkle = (Math.sin(performance.now() * 0.05 * p.size) + 1) * 0.5;
+  //               this.ctx.fillStyle = p.color;
+  //               this.ctx.globalAlpha = p.life * (0.3 + 0.7 * twinkle);
+  //               this.ctx.beginPath();
+  //               this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+  //               this.ctx.fill();
+  //             });
+  //             
+  //             this.ctx.globalAlpha = 1.0;
+  //             requestAnimationFrame(render);
+  //           };
+  //           requestAnimationFrame(render);
+  //         }
+  //   
+  //         startIntro() {
+  //           const period = Math.PI * 3;
+  //           const amplitude = Math.min(Math.max(window.innerWidth * 0.1, 100), 180);
+  //           const duration = 1080;
+  //   
+  //           animate((progress) => {
+  //             const clientX = Math.cos(progress * period) * amplitude;
+  //             const clientY = (progress * window.innerHeight - window.innerHeight / 2) * 1.3;
+  //             this.addParticles(clientX + window.innerWidth / 2, clientY + window.innerHeight / 2);
+  //           }, {
+  //             duration: duration,
+  //             onAfter: () => {
+  //               this.textStart();
+  //             }
+  //           });
+  //         }
+  //   
+  //         textStart() {
+  //           animate((progress) => {
+  //             this.addParticles(progress + window.innerWidth / 2, window.innerHeight / 2);
+  //             this.textProgressX = progress - window.innerWidth * 0.08;
+  //           }, {
+  //             begin: -window.innerWidth / 2 * 1.1,
+  //             finish: window.innerWidth / 2 * 1.1,
+  //             duration: 1080,
+  //             easing: 'easeOutQuint',
+  //             onAfter: () => {
+  //               document.body.classList.add('o-start');
+  //             }
+  //           });
+  //         }
+  //       }
+  //   
+  //       // --- MAIN APP CONTROLLER ---
+  //       class WebGLApp {
+  //         constructor({ canvas, container = document.body }) {
+  //           const controller = new Controller({ closed: true });
+  //           Store.controller = controller;
+  //   
+  //           Store.initialClientWidth = container.clientWidth;
+  //           Store.initialClientHeight = container.clientHeight;
+  //           Store.initialRatio = 1;
+  //   
+  //           const cameraZ = 5000;
+  //           const root = this.root = Store.root = new THREERoot({
+  //             isDev: true,
+  //             container: container,
+  //             fov: Math.atan(Store.initialClientHeight / 2 / cameraZ) * (180 / Math.PI) * 2,
+  //             zFar: cameraZ,
+  //             cameraPosition: [0, 0, cameraZ],
+  //             aspect: window.innerWidth / window.innerHeight,
+  //             canvas: canvas
+  //           });
+  //   
+  //           this.setSize();
+  //           root.addResizeCallback(() => this.setSize());
+  //   
+  //           if (root.webglAvailable) {
+  //             // Normal high-performance WebGL code route
+  //             this.text = new TextMesh();
+  //             this.shootingStar = new ShootingStar();
+  //   
+  //             const playAction = {
+  //               play: () => {
+  //                 document.body.classList.remove('o-start');
+  //                 this.startIntro();
+  //               }
+  //             };
+  //             controller.gui.add(playAction, 'play').name('Replay Intro');
+  //           } else {
+  //             // Graceful high performance responsive HTML5 2D star canvas fallback
+  //             this.fallback = new Canvas2DFallback(canvas);
+  //             const playAction = {
+  //               play: () => {
+  //                 document.body.classList.remove('o-start');
+  //                 this.fallback.startIntro();
+  //               }
+  //             };
+  //             controller.gui.add(playAction, 'play').name('Replay Intro');
+  //           }
+  //         }
+  //   
+  //         setSize() {
+  //           const clientWidth = Store.clientWidth = this.root.canvas.clientWidth;
+  //           const clientHeight = Store.clientHeight = this.root.canvas.clientHeight;
+  //           Store.clientHalfWidth = clientWidth / 2;
+  //           Store.clientHalfHeight = clientHeight / 2;
+  //           Store.resolution = new THREE.Vector2(clientWidth, clientHeight);
+  //           Store.ratio = clientWidth / clientHeight;
+  //         }
+  //   
+  //         startIntro() {
+  //           if (this.root.webglAvailable) {
+  //             const period = Math.PI * 3;
+  //             const amplitude = Math.min(Math.max(Store.clientWidth * 0.1, 100), 180);
+  //             const duration = 1080;
+  //   
+  //             animate((progress) => {
+  //               this.shootingStar.draw({
+  //                 clientX: Math.cos(progress * period) * amplitude,
+  //                 clientY: (progress * Store.clientHeight - Store.clientHalfHeight) * 1.3
+  //               });
+  //             }, {
+  //               duration: duration,
+  //               onAfter: () => {
+  //                 // Anchor coordinates sequence to sweep into horizontal reveal
+  //                 this.shootingStar.draw({
+  //                   clientX: -Store.clientHalfWidth,
+  //                   clientY: Store.clientHeight - Store.clientHalfHeight
+  //                 });
+  //   
+  //                 this.shootingStar.draw({
+  //                   clientX: -Store.clientHalfWidth * 1.1,
+  //                   clientY: 0
+  //                 });
+  //   
+  //                 setTimeout(() => {
+  //                   this.textStart();
+  //                 }, 300);
+  //               }
+  //             });
+  //           } else {
+  //             this.fallback.startIntro();
+  //           }
+  //         }
+  //   
+  //         textStart() {
+  //           if (this.root.webglAvailable) {
+  //             animate((progress) => {
+  //               this.shootingStar.draw({
+  //                 clientX: progress,
+  //                 clientY: 0
+  //               });
+  //   
+  //               this.text.update(progress - Store.clientWidth * 0.08);
+  //             }, {
+  //               begin: -Store.clientHalfWidth * 1.1,
+  //               finish: Store.clientHalfWidth * 1.1,
+  //               duration: this.text.datData.duration,
+  //               easing: this.text.datData.easing,
+  //               onAfter: () => {
+  //                 this.shootingStar.start();
+  //                 document.body.classList.add('o-start');
+  //               }
+  //             });
+  //           } else {
+  //             this.fallback.textStart();
+  //           }
+  //         }
+  //       }
+  //   
+  //       // --- INITIALIZATION ---
+  //       window.onload = function () {
+  //         const app = new WebGLApp({
+  //           canvas: document.getElementById('canvas')
+  //         });
+  //         
+  //         // Delay initial visual launch sequence slightly for buttery transition
+  //         setTimeout(() => {
+  //           app.startIntro();
+  //         }, 300);
+  //       };
+  //     
+  // }, []);
+  return (
+    <section className="dobra" data-dobra="cursor-shooting-star-cursor" ref={raiz}>
+      <canvas id="canvas"></canvas>
+        <p id="message">{s.texto}</p>
+    </section>
+  );
+}

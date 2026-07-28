@@ -1,0 +1,7 @@
+body { margin: 0; min-height: 100svh; }
+
+/* Swiper needs to clip the looped/extra slides; the shared sheet styles the
+   .section_testimonial-slider system, this just guards the carousel overflow
+   and keeps the navigation arrows clickable. */
+.section_testimonial-slider .swiper { overflow: hidden; }
+.section_testimonial-slider .swiper_arrow { cursor: pointer; }

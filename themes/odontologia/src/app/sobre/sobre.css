@@ -1,0 +1,70 @@
+.sobre {
+  display: block;
+  width: 100%;
+  background-color: var(--base-100);
+}
+
+.sobre-inner {
+  width: 100%;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding-inline: var(--respiro);
+}
+
+/* Espaço para a barra de navegação, que é `absolute` e não empurra o conteúdo. */
+.sobre-topo {
+  padding-top: calc(var(--respiro) + 5rem);
+  padding-bottom: var(--respiro);
+}
+
+.sobre-kicker {
+  margin-bottom: 1rem;
+  color: var(--acento);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sobre-topo h1 {
+  max-width: 20ch;
+  color: var(--cor-texto);
+}
+
+.sobre-foto {
+  width: 100%;
+  max-width: var(--largura-max);
+  height: 26rem;
+  margin: 0 auto;
+  padding-inline: var(--respiro);
+}
+
+.sobre-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.sobre-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-block: var(--respiro);
+}
+
+.sobre-corpo p {
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  .sobre-inner,
+  .sobre-foto {
+    padding-inline: var(--respiro-compacto);
+  }
+  .sobre-topo {
+    padding-top: calc(var(--respiro-compacto) + 4rem);
+    padding-bottom: var(--respiro-compacto);
+  }
+  .sobre-foto { height: 16rem; }
+  .sobre-corpo { padding-block: var(--respiro-compacto); }
+}

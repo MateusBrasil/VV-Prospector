@@ -1,0 +1,15 @@
+{
+  "ref": "secoes/secao-40",
+  "scope": "secoes-secao-40",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesCdn": [
+    "https://fonts.googleapis.com",
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+  ],
+  "tem_js": true,
+  "n_assets": 0,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

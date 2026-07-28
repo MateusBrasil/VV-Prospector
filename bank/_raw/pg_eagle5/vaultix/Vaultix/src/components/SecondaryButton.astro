@@ -1,0 +1,49 @@
+---
+// White-translucent secondary CTA — companion to `AccentButton`. Renders
+// <a> when `href` is provided, otherwise <button>. Extra props/data-*
+// attributes are forwarded so callers can target it for animations.
+//
+// Variants:
+//   default  bg white/12 → hover white/18 (used on dark sections)
+//   dark     bg #050505 → hover #1c1c1c (used on the yellow Pro pricing card)
+//
+// Both variants share the same scramble-hover (block roll-up) effect as
+// `AccentButton`.
+//
+// Tokens (matched to Inicio Hero secondary):
+//   font   Geist Mono Regular 14px / 20px / 1.68px tracking, uppercase
+//   pad    16px / 8px
+
+interface Props {
+  href?: string;
+  type?: "button" | "enviar" | "reset";
+  variant?: "default" | "dark";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  href,
+  type = "button",
+  variant = "default",
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] transition-colors";
+const variantClasses =
+  variant === "dark"
+    ? "bg-[#050505] text-white hover:bg-[#1c1c1c]"
+    : "bg-white/[0.12] text-white hover:bg-white/[0.18]";
+const classes = [base, variantClasses, className].filter(Boolean).join(" ");
+---
+
+<button type={type} class={classes} data-secondary-btn {...rest}>
+  <slot />
+</button>
+
+<script>
+  import { applyScrambleHover } from "../lib/scramble-hover";
+  applyScrambleHover("[data-secondary-btn]");
+</script>

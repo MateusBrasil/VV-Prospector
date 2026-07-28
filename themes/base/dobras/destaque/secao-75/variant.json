@@ -1,0 +1,41 @@
+{
+  "slot": "destaque",
+  "nome": "secao-75",
+  "scope": "destaque-secao-75",
+  "origem": "bank/_componentes/secoes/secao-75",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "wellness"
+    },
+    {
+      "nome": "video",
+      "tipo": "video",
+      "exemplo": "20241218_1019_Curious-Dogs-Alert_simple_compose_01jfd5m23gf7gr6fce4r5enfc4-transcode.webm"
+    },
+    {
+      "nome": "video2",
+      "tipo": "video",
+      "exemplo": "20241218_1019_Curious-Dogs-Alert_simple_compose_01jfd5m23gf7gr6fce4r5enfc4-transcode.mp4"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "82 cor(es) mapeadas para tokens por luminância (acento da origem #ffe500 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "6 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/vetic/images/arrow-pink.webp)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,121 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-23",
+  "scope": "destaque-scroll-23",
+  "origem": "bank/_componentes/scroll/scroll-23",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://experience.drdabber.com/product/stella"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://www.gutenberg.org/files/48225/48225-h/48225-h.htm"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Dr. Dabber"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Demo 1"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Demo 2"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Demo 3"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Demo 4"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Demo 5"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Boca"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "The continuity of consciousness which the patient presents in the individual attacks recalls the behaviour of the consciousness in MacNish's case; hence our cas"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Soulmate"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "The hallucinations in the second state show a certain creativeness which seems to be conditioned by the auto-suggestibility of this state. In Mesnet's case we n"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Maui"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Wowie"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "The walk in the cemetery induces the vision of the skeletons; the meeting with the three boys arouses the hallucination of children buried alive whose voices th"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Kush"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "These lapses of memory, which at first seem without content, gain a content by means of accidental auto-suggestion, and this content builds itself up automatica"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Collected Papers on Analytical Psychology"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Demo 2"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #d14521 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://experience.drdabber.com/product/stella https://www.gutenberg.org/files/48225/48225-h/48225-h.htm)",
+    "2 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,42 @@
+---
+// Yellow accent CTA — single source of truth for the Eagle accent button.
+// Renders <a> when `href` is provided, otherwise <button>. Extra props/data-*
+// attributes are forwarded so callers can target it for animations.
+//
+// Tokens (from Figma + repo conventions):
+//   bg     #fdff22 (--color-accent)
+//   color  #11130e
+//   font   Geist Mono Regular 14px / 20px / 1.68px tracking, uppercase
+//   pad    16px / 8px
+//   hover  3-layer yellow glow via `.btn-accent-glow` + brightness-110
+
+interface Props {
+  href?: string;
+  type?: "button" | "enviar" | "reset";
+  class?: string;
+  [key: string]: any;
+}
+
+const { href, type = "button", class: className = "", ...rest } = Astro.props;
+
+// `border-0` + `outline-none` kill the dark 1-px border that Tailwind v4
+// preflight + the default browser focus ring render on <button> elements
+// (visible briefly on hover/focus when bg lightens via `brightness-110`).
+const base =
+  "btn-accent-glow inline-flex cursor-pointer items-center justify-center border-0 bg-[var(--color-accent)] px-[1rem] py-[0.5rem] font-mono text-[0.875rem] uppercase leading-[1.25rem] tracking-[0.105rem] text-[#11130e] outline-none transition-[filter] hover:brightness-110 focus:outline-none focus-visible:outline-none";
+const classes = [base, className].filter(Boolean).join(" ");
+---
+
+<button type={type} class={classes} data-accent-btn {...rest}>
+  <slot />
+</button>
+
+<script>
+  // Scramble (block roll-up) hover effect — same one used on Navbar Buy
+  // Template / Inicio Hero CTAs. Applied once per page load to every
+  // AccentButton on the page. The helper is idempotent so running it
+  // alongside legacy scoped calls (Hero, BlogsSection, Navbar) is safe.
+  import { applyScrambleHover } from "../lib/scramble-hover";
+  applyScrambleHover("[data-accent-btn]");
+</script>
+

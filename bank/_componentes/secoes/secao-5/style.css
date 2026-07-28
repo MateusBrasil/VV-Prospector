@@ -1,0 +1,9 @@
+/* luzen-projects-list — local overrides only. All real structure/styling lives
+   in the shared /luzen/styles.css cascade (normalize + tokens + webflow + global
+   + components). The reveals (data-reveal text, .img-parallax scroll) are driven
+   by GSAP via /luzen/scripts/animations.js. We only reset the body so the
+   standalone preview sits flush. */
+body {
+  margin: 0;
+  min-height: 100svh;
+}

@@ -1,0 +1,765 @@
+{
+  "slot": "vitrine",
+  "nome": "cosmic-gallery",
+  "scope": "vitrine-cosmic-gallery",
+  "origem": "bank/_componentes/carrossel/cosmic-gallery",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "matter",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops1/400/600"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops2/400/600"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops3/400/600"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops4/400/600"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops5/400/600"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops6/400/600"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops7/400/600"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops8/400/600"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops9/400/600"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops10/400/600"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops11/400/600"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops12/400/600"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops13/400/600"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops14/400/600"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops15/400/600"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops16/400/600"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops1/800/1200"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops2/800/1200"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops3/800/1200"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops4/800/1200"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops5/800/1200"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops6/800/1200"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops7/800/1200"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops8/800/1200"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops9/800/1200"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops10/800/1200"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops11/800/1200"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops12/800/1200"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops13/800/1200"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops14/800/1200"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops15/800/1200"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/codrops16/800/1200"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Cosmic Gallery: 3D Holographic Grid"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Deep/"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Space"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Nebula"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Alpha Quadrant"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.0"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A magnificent interstellar cloud of dust, hydrogen, helium and other ionized gases. A true stellar nursery where new cosmic phenomena are born over millions of "
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Quasar"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Beta Quadrant"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.1"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "An extremely luminous active galactic nucleus, powered by a supermassive black hole with mass ranging from millions to billions of solar masses. A beacon in the"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Pulsar"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Gamma Quadrant"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.2"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "A highly magnetized rotating neutron star that emits beams of electromagnetic radiation out of its magnetic poles. The lighthouse of the interstellar void."
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Supernova"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Delta Quadrant"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.3"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "A powerful and luminous stellar explosion. This transient astronomical event occurs during the last evolutionary stages of a massive star, seeding the universe "
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Asteroid"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Inner Belt"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.4"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "A minor planet of the inner Solar System. Historically, these terms have been applied to any astronomical object orbiting the sun that did not resolve into a di"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Comet"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Oort Cloud"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.5"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "An icy, small Solar System body that, when passing close to the Sun, warms and begins to release gases, a process called outgassing, leaving a brilliant trail."
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao12",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo8",
+      "tipo": "texto",
+      "exemplo": "Galaxy"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Local Group"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.6"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "A gravitationally bound system of stars, stellar remnants, interstellar gas, dust, and dark matter. The foundational building blocks of the observable universe."
+    },
+    {
+      "nome": "acao13",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao14",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo9",
+      "tipo": "texto",
+      "exemplo": "Black Hole"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Core Center"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.7"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "A region of spacetime where gravity is so strong that nothing—no particles or even electromagnetic radiation such as light—can escape from its immense gravitati"
+    },
+    {
+      "nome": "acao15",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao16",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo10",
+      "tipo": "texto",
+      "exemplo": "Red Dwarf"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Outer Arm"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.8"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "The smallest and coolest kind of star on the main sequence. They are by far the most common type of star in the Milky Way, burning slowly over trillions of year"
+    },
+    {
+      "nome": "acao17",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao18",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo11",
+      "tipo": "texto",
+      "exemplo": "White Dwarf"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Perseus Arm"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "Epoch 1.9"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "A stellar core remnant composed mostly of electron-degenerate matter. A very dense object, comparable in mass to the Sun but in volume to the Earth."
+    },
+    {
+      "nome": "acao19",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao20",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo33",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo12",
+      "tipo": "texto",
+      "exemplo": "Neutron Star"
+    },
+    {
+      "nome": "rotulo34",
+      "tipo": "texto",
+      "exemplo": "Orion Spur"
+    },
+    {
+      "nome": "rotulo35",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.0"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "The collapsed core of a massive supergiant star. These entities possess the strongest magnetic fields and highest densities of any known stellar object."
+    },
+    {
+      "nome": "acao21",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao22",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo36",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo13",
+      "tipo": "texto",
+      "exemplo": "Event Horizon"
+    },
+    {
+      "nome": "rotulo37",
+      "tipo": "texto",
+      "exemplo": "Singularity Edge"
+    },
+    {
+      "nome": "rotulo38",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.1"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "A boundary beyond which events cannot affect an observer. The absolute point of no return for anything falling into the immense gravity well of a black hole."
+    },
+    {
+      "nome": "acao23",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao24",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo39",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo14",
+      "tipo": "texto",
+      "exemplo": "Dark Matter"
+    },
+    {
+      "nome": "rotulo40",
+      "tipo": "texto",
+      "exemplo": "Cosmic Web"
+    },
+    {
+      "nome": "rotulo41",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.2"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "A hypothetical form of matter thought to account for approximately 85% of the matter in the universe. It interacts primarily through gravity, remaining invisibl"
+    },
+    {
+      "nome": "acao25",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao26",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo42",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo15",
+      "tipo": "texto",
+      "exemplo": "Exoplanet"
+    },
+    {
+      "nome": "rotulo43",
+      "tipo": "texto",
+      "exemplo": "Proxima Centauri"
+    },
+    {
+      "nome": "rotulo44",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.3"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "A planet outside the Solar System. With trillions scattered across the galaxy, they hold the greatest promise for discovering extraterrestrial life and habitabl"
+    },
+    {
+      "nome": "acao27",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao28",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo45",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo16",
+      "tipo": "texto",
+      "exemplo": "Stardust"
+    },
+    {
+      "nome": "rotulo46",
+      "tipo": "texto",
+      "exemplo": "Interstellar Medium"
+    },
+    {
+      "nome": "rotulo47",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.4"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Cosmic dust that originates from stars. It is composed of tiny particulates drifting in space, often carrying the essential building blocks for planetary format"
+    },
+    {
+      "nome": "acao29",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao30",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    },
+    {
+      "nome": "rotulo48",
+      "tipo": "texto",
+      "exemplo": "Return"
+    },
+    {
+      "nome": "titulo17",
+      "tipo": "texto",
+      "exemplo": "Cosmic Void"
+    },
+    {
+      "nome": "rotulo49",
+      "tipo": "texto",
+      "exemplo": "Bootes"
+    },
+    {
+      "nome": "rotulo50",
+      "tipo": "texto",
+      "exemplo": "Epoch 2.5"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Vast, empty spaces between galaxy filaments, which contain very few or no galaxies. These are some of the largest and most mysterious structures in the Universe"
+    },
+    {
+      "nome": "acao31",
+      "tipo": "texto",
+      "exemplo": "+ Scan Data"
+    },
+    {
+      "nome": "acao32",
+      "tipo": "texto",
+      "exemplo": "Engage Warp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 32
+  },
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #e3154d → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "32 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/codrops1/400/600 https://picsum.photos/seed/codrops2/400/600)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

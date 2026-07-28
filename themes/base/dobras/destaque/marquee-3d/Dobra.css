@@ -1,0 +1,110 @@
+[data-dobra="destaque-marquee-3d"] *{
+      box-sizing: border-box;
+    }
+[data-dobra="destaque-marquee-3d"]{
+      margin: 0;
+      min-height: 100vh;
+      color: var(--base-600);
+      background-color: var(--base-100);
+      
+      font-size: 36px;
+      font-family: var(--fonte-corpo);
+      letter-spacing: 1px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 800px;
+      overflow: hidden; 
+      
+      --depth: -200px;
+      --side-rotation: 50deg;
+      --marquee-width: clamp(300px, 40vw, 500px);
+      --speed: 7s;
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper{
+      width: var(--marquee-width);
+      height: min(100vh, 600px);
+      overflow: hidden;
+      flex-shrink: 0;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      transform: translateZ(var(--depth));
+      
+      background-image: 
+        repeating-linear-gradient(0deg, var(--base-300) 0 1px, transparent 1px 40px), 
+        repeating-linear-gradient(-90deg, var(--base-300) 0 1px, transparent 1px 40px);
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper .marquee{
+      width: max-content;
+      padding: 12px 0;
+      border: 1px solid;
+      border-width: 2px 0;
+      
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 12px;
+      
+      animation: marquee linear var(--speed) infinite both;
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper.center{
+      background-color: var(--base-300);
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper.left{
+      transform-origin: right center;
+      transform: translateZ(var(--depth)) rotateY(var(--side-rotation));
+      -webkit-mask: linear-gradient(to right, transparent, var(--base-600) 10%);
+      mask: linear-gradient(to right, transparent, var(--base-600) 10%);
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper.left .marquee{
+      animation-name: marquee-left;
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper.right{
+      transform-origin: left center;
+      transform: translateZ(var(--depth)) rotateY(calc(var(--side-rotation) * -1));
+      -webkit-mask: linear-gradient(to left, transparent, var(--base-600) 10%);
+      mask: linear-gradient(to left, transparent, var(--base-600) 10%);
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper.right .marquee{
+      animation-name: marquee-right;
+      animation-duration: calc(var(--speed) * 2);
+    }
+[data-dobra="destaque-marquee-3d"] .marquee-wrapper .emoji-1{
+      display: inline-block;
+      animation: rotate 1s linear both infinite alternate;
+    }
+@keyframes marquee{
+      to {
+        transform: translateX(-50%);
+      }
+    }
+@keyframes marquee-left{
+      from {
+        transform: translateX(calc(-50% + var(--marquee-width)));
+      }
+      to {
+        transform: translateX(calc(-100% + var(--marquee-width)));
+      }
+    }
+@keyframes marquee-right{
+      from {
+        transform: translateX(calc(var(--marquee-width) * -1));
+      }
+      to {
+        transform: translateX(calc(-50% - var(--marquee-width)));
+      }
+    }
+@keyframes rotate{
+      from {
+        rotate: -15deg;
+      }
+      to {
+        rotate: 15deg;
+      }
+    }
+
+  

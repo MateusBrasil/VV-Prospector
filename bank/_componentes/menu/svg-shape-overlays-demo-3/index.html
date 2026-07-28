@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG Shape Overlays | Demo 1</title>
+    <meta name="description" content="A set of morphing shape overlays with SVG" />
+    <meta name="keywords" content="shape, SVG, morphing, web development, web design, javascript" />
+    <meta name="author" content="Codrops" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400|Montserrat:700" rel="stylesheet">
+    <style>
+        /* ==================== normalize.css ==================== */
+        article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;margin:0.67em 0;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:bold;}dfn{font-style:italic;}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}pre{white-space:pre-wrap;}q{quotes:"\201C" "\201D" "\2018" "\2019";}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-0.5em;}sub{bottom:-0.25em;}img{border:0;}svg:not(:root){overflow:hidden;}figure{margin:0;}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}legend{border:0;padding:0;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,select{text-transform:none;}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}button[disabled],html input[disabled]{cursor:default;}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}
+
+        /* ==================== demo.css ==================== */
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: #000;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            color: #57585c;
+            color: var(--color-text);   
+            background-color: #fff;
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Color schemes */
+        .demo-3 {
+            --color-text: #fff;
+            --color-bg: #ddd;
+            --color-link: #3b3d54;
+            --color-link-hover: #15161e;
+            --color-info: #3b3d54;
+            --color-main-bg: #22232e;
+            --path-fill-1: #3b3d54;
+            --path-fill-2: #4a4d6a;
+            --path-fill-3: #7b7f9d;
+            --path-fill-4: #f7f5f2;
+            --color-title: #f7f5f2;
+            --font-family-title: 'Montserrat', sans-serif;
+            --font-size-title: 7vmax;
+            --font-weight-title: 700;
+            --color-menu: #3b3d54;
+            --color-menu-hover: #000;
+            --font-family-menu: 'Montserrat', sans-serif;
+            --font-size-menu: 3vmax;
+            --font-weight-menu: 700;
+            --button-bg: #f7f5f2;
+            --button-circle: #3b3d54;
+            --button-line: #22232e;
+        }
+
+        /* Fade effect */
+        .js body {
+            opacity: 0;
+            transition: opacity 0.3s;       
+        }
+
+        .js body.render {
+            opacity: 1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5d93d8;
+            color: var(--color-link);
+            outline: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: #423c2b;
+            color: var(--color-link-hover);
+            outline: none;
+        }
+
+        .hidden {
+            position: absolute;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+
+        /* Icons */
+        .icon {
+            display: block;
+            width: 1.5em;
+            height: 1.5em;
+            margin: 0 auto;
+            fill: currentColor;
+        }
+
+        .icon--keyboard {
+            display: none;
+        }
+
+        main {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--color-main-bg);
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0 auto;
+            pointer-events: none;
+        }
+
+        .content--fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: grid;
+            align-content: space-between;
+            width: 100%;
+            max-width: none;
+            min-height: 0;
+            height: 100vh;
+            padding: 1.5em;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: auto auto 4em;
+            grid-template-areas: 'header ...'
+            '... ...'
+            'github demos';
+        }
+
+        .content--fixed a {
+            pointer-events: auto;
+        }
+
+        /* Header */
+        .codrops-header {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            align-items: center;
+            align-self: start;
+            grid-area: header;
+            justify-self: start;
+        }
+
+        .codrops-header__title {
+            font-size: 1em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0.75em 0;
+        }
+
+        .info {
+            margin: 0 0 0 1.25em;
+            font-style: italic;
+            color: var(--color-info);
+            font-weight: bold;
+        }
+
+        .github {
+            display: block;
+            align-self: end;
+            grid-area: github;
+            justify-self: start;
+            margin: 0.5em;
+        }
+
+        .demos {
+            position: relative;
+            display: block;
+            align-self: end;
+            text-align: center;
+            grid-area: demos;
+            margin-bottom: 0.5em;
+        }
+
+        .demo {
+            margin: 0 0.15em;
+        }
+
+        .demo:hover,
+        .demo:focus {
+            opacity: 0.5;
+        }
+
+        .demo span {
+            white-space: nowrap;
+            text-transform: lowercase;
+            pointer-events: none;
+        }
+
+        .demo span::before {
+            content: '#';
+        }
+
+        a.demo--current {
+            pointer-events: none;
+        }
+
+        /* Top Navigation Style */
+        .codrops-links {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin: 0 1em 0 0;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .codrops-icon {
+            display: inline-block;
+            margin: 0.15em;
+            padding: 0.25em;
+        }
+
+        .demo-title {
+            color: var(--color-title);
+            font-family: var(--font-family-title);
+            font-size: var(--font-size-title);
+            font-weight: var(--font-weight-title);
+        }
+
+        .global-menu {
+            width: 100vw;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .global-menu__item {
+            color: var(--color-menu);
+            font-family: var(--font-family-menu);
+            font-size: var(--font-size-menu);
+            font-weight: var(--font-weight-menu);
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+            display: block;
+            margin: 0.25em 0;
+            transition: transform 0.3s, opacity 0.3s;
+            transition-timing-function: ease-in;
+        }
+
+        .global-menu__item:hover {
+            color: var(--color-menu-hover);
+        }
+
+        .global-menu__item.is-opened {
+            opacity: 1;
+            transform: translateY(0) rotate(0);
+            pointer-events: auto;
+            transition-timing-function: ease;
+        }
+
+        .global-menu__item:nth-of-type(1) {
+            transition-delay: 0s;
+        }
+
+        .global-menu__item.is-opened:nth-of-type(1) {
+            transition-delay: 0.85s;
+        }
+
+        .global-menu__item:nth-of-type(2) {
+            transition-delay: 0.05s;
+        }
+
+        .global-menu__item.is-opened:nth-of-type(2) {
+            transition-delay: 0.8s;
+        }
+
+        .global-menu__item:nth-of-type(3) {
+            transition-delay: 0.1s;
+        }
+
+        .global-menu__item.is-opened:nth-of-type(3) {
+            transition-delay: 0.75s;
+        }
+
+        .global-menu__item:nth-of-type(4) {
+            transition-delay: 0.15s;
+        }
+
+        .global-menu__item.is-opened:nth-of-type(4) {
+            transition-delay: 0.7s;
+        }
+
+        .shape-overlays {
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .shape-overlays.is-opened {
+            pointer-events: auto;
+        }
+
+        .shape-overlays__path:nth-of-type(1) {
+            fill: var(--path-fill-1);
+        }
+
+        .shape-overlays__path:nth-of-type(2) {
+            fill: var(--path-fill-2);
+        }
+
+        .shape-overlays__path:nth-of-type(3) {
+            fill: var(--path-fill-3);
+        }
+
+        .shape-overlays__path:nth-of-type(4) {
+            fill: var(--path-fill-4);
+        }
+
+        @-webkit-keyframes intervalHamburgerBorder {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            80% {
+                -webkit-transform: scale(1.6);
+                transform: scale(1.6);
+            }
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1.6);
+                transform: scale(1.6);
+            }
+        }
+
+        @keyframes intervalHamburgerBorder {
+            0% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            80% {
+                -webkit-transform: scale(1.6);
+                transform: scale(1.6);
+            }
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1.6);
+                transform: scale(1.6);
+            }
+        }
+
+        .hamburger {
+            width: 64px;
+            height: 64px;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            position: absolute;
+            top: 2.25em;
+            right: 2.25em;
+            z-index: 110;
+            border-radius: 50%;
+            background-color: var(--button-bg);
+            pointer-events: auto;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        .hamburger::after {
+            width: 64px;
+            height: 64px;
+            box-sizing: border-box;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            border: 4px solid var(--button-circle);
+            border-radius: 50%;
+            -webkit-animation-duration: 1.2s;
+            animation-duration: 1.2s;
+            -webkit-animation-name: intervalHamburgerBorder;
+            animation-name: intervalHamburgerBorder;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+
+        .hamburger__line {
+            width: 28px;
+            height: 2px;
+            overflow: hidden;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .hamburger__line-in {
+            width: 84px;
+            height: 2px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hamburger__line-in::before,
+        .hamburger__line-in::after {
+            width: 28px;
+            height: 2px;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            background-color: var(--button-line);
+        }
+
+        .hamburger__line-in::before {
+            left: -56px;
+        }
+
+        .hamburger__line-in::after {
+            left: 0;
+        }
+
+        .hamburger__line--01,
+        .hamburger__line--02,
+        .hamburger__line--03,
+        .hamburger__line--cross01,
+        .hamburger__line--cross02 {
+            left: 18px;
+        }
+
+        .hamburger__line--01 {
+            top: 24.6px;
+        }
+
+        .hamburger__line--02,
+        .hamburger__line--cross01,
+        .hamburger__line--cross02 {
+            top: 31px;
+        }
+
+        .hamburger__line--03 {
+            top: 37.4px;
+        }
+
+        .hamburger__line--cross01 {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .hamburger__line--cross02 {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .hamburger__line {
+            -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .hamburger__line-in {
+            -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .hamburger__line-in::before,
+        .hamburger__line-in::after {
+            -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+        }
+
+        .hamburger__line-in--cross01,
+        .hamburger__line-in--cross02 {
+            -webkit-transform: translateX(-33.3%);
+            transform: translateX(-33.3%);
+        }
+
+        .hamburger__line-in--01 {
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+
+        .hamburger__line-in--02 {
+            -webkit-transition-delay: 0.25s;
+            transition-delay: 0.25s;
+        }
+
+        .hamburger__line-in--02::before,
+        .hamburger__line-in--02::after {
+            -webkit-transition-delay: 0.05s;
+            transition-delay: 0.05s;
+        }
+
+        .hamburger__line-in--03 {
+            -webkit-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+        }
+
+        .hamburger__line-in--03::before,
+        .hamburger__line-in--03::after {
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+
+        .hamburger__line-in--cross01 {
+            -webkit-transition-delay: 0.0s;
+            transition-delay: 0.0s;
+        }
+
+        .hamburger__line-in--cross02 {
+            -webkit-transition-delay: 0.05s;
+            transition-delay: 0.05s;
+        }
+
+        .hamburger__line-in--cross02::before,
+        .hamburger__line-in--cross02::after {
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--01,
+        .hamburger.is-opened-navi .hamburger__line-in--02,
+        .hamburger.is-opened-navi .hamburger__line-in--03 {
+            -webkit-transform: translateX(33.3%);
+            transform: translateX(33.3%);
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--cross01,
+        .hamburger.is-opened-navi .hamburger__line-in--cross02 {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--01 {
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--02 {
+            -webkit-transition-delay: 0.05s;
+            transition-delay: 0.05s;
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--03 {
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--cross01 {
+            -webkit-transition-delay: 0.25s;
+            transition-delay: 0.25s;
+        }
+
+        .hamburger.is-opened-navi .hamburger__line-in--cross02 {
+            -webkit-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+        }
+
+        .hamburger:hover .hamburger__line-in::before,
+        .hamburger:hover .hamburger__line-in::after {
+            -webkit-transform: translateX(200%);
+            transform: translateX(200%);
+        }
+
+        .hamburger:hover .hamburger__line-in--01::before,
+        .hamburger:hover .hamburger__line-in--01::after,
+        .hamburger:hover .hamburger__line-in--02::before,
+        .hamburger:hover .hamburger__line-in--02::after,
+        .hamburger:hover .hamburger__line-in--03::before,
+        .hamburger:hover .hamburger__line-in--03::after {
+            -webkit-transition-duration: 1s;
+            transition-duration: 1s;
+        }
+
+        .hamburger:hover .hamburger__line-in--cross01::before,
+        .hamburger:hover .hamburger__line-in--cross01::after,
+        .hamburger:hover .hamburger__line-in--cross02::before,
+        .hamburger:hover .hamburger__line-in--cross02::after {
+            -webkit-transition-duration: 0s;
+            transition-duration: 0s;
+        }
+
+        .hamburger.is-opened-navi:hover .hamburger__line-in--cross01::before,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--cross01::after,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--cross02::before,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--cross02::after {
+            -webkit-transition-duration: 1s;
+            transition-duration: 1s;
+        }
+
+        .hamburger.is-opened-navi:hover .hamburger__line-in--01::before,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--01::after,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--02::before,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--02::after,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--03::before,
+        .hamburger.is-opened-navi:hover .hamburger__line-in--03::after {
+            -webkit-transition-duration: 0s;
+            transition-duration: 0s;
+        }
+
+        @media screen and (min-width: 55em) {
+            .icon--keyboard {
+                position: absolute;
+                right: 0.55em;
+                bottom: -30%;
+                display: block;
+                width: 54px;
+                height: 46px;
+                fill: var(--color-link);
+            }
+            .demos {
+                display: flex;
+                padding-right: 80px;
+                justify-self: end;
+            }
+            .demo {
+                display: block;
+                width: 17px;
+                height: 17px;
+                margin: 0 4px;
+                border-radius: 50%;
+                background: var(--color-link);
+            }
+            a.demo--current {
+                background: var(--color-link-hover);
+            }
+            .demo span {
+                position: absolute;
+                line-height: 1;
+                right: 100%;
+                display: none;
+                margin: 0 1em 0 0;
+            }
+            .demo--current span {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 55em) {
+            html,
+            body {
+                overflow-x: hidden;
+                width: 100vw;
+                height: 100%;
+            }
+            .hamburger {
+                position: fixed;
+                top: 0.5em;
+                right: 0.5em;
+                transform: scale(0.75);
+            }
+            .content {
+                height: auto;
+                min-height: 0;
+                padding-bottom: 10em;
+                flex-direction: column;
+            }
+            .content--fixed {
+                position: relative;
+                z-index: 0;
+                display: block;
+                padding: 0.85em;
+            }
+            .codrops-header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .codrops-header__title {
+                font-weight: bold;
+                padding-bottom: 0.25em;
+                text-align: center;
+            }
+            .github {
+                display: block;
+                margin: 1em auto;
+            }
+            .codrops-links {
+                margin: 0;
+            }
+        }
+    </style>
+    <script>document.documentElement.className = 'js';</script>
+</head>
+<body class="demo-3">
+    <svg class="hidden">
+        <symbol id="icon-arrow" viewBox="0 0 24 24">
+            <title>arrow</title>
+            <polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+        </symbol>
+        <symbol id="icon-drop" viewBox="0 0 24 24">
+            <title>drop</title>
+            <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"/><path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"/>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 32.6 31.8">
+            <title>github</title>
+            <path d="M16.3,0C7.3,0,0,7.3,0,16.3c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4C7.4,10.7,6.8,9,7.7,6.8c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C32.6,7.3,25.3,0,16.3,0z"/>
+        </symbol>
+        <symbol id="icon-keyboard" viewBox="0 0 100 70">
+            <title>keyboard</title>
+            <path d="M 60.94,1.83 39.22,1.83 C 36.71,1.83 34.67,3.86 34.67,6.376 L 34.67,28.1 C 34.67,30.61 36.71,32.65 39.22,32.65 L 60.94,32.65 C 63.45,32.65 65.5,30.61 65.5,28.1 L 65.5,6.376 C 65.5,3.86 63.45,1.83 60.94,1.83 Z M 44.79,18.63 50.08,11.74 55.37,18.63 Z" opacity="0.2"/>
+            <path d="M 60.86,36.75 39.14,36.75 C 36.63,36.75 34.59,38.79 34.59,41.3 L 34.59,63.02 C 34.59,65.53 36.63,67.57 39.14,67.57 L 60.86,67.57 C 63.38,67.57 65.41,65.53 65.41,63.02 L 65.41,41.3 C 65.42,38.79 63.38,36.75 60.86,36.75 Z M 50.08,57.45 44.79,50.55 55.37,50.55 Z" opacity="0.2" />
+            <path d="M 95.45,36.75 73.73,36.75 C 71.22,36.75 69.18,38.79 69.18,41.3 L 69.18,63.02 C 69.18,65.53 71.22,67.57 73.73,67.57 L 95.45,67.57 C 97.97,67.57 100,65.53 100,63.02 L 100,41.3 C 100,38.79 97.97,36.75 95.45,36.75 Z M 83.4,57.45 83.4,46.86 90.3,52.16 Z" />
+            <path d="M 26.27,36.75 4.55,36.75 C 2.037,36.75 0,38.79 0,41.3 L 0,63.02 C 0,65.53 2.037,67.57 4.55,67.57 L 26.27,67.57 C 28.78,67.57 30.82,65.53 30.82,63.02 L 30.82,41.3 C 30.82,38.79 28.78,36.75 26.27,36.75 Z M 16.69,57.45 9.79,52.16 16.69,46.86 Z" />
+        </symbol>
+    </svg>
+    <main class="main main--demo-3">
+        <div class="content content--fixed">
+            <header class="codrops-header">
+                <div class="codrops-links">
+                    <a class="codrops-icon codrops-icon--prev" href="#" title="Demonstração Anterior"><svg class="icon icon--arrow"><use xlink:href="#icon-arrow"></use></svg></a>
+                    <a class="codrops-icon codrops-icon--drop" href="#" title="Voltar ao artigo"><svg class="icon icon--drop"><use xlink:href="#icon-drop"></use></svg></a>
+                </div>
+                <h1 class="codrops-header__title">SVG Shape Overlays</h1>
+            </header>
+            <nav class="demos">
+                <svg class="icon icon--keyboard"><use xlink:href="#icon-keyboard"></use></svg>
+                <a class="demo demo--current" href="#"><span>Demo 3</span></a>
+            </nav>
+        </div>
+        <div class="content content--demo-3">
+            <div class="hamburger js-hover">
+                <div class="hamburger__line hamburger__line--01">
+                    <div class="hamburger__line-in hamburger__line-in--01"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--02">
+                    <div class="hamburger__line-in hamburger__line-in--02"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--03">
+                    <div class="hamburger__line-in hamburger__line-in--03"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--cross01">
+                    <div class="hamburger__line-in hamburger__line-in--cross01"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--cross02">
+                    <div class="hamburger__line-in hamburger__line-in--cross02"></div>
+                </div>
+            </div>
+            <div class="demo-title demo-title--demo-3">Fluido</div>
+            <div class="global-menu">
+                <div class="global-menu__wrap">
+                    <a class="global-menu__item global-menu__item--demo-3" href="#">Início</a>
+                    <a class="global-menu__item global-menu__item--demo-3" href="#">Sobre</a>
+                    <a class="global-menu__item global-menu__item--demo-3" href="#">Produtos</a>
+                    <a class="global-menu__item global-menu__item--demo-3" href="#">Contactos</a>
+                </div>
+            </div>
+            <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="shape-overlays__path"></path>
+                <path class="shape-overlays__path"></path>
+                <path class="shape-overlays__path"></path>
+                <path class="shape-overlays__path"></path>
+            </svg>
+        </div>
+    </main>
+
+    <script>
+        /* ==================== js/easings.js ==================== */
+        const ease = {
+            exponentialIn: (t) => {
+                return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
+            },
+            exponentialOut: (t) => {
+                return t == 1.0 ? t : 1.0 - Math.pow(2.0, -10.0 * t);
+            },
+            exponentialInOut: (t) => {
+                return t == 0.0 || t == 1.0
+                    ? t
+                    : t < 0.5
+                    ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
+                    : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
+            },
+            sineOut: (t) => {
+                const HALF_PI = 1.5707963267948966;
+                return Math.sin(t * HALF_PI);
+            },
+            circularInOut: (t) => {
+                return t < 0.5
+                    ? 0.5 * (1.0 - Math.sqrt(1.0 - 4.0 * t * t))
+                    : 0.5 * (Math.sqrt((3.0 - 2.0 * t) * (2.0 * t - 1.0)) + 1.0);
+            },
+            cubicIn: (t) => {
+                return t * t * t;
+            },
+            cubicOut: (t) => {
+                const f = t - 1.0;
+                return f * f * f + 1.0;
+            },
+            cubicInOut: (t) => {
+                return t < 0.5
+                ? 4.0 * t * t * t
+                : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+            },
+            quadraticOut: (t) => {
+                return -t * (t - 2.0);
+            },
+            quarticOut: (t) => {
+                return Math.pow(t - 1.0, 3.0) * (1.0 - t) + 1.0;
+            },
+        }
+
+        /* ==================== js/demo3.js ==================== */
+        class ShapeOverlays {
+            constructor(elm) {
+                this.elm = elm;
+                this.path = elm.querySelectorAll('path');
+                this.numPoints = 10;
+                this.duration = 900;
+                this.delayPointsArray = [];
+                this.delayPointsMax = 300;
+                this.delayPerPath = 120;
+                this.timeStart = Date.now();
+                this.isOpened = false;
+                this.isAnimating = false;
+            }
+            toggle() {
+                this.isAnimating = true;
+                for (var i = 0; i < this.numPoints; i++) {
+                    this.delayPointsArray[i] = Math.random() * this.delayPointsMax;
+                }
+                if (this.isOpened === false) {
+                    this.open();
+                } else {
+                    this.close();
+                }
+            }
+            open() {
+                this.isOpened = true;
+                this.elm.classList.add('is-opened');
+                this.timeStart = Date.now();
+                this.renderLoop();
+            }
+            close() {
+                this.isOpened = false;
+                this.elm.classList.remove('is-opened');
+                this.timeStart = Date.now();
+                this.renderLoop();
+            }
+            updatePath(time) {
+                const points = [];
+                for (var i = 0; i < this.numPoints + 1; i++) {
+                    points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+                }
+
+                let str = '';
+                str += (this.isOpened) ? `M 0 0 V ${points[0]} ` : `M 0 ${points[0]} `;
+                for (var i = 0; i < this.numPoints - 1; i++) {
+                    const p = (i + 1) / (this.numPoints - 1) * 100;
+                    const cp = p - (1 / (this.numPoints - 1) * 100) / 2;
+                    str += `C ${cp} ${points[i]} ${cp} ${points[i + 1]} ${p} ${points[i + 1]} `;
+                }
+                str += (this.isOpened) ? `V 0 H 0` : `V 100 H 0`;
+                return str;
+            }
+            render() {
+                if (this.isOpened) {
+                    for (var i = 0; i < this.path.length; i++) {
+                        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i)));
+                    }
+                } else {
+                    for (var i = 0; i < this.path.length; i++) {
+                        this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))));
+                    }
+                }
+            }
+            renderLoop() {
+                this.render();
+                if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
+                    requestAnimationFrame(() => {
+                        this.renderLoop();
+                    });
+                }
+                else {
+                    this.isAnimating = false;
+                }
+            }
+        }
+
+        (function() {
+            const elmHamburger = document.querySelector('.hamburger');
+            const gNavItems = document.querySelectorAll('.global-menu__item');
+            const elmOverlay = document.querySelector('.shape-overlays');
+            const overlay = new ShapeOverlays(elmOverlay);
+
+            elmHamburger.addEventListener('click', () => {
+                if (overlay.isAnimating) {
+                    return false;
+                }
+                overlay.toggle();
+                if (overlay.isOpened === true) {
+                    elmHamburger.classList.add('is-opened-navi');
+                    for (var i = 0; i < gNavItems.length; i++) {
+                        gNavItems[i].classList.add('is-opened');
+                    }
+                } else {
+                    elmHamburger.classList.remove('is-opened-navi');
+                    for (var i = 0; i < gNavItems.length; i++) {
+                        gNavItems[i].classList.remove('is-opened');
+                    }
+                }
+            });
+        }());
+
+        /* ==================== js/demo.js ==================== */
+        {
+            setTimeout(() => document.body.classList.add('render'), 60);
+            const navdemos = Array.from(document.querySelectorAll('nav.demos > .demo'));
+            
+            // A navegação entre demos foi prevenida para evitar erros 404
+            // já que esta demonstração compila tudo em um único arquivo.
+            navdemos.forEach(link => link.addEventListener('click', (ev) => {
+                ev.preventDefault();
+            }));
+        }
+    </script>
+</body>
+</html>

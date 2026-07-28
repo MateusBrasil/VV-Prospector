@@ -1,0 +1,5 @@
+/* Fondo de la página en vista aislada. Todo el estilo de esta sección
+   (.section_contact, .contact_wrapper, .contact_image, .img.is-top-center, .button,
+   #w-node-d319cbf7…) vive en la hoja compartida /firmo/styles.css — no se duplica
+   nada aquí. No hubo sub-componentes con <style> scoped que inlinear. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }

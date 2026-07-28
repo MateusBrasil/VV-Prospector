@@ -1,0 +1,115 @@
+[data-dobra="destaque-scroll-35"] 1,[data-dobra="destaque-scroll-35"] 300..800&display=swap");*{
+	padding: 0rem;
+	margin: 0rem;
+	border: 0rem;
+}
+[data-dobra="destaque-scroll-35"] *,[data-dobra="destaque-scroll-35"] *::before,[data-dobra="destaque-scroll-35"] *::after{
+	box-sizing: border-box;
+}
+[data-dobra="destaque-scroll-35"] *::before,[data-dobra="destaque-scroll-35"] *::after{
+	display: inline-block;
+}
+[data-dobra="destaque-scroll-35"],[data-dobra="destaque-scroll-35"]{
+	height: 100%;
+}
+[data-dobra="destaque-scroll-35"]{
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="destaque-scroll-35"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="destaque-scroll-35"] h1{
+  font-size: 7vw;
+  font-weight: 800;
+  line-height: 1;
+}
+[data-dobra="destaque-scroll-35"] p{
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+[data-dobra="destaque-scroll-35"] section{
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--base-600);
+  color: var(--base-100);
+  overflow: hidden;
+}
+[data-dobra="destaque-scroll-35"] .hero{
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+[data-dobra="destaque-scroll-35"] .hero-header{
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  will-change: transform, opacity;
+}
+[data-dobra="destaque-scroll-35"] .animated-icons{
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  will-change: transform;
+  z-index: 2;
+}
+[data-dobra="destaque-scroll-35"] .animated-icon{
+  flex: 1;
+  aspect-ratio: 1;
+  will-change: transform;
+}
+[data-dobra="destaque-scroll-35"] .animated-text{
+  position: relative;
+  max-width: 62.5rem;
+  text-align: center;
+  color: var(--base-600);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+}
+[data-dobra="destaque-scroll-35"] .text-segment{
+  opacity: 0;
+}
+[data-dobra="destaque-scroll-35"] .placeholder-icon{
+  margin-top: -0.625rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  display: inline-block;
+  vertical-align: middle;
+  will-change: transform;
+  visibility: hidden;
+}
+@media (max-width: 62.5rem){[data-dobra="destaque-scroll-35"] h1{
+    font-size: 12vw;
+    text-align: center;
+  }
+[data-dobra="destaque-scroll-35"] p{
+    font-size: 1.1rem;
+  }
+[data-dobra="destaque-scroll-35"] .hero-header{
+    top: 45%;
+    width: 100%;
+  }
+[data-dobra="destaque-scroll-35"] .placeholder-icon{
+    margin-top: -0.25rem;
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+}
+

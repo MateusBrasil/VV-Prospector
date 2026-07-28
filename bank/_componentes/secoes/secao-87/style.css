@@ -1,0 +1,188 @@
+/* Fondo de la página en vista aislada. El grueso de los estilos de la sección
+   (.section_location, .location_header, .location_image, .img-wrapper, .img,
+   .location_cards-wrapper, .location_card, .locations_card-icon, .label, .button,
+   etc.) vive en la hoja compartida /firmo/styles.css. add-navbar.mjs añade aquí el
+   CSS del navbar. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }
+
+/* ===== TEMLIS-INLINED-NAVBAR: firmo-navbar styles ===== */
+/* Fondo de la página en vista aislada (add-navbar.mjs descarta reglas `body` al
+   inyectar en heroes, así que esto no afecta la versión embebida). */
+
+/* Desktop hamburger hidden; only shows ≤991 */
+.menu-button {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.375rem; /* 6px gap + 2px lines → 8px line-center spacing = the 0.5rem X translate is exact */
+  width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-button_line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand--neutral-dark, #0a0a0a);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Menu footer (CTA + contact) only exists inside the mobile overlay */
+.nav_menu-footer { display: none; }
+
+/* Lock the page behind the open full-screen menu */
+html.nav-open { overflow: hidden; }
+
+/* ===== Tablet + mobile (≤991): dropdown overlay ===== */
+@media screen and (max-width: 991px) {
+  .menu-button { display: flex; }
+  /* webflow.css zeroes the buttons gap at this breakpoint; keep the CTA beside the
+     hamburger (tablet) → restore the 1.5rem gap. */
+  [data-navbar] .nav_buttons-wrap { column-gap: 1.5rem; }
+
+  /* Panel below the sticky bar. --nav-h = bar height (set by JS); 60px fallback.
+     Tablet (768–991): drops to 50% of the viewport height. ≤767 overrides to full.
+     Subtle fade; visibility keeps it inert while closed. */
+  [data-navbar] .nav_wrap {
+    display: flex;
+    position: fixed;
+    inset: var(--nav-h, 60px) 0 auto 0;
+    height: calc(50vh - var(--nav-h, 60px));
+    margin: 0;
+    max-height: none;
+    overflow-y: auto;
+    background-color: var(--bg-color--bg-primary, #fbfbf9);
+    /* hairline marking the panel's bottom edge (visible on the 50vh tablet dropdown;
+       sits at the viewport bottom when full-height ≤767, so harmless there). */
+    border-bottom: 1px solid var(--brand--neutral-lighter, #e0e0dc);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5rem);
+    transition:
+      opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0s linear 0.4s;
+    z-index: 40;
+  }
+  [data-navbar].is-open .nav_wrap {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  [data-navbar] .nav_mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
+    position: static;
+    gap: 1.5rem;
+    padding: clamp(1.25rem, 4vw, 2rem) clamp(1.25rem, 5vw, 2.5rem) clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  /* Numbered, divider-separated links — accordion 01–0N motif, Lora serif. */
+  [data-navbar] .navbar_list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    counter-reset: navitem;
+    /* webflow.css frames this list with a 1px border + .75rem radius + bg; the
+       overlay already supplies the background, so reset to just a top hairline. */
+    background: none;
+    border: 0;
+    border-top: 1px solid var(--brand--neutral-lighter, #e0e0dc);
+    border-radius: 0;
+  }
+  [data-navbar] .nav_links {
+    counter-increment: navitem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    padding: clamp(0.85rem, 3.5vw, 1.35rem) 0;
+    border-bottom: 1px solid var(--brand--neutral-lighter, #e0e0dc);
+    color: var(--brand--neutral-dark, #0a0a0a);
+  }
+  [data-navbar] .nav_links::before {
+    content: counter(navitem, decimal-leading-zero);
+    flex: none;
+    min-width: 2.25rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.15em;
+    color: var(--brand--gray-light, #b7b7b7);
+  }
+  [data-navbar] .nav_links-label {
+    font-family: Lora, serif;
+    font-size: clamp(1.375rem, 4.5vw, 1.75rem);
+    line-height: 1.15;
+  }
+  /* Site arrow → shown only on the CURRENT page link. No hover state: the project
+     rule is no hover ≤991 (touch), so the menu has no :hover styles at all. */
+  [data-navbar] .nav_links::after {
+    content: '';
+    flex: none;
+    margin-left: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: center / contain no-repeat
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M4.50006 10.9999L16.0861 10.9999L11.5861 6.49994L13.0001 5.08594L19.9141 11.9999L13.0001 18.9139L11.5861 17.4999L16.0861 12.9999L4.50006 12.9999L4.50006 10.9999Z' fill='%230a0a0a'/%3E%3C/svg%3E");
+    opacity: 0;
+  }
+  [data-navbar] .nav_links.w--current::before { color: var(--brand--neutral-dark, #0a0a0a); }
+  [data-navbar] .nav_links.w--current::after { opacity: 1; }
+
+  /* Footer (CTA + contact) — shown only in the full-height menu (≤767). On tablet
+     (768–991) the dropdown is just the links; the CTA already sits in the bar there,
+     and the 50vh panel has no room for it. (display stays `none` until ≤767.) */
+  .nav_menu-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .nav_menu-cta { display: flex; width: 100%; }
+  .nav_menu-contact { display: flex; flex-direction: column; gap: 0.35rem; }
+  .nav_menu-contact-label { color: var(--brand--gray-light, #b7b7b7); }
+  .nav_menu-contact-link {
+    font-size: 1.25rem;
+    color: var(--brand--neutral-dark, #0a0a0a);
+    text-decoration: none;
+    width: fit-content;
+  }
+  .nav_menu-contact-addr {
+    color: var(--text-color--text-secondary, #5f5f5f);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* hamburger → X when open */
+  [data-navbar].is-open .menu-button_line:nth-child(1) { transform: translateY(0.5rem) rotate(45deg); }
+  [data-navbar].is-open .menu-button_line:nth-child(2) { opacity: 0; }
+  [data-navbar].is-open .menu-button_line:nth-child(3) { transform: translateY(-0.5rem) rotate(-45deg); }
+}
+
+/* ===== Mobile landscape + portrait (≤767): smaller hamburger; bar CTA hidden
+   (it lives in the menu footer now). ===== */
+@media screen and (max-width: 767px) {
+  .menu-button { width: 36px; height: 36px; }
+  .nav_bar-cta { display: none; }
+  /* Landscape + portrait: the menu occupies the full viewport height, and the footer
+     (CTA + contact) appears — the bar CTA is hidden, so the menu carries it. */
+  [data-navbar] .nav_wrap {
+    inset: var(--nav-h, 60px) 0 0 0;
+    height: auto;
+  }
+  .nav_menu-footer { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-navbar] .nav_wrap {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,28 @@
+/* Luzen — Contact CTA
+   Casi todo el styling (layout .section_contact / .contact_layout, las dos
+   .glass-card con borde + backdrop-filter blur, el .button primary con su
+   text-slide en hover, el reveal .scroll-into-view/[data-reveal] y los
+   breakpoints 991/767/479) vive en el cascade compartido /luzen/styles.css.
+
+   ÚNICO override local: el fondo de la sección. En el styles.css compartido la
+   regla .section_contact apunta a url('/images/contact-bg_1.avif') (path original
+   del template); en el Taller los assets viven bajo /luzen/images/, así que
+   re-apuntamos la imagen aquí para que el preview standalone la cargue. */
+body { margin: 0; min-height: 100svh; }
+
+.section_contact {
+  background-image: url('https://d173woph5zl366.cloudfront.net/luzen/images/contact-bg_1.avif');
+}
+
+/* Preview standalone: en tablet/mobile el contenido se encoge (678/620px) y dejaba
+   blanco abajo (222/280px). La sección llena el alto del viewport y centra su
+   contenido; su imagen de fondo cubre todo. En desktop (contenido 1120px) min-height
+   no fuerza nada → scrollea igual. El cascade no pone min-height en .section_contact,
+   así que basta esta especificidad. CSS local del Taller; no afecta el template ni
+   el thumbnail. */
+.section_contact {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

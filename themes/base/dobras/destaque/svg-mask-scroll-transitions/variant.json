@@ -1,0 +1,114 @@
+{
+  "slot": "destaque",
+  "nome": "svg-mask-scroll-transitions",
+  "scope": "destaque-svg-mask-scroll-transitions",
+  "origem": "bank/_componentes/parallax/svg-mask-scroll-transitions",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Variations:"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Horizontal Blinds"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Random Grid"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Vertical Blinds"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Column Grid"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "(Horizontal Blinds)"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Scroll down"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Nature Renewal"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "暖かな風が吹き抜け、新しい季節の始まりを優しく告げる、生命力に満ちた瞬間を描き出します。"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Golden Hours"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "鮮やかな光が降り注ぎ、波立つ水面ときらめく緑が調和する、温もりあふれる夏の記憶です。"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Silent Forest"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "静寂に包まれた森の中、色鮮やかな木の葉が舞い落ちる、穏やかで深みのある秋の情景です。"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Explore Next Pattern"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop)",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

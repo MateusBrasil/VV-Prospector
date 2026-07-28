@@ -1,0 +1,27 @@
+{
+  "slot": "botao",
+  "nome": "book-a-demo-button",
+  "scope": "botao-book-a-demo-button",
+  "origem": "bank/_componentes/botoes/book-a-demo-button",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Book a demo"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância (acento da origem #fc016e → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "3 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css https://assets.codepen.io/605876/GeistVF.ttf)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

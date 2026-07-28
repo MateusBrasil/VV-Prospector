@@ -1,0 +1,110 @@
+{
+  "slot": "equipa",
+  "nome": "secao-156",
+  "scope": "equipa-secao-156",
+  "origem": "bank/_componentes/secoes/secao-156",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "splittext",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Contact us"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Tailored solutions"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "for business growth"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "We offer a comprehensive range of services designed to meet the unique needs of your business. From strategy development to risk management, our expert team is "
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "Learn more"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/light-logo.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Hero-s.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/light-logo.svg https://d173woph5zl366.cloudfront.net/acelia/assets/images/Hero-s.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

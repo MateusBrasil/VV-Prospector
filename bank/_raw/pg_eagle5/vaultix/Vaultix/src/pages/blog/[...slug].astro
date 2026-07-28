@@ -1,0 +1,460 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HalftoneImage from "../../components/HalftoneImage.astro";
+import EagleMarker from "../../components/VaultixMarker.astro";
+import BlogsSection from "../../components/BlogsSection.astro";
+import SecondaryButton from "../../components/SecondaryButton.astro";
+import BlogPostingSchema from "../../components/seo/BlogPostingSchema.astro";
+import { getCollection, getEntry, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Resolve the author from the team collection (post.data.author is a
+// reference). Falls back gracefully if the slug doesn't match.
+const author = await getEntry(post.data.author);
+
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Same 3 halftone sources as Inicio BlogsSection. Cover uses the post's
+// position in the date-sorted list; related cards rotate by index.
+const postIdx = allPosts.findIndex((p) => p.id === post.id);
+const halftoneSrc = (i: number) => `/blog/halftone-source-0${(i % 3) + 1}-bw.webp`;
+
+const fmt = (d: Data) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+const readingTime = (() => {
+  const words = (post.body || "").trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+})();
+---
+
+<BaseLayout
+  title={`${post.data.title} — Eagle`}
+  description={post.data.description}
+  ogImage={post.data.image}
+  ogType="article"
+>
+  <BlogPostingSchema
+    slot="head"
+    title={post.data.title}
+    description={post.data.description}
+    date={post.data.date}
+    image={post.data.image}
+    author={author?.data?.name}
+    slug={post.id}
+  />
+  {/* ========================================================================
+       Hero (Figma 1:17178): bordered article container
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("blog-post-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] pt-[2rem] pb-[5rem] md:pt-[3rem]" data-blog-post>
+    <article class="relative mx-auto w-full max-w-[46.5rem] md:px-4 lg:px-0">
+      {/* Vertical lines (full article height) + bottom horizontal. Top edge
+          calza con el navbar (cuyo border-b ya provee la línea horizontal). */}
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-blog-post-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-blog-post-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-blog-post-line="bottom"
+        aria-hidden="true"></span>
+
+      {/* Top corner markers — navbar-adjacent special offset (1px below the
+          navbar's border-b line). Stay at z-20 below the navbar (z-40). */}
+      <EagleMarker type="tip-down" data-blog-post-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-blog-post-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-up" data-blog-post-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-4 z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-blog-post-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] right-4 z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      {/* Cover image — halftone (same neighborhood as Inicio BlogsSection).
+          The cover isn't a link on the detail page, so the hover pulse
+          becomes the default state via `pulseAlways`. */}
+      <div class="relative mx-4 aspect-[744/466] overflow-hidden border-b border-[var(--color-border)] md:mx-0" data-blog-post-cover>
+        <HalftoneImage
+          src={halftoneSrc(Math.max(0, postIdx))}
+          alt={post.data.title}
+          pulseAlways
+        />
+        {/* Markers at the intersection of the cover's border-b with the
+            article's left/right verticals. md+ only — in mobile the article
+            padding offsets the cover so they wouldn't sit on the lines. */}
+        <EagleMarker
+          type="tip-right"
+          data-blog-post-tmark
+          class="absolute bottom-0 left-0 z-20 hidden -translate-x-1/2 translate-y-1/2 md:block"
+        />
+        <EagleMarker
+          type="tip-left"
+          data-blog-post-tmark
+          class="absolute bottom-0 right-0 z-20 hidden translate-x-1/2 translate-y-1/2 md:block"
+        />
+      </div>
+
+      {/* Header (meta + title). The bottom divider is a separate animated
+          span (data-blog-post-line="header-bottom") so GSAP can scaleX it. */}
+      <header class="relative px-[1.25rem] pt-[1rem] pb-[2.5rem] md:pt-[2.5rem]">
+        <span
+          class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-[var(--color-border)]"
+          data-blog-post-line="header-bottom"
+          aria-hidden="true"></span>
+        <div
+          class="flex flex-wrap items-center gap-[0.75rem] font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[1.68px] text-white/60"
+          data-blog-post-meta
+        >
+          <span class="text-[#fdff22]">{post.data.category}</span>
+          <span class="hidden size-[0.25rem] bg-white/40 md:inline-block" aria-hidden="true"></span>
+          <time>{fmt(post.data.date)}</time>
+          <span class="size-[0.25rem] bg-white/40" aria-hidden="true"></span>
+          <span>{readingTime} min read</span>
+        </div>
+        <h1
+          class="mt-[1.5rem] font-mono text-[2rem] font-normal uppercase leading-[1.1] tracking-[0.12rem] text-white md:mt-[1.875rem] md:text-[2.75rem] md:tracking-[0.2rem] lg:text-[3.5rem] lg:leading-none lg:tracking-[0.42rem]"
+          data-blog-post-title
+        >
+          {post.data.title}
+        </h1>
+        {post.data.description && (
+          <p
+            class="mt-[1.5rem] font-mono text-[0.875rem] uppercase leading-[1.4] text-white/60 md:text-[1rem] md:leading-[1.5]"
+            data-blog-post-desc
+          >
+            {post.data.description}
+          </p>
+        )}
+      </header>
+
+      {/* Body (rich text from markdown). The body itself has no border;
+          the divider lines above/below are the animated `header-bottom`
+          and `footer-top` spans. */}
+      <div class="prose px-[1.25rem] py-[2.5rem]" data-blog-post-body>
+        <Content />
+      </div>
+
+      {/* Author card — pulls name/role/headshot from the team collection
+          via the `author` reference in the post's frontmatter. The top
+          divider is animated via the `footer-top` span. */}
+      <footer class="relative flex flex-col gap-[1rem] px-[1.25rem] py-[2.5rem] sm:flex-row sm:items-center sm:justify-between">
+        <span
+          class="pointer-events-none absolute left-0 right-0 top-0 h-px bg-[var(--color-border)]"
+          data-blog-post-line="footer-top"
+          aria-hidden="true"></span>
+        <div class="flex items-center gap-[1.5rem]">
+          <div class="size-[4.5rem] shrink-0 overflow-hidden bg-[#1c1c1c]">
+            {author?.data.image ? (
+              <img
+                src={author.data.image}
+                alt={author.data.name}
+                class="size-full object-cover"
+                width="72"
+                height="72"
+              />
+            ) : (
+              <div class="flex size-full items-center justify-center font-mono text-[0.625rem] uppercase tracking-[1.68px] text-white/20">
+                photo
+              </div>
+            )}
+          </div>
+          <div class="flex flex-col font-mono uppercase">
+            <span class="text-[1rem] leading-[1.25] text-white">
+              {author?.data.name || "Eagle Team"}
+            </span>
+            <span class="text-[0.875rem] leading-[1.2857] text-white/60">
+              {author?.data.role || "Eagle Team"}
+            </span>
+          </div>
+        </div>
+        <SecondaryButton class="shrink-0">
+          Subscribe
+        </SecondaryButton>
+      </footer>
+    </article>
+  </section>
+
+  <style>
+    .blog-post-pre-anim [data-blog-post-cover],
+    .blog-post-pre-anim [data-blog-post-meta],
+    .blog-post-pre-anim [data-blog-post-title],
+    .blog-post-pre-anim [data-blog-post-desc],
+    .blog-post-pre-anim [data-blog-post-body] {
+      visibility: hidden;
+    }
+    .blog-post-pre-anim [data-blog-post-line],
+    .blog-post-pre-anim [data-blog-post-tmark] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../../lib/eases";
+    import { applyScrambleHover } from "../../lib/scramble-hover";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+    applyScrambleHover("[data-scramble-hover]");
+
+    const init = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("blog-post-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-blog-post]");
+      if (!section) return;
+
+      const cover = section.querySelector<HTMLElement>("[data-blog-post-cover]");
+      const meta = section.querySelector<HTMLElement>("[data-blog-post-meta]");
+      const title = section.querySelector<HTMLElement>("[data-blog-post-title]");
+      const desc = section.querySelector<HTMLElement>("[data-blog-post-desc]");
+      const body = section.querySelector<HTMLElement>("[data-blog-post-body]");
+      const lines = gsap.utils.toArray<HTMLElement>("[data-blog-post-line]", section);
+
+      const tmarks = gsap.utils.toArray<SVGElement>("[data-blog-post-tmark]", section);
+
+      const titleSplit = title ? new SplitText(title, { type: "lines", mask: "lines" }) : null;
+      const descSplit = desc ? new SplitText(desc, { type: "lines", mask: "lines" }) : null;
+
+      if (cover) gsap.set(cover, { opacity: 0, scale: 0.97 });
+      if (meta) gsap.set(meta, { opacity: 0 });
+      if (titleSplit) gsap.set(titleSplit.lines, { yPercent: 110 });
+      if (descSplit) gsap.set(descSplit.lines, { yPercent: 110 });
+      if (body) gsap.set(body, { opacity: 0 });
+      lines.forEach((l) => {
+        const o = l.dataset.blogPostLine;
+        // top/bottom + header-bottom + footer-top are horizontal — scaleX.
+        // left/right are vertical — scaleY.
+        if (o === "top" || o === "bottom" || o === "header-bottom" || o === "footer-top") {
+          gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        } else {
+          gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+        }
+      });
+      gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      document.documentElement.classList.remove("blog-post-pre-anim");
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      tl.to(lines, { scaleX: 1, scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.04 }, 0);
+      tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.55);
+      if (cover) tl.to(cover, { opacity: 1, scale: 1, duration: 0.9, ease: "eagleStructure" }, 0.2);
+      if (meta) tl.to(meta, { opacity: 1, duration: 0.55, ease: "eagleReveal" }, 0.5);
+      if (titleSplit) tl.to(titleSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.55);
+      if (descSplit) tl.to(descSplit.lines, { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 }, 0.75);
+      if (body) tl.to(body, { opacity: 1, duration: 0.7, ease: "eagleReveal" }, 0.85);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  </script>
+
+  {/* ========================================================================
+       Related posts — reuses Inicio BlogsSection component, excluding the
+       current post via `excludeId` and overriding copy.
+     ======================================================================== */}
+  <BlogsSection
+    excludeId={post.id}
+    eyebrow="[ related ]"
+    headline="More from the blog"
+    subhead="Engenharia deep-dives, product updates, and notes from the team."
+  />
+
+
+  <style is:global>
+    /* === Blog body — Eagle monospace editorial. Tailwind v4 preflight
+       resets list/quote styles to nothing, so we restaurar them explicitly
+       here per-element. `is:global` because <Content /> renders markdown
+       to HTML AFTER Astro's scoped-class injection, so the generated
+       <ul>/<ol>/<blockquote>/<p>/etc. don't get the page's data-astro-cid
+       attribute — scoped styles wouldn't match them. */
+    [data-blog-post-body] {
+      font-family: "Geist Mono", monospace;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.55;
+      font-size: 0.875rem;
+    }
+    @media (min-width: 768px) {
+      [data-blog-post-body] {
+        line-height: 1.7;
+        font-size: 0.9375rem;
+      }
+    }
+
+    /* Headings */
+    [data-blog-post-body] h2 {
+      font-family: "Geist Mono", monospace;
+      font-weight: 400;
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: white;
+    }
+    @media (min-width: 768px) {
+      [data-blog-post-body] h2 {
+        font-size: 1.75rem;
+        letter-spacing: 0.16em;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+      }
+    }
+    [data-blog-post-body] h3 {
+      font-weight: 400;
+      font-size: 1.0625rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+    @media (min-width: 768px) {
+      [data-blog-post-body] h3 {
+        font-size: 1.25rem;
+        letter-spacing: 0.12em;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    /* Paragraphs */
+    [data-blog-post-body] p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Lists — restaurar display::list-item + correct indent + bullet color.
+       Bullets/numbers need to live OUTSIDE the text block so wrapping
+       lines align with the first character of the item. */
+    [data-blog-post-body] ul,
+    [data-blog-post-body] ol {
+      margin: 1.5rem 0;
+      padding-left: 1.75rem;
+    }
+    [data-blog-post-body] ul li,
+    [data-blog-post-body] ol li {
+      display: list-item;
+      margin-bottom: 0.75rem;
+    }
+    [data-blog-post-body] ul li {
+      list-style: none;
+      position: relative;
+    }
+    [data-blog-post-body] ul li::before {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 0.6875rem;
+      width: 0.375rem;
+      height: 0.375rem;
+      background: #fdff22;
+    }
+    /* Numbered lists: yellow numerals via custom counter (preflight
+       killed list-style, so we paint our own marker). */
+    [data-blog-post-body] ol {
+      counter-reset: blog-counter;
+    }
+    [data-blog-post-body] ol li {
+      list-style: none;
+      position: relative;
+      counter-increment: blog-counter;
+    }
+    [data-blog-post-body] ol li::before {
+      content: counter(blog-counter) ".";
+      position: absolute;
+      left: -1.75rem;
+      top: 0;
+      color: #fdff22;
+      font-weight: 600;
+      width: 1.5rem;
+      text-align: right;
+    }
+
+    /* Inline emphasis + code + links */
+    [data-blog-post-body] strong {
+      color: white;
+      font-weight: 600;
+    }
+    [data-blog-post-body] code {
+      font-size: 0.875rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.125rem 0.375rem;
+      color: #fdff22;
+    }
+    [data-blog-post-body] a {
+      color: #fdff22;
+      text-decoration: underline;
+      text-underline-offset: 0.1875rem;
+    }
+
+    /* Blockquote — yellow left rule + italic muted body. Slightly bigger
+       margin so it breathes from surrounding paragraphs. */
+    [data-blog-post-body] blockquote {
+      border-left: 2px solid #fdff22;
+      padding: 0.25rem 0 0.25rem 1.25rem;
+      margin: 2rem 0;
+      color: rgba(255, 255, 255, 0.75);
+      font-style: italic;
+    }
+    [data-blog-post-body] blockquote p {
+      margin-bottom: 0.5rem;
+    }
+    [data-blog-post-body] blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Related card hover — title stays white, no bg shift. Only the yellow
+       Read-more picks up glow + char roll-up + arrow revelar. */
+    .blog-card .blog-card__readmore {
+      transition: filter 0.3s ease;
+    }
+    .blog-card .blog-card__readmore-arrow {
+      display: inline-block;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition:
+        max-width 0.35s cubic-bezier(0.7, 0, 0.2, 1),
+        opacity 0.35s ease,
+        margin-left 0.35s cubic-bezier(0.7, 0, 0.2, 1);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .blog-card:hover .blog-card__readmore {
+        filter:
+          drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+          drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+          drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+      }
+      .blog-card:hover .blog-card__readmore-arrow {
+        max-width: 1.25rem;
+        opacity: 1;
+        margin-left: 0.375rem;
+      }
+    }
+  </style>
+</BaseLayout>

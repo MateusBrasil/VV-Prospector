@@ -1,0 +1,8 @@
+/* stayli-cta — local overrides only. All section structure/styling lives in the
+   shared /stayli/styles.css cascade (webflow.css + global-styles.css +
+   components.css, which owns the .section_cta full-bleed image + overlay layout
+   and the [data-reveal] hidden start-state). */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}

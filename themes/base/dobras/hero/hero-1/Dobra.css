@@ -1,0 +1,183 @@
+/* PORTADO À MÃO em 2026-07-28. Quatro defeitos da esteira foram corrigidos aqui:
+ *
+ *  1. A LINHA 1 ERA CSS PARTIDO: `[data-dobra="hero-hero-1"] 500&family=Space+Grotesk...`,
+ *     o resto de um `@import url(...)` do Google Fonts que o escopador cortou pelo meio.
+ *     Fora de ser CDN de fonte (proibido), era uma declaração inválida a abrir a folha.
+ *  2. HAVIA UM `:root` GLOBAL AQUI DENTRO, a declarar `--c-light`, `--c-dark`, `--ff-sans`
+ *     e `--ff-mono` no documento inteiro, com dois nomes de fonte literais. Uma dobra não
+ *     pode escrever no `:root`: bastava usá-la para a tipografia do site inteiro passar a
+ *     ter uma família que a direção de arte nunca escolheu. Nada nesta folha sai de
+ *     `[data-dobra=...]` agora.
+ *  3. `color: red` no `.title` e `z-index: 9999` no `.stage`. O vermelho era marcador de
+ *     desenvolvimento da origem; o 9999 punha o hero por cima do Nav do tema, que é
+ *     `absolute` com `z-index: 20`, e comia o menu.
+ *  4. `font-size: 15vw`, `font-weight: 700`, `letter-spacing: -0.05em` e `text-transform:
+ *     uppercase` fixos no h1. A escala e a caixa são decisão de direção de arte do nicho,
+ *     não da dobra: passam a ler `--h1`, `--display-peso` e `--display-caixa`. Neste nicho
+ *     isso dá Cormorant Garamond em peso 300 e caixa normal, que é o oposto do que a
+ *     origem impunha, e é o ponto.
+ *
+ * O `.topbar` `position: fixed` saiu com o markup da barra que já não existe.
+ */
+
+[data-dobra="hero-hero-1"] {
+  display: block;
+  width: 100%;
+  background-color: var(--base-600);
+  color: var(--base-100);
+}
+
+[data-dobra="hero-hero-1"] .stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Fundo do palco. Sem hex: a cor vem do token, o que permite trocar a paleta do cliente
+   sem voltar aqui. */
+[data-dobra="hero-hero-1"] .veil {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--base-600);
+}
+
+[data-dobra="hero-hero-1"] .strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6vw;
+  width: 100%;
+  padding: 0 var(--respiro);
+}
+
+[data-dobra="hero-hero-1"] .tile {
+  flex: 0 0 auto;
+  width: 15vw;
+  max-width: 220px;
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  opacity: 0.55;
+}
+
+/* A peça do meio é a única que respira: maior e sem véu. É o resto da hierarquia da
+   origem, que já tratava uma `tile--feature` à parte. */
+[data-dobra="hero-hero-1"] .tile--feature {
+  width: 22vw;
+  max-width: 320px;
+  aspect-ratio: 4 / 6;
+  opacity: 1;
+}
+
+[data-dobra="hero-hero-1"] .tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-dobra="hero-hero-1"] .title {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  width: 100%;
+  max-width: var(--largura-max);
+  padding: 0 var(--respiro);
+  text-align: center;
+}
+
+/* REGRA DURA DO MOTOR: nunca texto em `--base-200` nem em `--base-300`, que são cor de
+   linha e de bordadura. Numa superfície escura o papel de texto ténue não existe na
+   paleta, por isso é construído a partir de `--base-100` com uma mistura, e não trocando
+   para um degrau da paleta que não é papel de texto. */
+[data-dobra="hero-hero-1"] .title__kicker {
+  color: color-mix(in srgb, var(--base-100) 78%, var(--base-600));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[data-dobra="hero-hero-1"] .title h1 {
+  max-width: 16ch;
+  font-family: var(--fonte-display);
+  font-size: var(--h1);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--base-100);
+  /* Entrada contida: 1 movimento, 1 curva. A curva é uma das duas do projeto inteiro. */
+  animation: hero-hero-1-entrada 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-dobra="hero-hero-1"] .title__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid var(--base-100);
+  border-radius: 999px;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--base-100);
+  text-decoration: none;
+  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="hero-hero-1"] .title__cta:hover {
+  background-color: var(--base-100);
+  color: var(--base-600);
+}
+
+[data-dobra="hero-hero-1"] .stage__footer {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--largura-max);
+  padding: 0 var(--respiro) 2.5rem;
+}
+
+[data-dobra="hero-hero-1"] .stage__footer p {
+  color: color-mix(in srgb, var(--base-100) 78%, var(--base-600));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes hero-hero-1-entrada {
+  from { opacity: 0; transform: translateY(0.6rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1000px) {
+  [data-dobra="hero-hero-1"] .strip {
+    gap: 3vw;
+    padding: 0 var(--respiro-compacto);
+  }
+  [data-dobra="hero-hero-1"] .tile {
+    width: 22vw;
+  }
+  [data-dobra="hero-hero-1"] .tile--feature {
+    width: 34vw;
+  }
+  [data-dobra="hero-hero-1"] .title,
+  [data-dobra="hero-hero-1"] .stage__footer {
+    padding-left: var(--respiro-compacto);
+    padding-right: var(--respiro-compacto);
+  }
+}

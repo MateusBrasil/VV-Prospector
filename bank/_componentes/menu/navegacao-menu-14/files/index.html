@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Studio</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet" />
+
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+   <!-- Hero with centered text -->
+   <main class="hero">
+      <h1>Pixel Studio with you</h1>
+   </main>
+
+   <!-- Menu panel, revealed after the pixel transition -->
+   <div class="menu" id="js-menu" aria-hidden="true">
+      <nav>
+         <a href="#">Work</a>
+         <a href="#">Studio</a>
+         <a href="#">Journal</a>
+         <a href="#">Press</a>
+         <a href="#">Contact</a>
+      </nav>
+   </div>
+
+   <!-- Pixel grid overlay — populated by JS -->
+   <div class="pixel-grid" id="js-grid" aria-hidden="true"></div>
+
+   <!-- Top bar: logo + menu button only -->
+   <header>
+      <span class="logo">Studio</span>
+      <button id="js-toggle">Menu</button>
+   </header>
+
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+{
+  "slot": "vitrine",
+  "nome": "grid-6",
+  "scope": "vitrine-grid-6",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-de-grid-6/add-to-cart-main/src",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Add-To-Shopping Cart Animation"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Cart"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "shopping-cart"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "grid"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Add to cart"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Checkout"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./images/product-01-cover.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-01/01.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-01/02.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-01/03.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-01/04.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-01/05.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./images/product-01-cover.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "./images/product-02-cover.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-02/01.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-02/02.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-02/03.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-02/04.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-02/05.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "./images/product-02-cover.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "./images/product-03-cover.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-03/01.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-03/02.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-03/03.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-03/04.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-03/05.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "./images/product-03-cover.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "./images/product-04-cover.jpg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-04/01.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-04/02.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-04/03.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-04/04.jpg"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-04/05.jpg"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "./images/product-04-cover.jpg"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "./images/product-05-cover.jpg"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-05/01.jpg"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-05/02.jpg"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-05/03.jpg"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-05/04.jpg"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-05/05.jpg"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "./images/product-05-cover.jpg"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "./images/product-06-cover.jpg"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-06/01.jpg"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-06/02.jpg"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-06/03.jpg"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-06/04.jpg"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "./images/galleries/product-06/05.jpg"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "./images/product-06-cover.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 42
+  },
+  "_rever": [
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

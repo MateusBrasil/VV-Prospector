@@ -1,0 +1,180 @@
+[data-dobra="destaque-animacao-rolagem-5"]{
+  --font-mono: "PP Supply Mono", monospace;
+  --font-sans: "PP Neue Montreal", sans-serif;
+  --color-text: var(--base-100);
+  --content-z: 2;
+}
+@font-face{
+  font-family: var(--fonte-corpo);
+  src: url("https://assets.codepen.io/7558/PPNeueMontreal-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: var(--fonte-mono);
+  src: url("https://assets.codepen.io/7558/PPSupplyMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+[data-dobra="destaque-animacao-rolagem-5"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="destaque-animacao-rolagem-5"],[data-dobra="destaque-animacao-rolagem-5"]{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--fonte-corpo);
+  background: black;
+}
+[data-dobra="destaque-animacao-rolagem-5"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .image-slider{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .webgl-canvas{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .featured-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55vw;
+  height: 30.93vw;
+  max-width: 900px;
+  max-height: 506px;
+  z-index: var(--content-z);
+  pointer-events: none;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+[data-dobra="destaque-animacao-rolagem-5"] .featured-image-wrapper{
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  will-change: clip-path;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-text{
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: var(--color-text);
+  z-index: var(--content-z);
+  pointer-events: none;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-text-group{
+  display: flex;
+  flex-direction: column;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-number{
+  position: relative;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-number span{
+  display: block;
+  font-family: var(--fonte-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.7);
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-title{
+  position: relative;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-title h1{
+  margin: 0;
+  font-family: var(--fonte-corpo);
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+  word-wrap: break-word;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-description{
+  position: relative;
+  margin-top: 1em;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-description p{
+  margin: 0;
+  font-family: var(--fonte-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.6);
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-paragraph{
+  position: absolute;
+  bottom: 50%;
+  right: 5%;
+  transform: translateY(50%);
+  color: var(--color-text);
+  z-index: var(--content-z);
+  width: 20vw;
+  pointer-events: none;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-paragraph-line{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacao-rolagem-5"] .slide-paragraph-line span{
+  display: block;
+  font-family: var(--fonte-corpo);
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.4;
+  color: rgba(255,255,255,0.8);
+}
+@media (max-width: 900px){[data-dobra="destaque-animacao-rolagem-5"] .featured-image{
+    width: 90vw;
+    height: 50.6vw;
+    top: 40%;
+  }
+[data-dobra="destaque-animacao-rolagem-5"] .slide-text{
+    top: auto;
+    bottom: 10%;
+    left: 5%;
+    width: 90vw;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    transform: none;
+  }
+[data-dobra="destaque-animacao-rolagem-5"] .slide-title h1{
+    font-size: 24px;
+  }
+[data-dobra="destaque-animacao-rolagem-5"] .slide-number,[data-dobra="destaque-animacao-rolagem-5"] .slide-description{
+    margin: 0;
+  }
+[data-dobra="destaque-animacao-rolagem-5"] .slide-paragraph{
+    display: none;
+  }
+
+}
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultix — FAQ Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  
+    <style data-bundled-from="/vaultix/global.css">
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* The @theme block above is a Tailwind v4 build-time directive — browsers ignore
+   it when this file is served as a plain stylesheet, so the design tokens must be
+   mirrored onto :root here for the standalone ported components (which load this
+   file via <link> and never run the Tailwind compiler on it). */
+:root {
+  color-scheme: dark;
+  --nav-height: 3.25rem;
+
+  --color-bg: #050505;
+  --color-surface: #010101;
+  --color-surface-2: #1c1c1c;
+  --color-border: #343434;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: #fdff22;
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --nav-height: 4.8125rem;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Char roll-up hover (Osmo `btn-animate-chars` pattern).
+   Inner wrapper inherits parent's line-height so the parent's vertical centering
+   is preserved (no shrinking the button). overflow:hidden + clip-path keep the
+   text-shadow clone hidden until the char rolls up. */
+.hover-stagger:hover .hover-stagger__inner > span {
+  transform: translateY(-1.4em) rotate(0.001deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none;
+  }
+}
+
+/* Accent glow on hover — same 3-layer pattern as HeroLoader bars `.is-lit`. */
+.btn-accent-glow:hover {
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+
+/* Always-on accent glow — same 3-layer stack as `.btn-accent-glow:hover`.
+   Apply to elements that should glow whenever they are visible (e.g. the
+   active pill in the About / Our Values slider, hero loader bars). */
+
+/* Periwinkle (#B5D2FF) glow as a CSS drop-shadow stack — works on SVGs and
+   text. Companion to `.accent-glow-active` but for the secondary blue
+   accent used in pixel-art icons / eyebrows. */
+
+/* Yellow accent glow as a CSS drop-shadow stack — for SVG paths and text
+   (HUD style). Use when the element is yellow and you want it to "emit"
+   light. Box-shadow companion is `.accent-glow-active`. */
+
+/* Vaultix logo — yellow accent glow on hover, applied ONLY to the icon
+   (svg in Navbar, img in Footer). The wordmark stays clean.
+   Wrapped in `@media (hover: hover)` so touch devices (tablet/phone)
+   never get a sticky hover state from a tap. */
+@media (hover: hover) and (pointer: fine) {
+  .vaultix-logo:hover svg,
+  .vaultix-logo:hover img {
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+}
+
+/* Touch devices: kill hover-driven transforms / shadows / filters by
+   neutralizing the most common patterns. Components scoped under `@media
+   (hover: hover)` are already safe; this catches the rest as a guardrail. */
+@media (hover: none), (pointer: coarse) {
+  .btn-accent-glow:hover {
+    box-shadow: none !important;
+  }
+  .hover-stagger:hover .hover-stagger__inner > span {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Mobile (<768px): drop the structural decoration layer.
+   Markers (T-marks / corner dots), animated frame lines, and the
+   side borders of containers are all desktop-only language. On
+   phones each section reads cleanly without that scaffolding.
+   ============================================================ */
+@media (max-width: 767px) {
+  [data-howit-line],
+  [data-impact-line],
+  [data-blog-line],
+  [data-footer-line],
+  [data-howit-tmark],
+  [data-impact-tmark],
+  [data-blog-tmark],
+  [data-footer-marker] {
+    display: none !important;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <section class="faq" data-faq-section="">
+      <div class="faq__inner">
+        <header class="faq__header">
+          <span class="faq__eyebrow" data-faq-eyebrow="">[ faq ]</span>
+          <h2 class="faq__headline" data-faq-headline="">Frequently Asked Questions</h2>
+        </header>
+
+        <div class="faq__list" data-faq-list="">
+          <!-- Outer frame lines — drawn-in via scaleX/scaleY on entrance. -->
+          <span class="faq-frame-line faq-frame-line--top" data-faq-frame-line="top" aria-hidden="true"></span>
+          <span class="faq-frame-line faq-frame-line--right" data-faq-frame-line="right" aria-hidden="true"></span>
+          <span class="faq-frame-line faq-frame-line--bottom" data-faq-frame-line="bottom" aria-hidden="true"></span>
+          <span class="faq-frame-line faq-frame-line--left" data-faq-frame-line="left" aria-hidden="true"></span>
+
+          <!-- 4 corner-bracket markers (VaultixMarker corner-* inlined). -->
+          <svg class="faq-marker faq-marker--tl" data-faq-tmark="" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M16 7.5V8.5H8.5V16H7.5V7.5Z"></path>
+          </svg>
+          <svg class="faq-marker faq-marker--tr" data-faq-tmark="" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M0 7.5V8.5H7.5V16H8.5V7.5Z"></path>
+          </svg>
+          <svg class="faq-marker faq-marker--bl" data-faq-tmark="" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M16 8.5V7.5H8.5V0H7.5V8.5Z"></path>
+          </svg>
+          <svg class="faq-marker faq-marker--br" data-faq-tmark="" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M0 8.5V7.5H7.5V0H8.5V8.5Z"></path>
+          </svg>
+
+          <details class="faq-item" data-faq-item="" data-faq-state="open" open="">
+            <summary class="faq-item__summary">
+              <span class="faq-item__q">How does the lifetime license work?</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <span class="faq-chevron__bar faq-chevron__bar--h"></span>
+                <span class="faq-chevron__bar faq-chevron__bar--v"></span>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div>
+                <p class="faq-item__a">
+                  Pay once, use forever — on unlimited personal and client projects. No renewal,
+                  no per-seat fees. You receive every future update to the template at no extra cost.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" data-faq-item="" data-faq-state="closed">
+            <summary class="faq-item__summary">
+              <span class="faq-item__q">What's included in the download?</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <span class="faq-chevron__bar faq-chevron__bar--h"></span>
+                <span class="faq-chevron__bar faq-chevron__bar--v"></span>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div>
+                <p class="faq-item__a">
+                  The Astro source code, every page, all components, Figma design file,
+                  custom fonts, and a step-by-step deployment guide for Vercel and Netlify.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" data-faq-item="" data-faq-state="closed">
+            <summary class="faq-item__summary">
+              <span class="faq-item__q">Can I customize the design?</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <span class="faq-chevron__bar faq-chevron__bar--h"></span>
+                <span class="faq-chevron__bar faq-chevron__bar--v"></span>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div>
+                <p class="faq-item__a">
+                  Absolutely. Every color, font, and spacing token lives in a single
+                  global stylesheet. Swap the accent in one place and the entire site updates.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item" data-faq-item="" data-faq-state="closed">
+            <summary class="faq-item__summary">
+              <span class="faq-item__q">Do you offer refunds?</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <span class="faq-chevron__bar faq-chevron__bar--h"></span>
+                <span class="faq-chevron__bar faq-chevron__bar--v"></span>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <div>
+                <p class="faq-item__a">
+                  Within 14 days of purchase if the template doesn't fit your project — no
+                  questions asked. Email support@vaultix.com from the email used to purchase.
+                </p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <script src="script.js"></script>
+  
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

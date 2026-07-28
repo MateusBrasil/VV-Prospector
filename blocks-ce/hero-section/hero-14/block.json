@@ -1,0 +1,17 @@
+{
+  "ref": "hero-section/hero-14",
+  "scope": "hero-section-hero-14",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesCdn": [
+    "https://use.typekit.net/ydc6mft.css"
+  ],
+  "tem_js": true,
+  "n_assets": 27,
+  "_nota": "Bloco normalizado por blockify.mjs. CSS escopado por [data-blk]. Adaptar slots à mão onde o cliente entra."
+}

@@ -1,0 +1,83 @@
+[data-dobra="botao-lightning-button"],[data-dobra="botao-lightning-button"]{
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+[data-dobra="botao-lightning-button"]{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--base-100); 
+    }
+[data-dobra="botao-lightning-button"] .container{
+      position: relative;
+    }
+[data-dobra="botao-lightning-button"] button{
+      cursor: pointer;
+      width: 200px;
+      height: 75px;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--acento);
+      text-decoration: none;
+      padding: 0.75em 1.75em;
+      border-radius: 99px;
+      border: none;
+      transition: background-color 0.6s ease-out; 
+    }
+[data-dobra="botao-lightning-button"] :focus:not(:focus-visible){ outline: none; }
+[data-dobra="botao-lightning-button"] button:hover{
+      background-color: var(--base-500);
+    }
+[data-dobra="botao-lightning-button"] button:focus{
+      background-color: var(--base-500);
+      outline: 5px solid var(--base-100);
+    }
+[data-dobra="botao-lightning-button"] .border-gradient{
+      padding: 4px;
+      opacity: 0.8;
+      border-radius: 99px;
+      background: rgb(177, 131, 255);
+      background: linear-gradient(
+        90deg,
+        rgb(177, 131, 255) 0%,
+        rgb(85, 114, 199) 100%
+      );
+    }
+[data-dobra="botao-lightning-button"] .button-text{
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      transform: translateY(-55%);
+      text-align: center;
+      font-family: var(--fonte-corpo);
+      font-weight: 500;
+      font-size: 1.6rem;
+      user-select: none;
+      letter-spacing: 1.5px;
+      color: white;
+    }
+[data-dobra="botao-lightning-button"] #scribbles{
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      overflow: visible;
+    }
+[data-dobra="botao-lightning-button"] .vh{
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+  

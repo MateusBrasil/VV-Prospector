@@ -1,0 +1,608 @@
+"use client";
+/* DOBRA gerada pela esteira a partir de bank/_componentes/secoes/secao-115
+ *
+ * O que foi arrancado da origem: fonte, peso, cor e todo o texto e foto do template.
+ * O que ficou: a estrutura e a mecânica de animação, que é o material que vale.
+ * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).
+ */
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import './Dobra.css';
+gsap.registerPlugin(ScrollTrigger);
+export default function Dobra({ slots: s = {} }) {
+  const raiz = useRef(null);
+  /* ⚠ REVER: o JS de origem está abaixo em bruto (categoria: global-duro).
+   * A esteira NÃO o converte sozinha, e nesta categoria escopar ao `raiz.current` NÃO
+   * chega: o código assume que é dono da página (window/document.body/listeners de
+   * load|resize|scroll), ou traz import/export, ou monta um canvas WebGL. Converter às
+   * cegas produz animação que corre no elemento errado, que é pior que animação
+   * nenhuma. Precisa de reescrita, não de troca de prefixo. */
+  useGSAP(() => {
+  //   /* hirekit-services-hero: sin logica local; reveals desde /hirekit/scripts/animations.js. */
+  //   
+  //   /* Hirekit — shared scroll + load animation engine (CDN-global IIFE port of
+  //      src/scripts/scroll-reveal.ts). Self-initializes by hook presence per section.
+  //      Engine: window.gsap + window.ScrollTrigger. Recreates the source IX2 presets
+  //      as a declarative, data-attribute-driven layer. All motion is bypassed under
+  //      prefers-reduced-motion (elements render in their final state). */
+  //   (function () {
+  //     var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+  //     if (!gsap) { console.warn('[hirekit] gsap missing'); return; }
+  //     gsap.registerPlugin(ScrollTrigger);
+  //   
+  //     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  //     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  //   
+  //     const EASE = 'power3.out';
+  //     const DUR = 0.8;
+  //   
+  //     /* Hero load: each [data-hero-load] runs its direct children in as a 100ms ladder. */
+  //     function initHeroLoad() {
+  //       $$('[data-hero-load]').forEach((group) => {
+  //         const items = Array.from(group.children);
+  //         if (!items.length) return;
+  //         if (reduce) {
+  //           gsap.set(items, { clearProps: 'all' });
+  //           return;
+  //         }
+  //         gsap.fromTo(
+  //           items,
+  //           { opacity: 0, y: 18 },
+  //           { opacity: 1, y: 0, duration: DUR, ease: EASE, stagger: 0.1, delay: 0.1 },
+  //         );
+  //       });
+  //     }
+  //   
+  //     /* Scroll-into-view reveals. `view` is the source's site-wide `.scroll-into-view`
+  //        reveal: scale 0.8->1 + opacity 0->1, 1.2s power4.out, trigger ~top 80%. */
+  //     const REVEAL = {
+  //       left: { from: { opacity: 0, x: -100 }, to: { opacity: 1, x: 0 } },
+  //       right: { from: { opacity: 0, x: 100 }, to: { opacity: 1, x: 0 } },
+  //       top: { from: { opacity: 0, y: -100 }, to: { opacity: 1, y: 0 } },
+  //       shrink: { from: { opacity: 0, scale: 1.25 }, to: { opacity: 1, scale: 1 } },
+  //       fade: { from: { opacity: 0 }, to: { opacity: 1 } },
+  //       bottom: { from: { opacity: 0, y: 100 }, to: { opacity: 1, y: 0 } },
+  //       view: {
+  //         from: { opacity: 0, scale: 0.8 },
+  //         to: { opacity: 1, scale: 1 },
+  //         dur: 1.2,
+  //         ease: 'power4.out',
+  //         start: 'top 80%',
+  //       },
+  //       // Benefits cards slide-up (source `...Card`): y 62->0 + opacity, ~0.55s easeOutCubic.
+  //       up: {
+  //         from: { opacity: 0, y: 62 },
+  //         to: { opacity: 1, y: 0 },
+  //         dur: 0.55,
+  //         ease: 'power2.out',
+  //         start: 'top 85%',
+  //       },
+  //     };
+  //   
+  //     function initViewReveal() {
+  //       $$('[data-reveal]').forEach((el) => {
+  //         const dir = (el.dataset.reveal || 'bottom').trim() || 'bottom';
+  //         const preset = REVEAL[dir] ?? REVEAL.bottom;
+  //         const delay = (parseFloat(el.dataset.revealDelay || '0') || 0) / 1000;
+  //         if (reduce) {
+  //           gsap.set(el, { clearProps: 'all', opacity: 1 });
+  //           return;
+  //         }
+  //         gsap.fromTo(el, preset.from, {
+  //           ...preset.to,
+  //           duration: preset.dur ?? DUR,
+  //           ease: preset.ease ?? EASE,
+  //           delay,
+  //           scrollTrigger: { trigger: el, start: preset.start ?? 'top 88%', once: true },
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Gentle parallax drift on flagged images while their section scrolls through. */
+  //     function initParallax() {
+  //       if (reduce) return;
+  //       $$('[data-parallax]').forEach((el) => {
+  //         const amount = parseFloat(el.dataset.parallax || '40') || 40;
+  //         gsap.fromTo(
+  //           el,
+  //           { y: -amount },
+  //           {
+  //             y: amount,
+  //             ease: 'none',
+  //             scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+  //           },
+  //         );
+  //       });
+  //     }
+  //   
+  //     /* Slow a marquee to half speed while the pointer is over it (smooth ramp). */
+  //     function hoverSlow(container, getTweens, factor = 0.5) {
+  //       if (!container || reduce) return;
+  //       const ramp = (ts) => {
+  //         const arr = getTweens().filter(Boolean);
+  //         if (arr.length)
+  //           gsap.to(arr, { timeScale: ts, duration: 0.4, ease: 'power2.out', overwrite: true });
+  //       };
+  //       container.addEventListener('mouseenter', () => ramp(factor));
+  //       container.addEventListener('mouseleave', () => ramp(1));
+  //     }
+  //   
+  //     /* Hero member marquee. Each `.vertical-loop_group[data-vloop]` is tripled and
+  //        scrolls continuously, linear, forever. Seamless = translate by exactly ONE
+  //        tiling period (offsetTop/offsetLeft between two collections). Axis follows the
+  //        layout: >767px vertical (Y), <=767px horizontal (X). Re-measured on resize. */
+  //     const MARQUEE_SPEED = 50; // px per second
+  //     function initVerticalLoop() {
+  //       if (reduce) return;
+  //       const groups = $$('.vertical-loop_group[data-vloop]');
+  //       if (!groups.length) return;
+  //       let tweens = [];
+  //   
+  //       const build = () => {
+  //         tweens.forEach((t) => t.kill());
+  //         tweens = [];
+  //         const horizontal = window.matchMedia('(max-width: 767px)').matches;
+  //         groups.forEach((group) => {
+  //           const cols = group.querySelectorAll('.loop_collection');
+  //           if (cols.length < 2) return;
+  //           const period = horizontal
+  //             ? cols[1].offsetLeft - cols[0].offsetLeft
+  //             : cols[1].offsetTop - cols[0].offsetTop;
+  //           if (!period) {
+  //             gsap.set(group, { clearProps: 'transform' });
+  //             return;
+  //           }
+  //           const up = group.dataset.vloop === 'up';
+  //           const duration = period / MARQUEE_SPEED;
+  //           const from = {};
+  //           const to = { duration, ease: 'none', repeat: -1 };
+  //           if (horizontal) {
+  //             from.x = 0;
+  //             to.x = -period;
+  //             from.y = 0;
+  //             to.y = 0;
+  //           } else {
+  //             from.y = up ? 0 : -period;
+  //             to.y = up ? -period : 0;
+  //             from.x = 0;
+  //             to.x = 0;
+  //           }
+  //           tweens.push(gsap.fromTo(group, from, to));
+  //         });
+  //       };
+  //   
+  //       build();
+  //       hoverSlow(document.querySelector('.vertical-loop'), () => tweens);
+  //   
+  //       let resizeTimer;
+  //       window.addEventListener('resize', () => {
+  //         window.clearTimeout(resizeTimer);
+  //         resizeTimer = window.setTimeout(build, 200);
+  //       });
+  //     }
+  //   
+  //     /* Hero marquee entrance: opacity fade-in on load. From-state held by the gate. */
+  //     function initMarqueeFade() {
+  //       const loop = document.querySelector('.vertical-loop');
+  //       if (!loop) return;
+  //       if (reduce) {
+  //         gsap.set(loop, { opacity: 1 });
+  //         return;
+  //       }
+  //       gsap.fromTo(loop, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: 'power2.out', delay: 0.2 });
+  //     }
+  //   
+  //     /* About hero images load entrance (source IX3 wf:load -> .about_image). Each
+  //        fanned image grows + rises + fades in; reverse stagger (last first). GSAP
+  //        animates scale/y/opacity only, so the CSS rotation is preserved. */
+  //     function initAboutHeroImages() {
+  //       const imgs = $$('.about_image');
+  //       if (!imgs.length) return;
+  //       if (reduce) {
+  //         gsap.set(imgs, { opacity: 1 });
+  //         return;
+  //       }
+  //       gsap.fromTo(
+  //         imgs,
+  //         { scale: 0, yPercent: 100, opacity: 0 },
+  //         {
+  //           scale: 1,
+  //           yPercent: 0,
+  //           opacity: 1,
+  //           duration: 0.7,
+  //           ease: 'sine.out',
+  //           stagger: { each: 0.2, from: 'end', ease: 'sine.out' },
+  //         },
+  //       );
+  //     }
+  //   
+  //     /* Testimonials fan reveal + hover straighten. Both share the transform with the
+  //        cards' resting fan rotation (set in webflow.css). Reveal: slide up y 327->0,
+  //        0.5s, stagger 0.167s (rotation preserved). Hover: straighten to 0 + bring to
+  //        front (.z-index combo); on leave return to rest rotation. */
+  //     function initTestimonials() {
+  //       const layout = document.querySelector('.testimonial_layout');
+  //       if (!layout) return;
+  //       const wraps = Array.from(layout.querySelectorAll('.testimonial_wrap'));
+  //       if (!wraps.length) return;
+  //       const restDeg = wraps.map((w) => {
+  //         const m = getComputedStyle(w).transform.match(/matrix\(([-\d.]+),\s*([-\d.]+)/);
+  //         return m ? (Math.atan2(+m[2], +m[1]) * 180) / Math.PI : 0;
+  //       });
+  //   
+  //       if (!reduce) {
+  //         gsap.fromTo(
+  //           wraps,
+  //           { y: 327 },
+  //           {
+  //             y: 0,
+  //             duration: 0.5,
+  //             ease: 'none',
+  //             stagger: 0.167,
+  //             scrollTrigger: { trigger: layout, start: 'top 85%', once: true },
+  //           },
+  //         );
+  //       }
+  //   
+  //       wraps.forEach((w, i) => {
+  //         w.addEventListener('mouseenter', () => {
+  //           w.classList.add('z-index');
+  //           gsap.to(w, { rotation: 0, duration: 0.5, ease: 'power1.out', overwrite: 'auto' });
+  //         });
+  //         w.addEventListener('mouseleave', () => {
+  //           gsap.to(w, {
+  //             rotation: restDeg[i],
+  //             duration: 0.5,
+  //             ease: 'power1.out',
+  //             overwrite: 'auto',
+  //             onComplete: () => w.classList.remove('z-index'),
+  //           });
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Services hero "Grow With Us" loop (source a-51/52). Two rows scroll in
+  //        OPPOSITE directions (row 0 left, row 1 right), ~33px/s. Seamless period =
+  //        copy width + gap. Re-measured on resize. */
+  //     const LIKE_SPEED = 33; // px/s
+  //     function initLikeLoop() {
+  //       if (reduce) return;
+  //       $$('.like_loop-row').forEach((row) => {
+  //         const loops = Array.from(row.querySelectorAll('.like_loop'));
+  //         if (loops.length < 2) return;
+  //         const left = row.dataset.likeRow !== '1'; // row 0 -> left, row 1 -> right
+  //         let tween;
+  //         const build = () => {
+  //           tween?.kill();
+  //           const period = loops[1].offsetLeft - loops[0].offsetLeft;
+  //           if (!period) return;
+  //           const duration = period / LIKE_SPEED;
+  //           tween = left
+  //             ? gsap.fromTo(loops, { x: 0 }, { x: -period, duration, ease: 'none', repeat: -1 })
+  //             : gsap.fromTo(loops, { x: -period }, { x: 0, duration, ease: 'none', repeat: -1 });
+  //         };
+  //         build();
+  //         let t;
+  //         window.addEventListener('resize', () => {
+  //           window.clearTimeout(t);
+  //           t = window.setTimeout(build, 200);
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Services sticky-list recede (source a-75/a-76). Each `.services_sticky-item`
+  //        is position:sticky; as the NEXT card scrolls up to cover the current one, the
+  //        current recedes: translateY 0->30% + translateZ 0->-20vw (perspective turns
+  //        the z push-back into a shrink). >=768 only; on <=767 plain flex column (no
+  //        transforms). Viewport-relative z -> rebuilt on resize. */
+  //     function initServicesScroll() {
+  //       if (reduce) return;
+  //       const items = $$('.services_sticky-list .services_sticky-item');
+  //       if (items.length < 2) return;
+  //       const desktop = window.matchMedia('(min-width: 768px)');
+  //       let triggers = [];
+  //   
+  //       const build = () => {
+  //         triggers.forEach((t) => t.kill());
+  //         triggers = [];
+  //         items.forEach((el) => gsap.set(el, { clearProps: 'transform' }));
+  //         if (!desktop.matches) return;
+  //         for (let i = 1; i < items.length; i++) {
+  //           const prev = items[i - 1];
+  //           const cur = items[i];
+  //           const tween = gsap.fromTo(
+  //             prev,
+  //             { yPercent: 0, z: 0 },
+  //             {
+  //               yPercent: 30,
+  //               z: () => -0.2 * window.innerWidth,
+  //               ease: 'none',
+  //               scrollTrigger: { trigger: cur, start: 'top 60%', end: 'top -20%', scrub: 1 },
+  //             },
+  //           );
+  //           if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
+  //         }
+  //         ScrollTrigger.refresh();
+  //       };
+  //   
+  //       build();
+  //       let t;
+  //       window.addEventListener('resize', () => {
+  //         window.clearTimeout(t);
+  //         t = window.setTimeout(build, 200);
+  //       });
+  //     }
+  //   
+  //     /* "Get started" horizontal marquee (source a-44/47). Two identical
+  //        `.started_list-wrapper` copies slide left continuously; period = one copy's
+  //        width + gap. Re-measured on resize. */
+  //     const STARTED_SPEED = 102; // px/s
+  //     function initStartedLoop() {
+  //       if (reduce) return;
+  //       $$('.started_loop-wrapper').forEach((wrap) => {
+  //         const lists = Array.from(wrap.querySelectorAll('.started_list-wrapper'));
+  //         if (lists.length < 2) return;
+  //         let tween;
+  //         const build = () => {
+  //           tween?.kill();
+  //           const period = lists[1].offsetLeft - lists[0].offsetLeft;
+  //           if (!period) return;
+  //           tween = gsap.fromTo(
+  //             lists,
+  //             { x: 0 },
+  //             { x: -period, duration: period / STARTED_SPEED, ease: 'none', repeat: -1 },
+  //           );
+  //         };
+  //         build();
+  //         hoverSlow(wrap, () => [tween]);
+  //         let t;
+  //         window.addEventListener('resize', () => {
+  //           window.clearTimeout(t);
+  //           t = window.setTimeout(build, 200);
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Team-detail "Get started" member marquee (source a-46/a-47). Two identical
+  //        `.started_loop` copies translate continuously over a fixed 60s/period. Axis:
+  //        >=768 vertical (Y up), <=767 horizontal (X left). Re-measured on resize. */
+  //     const STARTED_MEMBER_DURATION = 60; // s
+  //     function initStartedMemberLoop() {
+  //       if (reduce) return;
+  //       const wrap = document.querySelector('.started_loop-wrap');
+  //       if (!wrap) return;
+  //       const loops = Array.from(wrap.querySelectorAll('.started_loop'));
+  //       if (loops.length < 2) return;
+  //       let tween;
+  //       const build = () => {
+  //         tween?.kill();
+  //         const horizontal = window.matchMedia('(max-width: 767px)').matches;
+  //         const period = horizontal
+  //           ? loops[1].offsetLeft - loops[0].offsetLeft
+  //           : loops[1].offsetTop - loops[0].offsetTop;
+  //         if (!period) {
+  //           gsap.set(loops, { clearProps: 'transform' });
+  //           return;
+  //         }
+  //         tween = gsap.fromTo(
+  //           loops,
+  //           { x: 0, y: 0 },
+  //           horizontal
+  //             ? { x: -period, y: 0, duration: STARTED_MEMBER_DURATION, ease: 'none', repeat: -1 }
+  //             : { y: -period, x: 0, duration: STARTED_MEMBER_DURATION, ease: 'none', repeat: -1 },
+  //         );
+  //       };
+  //       build();
+  //       hoverSlow(wrap, () => [tween]);
+  //       let t;
+  //       window.addEventListener('resize', () => {
+  //         window.clearTimeout(t);
+  //         t = window.setTimeout(build, 200);
+  //       });
+  //     }
+  //   
+  //     /* "Grow" reveal (source IX2 a-78..a-81). Each grow class scales 0.7->1 + fades
+  //        0->1 over 500ms; the class name encodes the stagger delay. Above-the-fold
+  //        heroes fire on load (start top 88%, once). `.grow-3s` is inert in the source. */
+  //     const GROW = {
+  //       'grow-0-1s': { delay: 0, ease: 'power4.out' },
+  //       'grow-2s': { delay: 0.2, ease: 'power4.out' },
+  //       'grow-0-3s': { delay: 0.3, ease: 'sine.out' },
+  //       'grow-0-4s': { delay: 0.4, ease: 'sine.out' },
+  //     };
+  //     function initGrowReveal() {
+  //       Object.entries(GROW).forEach(([cls, { delay, ease }]) => {
+  //         $$(`.${cls}`).forEach((el) => {
+  //           if (reduce) {
+  //             gsap.set(el, { clearProps: 'all', opacity: 1 });
+  //             return;
+  //           }
+  //           gsap.fromTo(
+  //             el,
+  //             { scale: 0.7, opacity: 0 },
+  //             {
+  //               scale: 1,
+  //               opacity: 1,
+  //               duration: 0.5,
+  //               ease,
+  //               delay,
+  //               scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+  //             },
+  //           );
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Home hero stagger (custom). The left column's [data-hero-item]s slide up +
+  //        fade in one after another on load. Above the fold -> no ScrollTrigger. */
+  //     function initHeroStagger() {
+  //       const items = $$('[data-hero-stagger] [data-hero-item]');
+  //       if (!items.length) return;
+  //       if (reduce) {
+  //         gsap.set(items, { clearProps: 'all', opacity: 1 });
+  //         return;
+  //       }
+  //       gsap.fromTo(
+  //         items,
+  //         { opacity: 0, y: 32 },
+  //         { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12, delay: 0.1 },
+  //       );
+  //     }
+  //   
+  //     /* Count-up numbers (`[data-counter]`, e.g. "300+", "95%"). Parses leading
+  //        number + prefix/suffix and tweens 0->value while its stats item fades in. */
+  //     function initCounters() {
+  //       $$('[data-counter]').forEach((el) => {
+  //         const raw = (el.textContent || '').trim();
+  //         const m = raw.match(/^(\D*?)(\d[\d.,]*)(\D*)$/);
+  //         if (!m) return;
+  //         const prefix = m[1];
+  //         const suffix = m[3];
+  //         const target = parseFloat(m[2].replace(/,/g, ''));
+  //         if (reduce || Number.isNaN(target)) {
+  //           el.textContent = raw;
+  //           return;
+  //         }
+  //         const o = { v: 0 };
+  //         el.textContent = `${prefix}0${suffix}`;
+  //         gsap.to(o, {
+  //           v: target,
+  //           duration: 1.6,
+  //           ease: 'power2.out',
+  //           delay: 0.6,
+  //           onUpdate: () => {
+  //             el.textContent = `${prefix}${Math.round(o.v)}${suffix}`;
+  //           },
+  //           onComplete: () => {
+  //             el.textContent = raw;
+  //           },
+  //         });
+  //       });
+  //     }
+  //   
+  //     /* Service detail "Services Timeline" (source IX2 a-53). On scroll-in it plays
+  //        once: step badges pop in (stagger 0/100/200/300ms), texts rise+scale+fade in
+  //        together (+300ms), connecting paths fade in (400/600/800/1000ms). From-state
+  //        set on load (below the fold, no flash). */
+  //     function initServicesTimeline() {
+  //       const wrap = document.querySelector('.process_timeline-wrap');
+  //       if (!wrap) return;
+  //       const badges = $$('.step-badge', wrap);
+  //       const texts = $$('.timeline-text', wrap);
+  //       const paths = $$('.timeline_path', wrap);
+  //       if (reduce) {
+  //         gsap.set([...badges, ...texts, ...paths], { clearProps: 'all', opacity: 1 });
+  //         return;
+  //       }
+  //       const ORDER = ['is-one', 'is-two', 'is-three', 'is-four'];
+  //       const ordered = (els) =>
+  //         ORDER.map((c) => els.find((e) => e.classList.contains(c))).filter(Boolean);
+  //       const oBadges = ordered(badges);
+  //       const oPaths = ordered(paths);
+  //   
+  //       gsap.set(badges, { scale: 0 });
+  //       gsap.set(texts, { yPercent: 100, scale: 0, opacity: 0 });
+  //       gsap.set(paths, { opacity: 0 });
+  //   
+  //       const tl = gsap.timeline({ paused: true });
+  //       oBadges.forEach((b, i) => tl.to(b, { scale: 1, duration: 0.4, ease: 'power3.inOut' }, i * 0.1));
+  //       tl.to(texts, { yPercent: 0, scale: 1, opacity: 1, duration: 0.7, ease: 'power3.inOut' }, 0.3);
+  //       oPaths.forEach((p, i) =>
+  //         tl.to(p, { opacity: 1, duration: 0.5, ease: 'power3.inOut' }, 0.4 + i * 0.2),
+  //       );
+  //   
+  //       ScrollTrigger.create({ trigger: wrap, start: 'top 80%', once: true, onEnter: () => tl.play() });
+  //     }
+  //   
+  //     function init() {
+  //       initHeroLoad();
+  //       initViewReveal();
+  //       initParallax();
+  //       initVerticalLoop();
+  //       initMarqueeFade();
+  //       initGrowReveal();
+  //       initStartedLoop();
+  //       initStartedMemberLoop();
+  //       initLikeLoop();
+  //       initServicesScroll();
+  //       initServicesTimeline();
+  //       initAboutHeroImages();
+  //       initTestimonials();
+  //       initHeroStagger();
+  //       initCounters();
+  //       ScrollTrigger.refresh();
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', init);
+  //     } else {
+  //       init();
+  //     }
+  //   })();
+  //   
+  //   /* Hirekit — mobile navbar toggle (CDN-global port of src/scripts/navbar.ts).
+  //      Mirrors the source Webflow collapse: the hamburger toggles `.is-nav-open` on
+  //      [data-navbar], which the CSS uses to drop the `.nav_mobile` panel and morph the
+  //      hamburger to an X. Closes on link click, Escape, and outside click. */
+  //   (function () {
+  //     function initNavbar() {
+  //       const navbar = document.querySelector('[data-navbar]');
+  //       if (!navbar) return;
+  //       const toggle = navbar.querySelector('[data-nav-toggle]');
+  //       const links = navbar.querySelectorAll('.nav_links');
+  //       const backdrop = navbar.querySelector('[data-nav-backdrop]');
+  //   
+  //       const setOpen = (open) => {
+  //         navbar.classList.toggle('is-nav-open', open);
+  //         toggle?.setAttribute('aria-expanded', String(open));
+  //         toggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  //         // Lock page scroll while the menu overlay is open (restored on close).
+  //         document.documentElement.style.overflow = open ? 'hidden' : '';
+  //         document.body.style.overflow = open ? 'hidden' : '';
+  //       };
+  //   
+  //       toggle?.addEventListener('click', () => {
+  //         setOpen(!navbar.classList.contains('is-nav-open'));
+  //       });
+  //   
+  //       links.forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  //       backdrop?.addEventListener('click', () => setOpen(false));
+  //   
+  //       document.addEventListener('keydown', (e) => {
+  //         if (e.key === 'Escape') setOpen(false);
+  //       });
+  //   
+  //       document.addEventListener('click', (e) => {
+  //         if (!navbar.classList.contains('is-nav-open')) return;
+  //         if (!navbar.contains(e.target)) setOpen(false);
+  //       });
+  //     }
+  //   
+  //     if (document.readyState === 'loading') {
+  //       document.addEventListener('DOMContentLoaded', initNavbar);
+  //     } else {
+  //       initNavbar();
+  //     }
+  //   })();
+  //   
+  //   (function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();
+  }, { scope: raiz });
+  return (
+    <section className="dobra" data-dobra="equipa-secao-115" ref={raiz}>
+      <div className="page-wrapper">  <div data-navbar="" data-collapse="medium" className="navbar w-nav" role="banner"> <div className="navbar_spacer"></div>  <div className="nav_backdrop" data-nav-backdrop="" aria-hidden="true"></div> <div className="container-large is-navbar"> <div className="navbar_content"> <a href="/" aria-label="Hirekit, home" className="navbar_logo-link w-nav-brand"> <img loading="eager" src={s.imagem} alt="Hirekit" className="navbar_logo" /> </a> <div className="nav_wrap"> <nav role="navigation" className="nav_mobile w-nav-menu" aria-label="Primary"> <div className="navbar_list"> <a href="/" aria-current="page" className="nav_links w-nav-link w--current">{s.acao}</a><a href="/about" className="nav_links w-nav-link">{s.acao2}</a><a href="/services" className="nav_links w-nav-link">{s.acao3}</a><a href="/blog" className="nav_links w-nav-link">{s.acao4}</a> </div>  <div className="nav_mobile-footer"> <p className="nav_mobile-eyebrow">{s.texto}</p> <div className="nav_mobile-cta"> <a href="/contact" className="button_component w-inline-block"> <div className="button_content"> <div className="button_text is-one">Contact</div> <div className="button_text is-two">Contact</div> </div> </a> </div> </div> </nav> </div> <div className="nav_buttons-wrap"> <div className="login-wrap hide-mobile-landscape"> <a href="/contact" className="button_component w-inline-block"> <div className="button_content"> <div className="button_text is-one">Contact</div> <div className="button_text is-two">Contact</div> </div> </a> </div> <button type="button" className="menu-button w-nav-button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle="" onClick={s.onClick}> <div className="nav-button_component"> <div className="nav-button_line is-first"></div> <div className="nav-button_line is-second"></div> <div className="nav-button_line is-third"></div> </div> </button> </div> </div> </div> </div>
+        <section className="section_hero"> <div className="service-one_wrapper" data-hero-stagger=""> <div className="container-large"> <div className="home_layout-two"> <div className="services_hero-heading"> <div data-hero-item=""> <h1>{s.titulo}</h1> <div className="spacer-medium"></div> <div className="text-color-subtle">
+      Discover customized staffing solutions designed to address the unique challenges of your business.
+      </div> </div> <div className="button_group is-center" data-hero-item=""> <a href="/contact" className="button_secondary w-inline-block"> <div className="button_text">Start Free Trial</div> <div className="button_icon"> <img src={s.imagem2} loading="lazy" alt="" className="arrow-icon is-one" /> <img src={s.imagem3} loading="lazy" alt="" className="arrow-icon is-two" /> </div> </a> <a href="/contact" className="button_component w-variant-80e6b38b-d28d-2ab1-9288-d37ecdfe2267 w-inline-block"> <div className="button_content"> <div className="button_text is-one">Request a Demo</div> <div className="button_text is-two">Request a Demo</div> </div> </a> </div> </div> <div className="spacer"> <div style={{height: '3rem'}} className="spacer-desktop"></div> <div style={{height: '3rem'}} className="spacer-tablet"></div> <div style={{height: '2rem'}} className="spacer-mobile"></div> </div> </div> </div> <div className="hero_services-grid"> <div id="w-node-_1875d4af-0b3c-eca1-4e81-cdf6d15f0c45-eab6dcec" className="services_clients" data-hero-item=""> <div> <div className="h3" data-counter="">300+</div> <div>Corporate clients</div> </div> <div className="clients_wrapper"> <div className="hero_users"> <div id="w-node-dc7edfa0-4a48-5374-72b8-0a0e59d09338-eab6dcec" className="hero_user-tag is-first"> <img loading="lazy" src={s.imagem4} alt="Smiling man with curly hair and beard wearing a light gray blazer over a white shirt against a purple background." className="img" /> </div><div id="w-node-dc7edfa0-4a48-5374-72b8-0a0e59d0933a-eab6dcec" className="hero_user-tag is-second"> <img loading="lazy" src={s.imagem5} alt="Smiling young woman with wavy brown hair wearing a beige blazer and white turtleneck against a purple background." className="img" /> </div><div id="w-node-dc7edfa0-4a48-5374-72b8-0a0e59d0933c-eab6dcec" className="hero_user-tag is-third"> <img loading="lazy" src={s.imagem6} alt="Smiling man with short brown hair and beard wearing a light beige shirt and dark jacket against a purple background." className="img" /> </div> </div> <div className="text-xl font-header">A true partner in growth.</div> </div> </div> <div id="w-node-ab96d02a-bc76-dbea-9c38-1d9ad0410df0-eab6dcec" className="service_hero-img" data-hero-item=""> <img src={s.imagem7} loading="lazy" sizes="(max-width: 767px) 100vw, 720px" srcSet="https://d173woph5zl366.cloudfront.net/hirekit/images/ServicesHero-p-500.avif 500w, https://d173woph5zl366.cloudfront.net/hirekit/images/ServicesHero.avif 720w" alt="Two smiling women wearing blazers, one in beige with a light turtleneck and the other in brown with a black turtleneck, standing against a purple background." className="img" /> </div> <div id="w-node-_1087e570-e989-e05d-47f5-3e35f49f9b59-eab6dcec" className="services_rate-img" data-hero-item=""> <img src={s.imagem8} loading="lazy" sizes="(max-width: 767px) 100vw, 720px" srcSet="https://d173woph5zl366.cloudfront.net/hirekit/images/ServicesRate-p-500.avif 500w, https://d173woph5zl366.cloudfront.net/hirekit/images/ServicesRate.avif 720w" alt="Woman with curly hair wearing headphones, sitting on a beige sofa and working on a laptop against a purple background." className="img" /> <div className="rate_content"> <div className="h5" data-counter="">8K+</div> <div className="text-color-subtle">Client satisfaction rate</div> </div> </div> <div id="w-node-_9f810f54-8b09-9189-c8b2-3641ca1853d7-eab6dcec" className="stats_card" data-hero-item=""> <div> <div className="text-6xl" data-counter="">20K+</div> <div className="text-color-subtle">HR assessments conducted</div> </div> <div className="like_loop-wrapper"> <div className="like_loop-row" data-like-row="0"> <div className="like_loop"> <div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem9} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem10} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem11} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem12} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem13} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem14} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem15} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem16} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem17} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem18} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem19} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem20} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div> </div><div className="like_loop"> <div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem21} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem22} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem23} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem24} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem25} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem26} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem27} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem28} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem29} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem30} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem31} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem32} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div> </div> </div><div className="like_loop-row" data-like-row="1"> <div className="like_loop"> <div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem33} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem34} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem35} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem36} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem37} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem38} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem39} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem40} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem41} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem42} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem43} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem44} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div> </div><div className="like_loop"> <div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem45} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem46} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem47} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem48} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem49} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem50} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem51} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem52} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem53} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem54} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem55} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div><div className="like_loop-item"> <div className="like_text"> <div>Grow With Us</div> </div> <div className="like-icon-wrapper"> <img src={s.imagem56} loading="eager" decoding="async" alt="" className="like-icon" /> </div> </div> </div> </div> </div> </div> <div className="rate_card" data-hero-item=""> <div> <div className="text-6xl" data-counter="">95%</div> <div className="text-color-subtle">Client satisfaction rate</div> </div> </div> </div> </div> </section>
+      
+        
+        
+        
+        
+      
+      
+      </div>
+    </section>
+  );
+}

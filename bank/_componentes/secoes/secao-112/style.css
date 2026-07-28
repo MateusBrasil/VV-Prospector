@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+/* Standalone-component fix: the inlined Upmind navbar uses position:fixed in the
+   template (offset by a page-level padding that doesn't exist here), so it overlapped
+   the hero. Pin it into normal flow so it sits above the hero content instead. */
+.navbar.w-nav {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}
+
+/* Home hero: fill exactly one screen alongside the in-flow navbar (no scroll),
+   min-height so taller content still grows. */
+.section_home.is-one { min-height: calc(100svh - var(--nav-height, 4.8125rem)); height: auto; }

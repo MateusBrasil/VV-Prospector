@@ -1,0 +1,125 @@
+{
+  "slot": "numeros",
+  "nome": "secao-181",
+  "scope": "numeros-secao-181",
+  "origem": "bank/_componentes/secoes/secao-181",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "[ Testimonials ]"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "What engineering teams say"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Trusted by teams shipping AI products at scale."
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "\"Vaultix cut our pipeline debugging time by 80%. We shipped our ML model to production in days, not months.\""
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Priya Mehta"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Staff Engineer, Arcline"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "\"The anomaly detection alone saved us 20 hours per week. Our on-call engineers can sleep again.\""
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Kadin Korsgaard"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "VP Engineering, Lumen Labs"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "\"Finally, infrastructure that scales with us. We went from 10K to 2M daily events without a single config change.\""
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Dulce Baptista"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "ML Platform Lead, Cipher Stack"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "\"We replaced four disconnected tools with Vaultix. Less context-switching, better signal — and a single place to debug when something breaks.\""
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Jaxson George"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Head of Data, Northwind AI"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/testimonials/priya.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/testimonials/kadin.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/testimonials/dulce.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/vaultix/testimonials/jaxson.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "9 cor(es) mapeadas para tokens por luminância (acento da origem #fdff22 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/vaultix/testimonials/priya.webp https://d173woph5zl366.cloudfront.net/vaultix/testimonials/kadin.webp)",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

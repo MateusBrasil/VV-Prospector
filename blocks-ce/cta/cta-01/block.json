@@ -1,0 +1,9 @@
+{
+  "ref": "cta/cta-01",
+  "scope": "cta-cta-01",
+  "libs": [],
+  "fontesCdn": [],
+  "tem_js": false,
+  "n_assets": 0,
+  "_nota": "Bloco criado do zero (categoria não existe no catálogo de 613). CTA final de reserva: eyebrow, headline, subheadline, botão pill, micro-copy. Usa var(--color-*, fallback) para casar com os tokens injetados pelo compor.mjs."
+}

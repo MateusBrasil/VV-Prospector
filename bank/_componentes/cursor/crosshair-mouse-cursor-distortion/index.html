@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crosshair Distortion | Codrops Recreation</title>
+    <meta name="description" content="Demo of the tutorial on how to craft a fullscreen SVG crosshair mouse cursor with a special distortion effect on hover." />
+    <meta name="keywords" content="mouse cursor, crosshair, hover, svg, distortion, menu, javascript" />
+    <meta name="author" content="Codrops" />
+    
+    <!-- Google Fonts for Modern Premium Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Splitting.js Styles for Text Segments -->
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+    
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            --color-text: #111;
+            --color-bg: #ffffff;
+            --color-link: #FC016E;
+            --color-link-hover: #000;
+            --color-menu: #000;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            --cursor-stroke: #000;
+            --cursor-stroke-width: 1px;
+            overflow-x: hidden;
+        }
+
+        /* JS detection initialization styles */
+        .js .loading::before,
+        .js .loading::after {
+            content: '';
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .js .loading::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            transition: opacity 0.5s ease;
+        }
+
+        .js .loading::after {
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            margin: -30px 0 0 -30px;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: var(--color-link);
+            animation: loaderAnim 0.7s linear infinite alternate forwards;
+        }
+
+        @keyframes loaderAnim {
+            to {
+                opacity: 1;
+                transform: scale3d(0.5, 0.5, 1);
+            }
+        }
+
+        a {
+            text-decoration: underline;
+            color: var(--color-link);
+            outline: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--color-link-hover);
+            outline: none;
+        }
+
+        a:focus {
+            outline: none;
+            background: #e0e0e0;
+        }
+
+        a:focus:not(:focus-visible) {
+            background: transparent;
+        }
+
+        a:focus-visible {
+            outline: 2px solid red;
+            background: transparent;
+        }
+
+        .unbutton {
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+        }
+
+        .unbutton:focus {
+            outline: none;
+        }
+
+        .frame {
+            padding: 3rem 5vw;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .frame__title {
+            font-size: 1.15rem;
+            margin: 0 0 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .frame__links {
+            display: inline-block;
+        }
+
+        .frame__links a:not(:last-child),
+        .frame__demos a:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+
+        .frame__demos {
+            margin: 1rem 0;
+        }
+
+        .frame__demo {
+            font-weight: 500;
+        }
+
+        .frame__demo--current,
+        .frame__demo--current:hover {
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: calc(100vh - 13rem);
+            position: relative;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding-top: 8vh;
+        }
+
+        .menu__item {
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            text-decoration: none;
+            color: var(--color-menu);
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .menu__item-title {
+            line-height: 1;
+            font-size: 8vw;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .menu__item-sub {
+            font-size: 1.4vw;
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+
+        @media screen and (min-width: 53em) {
+            .frame {
+                position: fixed;
+                text-align: left;
+                z-index: 100;
+                top: 0;
+                left: 0;
+                display: grid;
+                align-content: space-between;
+                width: 100%;
+                max-width: none;
+                height: 100vh;
+                padding: 2.5rem 3rem;
+                pointer-events: none;
+                grid-template-columns: 75% 25%;
+                grid-template-rows: auto auto auto;
+                grid-template-areas: 
+                    'title links'
+                    '... ...'
+                    '... demos';
+            }
+            .frame__title-wrap {
+                grid-area: title;
+                display: flex;
+            }
+            .frame__title {
+                margin: 0;
+            }
+            .frame__demos {
+                margin: 0;
+                grid-area: demos;
+                justify-self: end;
+            }
+            .frame__links {
+                grid-area: links;
+                padding: 0;
+                justify-self: end;
+            }
+            .frame a {
+                pointer-events: auto;
+            }
+            .menu {
+                height: 100vh;
+                justify-content: center;
+                padding-top: 0;
+            }
+        }
+
+        /* Custom Crosshair Cursor Styles */
+        .cursor {
+            display: none;
+        }
+
+        @media (any-pointer: fine) {
+            .cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                display: block;
+                pointer-events: none;
+                z-index: 1001;
+            }
+
+            .no-js .cursor {
+                display: none;
+            }
+
+            .cursor__line {
+                position: fixed;
+                display: block;
+                will-change: transform, opacity;
+            }
+            
+            .cursor__line--horizontal {
+                top: -10px;
+                left: -10%;
+                width: 120%;
+                height: 20px;
+            }
+            
+            .cursor__line--vertical {
+                left: -10px;
+                top: -10%;
+                height: 120%;
+                width: 20px;
+            }
+            
+            .cursor__line-element {
+                fill: none;
+                stroke: var(--cursor-stroke);
+                stroke-width: var(--cursor-stroke-width);
+            }
+        }
+    </style>
+    
+    <script>
+        // Check CSS variables & JS state
+        document.documentElement.className = "js loading";
+        var supportsCssVars = function() {
+            var e, t = document.createElement("style");
+            return t.innerHTML = "root: { --tmp-var: bold; }",
+            document.head.appendChild(t),
+            e = !(!window.CSS || !window.CSS.supports || !window.CSS.supports("font-weight", "var(--tmp-var)")),
+            t.parentNode.removeChild(t),
+            e
+        };
+        if (!supportsCssVars()) {
+            alert("Please view this demo in a modern browser that supports CSS Variables.");
+        }
+    </script>
+</head>
+<body class="demo-1">
+    <main>
+        <!-- Page Frame -->
+        <div class="frame">
+            <div class="frame__title-wrap">
+                <h1 class="frame__title">Crosshair Distortion</h1>
+            </div>
+        </div>
+
+        <!-- Glitch Menu -->
+        <nav class="menu">
+            <a href="#content-1" class="menu__item">
+                <span data-splitting class="menu__item-title">Neon</span>
+                <span data-splitting class="menu__item-sub">Lights</span>
+            </a>
+            <a href="#content-1" class="menu__item">
+                <span data-splitting class="menu__item-title">Cyber</span>
+                <span data-splitting class="menu__item-sub">Space</span>
+            </a>
+            <a href="#content-1" class="menu__item">
+                <span data-splitting class="menu__item-title">Digital</span>
+                <span data-splitting class="menu__item-sub">Dreams</span>
+            </a>
+        </nav>
+    </main>
+
+    <!-- Crosshair Custom Cursor Elements with SVG Noise Filters -->
+    <div class="cursor">
+        <svg class="cursor__line cursor__line--horizontal" viewBox="0 0 200 20" preserveAspectRatio="none">
+            <defs>
+                <filter id="filter-noise-x" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+                    <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp" />
+                    <feOffset dx="-30" result="warpOffset" />
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warpOffset" />
+                </filter>
+            </defs>
+            <line class="cursor__line-element" x1="0" y1="10" x2="200" y2="10" shape-rendering="crispEdges" vector-effect="non-scaling-stroke" />
+        </svg>
+        <svg class="cursor__line cursor__line--vertical" viewBox="0 0 20 200" preserveAspectRatio="none">
+            <defs>
+                <filter id="filter-noise-y" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+                    <feTurbulence type="fractalNoise" baseFrequency="0" numOctaves="1" result="warp" />
+                    <feOffset dy="-30" result="warpOffset" />
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warpOffset" />
+                </filter>
+            </defs>
+            <line class="cursor__line-element" x1="10" y1="0" x2="10" y2="200" shape-rendering="crispEdges" vector-effect="non-scaling-stroke" />
+        </svg>
+    </div>
+
+    <!-- Load GSAP (Tweening & Timelines) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Load Splitting.js (Text Segmentation) -->
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+    <script>
+        // --- UTILS ---
+        const lerp = (a, b, n) => (1 - n) * a + n * b;
+        const getMousePos = e => ({ x : e.clientX, y : e.clientY });
+
+        // Track global mouse position
+        let mouse = {x: window.innerWidth / 2, y: window.innerHeight / 2};
+        window.addEventListener('mousemove', ev => mouse = getMousePos(ev));
+
+        // --- CURSOR CLASS ---
+        class Cursor {
+            constructor(el) {
+                this.DOM = {el: el};
+                this.DOM.lines = this.DOM.el.children;
+                [this.DOM.lineHorizontal, this.DOM.lineVertical] = this.DOM.lines;
+                
+                // Hide initially
+                gsap.set(this.DOM.lines, {opacity: 0});
+                
+                this.renderedStyles = {
+                    tx: {previous: window.innerWidth / 2, current: window.innerWidth / 2, amt: 0.15},
+                    ty: {previous: window.innerHeight / 2, current: window.innerHeight / 2, amt: 0.15}
+                };
+
+                // On first move, fade in crosshair and launch rendering loop
+                this.onMouseMoveEv = () => {
+                    this.renderedStyles.tx.previous = this.renderedStyles.tx.current = mouse.x;
+                    this.renderedStyles.ty.previous = this.renderedStyles.ty.current = mouse.y;
+                    gsap.to(this.DOM.lines, {duration: 0.9, ease: 'Power3.easeOut', opacity: 1});
+                    requestAnimationFrame(() => this.render());
+                    window.removeEventListener('mousemove', this.onMouseMoveEv);
+                };
+                window.addEventListener('mousemove', this.onMouseMoveEv);
+
+                this.filterId = {
+                    x: '#filter-noise-x',
+                    y: '#filter-noise-y'
+                };
+
+                this.DOM.feTurbulence = {
+                    x: document.querySelector(`${this.filterId.x} > feTurbulence`),
+                    y: document.querySelector(`${this.filterId.y} > feTurbulence`)
+                };
+
+                this.primitiveValues = {turbulence: 0};
+                this.createNoiseTimeline();
+            }
+
+            enter() {
+                // Trigger dynamic turbulence timeline
+                this.tl.restart();
+            }
+
+            leave() {
+                // Force timeline end and terminate
+                this.tl.progress(1).kill();
+            }
+
+            createNoiseTimeline() {
+                this.tl = gsap.timeline({
+                    paused: true,
+                    onStart: () => {
+                        this.DOM.lineHorizontal.style.filter = `url(${this.filterId.x})`;
+                        this.DOM.lineVertical.style.filter = `url(${this.filterId.y})`;
+                    },
+                    onUpdate: () => {
+                        this.DOM.feTurbulence.x.setAttribute('baseFrequency', this.primitiveValues.turbulence);
+                        this.DOM.feTurbulence.y.setAttribute('baseFrequency', this.primitiveValues.turbulence);
+                    },
+                    onComplete: () => {
+                        this.DOM.lineHorizontal.style.filter = this.DOM.lineVertical.style.filter = 'none';
+                    }
+                })
+                .to(this.primitiveValues, { 
+                    duration: 0.5,
+                    ease: 'power1.out',
+                    startAt: {turbulence: 0.18}, // Set a visible initial turbulence scale
+                    turbulence: 0
+                });
+            }
+
+            render() {
+                this.renderedStyles['tx'].current = mouse.x;
+                this.renderedStyles['ty'].current = mouse.y;
+
+                for (const key in this.renderedStyles) {
+                    this.renderedStyles[key].previous = lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].amt);
+                }
+
+                gsap.set(this.DOM.lineVertical, {x: this.renderedStyles['tx'].previous});
+                gsap.set(this.DOM.lineHorizontal, {y: this.renderedStyles['ty'].previous});
+
+                requestAnimationFrame(() => this.render());
+            }
+        }
+
+        // --- MENU ITEM CLASS ---
+        class MenuItem {
+            constructor(el) {
+                this.DOM = {el};
+                this.DOM.titleChars = this.DOM.el.querySelectorAll('span.char');
+                
+                const bodyComputedStyle = getComputedStyle(document.body);
+                this.colors = {
+                    initial: bodyComputedStyle.getPropertyValue('--color-menu').trim(), 
+                    final: bodyComputedStyle.getPropertyValue('--color-link').trim()
+                };
+                
+                this.initEvents();
+            }
+
+            initEvents() {
+                this.onMouseEnterEv = () => this.onMouseEnter();
+                this.DOM.el.addEventListener('mouseenter', this.onMouseEnterEv);
+
+                this.onMouseLeaveEv = () => this.onMouseLeave();
+                this.DOM.el.addEventListener('mouseleave', this.onMouseLeaveEv);
+            }
+
+            onMouseEnter() {
+                if (this.leaveTimeline) {
+                    this.leaveTimeline.kill();
+                }
+
+                // Mimic a rich glitch sequence on the characters using spatial/rotational offsets and colors
+                this.enterTimeline = gsap.timeline({
+                    defaults: {
+                        duration: 0.05,
+                        ease: 'power3.inOut',
+                        x: () => gsap.utils.random(-15, 15),
+                        y: () => gsap.utils.random(-20, 10),
+                        rotation: () => gsap.utils.random(-5, 5),
+                        color: () => gsap.utils.random(0, 3) < 1.5 ? this.colors.final : this.colors.initial
+                    }
+                })
+                .to(this.DOM.titleChars, {
+                    repeat: 3,
+                    repeatRefresh: true
+                }, 0)
+                .to(this.DOM.titleChars, {
+                    x: 0, 
+                    y: 0, 
+                    rotation: 0,
+                    color: this.colors.final,
+                    duration: 0.1
+                }, '+=0.05');
+            }
+
+            onMouseLeave() {
+                if (this.enterTimeline) {
+                    this.enterTimeline.kill();
+                }
+
+                this.leaveTimeline = gsap.timeline()
+                .to(this.DOM.titleChars, {
+                    duration: 0.4,
+                    ease: 'power3.out',
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    color: this.colors.initial
+                });
+            }
+        }
+
+        // --- INITS ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Remove loading screen
+            document.documentElement.classList.remove('loading');
+
+            // Initialize Splitting.js to split word strings into characters
+            Splitting();
+
+            // Initialize Custom Cursor
+            const cursor = new Cursor(document.querySelector('.cursor'));
+
+            // Initialize Glitchy Menu Items
+            [...document.querySelectorAll('.menu > a')].forEach(el => new MenuItem(el));
+
+            // Setup crosshair feedback loop for hoverable elements (links)
+            [...document.querySelectorAll('a')].forEach(link => {
+                link.addEventListener('mouseenter', () => cursor.enter());
+                link.addEventListener('mouseleave', () => cursor.leave());
+            });
+        });
+    </script>
+</body>
+</html>

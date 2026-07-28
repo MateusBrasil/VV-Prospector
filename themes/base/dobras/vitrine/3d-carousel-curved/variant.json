@@ -1,0 +1,83 @@
+{
+  "slot": "vitrine",
+  "nome": "3d-carousel-curved",
+  "scope": "vitrine-3d-carousel-curved",
+  "origem": "bank/_componentes/carrossel/3d-carousel-curved",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 12
+  },
+  "_rever": [
+    "12 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://i.postimg.cc/g2xg536T/2-3-2.png https://i.postimg.cc/hjWZVhv6/2-3.png)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

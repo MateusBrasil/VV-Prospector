@@ -1,0 +1,254 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AccentButton from "../../components/AccentButton.astro";
+import EagleMarker from "../../components/VaultixMarker.astro";
+import HalftoneImage from "../../components/HalftoneImage.astro";
+import CtaSection from "../../components/CtaSection.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const team = await getCollection("team");
+  return team.map((member) => ({
+    params: { slug: member.id },
+    props: { member },
+  }));
+}
+
+const { member } = Astro.props;
+const { Content } = await render(member);
+---
+
+<BaseLayout
+  title={`${member.data.name} — Eagle`}
+  description={member.data.bio ?? `${member.data.name}, ${member.data.role} at Eagle.`}
+  ogImage={member.data.image}
+>
+  {/* ========================================================================
+       SECTION 01 — Team Profile Hero (Figma 1:11799)
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("team-hero-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] pb-[3rem] md:pb-[5rem]" data-team-hero>
+    {/* navbar-flush hero: section sin pt (arranca al ras del navbar bottom).
+        El bordered block no tiene línea horizontal top — la del navbar la
+        cumple. Top markers offset especial `+0.5px`, bottom markers normal
+        `-0.5px`. z-20 markers, navbar (z-40) siempre por encima. */}
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-20 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-team-hero-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-1/2 top-0 z-20 hidden h-full w-px -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-team-hero-line="mid"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-20 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-team-hero-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 z-20 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-team-hero-line="bottom"
+        aria-hidden="true"></span>
+
+      {/* Top markers — navbar-adjacent +0.5px offset so the bar lands 1px
+          below the navbar's border-b (adjacent, not overlapping). */}
+      <EagleMarker type="tip-down" data-team-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-team-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-down" data-team-hero-tmark class="absolute left-1/2 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:block" />
+      {/* Bottom markers — normal -0.5px offset on the bordered block edge. */}
+      <EagleMarker type="tip-up" data-team-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-4 z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-team-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] right-4 z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+      <EagleMarker type="tip-up" data-team-hero-tmark class="absolute bottom-[calc(-0.5rem_-_0.5px)] left-1/2 z-20 hidden -translate-x-1/2 lg:block" />
+
+      <div class="grid grid-cols-1 pt-4 md:grid-cols-2 lg:pt-0">
+        {/* Left: avatar with halftone effect (always-on pulse, periwinkle
+            glow). Same treatment as the team grid cards on hover, but here
+            it's the default state — like the blog post detail cover. */}
+        <div
+          class="relative aspect-[565/694] w-full overflow-hidden bg-[#0a0a0a]"
+          data-team-hero-image
+        >
+          {member.data.image ? (
+            <HalftoneImage
+              src={member.data.image}
+              alt={member.data.name}
+              cellSize={1}
+              dotColor="#b5d2ff"
+              bgColor="#0a0a0a"
+              gamma={1.6}
+              spread={1}
+              hoverSpreadMin={0.95}
+              hoverSpreadMax={1.05}
+              hoverPulseSpeed={1.8}
+              pulseAlways={true}
+              class="absolute inset-0 size-full"
+            />
+          ) : (
+            <div class="absolute inset-0 flex items-center justify-center font-mono text-[0.625rem] uppercase tracking-[1.68px] text-white/20">
+              [ avatar gris — Edgar reemplaza ]
+            </div>
+          )}
+
+          {/* Role badge — overlay bottom-left, on top of the image. z-30
+              keeps it above any lines/canvases. */}
+          <div
+            class="absolute bottom-[1rem] left-[1rem] z-30 inline-flex items-center gap-[0.5rem] border border-[var(--color-border)] bg-[#141414] px-[1rem] py-[0.5rem] font-mono uppercase"
+            data-team-hero-role
+          >
+            <span class="size-[0.375rem] bg-[#b5d2ff]" aria-hidden="true"></span>
+            <span class="text-[0.875rem] leading-[1.2857] tracking-[1.68px] text-white">
+              {member.data.role}
+            </span>
+          </div>
+        </div>
+
+        {/* Right: intro + bio */}
+        <div
+          class="flex flex-col justify-between gap-[2.5rem] py-[1.5rem] md:p-[2.5rem]"
+          data-team-hero-text
+        >
+          <div class="flex flex-col gap-[2.5rem]">
+            <div class="flex flex-col gap-[1.5rem] font-mono uppercase">
+              <span
+                class="text-[0.875rem] leading-[1.2857] text-[#fdff22]"
+                data-team-hero-eyebrow
+              >
+                Nossa team
+              </span>
+              <h1
+                class="text-[2.75rem] font-normal leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem]"
+                data-team-hero-name
+              >
+                {member.data.name}
+              </h1>
+            </div>
+            <AccentButton class="w-full md:w-fit" data-team-hero-cta>
+              Fale conosco
+            </AccentButton>
+          </div>
+
+          {/* Bio (markdown body) */}
+          <div
+            class="prose-team font-mono text-[0.875rem] uppercase leading-[1.4] text-white/60"
+            data-team-hero-bio
+          >
+            <Content />
+          </div>
+
+          {/* Socials */}
+          {member.data.socials && (
+            <div class="flex flex-wrap gap-[1rem] font-mono text-[0.75rem] uppercase tracking-[1.68px]">
+              {member.data.socials.linkedin && (
+                <a href={member.data.socials.linkedin} class="text-white/60 hover:text-[#fdff22]" target="_blank" rel="noopener">LinkedIn →</a>
+              )}
+              {member.data.socials.twitter && (
+                <a href={member.data.socials.twitter} class="text-white/60 hover:text-[#fdff22]" target="_blank" rel="noopener">Twitter →</a>
+              )}
+              {member.data.socials.github && (
+                <a href={member.data.socials.github} class="text-white/60 hover:text-[#fdff22]" target="_blank" rel="noopener">GitHub →</a>
+              )}
+              {member.data.socials.website && (
+                <a href={member.data.socials.website} class="text-white/60 hover:text-[#fdff22]" target="_blank" rel="noopener">Website →</a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .team-hero-pre-anim [data-team-hero-image],
+    .team-hero-pre-anim [data-team-hero-eyebrow],
+    .team-hero-pre-anim [data-team-hero-name],
+    .team-hero-pre-anim [data-team-hero-role],
+    .team-hero-pre-anim [data-team-hero-cta],
+    .team-hero-pre-anim [data-team-hero-bio] {
+      visibility: hidden;
+    }
+    .team-hero-pre-anim [data-team-hero-line],
+    .team-hero-pre-anim [data-team-hero-tmark] {
+      opacity: 0;
+    }
+    .prose-team p {
+      margin-bottom: 1rem;
+    }
+    .prose-team p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../../lib/eases";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+
+    const init = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("team-hero-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-team-hero]");
+      if (!section) return;
+
+      const image = section.querySelector<HTMLElement>("[data-team-hero-image]");
+      const eyebrow = section.querySelector<HTMLElement>("[data-team-hero-eyebrow]");
+      const name = section.querySelector<HTMLElement>("[data-team-hero-name]");
+      const role = section.querySelector<HTMLElement>("[data-team-hero-role]");
+      const cta = section.querySelector<HTMLElement>("[data-team-hero-cta]");
+      const bio = section.querySelector<HTMLElement>("[data-team-hero-bio]");
+      const lines = gsap.utils.toArray<HTMLElement>("[data-team-hero-line]", section);
+      const tmarks = gsap.utils.toArray<SVGElement>("[data-team-hero-tmark]", section);
+
+      const eyebrowSplit = eyebrow ? new SplitText(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const nameSplit = name ? new SplitText(name, { type: "lines", mask: "lines" }) : null;
+
+      if (image) gsap.set(image, { opacity: 0, scale: 0.97 });
+      if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (nameSplit) gsap.set(nameSplit.lines, { yPercent: 110 });
+      if (role) gsap.set(role, { opacity: 0, y: 14 });
+      if (cta) gsap.set(cta, { opacity: 0, y: 14 });
+      if (bio) gsap.set(bio, { opacity: 0, y: 14 });
+      lines.forEach((l) => {
+        const o = l.dataset.teamHeroLine;
+        if (o === "bottom") gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        else gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+      });
+      if (tmarks.length) gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      document.documentElement.classList.remove("team-hero-pre-anim");
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      tl.to(lines, { scaleX: 1, scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.04 }, 0);
+      if (tmarks.length) tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.5);
+      if (image) tl.to(image, { opacity: 1, scale: 1, duration: 0.9, ease: "eagleStructure" }, 0.2);
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0.4);
+      if (nameSplit) tl.to(nameSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.55);
+      if (role) tl.to(role, { opacity: 1, y: 0, duration: 0.6, ease: "eagleReveal" }, 0.75);
+      if (cta) tl.to(cta, { opacity: 1, y: 0, duration: 0.55, ease: "eagleReveal" }, 0.85);
+      if (bio) tl.to(bio, { opacity: 1, y: 0, duration: 0.7, ease: "eagleReveal" }, 0.95);
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  </script>
+
+  {/* ========================================================================
+       SECTION 02 — CTA (shared CtaSection component)
+     ======================================================================== */}
+  <CtaSection
+    headline="Pronta para build the future<br class='hidden lg:inline' /> of your data stack?"
+  />
+</BaseLayout>

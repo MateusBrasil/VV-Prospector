@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Botton - Animado</title>
+  <!-- Tailwind CSS CDN para as classes de layout -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fundo escuro para destacar o botão e os efeitos */
+    body {
+      background-color: #0a0a0a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* Animação de "indicação" para a seta da esquerda */
+    @keyframes indicate {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(8px); }
+    }
+
+    .animated-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 16px 36px;
+      border: 4px solid transparent;
+      font-size: 16px;
+      background-color: inherit;
+      border-radius: 100px;
+      font-weight: 600;
+      color: yellow;
+      box-shadow: 0 0 0 2px yellow;
+      cursor: pointer;
+      overflow: hidden;
+      /* Transição de formato suave (1.0s) */
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      min-width: 220px; /* Largura mínima para evitar redimensionamento no texto */
+    }
+
+    .animated-button svg {
+      position: absolute;
+      width: 24px;
+      fill: yellow;
+      z-index: 9;
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .animated-button .arr-1 {
+      right: 16px;
+    }
+
+    .animated-button .arr-2 {
+      left: -25%;
+    }
+
+    .animated-button .circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: yellow;
+      border-radius: 10%;
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Container para os textos sobrepostos */
+    .text-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      transform: translateX(-12px);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .text-container span {
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .alt-text {
+      position: absolute;
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    /* Estado de Hover - Formato do Botão */
+    .animated-button:hover {
+      box-shadow: 0 0 0 12px transparent;
+      color: #212121;
+      border-radius: 12px;
+    }
+
+    .animated-button:hover .circle {
+      width: 350px; 
+      height: 350px;
+      opacity: 1;
+    }
+
+    .animated-button:hover .arr-1 {
+      right: -25%;
+    }
+
+    .animated-button:hover .arr-2 {
+      left: 16px;
+      animation: indicate 1.2s ease-in-out infinite;
+    }
+
+    .animated-button:hover .text-container {
+      transform: translateX(12px);
+    }
+
+    .animated-button:hover svg {
+      fill: #212121;
+    }
+
+    /* Transição de Texto quando a classe .show-alt é aplicada */
+    .animated-button.show-alt .main-text {
+      opacity: 0;
+    }
+
+    .animated-button.show-alt .alt-text {
+      opacity: 1;
+    }
+
+    .animated-button:active {
+      scale: 0.95;
+      box-shadow: 0 0 0 4px yellow;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flex items-center justify-center">
+    <button id="smartBtn" class="animated-button" style="padding: 12px 36px;">
+      <!-- Seta indicadora (esquerda) -->
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+      </svg>
+      
+      <!-- Container de Texto com transição suave -->
+      <div class="text-container">
+        <span class="main-text">Smart Botton</span>
+        <span class="alt-text">Clica ai</span>
+      </div>
+      
+      <span class="circle"></span>
+      
+      <!-- Seta original (direita) -->
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    const button = document.getElementById('smartBtn');
+    let timer = null;
+
+    button.addEventListener('mouseenter', () => {
+      // Inicia o timer de 5 segundos para trocar o texto
+      timer = setTimeout(() => {
+        button.classList.add('show-alt');
+      }, 5000);
+    });
+
+    button.addEventListener('mouseleave', () => {
+      // Reseta tudo ao tirar o mouse
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      button.classList.remove('show-alt');
+    });
+
+    button.addEventListener('click', () => {
+      // Mantém o estado atual se clicado ou reseta se preferir
+      if (timer) {
+        clearTimeout(timer);
+      }
+    });
+  </script>
+
+</body>
+</html>

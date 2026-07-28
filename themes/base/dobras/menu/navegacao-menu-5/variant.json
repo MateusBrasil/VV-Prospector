@@ -1,0 +1,194 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-5",
+  "scope": "menu-navegacao-menu-5",
+  "origem": "bank/_componentes/menu/navegacao-menu-5",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Sliding Stairs"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Projects"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "To See Everything"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "To See Everything"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "To See Everything"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "To See Everything"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Agence"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "To Learn Everything"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "To Learn Everything"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "To Learn Everything"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "To Learn Everything"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "To Send a FAX"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "To Send a FAX"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "To Send a FAX"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "To Send a FAX"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "FB"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "IG"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "IN"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "BE"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/projects1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/projects2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/projects1.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/projects2.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/agence1.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/agence2.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/agence1.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/agence2.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/contact1.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/contact2.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/contact1.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "img/contact2.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 12,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #d3fd50 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,105 @@
+{
+  "slot": "precos",
+  "nome": "secao-98",
+  "scope": "precos-secao-98",
+  "origem": "bank/_componentes/secoes/secao-98",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "The Ultimate Guide to Budgeting in 2024"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Building a budget is the single most reliable way to take control of your money. In 2024, with rising living costs and an ever-growing menu of subscriptions, a "
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Start with a clear picture of your income"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Before you allocate a single dollar, you need to know exactly what comes in each month. Add up your take-home pay, any freelance or side income, and recurring s"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Map your fixed and variable expenses"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Separate the costs that stay the same every month from the ones that move. Fixed expenses are predictable and easy to plan around; variable expenses are where m"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Fixed: rent or mortgage, insurance, loan payments, subscriptions"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Variable: groceries, dining out, transport, entertainment"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Periodic: annual fees, gifts, maintenance, taxes"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Choose a framework that fits your life"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "The best budget is the one you'll actually stick to. The 50/30/20 rule is a strong starting point: direct 50% of take-home pay to needs, 30% to wants, and 20% t"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Automate, then review"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Set up automatic transfers to savings on payday so the money is gone before you can spend it. Then block thirty minutes at the end of each month to compare what"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Stick with this loop—plan, automate, review—and budgeting stops feeling like a chore and starts feeling like progress. The goal isn't a perfect month; it's a sy"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/advisora/images/blog-budgeting-2024.webp"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "36 cor(es) mapeadas para tokens por luminância (acento da origem #06b6d4 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/advisora/images/blog-budgeting-2024.webp)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d173woph5zl366.cloudfront.net/advisora/images/arrow-right.svg)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

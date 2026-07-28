@@ -1,0 +1,61 @@
+{
+  "slot": "destaque",
+  "nome": "webgl-9",
+  "scope": "destaque-webgl-9",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-9/interactive-particles-master/src",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://github.com/brunoimbrizi/interactive-particles"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/Development/AnimatedMeshLines/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=37503"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Interactive Particles"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Previous Demo"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Article"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://github.com/brunoimbrizi/interactive-particles https://tympanus.net/Development/AnimatedMeshLines/)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

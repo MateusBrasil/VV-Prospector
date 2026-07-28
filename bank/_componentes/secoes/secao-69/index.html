@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalis — About Pricing</title>
+  <!-- Gate anti-FOUC (Catalis BaseLayout): guard CSS oculta hooks solo con html.js-anim. -->
+  <script>document.documentElement.classList.add('js-anim');</script>
+  <link rel="preload" as="font" type="font/otf" href="LibreCaslonCondensed-Regular.otf" crossorigin="">
+  <link rel="preload" as="font" type="font/otf" href="LibreCaslonCondensed-Italic.otf" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<section class="section_about-two"> <div class="padding-global"> <div class="container-large"> <div class="about_layout"> <div class="about_left"> <div> <div class="badge-wrapper is-left"> <div animation="" class="badge w-variant-bbfb6a6c-d3ec-5a08-a531-cec36f932128"><img src="https://d173woph5zl366.cloudfront.net/catalis/images/star-blue.svg" loading="lazy" alt="" class="badge_image"> <div class="badge_text">ABOUT US</div> </div> </div> <div class="spacer-medium"></div> <h2 animation="large-heading">Expert <em>strategies</em> for your future</h2> <div class="spacer-medium"></div> <div class="text-color-secondary scroll-into-view">We are passionate about empowering individuals and businesses to take control of their finances and achieve their financial goals.</div> <div class="spacer"> <div style="height:2.5rem" class="spacer-desktop"></div> <div style="height:2.5rem" class="spacer-tablet"></div> <div style="height:2rem" class="spacer-mobile"></div> </div> <div class="button-wrapper is-left scroll-into-view"> <a animation="" href="/about" class="button_component w-inline-block"> <div class="button_content"> <div class="button_text is-one">Get Started</div> <div class="button_text is-two">Get Started</div> </div> </a> </div> </div> <div class="about_stats grow-container"> <div class="stat grow-element"> <div class="text-6xl font-header">80%</div> <div class="text-sm">Reduction in reporting time.</div> </div> <div class="stat grow-element"> <div class="text-6xl font-header">99</div> <div class="text-sm">Increase in billing hours</div> </div> </div> </div> <div class="about_img-three"><img src="https://d173woph5zl366.cloudfront.net/catalis/images/about-three.avif" loading="lazy" sizes="(max-width: 479px) 100vw, 239.98046875px" srcset="https://d173woph5zl366.cloudfront.net/catalis/images/about-three-p-500.avif 500w, https://d173woph5zl366.cloudfront.net/catalis/images/about-three.avif 1232w" alt="Smiling young woman and man wearing beige fleece jackets, outdoors under a clear blue sky; the woman holds a smartphone." class="img"> <div class="about_income"><img src="https://d173woph5zl366.cloudfront.net/catalis/images/about-income.svg" loading="lazy" alt="" class="img"></div> </div> </div> </div> </div> </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

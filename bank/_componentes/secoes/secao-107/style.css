@@ -1,0 +1,780 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Body base — minimal reset so the component reads correctly when loaded
+   in isolation. Tokens (--color-bg-dark, --font-body, etc.) come from
+   /acelia/global.css.
+   ───────────────────────────────────────────────────────────────────────── */
+body {
+  margin: 0;
+  background: var(--color-bg-dark, #0e1f22);
+  color: var(--color-text-white, #fff);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Navbar (inlined, dark variant)
+   ───────────────────────────────────────────────────────────────────────── */
+.navbar {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-dark);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 1em var(--container-padding);
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  color: var(--color-text-white);
+}
+
+.navbar__logo {
+  /* Native SVG ratio is 114:40 (= 2.85). `aspect-ratio` locks the box so
+     neither dimension stretches; `height: 2rem` caps vertical size; auto
+     width derives from the ratio (≈ 92px). `object-fit: contain` plays
+     safety net — even if the height were forced taller, the SVG would
+     fit without crop or distortion. */
+  height: 2rem;            /* 32px cap — never taller than this */
+  width: auto;
+  aspect-ratio: 114 / 40;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  padding: 0.75em;
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.navbar__link:focus-visible {
+  color: var(--color-text-white);
+}
+
+@media (min-width: 992px) {
+  .navbar__link:hover {
+    color: var(--color-text-white);
+  }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+/* Constant 3rem (48px) on every viewport. `min-height` overrides the
+   `.btn` default of `3em` (which scales fluid with the body); explicit
+   `height` keeps the button square when paired with the matching
+   hamburger toggle. */
+.navbar__cta {
+  height: 3rem;
+  min-height: 3rem;
+}
+
+/* Hamburger toggle — hidden on desktop, shown at ≤991px.
+   Matches the desktop dropdown's glass aesthetic so the navbar +
+   panel + toggle all read as one design language.
+   Size locks to 3rem (48px) on every viewport — same constant as the
+   `.navbar__cta` so the two right-side controls stay visually paired. */
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--color-text-white-soft);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__toggle:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+/* Open state — slightly brighter so the active hamburger reads as "on" */
+.navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+}
+
+.navbar__toggleBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.375em;      /* 22px — thicker lines to match visual weight */
+  height: 2px;
+  margin-left: -0.6875em;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 280ms ease, opacity 200ms ease;
+}
+
+.navbar__toggleBar:nth-child(1) { transform: translateY(-0.4375em); } /* -7px */
+.navbar__toggleBar:nth-child(2) { transform: translateY(0);          }
+.navbar__toggleBar:nth-child(3) { transform: translateY(0.4375em);   } /* +7px */
+
+/* Open state — morph to X */
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* Drawer — glass floating panel at ≤991px. Mirrors the desktop "Pages"
+   dropdown's premium glassmorphism: dark transparent fill, heavy
+   backdrop blur, hairline white border, deeply diffused shadow. */
+.navbar__drawer {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: var(--container-padding);
+  left: var(--container-padding);
+  z-index: 50;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 32px 64px -24px rgba(0, 0, 0, 0.55),
+    0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 320ms;
+}
+
+.navbar__drawer[hidden] { display: block; } /* override [hidden] so transitions work; visibility controls a11y */
+
+.navbar__drawer.is-open {
+  max-height: 80vh;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 0s;
+}
+
+.navbar__drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1rem;          /* tablet baseline — fixed rem so it doesn't compound with fluid em */
+  margin: 0;
+  list-style: none;
+}
+
+/* The drawer CTA only appears when the regular navbar CTA is hidden
+   (i.e. portrait, ≤479px). At tablet/landscape the navbar still shows
+   "Contact us" outside the drawer, so duplicating it inside would be
+   redundant. The portrait override below flips it back to `list-item`. */
+.navbar__drawerCtaItem {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.navbar__drawerCta {
+  width: 100%;
+}
+
+.navbar__drawerLinks li {
+  margin: 0;
+}
+
+.navbar__drawerLink {
+  display: block;
+  padding: 0.5em 0.75em;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  background-color: transparent;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__drawerLink:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+/* Active route — soft lavender wash + accent text. Driven by
+   `aria-current="page"`. */
+.navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(205, 203, 255, 0.10);
+  color: var(--color-accent);
+}
+
+/* Tablet / mobile — collapse inline menu, show the hamburger, reveal the drawer */
+@media (max-width: 991px) {
+  .navbar__inner {
+    padding: 0.75em var(--container-padding);
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__left {
+    gap: 1em;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar__drawerLinks {
+    padding: 0.75rem;      /* landscape onward — portrait inherits */
+  }
+}
+
+@media (max-width: 479px) {
+  /* Hide the CTA pill at tiny widths so the header doesn't crowd */
+  .navbar__cta {
+    display: none;
+  }
+
+  /* …and surface the same CTA inside the drawer instead. */
+  .navbar__drawerCtaItem {
+    display: list-item;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 3.25em var(--container-padding) 0;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;        /* 40px — container → button */
+  max-width: 42.25em; /* 676px */
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;          /* 16px — heading → subheading */
+}
+
+.hero__heading {
+  font-family: var(--font-heading);
+  font-size: 4.25em;       /* 68px */
+  font-weight: 400;
+  line-height: 1.147;      /* 78/68 */
+  /* Letter-spacing in em (rather than the project default of px) so it
+     scales with the heading's own font-size at every breakpoint. The
+     overrides below loosen it slightly at smaller sizes for readability. */
+  letter-spacing: -0.06em;
+  color: var(--color-text-purple);
+  margin: 0;
+}
+
+/* Each chunk of the headline (before/after the comma) is a nowrap unit so
+   "Strategic Insights," and "Customized Solutions" each stay together, and
+   the natural wrap falls at the space between them — landing the comma on
+   the first line whenever the viewport is wide enough. SplitText's `lines`
+   mode picks up that natural break and animates them as two masked lines.
+   Below 992px the chunk can wrap internally so "Customized Solutions"
+   doesn't overflow when the heading scales down to fit narrow widths. */
+.hero__headingLine {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .hero__headingLine {
+    white-space: normal;
+  }
+}
+
+/* SplitText sets `text-align` inline on every line wrapper, capturing the
+   parent's computed text-align at split time. If the page is first painted
+   at a tablet viewport (or hot-reloaded between breakpoints), the wrappers
+   can keep `text-align: center` inline even after resizing back to desktop.
+   Force `start` here so desktop is always left-aligned. The tablet/mobile
+   media query below flips it back to `center`. */
+@media (min-width: 992px) {
+  .hero__heading div[aria-hidden] {
+    text-align: start !important;
+  }
+}
+
+.hero__subheading {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;        /* 24/16 */
+  letter-spacing: -0.128px;
+  color: var(--color-text-secondary-dark);
+  max-width: 42.25em;
+  margin: 0;
+}
+
+/* Image card — full inner width, 563px tall, rounded top corners.
+   Uses --radius-md so the corners match the page's primary buttons,
+   keeping the corner language consistent across the hero.
+
+   container-type: size creates a named container so the image inside
+   the reveal wrapper can reference the CARD's dimensions (via cqw/cqh),
+   keeping the portrait visually static while the reveal's height
+   animates 0 → 100%. */
+.hero__imageCard {
+  position: relative;
+  width: 100%;
+  margin-top: 2.75em; /* 44px — brings bottom of image to page bottom */
+  height: 35.1875em;  /* 563px */
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  /* No placeholder fill — the dark hero background shows through while
+     the curtain reveal is still collapsed. */
+  overflow: hidden;
+  container-type: size;
+  container-name: heroCard;
+}
+
+/* Curtain-reveal wrapper — starts collapsed (height 0) and animates to
+   100% of the card. overflow: hidden clips everything outside the
+   revealed band, producing the "unfurl from top" effect. */
+.hero__imageReveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Image stays visually static: sized to the CARD via cqw/cqh, not to
+   the reveal wrapper. When the reveal is shorter than 100%, the image
+   bleeds past its bottom edge and is clipped — the top of the portrait
+   never moves. */
+.hero__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100cqw;
+  height: 100cqh;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Floating cards */
+.hero__floater {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.hero__floater--strategy {
+  top: 3em;          /* 48px — more breathing room from the top edge */
+  right: 2em;
+  width: max-content; /* expand to fit the title on one line */
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero__floater--strategy .hero__floaterTitle,
+.hero__floater--strategy .hero__floaterDesc {
+  white-space: nowrap;
+}
+
+/* Let the inner text block size to its nowrap content instead of
+   collapsing under the default `min-width: 0`, and let the header
+   hug its children rather than stretching to the (still-bounded)
+   parent card. Together with `width: max-content` on the card, this
+   makes the strategy floater grow horizontally to fit the title.
+   Also drop the negative left margin so the card's 1em padding is
+   respected on both sides — the card extends to the left to hold it. */
+.hero__floater--strategy .hero__floaterHeader {
+  width: auto;
+  margin-left: 0;
+}
+
+.hero__floater--strategy .hero__floaterText {
+  min-width: max-content;
+}
+
+.hero__floater--financial {
+  bottom: 3em;       /* 48px — more breathing room from the bottom edge */
+  left: 2em;
+  width: 16.3125em; /* 261px */
+  gap: 1.5em;       /* explicit space between header and chart */
+}
+
+/* Extra breathing room inside the financial card between the header
+   and the chart — matches the Figma spec where the bars sit lower
+   under the subtitle. 1.5em (gap) + 1em (margin) = 2.5em total. */
+.hero__floater--financial .hero__chart {
+  margin-top: 1em;
+}
+
+.hero__floaterHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  width: 100%;
+  margin-left: -0.5em;
+  padding-right: 0.5em; /* 8px */
+}
+
+.hero__floaterIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3em;        /* 48px */
+  height: 3em;
+  flex-shrink: 0;
+  background-color: var(--color-bg-dark);
+  border-radius: var(--radius-pill);
+}
+
+.hero__floaterIcon img {
+  width: 1.25em;     /* 20px */
+  height: 1.25em;
+  filter: brightness(0) invert(1);
+}
+
+.hero__floaterText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.hero__floaterTitle {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.128px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.hero__floaterDesc {
+  font-family: var(--font-body);
+  font-size: 0.75em;   /* 12px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.096px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Progress bar (strategy card) */
+/* Two-box progress: .hero__progressFill grows from 0% → 80%, while
+   .hero__progressTrack shrinks to occupy the rest of the row. The flex
+   gap between them is preserved at all widths. */
+.hero__progress {
+  display: flex;
+  align-items: stretch;
+  gap: 0.25em;      /* 4px */
+  width: 100%;
+  height: 2em;       /* 32px */
+}
+
+.hero__progressFill {
+  flex: 0 0 auto;
+  width: 80%;                    /* final state — JS animates from 0% */
+  display: flex;
+  align-items: flex-start;
+  padding: 0.5em;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  box-sizing: border-box;
+}
+
+.hero__progressLabel {
+  font-family: var(--font-body);
+  font-size: 0.625em; /* 10px */
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.hero__progressTrack {
+  flex: 1 1 auto;
+  min-width: 0;
+  background-color: rgba(205, 203, 255, 0.32);
+  border-radius: var(--radius-sm);
+}
+
+/* Chart (financial card) */
+.hero__chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.25em;
+  width: 100%;
+  height: 7.25em;   /* 116px */
+}
+
+.hero__chartDay {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.875em;     /* 14px */
+}
+
+.hero__chartBar {
+  width: 100%;
+  background-color: var(--color-accent-soft);
+  border-radius: var(--radius-xs);
+  transform-origin: bottom center;   /* grow from the base */
+  transform: scaleY(1);
+  will-change: transform;
+}
+
+.hero__chartBar--active {
+  background-color: var(--color-accent);
+}
+
+/* Wednesday glow pulse — runs once when the bar finishes growing.
+   The JS adds .is-pulsing, which triggers this single-run animation. */
+@keyframes chartBarGlow {
+  0%   { box-shadow: 0 0 0 0    rgba(205, 203, 255, 0.55); }
+  40%  { box-shadow: 0 0 12px 2px rgba(205, 203, 255, 0.55); }
+  100% { box-shadow: 0 0 0 0    rgba(205, 203, 255, 0);    }
+}
+
+.hero__chartBar--active.is-pulsing {
+  animation: chartBarGlow 1.2s ease-out 1;
+}
+
+.hero__chartLabel {
+  font-family: var(--font-body);
+  font-size: 0.75em;
+  line-height: 1.5;
+  letter-spacing: -0.096px;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive
+   ----------
+   The floater cards keep their desktop proportions — internals (icons,
+   progress bar, chart) are not individually resized. Instead the whole
+   card shrinks via font-size (all inner dimensions are in em), which
+   also avoids fighting GSAP's inline transforms during the entrance
+   animation. At the smallest viewports the secondary description line
+   is hidden to avoid cramped text wrapping. */
+@media (max-width: 991px) {
+  .hero__inner {
+    padding-top: 2em;
+  }
+
+  /* Center the hero text block and its CTA both horizontally and vertically
+     on tablet / mobile — gives a more balanced look when the copy is the
+     only thing above the image card. */
+  .hero__content {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .hero__text {
+    align-items: center;
+  }
+
+  .hero__heading,
+  .hero__subheading {
+    text-align: center;
+  }
+
+  /* From tablet down, force each chunk onto its own block so the
+     parent's `text-align: center` reliably centers them — otherwise
+     the H1 shrink-wraps to the widest line and the shorter line ends
+     up left-aligned inside that intrinsic width. */
+  .hero__headingLine {
+    display: block;
+  }
+
+  /* SplitText sets `text-align: start` inline on every line wrapper —
+     override it so the centered layout wins on tablet/mobile. */
+  .hero__heading div[aria-hidden] {
+    text-align: center !important;
+  }
+
+  .hero__heading {
+    font-size: 3.5em;
+    letter-spacing: -0.05em;
+  }
+
+  /* Reduced radius keeps corners in sync with the floaters — they shrink
+     via font-size (0.8em) so their 1em radius renders ~0.8em. */
+  .hero__imageCard {
+    height: 28em;
+    margin-top: 2em;
+    border-top-left-radius: 0.8em;
+    border-top-right-radius: 0.8em;
+  }
+
+  .hero__floater--strategy,
+  .hero__floater--financial {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__inner {
+    padding-top: 1.5em;
+  }
+
+  /* Phone keeps the centered tablet treatment — heading, subhead and CTA
+     all align centre. Only the gap tightens slightly to suit the narrower
+     column. */
+  .hero__content {
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .hero__heading {
+    font-size: 2.75em;
+    letter-spacing: -0.04em;
+  }
+
+  /* Tall portrait card matching Figma mobile (390×563 ≈ 5/7 aspect) so
+     the subject's full head + shoulders read clearly. Radius 0.65em keeps
+     the corners proportional once the floaters scale down via font-size. */
+  .hero__imageCard {
+    height: auto;
+    aspect-ratio: 5 / 7;
+    margin-top: 2em;
+    border-top-left-radius: 0.65em;
+    border-top-right-radius: 0.65em;
+  }
+
+  /* Floaters shrink via font-size so they never collide over the portrait.
+     font-size (not transform) avoids conflict with GSAP inline transforms.
+     Y offsets are bumped (vs. X) so the cards keep breathing room from the
+     top/bottom edges of the image card and don't read as glued to it. */
+  .hero__floater--strategy {
+    top: 2em;
+    right: 1em;
+    font-size: 0.7em;
+  }
+
+  .hero__floater--financial {
+    bottom: 2em;
+    left: 1em;
+    font-size: 0.7em;
+  }
+
+  /* Compact CTA — natural intrinsic width (~128px), kept centred via the
+     parent's `align-items: center` from the ≤991px block. */
+  .hero__content .btn--hero {
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero__heading {
+    font-size: 2.25em;
+    letter-spacing: -0.03em;
+  }
+
+  /* Floaters at 0.6em — small but the description line still readable.
+     The tall 5/7 card frame keeps them from colliding even with the
+     Figma mobile description visible. */
+  .hero__floater--strategy {
+    top: 2.5em;
+    right: 0.75em;
+    font-size: 0.6em;
+  }
+
+  .hero__floater--financial {
+    bottom: 2.5em;
+    left: 0.75em;
+    font-size: 0.6em;
+  }
+
+  /* Radius 0.6em matches the floaters' visually-scaled radius. */
+  .hero__imageCard {
+    border-top-left-radius: 0.6em;
+    border-top-right-radius: 0.6em;
+  }
+}

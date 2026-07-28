@@ -1,0 +1,102 @@
+[data-dobra="botao-glitch-button"]{
+            
+            --primary-gradient: radial-gradient(67.54% 100.03% at 50% 0%, var(--base-100) 0%, var(--base-100) 25.48%, var(--base-200) 62.5%, var(--base-300) 100%);
+            --button-shadow: 0 5.98px 23.203px 0 rgba(198, 40, 40, 0.20), 0 14.352px 53.701px 0 rgba(198, 40, 40, 0.50);
+            --font-family: var(--fonte-corpo);
+            
+            
+            --move1: inset(50% 50% 50% 50%);
+            --move2: inset(31% 0 40% 0);
+            --move3: inset(39% 0 15% 0);
+            --move4: inset(45% 0 40% 0);
+            --move5: inset(45% 0 6% 0);
+            --move6: inset(14% 0 61% 0);
+        }
+[data-dobra="botao-glitch-button"]{
+            background-color: var(--base-600);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--fonte-corpo);
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px 60px; 
+            background: var(--primary-gradient);
+            border: 1.196px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15.623px;
+            box-shadow: var(--button-shadow);
+            color: var(--base-100);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            z-index: 1;
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm::after{
+            clip-path: var(--move1);
+            content: 'Garantir minha Vaga'; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            opacity: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm .elementor-button-text{
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm:hover{
+            filter: brightness(1.1) saturate(1.2);
+            border: 1px solid rgb(0, 255, 213); 
+            box-shadow: 0px 10px 20px -5px rgb(0, 255, 213), var(--button-shadow);
+            text-shadow: -1px -1px 0px var(--acento), 1px 1px 0px var(--base-300);
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm:hover::after{
+            opacity: 1;
+            animation: glitch_4011 1s steps(2, end);
+            text-shadow: -3px -3px 0px var(--acento), 3px 3px 0px var(--base-300);
+            border: 3px solid rgb(0, 255, 213);
+            border-radius: 15.623px;
+        }
+[data-dobra="botao-glitch-button"] .botao-mvm:hover .elementor-button-text{
+            transform: scale(1.05);
+        }
+@keyframes glitch_4011{
+            0% { clip-path: var(--move1); transform: translate(0px, -10px); }
+            10% { clip-path: var(--move2); transform: translate(-10px, 10px); }
+            20% { clip-path: var(--move3); transform: translate(10px, 0px); }
+            30% { clip-path: var(--move4); transform: translate(-10px, 10px); }
+            40% { clip-path: var(--move5); transform: translate(10px, -10px); }
+            50% { clip-path: var(--move6); transform: translate(-10px, 10px); }
+            60% { clip-path: var(--move1); transform: translate(10px, -10px); }
+            70% { clip-path: var(--move3); transform: translate(-10px, 10px); }
+            80% { clip-path: var(--move2); transform: translate(10px, -10px); }
+            90% { clip-path: var(--move4); transform: translate(-10px, 10px); }
+            100% { clip-path: var(--move1); transform: translate(0); }
+        }
+@media(max-width: 600px){[data-dobra="botao-glitch-button"] .botao-mvm{
+                font-size: 16px;
+                padding: 15px 40px;
+            }
+
+        }
+
+    

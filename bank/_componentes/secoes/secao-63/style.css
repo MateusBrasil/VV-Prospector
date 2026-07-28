@@ -1,0 +1,9 @@
+/* hirely-commit — local overrides only. The shared /hirely/styles.css carries the
+   .section_commit / .commit_grid / .commit_heading / .commit_img layout, the
+   Button styles, typographic tokens and the .scroll-animation reveal. This file
+   only provides a minimal body reset; no scoped sub-component <style> needs
+   inlining here (the Button styles live in the shared sheet). */
+
+body {
+  margin: 0;
+}

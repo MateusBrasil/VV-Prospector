@@ -1,0 +1,58 @@
+<style>
+/* urgência — o painel em ardósia ecoa o hero de propósito (mesmo palco, outro momento):
+   · horizonte de luz da marca ao fundo — técnica HorizonGlowBackground do Museu
+     Triângulo portada p/ CSS puro: radial no rodapé do painel, blur 56px (≤80, Lei C4);
+   · linhas verticais a nascer do fundo, mascaradas (GridLines, irmã da grade do hero);
+   · a moldura deslocada da marca, a mesma assinatura da foto do hero;
+   · o amarelo continua acento: badge e número gigante — nunca parede. */
+.urgP__quadro{position:relative}
+.urgP__quadro::before{content:"";position:absolute;inset:var(--space-2) calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2);
+  border:1px solid color-mix(in srgb, var(--brand) 45%, transparent);border-radius:var(--radius-lg);pointer-events:none}
+.urgP__painel{position:relative;isolation:isolate;overflow:clip;background:var(--dusk);color:var(--ink-on-dusk);
+  border-radius:var(--radius-lg);padding:var(--space-5) var(--space-4);display:grid;gap:var(--space-4);align-items:center}
+@media (min-width:900px){.urgP__painel{grid-template-columns:minmax(0,1fr) auto;padding:var(--space-5)}}
+.urgP__fundo{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.urgP__fundo::before{content:"";position:absolute;left:50%;bottom:-14%;width:72%;height:58%;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 100%, color-mix(in srgb, var(--brand) 22%, transparent) 0%, transparent 100%);
+  filter:blur(56px)}
+.urgP__fundo::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(to right, color-mix(in srgb, var(--brand) 9%, transparent) 1px, transparent 1px);
+  background-size:clamp(48px,6vw,80px) 100%;
+  -webkit-mask-image:linear-gradient(to top, black 0%, transparent 55%);
+          mask-image:linear-gradient(to top, black 0%, transparent 55%)}
+.urgP__badge{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--step--1);font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--brand);
+  border:1px solid color-mix(in srgb, var(--brand) 40%, transparent);
+  border-radius:999px;padding:.35rem .8rem;margin-bottom:var(--space-2)}
+.urgP__badge svg{flex:none}
+.urgP h2{color:var(--ink-on-dusk);margin-bottom:.5rem}
+.urgP__txt p{color:var(--muted-on-dusk);max-width:52ch}
+.urgP__ligar{text-align:left}
+@media (min-width:900px){.urgP__ligar{text-align:right}}
+/* número = CTA. Sublinhado que cresce por scaleX (técnica ButtonExpand do Museu, portada). */
+.urgP__tel{position:relative;display:inline-block;font-family:var(--font-display);font-size:var(--step-3);
+  letter-spacing:-0.03em;line-height:1;color:var(--brand);text-decoration:none}
+.urgP__tel::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;transition:transform 200ms var(--ease)}
+.urgP__tel:hover::after{transform:scaleX(1)}
+.urgP__tel:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:4px}
+.urgP__nota{font-size:var(--step--1);color:var(--muted-on-dusk);margin-top:var(--space-2)}
+</style>
+<section class="urgP">
+  <div class="wrap">
+    <div class="urgP__quadro reveal">
+      <div class="urgP__painel">
+        <div class="urgP__fundo" aria-hidden="true"></div>
+        <div class="urgP__txt">
+          <p class="urgP__badge"><svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="currentColor"/></svg>{{badge}}</p>
+          <h2>{{titulo}}</h2>
+          <p>{{texto}}</p>
+        </div>
+        <div class="urgP__ligar">
+          <a class="urgP__tel" href="{{ctaHref}}">{{ctaLabel}}</a>
+          <p class="urgP__nota">{{nota_chamada}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

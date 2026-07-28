@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipely — Hero</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  
+    <style data-bundled-from="/pipely/global.css">
+/* ==========================================================================
+   Layout tokens
+   No fluid scaling: body font-size is fixed at 1rem (16px) on every breakpoint.
+   Text sizes change ONLY via the bucket media queries below; paddings/gaps are rem.
+   ========================================================================== */
+
+:root {
+  --container-padding: 1.5rem;  /* 24px — same across breakpoints */
+  --radius-container: 20px;     /* outer section containers — desktop / tablet */
+  --radius-card: 20px;          /* inner cards — desktop */
+}
+
+@media (max-width: 991px) {
+  :root {
+    --radius-card: 16px;        /* tablet */
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --radius-container: 16px;   /* landscape — min for outer */
+    --radius-card: 12px;        /* landscape */
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --radius-container: 16px;   /* portrait — min */
+    --radius-card: 12px;        /* portrait */
+  }
+}
+
+/* ==========================================================================
+   Design Tokens
+   ========================================================================== */
+
+:root {
+  /* Brand & accents */
+  --color-primary: #ebf213;          /* yellow button */
+  --color-primary-hover: #d8df11;    /* yellow button hover (darker) */
+  --color-accent: #ebf213;
+  --color-button-dark: #131313;
+
+  /* Background pastels */
+  --color-bg-white: #ffffff;
+  --color-bg-dark: #000000;
+  --color-bg-gray-1: #f7f5f1;        /* cream */
+  --color-bg-gray-2: #ede8df;        /* cream darker — inactive tab hover */
+  --color-bg-purple: #e0dbff;        /* lavender */
+  --color-bg-pink: #ffbdf5;
+  --color-bg-yellow: #fcffa8;        /* soft yellow */
+  --color-bg-soft-blue: #dae8fd;
+  --color-bg-soft-green: #eefcd1;    /* used in blog rotation (3rd-from-last) */
+  --color-bg-orange: #fcefd1;        /* used in blog rotation (last) */
+  --color-bg-placeholder: #dedede;
+  --color-bg-page: #CBC9C6;          /* between/around sections */
+
+  /* Text */
+  --color-text-primary: #000000;
+  --color-text-secondary: #535353;
+  --color-text-placeholder: #4e4e4e; /* form input placeholder */
+  --color-text-muted: #aeaeae;       /* inactive milestone text, etc. */
+  --color-error: #c0392b;            /* form field invalid + error messages */
+  --color-text-white: #ffffff;
+  --color-text-body-white: #bfbebe;
+
+  /* Outline */
+  --color-border: #d7d7d7;
+  --color-border-dark: #2a3839;
+
+  /* Typography */
+  --font-heading: 'Host Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing scale */
+  --spacing-xs: 0.25em;   /* 4px */
+  --spacing-sm: 0.5em;    /* 8px */
+  --spacing-md: 1em;      /* 16px */
+  --spacing-lg: 1.5em;    /* 24px */
+  --spacing-xl: 2em;      /* 32px */
+  --spacing-2xl: 2.5em;   /* 40px */
+  --spacing-3xl: 3em;     /* 48px */
+  --spacing-4xl: 3.25em;  /* 52px — section internal padding */
+  --spacing-5xl: 4em;     /* 64px */
+  --spacing-section-gap: 1.25em; /* 20px between sections */
+
+  /* Border radius */
+  --radius-xs: 0.25em;    /* 4px */
+  --radius-sm: 0.5em;     /* 8px */
+  --radius-md: 0.75em;    /* 12px */
+  --radius-lg: 1.25em;    /* 20px — section card */
+  --radius-pill: 2.25em;  /* 36px — social icon circle */
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;            /* fixed 16px at every viewport — no fluid scaling */
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-page);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tablet (≤991): tighten the horizontal gutter to 20px */
+@media (max-width: 991px) {
+  body { padding: 20px 20px; }
+}
+
+/* Landscape (≤767) and below: 16px gutter all around, 16px rhythm between sections */
+@media (max-width: 767px) {
+  body { padding: 16px; gap: 16px; }
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+/* ==========================================================================
+   Typography Buckets — single source of truth
+   ========================================================================== */
+
+/* ── Bucket 68px (Hero heading) */
+.hero__heading {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  font-size: 4.25rem !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.03em !important;
+}
+
+/* ── Bucket 60px (Section heading) */
+
+/* ── Bucket 48px (Story heading) */
+/* Per-selector letter-spacing override (Figma: -2% for blog post heading). */
+
+/* ── Bucket 36px (Medium heading) */
+
+/* ── Bucket 24px (Card title / quote) */
+
+/* ── Author name (20px) */
+
+/* Tablet overrides */
+@media (max-width: 991px) {
+  .hero__heading {
+    font-size: 3.5rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Mobile landscape overrides */
+@media (max-width: 767px) {
+  .hero__heading {
+    font-size: 2.75rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Mobile portrait overrides */
+@media (max-width: 479px) {
+  .hero__heading {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* ==========================================================================
+   Base Utilities
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.container--padded {
+  /* Padding is now provided by body's padding-inline. Kept as a no-op to avoid
+     touching every component template. */
+  padding-inline: 0;
+}
+
+/* Section eyebrow label — uppercase caption 14px / +12% tracking */
+/* Scaled caption — same shape, 20px, primary text. Used as card titles in
+   service tiles where the title reads like an uppercase tag, not a heading. */
+
+/* Button — base shared rules. Caption-style text (uppercase + tracking) like nav links. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+  height: 3rem;                /* 48px fixed */
+  padding-inline: 1.75rem;     /* 28px */
+  font-family: var(--font-body);
+  font-size: 0.875rem;         /* 14px — matches nav link */
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.75rem;      /* 12px — matches navbar toggle */
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  overflow: clip;
+  /* Use the standalone `scale` property (not `transform`) so GSAP-driven
+     transform animations (entrance) don't fight this transition.
+     easeOutQuint — strong front-loaded deceleration for a soft, gentle press feel. */
+  transition: scale 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* text-roll-hover (see ANIMATIONS.md). Mask = exactly one line; both text
+   spans stack and translate up together on hover. */
+.btn__mask {
+  display: flex;
+  flex-direction: column;
+  height: 1lh;
+  overflow: clip;
+}
+.btn__text {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+}
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-text-white);
+  border: 1px solid var(--color-text-white);
+}
+
+/* ==========================================================================
+   Hover gating
+   ========================================================================== */
+
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    /* !important needed: GSAP entrance scripts set inline `scale: none` on
+       button elements (hardware acceleration), which would otherwise win over
+       this hover rule and prevent the press effect from showing. */
+    scale: 0.95 !important;
+  }
+  .btn:hover .btn__text,
+  .btn:focus-visible .btn__text {
+    transform: translateY(-100%);
+  }
+}
+
+/* ==========================================================================
+   Focus & Accessibility
+   ========================================================================== */
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.5rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5em;
+  text-decoration: none;
+}
+
+/* Portrait — buttons stretch full width */
+@media (max-width: 479px) {
+  .btn {
+    width: 100%;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- TEMLIS-INLINED-NAVBAR (pipely-navbar) -->
+    <header class="navbar-wrap">
+          <div class="container container--padded">
+            <nav class="navbar" aria-label="Primary" data-open="false">
+              <div class="navbar__bar">
+                <a href="/" class="navbar__brand" aria-label="Pipely home">
+                  <img class="navbar__logo" src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/Logo.svg" alt="Pipely" width="114" height="40">
+                </a>
+    
+                <ul class="navbar__menu">
+                  <li>
+                    <a class="navbar__link" href="/services">
+                      <span class="navbar__link-mask">
+                        <span class="navbar__link-text">Services</span>
+                        <span class="navbar__link-text" aria-hidden="true">Services</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="navbar__link" href="/case-studies">
+                      <span class="navbar__link-mask">
+                        <span class="navbar__link-text">Case Studies</span>
+                        <span class="navbar__link-text" aria-hidden="true">Case Studies</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="navbar__link" href="/about">
+                      <span class="navbar__link-mask">
+                        <span class="navbar__link-text">About us</span>
+                        <span class="navbar__link-text" aria-hidden="true">About us</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="navbar__link" href="/blog">
+                      <span class="navbar__link-mask">
+                        <span class="navbar__link-text">Blog</span>
+                        <span class="navbar__link-text" aria-hidden="true">Blog</span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+    
+                <div class="navbar__actions">
+                  <a href="/contact" class="btn btn--primary navbar__cta">
+                    <span class="btn__mask">
+                      <span class="btn__text">Contact</span>
+                      <span class="btn__text" aria-hidden="true">Contact</span>
+                    </span>
+                  </a>
+                  <button type="button" class="navbar__toggle" aria-label="Toggle menu" aria-controls="navbar-panel" aria-expanded="false">
+                    <span class="navbar__toggle-burger" aria-hidden="true">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <span class="navbar__toggle-close" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="5" y1="5" x2="19" y2="19"></line>
+                        <line x1="19" y1="5" x2="5" y2="19"></line>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+    
+              <div class="navbar__panel" id="navbar-panel" inert="">
+                <div class="navbar__panel-inner">
+                  <ul class="navbar__panel-menu">
+                    <li>
+                      <a class="navbar__panel-link" href="/services">Services</a>
+                    </li>
+                    <li>
+                      <a class="navbar__panel-link" href="/case-studies">Case Studies</a>
+                    </li>
+                    <li>
+                      <a class="navbar__panel-link" href="/about">About us</a>
+                    </li>
+                    <li>
+                      <a class="navbar__panel-link" href="/blog">Blog</a>
+                    </li>
+                  </ul>
+                  <a href="/contact" class="btn btn--primary navbar__panel-cta">
+                    <span class="btn__mask">
+                      <span class="btn__text">Contact</span>
+                      <span class="btn__text" aria-hidden="true">Contact</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div class="navbar__backdrop" aria-hidden="true"></div>
+            </nav>
+          </div>
+        </header>
+
+    <section class="hero">
+      <div class="container container--padded">
+        <div class="hero__card">
+          <img class="hero__bg" src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-home.avif" alt="A consultant working on a laptop at a wooden table" width="2122" height="1189">
+          <div class="hero__content">
+            <div class="hero__main">
+              <div class="hero__text">
+                <h1 class="hero__heading">Expert insights. Custom solutions.</h1>
+                <p class="hero__sub">
+                  Easily adapt to changes and scale your operations with our flexible infrastructure, designed to support your business.
+                </p>
+              </div>
+              <div class="hero__actions">
+                <a href="/contact" class="btn btn--primary hero__btn">
+                  <span class="btn__mask">
+                    <span class="btn__text">Book a call</span>
+                    <span class="btn__text" aria-hidden="true">Book a call</span>
+                  </span>
+                </a>
+                <a href="/case-studies" class="btn btn--outline hero__btn">
+                  <span class="btn__mask">
+                    <span class="btn__text">Our work</span>
+                    <span class="btn__text" aria-hidden="true">Our work</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="hero__social">
+              <div class="hero__avatars" aria-hidden="true">
+                <span class="hero__avatar">
+                  <img src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-1.avif" alt="" width="100" height="100">
+                </span>
+                <span class="hero__avatar">
+                  <img src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-2.avif" alt="" width="100" height="100">
+                </span>
+                <span class="hero__avatar">
+                  <img src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-3.avif" alt="" width="100" height="100">
+                </span>
+                <span class="hero__avatar">
+                  <img src="https://d173woph5zl366.cloudfront.net/pipely/assets/images/hero-avatar-4.avif" alt="" width="100" height="100">
+                </span>
+                <span class="hero__avatar hero__avatar--count">10K+</span>
+              </div>
+              <p class="hero__proof">100+ consultants trust Pipely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  
+
+</body></html>

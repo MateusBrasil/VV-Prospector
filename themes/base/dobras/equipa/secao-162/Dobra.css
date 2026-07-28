@@ -1,0 +1,203 @@
+/* PORTADA À MÃO em 2026-07-28.
+ *
+ * A folha da origem já vinha limpa (sem @import partido, sem `body` nem `:root` globais,
+ * tudo escopado). As mudanças foram três:
+ *
+ *  1. O par de baralhos `--desktop` / `--mobile` desapareceu. Eram dois blocos de HTML
+ *     com as mesmas pessoas, um escondido em cada breakpoint. Agora é um baralho só e o
+ *     corte no telemóvel faz-se escondendo as fichas a partir da quinta.
+ *  2. O hover era JS (gsap: scale, box-shadow, height, padding, opacity). Passou a CSS,
+ *     com `height` fixo em vez de `auto` — `auto` não é animável, e era por isso que a
+ *     origem precisava de JS. O `prefers-reduced-motion` do sistema já trava isto.
+ *  3. Título e subtítulo estavam ambos em `var(--acento)`. Num painel inteiro de texto
+ *     o acento deixa de acentuar; passam para `--cor-texto` e `--cor-texto-suave`, e o
+ *     acento fica só no traço superior. O painel passou a `--base-200` para se separar
+ *     da tela, que na odontologia é quase branca.
+ */
+
+[data-dobra="equipa-secao-162"] {
+  --specialists-card: var(--base-100);
+}
+
+[data-dobra="equipa-secao-162"] *,
+[data-dobra="equipa-secao-162"] *::before,
+[data-dobra="equipa-secao-162"] *::after {
+  box-sizing: border-box;
+}
+
+[data-dobra="equipa-secao-162"] .specialists {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: var(--respiro) var(--respiro-compacto) var(--respiro);
+  background-color: var(--base-100);
+  font-family: var(--fonte-corpo);
+  overflow: hidden;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__panel {
+  position: relative;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--largura-max);
+  margin-top: 3rem;
+  padding: 7.5rem 1rem 3rem;
+  background-color: var(--base-200);
+  border-top: 2px solid var(--acento);
+  border-radius: 2rem;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__header {
+  max-width: 53.75rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__title {
+  margin: 0 0 1.5rem;
+  color: var(--cor-texto);
+  font-family: var(--fonte-display);
+  font-size: var(--h3);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+}
+
+[data-dobra="equipa-secao-162"] .specialists__subtitle {
+  max-width: 42ch;
+  margin: 0 auto;
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__cards {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__deck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: scale(0.7);
+  transform-origin: center;
+  pointer-events: auto;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card {
+  position: relative;
+  flex-shrink: 0;
+  width: 10rem;
+  border-radius: 1.5rem;
+  transform: rotate(var(--card-rotate, 0deg));
+  transform-origin: 50% 50%;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card:hover,
+[data-dobra="equipa-secao-162"] .specialists__card:focus-within {
+  z-index: 10;
+  transform: rotate(var(--card-rotate, 0deg)) scale(1.12);
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card-inner {
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--specialists-card);
+  border: 0.25rem solid var(--specialists-card);
+  border-radius: 1.5rem;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card-img {
+  display: block;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card-info {
+  height: 0;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  text-align: center;
+  opacity: 0;
+  transition: height 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              padding 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card:hover .specialists__card-info,
+[data-dobra="equipa-secao-162"] .specialists__card:focus-within .specialists__card-info {
+  height: 2.875rem;
+  padding: 0.375rem 0.5rem;
+  opacity: 1;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card-name {
+  margin: 0 0 0.25rem;
+  color: var(--cor-texto);
+  font-family: var(--fonte-corpo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card-role {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(1) { --card-rotate: -12deg; margin-left: -2.5rem; margin-top: 0; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(2) { --card-rotate: -8deg;  margin-left: -4rem;   margin-top: -2.25rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(3) { --card-rotate: -5deg;  margin-left: -3rem;   margin-top: -4.25rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(4) { --card-rotate: -2deg;  margin-left: -3rem;   margin-top: -5.375rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(5) { --card-rotate: 2deg;   margin-left: -3rem;   margin-top: -5.375rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(6) { --card-rotate: 5deg;   margin-left: -3rem;   margin-top: -4.25rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(7) { --card-rotate: 8deg;   margin-left: -3rem;   margin-top: -2.25rem; }
+[data-dobra="equipa-secao-162"] .specialists__card:nth-child(8) { --card-rotate: 12deg;  margin-left: -3rem;   margin-top: 0; }
+
+/* Telemóvel: o arco de 8 não cabe, mostram-se 4 fichas. É corte de LAYOUT, não um
+   segundo bloco de HTML com as mesmas pessoas, que era o que a origem fazia. */
+@media (max-width: 767px) {
+  [data-dobra="equipa-secao-162"] .specialists__card:nth-child(n + 5) {
+    display: none;
+  }
+  [data-dobra="equipa-secao-162"] .specialists__deck {
+    transform: scale(0.62);
+  }
+}
+
+@media (min-width: 768px) {
+  [data-dobra="equipa-secao-162"] .specialists__panel {
+    margin-top: 0;
+    padding-top: 10.8125rem;
+    padding-bottom: 5.125rem;
+    border-radius: 3rem;
+  }
+  [data-dobra="equipa-secao-162"] .specialists__cards { top: 3rem; }
+  [data-dobra="equipa-secao-162"] .specialists__deck { transform: scale(0.75); }
+}
+
+@media (min-width: 1024px) {
+  [data-dobra="equipa-secao-162"] .specialists__deck { transform: scale(1); }
+}

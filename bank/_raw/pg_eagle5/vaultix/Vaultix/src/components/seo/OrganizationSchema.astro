@@ -1,0 +1,18 @@
+---
+import JsonLd from "./JsonLd.astro";
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "";
+
+const org = {
+  "@type": "Organization",
+  name: "Eagle",
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description: "Eagle is a terminal-grade data & AI ops platform. Publique faster. Escale safer.",
+  sameAs: [
+    // social links here when available
+  ],
+};
+---
+
+<JsonLd data={org} />

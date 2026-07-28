@@ -1,0 +1,77 @@
+[data-dobra="botao-dione-button"] *,[data-dobra="botao-dione-button"] *::after,[data-dobra="botao-dione-button"] *::before{
+            box-sizing: border-box;
+        }
+[data-dobra="botao-dione-button"]{
+            font-size: 18px;
+        }
+[data-dobra="botao-dione-button"]{
+            margin: 0;
+            --color-text: var(--base-600);
+            --color-number: var(--base-200);
+            --color-bg: var(--base-100);
+            --color-link: var(--acento);
+            --color-link-hover: var(--base-600);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            font-family: var(--fonte-corpo);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            
+            
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh;
+        }
+[data-dobra="botao-dione-button"] .button{
+            pointer-events: auto;
+            cursor: pointer;
+            background: var(--base-100);
+            border: none;
+            padding: 1.5rem 3rem;
+            margin: 0;
+            font-family: var(--fonte-corpo);
+            font-size: inherit;
+            position: relative;
+            display: inline-block;
+        }
+[data-dobra="botao-dione-button"] .button::before,[data-dobra="botao-dione-button"] .button::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+[data-dobra="botao-dione-button"] .button--dione{
+            background: none;
+            font-family: var(--fonte-corpo);
+            font-weight: 500;
+            font-style: italic;
+            padding: 1.5rem 3rem;
+        }
+[data-dobra="botao-dione-button"] .button--dione span{
+            display: inline-block;
+            position: relative;
+            color: var(--base-100);
+            z-index: 10; 
+        }
+[data-dobra="botao-dione-button"] .button--dione::before{
+            content: '';
+            background: var(--base-600);
+            transition: transform 0.3s cubic-bezier(0.2,1,0.7,1);
+        }
+[data-dobra="botao-dione-button"] .button--dione:hover::before{
+            transform: scale3d(0.9, 0.8, 1);
+        }
+[data-dobra="botao-dione-button"] .button--dione::after{
+            content: '';
+            border: 1px solid var(--base-600);
+            transition: transform 0.3s cubic-bezier(0.2,1,0.7,1);
+            border-radius: 0px;
+            transform: scale3d(0.85, 0.65, 1);
+        }
+[data-dobra="botao-dione-button"] .button--dione:hover::after{
+            transform: scale3d(1,1,1);
+        }
+
+    

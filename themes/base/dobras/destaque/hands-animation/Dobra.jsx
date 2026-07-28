@@ -1,0 +1,186 @@
+"use client";
+/* DOBRA gerada pela esteira a partir de bank/_componentes/ui-effects/hands-animation
+ *
+ * O que foi arrancado da origem: fonte, peso, cor e todo o texto e foto do template.
+ * O que ficou: a estrutura e a mecânica de animação, que é o material que vale.
+ * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).
+ */
+import { useRef } from 'react';
+import './Dobra.css';
+export default function Dobra({ slots: s = {} }) {
+  const raiz = useRef(null);
+  /* a origem não trazia JS */
+  return (
+    <section className="dobra" data-dobra="destaque-hands-animation" ref={raiz}>
+      <!DOCTYPE html>
+      <html lang="pt-BR">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Animação de Mão - Uiverse</title>
+        <style>
+          /* Estilos para centralizar a animação na página */
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--base-100);
+            margin: 0;
+            overflow: hidden;
+          }
+      
+          /* From Uiverse.io by Pradeepsaranbishnoi */ 
+          .🤚 {
+            --skin-color: var(--acento);
+            --tap-speed: 0.6s;
+            --tap-stagger: 0.1s;
+            position: relative;
+            width: 80px;
+            height: 60px;
+            margin-left: 80px;
+          }
+      
+          .🤚:before {
+            content: '';
+            display: block;
+            width: 180%;
+            height: 75%;
+            position: absolute;
+            top: 70%;
+            right: 20%;
+            background-color: black;
+            border-radius: 40px 10px;
+            filter: blur(10px);
+            opacity: 0.3;
+          }
+      
+          .🌴 {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--skin-color);
+            border-radius: 10px 40px;
+          }
+      
+          .👍 {
+            position: absolute;
+            width: 120%;
+            height: 38px;
+            background-color: var(--skin-color);
+            bottom: -18%;
+            right: 1%;
+            transform-origin: calc(100% - 20px) 20px;
+            transform: rotate(-20deg);
+            border-radius: 30px 20px 20px 10px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            border-left: 2px solid rgba(0, 0, 0, 0.1);
+          }
+      
+          .👍:after {
+            width: 20%;
+            height: 60%;
+            content: '';
+            background-color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            bottom: -8%;
+            left: 5px;
+            border-radius: 60% 10% 10% 30%;
+            border-right: 2px solid rgba(0, 0, 0, 0.05);
+          }
+      
+          .👉 {
+            position: absolute;
+            width: 80%;
+            height: 35px;
+            background-color: var(--skin-color);
+            bottom: 32%;
+            right: 64%;
+            transform-origin: 100% 20px;
+            animation-duration: calc(var(--tap-speed) * 2);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            transform: rotate(10deg);
+          }
+      
+          .👉:before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 30px;
+            background-color: var(--skin-color);
+            bottom: 8%;
+            right: 65%;
+            transform-origin: calc(100% - 20px) 20px;
+            transform: rotate(-60deg);
+            border-radius: 20px;
+          }
+      
+          .👉:nth-child(1) {
+            animation-delay: 0;
+            filter: brightness(70%);
+            animation-name: tap-upper-1;
+          }
+      
+          .👉:nth-child(2) {
+            animation-delay: var(--tap-stagger);
+            filter: brightness(80%);
+            animation-name: tap-upper-2;
+          }
+      
+          .👉:nth-child(3) {
+            animation-delay: calc(var(--tap-stagger) * 2);
+            filter: brightness(90%);
+            animation-name: tap-upper-3;
+          }
+      
+          .👉:nth-child(4) {
+            animation-delay: calc(var(--tap-stagger) * 3);
+            filter: brightness(100%);
+            animation-name: tap-upper-4;
+          }
+      
+          @keyframes tap-upper-1 {
+            0%, 50%, 100% {
+              transform: rotate(10deg) scale(0.4);
+            }
+            40% {
+              transform: rotate(50deg) scale(0.4);
+            }
+          }
+      
+          @keyframes tap-upper-2 {
+            0%, 50%, 100% {
+              transform: rotate(10deg) scale(0.6);
+            }
+            40% {
+              transform: rotate(50deg) scale(0.6);
+            }
+          }
+      
+          @keyframes tap-upper-3 {
+            0%, 50%, 100% {
+              transform: rotate(10deg) scale(0.8);
+            }
+            40% {
+              transform: rotate(50deg) scale(0.8);
+            }
+          }
+      
+          @keyframes tap-upper-4 {
+            0%, 50%, 100% {
+              transform: rotate(10deg) scale(1);
+            }
+            40% {
+              transform: rotate(50deg) scale(1);
+            }
+          }
+        </style>
+      </head>
+      <body>
+    </section>
+  );
+}

@@ -1,0 +1,602 @@
+---
+// Animated halftone dots background with cursor displace.
+// Place inside a position:relative parent — fills it via inset:0.
+//
+// Toggle the in-page debug panel with Shift+H to tune values live.
+
+interface Props {
+  class?: string;
+  speed?: number;
+  cellSize?: number;
+  gap?: number;
+  threshold?: number;
+  minSize?: number;
+  maxSize?: number;
+  color?: string;
+  cursorRadius?: number;
+  pushDistance?: number;
+  mouseSmooth?: number;
+  /** Cursor-push falloff curve.
+   *  - "ease-in" (default): max push at the cursor, quadratic falloff to the
+   *    edge. Preserves the existing Hero / Solution / HowItWorks feel.
+   *  - "ring": no push at the cursor, peak push at mid-radius, no push at the
+   *    edge. Sinusoidal bell — dots ripple around the cursor without leaving
+   *    a hole in the middle. */
+  pushCurve?: "ease-in" | "ring";
+  /** Softness exponent for the "ring" curve. <1 widens the bell (push felt
+   *  earlier), >1 sharpens the peak. Default 1 (plain sine). */
+  pushSoftness?: number;
+  /** Disable cursor-driven displacement entirely. Used when the bg should
+   *  feel "ambient" (e.g. footer, step cards) — saves the mousemove listener
+   *  and skips the push math each frame. Default true (interactive). */
+  cursorReactive?: boolean;
+  /** Override the drift direction of the noise field on each axis.
+   *  Defaults match the original Hero preset. */
+  driftX?: number;
+  driftY?: number;
+  /** Override the warp strength of the noise field. Default 0.46. */
+  warp?: number;
+  /** Seconds added to the initial time so multiple instances don't all
+   *  evolve in lockstep. Default 0 (matches existing behaviour). */
+  phaseOffset?: number;
+}
+
+const {
+  class: className = "",
+  speed = 1.0,
+  cellSize = 12,
+  gap = 1.5,
+  threshold = 0.7,
+  minSize = 0.05,
+  maxSize = 0.8,
+  color = "#b5d2ff",
+  cursorRadius = 300,
+  pushDistance = 10,
+  mouseSmooth = 0.09,
+  pushCurve = "ease-in",
+  pushSoftness = 1,
+  cursorReactive = true,
+  driftX = -0.4,
+  driftY = -0.32,
+  warp = 0.46,
+  phaseOffset = 0,
+} = Astro.props;
+---
+
+<div
+  class:list={["halftone-canvas", className]}
+  data-halftone
+  data-speed={speed}
+  data-cell={cellSize}
+  data-gap={gap}
+  data-threshold={threshold}
+  data-min={minSize}
+  data-max={maxSize}
+  data-color={color}
+  data-radius={cursorRadius}
+  data-push={pushDistance}
+  data-smooth={mouseSmooth}
+  data-push-curve={pushCurve}
+  data-push-softness={pushSoftness}
+  data-cursor-reactive={cursorReactive ? "1" : "0"}
+  data-drift-x={driftX}
+  data-drift-y={driftY}
+  data-warp={warp}
+  data-phase-offset={phaseOffset}
+>
+  <canvas></canvas>
+</div>
+
+<style>
+  .halftone-canvas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .halftone-canvas canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+  }
+
+  /* Debug panel (shared singleton, injected by first instance) */
+  :global(.halftone-debug) {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 280px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(17, 17, 17, 0.96);
+    border: 1px solid #343434;
+    padding: 16px 18px;
+    z-index: 9999;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #d0d0d0;
+    backdrop-filter: blur(0px);
+    display: none;
+  }
+  :global(.halftone-debug.is-open) {
+    display: block;
+  }
+  :global(.halftone-debug h2) {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(181, 210, 255, 0.7);
+    margin-bottom: 12px;
+  }
+  :global(.halftone-debug .row) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  :global(.halftone-debug label) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b0b0b0;
+  }
+  :global(.halftone-debug .v) {
+    font-variant-numeric: tabular-nums;
+    color: #b5d2ff;
+  }
+  :global(.halftone-debug input[type="range"]) {
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #343434;
+    outline: none;
+    cursor: pointer;
+  }
+  :global(.halftone-debug input[type="range"]::-webkit-slider-thumb) {
+    appearance: none;
+    width: 11px;
+    height: 11px;
+    background: #b5d2ff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  :global(.halftone-debug .hint) {
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    text-align: right;
+  }
+  :global(.halftone-debug .copy) {
+    margin-top: 10px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #343434;
+    color: #b0b0b0;
+    padding: 6px 8px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  :global(.halftone-debug .copy:hover) {
+    border-color: #b5d2ff;
+    color: #b5d2ff;
+  }
+</style>
+
+<script>
+  type HalftoneInstance = {
+    el: HTMLElement;
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+    config: Record<string, number | string | boolean>;
+    mouse: {
+      x: number; y: number;
+      targetX: number; targetY: number;
+      inside: boolean;
+    };
+    stop: () => void;
+  };
+
+  const instances: HalftoneInstance[] = [];
+
+  function hash3(x: number, y: number, z: number) {
+    const n = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453;
+    return n - Math.floor(n);
+  }
+  function vnoise3(x: number, y: number, z: number) {
+    const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+    const xf = x - xi, yf = y - yi, zf = z - zi;
+    const sx = xf * xf * (3 - 2 * xf);
+    const sy = yf * yf * (3 - 2 * yf);
+    const sz = zf * zf * (3 - 2 * zf);
+    const c000 = hash3(xi, yi, zi);
+    const c100 = hash3(xi + 1, yi, zi);
+    const c010 = hash3(xi, yi + 1, zi);
+    const c110 = hash3(xi + 1, yi + 1, zi);
+    const c001 = hash3(xi, yi, zi + 1);
+    const c101 = hash3(xi + 1, yi, zi + 1);
+    const c011 = hash3(xi, yi + 1, zi + 1);
+    const c111 = hash3(xi + 1, yi + 1, zi + 1);
+    const x00 = c000 * (1 - sx) + c100 * sx;
+    const x10 = c010 * (1 - sx) + c110 * sx;
+    const x01 = c001 * (1 - sx) + c101 * sx;
+    const x11 = c011 * (1 - sx) + c111 * sx;
+    const y0 = x00 * (1 - sy) + x10 * sy;
+    const y1 = x01 * (1 - sy) + x11 * sy;
+    return y0 * (1 - sz) + y1 * sz;
+  }
+  function smoothstep(e0: number, e1: number, x: number) {
+    const t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0)));
+    return t * t * (3 - 2 * t);
+  }
+
+  function setupInstance(el: HTMLElement) {
+    const canvas = el.querySelector("canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d")!;
+    if (!ctx) return;
+
+    const ds = el.dataset;
+    const config: Record<string, number | string | boolean> = {
+      speed: parseFloat(ds.speed || "1.0"),
+      cellSize: parseInt(ds.cell || "12", 10),
+      gap: parseFloat(ds.gap || "1.5"),
+      threshold: parseFloat(ds.threshold || "0.7"),
+      minSize: parseFloat(ds.min || "0.05"),
+      maxSize: parseFloat(ds.max || "0.8"),
+      color: ds.color || "#b5d2ff",
+      cursorRadius: parseFloat(ds.radius || "300"),
+      pushDistance: parseFloat(ds.push || "10"),
+      mouseSmooth: parseFloat(ds.smooth || "0.09"),
+      pushCurve: ds.pushCurve || "ease-in",
+      pushSoftness: parseFloat(ds.pushSoftness || "1"),
+      cursorReactive: ds.cursorReactive !== "0",
+      phaseOffset: parseFloat(ds.phaseOffset || "0"),
+      // baked noise field params (Hero presets — overridable via props)
+      scaleX: 0.05,
+      scaleY: 0.05,
+      warp: parseFloat(ds.warp || "0.46"),
+      driftX: parseFloat(ds.driftX || "-0.4"),
+      driftY: parseFloat(ds.driftY || "-0.32"),
+      softness: 0.22,
+    };
+
+    const mouse = {
+      x: -9999, y: -9999,
+      targetX: -9999, targetY: -9999,
+      inside: false,
+    };
+
+    let dpr = Math.max(1, window.devicePixelRatio || 1);
+    let stageW = 0, stageH = 0;
+
+    function resize() {
+      const r = el.getBoundingClientRect();
+      // Round up so the canvas always reaches the wrapper edge — Math.floor
+      // could leave a sub-pixel gap on the right/bottom. The grid loop adds
+      // an extra cell anyway, so overdraw is fine and gets clipped by overflow.
+      stageW = Math.max(1, Math.ceil(r.width));
+      stageH = Math.max(1, Math.ceil(r.height));
+      dpr = Math.max(1, window.devicePixelRatio || 1);
+      canvas.width = stageW * dpr;
+      canvas.height = stageH * dpr;
+      canvas.style.width = stageW + "px";
+      canvas.style.height = stageH + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.imageSmoothingEnabled = false;
+    }
+    // Defer first measurement until after the next paint so responsive media
+    // queries (mobile flex-col → desktop flex-row) have applied. Otherwise the
+    // canvas locks in to the intermediate width and only fills part of the wrap.
+    requestAnimationFrame(() => requestAnimationFrame(resize));
+    const ro = new ResizeObserver(resize);
+    ro.observe(el);
+    // Re-measure once fonts/images settle layout — covers late shifts the RO
+    // may miss when the element comecas off-screen.
+    window.addEventListener("load", resize, { once: true });
+
+    // Track on document so events still arrive when panel content (z-10) sits on top.
+    function onMove(e: MouseEvent) {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+        if (mouse.inside) {
+          mouse.inside = false;
+          mouse.targetX = -9999;
+          mouse.targetY = -9999;
+        }
+        return;
+      }
+      mouse.targetX = x;
+      mouse.targetY = y;
+      if (!mouse.inside) {
+        mouse.x = x;
+        mouse.y = y;
+      }
+      mouse.inside = true;
+    }
+    if (config.cursorReactive) {
+      document.addEventListener("mousemove", onMove);
+    }
+
+    // phaseOffset (seconds) shifts the noise field's clock so multiple
+    // instances don't evolve in lockstep.
+    const t0 = performance.now() - (config.phaseOffset as number) * 1000;
+    let alive = true;
+    function frame() {
+      if (!alive) return;
+      const now = performance.now();
+      const t = (now - t0) * 0.001;
+
+      if (config.cursorReactive && mouse.inside) {
+        mouse.x += (mouse.targetX - mouse.x) * (config.mouseSmooth as number);
+        mouse.y += (mouse.targetY - mouse.y) * (config.mouseSmooth as number);
+      }
+
+      ctx.clearRect(0, 0, stageW, stageH);
+      ctx.fillStyle = config.color as string;
+
+      const CELL = config.cellSize as number;
+      const DOT = CELL - (config.gap as number);
+      // Use ceil + 1 so the grid overflows past the right/bottom edges.
+      // The canvas itself clips, so partial cells fill the gaps.
+      const cols = Math.ceil(stageW / CELL) + 1;
+      const rows = Math.ceil(stageH / CELL) + 1;
+      const lo = (config.threshold as number) - (config.softness as number);
+      const hi = (config.threshold as number) + (config.softness as number);
+      const dx = t * (config.driftX as number);
+      const dy = t * (config.driftY as number);
+      const nz = t * (config.speed as number);
+
+      const cR = config.cursorRadius as number;
+      const cR2 = cR * cR;
+      const pushMax = config.pushDistance as number;
+      const pushCurve = config.pushCurve as string;
+      const pushSoftness = config.pushSoftness as number;
+      const minS = config.minSize as number;
+      const range = (config.maxSize as number) - minS;
+      const sX = config.scaleX as number;
+      const sY = config.scaleY as number;
+      const warp = config.warp as number;
+
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          let nx = x * sX + dx;
+          let ny = y * sY + dy;
+          if (warp > 0) {
+            nx += (vnoise3(nx * 1.3 + 11, ny * 1.3, nz * 0.7) - 0.5) * warp * 4;
+            ny += (vnoise3(nx * 1.3, ny * 1.3 + 23, nz * 0.7 + 7) - 0.5) * warp * 4;
+          }
+          const n = vnoise3(nx, ny, nz);
+          const sizeFactor = minS + smoothstep(lo, hi, n) * range;
+          const side = sizeFactor * DOT;
+
+          let cx = x * CELL + CELL / 2;
+          let cy = y * CELL + CELL / 2;
+
+          if (config.cursorReactive && mouse.inside) {
+            const ddx = cx - mouse.x;
+            const ddy = cy - mouse.y;
+            const dist2 = ddx * ddx + ddy * ddy;
+            if (dist2 < cR2 && dist2 > 0.01) {
+              const dist = Math.sqrt(dist2);
+              // Falloff curve — see HalftoneCanvas Props.pushCurve.
+              let eased: number;
+              if (pushCurve === "ring") {
+                // Sinusoidal bell raised to `pushSoftness`. <1 widens the
+                // bell (push felt over more of the radius). >1 sharpens it.
+                const tNorm = dist / cR;
+                const base = Math.sin(tNorm * Math.PI);
+                eased = pushSoftness === 1 ? base : Math.pow(base, pushSoftness);
+              } else {
+                // Default: max push at cursor, quadratic falloff to edge.
+                const t01 = 1 - dist / cR;
+                eased = t01 * t01;
+              }
+              const push = eased * pushMax;
+              const ux = ddx / dist;
+              const uy = ddy / dist;
+              cx += ux * push;
+              cy += uy * push;
+            }
+          }
+
+          ctx.fillRect(cx - side / 2, cy - side / 2, side, side);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    const stop = () => {
+      alive = false;
+      ro.disconnect();
+      document.removeEventListener("mousemove", onMove);
+    };
+
+    instances.push({ el, canvas, ctx, config, mouse, stop });
+  }
+
+  /* ---------- Debug panel (singleton, Shift+H toggles) ---------- */
+
+  function buildDebugPanel() {
+    if (document.querySelector(".halftone-debug")) return;
+    const panel = document.createElement("div");
+    panel.className = "halftone-debug";
+    panel.innerHTML = `
+      <h2>Halftone Debug</h2>
+      <div class="row">
+        <label>Speed <span class="v" id="hd-vSpeed"></span></label>
+        <input type="range" id="hd-speed" min="0" max="3" step="0.05">
+      </div>
+      <div class="row">
+        <label>Cell size <span class="v" id="hd-vCell"></span></label>
+        <input type="range" id="hd-cell" min="4" max="20" step="1">
+      </div>
+      <div class="row">
+        <label>Threshold <span class="v" id="hd-vThreshold"></span></label>
+        <input type="range" id="hd-threshold" min="0.40" max="0.85" step="0.01">
+      </div>
+      <div class="row">
+        <label>Min dot scale <span class="v" id="hd-vMin"></span></label>
+        <input type="range" id="hd-min" min="0" max="0.5" step="0.01">
+      </div>
+      <div class="row">
+        <label>Max dot scale <span class="v" id="hd-vMax"></span></label>
+        <input type="range" id="hd-max" min="0.5" max="1" step="0.01">
+      </div>
+      <div class="row">
+        <label>Cursor radius <span class="v" id="hd-vRadius"></span></label>
+        <input type="range" id="hd-radius" min="30" max="500" step="5">
+      </div>
+      <div class="row">
+        <label>Push distance <span class="v" id="hd-vPush"></span></label>
+        <input type="range" id="hd-push" min="0" max="80" step="1">
+      </div>
+      <div class="row">
+        <label>Mouse smooth <span class="v" id="hd-vSmooth"></span></label>
+        <input type="range" id="hd-smooth" min="0.02" max="1" step="0.01">
+      </div>
+      <div class="row" data-ring-only>
+        <label>Ring radius <span class="v" id="hd-vRingRadius"></span></label>
+        <input type="range" id="hd-ringRadius" min="60" max="600" step="5">
+      </div>
+      <div class="row" data-ring-only>
+        <label>Ring push <span class="v" id="hd-vRingPush"></span></label>
+        <input type="range" id="hd-ringPush" min="0" max="80" step="1">
+      </div>
+      <div class="row" data-ring-only>
+        <label>Ring softness <span class="v" id="hd-vSoftness"></span></label>
+        <input type="range" id="hd-softness" min="0.3" max="3" step="0.05">
+      </div>
+      <button class="copy" id="hd-copy">Copy current values</button>
+      <div class="hint">Shift + H to close</div>
+    `;
+    document.body.appendChild(panel);
+
+    const target = () => instances[0]?.config;
+
+    const sync = () => {
+      const c = target();
+      if (!c) return;
+      const set = (id: string, key: string, fixed?: number) => {
+        const inp = panel.querySelector("#hd-" + id) as HTMLInputElement;
+        const out = panel.querySelector("#hd-v" + id.charAt(0).toUpperCase() + id.slice(1)) as HTMLElement;
+        const v = c[key] as number;
+        inp.value = String(v);
+        out.textContent = fixed !== undefined ? v.toFixed(fixed) : String(v);
+      };
+      set("speed", "speed", 2);
+      set("cell", "cellSize");
+      set("threshold", "threshold", 2);
+      set("min", "minSize", 2);
+      set("max", "maxSize", 2);
+      set("radius", "cursorRadius");
+      set("push", "pushDistance");
+      set("smooth", "mouseSmooth", 2);
+      set("softness", "pushSoftness", 2);
+      // Mirror current ring instance values into the ring-only sliders.
+      const ringInst = instances.find((i) => i.config.pushCurve === "ring");
+      if (ringInst) {
+        const rr = panel.querySelector("#hd-ringRadius") as HTMLInputElement;
+        const rrOut = panel.querySelector("#hd-vRingRadius") as HTMLElement;
+        const rp = panel.querySelector("#hd-ringPush") as HTMLInputElement;
+        const rpOut = panel.querySelector("#hd-vRingPush") as HTMLElement;
+        rr.value = String(ringInst.config.cursorRadius);
+        rrOut.textContent = String(ringInst.config.cursorRadius);
+        rp.value = String(ringInst.config.pushDistance);
+        rpOut.textContent = String(ringInst.config.pushDistance);
+      }
+
+      // Show "Push softness" only if at least one instance is using ring curve.
+      const anyRing = instances.some((i) => i.config.pushCurve === "ring");
+      panel.querySelectorAll<HTMLElement>("[data-ring-only]").forEach((el) => {
+        el.style.display = anyRing ? "" : "none";
+      });
+    };
+
+    const bind = (id: string, key: string, parser: (v: string) => number, fixed?: number) => {
+      const inp = panel.querySelector("#hd-" + id) as HTMLInputElement;
+      const out = panel.querySelector("#hd-v" + id.charAt(0).toUpperCase() + id.slice(1)) as HTMLElement;
+      inp.addEventListener("input", (e) => {
+        const v = parser((e.target as HTMLInputElement).value);
+        instances.forEach((i) => { i.config[key] = v; });
+        out.textContent = fixed !== undefined ? v.toFixed(fixed) : String(v);
+      });
+    };
+    // Only mutate ring-curve instances for these — keeps Hero / Solution /
+    // HowItWorks untouched while you tune the footer's ring effect.
+    const bindRingOnly = (id: string, key: string, parser: (v: string) => number, fixed?: number) => {
+      const inp = panel.querySelector("#hd-" + id) as HTMLInputElement;
+      const out = panel.querySelector("#hd-v" + id.charAt(0).toUpperCase() + id.slice(1)) as HTMLElement;
+      inp.addEventListener("input", (e) => {
+        const v = parser((e.target as HTMLInputElement).value);
+        instances.forEach((i) => {
+          if (i.config.pushCurve === "ring") i.config[key] = v;
+        });
+        out.textContent = fixed !== undefined ? v.toFixed(fixed) : String(v);
+      });
+    };
+    bindRingOnly("softness", "pushSoftness", parseFloat, 2);
+    bindRingOnly("ringRadius", "cursorRadius", (v) => parseInt(v, 10));
+    bindRingOnly("ringPush", "pushDistance", (v) => parseInt(v, 10));
+
+    bind("speed", "speed", parseFloat, 2);
+    bind("cell", "cellSize", (v) => parseInt(v, 10));
+    bind("threshold", "threshold", parseFloat, 2);
+    bind("min", "minSize", parseFloat, 2);
+    bind("max", "maxSize", parseFloat, 2);
+    bind("radius", "cursorRadius", (v) => parseInt(v, 10));
+    bind("push", "pushDistance", (v) => parseInt(v, 10));
+    bind("smooth", "mouseSmooth", parseFloat, 2);
+
+    panel.querySelector("#hd-copy")?.addEventListener("click", () => {
+      const c = target();
+      if (!c) return;
+      const ring = instances.find((i) => i.config.pushCurve === "ring")?.config;
+      const ringPart = ring
+        ? ` | ring: cursorRadius=${ring.cursorRadius} pushDistance=${ring.pushDistance} pushSoftness=${ring.pushSoftness}`
+        : "";
+      const out = `speed=${c.speed} cellSize=${c.cellSize} threshold=${c.threshold} minSize=${c.minSize} maxSize=${c.maxSize} cursorRadius=${c.cursorRadius} pushDistance=${c.pushDistance} mouseSmooth=${c.mouseSmooth}${ringPart}`;
+      navigator.clipboard?.writeText(out);
+      const btn = panel.querySelector("#hd-copy") as HTMLButtonElement;
+      const old = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = old; }, 1200);
+    });
+
+    sync();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.shiftKey && (e.key === "H" || e.key === "h")) {
+        e.preventDefault();
+        panel.classList.toggle("is-open");
+        if (panel.classList.contains("is-open")) sync();
+      }
+    });
+  }
+
+  /* ---------- Init ---------- */
+
+  function init() {
+    document.querySelectorAll<HTMLElement>("[data-halftone]").forEach(setupInstance);
+    if (instances.length) buildDebugPanel();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

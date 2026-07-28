@@ -1,0 +1,357 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HalftoneCanvas from "../components/HalftoneCanvas.astro";
+import AccentButton from "../components/AccentButton.astro";
+import EagleMarker from "../components/VaultixMarker.astro";
+import FaqSection from "../components/FaqSection.astro";
+---
+
+<BaseLayout
+  title="Contato — Eagle"
+  description="Entre em contato with the Eagle team. Tell us about your use case and we'll get back to you within one business day."
+>
+  {/* ========================================================================
+       SECTION 01 — Hero (Figma 5:30745): heading + form + visual right
+     ======================================================================== */}
+  <script is:inline>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("contact-hero-pre-anim");
+    }
+  </script>
+
+  <section class="relative bg-[var(--color-bg)] pb-[3rem] md:pb-[2.25rem]" data-contact-hero>
+    {/* navbar-flush hero: section sin pt. La línea top la cumple el
+        border-b del navbar; markers top con offset `+0.5px`, mid con
+        offset `-0.5px`. Markers z-20, navbar (z-40) siempre por encima. */}
+    <div class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0">
+      <span
+        class="pointer-events-none absolute left-0 top-0 z-10 hidden h-[18.75rem] w-px bg-[var(--color-border)] lg:block"
+        data-contact-hero-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-0 top-0 z-10 hidden h-[18.75rem] w-px bg-[var(--color-border)] lg:block"
+        data-contact-hero-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-1/2 top-[18.75rem] hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-contact-hero-line="mid"
+        aria-hidden="true"></span>
+
+      {/* Top corners (2) — `tip-down` sitting on the navbar bottom line. */}
+      <EagleMarker type="tip-down" data-contact-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-down" data-contact-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-20 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      <div class="flex flex-col items-comeca justify-center gap-[0.75rem] pt-[2.5rem] pb-[2rem] md:pb-[2.5rem] lg:h-[18.75rem] lg:py-0 lg:px-[1.5rem]">
+        <span
+          class="font-mono text-[0.875rem] uppercase leading-[1.2857] text-[#fdff22]"
+          data-contact-hero-eyebrow
+        >
+          [ contact ]
+        </span>
+        <h1
+          class="max-w-[36.9375rem] font-mono text-[2.75rem] font-normal uppercase leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem]"
+          data-contact-hero-headline
+        >
+          Entre em contato
+        </h1>
+        <p
+          class="max-w-[22.25rem] font-mono text-[0.875rem] uppercase leading-[1.2857] text-white/60"
+          data-contact-hero-subhead
+        >
+          Have a question or want to see a demo? Nossa engineering team would love
+          to chat.
+        </p>
+      </div>
+    </div>
+
+    {/* Form + visual block (bordered, 3 verticals: left | mid (split form) | right) */}
+    <div
+      class="relative mx-auto w-full max-w-[70.5rem] px-4 lg:px-0"
+      data-contact-form-wrap
+    >
+      {/* Frame lines — z-30 so the focus-within bg on the first-row labels
+          can't paint over the top horizontal (the inputs sit at top:0 of
+          the wrap; without higher z, the label's focus bg covers the
+          1px line). */}
+      <span
+        class="pointer-events-none absolute left-4 top-0 z-30 h-full w-px bg-[var(--color-border)] lg:left-0"
+        data-contact-form-line="left"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-[35.25rem] top-0 z-30 hidden h-full w-px bg-[var(--color-border)] lg:block"
+        data-contact-form-line="mid"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute right-4 top-0 z-30 h-full w-px bg-[var(--color-border)] lg:right-0"
+        data-contact-form-line="right"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute left-4 right-4 top-0 z-30 h-px bg-[var(--color-border)] lg:left-1/2 lg:right-auto lg:w-screen lg:-translate-x-1/2"
+        data-contact-form-line="top"
+        aria-hidden="true"></span>
+      <span
+        class="pointer-events-none absolute bottom-0 left-1/2 z-30 hidden h-px w-screen -translate-x-1/2 bg-[var(--color-border)] lg:block"
+        data-contact-form-line="bottom"
+        aria-hidden="true"></span>
+
+      {/* Mid sides (2) — `cross`: 4 lines meet at left/right of mid horizontal
+          (verticals from above + below + horizontal). */}
+      <EagleMarker type="cross" data-contact-hero-tmark class="absolute left-4 top-[calc(-0.5rem_+_0.5px)] z-40 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="cross" data-contact-hero-tmark class="absolute right-4 top-[calc(-0.5rem_+_0.5px)] z-40 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      {/* Mid center (1) — `tip-down`: form's middle vertical comecas here, leg
+          points down into the form's left column / right visual split. */}
+      <EagleMarker type="tip-down" data-contact-hero-tmark class="absolute left-[35.25rem] top-[calc(-0.5rem_+_0.5px)] z-40 hidden -translate-x-1/2 lg:block" />
+
+      {/* Bottom corners (2) — `tip-up` sitting on the form-wrap bottom line. */}
+      <EagleMarker type="tip-up" data-contact-hero-tmark class="absolute left-4 bottom-[calc(-0.5rem_-_0.5px)] z-40 hidden -translate-x-1/2 lg:left-0 lg:block" />
+      <EagleMarker type="tip-up" data-contact-hero-tmark class="absolute right-4 bottom-[calc(-0.5rem_-_0.5px)] z-40 hidden translate-x-1/2 lg:right-0 lg:block" />
+
+      <div class="grid grid-cols-1 lg:grid-cols-[35.25rem_1fr]">
+        {/* FORM */}
+        <form
+          class="flex flex-col"
+          data-contact-form
+          method="post"
+          novalidate
+        >
+          {/* Honeypot */}
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="absolute left-[-9999px] size-px opacity-0" aria-hidden="true" />
+
+          <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x md:divide-[var(--color-border)]">
+            {/* First name */}
+            <label class="flex items-center border-b border-[var(--color-border)] px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First Name"
+                class="w-full bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] tracking-[0] text-white placeholder:text-white/60 focus:outline-none"
+                required
+              />
+            </label>
+            {/* Last name */}
+            <label class="flex items-center border-b border-[var(--color-border)] px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last Name"
+                class="w-full bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] text-white placeholder:text-white/60 focus:outline-none"
+                required
+              />
+            </label>
+            {/* Email */}
+            <label class="flex items-center border-b border-[var(--color-border)] px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+              <input
+                type="email"
+                name="email"
+                placeholder="Endereco de email"
+                class="w-full bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] text-white placeholder:text-white/60 focus:outline-none"
+                required
+              />
+            </label>
+            {/* Subject */}
+            <label class="flex items-center border-b border-[var(--color-border)] px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                class="w-full bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] text-white placeholder:text-white/60 focus:outline-none"
+              />
+            </label>
+          </div>
+
+          {/* Phone (full row) */}
+          <label class="flex items-center border-b border-[var(--color-border)] px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Telefone"
+              class="w-full bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] text-white placeholder:text-white/60 focus:outline-none"
+            />
+          </label>
+
+          {/* Mensagem (textarea) */}
+          <label class="flex items-comeca px-[1.5rem] py-[1.25rem] focus-within:bg-[#0c0c0c]">
+            <textarea
+              name="message"
+              placeholder="Your message..."
+              rows={6}
+              class="w-full resize-none bg-transparent font-mono text-[0.875rem] uppercase leading-[1.2857] text-white placeholder:text-white/60 focus:outline-none"
+              required></textarea>
+          </label>
+
+          {/* Enviar — `relative z-40` raises the button above the form-wrap
+              frame lines (z-30) so the hover yellow glow renders over them
+              instead of being clipped by the gray lines that sit flush
+              against its left / right / bottom edges. */}
+          <AccentButton type="enviar" class="relative z-40 w-full" data-contact-enviar>
+            Enviar message
+          </AccentButton>
+        </form>
+
+        {/* VISUAL right — animated halftone bg IS the asset. `h-full` +
+            `self-stretch` make it fill the grid row height exactly (matches
+            the form column's height). `block` is forced so canvas size is
+            predictable from layout — `aspect-ratio` was racing with the
+            HalftoneCanvas ResizeObserver and locking in a smaller-than-
+            container size on first paint. */}
+        <div
+          class="relative hidden h-full w-full self-stretch overflow-hidden lg:block"
+          data-contact-visual
+          aria-hidden="true"
+        >
+          <HalftoneCanvas
+            speed={1}
+            cellSize={8}
+            threshold={0.7}
+            minSize={0.02}
+            maxSize={1}
+            cursorRadius={300}
+            pushDistance={10}
+            mouseSmooth={0.09}
+            color="#b5d2ff"
+            cursorReactive={false}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Global override: the halftone canvas inside [data-contact-visual] sometimes
+      locks in 16×10px shy of its wrap because the HalftoneCanvas resize
+      script reads getBoundingClientRect() before the grid row settles.
+      `is:global` is required because the <canvas> is rendered by the
+      HalftoneCanvas component (different Astro scope) so a normal scoped
+      selector doesn't match it. */}
+  <style is:global>
+    [data-contact-visual] canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  </style>
+
+  <style>
+    .contact-hero-pre-anim [data-contact-hero-eyebrow],
+    .contact-hero-pre-anim [data-contact-hero-headline],
+    .contact-hero-pre-anim [data-contact-hero-subhead],
+    .contact-hero-pre-anim [data-contact-form],
+    .contact-hero-pre-anim [data-contact-visual] {
+      visibility: hidden;
+    }
+    .contact-hero-pre-anim [data-contact-hero-line],
+    .contact-hero-pre-anim [data-contact-hero-tmark],
+    .contact-hero-pre-anim [data-contact-form-line] {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { SplitText } from "gsap/SplitText";
+    import { registerEagleEases } from "../lib/eases";
+
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    registerEagleEases();
+
+    const init = () => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduceMotion) {
+        document.documentElement.classList.remove("contact-hero-pre-anim");
+        return;
+      }
+      const section = document.querySelector<HTMLElement>("[data-contact-hero]");
+      if (!section) return;
+
+      const eyebrow = section.querySelector<HTMLElement>("[data-contact-hero-eyebrow]");
+      const headline = section.querySelector<HTMLElement>("[data-contact-hero-headline]");
+      const subhead = section.querySelector<HTMLElement>("[data-contact-hero-subhead]");
+      const form = section.querySelector<HTMLElement>("[data-contact-form]");
+      const visual = section.querySelector<HTMLElement>("[data-contact-visual]");
+      const lines = gsap.utils.toArray<HTMLElement>("[data-contact-hero-line], [data-contact-form-line]", section);
+      const tmarks = gsap.utils.toArray<SVGElement>("[data-contact-hero-tmark]", section);
+
+      const eyebrowSplit = eyebrow ? new SplitText(eyebrow, { type: "lines", mask: "lines" }) : null;
+      const headlineSplit = headline ? new SplitText(headline, { type: "lines", mask: "lines" }) : null;
+      const subheadSplit = subhead ? new SplitText(subhead, { type: "lines", mask: "lines" }) : null;
+
+      if (eyebrowSplit) gsap.set(eyebrowSplit.lines, { yPercent: 110 });
+      if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+      if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+      if (form) gsap.set(form, { opacity: 0 });
+      if (visual) gsap.set(visual, { opacity: 0, scale: 0.97 });
+      lines.forEach((l) => {
+        const o = l.dataset.contactHeroLine || l.dataset.contactFormLine;
+        // No `top` here anymore — navbar bottom border replaces it.
+        if (o === "mid" || o === "bottom" || o === "top") gsap.set(l, { scaleX: 0, transformOrigin: "left center" });
+        else gsap.set(l, { scaleY: 0, transformOrigin: "center top" });
+      });
+      gsap.set(tmarks, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+      document.documentElement.classList.remove("contact-hero-pre-anim");
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: section, comeca: "top 80%", once: true },
+      });
+      tl.to(lines, { scaleX: 1, scaleY: 1, duration: 0.8, ease: "eagleStructure", stagger: 0.04 }, 0);
+      tl.to(tmarks, { opacity: 1, scale: 1, duration: 0.4, ease: "eagleDecor", stagger: 0.06 }, 0.55);
+      if (eyebrowSplit) tl.to(eyebrowSplit.lines, { yPercent: 0, duration: 0.65, ease: "eagleReveal", stagger: 0.05 }, 0.3);
+      if (headlineSplit) tl.to(headlineSplit.lines, { yPercent: 0, duration: 0.9, ease: "eagleReveal", stagger: 0.1 }, 0.45);
+      if (subheadSplit) tl.to(subheadSplit.lines, { yPercent: 0, duration: 0.7, ease: "eagleReveal", stagger: 0.05 }, 0.65);
+      if (form) tl.to(form, { opacity: 1, duration: 0.7, ease: "eagleReveal" }, 0.7);
+      if (visual) tl.to(visual, { opacity: 1, scale: 1, duration: 0.9, ease: "eagleStructure" }, 0.5);
+
+      // Form enviar handler (no backend yet)
+      const formEl = section.querySelector<HTMLFormElement>("[data-contact-form]");
+      if (formEl) {
+        formEl.addEventListener("enviar", (e) => {
+          e.preventDefault();
+          const data = new FormData(formEl);
+          // Honeypot check
+          if (data.get("website")) return;
+          if (import.meta.env.DEV) console.log("[Contato form enviarted]", Object.fromEntries(data));
+          const enviarBtn = formEl.querySelector<HTMLButtonElement>("[data-contact-enviar]");
+          if (enviarBtn) {
+            const original = enviarBtn.textContent;
+            enviarBtn.textContent = "Mensagem sent ✓";
+            enviarBtn.disabled = true;
+            setTimeout(() => {
+              if (enviarBtn && original) {
+                enviarBtn.textContent = original;
+                enviarBtn.disabled = false;
+                formEl.reset();
+              }
+            }, 3000);
+          }
+        });
+      }
+    };
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  </script>
+
+  {/* ========================================================================
+       SECTION 02 — FAQ (Figma 5:30841) — uses shared FaqSection component.
+     ======================================================================== */}
+  <FaqSection
+    items={[
+      {
+        q: "How quickly will I hear back?",
+        a: "Sales replies within one business day. Pro and Empresarial support tickets get a response within 4 hours, 24/7. We don't outsource — every reply comes from someone who can actually fix your issue.",
+      },
+      {
+        q: "Can I schedule a live demo?",
+        a: "Sim. Book a 30-minute walkthrough from the form above and pick a slot that works. We'll show your real data flowing through Eagle, not a canned demo deck.",
+      },
+      {
+        q: "Do you offer a proof of concept?",
+        a: "Sim. PoCs run for 14 days on a dedicated environment with your data, your scale, and a dedicated solutions engineer. No commitment beyond the trial.",
+      },
+      {
+        q: "Where can I find documentation?",
+        a: "Full API reference, SDK guides, and architecture docs live at docs.eagle.dev. The contact form here is for everything that isn't covered there.",
+      },
+    ]}
+  />
+</BaseLayout>

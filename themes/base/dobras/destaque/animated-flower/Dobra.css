@@ -1,0 +1,21 @@
+[data-dobra="destaque-animated-flower"]{
+            background-color: black;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+[data-dobra="destaque-animated-flower"],[data-dobra="destaque-animated-flower"]{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+[data-dobra="destaque-animated-flower"] .sunflowerSVG{
+            width: 100%;
+            height: 100%;
+            visibility: hidden; 
+        }
+
+    

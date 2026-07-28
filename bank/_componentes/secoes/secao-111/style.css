@@ -1,0 +1,414 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.about-hero {
+  overflow-x: clip; /* prevent x:60 fade-from-right entrance from extending document scrollWidth */
+}
+.about-hero__card {
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-container);
+  padding: 52px;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 3.25rem; /* 52px */
+}
+.about-hero__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: center;
+}
+.about-hero__heading {
+  color: var(--color-text-primary);
+  max-width: 36.1875rem; /* ~579px */
+}
+.about-hero__sub {
+  font-family: var(--font-body);
+  /* OPT-OUT: hero sub paragraph */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 33.875rem; /* ~542px */
+}
+
+/* Gallery — flex row, equal-width cards.
+   Responsive pattern (ported from Acelia AboutHero):
+     ≥992: 3 cards, 480h
+     ≤991: 3 cards, 352h
+     ≤767: 2 cards, aspect 3/4 (3rd card hidden)
+     ≤479: 1 card,  aspect 4/5 (2nd + 3rd hidden)
+   Entrance animation branches by visible card count (see script.js). */
+.about-hero__gallery {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+.about-hero__gallery-item {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 30rem; /* 480px */
+  /* Compositor hint for the deal/split/rise entrance transforms */
+  will-change: transform, opacity;
+}
+.about-hero__media {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem; /* 12px */
+  overflow: clip;
+}
+.about-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position is set inline per image */
+}
+
+@media (max-width: 991px) {
+  .about-hero__card {
+    padding: 40px;
+    gap: 2.5rem;
+  }
+  .about-hero__gallery {
+    gap: 1.25rem;
+  }
+  .about-hero__gallery-item {
+    height: 22rem; /* 352px — Acelia tablet height */
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero__card {
+    padding: 24px 20px 20px;
+    gap: 2rem;
+  }
+  /* Landscape — keep 2 of the 3 cards side-by-side. The third (cropped
+     hardhat) drops because it's the most context-heavy and reads thin
+     at this width. */
+  .about-hero__gallery {
+    gap: 1rem;
+  }
+  .about-hero__gallery-item {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+  .about-hero__gallery-item:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .about-hero__card {
+    padding: 24px 16px 16px;
+    gap: 1.75rem;
+  }
+  /* Portrait — only the first card. The other two hidden completely. */
+  .about-hero__gallery-item:nth-child(n + 2) {
+    display: none;
+  }
+  .about-hero__gallery-item {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: pipely-navbar styles ===== */
+/* Wrap = an in-flow transparent placeholder that reserves the bar's vertical
+   space in the body flex flow. The bar height is 80px on every breakpoint
+   (16px padding × 2 + 48px tallest child = 80), so the placeholder uses 80px
+   across the board. The actual <nav> is absolute inside, free to grow
+   downward without affecting the placeholder or the hero below. */
+.navbar-wrap {
+  position: relative;
+  height: 80px;
+  z-index: 50;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-white);
+  border-radius: var(--radius-container); /* 20px / responsive via token */
+  /* Clips the rectangular panel bg to the rounded corners (otherwise the
+     panel paints square corners over the nav's rounded ones). */
+  overflow: hidden;
+}
+.navbar__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  border-radius: inherit;
+  background-color: inherit;
+  position: relative;
+  z-index: 2;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  width: 114px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.navbar__logo {
+  width: 114px;
+  height: 40px;
+  display: block;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  /* OPT-OUT: nav link caption — matches .btn */
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4286;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Mask: height = exactly one line. Clips the duplicate text sitting below.
+   Both lines stack vertically; on hover, both translate up by 100% of one line. */
+.navbar__link-mask {
+  display: flex;
+  flex-direction: column;
+  height: 1lh;
+  overflow: clip;
+}
+.navbar__link-text {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Right cluster — desktop hides toggle */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__toggle {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.75rem; /* 12px — matches .btn */
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+.navbar__toggle-burger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.navbar__toggle-burger span {
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  display: block;
+}
+.navbar__toggle-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.navbar[data-open="true"] .navbar__toggle-burger {
+  display: none;
+}
+.navbar[data-open="true"] .navbar__toggle-close {
+  display: inline-flex;
+}
+
+/* Mobile dropdown panel — overlays the page below the bar.
+   Panel = grid wrapper that animates height via grid-template-rows 0fr → 1fr.
+   Panel-inner = the visible card (bg, radius, padding) with overflow: hidden so
+   it gets clipped to 0 when the row is 0fr. */
+/* Panel = in-flow extension inside the navbar's same white card. When opened,
+   the .navbar grows downward (height = bar + panel). Since .navbar is
+   position: fixed, this growth doesn't push the hero — it overlays it. The
+   placeholder .navbar-wrap keeps reserving its 80px in the body flex flow.
+   The panel sits at z-index 2 (same as the bar) so the backdrop (z-index: -1)
+   doesn't dim the dropdown content; everything in the nav card stays bright. */
+.navbar__panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: minmax(0, 0fr);
+  background-color: inherit; /* paints white above the backdrop */
+  transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.navbar[data-open="true"] .navbar__panel {
+  grid-template-rows: minmax(0, 1fr);
+}
+.navbar__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Backdrop — fades in to a soft 30% black on tablet ↓ when the panel opens */
+.navbar__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (max-width: 991px) {
+  .navbar[data-open="true"] .navbar__backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+.navbar__panel-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+.navbar__panel-link {
+  display: block;
+  padding: 12px;
+  font-family: var(--font-body);
+  /* OPT-OUT: nav link caption */
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4286;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  /* Stagger-from-right entrance. No delay in the base rule → close transition
+     runs immediately (all links fade out together while the container collapses).
+     The :open state below adds sequential transition-delay → open cascades. */
+  opacity: 0;
+  transform: translateX(20px);
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.navbar__panel-cta {
+  display: none; /* shown only on portrait */
+  align-self: stretch;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Reveal links/cta with sequential delays when panel opens */
+.navbar[data-open="true"] .navbar__panel-link,
+.navbar[data-open="true"] .navbar__panel-cta {
+  opacity: 1;
+  transform: translateX(0);
+}
+.navbar[data-open="true"] .navbar__panel-menu > li:nth-child(1) .navbar__panel-link {
+  transition-delay: 0.15s;
+}
+.navbar[data-open="true"] .navbar__panel-menu > li:nth-child(2) .navbar__panel-link {
+  transition-delay: 0.2s;
+}
+.navbar[data-open="true"] .navbar__panel-menu > li:nth-child(3) .navbar__panel-link {
+  transition-delay: 0.25s;
+}
+.navbar[data-open="true"] .navbar__panel-menu > li:nth-child(4) .navbar__panel-link {
+  transition-delay: 0.3s;
+}
+.navbar[data-open="true"] .navbar__panel-cta {
+  transition-delay: 0.35s;
+}
+
+/* Hover gating — desktop only.
+   Each rule in its own @media block so the check.mjs brace counter
+   correctly attributes the rule to its gating @media. */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .navbar__link:hover {
+    color: var(--color-text-primary);
+  }
+}
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .navbar__link:hover .navbar__link-text,
+  .navbar__link:focus-visible .navbar__link-text {
+    transform: translateY(-100%); /* both lines move up exactly one line */
+  }
+}
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .navbar__panel-link:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+/* Tablet (≤991): hide desktop menu, show toggle. Left padding drops to 24px. */
+@media (max-width: 991px) {
+  .navbar__menu {
+    display: none;
+  }
+  .navbar__toggle {
+    display: inline-flex;
+  }
+  .navbar__bar {
+    padding: 16px 28px 16px 24px;
+  }
+  .navbar__panel-inner {
+    padding: 1rem 24px;
+  }
+}
+
+/* Landscape (≤767): left 20px, right 24px. */
+@media (max-width: 767px) {
+  .navbar__bar {
+    padding: 16px 24px 16px 20px;
+  }
+  .navbar__panel-inner {
+    padding: 1rem 24px 1rem 20px;
+  }
+}
+
+/* Portrait (≤479): all sides 1rem, Contact moves into the panel, tighter gap. */
+@media (max-width: 479px) {
+  .navbar__bar {
+    padding: 1rem;
+  }
+  .navbar__panel-inner {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .navbar__cta {
+    display: none;
+  }
+  .navbar__panel-cta {
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "slot": "hero",
+  "nome": "hero-16",
+  "scope": "hero-hero-16",
+  "origem": "bank/_componentes/hero-section/hero-16/CircularTextEffect-main",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Circular Text Effect"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "We are a creative agency that focuses on human-centric design and ergonomic workplace innovations."
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Enter"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "16 cor(es) mapeadas para tokens por luminância (acento da origem #ea34a6 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

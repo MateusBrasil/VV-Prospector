@@ -1,0 +1,21 @@
+[data-dobra="vitrine-3d-carousel-with-scroll"]{
+            margin: 0;
+            background-color: var(--base-600);
+        }
+[data-dobra="vitrine-3d-carousel-with-scroll"] div{
+            position: absolute;
+            user-select: none;
+        }
+[data-dobra="vitrine-3d-carousel-with-scroll"] #container{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+[data-dobra="vitrine-3d-carousel-with-scroll"] #scrollDist{
+            top: 0;
+            width: 100%;  
+            height: 400%; 
+        }
+
+    

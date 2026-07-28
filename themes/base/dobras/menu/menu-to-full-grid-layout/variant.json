@@ -1,0 +1,538 @@
+{
+  "slot": "menu",
+  "nome": "menu-to-full-grid-layout",
+  "scope": "menu-menu-to-full-grid-layout",
+  "origem": "bank/_componentes/carrossel/menu-to-full-grid-layout",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Cosmic Explorations Gallery"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Select a mission"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Apollo"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "explore"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Artemis"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "explore"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Voyager"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "explore"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Pioneer"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "explore"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Cassini"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "explore"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Apollo"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "A journey back to the golden age of space exploration and the legendary lunar landings."
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "July, 1969"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Artemis"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Returning humanity to the Moon and preparing for the next giant leap to Mars."
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "November, 2024"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Voyager"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Venturing into interstellar space, carrying the Golden Record as our cosmic greeting."
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "September, 1977"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Pioneer"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "The first spacecraft to traverse the asteroid belt and visit the outer solar system."
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "March, 1972"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Cassini"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Revealing the mysteries of Saturn, its majestic rings, and its enigmatic moons."
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "October, 1997"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/400/600"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/400/600"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/400/600"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/400/600"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/400/600"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/400/600"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/400/600"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/400/600"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/400/600"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/400/600"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/400/600"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/400/600"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/400/600"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/400/600"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/400/600"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/400/600"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/400/600"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/400/600"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/400/600"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/400/600"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/400/600"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/400/600"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/400/600"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/400/600"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/400/600"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/400/600"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/400/600"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/400/600"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/400/600"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/400/600"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/400/600"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/400/600"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/400/600"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/4/400/600"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/5/400/600"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/6/400/600"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/3/400/600"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/2/400/600"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/1/400/600"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/400/600"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/400/600"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/400/600"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/10/400/600"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/11/400/600"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/12/400/600"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/8/400/600"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/9/400/600"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/7/400/600"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/400/600"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/400/600"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/400/600"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/16/400/600"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/17/400/600"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/18/400/600"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/13/400/600"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/15/400/600"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/14/400/600"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/400/600"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/400/600"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/400/600"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/22/400/600"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/23/400/600"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/24/400/600"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/20/400/600"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/21/400/600"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/19/400/600"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/400/600"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/400/600"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/400/600"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/28/400/600"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/29/400/600"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/30/400/600"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/26/400/600"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/27/400/600"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/seed/25/400/600"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 75
+  },
+  "_rever": [
+    "10 cor(es) mapeadas para tokens por luminância (acento da origem #000002 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "75 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/seed/1/400/600 https://picsum.photos/seed/2/400/600)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,176 @@
+[data-dobra="numeros-secao-181"] 500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme{
+  --color-bg: var(--base-600);
+  --color-surface: var(--base-600);
+  --color-surface-2: var(--base-600);
+  --color-border: var(--base-500);
+  --color-fg: var(--base-100);
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: var(--acento);
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+[data-dobra="numeros-secao-181"]{
+  color-scheme: dark;
+  --nav-height: 3.25rem;
+
+  --color-bg: var(--base-600);
+  --color-surface: var(--base-600);
+  --color-surface-2: var(--base-600);
+  --color-border: var(--base-500);
+  --color-fg: var(--base-100);
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-dim: rgba(255, 255, 255, 0.2);
+  --color-accent: var(--acento);
+  --color-accent-soft: rgba(253, 255, 34, 0.08);
+
+  --font-mono:
+    "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+@media (min-width: 48rem){[data-dobra="numeros-secao-181"]{
+    --nav-height: 4.8125rem;
+  }
+
+}
+[data-dobra="numeros-secao-181"],[data-dobra="numeros-secao-181"]{
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--fonte-corpo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[data-dobra="numeros-secao-181"] .font-mono{
+  font-family: var(--fonte-mono);
+}
+[data-dobra="numeros-secao-181"] .hover-stagger:hover .hover-stagger__inner > span{
+  transform: translateY(-1.4em) rotate(0.001deg);
+}
+@media (prefers-reduced-motion: reduce){[data-dobra="numeros-secao-181"] .hover-stagger:hover .hover-stagger__inner > span{
+    transform: none;
+  }
+
+}
+[data-dobra="numeros-secao-181"] .btn-accent-glow{
+  transition:
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+[data-dobra="numeros-secao-181"] .btn-accent-glow:hover{
+  box-shadow:
+    0 0 8px rgba(253, 255, 34, 0.9),
+    0 0 24px rgba(253, 255, 34, 0.5),
+    0 0 48px rgba(253, 255, 34, 0.2);
+}
+@media (hover: hover) and (pointer: fine){[data-dobra="numeros-secao-181"] .vaultix-logo:hover svg,[data-dobra="numeros-secao-181"] .vaultix-logo:hover img{
+    filter:
+      drop-shadow(0 0 4px rgba(253, 255, 34, 0.85))
+      drop-shadow(0 0 10px rgba(253, 255, 34, 0.5))
+      drop-shadow(0 0 18px rgba(253, 255, 34, 0.2));
+  }
+
+}
+@media (hover: none), (pointer: coarse){[data-dobra="numeros-secao-181"] .btn-accent-glow:hover{
+    box-shadow: none;
+  }
+[data-dobra="numeros-secao-181"] .hover-stagger:hover .hover-stagger__inner > span{
+    transform: none;
+  }
+
+}
+@media (max-width: 767px){[data-dobra="numeros-secao-181"] [data-howit-line],[data-dobra="numeros-secao-181"] [data-impact-line],[data-dobra="numeros-secao-181"] [data-blog-line],[data-dobra="numeros-secao-181"] [data-footer-line],[data-dobra="numeros-secao-181"] [data-howit-tmark],[data-dobra="numeros-secao-181"] [data-impact-tmark],[data-dobra="numeros-secao-181"] [data-blog-tmark],[data-dobra="numeros-secao-181"] [data-footer-marker]{
+    display: none;
+  }
+
+}
+[data-dobra="numeros-secao-181"] .test-pre-anim [data-test-eyebrow],[data-dobra="numeros-secao-181"] .test-pre-anim [data-test-headline],[data-dobra="numeros-secao-181"] .test-pre-anim [data-test-subhead]{
+  visibility: hidden;
+}
+[data-dobra="numeros-secao-181"] .test-pre-anim [data-test-card]{
+  visibility: hidden;
+}
+[data-dobra="numeros-secao-181"] .corner-marker{
+  position: absolute;
+  width: 0.53rem;
+  height: 0.4375rem;
+  pointer-events: none;
+}
+[data-dobra="numeros-secao-181"] .corner-marker::before,[data-dobra="numeros-secao-181"] .corner-marker::after{
+  content: "";
+  position: absolute;
+  background: var(--base-100);
+}
+[data-dobra="numeros-secao-181"] .corner-tl{
+  top: 0;
+  left: 0;
+}
+[data-dobra="numeros-secao-181"] .corner-tl::before{
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+[data-dobra="numeros-secao-181"] .corner-tl::after{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+[data-dobra="numeros-secao-181"] .corner-tr{
+  top: 0;
+  right: 0;
+}
+[data-dobra="numeros-secao-181"] .corner-tr::before{
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+[data-dobra="numeros-secao-181"] .corner-tr::after{
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+[data-dobra="numeros-secao-181"] .corner-bl{
+  bottom: 0;
+  left: 0;
+}
+[data-dobra="numeros-secao-181"] .corner-bl::before{
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+}
+[data-dobra="numeros-secao-181"] .corner-bl::after{
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+[data-dobra="numeros-secao-181"] .corner-br{
+  bottom: 0;
+  right: 0;
+}
+[data-dobra="numeros-secao-181"] .corner-br::before{
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+}
+[data-dobra="numeros-secao-181"] .corner-br::after{
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+}
+
+

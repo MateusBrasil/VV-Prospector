@@ -1,0 +1,182 @@
+[data-dobra="menu-navegacao-menu-17"] *{
+	padding: 0rem;
+	margin: 0rem;
+	border: 0rem;
+}
+[data-dobra="menu-navegacao-menu-17"] *,[data-dobra="menu-navegacao-menu-17"] *::before,[data-dobra="menu-navegacao-menu-17"] *::after{
+	box-sizing: border-box;
+}
+[data-dobra="menu-navegacao-menu-17"] *::before,[data-dobra="menu-navegacao-menu-17"] *::after{
+	display: inline-block;
+}
+[data-dobra="menu-navegacao-menu-17"],[data-dobra="menu-navegacao-menu-17"]{
+	height: 100%;
+}
+[data-dobra="menu-navegacao-menu-17"] [class*=__container]{
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+}
+[data-dobra="menu-navegacao-menu-17"],[data-dobra="menu-navegacao-menu-17"]{
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-600);
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="menu-navegacao-menu-17"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="menu-navegacao-menu-17"] p{
+  color: var(--base-100);
+  text-transform: uppercase;
+  font-family: var(--fonte-corpo);
+  font-size: 0.6875rem;
+  font-weight: 300;
+}
+[data-dobra="menu-navegacao-menu-17"] .hero{
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./img/hero.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+[data-dobra="menu-navegacao-menu-17"] .hero .header{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  gap: 0.5rem;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="menu-navegacao-menu-17"] sup{
+  position: relative;
+  top: 0.25rem;
+  color: var(--base-100);
+  font-size: 3vw;
+}
+[data-dobra="menu-navegacao-menu-17"] .hero h1{
+  color: var(--base-100);
+  text-transform: uppercase;
+  font-size: 12vw;
+  font-weight: 900;
+  letter-spacing: -0.024rem;
+  line-height: 1;
+}
+[data-dobra="menu-navegacao-menu-17"] nav{
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  padding: 1.5rem 2rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .logo{
+  width: 1.5rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-open,[data-dobra="menu-navegacao-menu-17"] .menu-close{
+  cursor: pointer;
+  font-size: 22px;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu{
+  position: fixed;
+  top: 0;
+  display: flex;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  padding: 1.5rem;
+  background-color: var(--base-600);
+  color: var(--base-100);
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  gap: 1.5rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 2rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-img{
+  position: relative;
+  flex: 3;
+  overflow: hidden;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-img img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="menu-navegacao-menu-17"] #img-1{
+  opacity: 0.9;
+}
+[data-dobra="menu-navegacao-menu-17"] #img-2{
+  opacity: 0.7;
+}
+[data-dobra="menu-navegacao-menu-17"] #img-3{
+  opacity: 0.5;
+}
+[data-dobra="menu-navegacao-menu-17"] #img-4{
+  opacity: 0.3;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-items{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  z-index: -1;
+  top: 0rem;
+  padding: 3rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-logo{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  width: 3rem;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-logo img{
+  position: relative;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-link,[data-dobra="menu-navegacao-menu-17"] .menu-sub-item{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-link p{
+  position: relative;
+  font-family: var(--fonte-corpo);
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-link a{
+  color: var(--base-100);
+  text-decoration: none;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-footer{
+  display: flex;
+  width: 100%;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-sub-col{
+  flex: 1;
+}
+[data-dobra="menu-navegacao-menu-17"] .menu-sub-item p{
+  position: relative;
+}
+@media (max-width: 56.25rem){[data-dobra="menu-navegacao-menu-17"] .menu-img{
+    display: none;
+  }
+
+}
+

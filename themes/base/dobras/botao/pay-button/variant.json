@@ -1,0 +1,24 @@
+{
+  "slot": "botao",
+  "nome": "pay-button",
+  "scope": "botao-pay-button",
+  "origem": "bank/_componentes/botoes/pay-button",
+  "registo": "sobrio",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Pay"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,23 @@
+<style>
+.faq__grid{display:grid;gap:var(--space-4)}
+@media (min-width:900px){.faq__grid{grid-template-columns:minmax(0,32ch) 1fr;gap:var(--space-5)}}
+.faq__lista{border-top:1px solid var(--hairline)}
+[data-acc-item]{border-bottom:1px solid var(--hairline)}
+[data-acc-item] button{all:unset;display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+  width:100%;padding-block:var(--space-3);cursor:pointer;font-weight:600;font-size:var(--step-0)}
+[data-acc-item] button:focus-visible{outline:2px solid var(--brand-cta);outline-offset:2px}
+[data-acc-item] .faq__ico{flex:none;transition:transform 200ms var(--ease);color:var(--ink-muted)}
+[data-acc-item][data-open] .faq__ico{transform:rotate(45deg)}
+.faq__resp{display:grid;grid-template-rows:0fr;transition:grid-template-rows 240ms var(--ease)}
+[data-acc-item][data-open] .faq__resp{grid-template-rows:1fr}
+.faq__resp > div{overflow:hidden}
+.faq__resp p{color:var(--ink-muted);padding-bottom:var(--space-3)}
+</style>
+<section id="faq">
+  <div class="wrap faq__grid">
+    <h2 class="reveal">{{titulo}}</h2>
+    <div class="faq__lista reveal" data-acc>
+      {{{itens}}}
+    </div>
+  </div>
+</section>

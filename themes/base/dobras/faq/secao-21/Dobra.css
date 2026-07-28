@@ -1,0 +1,199 @@
+/* PORTADA À MÃO em 2026-07-28. Cinco defeitos corrigidos, quatro deles graves:
+ *
+ *  1. `@import "tailwindcss";` na linha 2. Isto não é estilo, é uma falha de build:
+ *     a obra não tem Tailwind, e o import ficaria como pedido inválido no CSS final.
+ *  2. Um bloco `@theme { ... }` fora de qualquer escopo, a declarar variáveis para o
+ *     documento inteiro a partir da folha de UMA dobra.
+ *  3. LINHA 1 PARTIDA (`... &family=Inter:wght@400;500;600;700&display=swap");`), resto
+ *     de um @import de Google Fonts cortado a meio. CDN de fonte é proibido.
+ *  4. `color-scheme: dark` e toda a paleta apontada a `--base-600` / `--base-100`:
+ *     a peça vinha desenhada para tela escura. A odontologia é tela clara por decisão
+ *     de direção de arte, e o `rgba(255,255,255,0.6)` do texto secundário sobre um
+ *     canvas quase branco daria cerca de 1,05:1, ilegível. Tudo remapeado para os
+ *     papéis de texto do sistema.
+ *  5. Os `drop-shadow(0 0 4px rgba(253,255,34,0.9))` do cruzado, três por regra: é o
+ *     amarelo néon da marca de origem, hex fora de token, e o brilho é exatamente o
+ *     registo que este nicho nega.
+ *
+ * Também saíram `.faq-section-pre-anim`, que punha `visibility:hidden` à espera de uma
+ * timeline que já não existe, e `.hover-stagger`, `.btn-accent-glow` e `.vaultix-logo`,
+ * que são de outros componentes do site de origem e nunca aparecem neste HTML.
+ */
+
+[data-dobra="faq-secao-21"] * {
+  box-sizing: border-box;
+}
+
+[data-dobra="faq-secao-21"] {
+  display: block;
+  background: var(--base-100);
+  color: var(--cor-texto);
+  font-family: var(--fonte-corpo);
+}
+
+[data-dobra="faq-secao-21"] .faq {
+  position: relative;
+  padding: var(--respiro) 0;
+}
+
+[data-dobra="faq-secao-21"] .faq__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 var(--respiro-compacto);
+}
+
+[data-dobra="faq-secao-21"] .faq__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 40ch;
+  text-align: center;
+}
+
+[data-dobra="faq-secao-21"] .faq__eyebrow {
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+[data-dobra="faq-secao-21"] .faq__headline {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-size: var(--h3);
+  font-weight: var(--display-peso);
+  line-height: var(--display-lh-multilinha);
+  text-transform: var(--display-caixa);
+  color: var(--cor-texto);
+}
+
+[data-dobra="faq-secao-21"] .faq__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+[data-dobra="faq-secao-21"] .faq-frame-line {
+  position: absolute;
+  background: var(--base-200);
+  pointer-events: none;
+  z-index: 5;
+}
+
+[data-dobra="faq-secao-21"] .faq-frame-line--top,
+[data-dobra="faq-secao-21"] .faq-frame-line--bottom {
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+[data-dobra="faq-secao-21"] .faq-frame-line--top { top: 0; }
+[data-dobra="faq-secao-21"] .faq-frame-line--bottom { bottom: 0; }
+
+[data-dobra="faq-secao-21"] .faq-frame-line--left,
+[data-dobra="faq-secao-21"] .faq-frame-line--right {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+[data-dobra="faq-secao-21"] .faq-frame-line--right { right: 0; }
+[data-dobra="faq-secao-21"] .faq-frame-line--left { left: 0; }
+
+[data-dobra="faq-secao-21"] .faq-marker {
+  position: absolute;
+  z-index: 10;
+  width: 1rem;
+  height: 1rem;
+  color: var(--acento);
+  pointer-events: none;
+}
+
+[data-dobra="faq-secao-21"] .faq-marker--tl { top: -0.5rem; left: -0.5rem; }
+[data-dobra="faq-secao-21"] .faq-marker--tr { top: -0.5rem; right: -0.5rem; }
+[data-dobra="faq-secao-21"] .faq-marker--bl { bottom: -0.5rem; left: -0.5rem; }
+[data-dobra="faq-secao-21"] .faq-marker--br { bottom: -0.5rem; right: -0.5rem; }
+
+[data-dobra="faq-secao-21"] .faq-item {
+  position: relative;
+  margin-top: -1px;
+  border: 1px solid var(--base-200);
+  background: var(--base-100);
+}
+
+[data-dobra="faq-secao-21"] .faq-item__summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+[data-dobra="faq-secao-21"] .faq-item__summary::-webkit-details-marker { display: none; }
+[data-dobra="faq-secao-21"] .faq-item__summary::marker { content: ""; }
+
+[data-dobra="faq-secao-21"] .faq-item__q {
+  flex: 1 1 0%;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-tamanho);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--cor-texto);
+}
+
+[data-dobra="faq-secao-21"] .faq-chevron {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--acento);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-dobra="faq-secao-21"] .faq-chevron__bar {
+  position: absolute;
+  background: currentColor;
+}
+
+[data-dobra="faq-secao-21"] .faq-chevron__bar--h { height: 2px; width: 14px; }
+[data-dobra="faq-secao-21"] .faq-chevron__bar--v { height: 14px; width: 2px; }
+
+[data-dobra="faq-secao-21"] .faq-item[open] .faq-chevron {
+  transform: rotate(45deg);
+}
+
+[data-dobra="faq-secao-21"] .faq-answer {
+  display: block;
+  overflow: hidden;
+}
+
+[data-dobra="faq-secao-21"] .faq-item__a {
+  margin: 0;
+  padding: 0 1.5rem 1.5rem;
+  font-family: var(--fonte-corpo);
+  font-size: var(--corpo-sm);
+  line-height: 1.6;
+  color: var(--cor-texto-suave);
+}
+
+@media (max-width: 47.9375rem) {
+  [data-dobra="faq-secao-21"] .faq-frame-line,
+  [data-dobra="faq-secao-21"] .faq-marker { display: none; }
+  [data-dobra="faq-secao-21"] .faq { padding: var(--respiro-compacto) 0; }
+  [data-dobra="faq-secao-21"] .faq__inner { gap: 2.5rem; }
+}

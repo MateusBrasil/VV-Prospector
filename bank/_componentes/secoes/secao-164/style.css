@@ -1,0 +1,210 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.team {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  overflow-x: clip;
+}
+
+.team__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;            /* 48px */
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.team__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.team__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.team__labelDot {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.team__labelText {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.team__heading {
+  font-family: var(--font-heading);
+  font-size: 3.75em;       /* 60px */
+  font-weight: 400;
+  line-height: 1.2;        /* 72/60 */
+  letter-spacing: -3.6px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* Grid — 3 columns, 2 rows, square-ish cards (376 × 395) */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;             /* 24px */
+  width: 100%;
+}
+
+.team__card {
+  position: relative;
+  /* Square aspect — kept identical across every breakpoint so the gallery
+     reads as the same shape language at desktop, tablet, landscape, and
+     portrait. Only the column count and caption padding change. */
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--color-bg-placeholder);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team__imageWrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.team__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%; /* keep faces visible across viewports */
+  display: block;
+}
+
+/* Bottom gradient — black at the bottom, transparent above. */
+.team__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6.3125em;        /* 101px */
+  background: linear-gradient(to top, #111 0%, rgba(17, 17, 17, 0) 100%);
+  pointer-events: none;
+}
+
+.team__caption {
+  position: absolute;
+  bottom: 1.4375em;        /* 23px from bottom (matches Figma offset) */
+  left: 1.5em;             /* 24px */
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125em;
+}
+
+.team__name {
+  font-family: var(--font-body);
+  font-size: 1.25em;       /* 20px */
+  font-weight: 500;
+  line-height: 1.6;        /* 32/20 */
+  color: var(--color-text-white);
+  margin: 0;
+}
+
+.team__role {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.75;       /* 28/16 */
+  color: var(--color-text-secondary-dark);
+  margin: 0;
+}
+
+/* ── Hover spotlight (desktop only — gated to ≥992px so touch devices
+   don't stick a card in the dimmed state) ────────────────────────────
+   When the user hovers the grid, every card drops to 0.4 opacity. The
+   specific card under the cursor returns to full opacity, so the
+   hovered face reads as the focal point and the rest dim into context.
+   The transition lives on the card itself (declared above) so both
+   entering and leaving the hovered state ease at the same 0.4s curve. */
+@media (min-width: 992px) {
+  .team__grid:hover .team__card {
+    opacity: 0.4;
+  }
+
+  .team__grid .team__card:hover {
+    opacity: 1;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .team__inner {
+    padding: 3em var(--container-padding);
+    gap: 2em;
+  }
+
+  .team__heading {
+    font-size: 3em;
+  }
+
+  .team__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25em;
+  }
+
+  /* Tighter caption inset so the name + role sit closer to the card's
+     bottom edge as the card itself shrinks. */
+  .team__caption {
+    bottom: 1em;
+    left: 1em;
+  }
+}
+
+@media (max-width: 767px) {
+  .team__heading {
+    font-size: 2.25em;
+  }
+
+  .team__grid {
+    gap: 1em;
+  }
+
+  .team__caption {
+    bottom: 0.875em;
+    left: 0.875em;
+  }
+}
+
+@media (max-width: 479px) {
+  .team__heading {
+    font-size: 1.875em;
+  }
+
+  /* Portrait — single column only at the smallest viewport. The square
+     aspect from the base rule continues to apply, so portrait cards
+     remain 1:1 just like desktop / tablet / landscape. */
+  .team__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25em;
+  }
+
+  .team__caption {
+    bottom: 0.75em;
+    left: 0.75em;
+  }
+}

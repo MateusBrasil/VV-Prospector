@@ -1,0 +1,6 @@
+/* Fondo de la página en vista aislada. Toda la maquetación del overview
+   (.section_overview, .overview_grid, .overview_image, .overview_info, .button,
+   .text-4xl, .is-top-center, etc.) vive en la hoja compartida /firmo/styles.css.
+   Esta sección no inline-aba ningún sub-componente con <style> propio, así que
+   no hay reglas adicionales que duplicar aquí. */
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }

@@ -1,0 +1,909 @@
+{
+  "slot": "destaque",
+  "nome": "inline-menu-layout",
+  "scope": "destaque-inline-menu-layout",
+  "origem": "bank/_componentes/parallax/inline-menu-layout",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "imagesloaded",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=1"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=2"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=3"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=4"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=5"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=6"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=7"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=8"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=9"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=10"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=11"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=12"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=13"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=14"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=15"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=16"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=17"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=18"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=19"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=20"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=21"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=22"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=23"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=24"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=25"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=26"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=27"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=28"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=29"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=30"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=31"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=32"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=33"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=34"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=35"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=36"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=37"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=38"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=39"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=40"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=1"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=2"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=3"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=4"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=5"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=6"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=7"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=8"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=9"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "https://picsum.photos/400/600?random=10"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Galeria Interativa"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "natureza"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "espaço"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "oceanos"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "animais"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "cidades"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "aventura"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "ciência"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "esportes"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "música"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "comida"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "viagem"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "arte"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "natureza"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Floresta Verde"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "2021, Amazônia"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Montanhas"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "2022, Andes"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Cachoeira"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "2020, Iguaçu"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Folhas de Outono"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "2019, Região Sul"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Deserto"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "2023, Atacama"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "espaço"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Via Láctea"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "2020, Telescópio"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Planeta Vermelho"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "2021, Sonda Espacial"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Nebulosa"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "2018, Hubble"
+    },
+    {
+      "nome": "subtitulo9",
+      "tipo": "texto",
+      "exemplo": "A Lua"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "2023, Observatório"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "oceanos"
+    },
+    {
+      "nome": "subtitulo10",
+      "tipo": "texto",
+      "exemplo": "Corais"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "2019, Austrália"
+    },
+    {
+      "nome": "subtitulo11",
+      "tipo": "texto",
+      "exemplo": "Onda Gigante"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "2021, Havaí"
+    },
+    {
+      "nome": "subtitulo12",
+      "tipo": "texto",
+      "exemplo": "Fundo do Mar"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "2022, Caribe"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "animais"
+    },
+    {
+      "nome": "subtitulo13",
+      "tipo": "texto",
+      "exemplo": "Tigre"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "2020, Ásia"
+    },
+    {
+      "nome": "subtitulo14",
+      "tipo": "texto",
+      "exemplo": "Arara"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "2021, Brasil"
+    },
+    {
+      "nome": "subtitulo15",
+      "tipo": "texto",
+      "exemplo": "Tartaruga"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "2018, Galápagos"
+    },
+    {
+      "nome": "subtitulo16",
+      "tipo": "texto",
+      "exemplo": "Lobo"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "2022, Canadá"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "cidades"
+    },
+    {
+      "nome": "subtitulo17",
+      "tipo": "texto",
+      "exemplo": "Luzes Noturnas"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "2022, São Paulo"
+    },
+    {
+      "nome": "subtitulo18",
+      "tipo": "texto",
+      "exemplo": "Ruas Movimentadas"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "2019, Tóquio"
+    },
+    {
+      "nome": "subtitulo19",
+      "tipo": "texto",
+      "exemplo": "Arranha-céus"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "2021, Nova York"
+    },
+    {
+      "nome": "subtitulo20",
+      "tipo": "texto",
+      "exemplo": "Ponte Antiga"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "2020, Paris"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "aventura"
+    },
+    {
+      "nome": "subtitulo21",
+      "tipo": "texto",
+      "exemplo": "Trilha na Selva"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "2021, Montanha"
+    },
+    {
+      "nome": "subtitulo22",
+      "tipo": "texto",
+      "exemplo": "Caiaque"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "2020, Rio Corrente"
+    },
+    {
+      "nome": "subtitulo23",
+      "tipo": "texto",
+      "exemplo": "Escalada"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "2022, Rocha Alta"
+    },
+    {
+      "nome": "subtitulo24",
+      "tipo": "texto",
+      "exemplo": "Acampamento"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "2019, Floresta Fria"
+    },
+    {
+      "nome": "subtitulo25",
+      "tipo": "texto",
+      "exemplo": "Voo Livre"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "2023, Céu Aberto"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "ciência"
+    },
+    {
+      "nome": "subtitulo26",
+      "tipo": "texto",
+      "exemplo": "Química"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "2020, Laboratório"
+    },
+    {
+      "nome": "subtitulo27",
+      "tipo": "texto",
+      "exemplo": "Física"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "2021, Faculdade"
+    },
+    {
+      "nome": "subtitulo28",
+      "tipo": "texto",
+      "exemplo": "Biologia"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "2019, Pesquisa"
+    },
+    {
+      "nome": "subtitulo29",
+      "tipo": "texto",
+      "exemplo": "Astronomia"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "2022, Cúpula"
+    },
+    {
+      "nome": "subtitulo30",
+      "tipo": "texto",
+      "exemplo": "Robótica"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "2023, Feira de Ciência"
+    },
+    {
+      "nome": "subtitulo31",
+      "tipo": "texto",
+      "exemplo": "Geologia"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "2018, Caverna"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "esportes"
+    },
+    {
+      "nome": "subtitulo32",
+      "tipo": "texto",
+      "exemplo": "Futebol"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "2022, Estádio"
+    },
+    {
+      "nome": "subtitulo33",
+      "tipo": "texto",
+      "exemplo": "Basquete"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "2021, Quadra"
+    },
+    {
+      "nome": "subtitulo34",
+      "tipo": "texto",
+      "exemplo": "Corrida"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "2020, Pista"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "música"
+    },
+    {
+      "nome": "subtitulo35",
+      "tipo": "texto",
+      "exemplo": "Violão"
+    },
+    {
+      "nome": "texto35",
+      "tipo": "texto",
+      "exemplo": "2019, Palco"
+    },
+    {
+      "nome": "subtitulo36",
+      "tipo": "texto",
+      "exemplo": "Bateria"
+    },
+    {
+      "nome": "texto36",
+      "tipo": "texto",
+      "exemplo": "2021, Estúdio"
+    },
+    {
+      "nome": "subtitulo37",
+      "tipo": "texto",
+      "exemplo": "Piano"
+    },
+    {
+      "nome": "texto37",
+      "tipo": "texto",
+      "exemplo": "2020, Teatro"
+    },
+    {
+      "nome": "subtitulo38",
+      "tipo": "texto",
+      "exemplo": "Canto"
+    },
+    {
+      "nome": "texto38",
+      "tipo": "texto",
+      "exemplo": "2022, Show Ao Vivo"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "comida"
+    },
+    {
+      "nome": "subtitulo39",
+      "tipo": "texto",
+      "exemplo": "Pizza"
+    },
+    {
+      "nome": "texto39",
+      "tipo": "texto",
+      "exemplo": "2021, Pizzaria"
+    },
+    {
+      "nome": "subtitulo40",
+      "tipo": "texto",
+      "exemplo": "Hambúrguer"
+    },
+    {
+      "nome": "texto40",
+      "tipo": "texto",
+      "exemplo": "2020, Lanchonete"
+    },
+    {
+      "nome": "subtitulo41",
+      "tipo": "texto",
+      "exemplo": "Salada Fresca"
+    },
+    {
+      "nome": "texto41",
+      "tipo": "texto",
+      "exemplo": "2022, Restaurante"
+    },
+    {
+      "nome": "subtitulo42",
+      "tipo": "texto",
+      "exemplo": "Sorvete"
+    },
+    {
+      "nome": "texto42",
+      "tipo": "texto",
+      "exemplo": "2019, Praça"
+    },
+    {
+      "nome": "subtitulo43",
+      "tipo": "texto",
+      "exemplo": "Suco Natural"
+    },
+    {
+      "nome": "texto43",
+      "tipo": "texto",
+      "exemplo": "2023, Praia"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "viagem"
+    },
+    {
+      "nome": "subtitulo44",
+      "tipo": "texto",
+      "exemplo": "Mapa Antigo"
+    },
+    {
+      "nome": "texto44",
+      "tipo": "texto",
+      "exemplo": "2020, Biblioteca"
+    },
+    {
+      "nome": "subtitulo45",
+      "tipo": "texto",
+      "exemplo": "Avião"
+    },
+    {
+      "nome": "texto45",
+      "tipo": "texto",
+      "exemplo": "2021, Aeroporto"
+    },
+    {
+      "nome": "subtitulo46",
+      "tipo": "texto",
+      "exemplo": "Bagagem"
+    },
+    {
+      "nome": "texto46",
+      "tipo": "texto",
+      "exemplo": "2022, Hotel"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "arte"
+    },
+    {
+      "nome": "subtitulo47",
+      "tipo": "texto",
+      "exemplo": "Pintura em Tela"
+    },
+    {
+      "nome": "texto47",
+      "tipo": "texto",
+      "exemplo": "2019, Museu"
+    },
+    {
+      "nome": "subtitulo48",
+      "tipo": "texto",
+      "exemplo": "Escultura"
+    },
+    {
+      "nome": "texto48",
+      "tipo": "texto",
+      "exemplo": "2020, Praça"
+    },
+    {
+      "nome": "subtitulo49",
+      "tipo": "texto",
+      "exemplo": "Desenho"
+    },
+    {
+      "nome": "texto49",
+      "tipo": "texto",
+      "exemplo": "2021, Estúdio"
+    },
+    {
+      "nome": "subtitulo50",
+      "tipo": "texto",
+      "exemplo": "Grafite"
+    },
+    {
+      "nome": "texto50",
+      "tipo": "texto",
+      "exemplo": "2022, Rua da Arte"
+    },
+    {
+      "nome": "texto51",
+      "tipo": "texto",
+      "exemplo": "Galeria de imagens variadas para explorar e aprender."
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 50
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #e63811 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "50 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://picsum.photos/400/600?random=1 https://picsum.photos/400/600?random=2)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

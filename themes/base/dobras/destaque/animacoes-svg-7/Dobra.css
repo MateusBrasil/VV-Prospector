@@ -1,0 +1,104 @@
+[data-dobra="destaque-animacoes-svg-7"] 1,[data-dobra="destaque-animacoes-svg-7"] 17..18,[data-dobra="destaque-animacoes-svg-7"] 400..700&display=swap");
+
+:root{
+  --card-1-stroke: var(--base-300);
+  --card-2-stroke: var(--base-300);
+  --card-3-stroke: var(--acento);
+  --card-4-stroke: var(--base-200);
+  --card-5-stroke: var(--base-300);
+  --card-6-stroke: var(--base-300);
+  --card-base-stroke: var(--base-100);
+  --card-copy: var(--base-600);
+}
+[data-dobra="destaque-animacoes-svg-7"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="destaque-animacoes-svg-7"]{
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="destaque-animacoes-svg-7"] h1{
+  font-size: clamp(3rem, 5vw, 7rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.05rem;
+}
+[data-dobra="destaque-animacoes-svg-7"] h3{
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-weight: 450;
+  line-height: 1.25;
+  letter-spacing: -0.025rem;
+}
+[data-dobra="destaque-animacoes-svg-7"] img,[data-dobra="destaque-animacoes-svg-7"] svg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="destaque-animacoes-svg-7"] header,[data-dobra="destaque-animacoes-svg-7"] footer{
+  width: 100%;
+  padding: 15rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+[data-dobra="destaque-animacoes-svg-7"] .row{
+  width: 100%;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+[data-dobra="destaque-animacoes-svg-7"] .card-container{
+  position: relative;
+  flex: 1;
+  aspect-ratio: 1;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+[data-dobra="destaque-animacoes-svg-7"] .card-container .svg-stroke{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  width: 100%;
+  height: 100%;
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-1 .svg-stroke-1 svg path{
+  stroke: var(--card-1-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-2 .svg-stroke-1 svg path{
+  stroke: var(--card-2-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-3 .svg-stroke-1 svg path{
+  stroke: var(--card-3-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-4 .svg-stroke-1 svg path{
+  stroke: var(--card-4-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-5 .svg-stroke-1 svg path{
+  stroke: var(--card-5-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] #card-6 .svg-stroke-1 svg path{
+  stroke: var(--card-6-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] .card-container .svg-stroke-2 svg path{
+  stroke: var(--card-base-stroke);
+}
+[data-dobra="destaque-animacoes-svg-7"] .card-title{
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: var(--card-copy);
+}
+[data-dobra="destaque-animacoes-svg-7"] .card-title .word{
+  will-change: transform;
+}
+@media (max-width: 1000px){[data-dobra="destaque-animacoes-svg-7"] .row{
+    flex-direction: column;
+  }
+
+}
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão MVM Glitch Premium</title>
+    <style>
+        :root {
+            /* Cores Vermelho Intenso (MVM) */
+            --primary-gradient: radial-gradient(67.54% 100.03% at 50% 0%, #FFEBEE 0%, #FFCDD2 25.48%, #E57373 62.5%, #C62828 100%);
+            --button-shadow: 0 5.98px 23.203px 0 rgba(198, 40, 40, 0.20), 0 14.352px 53.701px 0 rgba(198, 40, 40, 0.50);
+            --font-family: 'Neue Haas', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            
+            /* Variáveis do Glitch */
+            --move1: inset(50% 50% 50% 50%);
+            --move2: inset(31% 0 40% 0);
+            --move3: inset(39% 0 15% 0);
+            --move4: inset(45% 0 40% 0);
+            --move5: inset(45% 0 6% 0);
+            --move6: inset(14% 0 61% 0);
+        }
+
+        body {
+            background-color: #0f0505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--font-family);
+        }
+
+        /* Estrutura Principal do Botão (Sem Seta) */
+        .botao-mvm {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px 60px; /* Padding simétrico agora que não há ícone */
+            background: var(--primary-gradient);
+            border: 1.196px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15.623px;
+            box-shadow: var(--button-shadow);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* Camada de Glitch (Sobreposição) */
+        .botao-mvm::after {
+            clip-path: var(--move1);
+            content: 'Garantir minha Vaga'; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            opacity: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Texto do Botão */
+        .botao-mvm .elementor-button-text {
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ESTADOS DE HOVER */
+
+        .botao-mvm:hover {
+            filter: brightness(1.1) saturate(1.2);
+            border: 1px solid rgb(0, 255, 213); /* Borda ciano do Glitch */
+            box-shadow: 0px 10px 20px -5px rgb(0, 255, 213), var(--button-shadow);
+            text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+        }
+
+        .botao-mvm:hover::after {
+            opacity: 1;
+            animation: glitch_4011 1s steps(2, end);
+            text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+            border: 3px solid rgb(0, 255, 213);
+            border-radius: 15.623px;
+        }
+
+        .botao-mvm:hover .elementor-button-text {
+            transform: scale(1.05);
+        }
+
+        /* KEYFRAMES DO GLITCH (REPRODUÇÃO FIEL) */
+        @keyframes glitch_4011 {
+            0% { clip-path: var(--move1); transform: translate(0px, -10px); }
+            10% { clip-path: var(--move2); transform: translate(-10px, 10px); }
+            20% { clip-path: var(--move3); transform: translate(10px, 0px); }
+            30% { clip-path: var(--move4); transform: translate(-10px, 10px); }
+            40% { clip-path: var(--move5); transform: translate(10px, -10px); }
+            50% { clip-path: var(--move6); transform: translate(-10px, 10px); }
+            60% { clip-path: var(--move1); transform: translate(10px, -10px); }
+            70% { clip-path: var(--move3); transform: translate(-10px, 10px); }
+            80% { clip-path: var(--move2); transform: translate(10px, -10px); }
+            90% { clip-path: var(--move4); transform: translate(-10px, 10px); }
+            100% { clip-path: var(--move1); transform: translate(0); }
+        }
+
+        /* Responsividade */
+        @media(max-width: 600px) {
+            .botao-mvm {
+                font-size: 16px;
+                padding: 15px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" class="botao-mvm">
+        <span class="elementor-button-text">Garantir minha Vaga</span>
+    </a>
+
+</body>
+</html>

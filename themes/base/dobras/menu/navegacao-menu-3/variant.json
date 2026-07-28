@@ -1,0 +1,72 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-3",
+  "scope": "menu-navegacao-menu-3",
+  "origem": "bank/_componentes/menu/navegacao-menu-3",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Navigation"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Work"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Awwwards"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Instagram"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Dribble"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "LinkedIn"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #455ce9 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

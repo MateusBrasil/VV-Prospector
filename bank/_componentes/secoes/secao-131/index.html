@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hirely — Hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+
+  <!-- First-paint reveal guards (from BaseLayout) — hide entrance elements ONLY
+       while JS is active, and ONLY when motion is allowed, so a failed script /
+       reduced-motion / no-JS can never strand content. Owned + cleared by
+       hero-enter.js and scroll-reveal.js. -->
+  <script>
+    var de = document.documentElement;
+    de.classList.add('has-js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+      de.classList.add('hero-loading');
+  </script>
+  <style>
+    html.has-js .scroll-animation { opacity: 0; }
+    html.hero-loading [bounce-enter],
+    html.hero-loading .hero-two_bar-top,
+    html.hero-loading .hero-two_bar-bottom,
+    html.hero-loading .about_img-wrap { visibility: hidden; }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- TEMLIS-INLINED-NAVBAR (hirely-navbar) -->
+    <div class="navbar w-nav" role="banner" data-navbar="">
+      <div class="padding-global">
+        <div class="nav_container">
+          <div class="navbar_content">
+            <a href="/" aria-label="Hirely, home" class="navbar_logo-link w-nav-brand">
+              <img loading="eager" src="https://d173woph5zl366.cloudfront.net/hirely/images/HI.svg" alt="Hirely" class="logo">
+            </a>
+
+            <nav class="nav_group" aria-label="Primary">
+              <a href="/" aria-current="page" class="nav_links hide-tablet w-nav-link w--current">Home</a>
+              <a href="/about" class="nav_links hide-tablet w-nav-link">About</a>
+              <a href="/services" class="nav_links hide-tablet w-nav-link">Services</a>
+              <a href="/blog" class="nav_links hide-tablet w-nav-link">Blog</a>
+            </nav>
+
+            <div class="navbar_actions">
+              <a href="/contact" class="button is-white hide-mobile-portrait w-button">Start Hiring</a>
+
+              <div class="hamburger-anchor">
+                <div class="hamburger-nav">
+                  <div class="hamburger-nav__bg" aria-hidden="true"></div>
+                  <div class="hamburger-nav__group">
+                    <p class="hamburger-nav__menu-p">Menu</p>
+                    <ul class="hamburger-nav__ul">
+                      <li class="hamburger-nav__li">
+                        <a href="/" aria-current="page" class="hamburger-nav__a">
+                          <p class="hamburger-nav__p">Home</p>
+                          <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                        </a>
+                      </li>
+                      <li class="hamburger-nav__li">
+                        <a href="/about" class="hamburger-nav__a">
+                          <p class="hamburger-nav__p">About</p>
+                          <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                        </a>
+                      </li>
+                      <li class="hamburger-nav__li">
+                        <a href="/services" class="hamburger-nav__a">
+                          <p class="hamburger-nav__p">Services</p>
+                          <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                        </a>
+                      </li>
+                      <li class="hamburger-nav__li">
+                        <a href="/blog" class="hamburger-nav__a">
+                          <p class="hamburger-nav__p">Blog</p>
+                          <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                        </a>
+                      </li>
+                      <li class="hamburger-nav__li">
+                        <a href="/contact" class="hamburger-nav__a">
+                          <p class="hamburger-nav__p">Start Hiring</p>
+                          <div class="hamburger-nav__dot" aria-hidden="true"></div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <button type="button" data-navigation-toggle="toggle" aria-label="Toggle menu" aria-expanded="false" class="hamburger-nav__toggle">
+                    <div class="hamburger-nav__toggle-bar"></div>
+                    <div class="hamburger-nav__toggle-bar"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-navigation-toggle="close" class="navigation__dark-bg" aria-hidden="true"></div>
+
+    <main class="main-wrapper">
+      <section class="section_hero-two bg-dark">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="hero-two_grid">
+              <div class="hero-two_left">
+                <div>
+                  <div class="hero_header">
+                    <h1 bounce-enter="h1" class="text-color-white">Hire smarter, grow faster!</h1>
+                    <div bounce-enter="hero-svg" class="hero-two_svg">
+                      <img src="https://d173woph5zl366.cloudfront.net/hirely/images/home2-svg.svg" loading="eager" alt="">
+                    </div>
+                  </div>
+                  <div class="spacer-medium"></div>
+                  <div bounce-enter="description" class="text-color-on-dark">
+                    LATAM’s brightest minds – your competitive edge at 70% off
+                  </div>
+                  <div class="spacer-xhuge"></div>
+                  <div bounce-enter="custom-button">
+                    <a data-wf--button--variant="base" href="/contact" class="button_wrap w-inline-block">
+                      <div class="button_main">
+                        <div class="button_icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 12 24" fill="none" class="icon-1x1-medium is-2">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1569 12.711L4.49994 18.368L3.08594 16.954L8.03594 12.004L3.08594 7.05401L4.49994 5.64001L10.1569 11.297C10.3444 11.4845 10.4497 11.7389 10.4497 12.004C10.4497 12.2692 10.3444 12.5235 10.1569 12.711Z" fill="currentColor"></path>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 12 24" fill="none" class="icon-1x1-medium is-1">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1569 12.711L4.49994 18.368L3.08594 16.954L8.03594 12.004L3.08594 7.05401L4.49994 5.64001L10.1569 11.297C10.3444 11.4845 10.4497 11.7389 10.4497 12.004C10.4497 12.2692 10.3444 12.5235 10.1569 12.711Z" fill="currentColor"></path>
+                          </svg>
+                        </div>
+                        <div>Start Hiring</div>
+                      </div>
+                      <div class="button_shadow"></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="hero-two_stats">
+                  <div bounce-enter="stats">
+                    <div class="h3 text-color-white">300+</div>
+                    <div class="text-color-on-dark">Corporate clients</div>
+                  </div>
+                  <div bounce-enter="stats">
+                    <div class="h3 text-color-white">95%</div>
+                    <div class="text-color-on-dark">Client satisfaction rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-two_right">
+                <div class="hero-two_bars">
+                  <div class="hero-two_bar-top is-one">
+                    <div class="hero-two_img">
+                      <img src="https://d173woph5zl366.cloudfront.net/hirely/images/hero-two-img-1_1hero-two-img-1.avif" loading="eager" fetchpriority="high" decoding="async" alt="A casually dressed man smiling, reflecting an approachable candidate and a positive hiring experience." class="img">
+                    </div>
+                  </div>
+                  <div class="hero-two_bar-bottom is-three">
+                    <div class="hero-two_img is-three">
+                      <img src="https://d173woph5zl366.cloudfront.net/hirely/images/hero-two-img-3_1hero-two-img-3.avif" loading="eager" alt="A serious professionally dressed woman, conveying confidence and expertise in HR and recruitment decisions." class="img">
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-two_bars-right">
+                  <div class="hero-two_bar-top is-two">
+                    <div class="hero-two_img is-two">
+                      <img src="https://d173woph5zl366.cloudfront.net/hirely/images/hero-two-img-2_1hero-two-img-2.avif" loading="eager" alt="A serious professionally dressed man with his hand on his chin, portraying strategic thinking and leadership in recruitment decisions." class="img">
+                    </div>
+                  </div>
+                  <div class="hero-two_bar-bottom is-four">
+                    <div class="hero-two_img is-four">
+                      <img src="https://d173woph5zl366.cloudfront.net/hirely/images/hero-two-img-4_1hero-two-img-4.avif" loading="eager" alt="A casually dressed man smiling, reflecting an approachable candidate and a positive hiring experience." class="img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-wf--hero-banner--variant="base" class="hero_banner">
+          <div class="banner-text scroll-animation">Trusted by top brands across industries</div>
+          <div animation="loop" class="loop scroll-animation">
+            <div class="loop_logo">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-1.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-2.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-3.svg" alt="" class="logos_img">
+            </div>
+            <div class="loop_logo">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-1.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-2.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-3.svg" alt="" class="logos_img">
+            </div>
+            <div class="loop_logo">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-1.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-2.svg" alt="" class="logos_img">
+              <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/hirely/images/Logo-3.svg" alt="" class="logos_img">
+            </div>
+            <div class="brands_gradient-left"></div>
+            <div class="brands_gradient-right"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="hero-enter.js"></script>
+  <script src="scroll-reveal.js"></script>
+  <script src="navbar.js"></script>
+  <script src="navbar-scroll.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

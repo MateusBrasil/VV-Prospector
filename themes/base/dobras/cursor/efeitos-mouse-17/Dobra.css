@@ -1,0 +1,29 @@
+[data-dobra="cursor-efeitos-mouse-17"],[data-dobra="cursor-efeitos-mouse-17"]{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--base-600);
+  overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-17"] .text{
+  position: absolute;
+  pointer-events: none;
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 6em;
+  -webkit-text-stroke: 1px var(--base-100);
+  
+  color: var(--base-600);
+}
+[data-dobra="cursor-efeitos-mouse-17"] .text span{
+  color: var(--base-100);
+}
+[data-dobra="cursor-efeitos-mouse-17"] .center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

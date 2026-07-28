@@ -1,0 +1,1522 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coverly — Team</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Lora:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="./style.css">
+  
+    <style data-bundled-from="/coverly/styles.css">
+/* Design tokens — sourced from coverly-template.webflow.css :root block. Do not edit; regenerate from source. */
+:root {
+  --bg-color--bg-primary: var(--base--beige);
+  --_typography---font-family--secondary: Inter, sans-serif;
+  --text-color--text-primary: var(--base--black);
+  --_sizes---fixed--1rem: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--0rem: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--primary);
+  --_typography---h1--font-size: var(--_sizes---fixed--3-5rem);
+  --_typography---h1--line-height: 114%;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.05em;
+  --_typography---h2--font-family: var(--_typography---font-family--primary);
+  --_typography---h2--font-size: var(--_sizes---fixed--3-5rem);
+  --_typography---h2--line-height: 115%;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.05em;
+  --_typography---h3--font-family: var(--_typography---font-family--primary);
+  --_typography---h3--font-size: var(--_sizes---fixed--2-25rem);
+  --_typography---h3--line-height: 1.11;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.03em;
+  --_typography---h4--font-family: var(--_typography---font-family--primary);
+  --_typography---h4--font-size: var(--_sizes---fixed--3rem);
+  --_typography---h4--line-height: 110%;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: 0em;
+  --_typography---h5--font-family: var(--_typography---font-family--primary);
+  --_typography---h5--font-size: var(--_sizes---fixed--2-5rem);
+  --_typography---h5--line-height: 115%;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: 0em;
+  --_typography---h6--font-family: var(--_typography---font-family--primary);
+  --_typography---h6--font-size: var(--_sizes---fixed--2rem);
+  --_typography---h6--line-height: 120%;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: 0em;
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---fixed--1-75rem: 1.75rem;
+  --_sizes---fixed--1-5rem: 1.5rem;
+  --_typography---font-weight--semibold: 600;
+  --_sizes---fixed--2-5rem: 2.5rem;
+  --_sizes---fixed--6rem: 6rem;
+  --_sizes---fixed--3rem: 3rem;
+  --_sizes---fixed--2rem: 2rem;
+  --_sizes---fixed--3-25rem: 3.25rem;
+  --text-color--text-tertiary: var(--base--beige);
+  --_typography---font-weight--medium: 500;
+  --_typography---font-family--primary: Lora, sans-serif;
+  --_sizes---fixed--1-25rem: 1.25rem;
+  --_typography---font-weight--light: 300;
+  --_sizes---fixed--1-125rem: 1.125rem;
+  --base--grey: #474747;
+  --bg-color--bg-secondary: var(--base--orange);
+  --_sizes---fixed--0-5rem: .5rem;
+  --_sizes---fixed--0-75rem: .75rem;
+  --grey--900: #0a0a0a;
+  --_sizes---fixed--8rem: 8rem;
+  --_sizes---fixed--4rem: 4rem;
+  --base--white: #fff;
+  --_sizes---fixed--0-25rem: .25rem;
+  --base--black: #000;
+  --bg-color--bg-tertiary: var(--base--beige-100);
+  --base--beige-200: #d9d8cf;
+  --_sizes---fixed--2-25rem: 2.25rem;
+  --_sizes---fixed--0-875rem: .875rem;
+  --_sizes---fixed--0-125rem: .125rem;
+  --_typography---font-weight--bold: 700;
+  --grey--250: #949494;
+  --grey--100: #e0e0dc;
+  --base--50: #0a0a0a80;
+  --base--beige-100: #ecece7;
+  --_sizes---fixed--5rem: 5rem;
+  --base--orange: #ff6301;
+  --grey--200: #bfbfbf;
+  --grey--700: #1e1e1e;
+  --grey--225: #b7b7b7;
+  --_sizes---fixed--7rem: 7rem;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_sizes---fixed--2-75rem: 2.75rem;
+  --_sizes---fixed--3-5rem: 3.5rem;
+  --_sizes---fixed--4-5rem: 4.5rem;
+  --base--beige: #fbfbf9;
+  --_sizes---fixed--5-5rem: 5.5rem;
+  --_sizes---fixed--6-5rem: 6.5rem;
+  --grey--300: grey;
+  --grey--400: #575757;
+  --grey--500: #333;
+  --_sizes---fixed--9rem: 9rem;
+  --grey--600: #292929;
+  --_sizes---fixed--10rem: 10rem;
+  --grey--800: #0f0f0f;
+}
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+header,
+section {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address styling not present in IE 8/9.
+ */
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/**
+ * Contain overflow in all browsers.
+ */
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. CUSTOM FOR WEBFLOW: Removed the input[type="submit"] selector to reduce
+ *    specificity and defer to the .w-button selector
+ */
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/**
+ * 1. CUSTOM FOR WEBFLOW: changed from `textfield` to `none` to normalize iOS rounded input
+ * 2. CUSTOM FOR WEBFLOW: box-sizing: content-box rule removed
+ *    (similar to normalize.css >=4.0.0)
+ */
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/*
+ * Coverly — webflow.css
+ * Literal concatenation of the two CSS files from the Webflow export ZIP:
+ *   1. coverly-source/coverly-template.webflow/css/webflow.css      (utility classes, .w-*)
+ *   2. coverly-source/coverly-template.webflow/css/coverly-template.webflow.css  (Client-First classes)
+ * Order matters: utility first so Client-First overrides take precedence.
+ * Generated by webflow-to-astro skill, Phase 5 sec 0 re-build.
+ * Do NOT translate to Tailwind. Do NOT trim selectively.
+ */
+
+/* ============================================================
+ * § 1 — webflow.css (utility classes from ZIP)
+ * ============================================================ */
+
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+html[data-w-dynpage] [data-w-cloak] {
+  color: transparent !important;
+}
+
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 32px;
+  line-height: 36px;
+  margin-top: 20px;
+}
+.w-form-done {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  background-color: #dddddd;
+}
+.w-form-fail {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+.w-input:focus,
+.w-select:focus {
+  border-color: #3898EC;
+  outline: 0;
+}
+.w-slider-dot:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 2px #fff;
+}
+.w-slider-dot:focus.w-active {
+  box-shadow: none;
+}
+.w-slider-arrow-left:focus,
+.w-slider-arrow-right:focus {
+  outline: 0;
+}
+.w-dropdown-toggle:focus {
+  outline: 0;
+}
+.w-dropdown-link:focus {
+  outline: 0;
+}
+/**
+ * ## Note
+ * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
+ * For example percentage units do not work on descendants of elements that
+ * have any dimensions expressed in viewport units. It also doesn’t handle them at
+ * all in `calc()`.
+ */
+/**
+ * Wrapper around all lightbox elements
+ *
+ * 1. Since the lightbox can receive focus, IE also gives it an outline.
+ * 2. Fixes flickering on Chrome when a transition is in progress
+ *    underneath the lightbox.
+ */
+/**
+ * Neat trick to bind the rubberband effect to our canvas instead of the whole
+ * document on iOS. It also prevents a bug that causes the document underneath to scroll.
+ */
+/* .w-lightbox-content */
+/*
+ * 1. Remove default margin set by user-agent on the <figure> element.
+ */
+/**
+ * IE adds image dimensions as width and height attributes on the IMG tag,
+ * but we need both width and height to be set to auto to enable scaling.
+ */
+/**
+ * 1. Reset if style is set by user on "All Images"
+ */
+/*
+ * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
+ * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
+ * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
+ */
+/**
+ * 1. All IE versions add extra space at the bottom without this.
+ */
+/*
+ * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
+ *    which doesn’t work in Safari anyway.
+ * 2. Chrome renders images pixelated when switching to GPU. Making sure
+ *    the parent is also rendered on the GPU (by setting translate3d for
+ *    example) fixes this behavior.
+ */
+/*
+ * Spinner
+ *
+ * Absolute pixel values are used to avoid rounding errors that would cause
+ * the white spinning element to be misaligned with the track.
+ */
+/*
+ * Utility classes
+ */
+@media (min-width: 768px) {
+  /* .w-lightbox-content */
+  .w-lightbox-control:hover {
+    opacity: 1;
+  }
+}
+
+.w-lightbox-inactive:hover {
+  opacity: 0;
+}
+[data-nav-menu-open] {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #C8C8C8;
+  text-align: center;
+  overflow: visible;
+  min-width: 200px;
+}
+.w--nav-link-open {
+  display: block;
+  position: relative;
+}
+.w-nav-button:focus {
+  outline: 0;
+}
+.w--nav-dropdown-open {
+  display: block;
+}
+.w--nav-dropdown-toggle-open {
+  display: block;
+}
+.w--nav-dropdown-list-open {
+  position: static;
+}
+/**
+ * NOTE: These rules are overridden in site-designer.less to use container queries instead of media queries
+ * when the navbar is inside a Frame on the Open Canvas.
+ */
+.w-tab-link:focus {
+  outline: 0;
+}
+.w--tab-active {
+  display: block;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.w-layout-grid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+
+
+/* ============================================================
+ * § 2 — coverly-template.webflow.css (Client-First custom)
+ * ============================================================ */
+
+:root {
+  --new-base_typography---xs--font-size\<deleted\|variable-b97c7175-b870-89c4-c814-955629a00410\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>);
+  --new-base_typography---font-weight--semibold\<deleted\|variable-f35e7add-3992-fe66-ec78-974c8b91d367\>: 600;
+  --new-base---base--black\<deleted\|variable-9347398a-a150-e791-5b09-add853ae6e1a\>: #1d1d1d;
+  --bg-color--bg-primary: var(--base--beige);
+  --_typography---font-family--secondary: Inter, sans-serif;
+  --text-color--text-primary: var(--base--black);
+  --_sizes---fixed--1rem: 1rem;
+  --_typography---font-weight--regular: 400;
+  --_sizes---fixed--0rem: 0rem;
+  --_typography---h1--font-family: var(--_typography---font-family--primary);
+  --_typography---h1--font-size: var(--_sizes---fixed--3-5rem);
+  --_typography---h1--line-height: 114%;
+  --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h1--letter-spacing: -.05em;
+  --_typography---h2--font-family: var(--_typography---font-family--primary);
+  --_typography---h2--font-size: var(--_sizes---fixed--3-5rem);
+  --_typography---h2--line-height: 115%;
+  --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h2--letter-spacing: -.05em;
+  --_typography---h3--font-family: var(--_typography---font-family--primary);
+  --_typography---h3--font-size: var(--_sizes---fixed--2-25rem);
+  --_typography---h3--line-height: 1.11;
+  --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h3--letter-spacing: -.03em;
+  --_typography---h4--font-family: var(--_typography---font-family--primary);
+  --_typography---h4--font-size: var(--_sizes---fixed--3rem);
+  --_typography---h4--line-height: 110%;
+  --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h4--letter-spacing: 0em;
+  --_typography---h5--font-family: var(--_typography---font-family--primary);
+  --_typography---h5--font-size: var(--_sizes---fixed--2-5rem);
+  --_typography---h5--line-height: 115%;
+  --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h5--letter-spacing: 0em;
+  --_typography---h6--font-family: var(--_typography---font-family--primary);
+  --_typography---h6--font-size: var(--_sizes---fixed--2rem);
+  --_typography---h6--line-height: 120%;
+  --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+  --_typography---h6--letter-spacing: 0em;
+  --text-color--text-secondary: var(--base--grey);
+  --_sizes---fixed--1-75rem: 1.75rem;
+  --_sizes---fixed--1-5rem: 1.5rem;
+  --_typography---font-weight--semibold: 600;
+  --_sizes---fixed--2-5rem: 2.5rem;
+  --_sizes---fixed--6rem: 6rem;
+  --_sizes---fixed--3rem: 3rem;
+  --_sizes---fixed--2rem: 2rem;
+  --_sizes---fixed--3-25rem: 3.25rem;
+  --text-color--text-tertiary: var(--base--beige);
+  --_typography---font-weight--medium: 500;
+  --border-color--border-primary\<deleted\|variable-d4c54ba4-ee41-67ce-58a5-5216ca039f83\>: #efeff2;
+  --_typography---font-family--primary: Lora, sans-serif;
+  --_sizes---fixed--1-25rem: 1.25rem;
+  --_typography---font-weight--light: 300;
+  --_sizes---fixed--1-125rem: 1.125rem;
+  --_typography---h3--line-height\<deleted\|variable-74122c19-702d-1bbc-34f2-40c8cfc13dba\>: 100%;
+  --base--grey: #474747;
+  --bg-color--bg-secondary: var(--base--orange);
+  --_sizes---fixed--0-5rem: .5rem;
+  --_sizes---fixed--0-75rem: .75rem;
+  --grey--900: #0a0a0a;
+  --_sizes---fixed--8rem: 8rem;
+  --_sizes---fixed--4rem: 4rem;
+  --base--white: #fff;
+  --_sizes---fixed--0-25rem: .25rem;
+  --base--black: #000;
+  --bg-color--bg-tertiary: var(--base--beige-100);
+  --base--beige-200: #d9d8cf;
+  --border-color--border-alternate\<deleted\|variable-551aa6d2-4bf8-6036-137a-78e1c71841a4\>: var(--base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>);
+  --_sizes---fixed--2-25rem: 2.25rem;
+  --_sizes---fixed--0-875rem: .875rem;
+  --_sizes---fixed--0-125rem: .125rem;
+  --_typography---font-weight--bold: 700;
+  --grey--250: #949494;
+  --grey--100: #e0e0dc;
+  --base--50: #0a0a0a80;
+  --base--beige-100: #ecece7;
+  --_sizes---fixed--5rem: 5rem;
+  --base--orange: #ff6301;
+  --grey--200: #bfbfbf;
+  --grey--700: #1e1e1e;
+  --grey--225: #b7b7b7;
+  --_sizes---fixed--7rem: 7rem;
+  --new-base---bg-secondary: #0f0f0f;
+  --new-base---border-default: #ffffff14;
+  --new-base---border-subtle: #ffffff1f;
+  --new-base---black: #050505;
+  --new-base---text-secondary: #ffffff80;
+  --new-base---bg-primary: #0a0a0f;
+  --new-base---accent-indigo: #4f46e5;
+  --new-base---text-tertiary: #ffffff4d;
+  --new-base---accent-violet: #7c3aed;
+  --new-base---accent-sky: #0ea5e9;
+  --new-base---accent-cyan: #06b6d4;
+  --new-base---white: #fff;
+  --new-base---text-primary: #fff;
+  --_typography---font-weight--thin: 100;
+  --_typography---font-weight--extra-light: 200;
+  --_typography---font-weight--extra-bold: 800;
+  --_typography---font-weight--black: 900;
+  --_sizes---fixed--2-75rem: 2.75rem;
+  --_sizes---fixed--3-5rem: 3.5rem;
+  --_sizes---fixed--4-5rem: 4.5rem;
+  --base--beige: #fbfbf9;
+  --_sizes---fixed--5-5rem: 5.5rem;
+  --_sizes---fixed--6-5rem: 6.5rem;
+  --grey--300: grey;
+  --grey--400: #575757;
+  --grey--500: #333;
+  --_sizes---fixed--9rem: 9rem;
+  --grey--600: #292929;
+  --_sizes---fixed--10rem: 10rem;
+  --grey--800: #0f0f0f;
+  --new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>: .75rem;
+  --base-color-neutral--neutral-darker\<deleted\|variable-dda6ad91-259a-0202-f70f-965feb273058\>: #27272a;
+}
+
+.w-layout-grid {
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+.new-base--t-button-secondary:hover {
+  background-color: #1c1c1c;
+  transform: scale(.95);
+}
+
+.new-base--t-button:hover {
+  transform: scale(.95);
+}
+
+body {
+  background-color: var(--bg-color--bg-primary);
+  font-family: var(--_typography---font-family--secondary);
+  color: var(--text-color--text-primary);
+  font-size: var(--_sizes---fixed--1rem);
+  line-height: 1.5;
+  font-weight: var(--_typography---font-weight--regular);
+  overscroll-behavior: none;
+}
+
+h2 {
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h2--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--text-color--text-primary);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.text-color-secondary {
+  color: var(--text-color--text-secondary);
+}
+
+.icon-1x1-medium {
+  width: var(--_sizes---fixed--1-5rem);
+  height: var(--_sizes---fixed--1-5rem);
+}
+
+.padding-global {
+  padding-right: var(--_sizes---fixed--2-5rem);
+  padding-left: var(--_sizes---fixed--2-5rem);
+}
+
+.padding-global.is-hero {
+  padding-top: 6.25rem;
+  padding-bottom: 4rem;
+}
+
+.padding-global.is-cta {
+  padding-top: 6.69rem;
+  padding-bottom: 6.69rem;
+}
+
+.text-xl {
+  font-family: var(--_typography---font-family--primary);
+  font-size: var(--_sizes---fixed--1-25rem);
+  letter-spacing: -.03em;
+  line-height: 1.4;
+}
+
+.form_input:hover {
+  border-bottom: 1px solid #000 !important;
+}
+
+.form_input:focus {
+  color: var(--grey--900);
+}
+
+.h2 {
+  font-family: var(--_typography---h2--font-family);
+  font-size: var(--_typography---h2--font-size);
+  line-height: var(--_typography---h1--line-height);
+  font-weight: var(--_typography---h2--font-weight);
+  letter-spacing: var(--_typography---h2--letter-spacing);
+}
+
+.container-large {
+  width: 100%;
+  max-width: 73.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button:hover {
+  transform: scale(.97);
+}
+
+.button.is-form-submit:hover {
+  background-color: #353539;
+}
+
+.padding-section-medium {
+  padding-top: var(--_sizes---fixed--6rem);
+  padding-bottom: var(--_sizes---fixed--6rem);
+}
+
+.spacer-medium {
+  width: 100%;
+  padding-top: var(--_sizes---fixed--1rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spacer-xxsmall {
+  width: 100%;
+  padding-top: var(--_sizes---fixed--0-25rem);
+}
+
+.img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.text-link:hover {
+  color: var(--grey--100);
+}
+
+.custom:hover {
+  background-color: #f2f2f2;
+}
+
+.temlis {
+  grid-column-gap: 1.37rem;
+  grid-row-gap: 1.37rem;
+  color: #fff;
+  background-color: #0158ff;
+  border: 1px solid #126df299;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25rem 1.25rem;
+  transition: background-color .2s;
+  display: flex;
+}
+
+.temlis:hover {
+  background-color: #0b64e6;
+}
+
+.tag {
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.content {
+  grid-column-gap: var(--_sizes---fixed--3rem);
+  grid-row-gap: var(--_sizes---fixed--3rem);
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+}
+
+.card.is-link:hover {
+  background-color: var(--base--beige-200);
+}
+
+.spacer {
+  opacity: 0;
+}
+
+.spacer-tablet, .spacer-mobile {
+  display: none;
+}
+
+.lean-more.is-link:hover {
+  opacity: 100;
+}
+
+.tabs_link:hover {
+  color: var(--text-color--text-primary);
+}
+
+.link {
+  height: var(--_sizes---fixed--3rem);
+  padding-right: var(--_sizes---fixed--1-5rem);
+  padding-left: var(--_sizes---fixed--1-5rem);
+  color: var(--grey--250);
+  white-space: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  transition: color .2s cubic-bezier(.77, 0, .175, 1);
+  display: flex;
+}
+
+.link:hover {
+  color: var(--grey--100);
+}
+
+.link.w--current {
+  color: var(--base--white);
+}
+
+.vertical-center {
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.nav_link:hover {
+  color: var(--grey--900);
+}
+
+.team_grid {
+  grid-column-gap: var(--_sizes---fixed--0-75rem);
+  grid-row-gap: var(--_sizes---fixed--0-75rem);
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.team_card {
+  padding: var(--_sizes---fixed--1rem);
+  position: relative;
+}
+
+.team_space {
+  z-index: 2;
+  padding-top: 92%;
+  position: relative;
+}
+
+.team_content {
+  z-index: 2;
+  padding: var(--_sizes---fixed--1rem);
+  grid-column-gap: var(--_sizes---fixed--2rem);
+  grid-row-gap: var(--_sizes---fixed--2rem);
+  background-color: var(--base--white);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.team_img {
+  z-index: 1;
+  position: absolute;
+  inset: 0%;
+}
+
+.social_list {
+  grid-column-gap: var(--_sizes---fixed--0-875rem);
+  grid-row-gap: var(--_sizes---fixed--0-875rem);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.social_link {
+  transition: transform .2s;
+}
+
+.social_link:hover {
+  transform: scale(1.2);
+}
+
+.header {
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-flow: column;
+  display: flex;
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-b97c7175-b870-89c4-c814-955629a00410\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-f35e7add-3992-fe66-ec78-974c8b91d367\>: 600;
+    --_sizes---fixed--1rem: 1rem;
+    --_sizes---fixed--0rem: 0rem;
+    --_sizes---fixed--1-75rem: 1.75rem;
+    --_sizes---fixed--1-5rem: 1.5rem;
+    --_sizes---fixed--2-5rem: 2.5rem;
+    --_sizes---fixed--6rem: 6rem;
+    --_sizes---fixed--3rem: 3rem;
+    --_sizes---fixed--2rem: 2rem;
+    --_sizes---fixed--3-25rem: 3.25rem;
+    --_sizes---fixed--1-25rem: 1.25rem;
+    --_sizes---fixed--1-125rem: 1.125rem;
+    --_sizes---fixed--0-5rem: .5rem;
+    --_sizes---fixed--0-75rem: .75rem;
+    --_sizes---fixed--8rem: 8rem;
+    --_sizes---fixed--4rem: 4rem;
+    --_sizes---fixed--0-25rem: .25rem;
+    --_sizes---fixed--2-25rem: 2.25rem;
+    --_sizes---fixed--0-875rem: .875rem;
+    --_sizes---fixed--0-125rem: .125rem;
+    --_sizes---fixed--5rem: 5rem;
+    --_sizes---fixed--7rem: 7rem;
+    --_sizes---fixed--2-75rem: 2.75rem;
+    --_sizes---fixed--3-5rem: 3.5rem;
+    --_sizes---fixed--4-5rem: 4.5rem;
+    --_sizes---fixed--5-5rem: 5.5rem;
+    --_sizes---fixed--6-5rem: 6.5rem;
+    --_sizes---fixed--9rem: 9rem;
+    --_sizes---fixed--10rem: 10rem;
+    --_typography---font-family--secondary: Inter, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--primary);
+    --_typography---h1--font-size: var(--_sizes---fixed--3rem);
+    --_typography---h1--line-height: 114%;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.05em;
+    --_typography---h2--font-family: var(--_typography---font-family--primary);
+    --_typography---h2--font-size: var(--_sizes---fixed--3rem);
+    --_typography---h2--line-height: 115%;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.05em;
+    --_typography---h3--font-family: var(--_typography---font-family--primary);
+    --_typography---h3--font-size: var(--_sizes---fixed--2-25rem);
+    --_typography---h3--line-height: 1.11;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.03em;
+    --_typography---h4--font-family: var(--_typography---font-family--primary);
+    --_typography---h4--font-size: var(--_sizes---fixed--2-25rem);
+    --_typography---h4--line-height: 110%;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: 0em;
+    --_typography---h5--font-family: var(--_typography---font-family--primary);
+    --_typography---h5--font-size: var(--_sizes---fixed--1-75rem);
+    --_typography---h5--line-height: 115%;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: 0em;
+    --_typography---h6--font-family: var(--_typography---font-family--primary);
+    --_typography---h6--font-size: var(--_sizes---fixed--1-5rem);
+    --_typography---h6--line-height: 120%;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: 0em;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---font-family--primary: Lora, sans-serif;
+    --_typography---font-weight--light: 300;
+    --_typography---h3--line-height\<deleted\|variable-74122c19-702d-1bbc-34f2-40c8cfc13dba\>: 100%;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+  }
+
+  .padding-global.is-hero {
+    padding-top: var(--_sizes---fixed--6rem);
+    padding-bottom: var(--_sizes---fixed--3rem);
+  }
+
+  .padding-section-medium {
+    padding-top: var(--_sizes---fixed--4rem);
+    padding-bottom: var(--_sizes---fixed--4rem);
+  }
+
+  .spacer-desktop {
+    display: none;
+  }
+
+  .spacer-tablet {
+    display: block;
+  }
+
+  .link {
+    padding-right: var(--_sizes---fixed--1rem);
+    padding-left: var(--_sizes---fixed--1rem);
+  }
+
+  .team_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    --new-base_typography---xs--font-size\<deleted\|variable-b97c7175-b870-89c4-c814-955629a00410\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-f35e7add-3992-fe66-ec78-974c8b91d367\>: 600;
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>: .75rem;
+    --_sizes---fixed--1rem: 1rem;
+    --_sizes---fixed--0rem: 0rem;
+    --_sizes---fixed--1-75rem: 1.75rem;
+    --_sizes---fixed--1-5rem: 1.5rem;
+    --_sizes---fixed--2-5rem: 2.5rem;
+    --_sizes---fixed--6rem: 6rem;
+    --_sizes---fixed--3rem: 3rem;
+    --_sizes---fixed--2rem: 2rem;
+    --_sizes---fixed--3-25rem: 3.25rem;
+    --_sizes---fixed--1-25rem: 1.25rem;
+    --_sizes---fixed--1-125rem: 1.125rem;
+    --_sizes---fixed--0-5rem: .5rem;
+    --_sizes---fixed--0-75rem: .75rem;
+    --_sizes---fixed--8rem: 8rem;
+    --_sizes---fixed--4rem: 4rem;
+    --_sizes---fixed--0-25rem: .25rem;
+    --_sizes---fixed--2-25rem: 2.25rem;
+    --_sizes---fixed--0-875rem: .875rem;
+    --_sizes---fixed--0-125rem: .125rem;
+    --_sizes---fixed--5rem: 5rem;
+    --_sizes---fixed--7rem: 7rem;
+    --_sizes---fixed--2-75rem: 2.75rem;
+    --_sizes---fixed--3-5rem: 3.5rem;
+    --_sizes---fixed--4-5rem: 4.5rem;
+    --_sizes---fixed--5-5rem: 5.5rem;
+    --_sizes---fixed--6-5rem: 6.5rem;
+    --_sizes---fixed--9rem: 9rem;
+    --_sizes---fixed--10rem: 10rem;
+    --_typography---font-family--secondary: Inter, sans-serif;
+    --_typography---font-weight--regular: 400;
+    --_typography---h1--font-family: var(--_typography---font-family--primary);
+    --_typography---h1--font-size: var(--_sizes---fixed--2-75rem);
+    --_typography---h1--line-height: 114%;
+    --_typography---h1--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h1--letter-spacing: -.05em;
+    --_typography---h2--font-family: var(--_typography---font-family--primary);
+    --_typography---h2--font-size: var(--_sizes---fixed--2-5rem);
+    --_typography---h2--line-height: 115%;
+    --_typography---h2--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h2--letter-spacing: -.05em;
+    --_typography---h3--font-family: var(--_typography---font-family--primary);
+    --_typography---h3--font-size: var(--_sizes---fixed--2rem);
+    --_typography---h3--line-height: 1.11;
+    --_typography---h3--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h3--letter-spacing: -.03em;
+    --_typography---h4--font-family: var(--_typography---font-family--primary);
+    --_typography---h4--font-size: var(--_sizes---fixed--2rem);
+    --_typography---h4--line-height: 110%;
+    --_typography---h4--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h4--letter-spacing: 0em;
+    --_typography---h5--font-family: var(--_typography---font-family--primary);
+    --_typography---h5--font-size: var(--_sizes---fixed--1-5rem);
+    --_typography---h5--line-height: 115%;
+    --_typography---h5--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h5--letter-spacing: 0em;
+    --_typography---h6--font-family: var(--_typography---font-family--primary);
+    --_typography---h6--font-size: var(--_sizes---fixed--1-25rem);
+    --_typography---h6--line-height: 120%;
+    --_typography---h6--font-weight: var(--_typography---font-weight--regular);
+    --_typography---h6--letter-spacing: 0em;
+    --_typography---font-weight--semibold: 600;
+    --_typography---font-weight--medium: 500;
+    --_typography---font-family--primary: Lora, sans-serif;
+    --_typography---font-weight--light: 300;
+    --_typography---h3--line-height\<deleted\|variable-74122c19-702d-1bbc-34f2-40c8cfc13dba\>: 100%;
+    --_typography---font-weight--bold: 700;
+    --_typography---font-weight--thin: 100;
+    --_typography---font-weight--extra-light: 200;
+    --_typography---font-weight--extra-bold: 800;
+    --_typography---font-weight--black: 900;
+  }
+
+  .padding-global {
+    padding-right: var(--_sizes---fixed--1rem);
+    padding-left: var(--_sizes---fixed--1rem);
+  }
+
+  .padding-global.is-hero {
+    padding-top: var(--_sizes---fixed--3rem);
+    padding-bottom: var(--_sizes---fixed--2rem);
+  }
+
+  .padding-global.is-cta {
+    padding-top: 16rem;
+    padding-bottom: 2rem;
+  }
+
+  .padding-section-medium {
+    padding-top: var(--_sizes---fixed--3rem);
+    padding-bottom: var(--_sizes---fixed--3rem);
+  }
+
+  .content {
+    grid-column-gap: var(--_sizes---fixed--2rem);
+    grid-row-gap: var(--_sizes---fixed--2rem);
+    order: 0;
+  }
+
+  .spacer-tablet {
+    display: none;
+  }
+
+  .spacer-mobile {
+    display: block;
+  }
+
+  .team_content {
+    grid-row-gap: var(--_sizes---fixed--0-5rem);
+    flex-flow: wrap;
+  }
+
+  .header {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    --new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>: .75rem;
+    --new-base_typography---xs--font-size\<deleted\|variable-b97c7175-b870-89c4-c814-955629a00410\>: var(--new-base_sizes---fixed--0-75rem\<deleted\|variable-cea68e7b-8aaa-993a-0c40-f69c95d1677b\>);
+    --new-base_typography---font-weight--semibold\<deleted\|variable-f35e7add-3992-fe66-ec78-974c8b91d367\>: 600;
+  }
+
+  .container-large {
+    max-width: 100%;
+  }
+
+  .team_grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Custom component overrides (above-and-beyond Webflow Client-First). Add as needed in Phase 5. */
+
+/* === Navbar a11y — focus-visible (Phase 5 sec 0) === */
+
+/* ===== Testimonial marquee — desktop only (≥992px) ===== */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (min-width: 992px) {
+  /* Pause on hover anywhere in the loop */
+  .section_testimonial .loop:hover .loop_track {
+    animation-play-state: paused;
+  }
+  /* Card hover: slide the orange overlay in from the left */
+  .section_testimonial .loop_card:hover .loop_card_hover {
+    transform: translate(0);
+  }
+}
+/* Reduced motion: stop the marquee */
+
+/* ===== Solutions tabs — active state visual ===== */
+/* Active tab link: orange filled point (overrides inline opacity:0 + gray bg) */
+/* Active tab link text color: primary (vs secondary default) */
+/* Webflow tab pane default: hidden unless active. Webflow runtime sets this
+   normally; we replicate with CSS so our vanilla JS toggle works. */
+/* Fade transition between panels for smoother UX (~300ms, matches Webflow's
+   `data-duration-in`) */
+
+/* ===== Blog card image hover zoom =====
+ * Replicates Webflow IX2 actionLists a-37 ("Blog Hover on") + a-38 ("Blog
+ * Hover off"): on `.blog_item` MOUSE_OVER, scale the `.img` child from
+ * 1 → 1.15 over 500ms with `outQuart` easing (= cubic-bezier(.165,.84,.44,1)).
+ * Mouse out reverses. CSS-only (no JS needed).
+ *
+ * The `.thumbnail_img` parent has `overflow: clip` so the scaled image stays
+ * visually clipped to the card thumbnail box.
+ */
+.section_blog .blog_item a:hover .img {
+  transform: scale(1.15);
+}
+
+/* ===== Blog list — row gap between rows of cards =====
+ * Webflow's `.blog_list` ships with `grid-row-gap: 0` which makes the rows
+ * touch on /blog index when posts wrap to 2+ rows (visual error in the
+ * original template per Edgar). Add a generous row-gap matching the
+ * page section_blog gap convention.
+ */
+
+/* ===== Footer link line hover slide (replaces IX2 a-46/a-47) =====
+ * Each `.link` has a child `.clip > .line`. The base `.line` rule in
+ * webflow.css ships with `transform: translate(-100%)` (hidden left).
+ * On hover we slide it to `translate(0)` over 500ms outQuart — same easing
+ * as the navbar `nav_link` original IX2 animation. `.link.no-link` is the
+ * non-clickable "Pages" header; CSS `:hover` simply has nothing to animate
+ * there because the header has no `.line` child.
+ */
+.section_footer .link:hover .line {
+  transform: translate(0);
+}
+
+/* ===== FAQ accordion — replaces Webflow w-dropdown runtime =====
+ * Webflow's `webflow.js` ships an interaction that toggles `.w--open` on
+ * click. We strip the runtime and reproduce the behavior with vanilla JS in
+ * Faq.astro (see <script> at bottom of the component) plus the rules below.
+ *
+ * Closed state:   `.accordion_content` collapses to max-height: 0.
+ * Open state:     `.accordion.w--open .accordion_content` expands.
+ * Icon:           `.accordion_icon img` rotates 45° (+ → ×) when open.
+ *
+ * Easing matches the rest of the template (outQuart = cubic-bezier).
+ */
+
+/* ===== Testimonial cards slideInRight on tablet+mobile (≤991) =====
+ * Desktop has the marquee `@keyframes marquee-left` so cards are already
+ * animated. Below 992 the marquee is disabled and the loop_track becomes a
+ * static grid — without this rule the cards just appear instantly. We mirror
+ * the `.scroll-slide-left` effect (opacity 0 + translateX(100px) → 1 + 0,
+ * 1s outQuart) and trigger it via IntersectionObserver in Testimonial.astro.
+ */
+@media (max-width: 991px) {
+  /* Reduced motion: jump to visible state */
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Navbar/Footer single-variant layout
+   Original Coverly template shipped 4 grid columns for V.1/V.2/V.3 page
+   variants. This codebase ships only V.1, so the grid collapses to 2 cols
+   to avoid empty cells. Mobile/tablet rules in webflow.css already
+   stack to a single column ≤991, so no override needed there.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* ───────────────────────────────────────────────────────────────────────
+   Navbar menu open/close — CSS-driven (replaces GSAP)
+   `.is-open` is toggled by initNavbarMenu in scripts/navbar.ts. GSAP's
+   ticker stayed asleep when navbar.ts ran via Astro's hoisted-script path,
+   so tweens never advanced; CSS sidesteps that entirely.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* ───────────────────────────────────────────────────────────────────────
+   Navbar link hover — line slide-in (replaces GSAP initNavLinkHover)
+   Mirrors the footer pattern (`.section_footer .link:hover .line`). Each
+   `.nav_link > .clip > .line.is-black` starts at translate(-100%) (off-screen
+   left) per webflow.css `.line` rule; on hover we slide it to translate(0).
+   Easing matches the footer (outQuart cubic-bezier).
+   ─────────────────────────────────────────────────────────────────── */
+.menu_content .nav_link:hover .line.is-black {
+  transform: translate(0);
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Button text swap on hover (replaces GSAP initButtonHover)
+   `.button-content` is overflow:clip in webflow.css. `.button-text.is-two`
+   is absolutely positioned over `.is-one` (also from webflow.css). On
+   hover we slide `.is-one` up out of view and `.is-two` up into view.
+   Easing matches the original IX2 (power2 ≈ outQuart).
+   ─────────────────────────────────────────────────────────────────── */
+.button:hover .button-text.is-one {
+  transform: translateY(-100%);
+}
+.button:hover .button-text.is-two {
+  transform: translateY(0);
+}
+/*
+ * global-styles.css — literal copy of the Webflow ZIP's `<div
+ * class="global-styles w-embed">\3c style>` block (lives in every page of
+ * the ZIP). These are runtime overrides Webflow ships outside the
+ * normal CSS — without them, several visual details break:
+ *   - input/textarea/select get the .w-input 4-sided border instead of
+ *     the bottom-only look the template uses.
+ *   - .hide / .hide-tablet / .hide-mobile-landscape / .hide-mobile
+ *     responsive helpers don't fire.
+ *   - .accordion:hover border-color highlight is missing.
+ *   - .tabs_link.w--current visual state is missing.
+ *   - Several margin/padding utility classes don't reset.
+ *
+ * Source: ZIP HTML lines ~36-200 of every page, inside
+ * `.global-styles.w-embed > style`.
+ *
+ * Imported in BaseLayout.astro AFTER webflow.css so the !important
+ * declarations land last in the cascade.
+ */
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+
+/* Set color style to inherit */
+
+/* Get rid of top margin on first element in any rich text element */
+
+/* Get rid of bottom margin on last element in any rich text element */
+
+/* Make sure containers never lose their center alignment */
+
+.container-large {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* Apply "..." after 3 lines of text */
+
+/* Apply "..." after 2 lines of text */
+
+/* Adds inline flex display */
+
+/* These classes are never overwritten */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+
+/* Form inputs — drop the .w-input default 4-sided border, keep only the
+   bottom border from .form_input. CRITICAL: without this rule inputs
+   look 1px-bordered like a default browser textbox. */
+
+/* Custom CSS for template */
+.spacer * {
+  padding: 0;
+}
+
+/* Tabs current-state visual */
+
+/* Accordions hover highlight */
+.accordion:hover {
+  border-color: var(--grey--900) !important;
+}
+.accordion:hover .accordion_number {
+  color: var(--grey--900) !important;
+}
+.accordion:hover .circle {
+  opacity: 1 !important;
+}
+
+    </style>
+  </head>
+  <body>
+    <section class="section_team">
+      <div class="padding-global padding-section-medium">
+        <div class="container-large">
+          <div class="vertical-center">
+            <div data-reveal="" class="tag scroll-into-view">Teams</div>
+            <div class="spacer-medium"></div>
+            <h2 data-reveal="" class="scroll-into-view">Our Team</h2>
+            <div class="spacer-medium"></div>
+            <div data-reveal="" class="text-color-secondary scroll-into-view">Meet the professionals behind our exceptional service.</div>
+          </div>
+          <div class="spacer">
+            <div style="height: 4rem" class="spacer-desktop"></div>
+            <div style="height: 3rem" class="spacer-tablet"></div>
+            <div style="height: 2rem" class="spacer-mobile"></div>
+          </div>
+          <div class="w-layout-grid team_grid">
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">John Doe</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">CEO</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="John Doe on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="John Doe on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="John Doe on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img.webp" loading="lazy" alt="John Doe, CEO" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-p-500.webp 500w, /coverly/images/img.webp 768w" class="img">
+              </div>
+            </div>
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">Alex Reed</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">COO</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Alex Reed on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Alex Reed on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Alex Reed on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img-1.webp" loading="lazy" alt="Alex Reed, COO" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-1-p-500.webp 500w, /coverly/images/img-1.webp 768w" class="img">
+              </div>
+            </div>
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">Mia Park</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">Head of Strategy</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mia Park on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mia Park on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mia Park on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img-2.webp" loading="lazy" alt="Mia Park, Head of Strategy" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-2-p-500.webp 500w, /coverly/images/img-2.webp 768w" class="img">
+              </div>
+            </div>
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">Emily Chen</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">Product Designer</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Emily Chen on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Emily Chen on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Emily Chen on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img-3.webp" loading="lazy" alt="Emily Chen, Product Designer" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-3-p-500.webp 500w, /coverly/images/img-3.webp 768w" class="img">
+              </div>
+            </div>
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">Sofia Diaz</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">Marketing Lead</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Sofia Diaz on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Sofia Diaz on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Sofia Diaz on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img-5.webp" loading="lazy" alt="Sofia Diaz, Marketing Lead" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-5-p-500.webp 500w, /coverly/images/img-5.webp 768w" class="img">
+              </div>
+            </div>
+            <div class="team_card scroll-slide-left">
+              <div class="team_space"></div>
+              <div class="team_content">
+                <div>
+                  <div class="text-xl">Mark Evans</div>
+                  <div class="spacer-xxsmall"></div>
+                  <div class="text-color-secondary">Tech Advisor</div>
+                </div>
+                <div class="social_list">
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mark Evans on LinkedIn"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/linkedin.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mark Evans on X"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/x.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                  <a href="https://temlis.com" class="social_link w-inline-block" aria-label="Mark Evans on Dribbble"><img src="https://d173woph5zl366.cloudfront.net/coverly/images/dribble.svg" loading="lazy" alt="" class="icon-1x1-medium"></a>
+                </div>
+              </div>
+              <div class="team_img">
+                <img src="https://d173woph5zl366.cloudfront.net/coverly/images/img-4.webp" loading="lazy" alt="Mark Evans, Tech Advisor" sizes="(max-width: 767px) 100vw, 768px" srcset="/coverly/images/img-4-p-500.webp 500w, /coverly/images/img-4.webp 768w" class="img">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="scroll-reveal.js"></script>
+    <script src="./script.js"></script>
+  
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

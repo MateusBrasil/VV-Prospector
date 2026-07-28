@@ -1,0 +1,639 @@
+/* ============================================================
+   Vaultix — Hero
+   Custom CSS that complements the Tailwind utility classes used
+   inline in index.html. Tokens (--color-border, --color-accent,
+   --color-surface, --color-surface-2, --color-fg, --color-dim,
+   --color-bg, --font-mono, --nav-height) come from /vaultix/global.css.
+   ============================================================ */
+
+html,
+body {
+  background: var(--color-bg, #050505);
+  color: #fff;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------
+   Pre-anim FOUC guard — applied via <html class="hero-pre-anim">
+   before the GSAP script runs, then removed when GSAP takes over.
+   ------------------------------------------------------------ */
+html.hero-pre-anim [data-navbar] {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+html.hero-pre-anim [data-hero] .hero-frame,
+html.hero-pre-anim [data-hero] .hero-col-left,
+html.hero-pre-anim [data-hero] .hero-marquee-wrap,
+html.hero-pre-anim [data-hero] .hero-marquee-inner {
+  border-color: transparent !important;
+}
+html.hero-pre-anim [data-hero] [data-hero-tick] {
+  opacity: 0;
+}
+html.hero-pre-anim [data-hero] h1,
+html.hero-pre-anim [data-hero] [data-hero-subhead],
+html.hero-pre-anim [data-hero] [data-hero-video],
+html.hero-pre-anim [data-hero] [data-hero-visual],
+html.hero-pre-anim [data-hero] [data-hero-marquee-track] {
+  opacity: 0;
+}
+html.hero-pre-anim [data-hero] [data-hero-cta] {
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transform-origin: center;
+}
+html.hero-pre-anim [data-hero] [data-frame-line][data-axis="y"] {
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+html.hero-pre-anim [data-hero] [data-frame-line][data-axis="x"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ------------------------------------------------------------
+   Hero layout rules that can't be expressed inline.
+   On mobile + tablet the .hero-col-left dissolves into the parent
+   flex (display:contents) so the text, video, and LiquidCanvas can
+   be reordered with `order`.
+   ------------------------------------------------------------ */
+@media (max-width: 1023px) {
+  .hero-col-left {
+    display: contents;
+  }
+}
+
+.hero-line {
+  display: block;
+}
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+[data-hero-tick] {
+  will-change: transform, opacity;
+}
+[data-frame-line] {
+  will-change: transform;
+}
+
+/* ------------------------------------------------------------
+   Logo marquee — CSS-only, infinite, paused under reduce-motion.
+   ------------------------------------------------------------ */
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ------------------------------------------------------------
+   Mobile-only mini play button — pulsing yellow glow.
+   ------------------------------------------------------------ */
+.hero-mini-play {
+  animation: heroMiniPulse 1.6s ease-in-out infinite;
+  cursor: pointer;
+  border: 0;
+}
+.hero-mini-play:active {
+  transform: scale(0.94);
+}
+@keyframes heroMiniPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 6px 0 rgba(253, 255, 34, 0.55),
+      0 0 14px 0 rgba(253, 255, 34, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 10px 0 rgba(253, 255, 34, 0.95),
+      0 0 22px 0 rgba(253, 255, 34, 0.55),
+      0 0 36px 0 rgba(253, 255, 34, 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .hero-mini-play {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   LiquidCanvas stage — halftone field with floating popup cards
+   ============================================================ */
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #010101;
+}
+
+.popup {
+  position: absolute;
+  background: var(--color-surface, #0a0a0a);
+  border: 1px solid var(--color-border, #343434);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+  pointer-events: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+.popup.enter {
+  opacity: 1;
+  transform: scale(1);
+}
+.popup.exit {
+  opacity: 0;
+  transform: scale(0.92);
+}
+.popup-header {
+  background: var(--color-surface-2, #121212);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--color-border, #343434);
+}
+.popup-status {
+  width: 7px;
+  height: 7px;
+  background: var(--color-accent, #fdff22);
+  flex-shrink: 0;
+  animation: statusPulse 1.6s ease-in-out infinite;
+}
+@keyframes statusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 1px 0 rgba(253, 255, 34, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 3px 0 rgba(253, 255, 34, 0.95),
+      0 0 7px 0 rgba(253, 255, 34, 0.55),
+      0 0 12px 0 rgba(253, 255, 34, 0.25);
+  }
+}
+.popup-title {
+  flex: 1 0 0;
+  font-family: var(--font-mono, "Geist Mono"), monospace;
+  font-weight: 400;
+  font-size: 8.5px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-fg, #fff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.popup-title .sep {
+  color: var(--color-dim, rgba(255, 255, 255, 0.4));
+  margin: 0 5px;
+}
+.popup-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.popup-bars .bar {
+  width: 4px;
+  height: 11px;
+  flex-shrink: 0;
+  background: var(--color-accent, #fdff22);
+  animation: barSweep 1.6s linear infinite;
+}
+@keyframes barSweep {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+  15% {
+    box-shadow:
+      0 0 2px 0 rgba(253, 255, 34, 0.9),
+      0 0 6px 0 rgba(253, 255, 34, 0.55),
+      0 0 10px 0 rgba(253, 255, 34, 0.25);
+  }
+}
+.popup-body {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+.popup-body canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+/* ============================================================
+   VideoPreview (showreel) — lightbox shell + card states
+   ============================================================ */
+.reel-lightbox {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em;
+  overflow: hidden;
+  z-index: 999;
+}
+.reel-lightbox__safearea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reel-lightbox__target {
+  width: 100%;
+  max-width: 64em;
+  aspect-ratio: 16 / 9;
+}
+.reel-lightbox__dark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    opacity 1s cubic-bezier(0.87, 0, 0.13, 1),
+    visibility 1s cubic-bezier(0.87, 0, 0.13, 1);
+}
+[data-mini-showreel-status="active"].reel-lightbox .reel-lightbox__dark {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-mini-showreel-status="active"] .reel-card__click {
+  display: none;
+}
+.reel-card__iframe {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+[data-mini-showreel-status="active"] .reel-card__iframe {
+  opacity: 1;
+  pointer-events: auto;
+}
+.reel-card__gradient,
+.reel-corner {
+  pointer-events: none;
+}
+[data-mini-showreel-status="active"] .reel-card__gradient,
+[data-mini-showreel-status="active"] .reel-corner {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.reel-card__info {
+  transition: opacity 0.35s ease;
+}
+[data-mini-showreel-status="active"] .reel-card__info {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reel-corner {
+  transition:
+    border-color 0.25s ease,
+    filter 0.25s ease,
+    opacity 0.4s ease;
+}
+.reel-card:hover .reel-corner {
+  border-color: var(--color-accent, #fdff22);
+  filter: drop-shadow(0 0 3px rgba(253, 255, 34, 0.85))
+    drop-shadow(0 0 8px rgba(253, 255, 34, 0.4));
+}
+
+.reel-label {
+  transition: text-shadow 0.25s ease;
+}
+.reel-card:hover .reel-label {
+  text-shadow:
+    0 0 6px rgba(253, 255, 34, 0.65),
+    0 0 14px rgba(253, 255, 34, 0.3);
+}
+
+.reel-play-btn {
+  animation: reelBtnPulse 1.8s ease-in-out infinite;
+}
+.reel-card:hover .reel-play-btn {
+  animation: reelBtnPulseStrong 1.2s ease-in-out infinite;
+}
+@keyframes reelBtnPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 4px 0 rgba(253, 255, 34, 0.55),
+      0 0 10px 0 rgba(253, 255, 34, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 8px 0 rgba(253, 255, 34, 0.95),
+      0 0 18px 0 rgba(253, 255, 34, 0.5),
+      0 0 30px 0 rgba(253, 255, 34, 0.18);
+  }
+}
+@keyframes reelBtnPulseStrong {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px 0 rgba(253, 255, 34, 0.85),
+      0 0 18px 0 rgba(253, 255, 34, 0.45),
+      0 0 30px 0 rgba(253, 255, 34, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 12px 0 rgba(253, 255, 34, 1),
+      0 0 26px 0 rgba(253, 255, 34, 0.7),
+      0 0 44px 0 rgba(253, 255, 34, 0.3);
+  }
+}
+
+/* ===== TEMLIS-INLINED-NAVBAR: vaultix-navbar styles ===== */
+.platform-chevron {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+[data-platform-dropdown]:hover .platform-chevron,
+[data-platform-dropdown]:focus-within .platform-chevron {
+  transform: rotate(-90deg);
+}
+
+/* Top-level nav links — hover shifts to accent yellow with a soft glow,
+   mirroring the footer link treatment. The current item (with
+   aria-current="page") stays white and skips the hover effect.
+   Wrapped in @media (hover: hover) so touch devices don't get sticky
+   hover state from a tap. */
+.nav-link {
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:not([aria-current="page"]):hover,
+  /* Keep the dropdown trigger (button.nav-link) styled while the user
+     moves into the open dropdown panel — the wrapper li hover holds it. */
+  [data-platform-dropdown]:hover .nav-link:not([aria-current="page"]) {
+    color: var(--color-accent);
+    filter:
+      drop-shadow(0 0 2px rgba(253, 255, 34, 0.55))
+      drop-shadow(0 0 6px rgba(253, 255, 34, 0.18));
+  }
+}
+
+/* Dropdown feature item — default / hover / current states */
+.nav-feature-item:hover:not([aria-current="page"]) {
+  background-color: #1c1c1c;
+}
+
+.nav-feature-icon {
+  filter: grayscale(1) brightness(0.55);
+  transition: filter 0.3s ease;
+}
+/* Hover: icon goes color (no grayscale) AND picks up the periwinkle
+   accent glow — matches the selected state's halo at slightly lower
+   intensity to read as a hover hint, not "selected". */
+.nav-feature-item:hover:not([aria-current="page"]) .nav-feature-icon {
+  filter:
+    grayscale(0) brightness(1)
+    drop-shadow(0 0 4px rgba(95, 92, 255, 0.85))
+    drop-shadow(0 0 10px rgba(95, 92, 255, 0.5))
+    drop-shadow(0 0 18px rgba(95, 92, 255, 0.2));
+}
+.nav-feature-item[aria-current="page"] .nav-feature-icon {
+  filter:
+    drop-shadow(0 0 4px rgba(95, 92, 255, 0.9))
+    drop-shadow(0 0 10px rgba(95, 92, 255, 0.55))
+    drop-shadow(0 0 18px rgba(95, 92, 255, 0.25));
+}
+
+.nav-feature-chevron {
+  transition: color 0.25s ease, filter 0.25s ease;
+}
+.nav-feature-item:hover:not([aria-current="page"]) .nav-feature-chevron {
+  color: var(--color-accent);
+  filter:
+    drop-shadow(0 0 4px rgba(253, 255, 34, 0.6))
+    drop-shadow(0 0 10px rgba(253, 255, 34, 0.3));
+}
+
+/* Active marker — yellow vertical strip on left edge when current */
+.nav-active-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--color-accent);
+  pointer-events: none;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.7, 0, 0.2, 1);
+  box-shadow:
+    0 0 6px 0 rgba(253, 255, 34, 0.55),
+    0 0 14px 0 rgba(253, 255, 34, 0.25);
+}
+.nav-feature-item[aria-current="page"] .nav-active-marker {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* "View all features" footer item — gray marker by default,
+   accent yellow with glow on hover. */
+.nav-feature-item--all .nav-active-marker {
+  opacity: 1;
+  transform: scaleY(1);
+  background-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.nav-feature-item--all:hover .nav-active-marker,
+.nav-feature-item--all[aria-current="page"] .nav-active-marker {
+  background-color: var(--color-accent);
+  box-shadow:
+    0 0 6px 0 rgba(253, 255, 34, 0.55),
+    0 0 14px 0 rgba(253, 255, 34, 0.25);
+}
+.nav-feature-item--all:hover .nav-feature-chevron,
+.nav-feature-item--all[aria-current="page"] .nav-feature-chevron {
+  color: var(--color-accent);
+  filter:
+    drop-shadow(0 0 4px rgba(253, 255, 34, 0.6))
+    drop-shadow(0 0 10px rgba(253, 255, 34, 0.3));
+}
+
+/* ========================================
+   Hamburger button — 3 bars → X on open
+   ======================================== */
+.nav-burger__bars {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+}
+.nav-burger__bars > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: #fff;
+  transition:
+    transform 0.3s cubic-bezier(0.7, 0, 0.2, 1),
+    top 0.3s cubic-bezier(0.7, 0, 0.2, 1),
+    opacity 0.2s ease;
+}
+.nav-burger__bars > span:nth-child(1) {
+  top: 0;
+}
+.nav-burger__bars > span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.nav-burger__bars > span:nth-child(3) {
+  bottom: 0;
+}
+.nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger[aria-expanded="true"] .nav-burger__bars > span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* ========================================
+   Drawer — slides down under the navbar
+   ======================================== */
+.nav-drawer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.32s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.nav-drawer.is-open {
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+.nav-drawer__list {
+  display: flex;
+  flex-direction: column;
+}
+.nav-drawer__link,
+.nav-drawer__group-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.125rem 1rem;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.105rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.nav-drawer__link.is-current,
+.nav-drawer__group-toggle[aria-expanded="true"] {
+  color: #fff;
+}
+.nav-drawer__chevron {
+  transition: transform 0.25s ease;
+}
+.nav-drawer__group-toggle[aria-expanded="true"] .nav-drawer__chevron {
+  transform: rotate(90deg);
+}
+.nav-drawer__sub {
+  display: flex;
+  flex-direction: column;
+  background: #0a0a0a;
+}
+.nav-drawer__sub-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1rem 1rem 2rem;
+  border-top: 1px solid var(--color-border);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+.nav-drawer__sub-link.is-current {
+  color: var(--color-accent);
+}
+.nav-drawer__sub-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  filter: grayscale(1) brightness(0.55);
+}
+.nav-drawer__sub-link.is-current .nav-drawer__sub-icon {
+  filter: none;
+}
+.nav-drawer__sub-link--all {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* Hide the icon placeholder slot so the label sits flush at the icon
+   column — matches the left alignment of the icons in the items above. */
+.nav-drawer__sub-link--all .nav-drawer__sub-icon {
+  display: none;
+}
+.nav-drawer__sub-link--all.is-current {
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-burger__bars > span,
+  .nav-drawer,
+  .nav-drawer__chevron {
+    transition: none;
+  }
+}

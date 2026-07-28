@@ -1,0 +1,93 @@
+/* Hero — reescrito 2026-07-24, ver a nota completa em Hero.jsx. Duas colunas: texto real
+   (prova social, título, subtítulo, botões) à esquerda, foto real da loja à direita. */
+
+/* SEM min-height:100svh de propósito: essa era a causa do Hero ficar "gigante" em telas
+   mais altas que o conteúdo (o Mateus gravou o ecrã e mostrou — texto curto, centrado
+   numa caixa esticada a 100% da tela, sobrando vazio enorme em cima/embaixo). Altura por
+   CONTEÚDO, com um teto (max-height) só pra não deixar a foto esticar ao infinito em
+   ecrãs muito altos. */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-height: 900px;
+  padding: clamp(7rem, 14vh, 10rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vh, 5rem);
+  background-color: var(--base-100);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 620px;
+}
+
+.hero-prova {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--acento);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-prova-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex-shrink: 0;
+}
+
+.hero-titulo {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  line-height: 1.05;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--base-600);
+}
+
+.hero-subtitulo {
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--base-500);
+}
+
+.hero-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.hero-imagem {
+  position: relative;
+  flex: 1;
+  height: clamp(420px, 70vh, 720px);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.hero-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 999px) {
+  .hero {
+    flex-direction: column;
+    padding-top: clamp(7rem, 20vh, 9rem);
+  }
+
+  .hero-imagem {
+    width: 100%;
+    min-height: 320px;
+  }
+}

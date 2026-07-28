@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smooth SVG Mask Scroll Transitions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Shippori+Mincho&display=swap');
+    
+    /* reset */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0; padding: 0; border: 0; font: inherit; vertical-align: baseline;
+    }
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+    * { box-sizing: border-box; }
+    
+    html {
+      font-size: 11px;
+      color: #fff;
+      --color-link: #ffffffb7;
+      --color-link-hover: #fff;
+      --page-padding: 3vw;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', 'Shippori Mincho', serif;
+      background-color: #000;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .spacer {
+      height: 100vh;
+      font-size: 1.25rem;
+      display: grid;
+      text-align: center;
+      place-items: center;
+      align-content: space-between;
+      padding: 40vh 0 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    .spacer h1 {
+      font-size: 3rem;
+      letter-spacing: -0.025em;
+      line-height: 0.85;
+      font-weight: 300;
+    }
+    
+    .spacer h1 span {
+      opacity: 0.6;
+      line-height: 1.2;
+    }
+    
+    .info {
+      max-width: 20ch;
+      opacity: 0.6;
+      margin-bottom: 4rem;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+    
+    .info::after {
+      content: '';
+      width: 1px;
+      height: 2rem;
+      background: #fff;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+    }
+    
+    /* stage */
+    .stage { height: 500vh; position: relative; }
+    .layers { position: sticky; top: 0; width: 100vw; height: 100vh; overflow: hidden; }
+    .layer { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .layer image { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+    
+    .texts { padding: 3vw; pointer-events: none; }
+    .txt {
+      position: absolute; width: 100%; color: #fff; text-transform: uppercase;
+      clip-path: inset(100% 0 0 0); transform: translateY(40px);
+    }
+    .txt h1 { margin-top: 10vh; font-size: clamp(4.8rem, 6.8vw, 13.6rem); letter-spacing: -0.025em; line-height: 0.85; }
+    .txt h2 { margin-top: 6vw; font-size: clamp(1.4rem, 1.067vw, 1.8rem); letter-spacing: 0.24em; }
+    .txt span { display: block; font-size: clamp(1.1rem, 0.8vw, 1.2rem); width: 20%; margin-top: 30px; line-height: 1.8; letter-spacing: normal; text-transform: none; }
+    
+    .progress-bar { position: absolute; bottom: 0; width: 100%; padding: 4rem; display: flex; gap: 1rem; z-index: 20; pointer-events: none; }
+    .segment { flex: 1; height: 2px; background: rgba(255, 255, 255, 0.2); overflow: hidden; position: relative; }
+    .fill { position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: #fff; }
+    
+    @media screen and (max-width: 1024px) { .txt span { width: 35%; } }
+    @media screen and (max-width: 599px) { .txt span { width: 50%; } }
+    
+    /* links and frame */
+    a {
+      text-decoration: none; color: var(--color-link); outline: none; cursor: pointer; transition: color 0.2s;
+    }
+    a:hover, a.current { text-decoration: underline; color: var(--color-link-hover); }
+    a:focus { outline: none; background: lightgrey; }
+    a:focus:not(:focus-visible) { background: transparent; }
+    a:focus-visible { outline: 2px solid red; background: transparent; }
+    
+    .demo-btn {
+      background: none; border: none; padding: 0; font: inherit; color: var(--color-link); cursor: pointer; text-decoration: none; transition: color 0.2s;
+    }
+    .demo-btn:hover, .demo-btn.current { text-decoration: underline; color: var(--color-link-hover); }
+    
+    .frame {
+      height: auto; position: fixed; top: 0; left: 0; width: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 1.25rem; padding: var(--page-padding); display: flex; z-index: 1000;
+      pointer-events: none; justify-content: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }
+    
+    .frame button { pointer-events: auto; }
+    .frame__demos { display: flex; flex-wrap: wrap; gap: 2rem; pointer-events: auto; }
+    
+    @media screen and (min-width: 53em) {
+      .frame {
+        height: auto; align-items: center; justify-content: flex-end;
+        background: transparent;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="frame">
+    <nav class="frame__demos">
+      <span>Variations: </span>
+      <button class="demo-btn current" data-mode="horizontal">Horizontal Blinds</button>
+      <button class="demo-btn" data-mode="random">Random Grid</button>
+      <button class="demo-btn" data-mode="vertical">Vertical Blinds</button>
+      <button class="demo-btn" data-mode="column">Column Grid</button>
+    </nav>
+  </header>
+  
+  <div class="spacer">
+    <h1>On-Scroll SVG Mask Transitions<br><span id="demo-title">(Horizontal Blinds)</span></h1>
+    <span class="info">Scroll down</span>
+  </div>
+  
+  <section class="stage">
+    <div class="layers">
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask1" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="#000000" />
+            <g id="blinds1"></g>
+          </mask>
+        </defs>
+        <image href="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+               x="0" y="0" width="100" height="100"
+               preserveAspectRatio="xMidYMid slice" mask="url(#mask1)" />
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask2" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="#000000" />
+            <g id="blinds2"></g>
+          </mask>
+        </defs>
+        <image href="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop"
+               x="0" y="0" width="100" height="100"
+               preserveAspectRatio="xMidYMid slice" mask="url(#mask2)" />
+      </svg>
+      <svg class="layer" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <mask id="mask3" maskUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="100" height="100" fill="#000000" />
+            <g id="blinds3"></g>
+          </mask>
+        </defs>
+        <image href="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2000&auto=format&fit=crop"
+               x="0" y="0" width="100" height="100"
+               preserveAspectRatio="xMidYMid slice" mask="url(#mask3)" />
+      </svg>
+      
+      <div class="progress-bar">
+        <div class="segment"><div class="fill"></div></div>
+        <div class="segment"><div class="fill"></div></div>
+        <div class="segment"><div class="fill"></div></div>
+      </div>
+      
+      <div class="texts">
+        <div class="txt">
+          <h1>SPRING<br>BREEZE</h1>
+          <h2>Nature Renewal</h2>
+          <span>暖かな風が吹き抜け、新しい季節の始まりを優しく告げる、生命力に満ちた瞬間を描き出します。</span>
+        </div>
+        <div class="txt">
+          <h1>SUMMER<br>GLOW</h1>
+          <h2>Golden Hours</h2>
+          <span>鮮やかな光が降り注ぎ、波立つ水面ときらめく緑が調和する、温もりあふれる夏の記憶です。</span>
+        </div>
+        <div class="txt">
+          <h1>AUTUMN<br>MIST</h1>
+          <h2>Silent Forest</h2>
+          <span>静寂に包まれた森の中、色鮮やかな木の葉が舞い落ちる、穏やかで深みのある秋の情景です。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="spacer">
+    <h1><a href="#" id="next-demo-btn">Explore Next Pattern</a></h1>
+  </div>
+
+  <!-- Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Main Logic -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Initialize Lenis for Smooth Scrolling */
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const lenis = new Lenis({
+      lerp: 0.15,
+      smoothWheel: true,
+      smoothTouch: !isTouch,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    /* Application State */
+    let currentMode = 'horizontal';
+    const modes = ['horizontal', 'random', 'vertical', 'column'];
+    const modeTitles = {
+      'horizontal': '(Horizontal Blinds)',
+      'random': '(Random Grid)',
+      'vertical': '(Vertical Blinds)',
+      'column': '(Column Grid)'
+    };
+    
+    const svgNS = 'http://www.w3.org/2000/svg';
+    let blindsSets = [];
+    let master;
+    let progressTrigger;
+
+    /* Geometry Generators for the 4 Styles */
+    function createHorizontalBlinds(g, vbWidth, vbHeight) {
+      const BLIND_COUNT = 30;
+      const h = vbHeight / BLIND_COUNT;
+      const blinds = [];
+      let currentY = 0;
+      for (let i = 0; i < BLIND_COUNT; i++) {
+        const centerY = vbHeight - (currentY + h / 2);
+        const rTop = document.createElementNS(svgNS, 'rect');
+        const rBot = document.createElementNS(svgNS, 'rect');
+        [rTop, rBot].forEach(r => {
+          r.setAttribute('x', 0);
+          r.setAttribute('width', vbWidth);
+          r.setAttribute('height', 0);
+          r.setAttribute('fill', 'white');
+          r.setAttribute('shape-rendering', 'crispEdges');
+          r.setAttribute('y', centerY);
+          g.appendChild(r);
+        });
+        blinds.push({ top: rTop, bottom: rBot, y: centerY, h: h / 2 });
+        currentY += h;
+      }
+      return { type: 'horizontal', elements: blinds };
+    }
+
+    function createRandomGrid(g, vbWidth, vbHeight) {
+      const cols = window.innerWidth <= 599 ? 6 : window.innerWidth <= 1024 ? 10 : 14;
+      const rows = Math.round(cols * (vbHeight / vbWidth));
+      const cellW = vbWidth / cols;
+      const cellH = vbHeight / rows;
+      const cells = [];
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const rect = document.createElementNS(svgNS, 'rect');
+          rect.setAttribute('x', x * cellW);
+          rect.setAttribute('y', y * cellH);
+          rect.setAttribute('width', cellW + 0.5);
+          rect.setAttribute('height', cellH + 0.5);
+          rect.setAttribute('fill', 'white');
+          rect.setAttribute('shape-rendering', 'crispEdges');
+          rect.setAttribute('opacity', 0);
+          g.appendChild(rect);
+          cells.push(rect);
+        }
+      }
+      return { type: 'random', elements: cells };
+    }
+
+    function createVerticalBlinds(g, vbWidth, vbHeight, isFirstLayer) {
+      const BLIND_COUNT = 12;
+      const w = vbWidth / BLIND_COUNT;
+      const blinds = [];
+      let currentX = 0;
+      for (let i = 0; i < BLIND_COUNT; i++) {
+        const centerX = currentX + w / 2;
+        const rL = document.createElementNS(svgNS, 'rect');
+        const rR = document.createElementNS(svgNS, 'rect');
+        [rL, rR].forEach(r => {
+          r.setAttribute('y', 0);
+          r.setAttribute('height', vbHeight);
+          r.setAttribute('width', isFirstLayer ? w / 2 + 0.5 : 0);
+          r.setAttribute('fill', 'white');
+          r.setAttribute('shape-rendering', 'crispEdges');
+          g.appendChild(r);
+        });
+        if (isFirstLayer) {
+          rL.setAttribute('x', centerX - w / 2 - 0.1);
+          rR.setAttribute('x', centerX);
+        } else {
+          rL.setAttribute('x', centerX);
+          rR.setAttribute('x', centerX);
+        }
+        blinds.push({ left: rL, right: rR, x: centerX, w: w / 2 });
+        currentX += w;
+      }
+      return { type: 'vertical', elements: blinds, isFirstLayer };
+    }
+
+    function createColumnGrid(g, vbWidth, vbHeight) {
+      const cols = window.innerWidth <= 599 ? 6 : window.innerWidth <= 1024 ? 10 : 14;
+      const rows = Math.round(cols * (vbHeight / vbWidth));
+      const cellW = vbWidth / cols;
+      const cellH = vbHeight / rows;
+      const cells = [];
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const rect = document.createElementNS(svgNS, 'rect');
+          rect.setAttribute('x', x * cellW);
+          rect.setAttribute('y', y * cellH);
+          rect.setAttribute('width', cellW + 0.5);
+          rect.setAttribute('height', cellH + 0.5);
+          rect.setAttribute('fill', 'white');
+          rect.setAttribute('shape-rendering', 'crispEdges');
+          rect.setAttribute('opacity', 0);
+          g.appendChild(rect);
+          cells.push(rect);
+        }
+      }
+      return { type: 'column', elements: cells, rows, cols };
+    }
+
+    /* Animation Factory */
+    function getAnimationForBlinds(data) {
+      if (data.type === 'horizontal') {
+        return gsap.timeline().to(
+          data.elements.flatMap(b => [b.top, b.bottom]),
+          {
+            attr: {
+              y: i => i % 2 === 0 ? data.elements[Math.floor(i / 2)].y - data.elements[Math.floor(i / 2)].h : data.elements[Math.floor(i / 2)].y,
+              height: i => data.elements[Math.floor(i / 2)].h + 0.1
+            },
+            ease: 'power3.out',
+            stagger: { each: 0.02, from: 'start' }
+          }
+        );
+      } else if (data.type === 'random') {
+        const shuffled = gsap.utils.shuffle([...data.elements]);
+        return gsap.timeline().to(shuffled, {
+          opacity: 1, duration: 1.0, ease: 'power3.out', stagger: { each: 0.02 }
+        });
+      } else if (data.type === 'vertical') {
+        return gsap.to(
+          data.elements.flatMap(b => [b.left, b.right]),
+          {
+            attr: {
+              x: i => i % 2 === 0 ? data.elements[Math.floor(i / 2)].x - data.elements[Math.floor(i / 2)].w - 0.1 : data.elements[Math.floor(i / 2)].x,
+              width: i => data.elements[Math.floor(i / 2)].w + 0.2
+            },
+            ease: 'none',
+            stagger: { each: 0.02, from: 'start' }
+          }
+        );
+      } else if (data.type === 'column') {
+        const ordered = [];
+        for (let x = 0; x < data.cols; x++) {
+          const col = [];
+          for (let y = 0; y < data.rows; y++) col.push(data.elements[y * data.cols + x]);
+          ordered.push(...gsap.utils.shuffle(col));
+        }
+        return gsap.timeline().to(ordered, {
+          opacity: 1, duration: 1, ease: 'power3.out', stagger: { each: 0.02 }
+        });
+      }
+    }
+
+    /* Main Timeline Builder */
+    function buildMasterTimeline() {
+      if (master) master.kill();
+      const texts = gsap.utils.toArray('.txt');
+
+      if (currentMode === 'vertical') {
+        // Vertical blinds start with the first image fully visible
+        master = gsap.timeline({ scrollTrigger: { trigger: '.stage', start: 'top top', end: 'bottom bottom', scrub: 2.0, invalidateOnRefresh: true }});
+        gsap.set(texts, { clipPath: 'inset(0% 0% 100% 0%)', y: 40, opacity: 0 });
+        gsap.set(texts[0], { clipPath: 'inset(0% 0% 0% 0%)', y: 0, opacity: 1 });
+
+        blindsSets.forEach((data, i) => {
+          if (i === 0) return;
+          if (texts[i - 1]) {
+            master.to(texts[i - 1], { clipPath: 'inset(0% 0% 100% 0%)', y: -40, opacity: 0, duration: 0.8 }, '>');
+          }
+          master.add(getAnimationForBlinds(data), '-=0.3');
+          if (texts[i]) {
+            master.to(texts[i], { clipPath: 'inset(0% 0% 0% 0%)', y: 0, opacity: 1, duration: 0.8 }, '-=0.5');
+          }
+          master.to({}, { duration: 1 });
+        });
+      } else {
+        // Horizontal, Random, and Column Grids
+        master = gsap.timeline({ scrollTrigger: { trigger: '.stage', start: 'top top', end: 'bottom bottom', scrub: 2.5, anticipatePin: 1, invalidateOnRefresh: true }});
+        gsap.set(texts, { clearProps: 'all' });
+
+        blindsSets.forEach((data, i) => {
+          master.add(getAnimationForBlinds(data));
+          if (texts[i]) {
+            master.to(texts[i], { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: currentMode === 'random' ? 2.6 : (currentMode === 'column' ? 2.2 : 1.5), ease: 'expo.out' }, '-=0.3');
+            master.to(texts[i], { clipPath: 'inset(0% 0% 100% 0%)', y: currentMode === 'horizontal' ? -30 : 0, duration: currentMode === 'random' ? 2.0 : (currentMode === 'column' ? 1.6 : 1.2), ease: 'power2.inOut' }, '+=0.8');
+          }
+        });
+      }
+    }
+
+    /* Layout & Geometry Refresher */
+    function updateLayout() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const vbWidth = currentMode === 'vertical' ? (width / height) * 100 : 100;
+      const vbHeight = currentMode === 'vertical' ? 100 : (height / width) * 100;
+
+      const layers = document.querySelectorAll('.layer');
+      blindsSets = [];
+
+      layers.forEach((svg, i) => {
+        svg.setAttribute('viewBox', `0 0 ${vbWidth} ${vbHeight}`);
+        const maskRect = svg.querySelector('mask rect');
+        if (maskRect) {
+          maskRect.setAttribute('width', vbWidth);
+          maskRect.setAttribute('height', vbHeight);
+        }
+        const img = svg.querySelector('image');
+        if (img) {
+          img.setAttribute('width', vbWidth);
+          img.setAttribute('height', vbHeight);
+          if (currentMode === 'vertical') {
+            img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+          } else {
+            img.setAttribute('preserveAspectRatio', 'none');
+          }
+        }
+        const blindId = svg.querySelector('g[id^="blinds"]').id;
+        const g = document.getElementById(blindId);
+        g.innerHTML = ''; 
+
+        let result;
+        if (currentMode === 'horizontal') result = createHorizontalBlinds(g, vbWidth, vbHeight);
+        else if (currentMode === 'random') result = createRandomGrid(g, vbWidth, vbHeight);
+        else if (currentMode === 'vertical') result = createVerticalBlinds(g, vbWidth, vbHeight, i === 0);
+        else if (currentMode === 'column') result = createColumnGrid(g, vbWidth, vbHeight);
+
+        if (result) blindsSets.push(result);
+      });
+
+      buildMasterTimeline();
+    }
+
+    function initProgressBar() {
+      if (progressTrigger) progressTrigger.kill();
+      const progressFills = gsap.utils.toArray('.progress-bar .fill');
+
+      progressTrigger = ScrollTrigger.create({
+        trigger: '.stage',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.3,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const totalSteps = progressFills.length;
+          progressFills.forEach((fill, i) => {
+            let p = (progress - i / totalSteps) * totalSteps;
+            p = Math.max(0, Math.min(1, p));
+            fill.style.width = `${p * 100}%`;
+          });
+        },
+      });
+    }
+
+    /* Handle UI Mode Changes */
+    function setMode(mode) {
+      if (!modes.includes(mode)) return;
+      currentMode = mode;
+      
+      document.querySelectorAll('.demo-btn').forEach(btn => {
+        btn.classList.toggle('current', btn.dataset.mode === mode);
+      });
+      document.getElementById('demo-title').innerText = modeTitles[mode];
+
+      // Jump to top to reset animations
+      lenis.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
+
+      // Re-initialize with slight delay to ensure scroll resets globally
+      setTimeout(() => {
+        updateLayout();
+        initProgressBar();
+        ScrollTrigger.refresh();
+      }, 50);
+    }
+
+    document.querySelectorAll('.demo-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        setMode(btn.dataset.mode);
+      });
+    });
+
+    document.getElementById('next-demo-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextIndex = (modes.indexOf(currentMode) + 1) % modes.length;
+      setMode(modes[nextIndex]);
+    });
+
+    /* Initialization */
+    updateLayout();
+    initProgressBar();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+        updateLayout();
+      }, 250);
+    });
+  </script>
+</body>
+</html>

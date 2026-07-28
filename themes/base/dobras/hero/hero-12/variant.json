@@ -1,0 +1,649 @@
+{
+  "slot": "hero",
+  "nome": "hero-12",
+  "scope": "hero-hero-12",
+  "origem": "bank/_componentes/hero-section/hero-12/RepetitiveTypography-main/dist",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "1.02732e4d.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "2.514010c5.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "3.982fa44b.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "4.317ee7ec.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "5.d1486211.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "6.a6667d25.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "7.2e7d11a8.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "8.270681a9.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "9.d6da836d.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "10.5e77822b.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "11.72ac7a8d.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "12.4355018b.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "13.d4c3eb8d.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "18.070960ec.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "15.5297ec86.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "16.76ee26d6.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "17.bdcb3125.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "14.bb4bfa23.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "19.fc27eb3e.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "20.4f96bf6c.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "21.ff68c53f.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "22.273611a6.jpg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "23.57a7b006.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "24.a9039d34.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "25.0a15a204.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "26.b9a712f0.jpg"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "27.f475f77d.jpg"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "28.44ba3916.jpg"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "29.2ae0a97f.jpg"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "30.ca18a156.jpg"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "31.da3eefee.jpg"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "32.8b4dadc0.jpg"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "33.1ecc2cd4.jpg"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "34.f56fceaa.jpg"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "35.03552bed.jpg"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "36.9ae305fc.jpg"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "37.f950bc6e.jpg"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "38.b61ef0b2.jpg"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "39.b97bc028.jpg"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "40.d032c066.jpg"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "41.b7b33df7.jpg"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "42.8c53be0a.jpg"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "http://tympanus.net/Development/KineticTypePageTransition/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=56972"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/RepetitiveTypography/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo8",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo9",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo10",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo11",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo12",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo13",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo14",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo15",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo16",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo17",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo18",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo19",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo20",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo21",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo22",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo23",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo24",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo25",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo26",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo27",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo28",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo29",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo30",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo31",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo32",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo33",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo34",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo35",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo36",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo37",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo38",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo39",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo40",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo41",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo42",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo43",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo44",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo45",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo46",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo47",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo48",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo49",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo50",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo51",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo52",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo53",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo54",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo55",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo56",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo57",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo58",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo59",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo60",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo61",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo62",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo63",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo64",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "titulo65",
+      "tipo": "texto",
+      "exemplo": "Summer 22"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Street Strong"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "view all"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Urban Chic"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "view all"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "La Bohème"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "view all"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Glamour Play"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "view all"
+    },
+    {
+      "nome": "titulo66",
+      "tipo": "texto",
+      "exemplo": "Repetitive Typography Animation"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Previous demo"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Vintage"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "view all"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 42
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #eb3b78 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "3 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (http://tympanus.net/Development/KineticTypePageTransition/ https://tympanus.net/codrops/?p=56972)",
+    "3 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

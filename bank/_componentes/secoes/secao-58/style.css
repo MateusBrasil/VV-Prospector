@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  background: var(--color-bg-cream, #fafafa);
+  color: var(--color-text-primary, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.about {
+  width: 100%;
+  background-color: var(--color-bg-cream);
+}
+
+.about__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 4em var(--container-padding);
+}
+
+.about__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  flex-shrink: 0;
+}
+
+.about__labelDot {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-full);
+}
+
+.about__labelText {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5em; /* 80px */
+  width: 61em; /* 976px */
+  flex-shrink: 0;
+}
+
+.about__statement {
+  font-family: var(--font-heading);
+  font-size: 2.25em;          /* 36px */
+  font-weight: 400;
+  line-height: 1.222;         /* 44/36 */
+  letter-spacing: -2.16px;
+  color: var(--color-text-primary);
+}
+
+/* Each word becomes an inline span so GSAP can fade each one in sync
+   with scroll. The JS creates these spans dynamically from the paragraph
+   text so the markup stays clean and the no-JS state is fully readable. */
+.about__statement .about__statementWord {
+  display: inline;
+  opacity: 0.15;
+  will-change: opacity;
+}
+
+.about__stats {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625em;              /* 10px */
+  flex: 1 1 0;
+  padding: 0 1.25em;         /* 20px */
+  border-left: 1px solid var(--color-divider);
+}
+
+.about__statValue {
+  font-family: var(--font-heading);
+  font-size: 2.25em;
+  font-weight: 400;
+  line-height: 1.222;
+  letter-spacing: -2.16px;
+  color: var(--color-text-primary);
+}
+
+/* Number Odometer styles live in `global.css` under attribute selectors
+   `[data-odometer-element]` + `[data-odometer-part="..."]`. The helper
+   itself runs site-wide from the Acelia base layout. Any element with
+   `data-odometer-element` inside a `data-odometer-group` gets the
+   digit-rolling counter treatment. */
+
+.about__statDesc {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+}
+
+@media (max-width: 991px) {
+  .about__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.75rem;
+    padding: 3em var(--container-padding);
+    text-align: center;
+  }
+
+  .about__content {
+    align-items: center;
+    width: 100%;
+    gap: 3.5em;
+  }
+
+  .about__statement {
+    font-size: 2em;
+  }
+
+  .about__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em 0;
+    width: 100%;
+    max-width: 50em;
+    margin-inline: auto;
+  }
+
+  .about__stat {
+    flex: initial;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .about__inner {
+    gap: 1.5rem;
+  }
+
+  .about__stat {
+    min-width: 12em;
+    padding: 0 1em;
+  }
+
+  .about__statement {
+    font-size: 1.75em;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Stay 2x2 even at the smallest viewport — dropping to 1 column makes
+     the section feel unevenly long compared to the preceding content. */
+  .about__stat {
+    padding: 0.5em 1em;
+    /* Override the ≤767px `min-width: 12em` so the 2-col grid track can
+       shrink with the viewport — otherwise two 12em columns push past
+       390px viewports and create a horizontal scroll. */
+    min-width: 0;
+  }
+
+  .about__statement {
+    font-size: 1.5em;
+  }
+}

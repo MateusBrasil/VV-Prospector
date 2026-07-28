@@ -1,0 +1,152 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-1",
+  "scope": "destaque-anim-hover-1",
+  "origem": "bank/_componentes/animacoes/hover-1",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "We use design and technology to create brands and products that perform, delight, and scale."
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Google Pixel Creator Labs"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A partnership between Google &amp; SN37."
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Decimal"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Portfolio site for Decimal."
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "MAVEN 11"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "New web design for the blockchain investment fund Maven 11."
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Wix Playground Homepage"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Wix Playground is powered by the Wix.com design team."
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "POWELL—STUDIO"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "The online presence for Powell—Studio."
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "ROCKETPANDA"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "An Italian animation studio."
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "C2 Montreal"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "C2 Montréal is Canada's premier creative-business event."
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Design Is Funny"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Funny is the design work of Daniele Buffa."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./img/google.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./img/decimal.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./img/maven.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./img/wix.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./img/powell.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./img/panda.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./img/c2.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "./img/funny.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 8
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"destaque\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

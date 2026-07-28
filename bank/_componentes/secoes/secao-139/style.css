@@ -1,0 +1,15 @@
+/* ServicesHero scoped style — folded from ServicesHero.astro <style>.
+   Masks the hero image's zoom-in entrance (hero-load.js scales .img inside it). */
+.section_services-hero .services-hero_img {
+  overflow: clip;
+}
+
+/* Standalone-component fix: the inlined Upmind navbar uses position:fixed in the
+   template (offset by a page-level padding that doesn't exist here), so it overlapped
+   the hero. Pin it into normal flow so it sits above the hero content instead. */
+.navbar.w-nav {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}

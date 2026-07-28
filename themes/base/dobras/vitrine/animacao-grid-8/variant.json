@@ -1,0 +1,234 @@
+{
+  "slot": "vitrine",
+  "nome": "animacao-grid-8",
+  "scope": "vitrine-animacao-grid-8",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-8",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "media/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "media/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "media/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "media/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "media/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "media/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "media/7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "media/8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "media/9.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "media/10.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "media/11.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "media/12.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "media/13.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "media/14.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "media/15.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "media/beige1.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "media/red1.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "media/pink.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "media/beige2.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "media/red2.jpg"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "#Hover"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "#Grid"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Hire us"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Recent works"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Herex Aether"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Cosmic Silence"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Mystic Trails"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Metamorph"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Prismatica"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Get in touch &nearr;"
+    },
+    {
+      "nome": "acao10",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao11",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao12",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Studio"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Grafixo"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Herex Aether"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Cosmic Silence"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Mystic Trails"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Metamorph"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Prismatica"
+    },
+    {
+      "nome": "video",
+      "tipo": "video",
+      "exemplo": "media/bg-video.mp4"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 20
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #eeae30 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

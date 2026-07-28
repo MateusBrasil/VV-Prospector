@@ -1,0 +1,49 @@
+{
+  "slot": "menu",
+  "nome": "svg-shape-overlays-demo-4",
+  "scope": "menu-svg-shape-overlays-demo-4",
+  "origem": "bank/_componentes/menu/svg-shape-overlays-demo-4",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "SVG Shape Overlays"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Products"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "11 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

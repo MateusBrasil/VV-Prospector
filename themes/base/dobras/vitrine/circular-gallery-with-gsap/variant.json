@@ -1,0 +1,125 @@
+{
+  "slot": "vitrine",
+  "nome": "circular-gallery-with-gsap",
+  "scope": "vitrine-circular-gallery-with-gsap",
+  "origem": "bank/_componentes/carrossel/circular-gallery-with-gsap",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/hjWZVhv6/2-3.png"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "https://i.postimg.cc/g2xg536T/2-3-2.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 20
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "20 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://i.postimg.cc/hjWZVhv6/2-3.png https://i.postimg.cc/g2xg536T/2-3-2.png)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://fonts.bunny.net/css?family=just-me-again-down-here:400)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

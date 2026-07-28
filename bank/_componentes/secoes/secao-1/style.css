@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.csIntOverview {
+  width: 100%;
+  background-color: var(--color-bg-white);
+}
+
+/* Cream tone matches the page-specific hero cream (#f9f9f7), NOT the
+   site-wide --color-bg-cream (#f5f2ed). The internal case study page
+   uses this softer warm-white to interleave with white sections; the
+   darker brand cream would read too distinct from the hero. */
+.csIntOverview--cream {
+  background-color: #f9f9f7;
+}
+
+.csIntOverview__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.1875em;          /* 35px gutter — derived from Figma 1176 - 564 - 577 */
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 2rem var(--container-padding); /* 32px Y — section content
+                                              breathing room (rem so
+                                              it stays constant under
+                                              the fluid em scaling) */
+}
+
+.csIntOverview--reverse .csIntOverview__inner {
+  flex-direction: row-reverse;
+}
+
+/* Image card hosts the curtain reveal — inner wrapper grows height
+   0 → 100% on entrance while the image stays anchored at the top via
+   container queries. Background is transparent so the section's
+   white/cream bg shows through during the reveal animation. */
+.csIntOverview__imageCard {
+  flex: 0 0 35.25em;       /* 564px */
+  height: 33.3125em;       /* 533px */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: transparent;
+  position: relative;
+  container-type: size;
+  container-name: csIntOverviewImage;
+}
+
+.csIntOverview__imageReveal {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.csIntOverview__image {
+  display: block;
+  width: 100cqw;           /* sized to the CARD, not the reveal wrapper */
+  height: 100cqh;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.csIntOverview__text {
+  flex: 0 1 36.0625em;     /* 577px */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 33.3125em;
+  padding-block: 2em;      /* 32px */
+  min-width: 0;
+}
+
+/* Title sizing lives in the global 48px bucket
+   (`.cta__heading, .csIntOverview__title`). Only non-bucket properties
+   stay local. */
+.csIntOverview__title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.csIntOverview__description {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+  margin: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* Title font-size scales via the global 48px bucket — no local override
+   per breakpoint. Padding-block stays at 2rem cross-breakpoint. */
+
+/* ── Tablet (≤991px) ───────────────────────────────────────────────────
+   Keep the 2-column grid (image + text side by side). Both columns
+   flex to share the available width; the gap shrinks from 35px → 24px
+   (1.5rem) so neither column gets squeezed off the page. The desktop
+   `csIntOverview--reverse` row-reverse still applies so reverse rows
+   read text-left / image-right. */
+@media (max-width: 991px) {
+  .csIntOverview__inner {
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .csIntOverview__imageCard {
+    flex: 1 1 0;          /* equal share of available width */
+    width: auto;
+    height: auto;
+    aspect-ratio: 564 / 533;
+  }
+
+  .csIntOverview__text {
+    flex: 1 1 0;
+    height: auto;
+    padding-block: 0;
+    gap: 1.5em;
+    justify-content: center;
+    min-width: 0;          /* allow shrinking inside the flex row */
+  }
+}
+
+/* ── Landscape / mobile (≤767px) ───────────────────────────────────────
+   Stack vertically with TEXT on top, image below. The image takes a
+   horizontal aspect (16/9) so it doesn't dominate the stacked layout.
+   `column-reverse` flips the DOM order (image is first in the markup;
+   reverse puts text first visually). The same direction applies to
+   `--reverse` rows — once stacked, the row-reverse vs row distinction
+   is irrelevant; both should read the same way. All text content reads
+   along the vertical centerline.
+
+   Inner gap (text ↔ image) and inner text gap (title ↔ description)
+   are both 1.5rem at landscape — uniform 24px vertical rhythm between
+   every element in the stack. Padding-block remains the default 2rem
+   so adjacent sections still feel like distinct units. */
+@media (max-width: 767px) {
+  .csIntOverview__inner,
+  .csIntOverview--reverse .csIntOverview__inner {
+    flex-direction: column-reverse;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .csIntOverview__imageCard {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .csIntOverview__text {
+    flex: 0 0 auto;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;             /* override the inherited 1.5em from tablet
+                                with a constant rem so it stays exactly
+                                24px regardless of fluid em scaling */
+  }
+}
+
+/* ── Portrait (≤479px) ─────────────────────────────────────────────────
+   Tighten the title↔description gap to 1rem (16px). The image gap
+   (.csIntOverview__inner gap) stays at 1.5rem inherited from landscape
+   so the rhythm reads: title — 16px — description — 24px — image. */
+@media (max-width: 479px) {
+  .csIntOverview__text {
+    gap: 1rem;
+  }
+}

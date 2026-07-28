@@ -1,0 +1,162 @@
+{
+  "slot": "hero",
+  "nome": "hero-23",
+  "scope": "hero-hero-23",
+  "origem": "bank/_componentes/hero-section/hero-23",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Nork Wood"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Info"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Products"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Shop"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Scandinavian Chair"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "(Seating)"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Minimal Lamp"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "(Lighting)"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Modern Desk"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "(Office)"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Elegant Sofa"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "(Living Room)"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Compact Shelf"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "(Storage)"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Ornate Mirror"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "(Decor)"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Sleek Table"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "(Dining)"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "./assets/img1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "./assets/img2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "./assets/img3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "./assets/img4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "./assets/img5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "./assets/img6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "./assets/img7.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 7
+  },
+  "_rever": [
+    "1 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"hero\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,84 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-13",
+  "scope": "destaque-efeitos-webgl-13",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-13",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://www.chakibmzn.com/"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tyf=83563"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://tymfemos/"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://githing-2d-demo"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://tympfphing"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://tympfs/?tag=canvas"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Chakib Mazouni"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Tutorial"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "#morphing"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "#canvas"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "6 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://www.chakibmzn.com/ https://tyf=83563)",
+    "6 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

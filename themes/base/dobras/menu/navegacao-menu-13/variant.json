@@ -1,0 +1,71 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-13",
+  "scope": "menu-navegacao-menu-13",
+  "origem": "bank/_componentes/menu/navegacao-menu-13",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Realities"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Artists"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Film"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Over Ones"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Publications"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Team"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "Inspirations"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Your website content begins here."
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

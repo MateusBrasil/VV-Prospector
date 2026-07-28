@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Neon Green Button</title>
+    <style>
+        /* Estilos de layout para centralizar o botão na tela */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff; /* Cor de fundo alterada para branco */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- BOTÃO VERDE LIMÃO NEON COM DEGRADÊ --- */
+        .button {
+          --h-button: 48px;
+          --round: 0.75rem;
+          /* Cores principais do tema Neon */
+          --neon-green: #9eff00;
+          --darker-green: #7ab800;
+          --bright-glow: rgba(230, 255, 200, 0.9); /* Quase branco, matizado de verde */
+
+          cursor: pointer;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          transition: all 0.25s ease;
+          
+          /* RESTAURAÇÃO DOS GRADIENTES PARA PROFUNDIDADE */
+          background: 
+            /* Gradiente Radial (O brilho claro na parte inferior) */
+            radial-gradient(
+              70% 70% at 50% 100%,
+              var(--bright-glow) 0%,
+              rgba(158, 255, 0, 0) 100%
+            ),
+            /* Gradiente Linear (Base do botão, sutilmente mais escuro no topo) */
+            linear-gradient(to top, var(--neon-green) 20%, var(--darker-green) 100%);
+            
+          border-radius: var(--round);
+          border: none;
+          outline: none;
+          padding: 12px 24px;
+          box-shadow: none; /* Sem shadow externo, conforme solicitado */
+        }
+
+        .button::before,
+        .button::after {
+          content: "";
+          position: absolute;
+          inset: var(--space);
+          transition: all 0.5s ease-in-out;
+          border-radius: calc(var(--round) - var(--space));
+          z-index: 0;
+        }
+
+        /* Brilho da borda superior */
+        .button::before {
+          --space: 1px;
+          background: linear-gradient(
+            177.95deg,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+
+        /* Camada interna para reforçar a profundidade */
+        .button::after {
+          --space: 2px;
+          background: 
+            radial-gradient(
+              70% 70% at 50% 100%,
+              var(--bright-glow) 0%,
+              rgba(158, 255, 0, 0) 100%
+            ),
+            linear-gradient(to top, var(--neon-green) 20%, var(--darker-green) 100%);
+        }
+
+        .button:active {
+          transform: scale(0.95);
+        }
+
+        /* Partículas flutuantes */
+        .points_wrapper {
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          position: absolute;
+          z-index: 1;
+        }
+
+        .points_wrapper .point {
+          bottom: -10px;
+          position: absolute;
+          animation: floating-points infinite ease-in-out;
+          pointer-events: none;
+          width: 2px;
+          height: 2px;
+          background-color: #fff;
+          border-radius: 9999px;
+        }
+
+        @keyframes floating-points {
+          0% { transform: translateY(0); }
+          85% { opacity: 0; }
+          100% { transform: translateY(-55px); opacity: 0; }
+        }
+
+        /* Configuração de tempo das partículas */
+        .points_wrapper .point:nth-child(1) { left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: 0.2s; }
+        .points_wrapper .point:nth-child(2) { left: 30%; opacity: 0.7; animation-duration: 2.5s; animation-delay: 0.5s; }
+        .points_wrapper .point:nth-child(3) { left: 25%; opacity: 0.8; animation-duration: 2.2s; animation-delay: 0.1s; }
+        .points_wrapper .point:nth-child(4) { left: 44%; opacity: 0.6; animation-duration: 2.05s; }
+        .points_wrapper .point:nth-child(5) { left: 50%; opacity: 1; animation-duration: 1.9s; }
+        .points_wrapper .point:nth-child(6) { left: 75%; opacity: 0.5; animation-duration: 1.5s; animation-delay: 1.5s; }
+        .points_wrapper .point:nth-child(7) { left: 88%; opacity: 0.9; animation-duration: 2.2s; animation-delay: 0.2s; }
+        .points_wrapper .point:nth-child(8) { left: 58%; opacity: 0.8; animation-duration: 2.25s; animation-delay: 0.2s; }
+        .points_wrapper .point:nth-child(9) { left: 98%; opacity: 0.6; animation-duration: 2.6s; animation-delay: 0.1s; }
+        .points_wrapper .point:nth-child(10) { left: 65%; opacity: 1; animation-duration: 2.5s; animation-delay: 0.2s; }
+
+        .inner {
+          z-index: 2;
+          gap: 8px;
+          position: relative;
+          width: 100%;
+          color: #000; /* Texto preto para contraste */
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1.5;
+        }
+
+        /* SVG Icon e Text Styling */
+        .inner svg.icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        /* Ajustada a largura para o texto "Revolutionary" */
+        .inner svg.text-svg {
+          width: 110px;
+          height: 24px;
+        }
+
+        .inner svg.text-svg text {
+          font-family: inherit;
+          font-size: 16px;
+          font-weight: 600;
+          fill: #000;
+          stroke-width: 0.5px;
+          stroke: transparent;
+        }
+
+        /* Animação Hover Unificada */
+        .button:hover .icon path,
+        .button:hover .text-svg text {
+          fill: transparent; /* Começa transparente */
+          stroke: #000;      /* Começa com contorno */
+          animation: draw-and-fill 1.2s linear forwards; /* Animação única e mais longa */
+        }
+
+        .button:focus .icon path,
+        .button:focus .text-svg text {
+          fill: #000;
+          stroke: transparent;
+        }
+
+        /* Nova Animação Unificada */
+        @keyframes draw-and-fill {
+          0% {
+            stroke-dasharray: 0 150;
+            fill: transparent;
+            stroke: #000;
+          }
+          80% {
+            stroke-dasharray: 150 0; /* Traço completo */
+            fill: transparent;       /* Ainda transparente */
+            stroke: #000;
+          }
+          100% {
+            stroke-dasharray: 150 0;
+            fill: #000;             /* Preenchimento final */
+            stroke: transparent;    /* Contorno desaparece suavemente */
+          }
+        }
+    </style>
+</head>
+<body>
+
+<button type="button" class="button">
+  <!-- Partículas -->
+  <div class="points_wrapper">
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+  </div>
+
+  <span class="inner">
+    <!-- Ícone de Sparkles (IA) -->
+    <svg
+      class="icon"
+      fill="none"
+      stroke="#000"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    >
+      <!-- Sparkle principal -->
+      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063A2 2 0 0 0 14.063 15.5L12.481 21.635a.5.5 0 0 1-.962 0L9.937 15.5Z"></path>
+      <!-- Sparkle menor -->
+      <path d="M20 7l-1.207 1.207a1 1 0 0 0 0 1.414L20 11l1.207-1.207a1 1 0 0 0 0-1.414L20 7Z"></path>
+    </svg>
+    
+    <!-- Texto SVG "Revolutionary" -->
+    <svg class="text-svg" viewBox="0 0 115 20">
+      <text x="0" y="15" fill="#000">Revolutionary</text>
+    </svg>
+  </span>
+</button>
+
+</body>
+</html>

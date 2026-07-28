@@ -1,0 +1,10 @@
+/* hirely-cta — section-scoped overrides.
+ *
+ * The CTA section (`.section_cta`, `.cta_header`, `.cta_header-row`, `.cta_img`,
+ * `.vertical-center`) and the inlined Button (`.button_wrap`, `.button_main`,
+ * `.button_icon`, `.button_shadow`) are fully styled by the shared engine
+ * stylesheet `/hirely/styles.css` (merged webflow.css + components.css +
+ * animations.css), so this section needs no additional scoped CSS.
+ *
+ * Kept as an intentional standalone stub for parity with the other Hirely ports.
+ * Add overrides here only if a real visual drift appears against the source. */

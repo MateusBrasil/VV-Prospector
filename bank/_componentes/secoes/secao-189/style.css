@@ -1,0 +1,15 @@
+/* hirely-testimonials — local overrides only. The shared /hirely/styles.css
+   carries the section styles (.section_testimonial, .testimonials_wrap,
+   .testimonial_card-wrap, .testimonial_card, .testimonial_card-text,
+   .testimonial_card-name, .testimonial_img, .testimonial_name-wrap,
+   .testimonial_arrow, .testimonial_name, .vertical-center, .max-heading,
+   .padding-section-medium, the .is-one/.is-two/.is-three modifiers, etc.)
+   plus the design tokens. This is a static testimonial wall with name tags
+   and connector arrows; reveals (.scroll-animation) run via
+   /hirely/scripts/scroll-reveal.js. Only a body reset lives here — the shared
+   sheet already defaults the body background to #fff for this light section. */
+
+body {
+  margin: 0;
+  background-color: #fff;
+}

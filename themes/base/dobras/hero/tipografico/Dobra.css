@@ -1,0 +1,291 @@
+[data-dobra="hero-tipografico"] *,[data-dobra="hero-tipografico"] *::after,[data-dobra="hero-tipografico"] *::before{
+    box-sizing: border-box;
+}
+[data-dobra="hero-tipografico"]{
+    font-size: 14px;
+}
+[data-dobra="hero-tipografico"]{
+    margin: 0;
+    --color-text: var(--base-400);
+    --color-bg: var(--base-600);
+    --color-link: var(--base-100);
+    --color-link-hover: var(--base-500);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    font-family: var(--fonte-corpo);
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	--cursor-stroke: var(--base-400);
+	--cursor-fill: none;
+	--cursor-stroke-width: 1px;
+}
+[data-dobra="hero-tipografico"] .js .loading::before,[data-dobra="hero-tipografico"] .js .loading::after{
+    content: '';
+    position: fixed;
+    z-index: 1000;
+}
+[data-dobra="hero-tipografico"] .js .loading::before{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+}
+[data-dobra="hero-tipografico"] .js .loading::after{
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+    border-radius: 50%;
+    opacity: 0.4;
+    background: var(--color-link);
+    animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+@keyframes loaderAnim{
+    to {
+        opacity: 1;
+        transform: scale3d(0.5, 0.5, 1);
+    }
+}
+[data-dobra="hero-tipografico"] a{
+    text-decoration: none;
+    color: var(--color-link);
+    outline: none;
+}
+[data-dobra="hero-tipografico"] a:hover,[data-dobra="hero-tipografico"] a:focus{
+    color: var(--color-link-hover);
+    outline: none;
+}
+[data-dobra="hero-tipografico"] .message{
+    background: var(--color-text);
+    color: var(--color-bg);
+    padding: 1rem;
+    text-align: center;
+}
+[data-dobra="hero-tipografico"] .frame{
+    padding: 3rem 5vw;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+}
+[data-dobra="hero-tipografico"] .frame__title{
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    font-weight: 300;
+}
+[data-dobra="hero-tipografico"] .frame__links{
+    display: inline;
+}
+[data-dobra="hero-tipografico"] .frame__links a:not(:last-child){
+    margin-right: 1rem;
+}
+[data-dobra="hero-tipografico"] .frame__button{
+    all: unset;
+}
+[data-dobra="hero-tipografico"] .content{
+    width: 100%;
+    height: 400px;
+    display: grid;
+    justify-content: center;
+    overflow: hidden;
+}
+[data-dobra="hero-tipografico"] .grid{
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+    height: 93%;
+    margin: auto;
+    display: grid;
+  	grid-template-columns: repeat(13,1fr);
+    grid-template-rows: repeat(8,1fr);
+    grid-gap: 1vw;
+    position: relative;
+}
+[data-dobra="hero-tipografico"] .grid::after{
+	content: '';
+	height: 6rem;
+	width: 1px;
+	background: var(--base-100);
+	position: absolute;
+	bottom: 2rem;
+	left: 50%;
+}
+[data-dobra="hero-tipografico"] .intro .grid::after{
+	display: none;
+}
+[data-dobra="hero-tipografico"] .grid__item{
+    background-size: cover;
+	background-position: center;
+    opacity: 0;
+    -webkit-filter: brightness(0.7);
+    filter: brightness(0.7);
+}
+[data-dobra="hero-tipografico"] .grid__item--a{
+    grid-area: 2 / 1 / 5 / 3;
+}
+[data-dobra="hero-tipografico"] .grid__item--b{
+    grid-area: 6 / 2 / 9 / 5;
+}
+[data-dobra="hero-tipografico"] .grid__item--c{
+    grid-area: 3 / 4 / 7 / 7;
+}
+[data-dobra="hero-tipografico"] .grid__item--d{
+    grid-area: 1 / 8 / 4 / 10;
+}
+[data-dobra="hero-tipografico"] .grid__item--e{
+    grid-area: 4 / 10 / 7 / 14;
+}
+[data-dobra="hero-tipografico"] .grid__item--f{
+    grid-area: 6 / 9 / 9 / 12;
+}
+[data-dobra="hero-tipografico"] .menu{
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    width: 130vw;
+    justify-content: space-between;
+    align-self: center;
+    justify-self: start;
+    position: relative;
+}
+[data-dobra="hero-tipografico"] .menu__item{
+    --color-title: var(--base-500);
+    --color-subtitle: var(--base-500);
+    --title-font-style: italic;
+    --title-font-weight: 400;
+    --title-font-size: 7vw;
+    --title-display: none;
+	--subtitle-display: none;
+	pointer-events: none;
+}
+[data-dobra="hero-tipografico"] .menu__item-title{
+    font-size: var(--title-font-size);
+    font-family: var(--fonte-corpo);
+    font-style: var(--title-font-style);
+    font-weight: var(--title-font-weight);
+    color: var(--color-title);
+    margin: 0;
+    display: var(--title-display);
+}
+[data-dobra="hero-tipografico"] .menu__item-subtitle{
+    font-family: var(--fonte-corpo);
+    color: var(--color-subtitle);
+    text-align: right;
+    margin: 0 -3rem 0 0;
+    font-size: 1.5vw;
+    display: var(--subtitle-display);
+}
+[data-dobra="hero-tipografico"] .menu__item--current{
+	--color-title: var(--base-100);
+    --color-subtitle: var(--base-400);
+    --title-font-style: italic;
+    --title-font-weight: 900;
+    cursor: pointer;
+	--title-display: block;
+	--title-font-size: 9vw;
+}
+[data-dobra="hero-tipografico"] .intro .menu__item--current::before{                
+    content: '01';
+    position: absolute;
+    bottom: 110%;
+    color: var(--color-title);
+}
+[data-dobra="hero-tipografico"] .intro .menu__item--current:hover{
+	--color-title: var(--base-100);
+    --color-subtitle: var(--acento);
+}
+[data-dobra="hero-tipografico"] .intro .menu__item--current{
+	--color-title: var(--base-100);
+	--title-font-style: normal;
+	--title-font-size: 7vw;
+	pointer-events: auto;
+}
+[data-dobra="hero-tipografico"] .intro .menu__item{
+	--title-font-size: 5vw;
+	--subtitle-display: block;
+	--title-display: block;
+}
+[data-dobra="hero-tipografico"] .layers{
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
+    z-index: 2000;
+    pointer-events: none;
+}
+[data-dobra="hero-tipografico"] .layers__item{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translate3d(0, 101%, 0);
+}
+[data-dobra="hero-tipografico"] .layers__item-img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    transform: translate3d(0, -101%, 0);
+}
+[data-dobra="hero-tipografico"] .cursor{
+	display: none;
+}
+@media screen and (min-width: 53em){[data-dobra="hero-tipografico"] .message{
+        display: none;
+    }
+[data-dobra="hero-tipografico"] .frame{
+        display: grid;
+        position: absolute;
+        width: 100%;
+        padding: 4rem;
+        pointer-events: none;
+        grid-template-columns: auto auto 1fr;
+        grid-template-rows: auto;
+    }
+[data-dobra="hero-tipografico"] .frame__title{
+        margin: 0 4rem 0 0;
+    }
+[data-dobra="hero-tipografico"] .frame__info{
+        margin: 0;
+    }
+[data-dobra="hero-tipografico"] .frame__links{
+        padding: 0;
+    }
+[data-dobra="hero-tipografico"] .frame__info,[data-dobra="hero-tipografico"] .frame__button{
+        justify-self: end;
+    }
+[data-dobra="hero-tipografico"] .frame__button{
+        margin: 0 0 0 10vw;
+    }
+[data-dobra="hero-tipografico"] .frame a{
+        pointer-events: auto;
+    }
+[data-dobra="hero-tipografico"] .content{
+        height: 100vh;
+    }
+[data-dobra="hero-tipografico"] .grid{
+        width: 80vw;
+    }
+[data-dobra="hero-tipografico"] .menu{
+        width: 110vw;
+    }
+
+}
+@media (any-pointer: fine){[data-dobra="hero-tipografico"] .cursor{
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
+		pointer-events: none;
+		opacity: 0;
+	}
+[data-dobra="hero-tipografico"] .cursor__inner{
+		fill: var(--cursor-fill);
+		stroke: var(--cursor-stroke);
+		stroke-width: var(--cursor-stroke-width);
+	}
+
+}
+

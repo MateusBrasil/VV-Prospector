@@ -127,165 +127,14 @@ export function extrairPartes(dir) {
 
 /* ---------------------------------------------------------------- *
  * 2. Tokenizar o CSS: arrancar a identidade de origem
+ *
+ * As transformacoes de CSS vivem em ./lib/css.mjs e sao importadas no topo.
+ * ATE 2026-07-27 EXISTIA AQUI UMA SEGUNDA COPIA DELAS (mapearCores, tokenizarCss,
+ * escopar, fecharBloco), morta: nada importava esteira.mjs e os testes ja apontavam
+ * para lib/css.mjs. A copia morta custou uma correcao aplicada no ficheiro errado,
+ * que passou nos testes sem mudar nada no resultado. E o mesmo bug que tokens.mjs
+ * documenta: duas fontes de verdade para a mesma regra sao o bug, nao a regex.
  * ---------------------------------------------------------------- */
-
-const cortarComentarios = s => s.replace(/\/\*[\s\S]*?\*\//g, '');
-
-/**
- * Substitui font-family, cor e peso do template pelos nossos tokens.
- *
- * As cores são o caso difícil e a decisão aqui é deliberada: NÃO se remapeia hex
- * automaticamente. Um gerador não sabe distinguir a cor de marca de um cinza de borda
- * ou de uma sombra, e trocar às cegas parte o contraste. O que se faz é MARCAR cada hex
- * com um comentário para a revisão, e reportar a lista. Marcar é honesto; adivinhar não.
- */
-/**
- * Mapeia as cores de um template de origem para os nossos tokens, por LUMINÂNCIA.
- *
- * Porque luminância e não matiz: o matiz da origem é justamente o que queremos deitar fora
- * (é a marca de outra pessoa). O que interessa preservar é o PAPEL de cada cor na composição,
- * e o papel lê-se no brilho: o quase-preto era fundo, o quase-branco era texto sobre ele, os
- * do meio eram superfícies e bordas. Trocando por luminância, a dobra mantém a estrutura de
- * contraste que o autor desenhou e passa a falar a cor do nosso cliente.
- *
- * A cor mais SATURADA da origem é caso à parte: era o acento, e vira o nosso acento. É a
- * única em que o matiz importava, e é por isso que é a única que não segue a régua do brilho.
- */
-function mapearCores(css) {
-  // CORRIGIDO (achado ao converter bank/_componentes/botoes/glass-button-red): quando o
-  // MESMO hex aparece com e sem canal alfa no mesmo CSS (ex. "#ffffff" numa regra e
-  // "#ffffffaa" noutra), a troca por substring (`.split().join()`, abaixo) processava o
-  // mais curto primeiro e ele batia como PREFIXO do mais longo, corrompendo-o pra
-  // "var(--base-100)aa" — os 2 dígitos de alfa sobravam soltos, CSS inválido. Ordenar do
-  // mais longo pro mais curto garante que "#ffffffaa" é trocado inteiro antes de
-  // "#ffffff" ter chance de morder o prefixo dele.
-  const hexes = [...new Set((css.match(/#[0-9a-fA-F]{3,8}\b/g) || []).map(h => h.toLowerCase()))]
-    .sort((a, b) => b.length - a.length);
-  if (!hexes.length) return { css, mapeadas: 0, acento: null };
-
-  const info = hexes.map(h => {
-    let s = h.replace('#', '');
-    if (s.length === 3) s = [...s].map(c => c + c).join('');
-    if (s.length === 8) s = s.slice(0, 6);
-    if (s.length !== 6) return null;
-    const [r, g, b] = [0, 2, 4].map(i => parseInt(s.slice(i, i + 2), 16));
-    const lin = v => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
-    const L = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    return { hex: h, L, sat: max === 0 ? 0 : (max - min) / max };
-  }).filter(Boolean);
-
-  // o acento da origem: mais saturado, e com saturação que se note
-  const acento = [...info].sort((a, b) => b.sat - a.sat)[0];
-  const ehAcento = acento && acento.sat > 0.35 ? acento.hex : null;
-
-  // os degraus do sistema, do mais claro ao mais escuro
-  const DEGRAUS = [
-    { token: '--base-100', L: 0.78 }, { token: '--base-200', L: 0.42 },
-    { token: '--base-300', L: 0.18 }, { token: '--base-400', L: 0.08 },
-    { token: '--base-500', L: 0.03 }, { token: '--base-600', L: 0.012 },
-  ];
-
-  // CORRIGIDO (achado no mesmo componente, mesma revisão): `hexes` é lowercased pra
-  // deduplicar, mas o CSS de origem mistura maiúsculas e minúsculas (ex. "#FFEBEE" no
-  // gradiente, "#ffffff" no glow) — `.split(c.hex)` é sensível a maiúsculas, então as
-  // variantes em maiúscula nunca batiam e sobreviviam até o catch-all no fim desta
-  // função, que substitui TUDO que sobrou por um único token fixo (--base-300),
-  // colapsando cores bem diferentes (texto branco E fundo) no MESMO token — o botão
-  // saía com o texto da cor do próprio fundo, invisível. Regex com flag "i" substitui
-  // qualquer capitalização do mesmo hex.
-  let mapeadas = 0;
-  for (const c of info) {
-    const re = new RegExp(c.hex, 'gi');
-    if (c.hex === ehAcento) {
-      css = css.replace(re, 'var(--acento)');
-      mapeadas++;
-      continue;
-    }
-    const alvo = DEGRAUS.reduce((a, d) => (Math.abs(d.L - c.L) < Math.abs(a.L - c.L) ? d : a));
-    css = css.replace(re, `var(${alvo.token})`);
-    mapeadas++;
-  }
-  // as formas maiúsculas e curtas que sobraram
-  css = css.replace(/#[0-9a-fA-F]{3,8}\b/g, 'var(--base-300)');
-  return { css, mapeadas, acento: ehAcento };
-}
-
-export function tokenizarCss(cssBruto, scope, { mapearCor = true } = {}) {
-  let css = cortarComentarios(cssBruto);
-  const relatorio = { fontesTrocadas: 0, pesosTrocados: 0, hexEncontrados: [], importantsRemovidos: 0, coresMapeadas: 0, acentoOrigem: null };
-
-  // fontes → tokens do sistema
-  css = css.replace(/font-family\s*:\s*([^;}]+)([;}])/gi, (m, valor, fim) => {
-    if (/var\(--fonte-/.test(valor)) return m;
-    relatorio.fontesTrocadas++;
-    const mono = /mono|courier|consol/i.test(valor);
-    return `font-family: var(${mono ? '--fonte-mono' : '--fonte-corpo'})${fim}`;
-  });
-
-  // display herda a fonte de display do sistema
-  css = css.replace(/(^|[},])\s*([^{}]*\b(h1|h2|h3|h4|h5|h6)\b[^{}]*)\{/gi,
-    (m) => m);   // os seletores mantêm-se; a fonte vem do estrutura.css
-
-  // !important de origem: quase sempre o autor a brigar com o próprio framework dele
-  const antesImp = css.length;
-  css = css.replace(/\s*!important/gi, () => { relatorio.importantsRemovidos++; return ''; });
-
-  // hex: registar antes de mapear, para o relatório dizer de onde se partiu
-  for (const m of css.matchAll(/#[0-9a-fA-F]{3,8}\b/g))
-    if (!relatorio.hexEncontrados.includes(m[0])) relatorio.hexEncontrados.push(m[0]);
-
-  if (mapearCor) {
-    const r = mapearCores(css);
-    css = r.css;
-    relatorio.coresMapeadas = r.mapeadas;
-    relatorio.acentoOrigem = r.acento;
-  }
-
-  // escopar tudo debaixo do data-blk da dobra
-  css = escopar(css, `[data-dobra="${scope}"]`);
-
-  return { css, relatorio };
-}
-
-/** Prefixa cada seletor de topo. Parser por chaves, não regex de linha: o CSS destes
- *  componentes tem @media aninhado e seletor multi-linha, e regex ingénua parte ambos. */
-function escopar(css, prefixo) {
-  const out = [];
-  let i = 0;
-  while (i < css.length) {
-    const abre = css.indexOf('{', i);
-    if (abre === -1) { out.push(css.slice(i)); break; }
-    const cabeca = css.slice(i, abre).trim();
-    const fecho = fecharBloco(css, abre);
-    const corpo = css.slice(abre + 1, fecho);
-
-    if (cabeca.startsWith('@')) {
-      // @media/@supports: escopar o interior, manter a condição
-      if (/^@(media|supports|container|layer)/i.test(cabeca)) out.push(`${cabeca}{${escopar(corpo, prefixo)}}`);
-      else out.push(`${cabeca}{${corpo}}`);          // @keyframes/@font-face ficam globais
-    } else {
-      const sels = cabeca.split(',').map(s => s.trim()).filter(Boolean).map(s => {
-        if (/^(html|:root)$/i.test(s)) return prefixo;            // globais viram o escopo
-        if (/^body$/i.test(s)) return prefixo;
-        if (/^\*$/.test(s)) return `${prefixo} *`;
-        return `${prefixo} ${s}`;
-      });
-      out.push(`${sels.join(',')}{${corpo}}`);
-    }
-    i = fecho + 1;
-  }
-  return out.join('\n');
-}
-
-function fecharBloco(s, abre) {
-  let d = 0;
-  for (let i = abre; i < s.length; i++) {
-    if (s[i] === '{') d++;
-    else if (s[i] === '}') { d--; if (d === 0) return i; }
-  }
-  return s.length - 1;
-}
 
 /* ---------------------------------------------------------------- *
  * 3. HTML → JSX
@@ -302,7 +151,26 @@ const ATRIBUTOS = {
   'font-size': 'fontSize', 'font-family': 'fontFamily', 'font-weight': 'fontWeight',
   'xlink:href': 'xlinkHref', 'gradientunits': 'gradientUnits', 'viewbox': 'viewBox',
   'preserveaspectratio': 'preserveAspectRatio',
+  // ACRESCENTADO 2026-07-27: medidos no acervo, estes eram os atributos SVG hifenizados que
+  // mais sobreviviam sem tradução (vector-effect em 61 dobras, dominant-baseline em 53,
+  // stroke-miterlimit em 39). O React aceita-os hifenizados, mas emite aviso e a forma
+  // canónica é camelCase; traduzi-los aqui é o mesmo trabalho que já se faz para os outros.
+  'vector-effect': 'vectorEffect', 'dominant-baseline': 'dominantBaseline',
+  'stroke-miterlimit': 'strokeMiterlimit', 'stroke-opacity': 'strokeOpacity',
+  'fill-opacity': 'fillOpacity', 'shape-rendering': 'shapeRendering',
+  'color-interpolation-filters': 'colorInterpolationFilters',
+  'marker-end': 'markerEnd', 'marker-start': 'markerStart', 'marker-mid': 'markerMid',
+  'paint-order': 'paintOrder', 'text-rendering': 'textRendering',
+  'letter-spacing': 'letterSpacing', 'word-spacing': 'wordSpacing',
+  'baseline-shift': 'baselineShift', 'alignment-baseline': 'alignmentBaseline',
+  'flood-color': 'floodColor', 'flood-opacity': 'floodOpacity',
 };
+
+/** Atributos próprios da origem, sem tradução possível. O React 16+ passa-os para o DOM tal
+ *  e qual, portanto não são erro: são um gancho de JS da origem que fica órfão se o JS não
+ *  for reescrito. Reportar como isso, e não como "pode não ser válido em JSX", que era o
+ *  aviso antigo e mandava a revisão procurar um problema de sintaxe que não existe. */
+const PREFIXOS_DE_ORIGEM = /^(bounce|hero|button|fs|split|reveal|magnet|marquee|tilt|parallax)-/i;
 const VAZIAS = new Set(['img', 'br', 'hr', 'input', 'meta', 'link', 'source', 'area', 'base', 'col', 'embed', 'param', 'track', 'wbr']);
 
 /**
@@ -353,9 +221,20 @@ export function htmlParaJsx(html) {
     const novo = ATRIBUTOS[attr.toLowerCase()] || ATRIBUTOS[attr];
     return novo ? ` ${novo}=` : m;
   });
-  // data-* e aria-* mantêm-se; qualquer outro com hífen não é válido em JSX
+  // data-* e aria-* mantêm-se. O que sobra hifenizado divide-se em dois casos com
+  // gravidades muito diferentes, e o aviso antigo tratava-os como um só ("pode não ser
+  // válido em JSX"), mandando a revisão procurar um erro de sintaxe que não existe.
+  const orfaos = new Set();
   for (const m of jsx.matchAll(/\s([a-z]+-[a-z-]+)=/gi))
-    if (!/^(data|aria)-/i.test(m[1])) notas.push(`atributo "${m[1]}" pode não ser válido em JSX`);
+    if (!/^(data|aria)-/i.test(m[1])) orfaos.add(m[1]);
+  if (orfaos.size) {
+    const daOrigem = [...orfaos].filter(a => PREFIXOS_DE_ORIGEM.test(a));
+    const desconhecidos = [...orfaos].filter(a => !PREFIXOS_DE_ORIGEM.test(a));
+    if (daOrigem.length) notas.push(
+      `${daOrigem.length} atributo(s) de gancho da ORIGEM (${daOrigem.slice(0, 3).join(', ')}): o React passa-os ao DOM tal e qual, não são erro de sintaxe. Ficam órfãos se o JS de origem não for reescrito`);
+    if (desconhecidos.length) notas.push(
+      `${desconhecidos.length} atributo(s) hifenizado(s) sem tradução conhecida (${desconhecidos.slice(0, 3).join(', ')}): confirmar se é SVG que devia estar em camelCase`);
+  }
 
   // tags vazias precisam de fechar
   for (const t of VAZIAS)
@@ -370,6 +249,50 @@ export function htmlParaJsx(html) {
     notas.push('há chavetas no markup que podem precisar de escape em JSX');
 
   return { jsx: jsx.trim(), notas };
+}
+
+/* ---------------------------------------------------------------- *
+ * 3b. Classificar o JS de origem: quanto custa pôr esta dobra a mexer
+ * ---------------------------------------------------------------- */
+
+/**
+ * MEDIDO no acervo de 552 (2026-07-27): 485 dobras saíam com o JS comentado e todas com o
+ * MESMO aviso genérico ("escopar à raiz e testar"). Esse aviso é verdadeiro mas inútil para
+ * planear: não distingue a dobra que custa 2 minutos da que custa meio dia. A distribuição
+ * real é: 67 sem JS nenhum, 35 só-DOM, 330 com global duro, 92 módulo ES, 28 WebGL/Three.
+ *
+ * Classificar muda a curadoria de "rever 485" para "as 35 baratas primeiro". As categorias:
+ *
+ *  - `sem-js`      a origem não trazia JS. Não há nada a converter.
+ *  - `dom-simples` só toca em querySelector/classList dentro do próprio componente. Escopar
+ *                  ao `raiz.current` é uma troca mecânica e correta, e a esteira FÁ-LA.
+ *  - `global-duro` mexe em window/document.body/listeners de load|resize|scroll. Escopar não
+ *                  chega: o código assume que é dono da página. Precisa de reescrita.
+ *  - `modulo-es`   traz import/export. Não corre como corpo de função; precisa de ser partido
+ *                  em módulo de verdade ou reescrito.
+ *  - `webgl`       Three.js/WebGL. Além da conversão, arrasta peso e ciclo de vida de canvas.
+ */
+export function classificarJs(js = '') {
+  if (!js.trim()) return { categoria: 'sem-js', escopavel: false };
+  if (/THREE\.|new Scene\(|WebGLRenderer/.test(js)) return { categoria: 'webgl', escopavel: false };
+  if (/\bimport\s+[\w{*]/.test(js) || /\bexport\s+(default|const|function)/.test(js))
+    return { categoria: 'modulo-es', escopavel: false };
+  if (/\bwindow\.\w+\s*=|\bdocument\.body\b|\bdocument\.documentElement\b|addEventListener\(\s*['"](?:load|DOMContentLoaded|resize|scroll)/.test(js))
+    return { categoria: 'global-duro', escopavel: false };
+  return { categoria: 'dom-simples', escopavel: true };
+}
+
+/**
+ * Troca as buscas globais por buscas dentro da própria dobra. Só é chamada para
+ * `dom-simples`, onde esta troca é equivalente — nas outras categorias seria mentira,
+ * porque lá o código conta mesmo com a página inteira.
+ */
+export function escoparJs(js) {
+  return js
+    .replace(/\bdocument\.querySelectorAll\b/g, 'raiz.current.querySelectorAll')
+    .replace(/\bdocument\.querySelector\b/g, 'raiz.current.querySelector')
+    .replace(/\bdocument\.getElementById\(\s*(['"])([^'"]+)\1\s*\)/g, 'raiz.current.querySelector(\'#$2\')')
+    .replace(/\bdocument\.getElementsByClassName\(\s*(['"])([^'"]+)\1\s*\)/g, 'raiz.current.querySelectorAll(\'.$2\')');
 }
 
 /* ---------------------------------------------------------------- *
@@ -392,6 +315,29 @@ export function extrairSlots(jsx, slotsDeEstilo = []) {
   const contador = { imagem: slotsDeEstilo.filter(s => s.tipo === 'imagem').length };
   let out = jsx;
 
+  // ACHADO REAL (39 de 552 dobras, 2026-07-27): o destino dos links ficava cravado no host
+  // da ORIGEM — `<a href="https://tympanus.net/...">`, dribbble, codepen, github. A esteira
+  // arrancava o TEXTO do link (virava slot) mas deixava o href, então o rótulo era do cliente
+  // e o clique levava o visitante do cliente para o site de quem fez o template. É identidade
+  // de origem tanto quanto a fonte e a cor, e sai pela mesma razão. Vira slot: o destino passa
+  // a ser conteúdo que o cliente fornece, com "#" como neutro enquanto ninguém o preenche.
+  out = out.replace(/\shref=["'](https?:\/\/[^"']*)["']/gi, (m, url) => {
+    contador.destino = (contador.destino || 0) + 1;
+    const nome = `destino${contador.destino > 1 ? contador.destino : ''}`;
+    slots.push({ nome, tipo: 'link', exemplo: url, externa: true });
+    return ` href={s.${nome} || '#'}`;
+  });
+
+  // `<button>` da origem não tem destino nenhum: o comportamento dele vivia no JS solto que a
+  // esteira comenta. Sem isto, a dobra sai com um botão que parece clicável e não faz nada —
+  // o defeito exato que o Mateus apanhou ao vivo no site da Vaninha ("se aperto não acontece
+  // nada"). Injetar o `onClick` aqui, na esteira, e não num script avulso: a primeira versão
+  // disto foi um script à parte que correu duas vezes e deixou 24 dobras com
+  // `onClick={s.onClick} onClick={s.onClick}` duplicado. A guarda `!/onClick/` torna a
+  // operação idempotente — correr a esteira N vezes dá sempre o mesmo ficheiro.
+  out = out.replace(/<button\b([^>]*)>/gi, (m, attrs) =>
+    /onClick/i.test(attrs) ? m : `<button${attrs} onClick={s.onClick}>`);
+
   // texto entre tags, só quando não contém outra tag
   out = out.replace(/<(h1|h2|h3|h4|h5|h6|p|span|li|a|button)\b([^>]*)>([^<>{}]{2,})<\/\1>/gi,
     (m, tag, attrs, texto) => {
@@ -410,6 +356,19 @@ export function extrairSlots(jsx, slotsDeEstilo = []) {
     const nome = `imagem${contador.imagem > 1 ? contador.imagem : ''}`;
     slots.push({ nome, tipo: 'imagem', exemplo: src, externa: /^https?:\/\//.test(src) });
     return `<img${a}src={s.${nome}}${b}/>`;
+  });
+
+  // ACHADO REAL (hero-4 e hero-6, 2026-07-27): o extrator só conhecia `<img>`, então o vídeo
+  // de fundo de um hero escapava inteiro — `<source src="https://...b-cdn.net/....mp4">` e
+  // `<video src="https://videos.pexels.com/...">` sobreviviam com o host da origem cravado.
+  // É pior que a foto hotlinked: um hero com vídeo transmite MB do CDN de terceiro a cada
+  // visita do site do cliente, e morre no dia em que esse host sair do ar. Mesmo tratamento
+  // que a imagem: vira slot, o cliente fornece o ficheiro.
+  out = out.replace(/<(video|source)\b([^>]*?)\ssrc=["']([^"']+)["']([^>]*?)(\/?)>/gi, (m, tag, a, src, b, fecho) => {
+    contador.video = (contador.video || 0) + 1;
+    const nome = `video${contador.video > 1 ? contador.video : ''}`;
+    slots.push({ nome, tipo: 'video', exemplo: src, externa: /^https?:\/\//.test(src) });
+    return `<${tag}${a} src={s.${nome}}${b}${fecho}>`;
   });
 
   // Resolver os marcadores de `marcarImagensDeEstiloInline`: a essa altura o `style` já é
@@ -441,7 +400,12 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   const destino = join(ROOT, 'themes', 'base', 'dobras', slot, nome);
   mkdirSync(destino, { recursive: true });
 
-  const { css, relatorio: relCss } = tokenizarCssPuro(partes.css, scope);
+  // `let` e não `const`: a remoção do CSS de página de demonstração, mais abaixo, reescreve
+  // o bloco raiz. Era const, e as 20 dobras que tinham esse CSS falhavam com "Assignment to
+  // constant variable" — e falhavam SÓ essas, o que torna o erro fácil de não notar num lote.
+  const tokenizado = tokenizarCssPuro(partes.css, scope);
+  let css = tokenizado.css;
+  const relCss = tokenizado.relatorio;
   // ACHADO REAL (lote de ~500 componentes, 2026-07-24): hex também aparece em
   // `style="background: #ff4d8c"` INLINE no próprio HTML de origem (não só no CSS
   // externo) — 95 das dobras já processadas tinham isto e a tokenização nunca alcançava
@@ -469,6 +433,10 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     if (existsSync(de) && statSync(de).isDirectory()) { cpSync(de, dirAssets, { recursive: true }); copiados++; }
   }
   const externas = slots.filter(s => s.externa).map(s => s.exemplo);
+  const classeJs = classificarJs(partes.js);
+  // o `useEffect` só é importado quando é mesmo emitido: uma dobra com JS escopado sem GSAP
+  // usa-o, e uma com o JS ainda comentado não — importar sempre deixaria import por usar.
+  const usaUseEffect = classeJs.escopavel && !partes.libs.includes('gsap');
 
   const componente = [
     '"use client";',
@@ -480,7 +448,7 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     ' * Nada aqui pode voltar a ter literal de negócio: o conteúdo entra por `s` (os slots).',
     ' */',
     '',
-    "import { useRef } from 'react';",
+    usaUseEffect ? "import { useEffect, useRef } from 'react';" : "import { useRef } from 'react';",
     partes.libs.includes('gsap') ? "import gsap from 'gsap';" : '',
     partes.libs.includes('scrolltrigger') ? "import { ScrollTrigger } from 'gsap/ScrollTrigger';" : '',
     partes.libs.includes('gsap') ? "import { useGSAP } from '@gsap/react';" : '',
@@ -492,18 +460,29 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     `export default function Dobra({ slots: s = {} }) {`,
     '  const raiz = useRef(null);',
     '',
-    partes.js.trim()
-      ? [
-        '  /* ⚠ REVER: o JS de origem está abaixo em bruto, dentro do useGSAP.',
-        '   * A esteira NÃO o converte sozinha porque ele foi escrito para correr num documento',
-        '   * inteiro (usa document.querySelector global, espera classes que já não existem, e às',
-        '   * vezes assume ordem de carregamento). Converter às cegas produz animação que corre no',
-        '   * elemento errado, que é pior que animação nenhuma. Escopar ao `raiz.current` e testar. */',
-        partes.libs.includes('gsap') ? '  useGSAP(() => {' : '  // useEffect(() => {',
-        ...partes.js.split('\n').map(l => '  //   ' + l),
-        partes.libs.includes('gsap') ? '  }, { scope: raiz });' : '  // }, []);',
-      ].join('\n')
-      : '  /* a origem não trazia JS */',
+    classeJs.categoria === 'sem-js'
+      ? '  /* a origem não trazia JS */'
+      : classeJs.escopavel
+        ? [
+          `  /* JS de origem ESCOPADO pela esteira (categoria: ${classeJs.categoria}).`,
+          '   * Só tocava em querySelector/classList dentro do próprio componente, por isso a troca',
+          '   * de `document.` para `raiz.current.` é equivalente e foi feita automaticamente.',
+          '   * Continua a precisar de confirmação no ecrã antes de a dobra ser promovida. */',
+          partes.libs.includes('gsap') ? '  useGSAP(() => {' : '  useEffect(() => {',
+          ...escoparJs(partes.js).split('\n').map(l => '    ' + l),
+          partes.libs.includes('gsap') ? '  }, { scope: raiz });' : '  }, []);',
+        ].join('\n')
+        : [
+          `  /* ⚠ REVER: o JS de origem está abaixo em bruto (categoria: ${classeJs.categoria}).`,
+          '   * A esteira NÃO o converte sozinha, e nesta categoria escopar ao `raiz.current` NÃO',
+          '   * chega: o código assume que é dono da página (window/document.body/listeners de',
+          '   * load|resize|scroll), ou traz import/export, ou monta um canvas WebGL. Converter às',
+          '   * cegas produz animação que corre no elemento errado, que é pior que animação',
+          '   * nenhuma. Precisa de reescrita, não de troca de prefixo. */',
+          partes.libs.includes('gsap') ? '  useGSAP(() => {' : '  // useEffect(() => {',
+          ...partes.js.split('\n').map(l => '  //   ' + l),
+          partes.libs.includes('gsap') ? '  }, { scope: raiz });' : '  // }, []);',
+        ].join('\n'),
     '',
     `  return (`,
     `    <section className="dobra" data-dobra="${scope}" ref={raiz}>`,
@@ -518,10 +497,41 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   // lote): o banco costuma embrulhar o componente numa PÁGINA DE DEMONSTRAÇÃO inteira —
   // a regra do escopo raiz (`[data-dobra="x"]{...}`, sem combinador) centra o componente
   // sozinho num "height:100vh" com fundo próprio. Isso vaza pra dentro de qualquer uso como
-  // peça embutida (herda altura/fundo de página). A esteira NÃO remove sozinha (removê-la
-  // às cegas partiria um componente que É de página inteira de propósito, como um hero) —
-  // só avisa, porque decidir "isto é demo ou é intencional" é julgamento.
-  const paginaDeDemo = new RegExp(`\\[data-dobra="${scope}"\\]\\s*\\{[^}]*(?:height:\\s*100(?:vh|%)|min-height:\\s*100(?:vh|%))[^}]*\\}`, 'i').test(css);
+  // peça embutida (herda altura/fundo de página).
+  //
+  // ATUALIZAÇÃO 2026-07-27: durante muito tempo a esteira só AVISAVA, com o argumento de que
+  // "isto é demo ou é intencional" era julgamento. Medido no acervo, esse aviso estava em 107
+  // das 157 dobras dos slots que os kits de nicho exigem, e era o maior bloqueio isolado.
+  //
+  // O julgamento existe, mas não é por dobra: é POR SLOT, e nesse nível é determinado. Uma
+  // secção de contacto, serviços, equipa, prova ou vitrine é sempre peça EMBUTIDA numa
+  // página que tem outras secções acima e abaixo — não há caso em que ela deva medir um ecrã
+  // inteiro por decisão de design da ORIGEM. Já um `hero` ou uma `transicao` pode legitimamente
+  // ocupar a viewport toda, e aí continua a ser julgamento humano.
+  const SLOTS_SEMPRE_EMBUTIDOS = new Set(['contacto', 'servicos', 'equipa', 'prova', 'vitrine',
+    'precos', 'faq', 'passos', 'numeros', 'logos', 'sobre', 'cta', 'diferenciais', 'botao']);
+  const reRaiz = new RegExp(`(\\[data-dobra="${scope}"\\]\\s*\\{)([^}]*)(\\})`, 'i');
+  const temAlturaDeEcra = /(?:min-)?height:\s*100(?:vh|%)/i;
+  const mRaiz = css.match(reRaiz);
+  let paginaDeDemo = Boolean(mRaiz && temAlturaDeEcra.test(mRaiz[2]));
+  let demoRemovida = false;
+
+  if (paginaDeDemo && SLOTS_SEMPRE_EMBUTIDOS.has(slot)) {
+    // Sai a altura de ecrã e a centragem que só existia para pousar a peça sozinha no meio
+    // da página de demonstração. O resto do bloco raiz (cor, fonte, radius) fica intacto.
+    css = css.replace(reRaiz, (_, abre, corpo, fecha) => {
+      const limpo = corpo
+        .split(';')
+        .filter(d => !/(?:min-)?height:\s*100(?:vh|%)/i.test(d))
+        .filter(d => !/place-items:\s*center/i.test(d))
+        .filter(d => !/align-items:\s*center/i.test(d))
+        .filter(d => !/justify-content:\s*center/i.test(d))
+        .join(';');
+      return `${abre}${limpo}${fecha}`;
+    });
+    paginaDeDemo = false;
+    demoRemovida = true;
+  }
 
   const pontosRever = [
     registo ? null : 'registo por definir (sobrio | editorial | cinematografico)',
@@ -535,13 +545,42 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     relCss.coresMapeadas
       ? `${relCss.coresMapeadas} cor(es) mapeadas para tokens por luminância${relCss.acentoOrigem ? ` (acento da origem ${relCss.acentoOrigem} → var(--acento))` : ''}: confirmar no ecrã que o contraste se mantém`
       : null,
-    partes.js.trim() ? 'JS de origem comentado no Dobra.jsx: escopar à raiz e testar' : null,
+    classeJs.escopavel
+      ? 'JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo'
+      : classeJs.categoria === 'sem-js' ? null
+        : `JS de origem comentado no Dobra.jsx — categoria "${classeJs.categoria}": ${
+          classeJs.categoria === 'global-duro' ? 'assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita'
+            : classeJs.categoria === 'modulo-es' ? 'traz import/export, não corre como corpo de função; precisa de virar módulo a sério'
+              : 'monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio'}`,
     externas.length
       ? `${externas.length} foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (${externas.slice(0, 2).join(' ')})`
       : null,
-    partes.fontesOrigem.length ? `fonte(s) de origem descartadas (o sistema fornece): ${partes.fontesOrigem.length}` : null,
+    // MEDIDO 2026-07-27: este aviso disparava em 277 de 552 dobras (50% do acervo) e
+    // sozinho impedia metade do catálogo de alguma vez ficar elegível. Um alerta que
+    // dispara em metade dos casos não informa nada, só bloqueia.
+    //
+    // Olhando os números, 274 dessas 277 traziam da origem apenas UMA ou DUAS famílias de
+    // fonte, e o nosso sistema fornece display + corpo + mono: o mapeamento é direto e não
+    // há estrutura tipográfica perdida. Descartar a fonte da origem é, aliás, a razão de
+    // ser desta esteira, não um efeito colateral a confirmar caso a caso.
+    //
+    // O risco real está nas outras 3: quando a origem usava 3+ famílias, ela estava a
+    // apoiar-se num CONTRASTE tipográfico que o nosso par não reproduz, e aí a peça pode
+    // perder a hierarquia que a fazia funcionar. Só esse caso merece bloquear.
+    partes.fontesOrigem.length >= 3
+      ? `a origem usava ${partes.fontesOrigem.length} famílias de fonte e o sistema fornece display + corpo: a peça apoiava-se num contraste tipográfico que o nosso par não reproduz. Confirmar no ecrã que a hierarquia se mantém`
+      : null,
+    relCss.importsFonteRemovidos
+      ? `${relCss.importsFonteRemovidos} @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)`
+      : null,
+    relCss.urlsExternas?.length
+      ? `${relCss.urlsExternas.length} url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (${relCss.urlsExternas.slice(0, 2).join(' ')})`
+      : null,
+    slots.some(s => s.tipo === 'link')
+      ? `${slots.filter(s => s.tipo === 'link').length} link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em "#". Definir o destino real ou remover o link antes de aprovar`
+      : null,
     paginaDeDemo
-      ? `PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): confirmar se é a origem a embrulhar o componente sozinho numa página (remover, é peça embutida) ou se é estrutural (mantém, é um hero/secção de página inteira mesmo)`
+      ? `PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot "${slot}" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional`
       : null,
     ...notas,
   ].filter(Boolean);
@@ -551,6 +590,13 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     registo: registo || null,
     estado: estadoInicialDobra(pontosRever),
     libs: partes.libs,
+    // Informativo, não bloqueante: quantas famílias de fonte a origem trazia e que foram
+    // substituídas pelos tokens do sistema. Fica registado para a revisão saber de onde a
+    // peça partiu, sem entrar em `_rever` (ver a nota junto ao aviso, mais acima).
+    fontesDescartadas: partes.fontesOrigem.length,
+    // Custo de pôr a dobra a mexer, para a curadoria poder ordenar por preço em vez de
+    // rever 485 avisos idênticos. Ver classificarJs().
+    js: { categoria: classeJs.categoria, escopadoAutomaticamente: classeJs.escopavel },
     slots: slots.map(({ nome, tipo, exemplo }) => ({ nome, tipo, exemplo })),
     precondicoes: sugerirPrecondicoesPuras(slots),
     _rever: pontosRever,

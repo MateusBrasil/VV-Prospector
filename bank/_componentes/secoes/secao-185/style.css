@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+/* overflow-x: clip — fade-from-right entrance primes elements at x:60,
+   which would otherwise extend documentScrollWidth and trigger an unwanted
+   horizontal scrollbar gutter at the right of the viewport. */
+.success {
+  overflow-x: clip;
+}
+.success__card {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;                    /* 80px between header and content */
+  padding: 52px;
+  background-color: var(--color-bg-gray-1);
+  border-radius: var(--radius-container);
+  /* No `overflow: clip` — would create a clip-context that prevents the
+     sticky sidebar from referencing the viewport as its scroll container. */
+}
+
+.success__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.success__heading {
+  color: var(--color-text-primary);
+}
+
+.success__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;                  /* 24px */
+}
+
+/* Left sidebar — 168px sticky stat list */
+.success__stats {
+  width: 10.5rem;               /* 168px */
+  flex-shrink: 0;
+  position: sticky;
+  /* 20px body padding-top + a tiny breath so the sidebar doesn't kiss the
+     top edge of the viewport. */
+  top: 2rem;
+  align-self: flex-start;
+}
+.success__stats ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Border-bottom color = text color of the link; opacity controlled per state.
+   Inactive: 25% — softly visible. Active/hover: 100% — matches the link's
+   active/hovered text color exactly. */
+.success__stat {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text-body-white) 25%, transparent);
+  /* easeOutQuint 0.35s on the border so it tracks the link's color transition */
+  transition: border-bottom-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.success__stat-link {
+  display: block;
+  /* Caption style — uppercase 14px / 0.12em */
+  font-family: var(--font-body);
+  /* OPT-OUT: stat caption */
+  font-size: 0.875rem;          /* 14px */
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-block: 1rem;
+  color: var(--color-text-body-white);
+  text-decoration: none;
+  /* easeOutQuint 0.35s — site-wide hover/active transition curve */
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.success__stat:first-child .success__stat-link {
+  padding-top: 0;
+}
+.success__stat--active {
+  border-bottom-color: var(--color-text-primary);
+}
+.success__stat--active .success__stat-link {
+  color: var(--color-text-primary);
+}
+
+/* Right column — 2 groups */
+.success__groups {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;                  /* 40px between Technology & Business groups */
+}
+.success-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Anchor scroll lands the group with breathing room from the viewport top */
+  scroll-margin-top: 1.5rem;
+}
+.success-group__label {
+  color: var(--color-text-primary);
+}
+.success-group__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.success-item {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;                  /* 40px between icon-box and text */
+}
+.success-item__icon {
+  width: 7.25rem;               /* 116px */
+  height: 7.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;              /* 40px → 36px icon centered */
+  background-color: var(--color-button-dark);
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+}
+.success-item__icon img {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: block;
+}
+.success-item__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.success-item__title {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+.success-item__desc {
+  font-family: var(--font-body);
+  /* OPT-OUT: item body copy */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* Hover — desktop only. Inactive stat preview-highlights on hover.
+   One rule per gated @media block per gotcha #8. */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .success__stat:not(.success__stat--active) .success__stat-link:hover {
+    color: var(--color-text-primary);
+  }
+}
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+  .success__stat:not(.success__stat--active):hover {
+    border-bottom-color: var(--color-text-primary);
+  }
+}
+
+/* === Tablet (≤991) — anchor row moves ABOVE content (no longer sticky).
+   Without hover affordance both anchors stay at 100% primary color
+   (no opacity dim), each keeps its border-bottom underline. Items stay
+   flex-row with a 92×92 icon-box. === */
+@media (max-width: 991px) {
+  .success__card {
+    padding: 40px;
+    gap: 4rem;                  /* 64px between header and content */
+  }
+  /* Content stacks vertically: stats row first, then groups list */
+  .success__content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  /* Anchor row: full-width horizontal, NOT sticky. Stays tap-able for jump nav */
+  .success__stats {
+    position: static;
+    width: 100%;
+  }
+  .success__stats ul {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .success__stat {
+    flex: 0 0 auto;
+    /* Border-bottom underline retained — each anchor reads as a tap target */
+  }
+  .success__stat-link {
+    padding-block: 0.5rem;
+    /* Both anchors at full primary color (no hover on touch — no dim state) */
+    color: var(--color-text-primary);
+  }
+  .success__stat:first-child .success__stat-link {
+    padding-top: 0.5rem;
+  }
+  /* Items stay flex-row; icon-box reduces to 92×92 */
+  .success-item {
+    gap: 1.5rem;                /* 24px between icon-box and text */
+  }
+  .success-item__icon {
+    width: 5.75rem;             /* 92px */
+    height: 5.75rem;
+    padding: 1.6875rem;         /* 27px → 36px icon centered */
+  }
+  .success__groups {
+    gap: 2rem;
+  }
+}
+
+/* === Landscape (≤767) — keeps tablet's row layout & top anchors; only the
+   icon-box shrinks one step further to 80×80, and card padding tightens. === */
+@media (max-width: 767px) {
+  .success__card {
+    padding: 24px 20px 20px;
+    gap: 2.5rem;                /* 40px between header and content */
+  }
+  .success-item__icon {
+    width: 5rem;                /* 80px */
+    height: 5rem;
+    padding: 1.375rem;          /* 22px → 36px icon centered */
+  }
+}
+
+/* === Portrait (≤479) — anchor row hidden, items flip to column
+   (icon-box stacks above title + body). Icon-box shrinks to 64×64. === */
+@media (max-width: 479px) {
+  .success__card {
+    padding: 24px 16px 16px;
+  }
+  /* Stat anchors hidden — no horizontal real estate for the dual-link row */
+  .success__stats {
+    display: none;
+  }
+  .success-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;                  /* 16px between icon-box and text-block */
+  }
+  .success-item__icon {
+    width: 4rem;                /* 64px */
+    height: 4rem;
+    padding: 0.875rem;          /* 14px → 36px icon centered */
+  }
+  .success-item__text {
+    width: 100%;
+    gap: 0.75rem;               /* 12px between title and desc */
+  }
+}

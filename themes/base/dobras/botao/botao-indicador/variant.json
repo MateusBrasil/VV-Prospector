@@ -1,0 +1,27 @@
+{
+  "slot": "botao",
+  "nome": "botao-indicador",
+  "scope": "botao-botao-indicador",
+  "origem": "bank/_componentes/botoes/botao-indicador",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Botão indicador"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "6 cor(es) mapeadas para tokens por luminância (acento da origem #0ea5e9 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "há chavetas no markup que podem precisar de escape em JSX"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

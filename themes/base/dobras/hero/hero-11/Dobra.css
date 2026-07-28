@@ -1,0 +1,232 @@
+[data-dobra="hero-hero-11"] *,[data-dobra="hero-hero-11"] *::after,[data-dobra="hero-hero-11"] *::before{
+  box-sizing: border-box;
+}
+[data-dobra="hero-hero-11"]{
+  font-size: 16px;
+  --color-text: var(--base-600);
+  --color-bg: var(--base-100);
+  --color-bg-alt: var(--base-200);
+  --color-link: rgba(0,0,0,0.6);
+  --color-link-hover: var(--base-600);
+  --page-padding: 1.5rem;
+  --color-title: var(--base-600);
+}
+[data-dobra="hero-hero-11"] .demo-2{
+  --color-bg: var(--base-100);
+  --color-bg-alt: var(--base-300);
+  --color-title: var(--base-500);
+}
+[data-dobra="hero-hero-11"] .demo-3{
+  --color-bg: var(--base-100);
+  --color-bg-alt: var(--base-300);
+  --color-title: var(--base-600);
+}
+[data-dobra="hero-hero-11"]{
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: var(--fonte-corpo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  background: url(../img/noise.png), radial-gradient(circle, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  background-size: 150px, 100% 100vh;
+}
+[data-dobra="hero-hero-11"] .js .loading::before,[data-dobra="hero-hero-11"] .js .loading::after{
+  content: "";
+  position: fixed;
+  z-index: 1000;
+}
+[data-dobra="hero-hero-11"] .js .loading::before{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+[data-dobra="hero-hero-11"] .js .loading::after{
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: var(--color-link-hover);
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+@keyframes loaderAnim{
+  to {
+    opacity: 1;
+    transform: scale3d(0.5, 0.5, 1);
+  }
+}
+[data-dobra="hero-hero-11"] a{
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+  cursor: pointer;
+}
+[data-dobra="hero-hero-11"] a:hover{
+  text-decoration: underline;
+  color: var(--color-link-hover);
+  outline: none;
+}
+[data-dobra="hero-hero-11"] a:focus{
+  
+  outline: none;
+  background: lightgrey;
+}
+[data-dobra="hero-hero-11"] a:focus:not(:focus-visible){
+  
+  background: transparent;
+}
+[data-dobra="hero-hero-11"] a:focus-visible{
+  
+  outline: 2px solid red;
+  background: transparent;
+}
+[data-dobra="hero-hero-11"] .unbutton{
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+[data-dobra="hero-hero-11"] .unbutton:focus{
+  outline: none;
+}
+[data-dobra="hero-hero-11"] .frame{
+  padding: var(--page-padding);
+  position: relative;
+  text-transform: uppercase;
+  font-size: 12px;
+  display: grid;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  pointer-events: none;
+  justify-items: start;
+  grid-template-columns: auto auto;
+  grid-template-areas: "title" "archive" "back" "github" "demos" "sponsor" "tags";
+}
+[data-dobra="hero-hero-11"] .frame #cdawrap{
+  justify-self: start;
+}
+[data-dobra="hero-hero-11"] .frame a{
+  pointer-events: auto;
+}
+[data-dobra="hero-hero-11"] .frame__title{
+  grid-area: title;
+  font-size: inherit;
+  margin: 0;
+}
+[data-dobra="hero-hero-11"] .frame__back{
+  grid-area: back;
+  justify-self: start;
+}
+[data-dobra="hero-hero-11"] .frame__archive{
+  grid-area: archive;
+  justify-self: start;
+}
+[data-dobra="hero-hero-11"] .frame__tags{
+  grid-area: tags;
+}
+[data-dobra="hero-hero-11"] .frame__github{
+  grid-area: github;
+}
+[data-dobra="hero-hero-11"] .frame__demos{
+  grid-area: demos;
+  display: flex;
+  gap: 1rem;
+}
+[data-dobra="hero-hero-11"] .content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+[data-dobra="hero-hero-11"] .gloock-regular{
+  font-family: var(--fonte-corpo);
+  font-weight: 400;
+  font-style: normal;
+}
+[data-dobra="hero-hero-11"] .debug{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  border-radius: 5px;
+  background-color: red;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="hero-hero-11"] .scene{
+  perspective: 1000px;
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+}
+[data-dobra="hero-hero-11"] .card{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+[data-dobra="hero-hero-11"] .card__img{
+  width: 5em;
+  border-radius: 5px;
+  aspect-ratio: 2/3;
+  background-position: center;
+  background-size: cover;
+}
+[data-dobra="hero-hero-11"] .headings{
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  color: var(--color-title);
+  text-transform: uppercase;
+}
+[data-dobra="hero-hero-11"] .headings__main{
+  line-height: 0.5;
+  font-size: clamp(2.5rem, 1.59rem + 3.883vw, 6.25rem);
+}
+[data-dobra="hero-hero-11"] .headings_subtitle{
+  line-height: 0.5;
+  font-size: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+}
+@media screen and (min-width: 53em){[data-dobra="hero-hero-11"] .frame{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: auto auto auto 1fr;
+    grid-template-rows: auto auto;
+    align-content: space-between;
+    grid-template-areas: "title back archive github sponsor" "tags tags tags demos demos";
+  }
+[data-dobra="hero-hero-11"] .frame #cdawrap,[data-dobra="hero-hero-11"] .frame__demos{
+    justify-self: end;
+  }
+[data-dobra="hero-hero-11"] .card__img{
+    width: 6em;
+  }
+
+}
+
+

@@ -1,0 +1,8 @@
+body { background-color: var(--bg-color--bg-primary, #fbfbf9); }
+
+/* El grueso de los estilos (.section_testimonials, .testimonials_slider,
+   .testimonials_card, .testimoniasl_arrow, .text-4xl, etc.) vive en la hoja
+   compartida /firmo/styles.css. Swiper-bundle.min.css se enlaza ANTES que este
+   archivo en el <head> para que el reset de Swiper no gane a las reglas del
+   componente por orden de cascada (Rule 6). Esta sección no importa sub-componentes,
+   así que aquí solo va el reset de fondo de la vista aislada. */

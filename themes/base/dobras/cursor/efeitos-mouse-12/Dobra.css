@@ -1,0 +1,247 @@
+[data-dobra="cursor-efeitos-mouse-12"]{
+  font-family: var(--fonte-corpo); 
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
+}
+[data-dobra="cursor-efeitos-mouse-12"]{
+  margin: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] article,[data-dobra="cursor-efeitos-mouse-12"] aside,[data-dobra="cursor-efeitos-mouse-12"] details,[data-dobra="cursor-efeitos-mouse-12"] figcaption,[data-dobra="cursor-efeitos-mouse-12"] figure,[data-dobra="cursor-efeitos-mouse-12"] footer,[data-dobra="cursor-efeitos-mouse-12"] header,[data-dobra="cursor-efeitos-mouse-12"] hgroup,[data-dobra="cursor-efeitos-mouse-12"] main,[data-dobra="cursor-efeitos-mouse-12"] menu,[data-dobra="cursor-efeitos-mouse-12"] nav,[data-dobra="cursor-efeitos-mouse-12"] section,[data-dobra="cursor-efeitos-mouse-12"] summary{
+  display: block;
+}
+[data-dobra="cursor-efeitos-mouse-12"] audio,[data-dobra="cursor-efeitos-mouse-12"] canvas,[data-dobra="cursor-efeitos-mouse-12"] progress,[data-dobra="cursor-efeitos-mouse-12"] video{
+  display: inline-block; 
+  vertical-align: baseline; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] audio:not([controls]){
+  display: none;
+  height: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] [hidden],[data-dobra="cursor-efeitos-mouse-12"] template{
+  display: none;
+}
+[data-dobra="cursor-efeitos-mouse-12"] a{
+  background-color: transparent;
+}
+[data-dobra="cursor-efeitos-mouse-12"] a:active,[data-dobra="cursor-efeitos-mouse-12"] a:hover{
+  outline: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] abbr[title]{
+  border-bottom: 1px dotted;
+}
+[data-dobra="cursor-efeitos-mouse-12"] b,[data-dobra="cursor-efeitos-mouse-12"] strong{
+  font-weight: bold;
+}
+[data-dobra="cursor-efeitos-mouse-12"] dfn{
+  font-style: italic;
+}
+[data-dobra="cursor-efeitos-mouse-12"] h1{
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] mark{
+  background: var(--acento);
+  color: var(--base-600);
+}
+[data-dobra="cursor-efeitos-mouse-12"] small{
+  font-size: 80%;
+}
+[data-dobra="cursor-efeitos-mouse-12"] sub,[data-dobra="cursor-efeitos-mouse-12"] sup{
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+[data-dobra="cursor-efeitos-mouse-12"] sup{
+  top: -0.5em;
+}
+[data-dobra="cursor-efeitos-mouse-12"] sub{
+  bottom: -0.25em;
+}
+[data-dobra="cursor-efeitos-mouse-12"] img{
+  border: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] svg:not(:root){
+  overflow: hidden;
+}
+[data-dobra="cursor-efeitos-mouse-12"] figure{
+  margin: 1em 40px;
+}
+[data-dobra="cursor-efeitos-mouse-12"] hr{
+  box-sizing: content-box;
+  height: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] pre{
+  overflow: auto;
+}
+[data-dobra="cursor-efeitos-mouse-12"] code,[data-dobra="cursor-efeitos-mouse-12"] kbd,[data-dobra="cursor-efeitos-mouse-12"] pre,[data-dobra="cursor-efeitos-mouse-12"] samp{
+  font-family: var(--fonte-mono);
+  font-size: 1em;
+}
+[data-dobra="cursor-efeitos-mouse-12"] button,[data-dobra="cursor-efeitos-mouse-12"] input,[data-dobra="cursor-efeitos-mouse-12"] optgroup,[data-dobra="cursor-efeitos-mouse-12"] select,[data-dobra="cursor-efeitos-mouse-12"] textarea{
+  color: inherit; 
+  font: inherit; 
+  margin: 0; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] button{
+  overflow: visible;
+}
+[data-dobra="cursor-efeitos-mouse-12"] button,[data-dobra="cursor-efeitos-mouse-12"] select{
+  text-transform: none;
+}
+[data-dobra="cursor-efeitos-mouse-12"] button,[data-dobra="cursor-efeitos-mouse-12"] html input[type="button"],[data-dobra="cursor-efeitos-mouse-12"] input[type="reset"],[data-dobra="cursor-efeitos-mouse-12"] input[type="submit"]{
+  -webkit-appearance: button; 
+  cursor: pointer; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] button[disabled],[data-dobra="cursor-efeitos-mouse-12"] html input[disabled]{
+  cursor: default;
+}
+[data-dobra="cursor-efeitos-mouse-12"] button::-moz-focus-inner,[data-dobra="cursor-efeitos-mouse-12"] input::-moz-focus-inner{
+  border: 0;
+  padding: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] input{
+  line-height: normal;
+}
+[data-dobra="cursor-efeitos-mouse-12"] input[type="checkbox"],[data-dobra="cursor-efeitos-mouse-12"] input[type="radio"]{
+  box-sizing: border-box; 
+  padding: 0; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] input[type="number"]::-webkit-inner-spin-button,[data-dobra="cursor-efeitos-mouse-12"] input[type="number"]::-webkit-outer-spin-button{
+  height: auto;
+}
+[data-dobra="cursor-efeitos-mouse-12"] input[type="search"]{
+  -webkit-appearance: textfield; 
+  box-sizing: content-box; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] input[type="search"]::-webkit-search-cancel-button,[data-dobra="cursor-efeitos-mouse-12"] input[type="search"]::-webkit-search-decoration{
+  -webkit-appearance: none;
+}
+[data-dobra="cursor-efeitos-mouse-12"] fieldset{
+  border: 1px solid var(--base-200);
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+[data-dobra="cursor-efeitos-mouse-12"] legend{
+  border: 0; 
+  padding: 0; 
+}
+[data-dobra="cursor-efeitos-mouse-12"] textarea{
+  overflow: auto;
+}
+[data-dobra="cursor-efeitos-mouse-12"] optgroup{
+  font-weight: bold;
+}
+[data-dobra="cursor-efeitos-mouse-12"] table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"] td,[data-dobra="cursor-efeitos-mouse-12"] th{
+  padding: 0;
+}
+[data-dobra="cursor-efeitos-mouse-12"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--fonte-corpo);
+    background-color: var(--base-500);
+}
+[data-dobra="cursor-efeitos-mouse-12"]{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+[data-dobra="cursor-efeitos-mouse-12"],[data-dobra="cursor-efeitos-mouse-12"],[data-dobra="cursor-efeitos-mouse-12"] .mobile,[data-dobra="cursor-efeitos-mouse-12"] .mobile *,[data-dobra="cursor-efeitos-mouse-12"] .loader,[data-dobra="cursor-efeitos-mouse-12"] .logo,[data-dobra="cursor-efeitos-mouse-12"] .footer,[data-dobra="cursor-efeitos-mouse-12"] .footer *{
+    box-sizing: border-box;
+}
+[data-dobra="cursor-efeitos-mouse-12"] .dg .c .selector{
+    transform: translate(0, -1px);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .mobile{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    padding: 0 30px;
+
+    font-size: 14px;
+    color: var(--base-100);
+
+    transform: translate3d(0, -50%, 0);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .mobile span{
+    color: var(--base-100);
+    text-decoration: underline;
+}
+[data-dobra="cursor-efeitos-mouse-12"] .mobile a{
+    color: var(--base-100);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .logo{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 338px;
+    height: 102px;
+    margin-left: -169px;
+    margin-top: -51px;
+    background-size: 338px 102px;
+    background-image: url(../images/logo.png);
+    pointer-events: none;
+    opacity: 0;
+}
+@media (min-width: 960px){[data-dobra="cursor-efeitos-mouse-12"] .logo{
+        left: 75%;
+    }
+
+}
+[data-dobra="cursor-efeitos-mouse-12"] .instruction,[data-dobra="cursor-efeitos-mouse-12"] .footer{
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    font-size: 14px;
+}
+[data-dobra="cursor-efeitos-mouse-12"] html.is-mobile .instruction,[data-dobra="cursor-efeitos-mouse-12"] html.is-mobile .footer{
+    font-size: 11px;
+}
+[data-dobra="cursor-efeitos-mouse-12"] .instruction{
+    pointer-events: none;
+    color: var(--base-100);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .footer{
+    display: none;
+    position: absolute;
+    text-align: right;
+    left: 0;
+    width: 100%;
+    bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    font-size: 16px;
+    color: var(--base-200);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .credit{
+    float: left;
+}
+[data-dobra="cursor-efeitos-mouse-12"] .footer span{
+    display: inline-block;
+    transform: translate3d(0, 50px, 0);
+}
+[data-dobra="cursor-efeitos-mouse-12"] .footer a{
+    color: var(--base-200);
+}
+[data-dobra="cursor-efeitos-mouse-12"] html.is-white .footer{
+    color: var(--base-600);
+}
+[data-dobra="cursor-efeitos-mouse-12"] html.is-white .footer a{
+    color: var(--base-600);
+}
+
+

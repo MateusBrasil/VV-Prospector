@@ -1,0 +1,81 @@
+@keyframes rotate-gradient{
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+@keyframes borderBeamRotation{
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+@keyframes shinery{
+            0%, 100% { left: -20%; opacity: 0; }
+            20% { opacity: 0.4; }
+            48% { left: 120%; opacity: 0.4; }
+            51% { opacity: 0; }
+        }
+[data-dobra="botao-aura-black-button"] .overflow-fix{
+            mask-image: -webkit-radial-gradient(white, black);
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+[data-dobra="botao-aura-black-button"] .animate-rotate-gradient{
+            animation: rotate-gradient var(--speed, 4s) linear infinite;
+        }
+[data-dobra="botao-aura-black-button"] .shimmer-onda{
+            background: linear-gradient(10deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+            mix-blend-mode: overlay;
+            width: 80px;
+            height: 100%;
+            position: absolute;
+            top: 0; 
+            transform: skew(-25deg);
+            pointer-events: none;
+            animation: shinery 5s infinite ease-in-out;
+            z-index: 5;
+        }
+[data-dobra="botao-aura-black-button"] .fundo-revelador{
+            position: absolute;
+            left: 5px;
+            width: 0%;
+            height: calc(100% - 10px);
+            background: var(--base-100);
+            border-radius: 100px;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 6;
+            opacity: 0;
+        }
+[data-dobra="botao-aura-black-button"] .group:hover .fundo-revelador{
+            width: calc(100% - 10px);
+            opacity: 1;
+        }
+[data-dobra="botao-aura-black-button"] .wrapper-avatar{
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 20;
+        }
+[data-dobra="botao-aura-black-button"] .group:hover .wrapper-avatar{
+            transform: translateX(175px); 
+        }
+[data-dobra="botao-aura-black-button"] .texto-principal{
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 10;
+        }
+[data-dobra="botao-aura-black-button"] .group:hover .texto-principal{
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+[data-dobra="botao-aura-black-button"] .texto-hover{
+            position: absolute;
+            left: 45%;
+            top: 50%;
+            transform: translate(-50%, -50%) translateX(30px);
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            color: var(--base-600); 
+            font-weight: 600;
+            z-index: 10;
+            white-space: nowrap;
+        }
+[data-dobra="botao-aura-black-button"] .group:hover .texto-hover{
+            opacity: 1;
+            transform: translate(-50%, -50%) translateX(-15px);
+        }
+
+    

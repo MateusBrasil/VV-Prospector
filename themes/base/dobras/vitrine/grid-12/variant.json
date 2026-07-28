@@ -1,0 +1,1227 @@
+{
+  "slot": "vitrine",
+  "nome": "grid-12",
+  "scope": "vitrine-grid-12",
+  "origem": "bank/_componentes/animacoes-de-grid/grid-12",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/39.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/38.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/37.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/36.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/35.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/7.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/8.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "img/3.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "img/5.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "img/34.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "img/17.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "img/23.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "img/40.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "img/17.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "img/22.webp"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "img/23.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "img/24.webp"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "img/25.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "img/26.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "img/27.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "img/28.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "img/29.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "img/30.webp"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "img/3.webp"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "img/5.webp"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "img/7.webp"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "img/8.webp"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "img/11.webp"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "img/12.webp"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "img/13.webp"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "img/14.webp"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "img/15.webp"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "img/17.webp"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "img/18.webp"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "img/19.webp"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "img/20.webp"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "img/21.webp"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "img/22.webp"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "img/23.webp"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "img/24.webp"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "img/25.webp"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "img/26.webp"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "img/27.webp"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "img/28.webp"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "img/29.webp"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "img/30.webp"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "img/31.webp"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "img/32.webp"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "img/33.webp"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "img/15.webp"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "img/32.webp"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "img/41.webp"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "img/21.webp"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "img/13.webp"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "img/27.webp"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "img/37.webp"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "img/14.webp"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem76",
+      "tipo": "imagem",
+      "exemplo": "img/29.webp"
+    },
+    {
+      "nome": "imagem77",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem78",
+      "tipo": "imagem",
+      "exemplo": "img/19.webp"
+    },
+    {
+      "nome": "imagem79",
+      "tipo": "imagem",
+      "exemplo": "img/38.webp"
+    },
+    {
+      "nome": "imagem80",
+      "tipo": "imagem",
+      "exemplo": "img/5.webp"
+    },
+    {
+      "nome": "imagem81",
+      "tipo": "imagem",
+      "exemplo": "img/25.webp"
+    },
+    {
+      "nome": "imagem82",
+      "tipo": "imagem",
+      "exemplo": "img/11.webp"
+    },
+    {
+      "nome": "imagem83",
+      "tipo": "imagem",
+      "exemplo": "img/40.webp"
+    },
+    {
+      "nome": "imagem84",
+      "tipo": "imagem",
+      "exemplo": "img/22.webp"
+    },
+    {
+      "nome": "imagem85",
+      "tipo": "imagem",
+      "exemplo": "img/3.webp"
+    },
+    {
+      "nome": "imagem86",
+      "tipo": "imagem",
+      "exemplo": "img/30.webp"
+    },
+    {
+      "nome": "imagem87",
+      "tipo": "imagem",
+      "exemplo": "img/18.webp"
+    },
+    {
+      "nome": "imagem88",
+      "tipo": "imagem",
+      "exemplo": "img/33.webp"
+    },
+    {
+      "nome": "imagem89",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem90",
+      "tipo": "imagem",
+      "exemplo": "img/36.webp"
+    },
+    {
+      "nome": "imagem91",
+      "tipo": "imagem",
+      "exemplo": "img/28.webp"
+    },
+    {
+      "nome": "imagem92",
+      "tipo": "imagem",
+      "exemplo": "img/23.webp"
+    },
+    {
+      "nome": "imagem93",
+      "tipo": "imagem",
+      "exemplo": "img/35.webp"
+    },
+    {
+      "nome": "imagem94",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem95",
+      "tipo": "imagem",
+      "exemplo": "img/31.webp"
+    },
+    {
+      "nome": "imagem96",
+      "tipo": "imagem",
+      "exemplo": "img/7.webp"
+    },
+    {
+      "nome": "imagem97",
+      "tipo": "imagem",
+      "exemplo": "img/26.webp"
+    },
+    {
+      "nome": "imagem98",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem99",
+      "tipo": "imagem",
+      "exemplo": "img/42.webp"
+    },
+    {
+      "nome": "imagem100",
+      "tipo": "imagem",
+      "exemplo": "img/20.webp"
+    },
+    {
+      "nome": "imagem101",
+      "tipo": "imagem",
+      "exemplo": "img/19.webp"
+    },
+    {
+      "nome": "imagem102",
+      "tipo": "imagem",
+      "exemplo": "img/18.webp"
+    },
+    {
+      "nome": "imagem103",
+      "tipo": "imagem",
+      "exemplo": "img/17.webp"
+    },
+    {
+      "nome": "imagem104",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem105",
+      "tipo": "imagem",
+      "exemplo": "img/15.webp"
+    },
+    {
+      "nome": "imagem106",
+      "tipo": "imagem",
+      "exemplo": "img/14.webp"
+    },
+    {
+      "nome": "imagem107",
+      "tipo": "imagem",
+      "exemplo": "img/13.webp"
+    },
+    {
+      "nome": "imagem108",
+      "tipo": "imagem",
+      "exemplo": "img/12.webp"
+    },
+    {
+      "nome": "imagem109",
+      "tipo": "imagem",
+      "exemplo": "img/11.webp"
+    },
+    {
+      "nome": "imagem110",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem111",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem112",
+      "tipo": "imagem",
+      "exemplo": "img/8.webp"
+    },
+    {
+      "nome": "imagem113",
+      "tipo": "imagem",
+      "exemplo": "img/7.webp"
+    },
+    {
+      "nome": "imagem114",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem115",
+      "tipo": "imagem",
+      "exemplo": "img/5.webp"
+    },
+    {
+      "nome": "imagem116",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem117",
+      "tipo": "imagem",
+      "exemplo": "img/3.webp"
+    },
+    {
+      "nome": "imagem118",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem119",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem120",
+      "tipo": "imagem",
+      "exemplo": "img/42.webp"
+    },
+    {
+      "nome": "imagem121",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem122",
+      "tipo": "imagem",
+      "exemplo": "img/40.webp"
+    },
+    {
+      "nome": "imagem123",
+      "tipo": "imagem",
+      "exemplo": "img/19.webp"
+    },
+    {
+      "nome": "imagem124",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem125",
+      "tipo": "imagem",
+      "exemplo": "img/12.webp"
+    },
+    {
+      "nome": "imagem126",
+      "tipo": "imagem",
+      "exemplo": "img/38.webp"
+    },
+    {
+      "nome": "imagem127",
+      "tipo": "imagem",
+      "exemplo": "img/13.webp"
+    },
+    {
+      "nome": "imagem128",
+      "tipo": "imagem",
+      "exemplo": "img/36.webp"
+    },
+    {
+      "nome": "imagem129",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem130",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem131",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem132",
+      "tipo": "imagem",
+      "exemplo": "img/8.webp"
+    },
+    {
+      "nome": "imagem133",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem134",
+      "tipo": "imagem",
+      "exemplo": "img/12.webp"
+    },
+    {
+      "nome": "imagem135",
+      "tipo": "imagem",
+      "exemplo": "img/14.webp"
+    },
+    {
+      "nome": "imagem136",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem137",
+      "tipo": "imagem",
+      "exemplo": "img/18.webp"
+    },
+    {
+      "nome": "imagem138",
+      "tipo": "imagem",
+      "exemplo": "img/20.webp"
+    },
+    {
+      "nome": "imagem139",
+      "tipo": "imagem",
+      "exemplo": "img/22.webp"
+    },
+    {
+      "nome": "imagem140",
+      "tipo": "imagem",
+      "exemplo": "img/24.webp"
+    },
+    {
+      "nome": "imagem141",
+      "tipo": "imagem",
+      "exemplo": "img/26.webp"
+    },
+    {
+      "nome": "imagem142",
+      "tipo": "imagem",
+      "exemplo": "img/28.webp"
+    },
+    {
+      "nome": "imagem143",
+      "tipo": "imagem",
+      "exemplo": "img/29.webp"
+    },
+    {
+      "nome": "imagem144",
+      "tipo": "imagem",
+      "exemplo": "img/30.webp"
+    },
+    {
+      "nome": "imagem145",
+      "tipo": "imagem",
+      "exemplo": "img/1.webp"
+    },
+    {
+      "nome": "imagem146",
+      "tipo": "imagem",
+      "exemplo": "img/2.webp"
+    },
+    {
+      "nome": "imagem147",
+      "tipo": "imagem",
+      "exemplo": "img/3.webp"
+    },
+    {
+      "nome": "imagem148",
+      "tipo": "imagem",
+      "exemplo": "img/4.webp"
+    },
+    {
+      "nome": "imagem149",
+      "tipo": "imagem",
+      "exemplo": "img/5.webp"
+    },
+    {
+      "nome": "imagem150",
+      "tipo": "imagem",
+      "exemplo": "img/6.webp"
+    },
+    {
+      "nome": "imagem151",
+      "tipo": "imagem",
+      "exemplo": "img/7.webp"
+    },
+    {
+      "nome": "imagem152",
+      "tipo": "imagem",
+      "exemplo": "img/8.webp"
+    },
+    {
+      "nome": "imagem153",
+      "tipo": "imagem",
+      "exemplo": "img/9.webp"
+    },
+    {
+      "nome": "imagem154",
+      "tipo": "imagem",
+      "exemplo": "img/10.webp"
+    },
+    {
+      "nome": "imagem155",
+      "tipo": "imagem",
+      "exemplo": "img/11.webp"
+    },
+    {
+      "nome": "imagem156",
+      "tipo": "imagem",
+      "exemplo": "img/12.webp"
+    },
+    {
+      "nome": "imagem157",
+      "tipo": "imagem",
+      "exemplo": "img/13.webp"
+    },
+    {
+      "nome": "imagem158",
+      "tipo": "imagem",
+      "exemplo": "img/14.webp"
+    },
+    {
+      "nome": "imagem159",
+      "tipo": "imagem",
+      "exemplo": "img/15.webp"
+    },
+    {
+      "nome": "imagem160",
+      "tipo": "imagem",
+      "exemplo": "img/16.webp"
+    },
+    {
+      "nome": "imagem161",
+      "tipo": "imagem",
+      "exemplo": "img/17.webp"
+    },
+    {
+      "nome": "imagem162",
+      "tipo": "imagem",
+      "exemplo": "img/18.webp"
+    },
+    {
+      "nome": "imagem163",
+      "tipo": "imagem",
+      "exemplo": "img/19.webp"
+    },
+    {
+      "nome": "imagem164",
+      "tipo": "imagem",
+      "exemplo": "img/20.webp"
+    },
+    {
+      "nome": "imagem165",
+      "tipo": "imagem",
+      "exemplo": "img/21.webp"
+    },
+    {
+      "nome": "imagem166",
+      "tipo": "imagem",
+      "exemplo": "img/22.webp"
+    },
+    {
+      "nome": "imagem167",
+      "tipo": "imagem",
+      "exemplo": "img/23.webp"
+    },
+    {
+      "nome": "imagem168",
+      "tipo": "imagem",
+      "exemplo": "img/24.webp"
+    },
+    {
+      "nome": "imagem169",
+      "tipo": "imagem",
+      "exemplo": "img/25.webp"
+    },
+    {
+      "nome": "imagem170",
+      "tipo": "imagem",
+      "exemplo": "img/26.webp"
+    },
+    {
+      "nome": "imagem171",
+      "tipo": "imagem",
+      "exemplo": "img/27.webp"
+    },
+    {
+      "nome": "imagem172",
+      "tipo": "imagem",
+      "exemplo": "img/28.webp"
+    },
+    {
+      "nome": "imagem173",
+      "tipo": "imagem",
+      "exemplo": "img/29.webp"
+    },
+    {
+      "nome": "imagem174",
+      "tipo": "imagem",
+      "exemplo": "img/30.webp"
+    },
+    {
+      "nome": "imagem175",
+      "tipo": "imagem",
+      "exemplo": "img/31.webp"
+    },
+    {
+      "nome": "imagem176",
+      "tipo": "imagem",
+      "exemplo": "img/32.webp"
+    },
+    {
+      "nome": "imagem177",
+      "tipo": "imagem",
+      "exemplo": "img/33.webp"
+    },
+    {
+      "nome": "imagem178",
+      "tipo": "imagem",
+      "exemplo": "img/35.webp"
+    },
+    {
+      "nome": "imagem179",
+      "tipo": "imagem",
+      "exemplo": "img/31.webp"
+    },
+    {
+      "nome": "imagem180",
+      "tipo": "imagem",
+      "exemplo": "img/20.webp"
+    },
+    {
+      "nome": "imagem181",
+      "tipo": "imagem",
+      "exemplo": "img/34.webp"
+    },
+    {
+      "nome": "imagem182",
+      "tipo": "imagem",
+      "exemplo": "img/38.webp"
+    },
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/?p=80656"
+    },
+    {
+      "nome": "destino2",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/"
+    },
+    {
+      "nome": "destino3",
+      "tipo": "link",
+      "exemplo": "https://github.com/codrops/OnScrollLayoutFormations"
+    },
+    {
+      "nome": "destino4",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/?tag=scroll"
+    },
+    {
+      "nome": "destino5",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/?tag=grid"
+    },
+    {
+      "nome": "destino6",
+      "tipo": "link",
+      "exemplo": "https://x.com/codrops"
+    },
+    {
+      "nome": "destino7",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/demos/"
+    },
+    {
+      "nome": "destino8",
+      "tipo": "link",
+      "exemplo": "https://tympanus.net/codrops/collective/"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Lennox Montgomery"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Layout Formation on Scroll"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Article"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "All demos"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "GitHub"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "#scroll"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "#grid"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "LM"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Intro"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Welcome to Lennox Montgomery's photography portfolio. In a world dominated by speed and constant motion, Lennox Montgomery's photography invites you to slow dow"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Rawness"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Captured in every moment"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Vision"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Unveiling the unseen"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Focus"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Where color meets form"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Essence"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Moments in motion"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Life"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Craft"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "His craft reveals the quiet beauty in life’s fleeting moments."
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Perspective"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "His perspective finds depth in stillness, where the unseen speaks."
+    },
+    {
+      "nome": "subtitulo9",
+      "tipo": "texto",
+      "exemplo": "Work Ethics"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Driven by a strong sense of discipline and dedication, his work ethic reflects a deep commitment to both his craft and personal growth. With a relentless focus "
+    },
+    {
+      "nome": "subtitulo10",
+      "tipo": "texto",
+      "exemplo": "Inspiration"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Lennox draws inspiration from the quiet, in-between moments of everyday life—the fleeting light at dawn, the subtle movement of shadows, the way stillness can c"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Explorations"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Nothing left unseen"
+    },
+    {
+      "nome": "subtitulo11",
+      "tipo": "texto",
+      "exemplo": "Process"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "The creative process begins with stillness and observation, letting the moment speak before any action is taken. It’s about immersing in the environment, feelin"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Unspoken"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Love will not save us"
+    },
+    {
+      "nome": "subtitulo12",
+      "tipo": "texto",
+      "exemplo": "Collaborations"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Known for his openness to new ideas and innovative approaches, Lennox thrives on the energy that comes from working with fellow artists, designers, and creative"
+    },
+    {
+      "nome": "subtitulo13",
+      "tipo": "texto",
+      "exemplo": "Opalescent"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Their hearts glow softly, bound by a love so pure."
+    },
+    {
+      "nome": "subtitulo14",
+      "tipo": "texto",
+      "exemplo": "Softness"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Blissful serenity embraces their world in gentle tones."
+    },
+    {
+      "nome": "subtitulo15",
+      "tipo": "texto",
+      "exemplo": "Style"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "His style is rooted in subtlety and restraint, capturing the delicate balance between light and shadow, presence and absence. He gravitates toward muted, natura"
+    },
+    {
+      "nome": "subtitulo16",
+      "tipo": "texto",
+      "exemplo": "Future"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Looking ahead, Lennox envisions his work diving deeper into the exploration of intimacy and impermanence. He’s drawn to the idea of capturing moments that feel "
+    },
+    {
+      "nome": "subtitulo17",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Interested in collaborating or just want to say hello? Reach out to Lennox. He’s always open to new projects and conversations."
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "@codrops"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "More demos"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Subscribe to our frontend newsletter"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 182
+  },
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "8 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://tympanus.net/codrops/?p=80656 https://tympanus.net/codrops/demos/)",
+    "8 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,16 @@
+/* Upmind — Blogs Hero (section_blogs-hero).
+   The shared /upmind/styles.css covers the whole system: the bg-primary hero,
+   section_title white variant, text-6xl heading, max-description, the featured
+   blog card (.blog-hero_bottom / .blog-hero_img / .blog_content) and the green
+   button variant. Nothing section-specific to add beyond the body reset below. */
+body { margin: 0; min-height: 100svh; }
+
+/* Standalone-component fix: the inlined Upmind navbar uses position:fixed in the
+   template (offset by a page-level padding that doesn't exist here), so it overlapped
+   the hero. Pin it into normal flow so it sits above the hero content instead. */
+.navbar.w-nav {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}

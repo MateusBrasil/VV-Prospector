@@ -1,0 +1,4 @@
+/* Congra — Itinerary
+   Sin overrides locales: todos los estilos de esta sección
+   (.section_time, .time_layout, .timeline, .bar, .gradient, botón con
+   variants w-variant-*) viven en el cascade compartido /congra/styles.css. */

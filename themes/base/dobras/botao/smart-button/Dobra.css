@@ -1,0 +1,106 @@
+[data-dobra="botao-smart-button"]{
+      background-color: var(--base-600);
+      display: flex;
+      margin: 0;
+    }
+@keyframes indicate{
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(8px); }
+    }
+[data-dobra="botao-smart-button"] .animated-button{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 16px 36px;
+      border: 4px solid transparent;
+      font-size: 16px;
+      background-color: inherit;
+      border-radius: 100px;
+      font-weight: 600;
+      color: yellow;
+      box-shadow: 0 0 0 2px yellow;
+      cursor: pointer;
+      overflow: hidden;
+      
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+      min-width: 220px; 
+    }
+[data-dobra="botao-smart-button"] .animated-button svg{
+      position: absolute;
+      width: 24px;
+      fill: yellow;
+      z-index: 9;
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+[data-dobra="botao-smart-button"] .animated-button .arr-1{
+      right: 16px;
+    }
+[data-dobra="botao-smart-button"] .animated-button .arr-2{
+      left: -25%;
+    }
+[data-dobra="botao-smart-button"] .animated-button .circle{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: yellow;
+      border-radius: 10%;
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+[data-dobra="botao-smart-button"] .text-container{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      transform: translateX(-12px);
+      transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+[data-dobra="botao-smart-button"] .text-container span{
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+[data-dobra="botao-smart-button"] .alt-text{
+      position: absolute;
+      opacity: 0;
+      white-space: nowrap;
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover{
+      box-shadow: 0 0 0 12px transparent;
+      color: var(--base-600);
+      border-radius: 12px;
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover .circle{
+      width: 350px; 
+      height: 350px;
+      opacity: 1;
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover .arr-1{
+      right: -25%;
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover .arr-2{
+      left: 16px;
+      animation: indicate 1.2s ease-in-out infinite;
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover .text-container{
+      transform: translateX(12px);
+    }
+[data-dobra="botao-smart-button"] .animated-button:hover svg{
+      fill: var(--base-600);
+    }
+[data-dobra="botao-smart-button"] .animated-button.show-alt .main-text{
+      opacity: 0;
+    }
+[data-dobra="botao-smart-button"] .animated-button.show-alt .alt-text{
+      opacity: 1;
+    }
+[data-dobra="botao-smart-button"] .animated-button:active{
+      scale: 0.95;
+      box-shadow: 0 0 0 4px yellow;
+    }
+
+  

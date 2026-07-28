@@ -1,0 +1,483 @@
+body {
+  margin: 0;
+  background: var(--color-bg, #fafafa);
+  color: var(--color-text, #000);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100svh;
+}
+
+.servicesHero {
+  width: 100%;
+  background-color: #f9f9f7;        /* page-specific cream — matches Figma */
+  overflow: hidden;
+}
+
+/* Navbar sits on top of the hero — clear its surface so the hero's cream
+   reads edge-to-edge under it. The light variant keeps its dark text /
+   dark-filled CTA, but loses the explicit white background. Mirrors the
+   pattern used on `/case-studies/[slug]` (CaseStudyHero). */
+.servicesHero .navbar {
+  background-color: transparent;
+}
+
+.servicesHero__inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2.1875em;        /* 35px between image and text columns */
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 3.25em var(--container-padding) 4em;  /* 52px top → clears navbar, 64px bottom */
+}
+
+/* Image card — left column. Container queries let the inner image stay
+   anchored at the top of the card while the curtain reveal grows the
+   reveal wrapper's height during the entrance. Same pattern as Hero. */
+.servicesHero__imageWrap {
+  width: 35.25em;       /* 564px */
+  height: 40.1875em;    /* 643px */
+  flex-shrink: 0;
+  background-color: transparent;    /* let the hero's cream show through during the curtain reveal */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  container-type: size;
+  container-name: servicesHeroImage;
+}
+
+.servicesHero__imageReveal {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.servicesHero__image {
+  display: block;
+  width: 100cqw;
+  height: 100cqh;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Text column — heading + subhead at top, CTA pinned to bottom */
+.servicesHero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 36.0625em;     /* 577px */
+  flex-shrink: 0;
+  padding: 2em 0;       /* 32px vertical to match Figma frame inset */
+}
+
+.servicesHero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Font-size / line-height / letter-spacing live in the global "68px
+   display" bucket (see global.css) — same scale as `.hero__heading` /
+   `.aboutHero__heading`. Only color and reset belong here. */
+.servicesHero__heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.servicesHero__headingLine {
+  display: inline-block;
+}
+
+/* SplitText sets `text-align` inline on every line wrapper; force the
+   left alignment back so the headline reads correctly regardless of
+   when SplitText runs. */
+.servicesHero__heading div[aria-hidden] {
+  text-align: left !important;
+}
+
+.servicesHero__subheading {
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body-dark);
+  margin: 0;
+}
+
+/* CTA position — sits at bottom of the text column on desktop. Visual
+   treatment (dark fill, cream ripple, 2px hover border) comes from the
+   reusable `.btn--dark` modifier in global.css. */
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+/* From tablet onward the hero stacks vertically with TEXT first and the
+   IMAGE last. Both blocks are horizontally centered and text-aligned
+   center so the heading + subhead + CTA + image read as a single
+   centered column down the page. The animation timeline (below) flips
+   to text → image order so the staircase reveal matches the new visual
+   order — image no longer arrives before the heading. */
+@media (max-width: 991px) {
+  .servicesHero__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em var(--container-padding) 3em;
+    text-align: center;
+  }
+
+  .servicesHero__content {
+    order: 1;
+    width: 100%;
+    padding: 0;
+    gap: 2em;
+    align-items: center;
+  }
+
+  .servicesHero__imageWrap {
+    order: 2;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Override the desktop `text-align: left` rule for SplitText line
+     wrappers so the heading words read centered at responsive. */
+  .servicesHero__heading div[aria-hidden] {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .servicesHero__inner {
+    gap: 1.75em;
+    padding: 1.75em var(--container-padding) 2.5em;
+  }
+
+  .servicesHero__imageWrap {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   Navbar — inlined from Template-Acelia/src/components/Navbar.astro
+   (the original Astro <style> block). Without this the nav links render
+   as a plain vertical list (browser default) instead of the horizontal
+   glass navbar the design expects.
+   ─────────────────────────────────────────────────────────────────────── */
+.navbar {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-dark);
+}
+
+.navbar--light {
+  background-color: var(--color-bg-white);
+}
+
+.navbar--light .navbar__link {
+  color: var(--color-text-body-dark);
+}
+
+.navbar--light .navbar__link:focus-visible {
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 992px) {
+  .navbar--light .navbar__link:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.navbar__cta {
+  height: 3rem;
+  min-height: 3rem;
+}
+
+.navbar--light .navbar__toggle {
+  background-color: rgba(0, 29, 33, 0.06);
+  border-color: rgba(0, 29, 33, 0.12);
+  color: var(--color-text-primary);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.navbar--light .navbar__toggle:focus-visible,
+.navbar--light .navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(0, 29, 33, 0.10);
+  color: var(--color-text-primary);
+}
+
+.navbar--light .navbar__drawer {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 29, 33, 0.10);
+}
+
+.navbar--light .navbar__drawerLink {
+  color: var(--color-text-body-dark);
+}
+
+.navbar--light .navbar__drawerLink:focus-visible {
+  background-color: rgba(0, 29, 33, 0.05);
+  color: var(--color-text-primary);
+  outline-color: rgba(0, 29, 33, 0.12);
+}
+
+.navbar--light .navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(0, 29, 33, 0.08);
+  color: var(--color-text-primary);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding: 1em var(--container-padding);
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  color: var(--color-text-white);
+}
+
+.navbar__logo {
+  height: 2rem;
+  width: auto;
+  aspect-ratio: 114 / 40;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  padding: 0.75em;
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.navbar__link:focus-visible {
+  color: var(--color-text-white);
+}
+
+@media (min-width: 992px) {
+  .navbar__link:hover {
+    color: var(--color-text-white);
+  }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3rem;
+  height: 3rem;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--color-text-white-soft);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__toggle:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+}
+
+.navbar__toggleBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.375em;
+  height: 2px;
+  margin-left: -0.6875em;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 280ms ease, opacity 200ms ease;
+}
+
+.navbar__toggleBar:nth-child(1) { transform: translateY(-0.4375em); }
+.navbar__toggleBar:nth-child(2) { transform: translateY(0); }
+.navbar__toggleBar:nth-child(3) { transform: translateY(0.4375em); }
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggleBar:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.navbar__drawer {
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: var(--container-padding);
+  left: var(--container-padding);
+  z-index: 50;
+  background-color: rgba(0, 29, 33, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 32px 64px -24px rgba(0, 0, 0, 0.55),
+    0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 320ms;
+}
+
+.navbar__drawer[hidden] { display: none; }
+
+.navbar__drawer.is-open {
+  max-height: 80vh;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    max-height 320ms ease,
+    opacity 220ms ease,
+    visibility 0s linear 0s;
+}
+
+.navbar__drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1rem;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar__drawerCtaItem {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.navbar__drawerCta {
+  width: 100%;
+}
+
+.navbar__drawerLinks li {
+  margin: 0;
+}
+
+.navbar__drawerLink {
+  display: block;
+  padding: 0.5em 0.75em;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-white-soft);
+  text-decoration: none;
+  background-color: transparent;
+  transition:
+    background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__drawerLink:focus-visible {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--color-text-white);
+  outline: 1px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 0;
+}
+
+.navbar__drawerLink[aria-current='page'] {
+  background-color: rgba(205, 203, 255, 0.10);
+  color: var(--color-accent);
+}
+
+@media (max-width: 991px) {
+  .navbar__inner {
+    padding: 0.75em var(--container-padding);
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__left {
+    gap: 1em;
+  }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar__drawerLinks {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__drawerCtaItem {
+    display: list-item;
+  }
+}

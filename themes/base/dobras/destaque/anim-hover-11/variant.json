@@ -1,0 +1,212 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-11",
+  "scope": "destaque-anim-hover-11",
+  "origem": "bank/_componentes/animacoes/hover-11",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Rapid Image Hover Menu"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "x Menu"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Maria Costa"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Style Reset 66 Berlin"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Lana Ferrari"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Fashion Week Milano"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Franklin Roth"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Amber Convention London"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Cristie Noe"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Tokyo Summer Trends"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Wilma Quest"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "2021 West End New York"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Gary Winston"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Sunset Festival Greenwich"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Nesta Freeman"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Spirit Garments Jakarta"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Jolanda French"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Bluehouse Fashion Toronto"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Samantha Dunne"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Glamour Week Christchurch"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Tony Albert"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Piu Bella Fashion Rome"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Jacky Speed"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Sea Season Kuala Lumpur"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Carlton Holle"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Inspire Fashion Casablanca"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Kylla Maushet"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "One to Ten Moscow"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Fernando Castello"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Miksa Style Week Lisbon"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Sofie Henriette"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Free Fashion Budapest"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "Adelie Bisset"
+    },
+    {
+      "nome": "rotulo33",
+      "tipo": "texto",
+      "exemplo": "Couture Night Paris"
+    },
+    {
+      "nome": "rotulo34",
+      "tipo": "texto",
+      "exemplo": "Takato Yang"
+    },
+    {
+      "nome": "rotulo35",
+      "tipo": "texto",
+      "exemplo": "Modern Touch Hong Kong"
+    },
+    {
+      "nome": "rotulo36",
+      "tipo": "texto",
+      "exemplo": "Hadrian Kaiser"
+    },
+    {
+      "nome": "rotulo37",
+      "tipo": "texto",
+      "exemplo": "Neverland Fashion Madrid"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "5 cor(es) mapeadas para tokens por luminância (acento da origem #f32015 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,158 @@
+[data-dobra="botao-revolutionary-button"]{
+            display: flex;
+            margin: 0;
+            background-color: var(--base-100); 
+            font-family: var(--fonte-corpo);
+        }
+[data-dobra="botao-revolutionary-button"] .button{
+          --h-button: 48px;
+          --round: 0.75rem;
+          
+          --neon-green: var(--acento);
+          --darker-green: var(--base-200);
+          --bright-glow: rgba(230, 255, 200, 0.9); 
+
+          cursor: pointer;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          transition: all 0.25s ease;
+          
+          
+          background: 
+            
+            radial-gradient(
+              70% 70% at 50% 100%,
+              var(--bright-glow) 0%,
+              rgba(158, 255, 0, 0) 100%
+            ),
+            
+            linear-gradient(to top, var(--neon-green) 20%, var(--darker-green) 100%);
+            
+          border-radius: var(--round);
+          border: none;
+          outline: none;
+          padding: 12px 24px;
+          box-shadow: none; 
+        }
+[data-dobra="botao-revolutionary-button"] .button::before,[data-dobra="botao-revolutionary-button"] .button::after{
+          content: "";
+          position: absolute;
+          inset: var(--space);
+          transition: all 0.5s ease-in-out;
+          border-radius: calc(var(--round) - var(--space));
+          z-index: 0;
+        }
+[data-dobra="botao-revolutionary-button"] .button::before{
+          --space: 1px;
+          background: linear-gradient(
+            177.95deg,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+        }
+[data-dobra="botao-revolutionary-button"] .button::after{
+          --space: 2px;
+          background: 
+            radial-gradient(
+              70% 70% at 50% 100%,
+              var(--bright-glow) 0%,
+              rgba(158, 255, 0, 0) 100%
+            ),
+            linear-gradient(to top, var(--neon-green) 20%, var(--darker-green) 100%);
+        }
+[data-dobra="botao-revolutionary-button"] .button:active{
+          transform: scale(0.95);
+        }
+[data-dobra="botao-revolutionary-button"] .points_wrapper{
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          position: absolute;
+          z-index: 1;
+        }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point{
+          bottom: -10px;
+          position: absolute;
+          animation: floating-points infinite ease-in-out;
+          pointer-events: none;
+          width: 2px;
+          height: 2px;
+          background-color: var(--base-100);
+          border-radius: 9999px;
+        }
+@keyframes floating-points{
+          0% { transform: translateY(0); }
+          85% { opacity: 0; }
+          100% { transform: translateY(-55px); opacity: 0; }
+        }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(1){ left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: 0.2s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(2){ left: 30%; opacity: 0.7; animation-duration: 2.5s; animation-delay: 0.5s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(3){ left: 25%; opacity: 0.8; animation-duration: 2.2s; animation-delay: 0.1s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(4){ left: 44%; opacity: 0.6; animation-duration: 2.05s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(5){ left: 50%; opacity: 1; animation-duration: 1.9s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(6){ left: 75%; opacity: 0.5; animation-duration: 1.5s; animation-delay: 1.5s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(7){ left: 88%; opacity: 0.9; animation-duration: 2.2s; animation-delay: 0.2s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(8){ left: 58%; opacity: 0.8; animation-duration: 2.25s; animation-delay: 0.2s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(9){ left: 98%; opacity: 0.6; animation-duration: 2.6s; animation-delay: 0.1s; }
+[data-dobra="botao-revolutionary-button"] .points_wrapper .point:nth-child(10){ left: 65%; opacity: 1; animation-duration: 2.5s; animation-delay: 0.2s; }
+[data-dobra="botao-revolutionary-button"] .inner{
+          z-index: 2;
+          gap: 8px;
+          position: relative;
+          width: 100%;
+          color: var(--base-600); 
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1.5;
+        }
+[data-dobra="botao-revolutionary-button"] .inner svg.icon{
+          width: 20px;
+          height: 20px;
+        }
+[data-dobra="botao-revolutionary-button"] .inner svg.text-svg{
+          width: 110px;
+          height: 24px;
+        }
+[data-dobra="botao-revolutionary-button"] .inner svg.text-svg text{
+          font-family: var(--fonte-corpo);
+          font-size: 16px;
+          font-weight: 600;
+          fill: var(--base-600);
+          stroke-width: 0.5px;
+          stroke: transparent;
+        }
+[data-dobra="botao-revolutionary-button"] .button:hover .icon path,[data-dobra="botao-revolutionary-button"] .button:hover .text-svg text{
+          fill: transparent; 
+          stroke: var(--base-600);      
+          animation: draw-and-fill 1.2s linear forwards; 
+        }
+[data-dobra="botao-revolutionary-button"] .button:focus .icon path,[data-dobra="botao-revolutionary-button"] .button:focus .text-svg text{
+          fill: var(--base-600);
+          stroke: transparent;
+        }
+@keyframes draw-and-fill{
+          0% {
+            stroke-dasharray: 0 150;
+            fill: transparent;
+            stroke: var(--base-600);
+          }
+          80% {
+            stroke-dasharray: 150 0; 
+            fill: transparent;       
+            stroke: var(--base-600);
+          }
+          100% {
+            stroke-dasharray: 150 0;
+            fill: var(--base-600);             
+            stroke: transparent;    
+          }
+        }
+
+    

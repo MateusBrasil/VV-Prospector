@@ -1,0 +1,896 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-8",
+  "scope": "destaque-anim-hover-8",
+  "origem": "bank/_componentes/animacoes/hover-8",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "splitting"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/11.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "img/12.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "img/20.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "img/21.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "img/22.jpg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "img/23.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "img/24.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "img/25.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "img/26.jpg"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "img/27.jpg"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "img/28.jpg"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "img/29.jpg"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "img/30.jpg"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "img/31.jpg"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "img/32.jpg"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "img/33.jpg"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "img/34.jpg"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "img/35.jpg"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "img/36.jpg"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "img/37.jpg"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "img/38.jpg"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "img/39.jpg"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "img/40.jpg"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "sirens"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "convoys"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "screens"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "alloy"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "tv"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "lunatic"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "irresistible"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "frontiers"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "barrage"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "moet"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "rubber"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "handy"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "sirens"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Girl in pink"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "2016, Paris"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Overdose"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "2015, Bologna"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Premiere"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "2014, Brno"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "face paint"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "2011, Copenhagen"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Recursive"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "2010, Berlin"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "convoys"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Fantasia"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "2015, Rome"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Greenery"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "2016, Berlin"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Freaky"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "2017, Davos"
+    },
+    {
+      "nome": "subtitulo9",
+      "tipo": "texto",
+      "exemplo": "Shannon"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "2018, Sydney"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "screens"
+    },
+    {
+      "nome": "subtitulo10",
+      "tipo": "texto",
+      "exemplo": "Big Ben"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "2013, London"
+    },
+    {
+      "nome": "subtitulo11",
+      "tipo": "texto",
+      "exemplo": "Cranky"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "2014, Budapest"
+    },
+    {
+      "nome": "subtitulo12",
+      "tipo": "texto",
+      "exemplo": "Love Horse"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "2015, Belgrade"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "alloy"
+    },
+    {
+      "nome": "subtitulo13",
+      "tipo": "texto",
+      "exemplo": "Lady Brown"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "2001, Helsinki"
+    },
+    {
+      "nome": "subtitulo14",
+      "tipo": "texto",
+      "exemplo": "King Candy"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "2003, Lisbon"
+    },
+    {
+      "nome": "subtitulo15",
+      "tipo": "texto",
+      "exemplo": "The Book"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "2005, Toronto"
+    },
+    {
+      "nome": "subtitulo16",
+      "tipo": "texto",
+      "exemplo": "Corner"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "2006, Dublin"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "tv"
+    },
+    {
+      "nome": "subtitulo17",
+      "tipo": "texto",
+      "exemplo": "Fun fun fun"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "2014, Moscow"
+    },
+    {
+      "nome": "subtitulo18",
+      "tipo": "texto",
+      "exemplo": "Lovelife"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "2015, Shanghai"
+    },
+    {
+      "nome": "subtitulo19",
+      "tipo": "texto",
+      "exemplo": "Woodland"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "2016, Vienna"
+    },
+    {
+      "nome": "subtitulo20",
+      "tipo": "texto",
+      "exemplo": "No where"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "2017, Bern"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "lunatic"
+    },
+    {
+      "nome": "subtitulo21",
+      "tipo": "texto",
+      "exemplo": "Fantastic"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "2013, Bangkok"
+    },
+    {
+      "nome": "subtitulo22",
+      "tipo": "texto",
+      "exemplo": "Cutting Me"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "2014, Florence"
+    },
+    {
+      "nome": "subtitulo23",
+      "tipo": "texto",
+      "exemplo": "Houseparty"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "2015, Ljubljana"
+    },
+    {
+      "nome": "subtitulo24",
+      "tipo": "texto",
+      "exemplo": "Gnatus"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "2016, Helsinki"
+    },
+    {
+      "nome": "subtitulo25",
+      "tipo": "texto",
+      "exemplo": "What?"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "2017, Kiev"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "irresistible"
+    },
+    {
+      "nome": "subtitulo26",
+      "tipo": "texto",
+      "exemplo": "Handsome"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "1998, Cologne"
+    },
+    {
+      "nome": "subtitulo27",
+      "tipo": "texto",
+      "exemplo": "Quo Vadis?"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "1999, Rome"
+    },
+    {
+      "nome": "subtitulo28",
+      "tipo": "texto",
+      "exemplo": "Prime Time"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "2000, Pasadena"
+    },
+    {
+      "nome": "subtitulo29",
+      "tipo": "texto",
+      "exemplo": "Doom"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "2001, Dublin"
+    },
+    {
+      "nome": "subtitulo30",
+      "tipo": "texto",
+      "exemplo": "Algebra"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "2002, Bukarest"
+    },
+    {
+      "nome": "subtitulo31",
+      "tipo": "texto",
+      "exemplo": "Freedom"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "2003, Sarajevo"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "frontiers"
+    },
+    {
+      "nome": "subtitulo32",
+      "tipo": "texto",
+      "exemplo": "Apples"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "2019, Porto"
+    },
+    {
+      "nome": "subtitulo33",
+      "tipo": "texto",
+      "exemplo": "Overdose"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "2020, Barcelona"
+    },
+    {
+      "nome": "subtitulo34",
+      "tipo": "texto",
+      "exemplo": "Removed"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "2021, Osaka"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "barrage"
+    },
+    {
+      "nome": "subtitulo35",
+      "tipo": "texto",
+      "exemplo": "Hard Candy"
+    },
+    {
+      "nome": "texto35",
+      "tipo": "texto",
+      "exemplo": "2021, Agra"
+    },
+    {
+      "nome": "subtitulo36",
+      "tipo": "texto",
+      "exemplo": "Longing"
+    },
+    {
+      "nome": "texto36",
+      "tipo": "texto",
+      "exemplo": "2022, Las Vegas"
+    },
+    {
+      "nome": "subtitulo37",
+      "tipo": "texto",
+      "exemplo": "Free Fall"
+    },
+    {
+      "nome": "texto37",
+      "tipo": "texto",
+      "exemplo": "2023, Pattaya"
+    },
+    {
+      "nome": "subtitulo38",
+      "tipo": "texto",
+      "exemplo": "Cracking"
+    },
+    {
+      "nome": "texto38",
+      "tipo": "texto",
+      "exemplo": "2024, Seoul"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "moet"
+    },
+    {
+      "nome": "subtitulo39",
+      "tipo": "texto",
+      "exemplo": "Equals"
+    },
+    {
+      "nome": "texto39",
+      "tipo": "texto",
+      "exemplo": "2015, Tokyo"
+    },
+    {
+      "nome": "subtitulo40",
+      "tipo": "texto",
+      "exemplo": "Forced"
+    },
+    {
+      "nome": "texto40",
+      "tipo": "texto",
+      "exemplo": "2016, Melbourne"
+    },
+    {
+      "nome": "subtitulo41",
+      "tipo": "texto",
+      "exemplo": "Shackles"
+    },
+    {
+      "nome": "texto41",
+      "tipo": "texto",
+      "exemplo": "2017, London"
+    },
+    {
+      "nome": "subtitulo42",
+      "tipo": "texto",
+      "exemplo": "Unknown"
+    },
+    {
+      "nome": "texto42",
+      "tipo": "texto",
+      "exemplo": "2018, Jerusalem"
+    },
+    {
+      "nome": "subtitulo43",
+      "tipo": "texto",
+      "exemplo": "Holy Spirit"
+    },
+    {
+      "nome": "texto43",
+      "tipo": "texto",
+      "exemplo": "2019, Paris"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "rubber"
+    },
+    {
+      "nome": "subtitulo44",
+      "tipo": "texto",
+      "exemplo": "Just You"
+    },
+    {
+      "nome": "texto44",
+      "tipo": "texto",
+      "exemplo": "2010, Detroit"
+    },
+    {
+      "nome": "subtitulo45",
+      "tipo": "texto",
+      "exemplo": "Splitting"
+    },
+    {
+      "nome": "texto45",
+      "tipo": "texto",
+      "exemplo": "2011, Milan"
+    },
+    {
+      "nome": "subtitulo46",
+      "tipo": "texto",
+      "exemplo": "Handy Hat"
+    },
+    {
+      "nome": "texto46",
+      "tipo": "texto",
+      "exemplo": "2012, Jakarta"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "handy"
+    },
+    {
+      "nome": "subtitulo47",
+      "tipo": "texto",
+      "exemplo": "Hallo Friend"
+    },
+    {
+      "nome": "texto47",
+      "tipo": "texto",
+      "exemplo": "2011, Frankfurt"
+    },
+    {
+      "nome": "subtitulo48",
+      "tipo": "texto",
+      "exemplo": "Middle"
+    },
+    {
+      "nome": "texto48",
+      "tipo": "texto",
+      "exemplo": "2012, Liverpool"
+    },
+    {
+      "nome": "subtitulo49",
+      "tipo": "texto",
+      "exemplo": "Location"
+    },
+    {
+      "nome": "texto49",
+      "tipo": "texto",
+      "exemplo": "2013, Denver"
+    },
+    {
+      "nome": "subtitulo50",
+      "tipo": "texto",
+      "exemplo": "Heavy Womb"
+    },
+    {
+      "nome": "texto50",
+      "tipo": "texto",
+      "exemplo": "2014, Manchester"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 50
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #e63811 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,38 @@
+{
+  "slot": "destaque",
+  "nome": "anim-hover-3",
+  "scope": "destaque-anim-hover-3",
+  "origem": "bank/_componentes/animacoes/hover-3",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://cdn.prod.website-files.com/6712ad33825977f9d2f1ba2c/6714d43a777a77da89a9b5ec_osmo-pixelated-image-1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://cdn.prod.website-files.com/6712ad33825977f9d2f1ba2c/6714d43a4d1abab1b3c81caf_osmo-pixelated-image-2.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "2 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://cdn.prod.website-files.com/6712ad33825977f9d2f1ba2c/6714d43a777a77da89a9b5ec_osmo-pixelated-image-1.jpg https://cdn.prod.website-files.com/6712ad33825977f9d2f1ba2c/6714d43a4d1abab1b3c81caf_osmo-pixelated-image-2.jpg)",
+    "1 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,349 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-26",
+  "scope": "destaque-scroll-26",
+  "origem": "bank/_componentes/scroll/scroll-26",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "3D Folded Layout"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "demo 1"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "demo 2"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "demo 3"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "demo 4"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "demo 5"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Bocelli"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Barcelona"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Bocelli"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Barcelona"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Andrew"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "New York"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Andrew"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "New York"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo33",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo34",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo35",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo36",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo37",
+      "tipo": "texto",
+      "exemplo": "Bocelli"
+    },
+    {
+      "nome": "rotulo38",
+      "tipo": "texto",
+      "exemplo": "Barcelona"
+    },
+    {
+      "nome": "rotulo39",
+      "tipo": "texto",
+      "exemplo": "Bocelli"
+    },
+    {
+      "nome": "rotulo40",
+      "tipo": "texto",
+      "exemplo": "Barcelona"
+    },
+    {
+      "nome": "rotulo41",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo42",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo43",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo44",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo45",
+      "tipo": "texto",
+      "exemplo": "Sandeca"
+    },
+    {
+      "nome": "rotulo46",
+      "tipo": "texto",
+      "exemplo": "Budapest"
+    },
+    {
+      "nome": "rotulo47",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo48",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo49",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo50",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo51",
+      "tipo": "texto",
+      "exemplo": "Franklin"
+    },
+    {
+      "nome": "rotulo52",
+      "tipo": "texto",
+      "exemplo": "Berlin"
+    },
+    {
+      "nome": "rotulo53",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo54",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo55",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo56",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "rotulo57",
+      "tipo": "texto",
+      "exemplo": "Tokyo"
+    },
+    {
+      "nome": "rotulo58",
+      "tipo": "texto",
+      "exemplo": "Hoshen"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "See Planes"
+    }
+  ],
+  "precondicoes": {
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "8 cor(es) mapeadas para tokens por luminância (acento da origem #900935 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

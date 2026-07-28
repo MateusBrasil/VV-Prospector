@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eagle Code Repository</title>
+  <style>
+    @import url('https://unpkg.com/normalize.css') layer(normalize);
+
+    @layer normalize, base, demo;
+
+    @layer demo {
+      .container {
+        --font-level: 8;
+        opacity: 0;
+        height: 3lh;
+        display: flex;
+        place-items: center;
+        mask: linear-gradient(
+          #0000 0.25lh,
+          #fff calc(50% - 0.5lh) calc(50% + 0.5lh),
+          #0000 calc(100% - 0.25lh)
+        );
+        color: color-mix(in lch, canvasText, canvas 15%);
+        text-align: center;
+        position: relative;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        text-transform: uppercase;
+        line-height: 1;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        height: 1lh;
+        display: inline-grid;
+        flex-direction: column;
+        position: relative;
+        padding-inline: 0.25em;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .indicator {
+        --c: 0.175em;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 1lh;
+        translate: -50% -50%;
+        border: 0.05em solid oklch(0.75 1 var(--h, 320));
+        transition: width 0.25s, border-color 0.25s;
+        width: calc((var(--width) * 1px) + var(--c));
+        /* alternative: mask-composite */
+        clip-path: polygon(
+          /* top left corner */ 0 0,
+          var(--c) 0,
+          var(--c) var(--c),
+          0 var(--c),
+          0 100%,
+          /* bottom left corner */ 0 calc(100% - var(--c)),
+          var(--c) calc(100% - var(--c)),
+          var(--c) 100%,
+          0 100%,
+          /* bottom right corner */ calc(100% - var(--c)) 100%,
+          calc(100% - var(--c)) calc(100% - var(--c)),
+          100% calc(100% - var(--c)),
+          100% 100%,
+          /* top right corner */ 100% var(--c),
+          calc(100% - var(--c)) var(--c),
+          calc(100% - var(--c)) 0,
+          100% 0,
+          /* back to the start */ 100% 100%,
+          0 100%
+        );
+      }
+
+      li {
+        display: inline-block;
+        width: fit-content;
+        height: 1lh;
+        grid-area: 1 / 1;
+        line-height: 1.2;
+      }
+    }
+
+    @layer base {
+      :root {
+        --font-size-min: 16;
+        --font-size-max: 20;
+        --font-ratio-min: 1.2;
+        --font-ratio-max: 1.33;
+        --font-width-min: 375;
+        --font-width-max: 1500;
+      }
+
+      html {
+        color-scheme: light dark;
+      }
+
+      [data-theme='light'] {
+        color-scheme: light only;
+      }
+
+      [data-theme='dark'] {
+        color-scheme: dark only;
+      }
+
+      :where(.fluid) {
+        --fluid-min: calc(
+          var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+        );
+        --fluid-max: calc(
+          var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+        );
+        --fluid-preferred: calc(
+          (var(--fluid-max) - var(--fluid-min)) /
+            (var(--font-width-max) - var(--font-width-min))
+        );
+        --fluid-type: clamp(
+          (var(--fluid-min) / 16) * 1rem,
+          ((var(--fluid-min) / 16) * 1rem) -
+            (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+            (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+          (var(--fluid-max) / 16) * 1rem
+        );
+        font-size: var(--fluid-type);
+      }
+
+      *,
+      *:after,
+      *:before {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+          Helvetica, Arial, sans-serif, system-ui;
+        background-color: canvas;
+      }
+
+      body::before {
+        --size: 45px;
+        --line: color-mix(in hsl, canvasText, transparent 70%);
+        content: '';
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        background: linear-gradient(
+              90deg,
+              var(--line) 1px,
+              transparent 1px var(--size)
+            )
+            50% 50% / var(--size) var(--size),
+          linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
+            var(--size) var(--size);
+        mask: linear-gradient(-20deg, transparent 50%, white);
+        top: 0;
+        transform-style: flat;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .bear-link {
+        color: canvasText;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        width: 48px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        opacity: 0.8;
+      }
+
+      :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+        opacity: 1;
+      }
+
+      .bear-link svg {
+        width: 75%;
+      }
+
+      /* Utilities */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container fluid">
+    <div class="indicator"></div>
+    <ul>
+      <li>Welcome</li>
+      <li>to</li>
+      <li>Eagle</li>
+      <li>the</li>
+      <li>ultimate</li>
+      <li>code</li>
+      <li>repository</li>
+      <li>for</li>
+      <li>developers</li>
+      <li style="width: 1.5em">🦅</li>
+    </ul>
+  </div>
+  
+  <script type="module">
+    import gsap from 'https://esm.sh/gsap@3.12.0';
+
+    // gsap stuff!
+    gsap.defaults({
+      duration: 1,
+    })
+    
+    const tl = gsap.timeline({
+      paused: true,
+    })
+    const lines = gsap.utils.toArray('ul li')
+    gsap.set('ul li', { yPercent: 300 })
+    const paddedLines = [...lines, ...lines, ...lines]
+    paddedLines.forEach((line, index) => {
+      // create a mini timeline for the line
+      const lineTl = gsap.timeline().set(line, { yPercent: 300 }).to(
+        line,
+        {
+          yPercent: '-=600',
+          repeatRefresh: true,
+          immediateRender: false,
+          ease: 'none',
+          duration: 6,
+        },
+        0
+      )
+      tl.add(lineTl, index)
+    })
+
+    const scrubber = gsap.timeline({ paused: true }).fromTo(
+      tl,
+      {
+        totalTime: lines.length + 1, // lines.length + 2
+      },
+      {
+        totalTime: lines.length * 2 + 1, // lines.length * 2 + 2
+        ease: 'none',
+        duration: lines.length,
+        repeat: -1,
+      }
+    )
+    gsap.set(scrubber, { totalTime: lines.length + 2 })
+
+    let index = 0
+    gsap.set('.indicator', {
+      '--width': lines[index].getBoundingClientRect().width,
+    })
+
+    const syncIndicator = () => {
+      index += 1
+      gsap.set('.indicator', {
+        '--width': lines[index % lines.length].getBoundingClientRect().width,
+        '--h': gsap.utils.random(0, 359)
+      })
+    }
+
+    gsap.to(scrubber, {
+      delay: 1,
+      totalTime: '+=1',
+      duration: 1,
+      repeat: -1,
+      repeatDelay: 1,
+      repeatRefresh: true,
+      onStart: syncIndicator,
+      onRepeat: syncIndicator,
+      ease: 'elastic.out(1, 0.875)',
+    })
+
+    gsap.set('.container', { opacity: 1 })
+  </script>
+</body>
+</html>

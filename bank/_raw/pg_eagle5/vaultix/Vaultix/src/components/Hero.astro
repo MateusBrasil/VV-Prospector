@@ -1,0 +1,547 @@
+---
+import LiquidCanvas from "./LiquidCanvas.astro";
+import AccentButton from "./AccentButton.astro";
+import SecondaryButton from "./SecondaryButton.astro";
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("hero-pre-anim");
+  }
+</script>
+
+<section
+  class="hero relative flex flex-col lg:min-h-[calc(100svh-var(--nav-height))]"
+  data-hero
+>
+  <div
+    class="hero-frame relative mx-auto flex w-full min-h-[max(36rem,calc(100svh-73px))] max-w-[70.5rem] flex-1 flex-col lg:grid lg:min-h-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:border-x lg:border-[var(--color-border)]"
+  >
+    {/* Frame lines overlay — animated draw-in */}
+    <div
+      class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block"
+      style="left: -1px"
+      data-frame-line
+      data-axis="y"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block"
+      style="right: -1px"
+      data-frame-line
+      data-axis="y"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="frame-line pointer-events-none absolute top-0 z-[5] hidden h-full w-px bg-[var(--color-border)] lg:block"
+      style="left: calc(100% / 2.25)"
+      data-frame-line
+      data-axis="y"
+      aria-hidden="true"
+    ></div>
+
+    {/* T tip down — upper-left */}
+    <svg
+      class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      data-hero-tick
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    {/* T tip down — upper-right */}
+    <svg
+      class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      data-hero-tick
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    {/* T tip down — top-middle (only desktop — no vertical divider on mobile) */}
+    <svg
+      class="pointer-events-none absolute left-[calc(100%/2.25_-_9px)] top-[calc(-0.5rem_+_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      data-hero-tick
+    >
+      <path d="M0 7.5H16V8.5H9V16H8V8.5H0Z"></path>
+    </svg>
+    {/* T tip up — bottom-middle (only desktop — no vertical divider on mobile) */}
+    <svg
+      class="pointer-events-none absolute bottom-[calc(-0.5rem_-_0.5px)] left-[calc(100%/2.25_-_9px)] z-10 hidden h-4 w-4 text-white lg:block"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      data-hero-tick
+    >
+      <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+    </svg>
+
+    {/* Mobile/tablet: hero-col-left becomes display:contents (see <style>),
+        so its children float into the hero-frame's flex-col. We use `order`
+        to lay them out as: text+buttons → LiquidCanvas → VideoPreview (right).
+        Desktop (lg+): hero-col-left is a normal flex-col with text+buttons
+        on top and VideoPreview anchored at the bottom (justify-between). */}
+    <div
+      class="hero-col-left lg:flex lg:flex-col lg:justify-between lg:gap-8 lg:p-5"
+    >
+      <div class="relative z-10 order-1 flex flex-col items-comeca gap-6 p-5 lg:order-none lg:z-auto lg:gap-10 lg:p-0">
+        <div class="flex flex-col items-comeca gap-3 font-mono uppercase">
+          <h1
+            class="text-[2.75rem] leading-none tracking-[0.2rem] text-white md:text-[3.5rem] md:tracking-[0.42rem]"
+          >
+            <span class="hero-line"
+              ><span class="hero-word">Publique</span>
+              <span class="hero-word">Mais inteligente</span></span
+            >
+            <span class="hero-line"
+              ><span class="hero-word">Escale</span>
+              <span class="hero-word">Mais rapido</span></span
+            >
+          </h1>
+          <p
+            class="text-[0.875rem] leading-[1.125rem] text-white/60 lg:max-w-[27.3125rem]"
+            data-hero-subhead
+          >
+            Real-time data infrastructure for AI teams. Monitorar pipelines,
+            optimize models, and deploy with confidence — all in one platform.
+          </p>
+        </div>
+        <div class="flex w-full flex-col items-comeca gap-3 sm:flex-row sm:flex-wrap">
+          <AccentButton
+           
+            class="w-full whitespace-nowrap text-center sm:w-auto"
+            data-hero-cta
+          >
+            Comecar gratis
+          </AccentButton>
+          <SecondaryButton
+           
+            class="w-full whitespace-nowrap text-center sm:w-auto"
+            data-hero-cta
+          >
+            Agendar demo
+          </SecondaryButton>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative order-2 my-0 flex-1 overflow-hidden md:-my-8 md:aspect-[4/3] md:flex-none lg:order-none lg:my-0 lg:aspect-auto"
+      data-hero-visual
+    >
+      <LiquidCanvas />
+    </div>
+  </div>
+
+  <div class="hero-marquee-wrap relative lg:border-y lg:border-[var(--color-border)]">
+    {/* Frame lines overlay — top + bottom horizontals */}
+    <div
+      class="frame-line pointer-events-none absolute left-0 right-0 z-[5] hidden h-px bg-[var(--color-border)] lg:block"
+      style="top: -1px"
+      data-frame-line
+      data-axis="x"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="frame-line pointer-events-none absolute left-0 right-0 z-[5] hidden h-px bg-[var(--color-border)] lg:block"
+      style="bottom: -1px"
+      data-frame-line
+      data-axis="x"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="hero-marquee-inner relative z-10 mx-auto w-full max-w-[70.5rem] pt-16 pb-6 lg:py-6 lg:border-x lg:border-[var(--color-border)]"
+      data-hero-marquee
+    >
+      {/* cruz — upper-left */}
+      <svg
+        class="pointer-events-none absolute left-[calc(-0.5rem_-_1px)] top-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        data-hero-tick
+      >
+        <path d="M8 8.5H0V7.5H8V0H9V7.5H16V8.5H9V16H8V8.5Z"></path>
+      </svg>
+      {/* cruz — upper-right */}
+      <svg
+        class="pointer-events-none absolute -right-2 top-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        data-hero-tick
+      >
+        <path d="M8 8.5H0V7.5H8V0H9V7.5H16V8.5H9V16H8V8.5Z"></path>
+      </svg>
+      {/* T tip up — lower-left */}
+      <svg
+        class="pointer-events-none absolute bottom-[calc(-0.5rem_-_0.5px)] left-[calc(-0.5rem_-_1px)] z-10 hidden h-4 w-4 text-white lg:block"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        data-hero-tick
+      >
+        <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+      </svg>
+      {/* T tip up — lower-right */}
+      <svg
+        class="pointer-events-none absolute -right-2 bottom-[calc(-0.5rem_-_0.5px)] z-10 hidden h-4 w-4 text-white lg:block"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        data-hero-tick
+      >
+        <path d="M0 8.5H16V7.5H9V0H8V7.5H0Z"></path>
+      </svg>
+
+      <div class="overflow-hidden" data-hero-marquee-track>
+        <div class="marquee-track flex w-max">
+          <div
+            class="flex shrink-0 items-center gap-[6.46875rem] pr-[6.46875rem]"
+          >
+            <img src="/logos/logo-1.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-2.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-3.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-4.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-5.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-6.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-7.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+          </div>
+          <div
+            class="flex shrink-0 items-center gap-[6.46875rem] pr-[6.46875rem]"
+            aria-hidden="true"
+          >
+            <img src="/logos/logo-1.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-2.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-3.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-4.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-5.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-6.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+            <img src="/logos/logo-7.svg" alt="" class="h-[2.25rem] w-auto shrink-0" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  /* Pre-anim state — applied before script runs to avoid FOUC */
+  html.hero-pre-anim [data-navbar] {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  html.hero-pre-anim [data-hero] .hero-frame,
+  html.hero-pre-anim [data-hero] .hero-col-left,
+  html.hero-pre-anim [data-hero] .hero-marquee-wrap,
+  html.hero-pre-anim [data-hero] .hero-marquee-inner {
+    border-color: transparent !important;
+  }
+  html.hero-pre-anim [data-hero] [data-hero-tick] {
+    opacity: 0;
+  }
+  html.hero-pre-anim [data-hero] h1,
+  html.hero-pre-anim [data-hero] [data-hero-subhead],
+  html.hero-pre-anim [data-hero] [data-hero-video],
+  html.hero-pre-anim [data-hero] [data-hero-visual],
+  html.hero-pre-anim [data-hero] [data-hero-marquee-track] {
+    opacity: 0;
+  }
+  html.hero-pre-anim [data-hero] [data-hero-cta] {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transform-origin: center;
+  }
+  html.hero-pre-anim [data-hero] [data-frame-line][data-axis="y"] {
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+  html.hero-pre-anim [data-hero] [data-frame-line][data-axis="x"] {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+</style>
+
+<style>
+  /* Mobile + tablet: hero-col-left dissolves into the parent flex so its
+     children (text+buttons, video) can be reordered with `order` along with
+     hero-visual (LiquidCanvas). Desktop (lg+) restaurars the normal flex layout
+     with VideoPreview anchored at the bottom via justify-between. */
+  @media (max-width: 1023px) {
+    .hero-col-left {
+      display: contents;
+    }
+  }
+
+  .hero-line {
+    display: block;
+  }
+  .hero-word {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+  [data-hero-tick] {
+    will-change: transform, opacity;
+  }
+  [data-frame-line] {
+    will-change: transform;
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+  }
+
+  /* Mobile-only mini play trigger — pulse glow */
+  .hero-mini-play {
+    animation: heroMiniPulse 1.6s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .hero-mini-play:active { transform: scale(0.94); }
+  @keyframes heroMiniPulse {
+    0%, 100% {
+      box-shadow:
+        0 0 6px 0 rgba(253, 255, 34, 0.55),
+        0 0 14px 0 rgba(253, 255, 34, 0.3);
+    }
+    50% {
+      box-shadow:
+        0 0 10px 0 rgba(253, 255, 34, 0.95),
+        0 0 22px 0 rgba(253, 255, 34, 0.55),
+        0 0 36px 0 rgba(253, 255, 34, 0.2);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+  import { applyScrambleHover } from "../lib/scramble-hover";
+
+  gsap.registerPlugin(SplitText);
+  registerEagleEases();
+
+  const html = document.documentElement;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!reducedMotion) {
+    const hero = document.querySelector<HTMLElement>("[data-hero]");
+    const navbar = document.querySelector<HTMLElement>("[data-navbar]");
+    if (hero) {
+      const verticalLines = gsap.utils.toArray<HTMLElement>(
+        '[data-frame-line][data-axis="y"]',
+        hero
+      );
+      const horizontalLines = gsap.utils.toArray<HTMLElement>(
+        '[data-frame-line][data-axis="x"]',
+        hero
+      );
+      const ticks = gsap.utils.toArray<HTMLElement>("[data-hero-tick]", hero);
+      const frameTicks = gsap.utils.toArray<HTMLElement>(
+        ".hero-frame > [data-hero-tick]",
+        hero
+      );
+      const marqueeTicks = gsap.utils.toArray<HTMLElement>(
+        ".hero-marquee-inner > [data-hero-tick]",
+        hero
+      );
+      const headline = hero.querySelector<HTMLElement>("h1");
+      const subhead = hero.querySelector<HTMLElement>("[data-hero-subhead]");
+      const headlineSplit = headline
+        ? new SplitText(headline, { type: "lines", mask: "lines" })
+        : null;
+      const subheadSplit = subhead
+        ? new SplitText(subhead, { type: "lines", mask: "lines" })
+        : null;
+      const headlineLines = headlineSplit?.lines ?? [];
+      const subheadLines = subheadSplit?.lines ?? [];
+      const ctas = gsap.utils.toArray<HTMLElement>("[data-hero-cta]", hero);
+      const video = hero.querySelector<HTMLElement>("[data-hero-video]");
+      const marqueeTrack = hero.querySelector<HTMLElement>(
+        "[data-hero-marquee-track]"
+      );
+      const heroVisual = hero.querySelector<HTMLElement>("[data-hero-visual]");
+      const frame = hero.querySelector<HTMLElement>(".hero-frame");
+      const colLeft = hero.querySelector<HTMLElement>(".hero-col-left");
+      const marqueeWrap = hero.querySelector<HTMLElement>(".hero-marquee-wrap");
+      const marqueeInner = hero.querySelector<HTMLElement>(
+        ".hero-marquee-inner"
+      );
+
+      // Apply GSAP-controlled initial state BEFORE removing the CSS pre-anim class.
+      gsap.set(verticalLines, { scaleY: 0, transformOrigin: "top center" });
+      gsap.set(horizontalLines, { scaleX: 0, transformOrigin: "left center" });
+      gsap.set(ticks, { opacity: 0, scale: 0.6, transformOrigin: "center" });
+      gsap.set(headlineLines, { yPercent: 110 });
+      gsap.set(subheadLines, { yPercent: 110 });
+      if (headline) gsap.set(headline, { opacity: 1 });
+      if (subhead) gsap.set(subhead, { opacity: 1 });
+      if (video) gsap.set(video, { y: 16, opacity: 0 });
+      gsap.set(ctas, { y: 12, scale: 0.96, opacity: 0, transformOrigin: "center" });
+      if (marqueeTrack) gsap.set(marqueeTrack, { opacity: 0 });
+      if (heroVisual) gsap.set(heroVisual, { opacity: 0 });
+      if (navbar) gsap.set(navbar, { y: -12, opacity: 0 });
+
+      const borderTargets = [frame, colLeft, marqueeWrap, marqueeInner].filter(
+        (el): el is HTMLElement => Boolean(el)
+      );
+      borderTargets.forEach((el) => (el.style.borderColor = "transparent"));
+
+      html.classList.remove("hero-pre-anim");
+
+      function play() {
+        const tl = gsap.timeline();
+
+        if (navbar) {
+          tl.to(
+            navbar,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.65,
+              ease: "eagleStructure",
+            },
+            0
+          );
+        }
+
+        tl.to(
+          verticalLines,
+          {
+            scaleY: 1,
+            duration: 0.45,
+            ease: "eagleStructure",
+            stagger: 0.035,
+          },
+          0
+        );
+        tl.to(
+          horizontalLines,
+          {
+            scaleX: 1,
+            duration: 0.45,
+            ease: "eagleStructure",
+            stagger: 0.035,
+          },
+          0.04
+        );
+
+        tl.add(() => {
+          borderTargets.forEach((el) => (el.style.borderColor = ""));
+        }, 0.5);
+
+        tl.to(
+          frameTicks,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.38,
+            ease: "eagleDecor",
+            stagger: { each: 0.025, from: "comeca", ease: "power2.out" },
+          },
+          0.55
+        );
+        tl.to(
+          marqueeTicks,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.38,
+            ease: "eagleDecor",
+          },
+          0.55
+        );
+
+        tl.to(
+          heroVisual,
+          { opacity: 1, duration: 0.8, ease: "eagleReveal" },
+          0.7
+        );
+
+        tl.to(
+          headlineLines,
+          {
+            yPercent: 0,
+            duration: 0.85,
+            ease: "eagleReveal",
+            stagger: 0.12,
+          },
+          0.75
+        );
+
+        tl.to(
+          subheadLines,
+          {
+            yPercent: 0,
+            duration: 0.7,
+            ease: "eagleReveal",
+            stagger: 0.08,
+          },
+          1.15
+        );
+        tl.to(
+          ctas,
+          {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.55,
+            ease: "eagleDecor",
+            stagger: 0.12,
+          },
+          1.3
+        );
+        tl.to(
+          video,
+          { y: 0, opacity: 1, duration: 0.6, ease: "eagleReveal" },
+          1.45
+        );
+        tl.to(
+          marqueeTrack,
+          { opacity: 1, duration: 0.65, ease: "eagleReveal" },
+          1.6
+        );
+      }
+
+      applyScrambleHover("[data-hero-cta]", hero);
+
+      // If the loader is running, wait for its done event. Otherwise play now.
+      if (html.classList.contains("is-loading")) {
+        window.addEventListener("eagle:loaded", play, { once: true });
+      } else {
+        play();
+      }
+    }
+  }
+</script>

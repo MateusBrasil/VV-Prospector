@@ -1,0 +1,340 @@
+[data-dobra="destaque-scroll-26"] *,[data-dobra="destaque-scroll-26"] *::after,[data-dobra="destaque-scroll-26"] *::before{
+	box-sizing: border-box;
+}
+[data-dobra="destaque-scroll-26"]{
+	font-size: 15px;
+}
+[data-dobra="destaque-scroll-26"]{
+	margin: 0;
+	--color-text: var(--base-600);
+	--color-bg: var(--base-100);
+	--color-link: var(--base-200);
+	--color-link-hover: var(--base-600);
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: var(--fonte-corpo);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow-x: hidden;
+}
+[data-dobra="destaque-scroll-26"] .screen{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+}
+[data-dobra="destaque-scroll-26"] .fold-scroller{
+	height: 100%;
+}
+[data-dobra="destaque-scroll-26"] .fold-content{
+	pointer-events: all;
+	width: 100%;
+}
+[data-dobra="destaque-scroll-26"] .fold-size-fix{
+	width: 100%;
+	height: 100%;
+}
+[data-dobra="destaque-scroll-26"] .fold-before .fold-size-fix{
+	transform-origin: bottom center;
+}
+[data-dobra="destaque-scroll-26"] .fold-after .fold-size-fix{
+	transform-origin: top center;
+}
+[data-dobra="destaque-scroll-26"] #base-content{
+	display: none;
+}
+[data-dobra="destaque-scroll-26"] .debug .fold:nth-child(2n){
+	background: var(--base-100);
+}
+[data-dobra="destaque-scroll-26"] .debug .fold:nth-child(2n + 1){
+	background: var(--base-200);
+}
+[data-dobra="destaque-scroll-26"] .btn-debug{
+	position: fixed;
+	top: 10px;
+	padding: 1rem;
+	font-size: 16px;
+	text-transform: uppercase;
+	right: 10px;
+	cursor: pointer;
+	z-index: 100;
+	display: none;
+}
+[data-dobra="destaque-scroll-26"] .square{
+	width: 100%;
+	padding-bottom: 100%;
+	background: coral;
+}
+[data-dobra="destaque-scroll-26"] .rectangle{
+	width: 100%;
+	padding-bottom: 50%;
+	background: coral;
+	box-shadow: 1px 0 coral, 0 1px coral;
+}
+[data-dobra="destaque-scroll-26"] .js .loading::before,[data-dobra="destaque-scroll-26"] .js .loading::after{
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+[data-dobra="destaque-scroll-26"] .js .loading::before{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+[data-dobra="destaque-scroll-26"] .js .loading::after{
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+@keyframes loaderAnim{
+	to {
+		opacity: 1;
+		transform: scale3d(0.5, 0.5, 1);
+	}
+}
+[data-dobra="destaque-scroll-26"] a{
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+[data-dobra="destaque-scroll-26"] a:hover,[data-dobra="destaque-scroll-26"] a:focus{
+	color: var(--color-link-hover);
+	outline: none;
+}
+[data-dobra="destaque-scroll-26"] .message{
+	background: var(--color-text);
+	color: var(--color-bg);
+	padding: 1rem;
+	text-align: center;
+	display: none;
+}
+[data-dobra="destaque-scroll-26"] .frame{
+	padding: 3rem 5vw;
+	text-align: center;
+	position: relative;
+	z-index: 1000;
+}
+[data-dobra="destaque-scroll-26"] .frame__title{
+	font-size: 1rem;
+	margin: 0 0 1rem;
+	font-weight: normal;
+}
+[data-dobra="destaque-scroll-26"] .frame__links{
+	display: inline;
+}
+[data-dobra="destaque-scroll-26"] .frame__links a:not(:last-child),[data-dobra="destaque-scroll-26"] .frame__demos a:not(:last-child){
+	margin-right: 1rem;
+}
+[data-dobra="destaque-scroll-26"] .frame__demos{
+	margin: 1rem 0;
+}
+[data-dobra="destaque-scroll-26"] .frame__demo--current,[data-dobra="destaque-scroll-26"] .frame__demo--current:hover{
+	color: var(--color-text);
+}
+[data-dobra="destaque-scroll-26"] .content{
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: calc(100vh - 13rem);
+	position: relative;
+	justify-content: flex-start;
+	align-items: center;
+}
+@media screen and (min-width: 53em){[data-dobra="destaque-scroll-26"] .message{
+		display: none;
+	}
+[data-dobra="destaque-scroll-26"] .frame{
+		position: fixed;
+		text-align: left;
+		z-index: 100;
+		top: 0;
+		left: 0;
+		display: grid;
+		align-content: space-between;
+		width: 100%;
+		max-width: none;
+		height: 100vh;
+		padding: 3rem;
+		pointer-events: none;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: auto auto auto;
+		grid-template-areas: 'title links'
+			'... ...'
+			'... demos';
+	}
+[data-dobra="destaque-scroll-26"] .frame__title-wrap{
+		grid-area: title;
+		display: flex;
+	}
+[data-dobra="destaque-scroll-26"] .frame__title{
+		margin: 0;
+	}
+[data-dobra="destaque-scroll-26"] .frame__tagline{
+		position: relative;
+		margin: 0 0 0 1rem;
+		padding: 0 0 0 1rem;
+		opacity: 0.5;
+	}
+[data-dobra="destaque-scroll-26"] .frame__demos{
+		margin: 0;
+		grid-area: demos;
+		justify-self: end;
+	}
+[data-dobra="destaque-scroll-26"] .frame__links{
+		grid-area: links;
+		padding: 0;
+		justify-self: end;
+	}
+[data-dobra="destaque-scroll-26"] .frame a{
+		pointer-events: auto;
+	}
+[data-dobra="destaque-scroll-26"] .content{
+		height: 100vh;
+		justify-content: center;
+	}
+
+}
+[data-dobra="destaque-scroll-26"]{
+  --color-bg: var(--base-600);
+  --color-text: var(--base-100);
+  --color-link: var(--base-300);
+  --color-link-hover: var(--acento);
+}
+[data-dobra="destaque-scroll-26"] .content__line{
+  text-align: center;
+  margin: 1vh 0 2vh -5vw;
+  display: flex;
+  backface-visibility: hidden;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+[data-dobra="destaque-scroll-26"] .type{
+  --type-size: 9vw;
+  font-size: var(--type-size);
+  line-height: 0.9;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+[data-dobra="destaque-scroll-26"] .type--1{
+  font-family: var(--fonte-corpo);
+  font-weight: 100;
+}
+[data-dobra="destaque-scroll-26"] .type--2{
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+}
+[data-dobra="destaque-scroll-26"] .type--3{
+  font-family: var(--fonte-corpo);
+  font-weight: 300;
+  font-size: calc(var(--type-size) * 1.04);
+}
+[data-dobra="destaque-scroll-26"] .type--4{
+  font-family: var(--fonte-corpo);
+  font-weight: 400;
+}
+[data-dobra="destaque-scroll-26"] .type--5{
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+  line-height: 0.97;
+}
+[data-dobra="destaque-scroll-26"] .type--6{
+  font-family: var(--fonte-corpo);
+  font-weight: 700; 
+}
+[data-dobra="destaque-scroll-26"] .type--7{
+  font-family: var(--fonte-corpo);
+  font-weight: 900; 
+  font-size: 10vw;
+  line-height: 0.7;
+}
+[data-dobra="destaque-scroll-26"] .fold{
+    overflow: hidden;
+    width: 100vw;
+    height: 80vh;
+    will-change: transform;
+}
+[data-dobra="destaque-scroll-26"] .wrapper-3d{
+    position: relative;
+    perspective: 250px;
+    transform-style: preserve-3d;
+}
+[data-dobra="destaque-scroll-26"] .fold-scroller{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+[data-dobra="destaque-scroll-26"] .fold-center{
+    transform-origin: center center;
+    transform: translateZ(0px) translate3d(0, 0, 0) rotateX(0) scale3d(1, 1.002004008016032, 1);
+}
+[data-dobra="destaque-scroll-26"] .fold-after{
+    
+    position: absolute;
+    transform-origin: top center;
+    transform: translateZ(0px) translate3d(0, 80vh, 0) rotateX(120deg) scale3d(1, 1.002004008016032, 1);
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+[data-dobra="destaque-scroll-26"] .fold-size-fix{
+    transform-origin: center center;
+    transform: scaleY(0.998);
+}
+[data-dobra="destaque-scroll-26"] .fold-before{
+    
+    position: absolute;
+    transform-origin: bottom center;
+    transform: translateZ(0px) translate3d(0, -80vh, 0) rotateX(-120deg) scale3d(1, 1.002004008016032, 1);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+[data-dobra="destaque-scroll-26"] .fold-before h1{
+    
+}
+[data-dobra="destaque-scroll-26"] .fold-after .fold-scroller{
+    transform: translateY(-100%);
+}
+[data-dobra="destaque-scroll-26"] .fold-before .fold-scroller{
+    transform: translateY(100%);
+}
+[data-dobra="destaque-scroll-26"] .debug .fold:nth-child(2n){
+    background: var(--base-100);
+}
+[data-dobra="destaque-scroll-26"] .debug .fold:nth-child(2n + 1){
+    background: var(--base-200);
+}
+[data-dobra="destaque-scroll-26"] .btn-debug{
+    position: fixed;
+    top: 10px;
+    padding: 1rem;
+    font-size: 16px;
+    text-transform: uppercase;
+    right: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+

@@ -1,0 +1,8 @@
+/* vetic-mission — local overrides only. The real styles for .section_our (header,
+   value cards, video wrap, play/pause button) live in the shared /vetic/styles.css.
+   Reveals (view + curtain) run from /vetic/scripts/scroll-reveal.js via GSAP. */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

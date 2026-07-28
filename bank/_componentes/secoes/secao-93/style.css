@@ -1,0 +1,17 @@
+/* hirely-contact-hero — local overrides only. The shared /hirely/styles.css carries
+   the section_contact layout, contact_data list, contact form (.contact_form,
+   .form_grid, .form_input, .w-form), navbar, hamburger-nav and token styles. This
+   file inlines the source Navbar's scoped <style> (Rule 4) and a minimal body reset.
+   The form submits nowhere by design (static stub); see README. */
+
+/* Inlined from Navbar.astro scoped <style>: right-side CTA + hamburger cluster. */
+.navbar_actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+body {
+  margin: 0;
+}

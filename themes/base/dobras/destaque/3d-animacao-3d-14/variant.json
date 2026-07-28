@@ -1,0 +1,65 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-14",
+  "scope": "destaque-3d-animacao-3d-14",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-14",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://cdn.prod.website-files.com/65e61ac90950149fdb15e419/685027578326569ff9bb118d_2025-06-16%2017.16.41.jpg"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "STROKE"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "OR"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "SHADE"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "DRAG"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "rotation: 0.0"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "scale: 1.0"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "edges: 0.0"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 1
+  },
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #ff9a9c → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://cdn.prod.website-files.com/65e61ac90950149fdb15e419/685027578326569ff9bb118d_2025-06-16%2017.16.41.jpg)",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

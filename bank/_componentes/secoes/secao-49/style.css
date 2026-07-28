@@ -1,0 +1,16 @@
+/* upmind-cta-section — section-specific fixes only.
+   The shared /upmind/styles.css covers section_cta, the gradient overlay, the
+   w-background-video, max-heading/max-description and the button_component
+   variants. Standalone-doc guards live here. */
+
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+/* The section is normally the last band on the home page; in isolation give the
+   background video room and keep it the lowest layer behind the content. */
+.section_cta {
+  position: relative;
+  overflow: hidden;
+}

@@ -1,0 +1,1050 @@
+{
+  "slot": "vitrine",
+  "nome": "animacao-grid-5",
+  "scope": "vitrine-animacao-grid-5",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-5",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "flip",
+    "lenis",
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "assets/img1.webp"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "assets/img2.webp"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "assets/img3.webp"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "assets/img4.webp"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "assets/img5.webp"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "assets/img6.webp"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "assets/img7.webp"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "assets/img8.webp"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "assets/img9.webp"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "assets/img10.webp"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "assets/img11.webp"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "assets/img12.webp"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "assets/img13.webp"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "assets/img14.webp"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "assets/img15.webp"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "assets/img16.webp"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "assets/img17.webp"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "assets/img18.webp"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "assets/img19.webp"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "assets/img20.webp"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "assets/img21.webp"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "assets/img22.webp"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "assets/img23.webp"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "assets/img24.webp"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "assets/img25.webp"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "assets/img26.webp"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "assets/img27.webp"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "assets/img28.webp"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "assets/img29.webp"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "assets/img30.webp"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "assets/img31.webp"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "assets/img32.webp"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "assets/img33.webp"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "assets/img1.webp"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "assets/img2.webp"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "assets/img3.webp"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "assets/img4.webp"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "assets/img5.webp"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "assets/img6.webp"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "assets/img7.webp"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "assets/img8.webp"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "assets/img9.webp"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "assets/img10.webp"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "assets/img11.webp"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "assets/img12.webp"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "assets/img13.webp"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "assets/img14.webp"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "assets/img15.webp"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "assets/img16.webp"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "assets/img17.webp"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "assets/img18.webp"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "assets/img19.webp"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "assets/img20.webp"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "assets/img21.webp"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "assets/img22.webp"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "assets/img23.webp"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "assets/img24.webp"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "assets/img25.webp"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "assets/img26.webp"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "assets/img27.webp"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "assets/img28.webp"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "assets/img29.webp"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "assets/img30.webp"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "assets/img31.webp"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "assets/img1.webp"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Shane Weber"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "effect 01: straight linear paths, smooth easing, clean timing, minimal rotation."
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Drift — A04"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Model: Amelia Hart"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Veil — K18"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Model: Irina Volkova"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Ember — M45"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Model: Charlotte Byrne"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Gleam — S12"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Model: Anastasia Morozova"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "Bloom — J29"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Model: Eva Ramirez"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "Whisper — V87"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Model: Milana Petrova"
+    },
+    {
+      "nome": "subtitulo7",
+      "tipo": "texto",
+      "exemplo": "Trace — Z05"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Model: Sofia Carter"
+    },
+    {
+      "nome": "subtitulo8",
+      "tipo": "texto",
+      "exemplo": "Flicker — Q62"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Model: Alina Kuznetsova"
+    },
+    {
+      "nome": "subtitulo9",
+      "tipo": "texto",
+      "exemplo": "Grain — H71"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Model: Isabella Novak"
+    },
+    {
+      "nome": "subtitulo10",
+      "tipo": "texto",
+      "exemplo": "Pulse — B90"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Model: Daria Sokolova"
+    },
+    {
+      "nome": "subtitulo11",
+      "tipo": "texto",
+      "exemplo": "Mist — L36"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Model: Victoria Fields"
+    },
+    {
+      "nome": "subtitulo12",
+      "tipo": "texto",
+      "exemplo": "Shard — Y22"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Model: Natalia Popova & Emily Stone"
+    },
+    {
+      "nome": "subtitulo13",
+      "tipo": "texto",
+      "exemplo": "Vapor — X79"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Model: Yulia Orlova"
+    },
+    {
+      "nome": "subtitulo14",
+      "tipo": "texto",
+      "exemplo": "Glow — F13"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Model: Camila Ford"
+    },
+    {
+      "nome": "subtitulo15",
+      "tipo": "texto",
+      "exemplo": "Flux — N48"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "Model: Sofia Mikhailova"
+    },
+    {
+      "nome": "subtitulo16",
+      "tipo": "texto",
+      "exemplo": "Spire — C65"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Model: Ava Bennett"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Manika Jorge"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "effect 02: Adjusts mover count, rotation, timing, and animation feel."
+    },
+    {
+      "nome": "subtitulo17",
+      "tipo": "texto",
+      "exemplo": "Driftwood — W50"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Model: Valeria Smirnova"
+    },
+    {
+      "nome": "subtitulo18",
+      "tipo": "texto",
+      "exemplo": "Fold — T81"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Model: Emma Chase"
+    },
+    {
+      "nome": "subtitulo19",
+      "tipo": "texto",
+      "exemplo": "Shroud — E26"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "Model: Marina Belova"
+    },
+    {
+      "nome": "subtitulo20",
+      "tipo": "texto",
+      "exemplo": "Ripple — P34"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "Model: Chloe Martin"
+    },
+    {
+      "nome": "subtitulo21",
+      "tipo": "texto",
+      "exemplo": "Fray — U07"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "Model: Alexandra Dmitrieva"
+    },
+    {
+      "nome": "subtitulo22",
+      "tipo": "texto",
+      "exemplo": "Wane — R52"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "Model: Isabella Moore"
+    },
+    {
+      "nome": "subtitulo23",
+      "tipo": "texto",
+      "exemplo": "Tide — S33"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "Model: Ksenia Egorova"
+    },
+    {
+      "nome": "subtitulo24",
+      "tipo": "texto",
+      "exemplo": "Rift — G08"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "Model: Mia Anderson"
+    },
+    {
+      "nome": "subtitulo25",
+      "tipo": "texto",
+      "exemplo": "Spool — H94"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "Model: Anna Mikhailova"
+    },
+    {
+      "nome": "subtitulo26",
+      "tipo": "texto",
+      "exemplo": "Glitch — M70"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "Model: Emily Brown"
+    },
+    {
+      "nome": "subtitulo27",
+      "tipo": "texto",
+      "exemplo": "Slip — F02"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "Model: Ekaterina Ivanova"
+    },
+    {
+      "nome": "subtitulo28",
+      "tipo": "texto",
+      "exemplo": "Husk — C15"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "Model: Olivia Reed"
+    },
+    {
+      "nome": "subtitulo29",
+      "tipo": "texto",
+      "exemplo": "Blur — V86"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "Model: Sofia Lebedeva"
+    },
+    {
+      "nome": "subtitulo30",
+      "tipo": "texto",
+      "exemplo": "Fracture — A63"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "Model: Harper Gray"
+    },
+    {
+      "nome": "subtitulo31",
+      "tipo": "texto",
+      "exemplo": "Mote — Y39"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "Model: Elizaveta Petrova"
+    },
+    {
+      "nome": "subtitulo32",
+      "tipo": "texto",
+      "exemplo": "Aura — K21"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "Model: Lily Cooper"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Angela Wong"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "effect 03: Big arcs, smooth start, powerful snap, slow reveal."
+    },
+    {
+      "nome": "subtitulo33",
+      "tipo": "texto",
+      "exemplo": "Whorl — B45"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "Model: Anastasia Volkova"
+    },
+    {
+      "nome": "subtitulo34",
+      "tipo": "texto",
+      "exemplo": "Flicker — D17"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "Model: Sophia White"
+    },
+    {
+      "nome": "subtitulo35",
+      "tipo": "texto",
+      "exemplo": "Gleam — Z58"
+    },
+    {
+      "nome": "texto35",
+      "tipo": "texto",
+      "exemplo": "Model: Polina Sokolova"
+    },
+    {
+      "nome": "subtitulo36",
+      "tipo": "texto",
+      "exemplo": "Shard — J03"
+    },
+    {
+      "nome": "texto36",
+      "tipo": "texto",
+      "exemplo": "Model: Ava Mitchell"
+    },
+    {
+      "nome": "subtitulo37",
+      "tipo": "texto",
+      "exemplo": "Trace — Q29"
+    },
+    {
+      "nome": "texto37",
+      "tipo": "texto",
+      "exemplo": "Model: Maria Ivanenko"
+    },
+    {
+      "nome": "subtitulo38",
+      "tipo": "texto",
+      "exemplo": "Crush — W92"
+    },
+    {
+      "nome": "texto38",
+      "tipo": "texto",
+      "exemplo": "Model: Ella Foster"
+    },
+    {
+      "nome": "subtitulo39",
+      "tipo": "texto",
+      "exemplo": "Veil — X16"
+    },
+    {
+      "nome": "texto39",
+      "tipo": "texto",
+      "exemplo": "Model: Yulia Morozova"
+    },
+    {
+      "nome": "subtitulo40",
+      "tipo": "texto",
+      "exemplo": "Clasp — S84"
+    },
+    {
+      "nome": "texto40",
+      "tipo": "texto",
+      "exemplo": "Model: Charlotte Hayes"
+    },
+    {
+      "nome": "subtitulo41",
+      "tipo": "texto",
+      "exemplo": "Flint — T66"
+    },
+    {
+      "nome": "texto41",
+      "tipo": "texto",
+      "exemplo": "Model: Viktoria Kuznetsova"
+    },
+    {
+      "nome": "subtitulo42",
+      "tipo": "texto",
+      "exemplo": "Spire — E49"
+    },
+    {
+      "nome": "texto42",
+      "tipo": "texto",
+      "exemplo": "Model: Amelia Parker"
+    },
+    {
+      "nome": "subtitulo43",
+      "tipo": "texto",
+      "exemplo": "Plume — N22"
+    },
+    {
+      "nome": "texto43",
+      "tipo": "texto",
+      "exemplo": "Model: Daria Smirnova"
+    },
+    {
+      "nome": "subtitulo44",
+      "tipo": "texto",
+      "exemplo": "Hollow — B75"
+    },
+    {
+      "nome": "texto44",
+      "tipo": "texto",
+      "exemplo": "Model: Zoe Adams"
+    },
+    {
+      "nome": "subtitulo45",
+      "tipo": "texto",
+      "exemplo": "Brume — K10"
+    },
+    {
+      "nome": "texto45",
+      "tipo": "texto",
+      "exemplo": "Model: Anastasiya Orlova"
+    },
+    {
+      "nome": "subtitulo46",
+      "tipo": "texto",
+      "exemplo": "Crave — F37"
+    },
+    {
+      "nome": "texto46",
+      "tipo": "texto",
+      "exemplo": "Model: Mia Bennett"
+    },
+    {
+      "nome": "subtitulo47",
+      "tipo": "texto",
+      "exemplo": "Quiver — R19"
+    },
+    {
+      "nome": "texto47",
+      "tipo": "texto",
+      "exemplo": "Model: Natalia Volkova"
+    },
+    {
+      "nome": "subtitulo48",
+      "tipo": "texto",
+      "exemplo": "Fathom — L52"
+    },
+    {
+      "nome": "texto48",
+      "tipo": "texto",
+      "exemplo": "Model: Isabella Young"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Kaito Nakamo"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "effect 04: Quick upward motion with bold blending and smooth slow reveal."
+    },
+    {
+      "nome": "subtitulo49",
+      "tipo": "texto",
+      "exemplo": "Pulse — D61"
+    },
+    {
+      "nome": "texto49",
+      "tipo": "texto",
+      "exemplo": "Model: Sofia Makarova"
+    },
+    {
+      "nome": "subtitulo50",
+      "tipo": "texto",
+      "exemplo": "Fade — P42"
+    },
+    {
+      "nome": "texto50",
+      "tipo": "texto",
+      "exemplo": "Model: Scarlett James"
+    },
+    {
+      "nome": "subtitulo51",
+      "tipo": "texto",
+      "exemplo": "Wisp — T14"
+    },
+    {
+      "nome": "texto51",
+      "tipo": "texto",
+      "exemplo": "Model: Ekaterina Romanova"
+    },
+    {
+      "nome": "subtitulo52",
+      "tipo": "texto",
+      "exemplo": "Fragment — G77"
+    },
+    {
+      "nome": "texto52",
+      "tipo": "texto",
+      "exemplo": "Model: Aria Robinson"
+    },
+    {
+      "nome": "subtitulo53",
+      "tipo": "texto",
+      "exemplo": "Spiral — Y24"
+    },
+    {
+      "nome": "texto53",
+      "tipo": "texto",
+      "exemplo": "Model: Daria Petrova"
+    },
+    {
+      "nome": "subtitulo54",
+      "tipo": "texto",
+      "exemplo": "Trace — Z85"
+    },
+    {
+      "nome": "texto54",
+      "tipo": "texto",
+      "exemplo": "Model: Chloe Evans"
+    },
+    {
+      "nome": "subtitulo55",
+      "tipo": "texto",
+      "exemplo": "Flare — C11"
+    },
+    {
+      "nome": "texto55",
+      "tipo": "texto",
+      "exemplo": "Model: Sofia Orlova"
+    },
+    {
+      "nome": "subtitulo56",
+      "tipo": "texto",
+      "exemplo": "Chasm — R05"
+    },
+    {
+      "nome": "texto56",
+      "tipo": "texto",
+      "exemplo": "Model: Grace Walker"
+    },
+    {
+      "nome": "subtitulo57",
+      "tipo": "texto",
+      "exemplo": "Bloom — N38"
+    },
+    {
+      "nome": "texto57",
+      "tipo": "texto",
+      "exemplo": "Model: Yana Melnikova"
+    },
+    {
+      "nome": "subtitulo58",
+      "tipo": "texto",
+      "exemplo": "Shard — W20"
+    },
+    {
+      "nome": "texto58",
+      "tipo": "texto",
+      "exemplo": "Model: Mila Scott"
+    },
+    {
+      "nome": "subtitulo59",
+      "tipo": "texto",
+      "exemplo": "Mist — S12"
+    },
+    {
+      "nome": "texto59",
+      "tipo": "texto",
+      "exemplo": "Model: Natalia Ivanova"
+    },
+    {
+      "nome": "subtitulo60",
+      "tipo": "texto",
+      "exemplo": "Crush — E31"
+    },
+    {
+      "nome": "texto60",
+      "tipo": "texto",
+      "exemplo": "Model: Ava Thompson"
+    },
+    {
+      "nome": "subtitulo61",
+      "tipo": "texto",
+      "exemplo": "Ripple — F68"
+    },
+    {
+      "nome": "texto61",
+      "tipo": "texto",
+      "exemplo": "Model: Anastasia Novikova"
+    },
+    {
+      "nome": "subtitulo62",
+      "tipo": "texto",
+      "exemplo": "Gossamer — A07"
+    },
+    {
+      "nome": "texto62",
+      "tipo": "texto",
+      "exemplo": "Model: Madison Brooks"
+    },
+    {
+      "nome": "subtitulo63",
+      "tipo": "texto",
+      "exemplo": "Floe — K96"
+    },
+    {
+      "nome": "texto63",
+      "tipo": "texto",
+      "exemplo": "Model: Ekaterina Smirnova"
+    },
+    {
+      "nome": "subtitulo64",
+      "tipo": "texto",
+      "exemplo": "Shiver — V44"
+    },
+    {
+      "nome": "texto64",
+      "tipo": "texto",
+      "exemplo": "Model: Emily Robinson"
+    },
+    {
+      "nome": "subtitulo65",
+      "tipo": "texto",
+      "exemplo": "murmur—207"
+    },
+    {
+      "nome": "texto65",
+      "tipo": "texto",
+      "exemplo": "Beneath the soft static of this lies a fragmented recollection of motion—faded pulses echoing through\n            time-warped layers of light and silence. A sti"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Close"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 65
+  },
+  "_rever": [
+    "4 cor(es) mapeadas para tokens por luminância (acento da origem #a22d1d → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

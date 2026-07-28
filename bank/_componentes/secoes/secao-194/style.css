@@ -1,0 +1,10 @@
+/* vetic-testimonials — local overrides only. The real styles live in the shared
+   /vetic/styles.css (.section_testimonial, .testimonial_loop, .testimonial_group,
+   .testimonial_box). The marquee is pure CSS: marquee-x keyframes at >=768px,
+   static 3-card stack below 768px, disabled under prefers-reduced-motion.
+   The header tag + heading reveal via data-reveal="view" (shared scroll-reveal.js). */
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #f2f2f2);
+  font-family: Inter, sans-serif;
+}

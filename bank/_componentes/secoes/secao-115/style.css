@@ -1,0 +1,8 @@
+/* hirekit-services-hero — overrides locales. Estructura/estilo en /hirekit/styles.css. */
+body { margin: 0; min-height: 100svh; }
+
+/* Esquinas del thumbnail: el wrapper full-bleed tiene border-radius 48px → standalone
+   sobre body cream revelaba las 4 esquinas claras (la card del lab redondea menos). Pinto el
+   body con el color exacto del wrapper → esquinas/margen quedan del mismo color, invisibles.
+   Solo afecta el preview/thumbnail (las reglas de body no van a la sección embebida). */
+body { background: rgb(82, 0, 128); }

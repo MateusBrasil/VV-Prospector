@@ -1,0 +1,136 @@
+[data-dobra="destaque-prism-worlds"] *,[data-dobra="destaque-prism-worlds"] *::after,[data-dobra="destaque-prism-worlds"] *::before{
+        box-sizing: border-box;
+      }
+[data-dobra="destaque-prism-worlds"]{
+        font-size: 16px;
+        --color-text: var(--base-600);
+        --color-bg: var(--base-100);
+        --color-bg-alt: var(--base-200);
+        --color-link: rgba(0,0,0,0.6);
+        --color-link-hover: var(--base-600);
+        --page-padding: 1.5rem;
+        --color-title: var(--base-600);
+      }
+[data-dobra="destaque-prism-worlds"]{
+        margin: 0;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        font-family: var(--fonte-corpo);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow: hidden;
+        height: 100vh;
+        
+        background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.08"/%3E%3C/svg%3E'), 
+                    radial-gradient(circle, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+        background-size: 150px, 100% 100vh;
+      }
+[data-dobra="destaque-prism-worlds"] .js .loading::before,[data-dobra="destaque-prism-worlds"] .js .loading::after{
+        content: "";
+        position: fixed;
+        z-index: 1000;
+      }
+[data-dobra="destaque-prism-worlds"] .js .loading::before{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-bg);
+      }
+[data-dobra="destaque-prism-worlds"] .js .loading::after{
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        margin: -30px 0 0 -30px;
+        border-radius: 50%;
+        opacity: 0.4;
+        background: var(--color-link-hover);
+        animation: loaderAnim 0.7s linear infinite alternate forwards;
+      }
+@keyframes loaderAnim{
+        to {
+          opacity: 1;
+          transform: scale3d(0.5, 0.5, 1);
+        }
+      }
+[data-dobra="destaque-prism-worlds"] .frame{
+        padding: var(--page-padding);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        pointer-events: none;
+      }
+[data-dobra="destaque-prism-worlds"] .frame__title{
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 0;
+        letter-spacing: 0.05em;
+        opacity: 0.8;
+      }
+[data-dobra="destaque-prism-worlds"] .content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+[data-dobra="destaque-prism-worlds"] .gloock-regular{
+        font-family: var(--fonte-corpo);
+        font-weight: 400;
+        font-style: normal;
+      }
+[data-dobra="destaque-prism-worlds"] .scene{
+        perspective: 1000px;
+        overflow: hidden;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        top: 0;
+      }
+[data-dobra="destaque-prism-worlds"] .card{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+[data-dobra="destaque-prism-worlds"] .card__img{
+        width: 5em;
+        border-radius: 5px;
+        aspect-ratio: 2/3;
+        background-position: center;
+        background-size: cover;
+      }
+[data-dobra="destaque-prism-worlds"] .headings{
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        color: var(--color-title);
+        text-transform: uppercase;
+      }
+[data-dobra="destaque-prism-worlds"] .headings__main{
+        line-height: 0.5;
+        font-size: clamp(2.5rem, 1.59rem + 3.883vw, 6.25rem);
+      }
+[data-dobra="destaque-prism-worlds"] .headings_subtitle{
+        line-height: 0.5;
+        font-size: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+        margin-top: 1rem;
+        letter-spacing: 0.1em;
+      }
+@media screen and (min-width: 53em){[data-dobra="destaque-prism-worlds"] .card__img{
+          width: 6em;
+        }
+
+      }
+
+    

@@ -1,0 +1,13 @@
+/* Coverly — Pricing
+   Component-scoped overrides only. The shared Coverly stylesheet
+   (/coverly/styles.css) provides tokens, layout primitives, the
+   .section_pricing grid (`.grid-3gap`, `.pricing_card`, `.list_grid.is-vertical`)
+   and the `.button` hover micro-interaction. */
+
+body {
+  margin: 0;
+  background: var(--bg-color--bg-primary, #fbfbf9);
+  color: var(--text-color--text-primary, #000);
+  font-family: var(--_typography---font-family--secondary, Inter, sans-serif);
+  min-height: 100svh;
+}

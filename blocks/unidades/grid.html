@@ -1,0 +1,30 @@
+<style>
+.uni__head{max-width:56ch;margin-bottom:var(--space-4)}
+.uni__head p{color:var(--ink-muted);margin-top:var(--space-2)}
+.uni__grid{display:grid;gap:var(--space-3)}
+@media (min-width:700px){.uni__grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1050px){.uni__grid{grid-template-columns:repeat(4,1fr);gap:var(--space-2)}}
+.uni__card{display:grid;grid-template-columns:96px 1fr;align-items:stretch;
+  border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);box-shadow:var(--ring);
+  text-decoration:none;transition:transform 150ms var(--ease)}
+@media (min-width:700px){.uni__card{display:flex;flex-direction:column}}
+.uni__card:hover{transform:translateY(-3px)}
+.uni__card:focus-visible{outline:2px solid var(--brand-cta);outline-offset:3px}
+.uni__card img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover}
+@media (min-width:700px){.uni__card img{height:auto;aspect-ratio:4/3}}
+.uni__body{padding:var(--space-2) var(--space-3);display:flex;flex-direction:column;gap:.3rem;flex:1;justify-content:center}
+.uni__nome{font-family:var(--font-display);font-size:var(--step-1);letter-spacing:-0.01em}
+.uni__morada{font-size:var(--step--1);color:var(--ink-muted);line-height:1.5;flex:1}
+.uni__ver{font-size:var(--step--1);font-weight:600;color:var(--brand-ink)}
+</style>
+<section id="clinicas">
+  <div class="wrap">
+    <div class="uni__head reveal">
+      <h2>{{titulo}}</h2>
+      {{#intro}}<p>{{intro}}</p>{{/intro}}
+    </div>
+    <div class="uni__grid reveal" data-motion="cards">
+      {{{cards}}}
+    </div>
+  </div>
+</section>

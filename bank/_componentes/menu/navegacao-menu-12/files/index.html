@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>xhatch — Motion Design Studio</title>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+   <div class="grid" aria-hidden="true"></div>
+
+   <header class="header">
+      <a href="#" class="brand" aria-label="xhatch home">
+         <svg class="brand__svg" viewBox="0 0 40 40" aria-hidden="true">
+            <g id="js-brand-mark">
+               <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" />
+               <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(45 20 20)" />
+               <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(90 20 20)" />
+               <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(135 20 20)" />
+            </g>
+         </svg>
+         <span class="brand__name">xhatch</span>
+      </a>
+
+      <button class="toggle" id="js-toggle" type="button" aria-label="Open menu">
+         <span class="toggle__icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+         </span>
+         <span class="toggle__label">
+            <span data-label="open">Open</span>
+            <span data-label="close">Close</span>
+         </span>
+      </button>
+   </header>
+
+   <main class="hero">
+      <h1 class="hero__title">XHATCH</h1>
+   </main>
+
+   <div class="menu" id="js-menu" aria-hidden="true">
+      <a href="#" class="lane lane--h lane--row-1" data-dir="left">
+         <div class="lane__track" id="js-track-1">
+            <span class="lane__group">
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+            </span>
+            <span class="lane__group">
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+               <span class="lane__word">WORK<span class="lane__star">✦</span></span>
+            </span>
+         </div>
+      </a>
+
+      <a href="#" class="lane lane--h lane--row-2" data-dir="right">
+         <div class="lane__track" id="js-track-2">
+            <span class="lane__group">
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+            </span>
+            <span class="lane__group">
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+               <span class="lane__word">STUDIO<span class="lane__star">✦</span></span>
+            </span>
+         </div>
+      </a>
+
+      <a href="#" class="lane lane--v lane--col-1" data-dir="up">
+         <div class="lane__track lane__track--v" id="js-track-3">
+            <span class="lane__group lane__group--v">
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+            </span>
+            <span class="lane__group lane__group--v">
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">JOURNAL</span>
+               <span class="lane__star lane__star--v">✦</span>
+            </span>
+         </div>
+      </a>
+
+      <a href="#" class="lane lane--v lane--col-2" data-dir="down">
+         <div class="lane__track lane__track--v" id="js-track-4">
+            <span class="lane__group lane__group--v">
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+            </span>
+            <span class="lane__group lane__group--v">
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+               <span class="lane__word lane__word--v">CONTACT</span>
+               <span class="lane__star lane__star--v">✦</span>
+            </span>
+         </div>
+      </a>
+
+      <div class="menu__core" id="js-core" aria-hidden="true">
+         <span class="menu__core-badge">
+            <svg class="menu__core-svg" viewBox="0 0 40 40">
+               <g id="js-core-mark">
+                  <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" />
+                  <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(45 20 20)" />
+                  <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(90 20 20)" />
+                  <rect x="18" y="0" width="4" height="40" rx="1" fill="currentColor" transform="rotate(135 20 20)" />
+               </g>
+            </svg>
+            <span>xhatch</span>
+         </span>
+      </div>
+   </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+   <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,360 @@
+---
+// Pixel-art icons mirror the Solution cards in /features (9×9 grid, on
+// cells defined per card). Same size + periwinkle glow as that page so
+// both sections share visual language.
+const painPoints = [
+  {
+    title: "Falhas em pipelines",
+    desc: "Traditional ETL breaks silently. You discover issues hours later when dashboards go dark.",
+    // Single horizontal pipe with a break in the middle. Drop falls from
+    // the gap and splashes below. Row 0 + row 8 + col 0 + col 8 stay empty
+    // so the icon has breathing room on all four sides (less wide-feeling).
+    iconCells: new Set<number>([
+      // Row 1: top wall, cols 1-7 (gap at col 4 = idx 13)
+      10, 11, 12, 14, 15, 16,
+      // Rows 2-3: side caps at cols 1 + 7
+      19, 25,
+      28, 34,
+      // Row 4: bottom wall (gap at col 4 = idx 40)
+      37, 38, 39, 41, 42, 43,
+      // Rows 5-6: drop falling through the gap
+      49,
+      58,
+      // Row 7: splash
+      66, 67, 68,
+    ]),
+  },
+  {
+    title: "Blind Spot Monitoraring",
+    desc: "Scattered logs across 12 services. No single pane of glass for your ML infrastructure.",
+    // Eye outline with hollow ring pupil — reads cleaner as "eye" than a
+    // solid 3×3 block. Negative center implies the blind spot itself.
+    iconCells: new Set<number>([
+      // Row 1: top arc
+      11, 12, 13, 14, 15,
+      // Row 2: outer corners pulling out
+      19, 25,
+      // Row 3: sides + pupil top
+      28, 30, 31, 32, 34,
+      // Row 4: sides + pupil ring (hollow center at 40)
+      37, 39, 41, 43,
+      // Row 5: sides + pupil bottom
+      46, 48, 49, 50, 52,
+      // Row 6: outer corners pulling in
+      55, 61,
+      // Row 7: bottom arc
+      65, 66, 67, 68, 69,
+    ]),
+  },
+  {
+    title: "Escala sem sofrimento",
+    desc: "Infrastructure that works at 1K requests crumbles at 100K. Rebuilding under pressure is not a strategy.",
+    // 3 ascending bars (width 2) — bar chart shape. Cleaner read than the
+    // solid stairs and matches the "scaling" demand metaphor.
+    iconCells: new Set<number>([
+      // Bar 1 (cols 1-2, height 2): rows 7-8
+      64, 65,
+      73, 74,
+      // Bar 2 (cols 4-5, height 4): rows 5-8
+      49, 50,
+      58, 59,
+      67, 68,
+      76, 77,
+      // Bar 3 (cols 7-8, height 7): rows 2-8
+      25, 26,
+      34, 35,
+      43, 44,
+      52, 53,
+      61, 62,
+      70, 71,
+      79, 80,
+    ]),
+  },
+];
+---
+
+<script is:inline>
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("problem-pre-anim");
+  }
+</script>
+
+<section class="py-16 md:py-[8rem]" data-problem-section>
+  <div class="relative mx-auto w-full max-w-[70.5rem] px-4">
+    <div class="flex flex-col items-comeca gap-4 font-mono font-normal uppercase md:gap-3">
+      <span
+        class="text-[0.875rem] leading-[1.125rem] tracking-[0.105rem] text-[var(--color-accent)]"
+        data-problem-eyebrow
+      >
+        [ The Problem ]
+      </span>
+      <h2
+        class="text-[2.5rem] leading-none tracking-[0.3rem] text-white md:max-w-[42.9375rem] md:text-[3rem] md:tracking-[0.36rem]"
+        data-problem-headline
+      >
+        Why Legacy Data Tools Are Broken
+      </h2>
+      <p
+        class="max-w-[32.3125rem] text-[0.875rem] leading-[1.125rem] text-white/60"
+        data-problem-subhead
+      >
+        Most infrastructure was built before the AI era. We're building for
+        what comes next.
+      </p>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-6 md:[&>div:nth-child(3)]:col-span-2 lg:mt-[5.75rem] lg:grid-cols-3 lg:[&>div:nth-child(3)]:col-span-1">
+      {
+        painPoints.map((p, i) => (
+          <div
+            class="problem-card relative flex size-full flex-col items-comeca gap-8 bg-[var(--color-bg)] p-6 lg:gap-16"
+            data-problem-card
+            data-card-index={i}
+          >
+            <span class="card-line card-line--top" data-card-line="top" aria-hidden="true" />
+            <span class="card-line card-line--right" data-card-line="right" aria-hidden="true" />
+            <span class="card-line card-line--bottom" data-card-line="bottom" aria-hidden="true" />
+            <span class="card-line card-line--left" data-card-line="left" aria-hidden="true" />
+
+            <div
+              class="grid size-[2.875rem] grid-cols-9 gap-[1px]"
+              aria-hidden="true"
+              data-card-icon
+            >
+              {Array.from({ length: 81 }).map((_, idx) => (
+                <span
+                  class:list={[
+                    "block size-full",
+                    p.iconCells.has(idx) && "icon-cell-on",
+                  ]}
+                />
+              ))}
+            </div>
+            <div class="flex w-full flex-col gap-6 font-mono font-normal uppercase">
+              <h3
+                class="text-[1.125rem] leading-[1.75rem] tracking-[0.135rem] text-white"
+                data-card-title
+              >
+                {p.title}
+              </h3>
+              <p
+                class="text-[0.875rem] leading-[1.125rem] tracking-[0.105rem] text-white/60"
+                data-card-desc
+              >
+                {p.desc}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem-card {
+    /* Border drawn by .card-line spans — no CSS border here */
+  }
+  .card-line {
+    position: absolute;
+    background: var(--color-border);
+    pointer-events: none;
+  }
+  .card-line--top,
+  .card-line--bottom {
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+  .card-line--top {
+    top: 0;
+    transform-origin: left center;
+  }
+  .card-line--bottom {
+    bottom: 0;
+    transform-origin: right center;
+  }
+  .card-line--left,
+  .card-line--right {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+  .card-line--right {
+    right: 0;
+    transform-origin: center top;
+  }
+  .card-line--left {
+    left: 0;
+    transform-origin: center bottom;
+  }
+
+  /* Pre-anim hide: prevents FOUC before GSAP sets initial state */
+  .problem-pre-anim [data-problem-eyebrow],
+  .problem-pre-anim [data-problem-headline],
+  .problem-pre-anim [data-problem-subhead],
+  .problem-pre-anim [data-problem-card] {
+    visibility: hidden;
+  }
+
+  /* Pixel-art icon "on" cell — periwinkle + 3-layer glow.
+     Mirrors the Solution card icons in /features for visual consistency. */
+  [data-problem-card] .icon-cell-on {
+    background: #b5d2ff;
+    box-shadow:
+      0 0 2px rgba(95, 92, 255, 0.78),
+      0 1px 3px rgba(95, 92, 255, 0.5),
+      0 2px 5px rgba(95, 92, 255, 0.25);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerEagleEases();
+
+  const init = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.remove("problem-pre-anim");
+      return;
+    }
+
+    const section = document.querySelector<HTMLElement>("[data-problem-section]");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>("[data-problem-eyebrow]");
+    const headline = section.querySelector<HTMLElement>("[data-problem-headline]");
+    const subhead = section.querySelector<HTMLElement>("[data-problem-subhead]");
+    const cards = gsap.utils.toArray<HTMLElement>("[data-problem-card]", section);
+
+    const headlineSplit = headline
+      ? new SplitText(headline, { type: "lines", mask: "lines" })
+      : null;
+    const subheadSplit = subhead
+      ? new SplitText(subhead, { type: "lines", mask: "lines" })
+      : null;
+
+    type CardParts = {
+      el: HTMLElement;
+      lines: HTMLElement[];
+      icon: HTMLElement | null;
+      titleSplit: SplitText | null;
+      descSplit: SplitText | null;
+    };
+
+    const cardParts: CardParts[] = cards.map((card) => {
+      const titleEl = card.querySelector<HTMLElement>("[data-card-title]");
+      const descEl = card.querySelector<HTMLElement>("[data-card-desc]");
+      return {
+        el: card,
+        lines: gsap.utils.toArray<HTMLElement>("[data-card-line]", card),
+        icon: card.querySelector<HTMLElement>("[data-card-icon]"),
+        titleSplit: titleEl ? new SplitText(titleEl, { type: "lines", mask: "lines" }) : null,
+        descSplit: descEl ? new SplitText(descEl, { type: "lines", mask: "lines" }) : null,
+      };
+    });
+
+    // Pre-anim state
+    if (eyebrow) gsap.set(eyebrow, { y: -8, opacity: 0 });
+    if (headlineSplit) gsap.set(headlineSplit.lines, { yPercent: 110 });
+    if (headline) gsap.set(headline, { opacity: 1 });
+    if (subheadSplit) gsap.set(subheadSplit.lines, { yPercent: 110 });
+    if (subhead) gsap.set(subhead, { opacity: 1 });
+
+    cardParts.forEach(({ el, lines, icon, titleSplit, descSplit }) => {
+      gsap.set(el, { opacity: 1 });
+      lines.forEach((line) => {
+        const axis = line.dataset.cardLine === "top" || line.dataset.cardLine === "bottom" ? "x" : "y";
+        gsap.set(line, axis === "x" ? { scaleX: 0 } : { scaleY: 0 });
+      });
+      if (icon) gsap.set(icon, { opacity: 0, scale: 0.8, transformOrigin: "center" });
+      if (titleSplit) gsap.set(titleSplit.lines, { yPercent: 110 });
+      if (descSplit) gsap.set(descSplit.lines, { yPercent: 110 });
+    });
+
+    document.documentElement.classList.remove("problem-pre-anim");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        comeca: "top 75%",
+        once: true,
+      },
+    });
+
+    // Header revelar
+    if (eyebrow) {
+      tl.to(eyebrow, {
+        y: 0,
+        opacity: 1,
+        duration: 0.45,
+        ease: "eagleDecor",
+      }, 0);
+    }
+    if (headlineSplit) {
+      tl.to(headlineSplit.lines, {
+        yPercent: 0,
+        duration: 0.85,
+        ease: "eagleReveal",
+        stagger: 0.1,
+      }, 0.05);
+    }
+    if (subheadSplit) {
+      tl.to(subheadSplit.lines, {
+        yPercent: 0,
+        duration: 0.6,
+        ease: "eagleReveal",
+        stagger: 0.06,
+      }, 0.4);
+    }
+
+    // Cards staggered
+    cardParts.forEach(({ lines, icon, titleSplit, descSplit }, idx) => {
+      const cardStart = 0.55 + idx * 0.18;
+
+      lines.forEach((line, lineIdx) => {
+        const axis = line.dataset.cardLine === "top" || line.dataset.cardLine === "bottom" ? "x" : "y";
+        tl.to(line, {
+          [axis === "x" ? "scaleX" : "scaleY"]: 1,
+          duration: 0.32,
+          ease: "eagleStructure",
+        }, cardStart + lineIdx * 0.09);
+      });
+
+      if (icon) {
+        tl.to(icon, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.55,
+          ease: "eagleDecor",
+        }, cardStart + 0.32);
+      }
+      if (titleSplit) {
+        tl.to(titleSplit.lines, {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "eagleReveal",
+          stagger: 0.06,
+        }, cardStart + 0.5);
+      }
+      if (descSplit) {
+        tl.to(descSplit.lines, {
+          yPercent: 0,
+          duration: 0.5,
+          ease: "eagleReveal",
+          stagger: 0.04,
+        }, cardStart + 0.62);
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

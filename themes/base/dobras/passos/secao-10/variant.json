@@ -1,0 +1,175 @@
+{
+  "slot": "passos",
+  "nome": "secao-10",
+  "scope": "passos-secao-10",
+  "origem": "bank/_componentes/secoes/secao-10",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Case Studies"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Operational efficiency boost"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Implemented streamlined processes that increased efficiency by 30%, enabling smoother operations and reducing redundant tasks. Our methods ensure consistency an"
+    },
+    {
+      "nome": "item",
+      "tipo": "texto",
+      "exemplo": "Healthcare"
+    },
+    {
+      "nome": "item2",
+      "tipo": "texto",
+      "exemplo": "Process Design"
+    },
+    {
+      "nome": "item3",
+      "tipo": "texto",
+      "exemplo": "Efficiency Boost"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "View more"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Construction advisory"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Guided a major financial restructuring that saved $1 million annually, delivering strategic insights to optimize cost-efficiency and enhance profitability for l"
+    },
+    {
+      "nome": "item4",
+      "tipo": "texto",
+      "exemplo": "Construction"
+    },
+    {
+      "nome": "item5",
+      "tipo": "texto",
+      "exemplo": "Financial Strategy"
+    },
+    {
+      "nome": "item6",
+      "tipo": "texto",
+      "exemplo": "Cost Optimization"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "View more"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Hospitality solutions"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Deployed a new CRM system that improved client engagement and satisfaction, driving seamless communication and enhancing customer retention across the hospitali"
+    },
+    {
+      "nome": "item7",
+      "tipo": "texto",
+      "exemplo": "Hospitality"
+    },
+    {
+      "nome": "item8",
+      "tipo": "texto",
+      "exemplo": "CRM"
+    },
+    {
+      "nome": "item9",
+      "tipo": "texto",
+      "exemplo": "Customer Retention"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "View more"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Firefighting communication"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Developed robust communication protocols that reduced response times by 40%, ensuring timely and efficient coordination during critical firefighting operations."
+    },
+    {
+      "nome": "item10",
+      "tipo": "texto",
+      "exemplo": "Public Safety"
+    },
+    {
+      "nome": "item11",
+      "tipo": "texto",
+      "exemplo": "Communications"
+    },
+    {
+      "nome": "item12",
+      "tipo": "texto",
+      "exemplo": "Response Time"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "View more"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-1-thum.avif"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-thum.avif"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-3-thum.avif"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-4-thum.avif"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 4
+  },
+  "_rever": [
+    "20 cor(es) mapeadas para tokens por luminância (acento da origem #001d21 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "4 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-1-thum.avif https://d173woph5zl366.cloudfront.net/acelia/assets/images/Case-2-thum.avif)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

@@ -1,0 +1,18 @@
+{
+  "slot": "destaque",
+  "nome": "3d-15",
+  "scope": "destaque-3d-15",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-15/f/public",
+  "registo": "cinematografico",
+  "estado": "experimental",
+  "libs": [],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

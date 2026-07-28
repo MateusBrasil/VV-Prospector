@@ -1,0 +1,844 @@
+{
+  "slot": "vitrine",
+  "nome": "animacao-grid-9",
+  "scope": "vitrine-animacao-grid-9",
+  "origem": "bank/_componentes/animacoes-de-grid/animacao-grid-9",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem7",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem8",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem9",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem10",
+      "tipo": "imagem",
+      "exemplo": "img/11.jpg"
+    },
+    {
+      "nome": "imagem11",
+      "tipo": "imagem",
+      "exemplo": "img/12.jpg"
+    },
+    {
+      "nome": "imagem12",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem13",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem14",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem15",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem16",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem17",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem18",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem19",
+      "tipo": "imagem",
+      "exemplo": "img/20.jpg"
+    },
+    {
+      "nome": "imagem20",
+      "tipo": "imagem",
+      "exemplo": "img/21.jpg"
+    },
+    {
+      "nome": "imagem21",
+      "tipo": "imagem",
+      "exemplo": "img/22.jpg"
+    },
+    {
+      "nome": "imagem22",
+      "tipo": "imagem",
+      "exemplo": "img/23.jpg"
+    },
+    {
+      "nome": "imagem23",
+      "tipo": "imagem",
+      "exemplo": "img/24.jpg"
+    },
+    {
+      "nome": "imagem24",
+      "tipo": "imagem",
+      "exemplo": "img/25.jpg"
+    },
+    {
+      "nome": "imagem25",
+      "tipo": "imagem",
+      "exemplo": "img/26.jpg"
+    },
+    {
+      "nome": "imagem26",
+      "tipo": "imagem",
+      "exemplo": "img/27.jpg"
+    },
+    {
+      "nome": "imagem27",
+      "tipo": "imagem",
+      "exemplo": "img/28.jpg"
+    },
+    {
+      "nome": "imagem28",
+      "tipo": "imagem",
+      "exemplo": "img/29.jpg"
+    },
+    {
+      "nome": "imagem29",
+      "tipo": "imagem",
+      "exemplo": "img/30.jpg"
+    },
+    {
+      "nome": "imagem30",
+      "tipo": "imagem",
+      "exemplo": "img/31.jpg"
+    },
+    {
+      "nome": "imagem31",
+      "tipo": "imagem",
+      "exemplo": "img/32.jpg"
+    },
+    {
+      "nome": "imagem32",
+      "tipo": "imagem",
+      "exemplo": "img/33.jpg"
+    },
+    {
+      "nome": "imagem33",
+      "tipo": "imagem",
+      "exemplo": "img/34.jpg"
+    },
+    {
+      "nome": "imagem34",
+      "tipo": "imagem",
+      "exemplo": "img/35.jpg"
+    },
+    {
+      "nome": "imagem35",
+      "tipo": "imagem",
+      "exemplo": "img/36.jpg"
+    },
+    {
+      "nome": "imagem36",
+      "tipo": "imagem",
+      "exemplo": "img/37.jpg"
+    },
+    {
+      "nome": "imagem37",
+      "tipo": "imagem",
+      "exemplo": "img/38.jpg"
+    },
+    {
+      "nome": "imagem38",
+      "tipo": "imagem",
+      "exemplo": "img/39.jpg"
+    },
+    {
+      "nome": "imagem39",
+      "tipo": "imagem",
+      "exemplo": "img/40.jpg"
+    },
+    {
+      "nome": "imagem40",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem41",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem42",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem43",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem44",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem45",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem46",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem47",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem48",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem49",
+      "tipo": "imagem",
+      "exemplo": "img/11.jpg"
+    },
+    {
+      "nome": "imagem50",
+      "tipo": "imagem",
+      "exemplo": "img/12.jpg"
+    },
+    {
+      "nome": "imagem51",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem52",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem53",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem54",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem55",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem56",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem57",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem58",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem59",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem60",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem61",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem62",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem63",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem64",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem65",
+      "tipo": "imagem",
+      "exemplo": "img/20.jpg"
+    },
+    {
+      "nome": "imagem66",
+      "tipo": "imagem",
+      "exemplo": "img/21.jpg"
+    },
+    {
+      "nome": "imagem67",
+      "tipo": "imagem",
+      "exemplo": "img/22.jpg"
+    },
+    {
+      "nome": "imagem68",
+      "tipo": "imagem",
+      "exemplo": "img/23.jpg"
+    },
+    {
+      "nome": "imagem69",
+      "tipo": "imagem",
+      "exemplo": "img/24.jpg"
+    },
+    {
+      "nome": "imagem70",
+      "tipo": "imagem",
+      "exemplo": "img/25.jpg"
+    },
+    {
+      "nome": "imagem71",
+      "tipo": "imagem",
+      "exemplo": "img/26.jpg"
+    },
+    {
+      "nome": "imagem72",
+      "tipo": "imagem",
+      "exemplo": "img/27.jpg"
+    },
+    {
+      "nome": "imagem73",
+      "tipo": "imagem",
+      "exemplo": "img/28.jpg"
+    },
+    {
+      "nome": "imagem74",
+      "tipo": "imagem",
+      "exemplo": "img/29.jpg"
+    },
+    {
+      "nome": "imagem75",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem76",
+      "tipo": "imagem",
+      "exemplo": "img/31.jpg"
+    },
+    {
+      "nome": "imagem77",
+      "tipo": "imagem",
+      "exemplo": "img/32.jpg"
+    },
+    {
+      "nome": "imagem78",
+      "tipo": "imagem",
+      "exemplo": "img/33.jpg"
+    },
+    {
+      "nome": "imagem79",
+      "tipo": "imagem",
+      "exemplo": "img/34.jpg"
+    },
+    {
+      "nome": "imagem80",
+      "tipo": "imagem",
+      "exemplo": "img/35.jpg"
+    },
+    {
+      "nome": "imagem81",
+      "tipo": "imagem",
+      "exemplo": "img/36.jpg"
+    },
+    {
+      "nome": "imagem82",
+      "tipo": "imagem",
+      "exemplo": "img/37.jpg"
+    },
+    {
+      "nome": "imagem83",
+      "tipo": "imagem",
+      "exemplo": "img/38.jpg"
+    },
+    {
+      "nome": "imagem84",
+      "tipo": "imagem",
+      "exemplo": "img/39.jpg"
+    },
+    {
+      "nome": "imagem85",
+      "tipo": "imagem",
+      "exemplo": "img/40.jpg"
+    },
+    {
+      "nome": "imagem86",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem87",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem88",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem89",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem90",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem91",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem92",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem93",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem94",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem95",
+      "tipo": "imagem",
+      "exemplo": "img/11.jpg"
+    },
+    {
+      "nome": "imagem96",
+      "tipo": "imagem",
+      "exemplo": "img/12.jpg"
+    },
+    {
+      "nome": "imagem97",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem98",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem99",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem100",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem101",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem102",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem103",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem104",
+      "tipo": "imagem",
+      "exemplo": "img/20.jpg"
+    },
+    {
+      "nome": "imagem105",
+      "tipo": "imagem",
+      "exemplo": "img/21.jpg"
+    },
+    {
+      "nome": "imagem106",
+      "tipo": "imagem",
+      "exemplo": "img/22.jpg"
+    },
+    {
+      "nome": "imagem107",
+      "tipo": "imagem",
+      "exemplo": "img/23.jpg"
+    },
+    {
+      "nome": "imagem108",
+      "tipo": "imagem",
+      "exemplo": "img/24.jpg"
+    },
+    {
+      "nome": "imagem109",
+      "tipo": "imagem",
+      "exemplo": "img/25.jpg"
+    },
+    {
+      "nome": "imagem110",
+      "tipo": "imagem",
+      "exemplo": "img/26.jpg"
+    },
+    {
+      "nome": "imagem111",
+      "tipo": "imagem",
+      "exemplo": "img/27.jpg"
+    },
+    {
+      "nome": "imagem112",
+      "tipo": "imagem",
+      "exemplo": "img/28.jpg"
+    },
+    {
+      "nome": "imagem113",
+      "tipo": "imagem",
+      "exemplo": "img/29.jpg"
+    },
+    {
+      "nome": "imagem114",
+      "tipo": "imagem",
+      "exemplo": "img/30.jpg"
+    },
+    {
+      "nome": "imagem115",
+      "tipo": "imagem",
+      "exemplo": "img/31.jpg"
+    },
+    {
+      "nome": "imagem116",
+      "tipo": "imagem",
+      "exemplo": "img/32.jpg"
+    },
+    {
+      "nome": "imagem117",
+      "tipo": "imagem",
+      "exemplo": "img/33.jpg"
+    },
+    {
+      "nome": "imagem118",
+      "tipo": "imagem",
+      "exemplo": "img/34.jpg"
+    },
+    {
+      "nome": "imagem119",
+      "tipo": "imagem",
+      "exemplo": "img/35.jpg"
+    },
+    {
+      "nome": "imagem120",
+      "tipo": "imagem",
+      "exemplo": "img/36.jpg"
+    },
+    {
+      "nome": "imagem121",
+      "tipo": "imagem",
+      "exemplo": "img/37.jpg"
+    },
+    {
+      "nome": "imagem122",
+      "tipo": "imagem",
+      "exemplo": "img/38.jpg"
+    },
+    {
+      "nome": "imagem123",
+      "tipo": "imagem",
+      "exemplo": "img/39.jpg"
+    },
+    {
+      "nome": "imagem124",
+      "tipo": "imagem",
+      "exemplo": "img/40.jpg"
+    },
+    {
+      "nome": "imagem125",
+      "tipo": "imagem",
+      "exemplo": "img/41.jpg"
+    },
+    {
+      "nome": "imagem126",
+      "tipo": "imagem",
+      "exemplo": "img/42.jpg"
+    },
+    {
+      "nome": "imagem127",
+      "tipo": "imagem",
+      "exemplo": "img/43.jpg"
+    },
+    {
+      "nome": "imagem128",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem129",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem130",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem131",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem132",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    },
+    {
+      "nome": "imagem133",
+      "tipo": "imagem",
+      "exemplo": "img/6.jpg"
+    },
+    {
+      "nome": "imagem134",
+      "tipo": "imagem",
+      "exemplo": "img/7.jpg"
+    },
+    {
+      "nome": "imagem135",
+      "tipo": "imagem",
+      "exemplo": "img/8.jpg"
+    },
+    {
+      "nome": "imagem136",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    },
+    {
+      "nome": "imagem137",
+      "tipo": "imagem",
+      "exemplo": "img/10.jpg"
+    },
+    {
+      "nome": "imagem138",
+      "tipo": "imagem",
+      "exemplo": "img/11.jpg"
+    },
+    {
+      "nome": "imagem139",
+      "tipo": "imagem",
+      "exemplo": "img/12.jpg"
+    },
+    {
+      "nome": "imagem140",
+      "tipo": "imagem",
+      "exemplo": "img/13.jpg"
+    },
+    {
+      "nome": "imagem141",
+      "tipo": "imagem",
+      "exemplo": "img/14.jpg"
+    },
+    {
+      "nome": "imagem142",
+      "tipo": "imagem",
+      "exemplo": "img/15.jpg"
+    },
+    {
+      "nome": "imagem143",
+      "tipo": "imagem",
+      "exemplo": "img/16.jpg"
+    },
+    {
+      "nome": "imagem144",
+      "tipo": "imagem",
+      "exemplo": "img/17.jpg"
+    },
+    {
+      "nome": "imagem145",
+      "tipo": "imagem",
+      "exemplo": "img/18.jpg"
+    },
+    {
+      "nome": "imagem146",
+      "tipo": "imagem",
+      "exemplo": "img/19.jpg"
+    },
+    {
+      "nome": "imagem147",
+      "tipo": "imagem",
+      "exemplo": "img/20.jpg"
+    },
+    {
+      "nome": "imagem148",
+      "tipo": "imagem",
+      "exemplo": "img/21.jpg"
+    },
+    {
+      "nome": "imagem149",
+      "tipo": "imagem",
+      "exemplo": "img/22.jpg"
+    },
+    {
+      "nome": "imagem150",
+      "tipo": "imagem",
+      "exemplo": "img/23.jpg"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Make Way Grid Effect"
+    },
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Back to the article"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "Early years"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "view more"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "His writing was influenced by the social, cultural, and economic ambience of his home city of Los Angeles. His work addresses the ordinary lives of poor America"
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "Later life"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "view more"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Since his death in March 1994, Bukowski has been the subject of a number of critical articles and books about both his life and writings, despite his work havin"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "Writings"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "view more"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Several of Bukowski's poems were published in the late 1950s in Gallows, a small poetry magazine published briefly (the magazine lasted for two issues) by Jon G"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "Death and legacy"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "view more"
+    },
+    {
+      "nome": "imagem151",
+      "tipo": "imagem",
+      "exemplo": "img/9.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 151
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

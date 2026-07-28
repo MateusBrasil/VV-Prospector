@@ -1,0 +1,162 @@
+[data-dobra="destaque-scroll-53"] *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+[data-dobra="destaque-scroll-53"],[data-dobra="destaque-scroll-53"]{
+  width: 100%;
+  height: 100%;
+  font-family: var(--fonte-corpo);
+}
+[data-dobra="destaque-scroll-53"] a,[data-dobra="destaque-scroll-53"] p{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--base-600);
+}
+[data-dobra="destaque-scroll-53"] img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-dobra="destaque-scroll-53"] nav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+[data-dobra="destaque-scroll-53"] footer{
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4em;
+}
+[data-dobra="destaque-scroll-53"] section{
+  width: 100%;
+  padding: 2em;
+}
+[data-dobra="destaque-scroll-53"] .row{
+  width: 100%;
+  display: flex;
+  gap: 2em;
+}
+[data-dobra="destaque-scroll-53"] .col{
+  flex: 1;
+  display: flex;
+  gap: 1em;
+}
+[data-dobra="destaque-scroll-53"] .mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+[data-dobra="destaque-scroll-53"] .img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/5;
+}
+[data-dobra="destaque-scroll-53"] .hero h1{
+  margin-top: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8.75vw;
+  font-weight: 500;
+  letter-spacing: -0.02vw;
+}
+[data-dobra="destaque-scroll-53"] .info{
+  display: flex;
+  justify-content: flex-end;
+  gap: 2em;
+}
+[data-dobra="destaque-scroll-53"] .info p{
+  width: 25%;
+}
+[data-dobra="destaque-scroll-53"] .hero-imgs{
+  margin-top: 10em;
+}
+[data-dobra="destaque-scroll-53"] .clients{
+  display: flex;
+}
+[data-dobra="destaque-scroll-53"] .clients-list{
+  flex: 1;
+}
+[data-dobra="destaque-scroll-53"] .clients-imgs{
+  margin-top: 4em;
+}
+[data-dobra="destaque-scroll-53"] .clients-imgs .row{
+  height: 700px;
+}
+[data-dobra="destaque-scroll-53"] .product-filters{
+  padding-bottom: 1em;
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+[data-dobra="destaque-scroll-53"] .products{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+[data-dobra="destaque-scroll-53"] .about{
+  display: flex;
+}
+[data-dobra="destaque-scroll-53"] .about p{
+  margin-top: 8em;
+  flex: 1;
+}
+[data-dobra="destaque-scroll-53"] .outro .row{
+  margin-top: 8em;
+}
+[data-dobra="destaque-scroll-53"] .img-1 .mask,[data-dobra="destaque-scroll-53"] .img-6 .mask,[data-dobra="destaque-scroll-53"] .img-12 .mask{
+  background: url(./assets/img3.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-2 .mask,[data-dobra="destaque-scroll-53"] .img-7 .mask,[data-dobra="destaque-scroll-53"] .img-14 .mask{
+  background: url(./assets/img4.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-3 .mask,[data-dobra="destaque-scroll-53"] .img-15 .mask{
+  background: url(./assets/img7.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-4 .mask,[data-dobra="destaque-scroll-53"] .img-10 .mask{
+  background: url(./assets/img1.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-5 .mask,[data-dobra="destaque-scroll-53"] .img-11 .mask,[data-dobra="destaque-scroll-53"] .img-16 .mask{
+  background: url(./assets/img2.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-8 .mask,[data-dobra="destaque-scroll-53"] .img-17 .mask{
+  background: url(./assets/img5.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] .img-9 .mask,[data-dobra="destaque-scroll-53"] .img-13 .mask{
+  background: url(./assets/img6.jpg) no-repeat 50% 50%;
+  background-size: cover;
+}
+[data-dobra="destaque-scroll-53"] html.lenis,[data-dobra="destaque-scroll-53"] html.lenis body{
+  height: auto;
+}
+[data-dobra="destaque-scroll-53"] .lenis.lenis-smooth{
+  scroll-behavior: auto;
+}
+[data-dobra="destaque-scroll-53"] .lenis.lenis-smooth [data-lenis-prevent]{
+  overscroll-behavior: contain;
+}
+[data-dobra="destaque-scroll-53"] .lenis.lenis-stopped{
+  overflow: hidden;
+}
+[data-dobra="destaque-scroll-53"] .lenis.lenis-smooth iframe{
+  pointer-events: none;
+}
+
+

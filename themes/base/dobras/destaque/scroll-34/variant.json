@@ -1,0 +1,58 @@
+{
+  "slot": "destaque",
+  "nome": "scroll-34",
+  "scope": "destaque-scroll-34",
+  "origem": "bank/_componentes/scroll/scroll-34",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "What unfolds here is not a scene, but a duration. A sustained moment\n          where scale dissolves, edges soften, and perception lingers longer\n          than"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "A constructed moment, suspended between form and vastness. Light,\n            surface, and scale are carefully arranged to suggest movement\n            without "
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Observation Mode"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "End of view."
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "/sky.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "/window.png"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 2
+  },
+  "_rever": [
+    "2 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

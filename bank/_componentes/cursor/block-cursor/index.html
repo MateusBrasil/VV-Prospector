@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Effect - Squares on Grid</title>
+  <style>
+    /* Estilos base para a página */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #ffffff; /* Fundo branco solicitado */
+      overflow: hidden; /* Evita barras de rolagem */
+      font-family: sans-serif;
+      color: #111111; /* Texto escuro para contrastar com o fundo branco */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+
+    h1 {
+      pointer-events: none; /* Impede que o texto interfira no movimento do mouse */
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    /* Estilo do quadrado que segue o cursor */
+    .square {
+      position: fixed;
+      width: 15px;
+      height: 15px;
+      border-radius: 0%;
+      background-color: #000000; /* Quadrados pretos solicitados */
+      pointer-events: none;
+      z-index: 99999999;
+      transition: opacity 0.3s ease;
+      transform: translate(-50%, -50%); /* Centraliza o quadrado no cursor */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Move your mouse around the screen</h1>
+
+  <script>
+    const gridSize = 10;
+    let squares = [];
+    let idleTimeout;
+
+    // Função para criar um novo quadrado na tela
+    function createSquare(x, y) {
+      const square = document.createElement('div');
+      square.classList.add('square');
+      square.style.left = `${x}px`;
+      square.style.top = `${y}px`;
+      document.body.appendChild(square);
+      squares.push(square);
+    }
+
+    // Atualiza a lista de quadrados ativos e aplica efeitos de tamanho
+    function updateSquares(x, y) {
+      createSquare(x, y);
+
+      // Limita a quantidade de quadrados simultâneos na tela
+      if (squares.length > 8) {
+        const squareToRemove = squares.shift();
+        squareToRemove.remove();
+      }
+
+      // Altera progressivamente o tamanho dos quadrados anteriores
+      for (let i = 5; i < squares.length; i++) {
+        const square = squares[i];
+        const delay = i * 5;
+        setTimeout(() => {
+          const size = 2 + i * 2;
+          square.style.width = `${size}px`;
+          square.style.height = `${size}px`;
+        }, delay);
+      }
+
+      // Reinicia o temporizador de inatividade
+      clearTimeout(idleTimeout);
+      idleTimeout = setTimeout(clearSquares, 300);
+    }
+
+    // Remove todos os quadrados suavemente quando o mouse para
+    function clearSquares() {
+      squares.forEach((sq) => {
+        sq.style.opacity = "0";
+        setTimeout(() => {
+          if (sq && sq.parentNode) {
+            sq.remove();
+          }
+        }, 300);
+      });
+      squares = [];
+    }
+
+    // Alinha as coordenadas do mouse à grade definida
+    function snapToGrid(x, y) {
+      const gridX = Math.round(x / gridSize) * gridSize;
+      const gridY = Math.round(y / gridSize) * gridSize;
+      return { x: gridX, y: gridY };
+    }
+
+    // Escuta o movimento do mouse na janela
+    document.addEventListener('mousemove', (event) => {
+      const { x, y } = snapToGrid(event.clientX, event.clientY);
+      updateSquares(x, y);
+    });
+  </script>
+</body>
+</html>

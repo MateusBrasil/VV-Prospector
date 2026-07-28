@@ -1,0 +1,12 @@
+{
+  "ref": "menu/navegacao-menu-20",
+  "scope": "menu-navegacao-menu-20",
+  "libs": [
+    "gsap"
+  ],
+  "fontesCdn": [],
+  "tem_js": true,
+  "n_assets": 0,
+  "slots": ["{{logo}}", "{{link1_label}}", "{{link1_href}}", "{{link2_label}}", "{{link2_href}}", "{{link3_label}}", "{{link3_href}}", "{{link4_label}}", "{{link4_href}}", "{{email}}", "{{morada}}", "{{telefone}}"],
+  "_nota": "Corrigido 2026-07-22 (auditoria dev-squad): a versão anterior deste bloco carregava a 'home page' inteira do template SaaS de origem (rotas fake, estudos de caso, logos Curology/Yourspace/Lumin, morada/telefone da Suíça) dentro de um #page-root que era injetado no DOM via JS mesmo sem ninguém pedir. Removido o router e o conteúdo de origem por completo — o bloco agora é só a mecânica real (header + hamburger + overlay fullscreen + reveal de entrada). Textos e links viraram slots {{...}} obrigatórios; NENHUM tem default de marca alheia."
+}

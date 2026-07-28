@@ -1,0 +1,19 @@
+<style>
+.rodape{border-top:1px solid var(--hairline);padding-block:var(--space-4)}
+.rodape__grid{display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:space-between;align-items:center}
+.rodape__nome{font-family:var(--font-display);font-size:var(--step-1)}
+.rodape__meta{color:var(--ink-muted);font-size:var(--step--1);line-height:1.5}
+.rodape__links{display:flex;gap:var(--space-2);font-size:var(--step--1)}
+.rodape__links a{color:var(--ink-muted);text-decoration:none}
+.rodape__links a:hover{color:var(--ink)}
+</style>
+<footer class="rodape">
+  <div class="wrap rodape__grid">
+    <div>
+      <p class="rodape__nome">{{nome}}</p>
+      <p class="rodape__meta">{{morada}}{{#registo}}<br>{{registo}}{{/registo}}</p>
+    </div>
+    {{#links}}<nav class="rodape__links">{{{links}}}</nav>{{/links}}
+  </div>
+</footer>
+<div class="cta-bar"><a class="cta" href="{{ctaHref}}">{{ctaLabel}}</a></div>

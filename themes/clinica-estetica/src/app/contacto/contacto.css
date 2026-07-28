@@ -1,0 +1,12 @@
+/* Espaço para a barra de navegação, que é `absolute` e por isso não empurra o conteúdo.
+   Sem isto o título da secção ficava por baixo dos links. */
+.pagina-contacto {
+  padding-top: 5rem;
+  background-color: var(--base-100);
+}
+
+@media (max-width: 1000px) {
+  .pagina-contacto {
+    padding-top: 4rem;
+  }
+}

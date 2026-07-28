@@ -1,0 +1,232 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-17",
+  "scope": "destaque-3d-animacao-3d-17",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-17",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "lenis",
+    "three"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "webgl",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "atelier"
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Contact Us"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Spaces for"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Future"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Innovative furniture design studio. Crafting sustainable, bespoke, and\n          functional solutions for homes and businesses."
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "Living Here"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Collection"
+    },
+    {
+      "nome": "titulo4",
+      "tipo": "texto",
+      "exemplo": "Ripple Bench"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Design Concept"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Bench"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Outdoor"
+    },
+    {
+      "nome": "titulo5",
+      "tipo": "texto",
+      "exemplo": "Arc Table"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Design Concept"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Table"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Modern"
+    },
+    {
+      "nome": "titulo6",
+      "tipo": "texto",
+      "exemplo": "Orb Vase"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Limited Edition"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "Decor"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "Contemporary"
+    },
+    {
+      "nome": "titulo7",
+      "tipo": "texto",
+      "exemplo": "Grid Shelving"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Project Details"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Shelving"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Industrial"
+    },
+    {
+      "nome": "titulo8",
+      "tipo": "texto",
+      "exemplo": "Halo Pendant"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "Project Details"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "Lighting"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "Modern"
+    },
+    {
+      "nome": "titulo9",
+      "tipo": "texto",
+      "exemplo": "Flow Chair"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "US / EU"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "Design Concept"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "Armchair"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "Minimalist"
+    },
+    {
+      "nome": "titulo10",
+      "tipo": "texto",
+      "exemplo": "We are a French, Dutch, and German multidisciplinary design atelier\n          specializing in bespoke furniture, spatial installations, and\n          immersive "
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "info.oakatelier.com"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "hello.oakatelier.com"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "We are a French, Dutch, and German multidisciplinary design atelier\n          specializing in bespoke furniture, spatial installations, and\n          immersive "
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"webgl\": monta canvas WebGL/Three; arrasta peso e ciclo de vida próprio"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

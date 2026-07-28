@@ -1,0 +1,10 @@
+{
+  "nome": "Cosmic Gallery",
+  "descricao": "Cosmic Gallery",
+  "categoria": "Carrossel",
+  "tags": [
+    "cosmic-gallery"
+  ],
+  "thumb": "https://eynifdmidipyhvdwmfes.supabase.co/storage/v1/object/public/wrepo-images/comp-thumbs/e837cffa-b9e5-4ee9-8a63-c52076f2f885.jpg",
+  "video": "https://eynifdmidipyhvdwmfes.supabase.co/storage/v1/object/sign/eaglecode/MAIS%20EFEITOS%202/Cosmic%20Gallery.mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zNDVhMWQzNS1lMTk2LTQ1OTctYjJlYi00OGFkYWJjMjg3ZTciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJlYWdsZWNvZGUvTUFJUyBFRkVJVE9TIDIvQ29zbWljIEdhbGxlcnkubW92Iiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4MjYzNzE1NywiZXhwIjoxODE0MTczMTU3fQ.q5n-w7GxIg6IJXMdTlKAeKfjXfucEH4Ryvj9bc6gOUw"
+}

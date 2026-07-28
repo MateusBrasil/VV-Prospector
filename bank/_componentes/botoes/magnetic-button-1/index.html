@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito de Botão Magnético GSAP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+
+        /* Opcional: Desativar os eventos do rato no texto para evitar conflitos de foco */
+        .no-pointer {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center antialiased overflow-hidden">
+
+    <!-- ZONA MAGNÉTICA (Invisível, serve apenas para detetar o rato ao redor do botão) -->
+    <div id="zone" class="relative flex items-center justify-center w-[300px] h-[300px] rounded-full cursor-pointer group">
+        
+        <!-- O BOTÃO (Degradê radial com a cor vibrante FC015E) -->
+        <button id="btn" class="relative px-12 py-5 text-white/95 font-bold tracking-[0.2em] rounded-full shadow-[0_20px_50px_rgba(252,1,94,0.35)] border border-[#FC015E]/30 transition-shadow duration-300 hover:shadow-[0_25px_60px_rgba(252,1,94,0.5)]" style="background: radial-gradient(circle at 25% 25%, #ff4d8c 0%, #FC015E 55%, #660022 100%);">
+            <span class="no-pointer relative z-10">MAGNETIC</span>
+        </button>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const zone = document.querySelector("#zone");
+            const btn = document.querySelector("#btn");
+            
+            // Força de atração (1 = até ao limite exato do cursor, 0.5 = até metade)
+            const strength = 0.6; 
+
+            // 1. Evento: Quando o rato se move DENTRO da zona
+            // Sem "wiggle" - mapeando diretamente a posição do rato para o botão
+            zone.addEventListener("mousemove", (e) => {
+                const rect = zone.getBoundingClientRect();
+                
+                // mapRange converte as coordenadas do ecrã para um eixo centrado (-largura/2 a +largura/2)
+                const x = gsap.utils.mapRange(rect.left, rect.right, -rect.width / 2, rect.width / 2, e.clientX);
+                const y = gsap.utils.mapRange(rect.top, rect.bottom, -rect.height / 2, rect.height / 2, e.clientY);
+
+                gsap.to(btn, {
+                    x: x * strength,
+                    y: y * strength,
+                    duration: 0.4,
+                    ease: "power2.out",
+                    overwrite: true // Interrompe qualquer transição anterior imediatamente
+                });
+            });
+
+            // 2. Evento: Quando o rato SAI da zona
+            // Reposiciona o botão de volta para o centro (0,0) com efeito elástico de mola
+            zone.addEventListener("mouseleave", () => {
+                gsap.to(btn, { 
+                    x: 0, 
+                    y: 0,
+                    duration: 0.7,
+                    ease: "elastic.out(1, 0.4)",
+                    overwrite: true // Garante a sobreposição dos movimentos anteriores ao sair
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  min-height: 100svh;
+}
+
+/* --- Performance card tag marquees (Webflow IX2 continuous loops a-47/a-64) ---
+   Folded in verbatim from the AboutSection.astro scoped <style is:global> — these
+   rules are NOT in the shared styles.css.
+
+   Each .performance_loop-row is the animated TRACK and holds TWO identical
+   .performance_loop sets, so translateX(-50%) lands set 2 exactly where set 1
+   began = seamless. For -50% to be an exact period the strip must be uniformly
+   periodic: every tag (incl. the last of each set) needs a trailing gap. The
+   shared sheet renders the 0.5rem spacing as flex `gap`, which only sits BETWEEN
+   items, leaving the last tag with no trailing gap -> -50% lands half-a-gap short
+   -> a reset jump. Fix: render the gap as margin-right on every .performance_loop-item
+   and zero the flex column-gap on the row/loop.
+
+   Edge bleed: the marquee reaches the CARD edge, not the card's inner padding
+   (--xsmall = 0.5rem). Pull the wrapper out by that padding and clip at the edge.
+
+   Rows scroll OPPOSITE directions: row 1 forward, row 2 reverse. Respects
+   reduced-motion. No pause-on-hover (not in source). */
+.performance_loop-wrapper {
+  margin-inline: calc(-1 * var(--_sizes---fixed--xsmall)); /* -0.5rem = card padding */
+  overflow: hidden;
+}
+.performance_loop-row,
+.performance_loop {
+  column-gap: 0;
+}
+.performance_loop-row .performance_loop-item {
+  margin-right: var(--_sizes---fixed--xsmall); /* 0.5rem — was the flex gap */
+}
+.performance_loop-row {
+  width: max-content;
+  will-change: transform;
+  animation: performance-marquee 30s linear infinite;
+}
+.performance_loop-row:nth-child(2) {
+  animation-name: performance-marquee-reverse;
+}
+@keyframes performance-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes performance-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .performance_loop-row {
+    animation: none;
+  }
+}

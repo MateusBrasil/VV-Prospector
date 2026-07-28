@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hirely — Process</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+
+  <!-- First-paint reveal guard (non-hero): hide .scroll-animation only while JS is
+       active so a failed script / reduced-motion / no-JS can never strand content.
+       scroll-reveal.js owns the actual reveal and clears the hidden state. -->
+  <script>
+    var de = document.documentElement;
+    de.classList.add('has-js');
+  </script>
+  <style>
+    html.has-js .scroll-animation { opacity: 0; }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <main class="main-wrapper">
+      <section class="section_process">
+        <div class="padding-section-medium"></div>
+        <div class="padding-global">
+          <div class="container-large">
+            <div>
+              <div class="max-heading is-50rem scroll-animation">
+                <h2>The upgrade your hiring process needs</h2>
+              </div>
+              <div class="spacer-medium"></div>
+              <div class="max-description is-45rem scroll-animation">Scale your team quickly for projects or seasonal peaks. Our flexible staffing solutions ensure your business runs smoothly, no matter the demand.</div>
+            </div>
+            <div class="spacer">
+              <div style="height: 5rem" class="spacer-desktop"></div>
+              <div style="height: 4rem" class="spacer-tablet"></div>
+              <div style="height: 3rem" class="spacer-mobile"></div>
+            </div>
+            <div class="process_timeline-wrap">
+              <div class="timeline_step"><img src="https://d173woph5zl366.cloudfront.net/hirely/images/timeline-01.svg" loading="lazy" alt="" class="timeline-svg is-one">
+                <div class="timeline-text">
+                  <div timeline_step="on" class="text-3xl">Acquisition</div>
+                  <div timeline_step="on">Pre-vetted, bilingual talent (30% faster than average)</div>
+                </div>
+                <div class="timeline_path is-one"></div>
+              </div>
+              <div class="timeline_step is-two"><img src="https://d173woph5zl366.cloudfront.net/hirely/images/timeline-02.svg" loading="lazy" alt="" class="timeline-svg is-two">
+                <div class="timeline-text">
+                  <div timeline_step="tw" class="text-3xl">Matching</div>
+                  <div timeline_step="tw">5-stage vetting = 90% retention (vs 60% industry standard)</div>
+                </div>
+                <div class="timeline_path is-two"></div>
+              </div>
+              <div class="timeline_step is-three"><img src="https://d173woph5zl366.cloudfront.net/hirely/images/timeline-03.svg" loading="lazy" alt="" class="timeline-svg is-three">
+                <div class="timeline-text">
+                  <div timeline_step="thre" class="text-3xl">Compliance</div>
+                  <div timeline_step="thre">Zero-risk hiring across 15+ LATAM countries</div>
+                </div>
+                <div class="timeline_path is-three"></div>
+              </div>
+              <div class="timeline_step is-four"><img src="https://d173woph5zl366.cloudfront.net/hirely/images/timeline-04.svg" loading="lazy" alt="" class="timeline-svg is-four">
+                <div class="timeline-text">
+                  <div timeline_step="fou" class="text-3xl">Payroll</div>
+                  <div timeline_step="fou">One-click payments with auto-tax compliance</div>
+                </div>
+                <div class="timeline_path is-four"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-section-medium"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="scroll-reveal.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luzen — Projects List</title>
+
+  <!-- FOUC gate: BaseLayout adds 'wf-anim' to <html> before first paint (with a
+       2.5s failsafe). The shared /luzen/scripts/animations.js removes it once the
+       GSAP runner boots. We gate it the same way, skipping for reduced-motion. -->
+  <script>if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('wf-anim')}</script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <main class="main-wrapper">
+
+      <section class="section_projects-main bg-primary">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="text-align-center">
+              <div class="max-heading is-64rem align-center">
+                <h1 hero="heading" class="text-6xl text-color-on-primary">
+                  This collection features some of our best work
+                </h1>
+              </div>
+              <div class="spacer-xlarge"></div>
+              <div class="max-description is-37rem align-center">
+                <div hero="description" class="text-color-subtle">
+                  We are passionate about creating inspiring, captivating and long-lasting spaces that
+                  adapt. aptivating and long-lasting spaces that adapt.
+                </div>
+              </div>
+            </div>
+            <div class="spacer">
+              <div style="height:6.25rem" class="spacer-desktop"></div>
+              <div style="height:4.25rem" class="spacer-tablet"></div>
+              <div style="height:2rem" class="spacer-mobile"></div>
+            </div>
+            <div class="w-dyn-list">
+              <div role="list" class="projects_grid w-dyn-items">
+
+                <div role="listitem" class="w-dyn-item" data-reveal="">
+                  <a data-wf--project-card--variant="base" href="/projects/modern-office-design" class="project-wrapper w-inline-block">
+                    <div class="project_blog-img" data-reveal="">
+                      <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/luzen/images/cms/68e53241cd8945a1cd106991_project-blog-01.webp" alt="Minimalist luxury in a modern loft." class="img-parallax">
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div>Modern Office Design</div>
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div class="project_info">
+                        <div class="text-color-subtle">Location</div>
+                        <div class="text-color-on-primary">Chicago, Illinois, United Stated</div>
+                      </div>
+                      <div class="spacer-large"></div>
+                      <div class="project_info">
+                        <div class="text-color-subtle">Type of Work:</div>
+                        <div class="text-color-on-primary">Residencial</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div role="listitem" class="w-dyn-item" data-reveal="">
+                  <a data-wf--project-card--variant="base" href="/projects/modern-loft-design" class="project-wrapper w-inline-block">
+                    <div class="project_blog-img" data-reveal="">
+                      <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/luzen/images/cms/68e5324fc2d8e493655ab47f_project-blog-02.webp" alt="Minimalist luxury in a modern loft." class="img-parallax">
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div>Modern Loft Design</div>
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div class="project_info">
+                        <div class="text-color-subtle">Location</div>
+                        <div class="text-color-on-primary">Chicago, Illinois, United Stated</div>
+                      </div>
+                      <div class="spacer-large"></div>
+                      <div class="project_info">
+                        <div class="text-color-subtle">Type of Work:</div>
+                        <div class="text-color-on-primary">Residencial</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div role="listitem" class="w-dyn-item" data-reveal="">
+                  <a data-wf--project-card--variant="base" href="/projects/modern-loft-design-2" class="project-wrapper w-inline-block">
+                    <div class="project_blog-img" data-reveal="">
+                      <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/luzen/images/cms/68e5325c9eb896c9f2c7d9ea_project-blog-03.webp" alt="Minimalist luxury in a modern loft." class="img-parallax">
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div>Modern Loft Design</div>
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div class="project_info">
+                        <div class="text-color-subtle">Location</div>
+                        <div class="text-color-on-primary">Chicago, Illinois, United Stated</div>
+                      </div>
+                      <div class="spacer-large"></div>
+                      <div class="project_info">
+                        <div class="text-color-subtle">Type of Work:</div>
+                        <div class="text-color-on-primary">Residencial</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div role="listitem" class="w-dyn-item" data-reveal="">
+                  <a data-wf--project-card--variant="base" href="/projects/modern-loft-design-3" class="project-wrapper w-inline-block">
+                    <div class="project_blog-img" data-reveal="">
+                      <img loading="lazy" src="https://d173woph5zl366.cloudfront.net/luzen/images/cms/68e5326cdf4c8e25a3ae24dc_project-blog-04.webp" alt="Minimalist luxury in a modern loft." class="img-parallax">
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div>Modern Loft Design</div>
+                    </div>
+                    <div class="spacer-medium"></div>
+                    <div data-reveal="">
+                      <div class="project_info">
+                        <div class="text-color-subtle">Location</div>
+                        <div class="text-color-on-primary">Chicago, Illinois, United Stated</div>
+                      </div>
+                      <div class="spacer-large"></div>
+                      <div class="project_info">
+                        <div class="text-color-subtle">Type of Work:</div>
+                        <div class="text-color-on-primary">Residencial</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-section-large"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="animations.js"></script>
+  <script src="./script.js"></script>
+
+
+
+    <script data-reveal-on-view="">(function(){var n=0;function d(){var S=window.ScrollTrigger;if(!S){if(n++<60)setTimeout(d,50);return;}var L=S.getAll().filter(function(t){return t.trigger&&t.animation&&!(t.vars&&(t.vars.scrub||t.vars.pin));});if(!L.length){if(n++<60)setTimeout(d,50);return;}var io=("IntersectionObserver"in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var a=e.target.__rv;if(a)a.play();});},{threshold:0,rootMargin:"0px 0px -8% 0px"}):null;L.forEach(function(t){var a=t.animation,g=t.trigger;t.kill(false,true);if(!io){a.play();return;}if(a.progress()<1)a.pause(0);g.__rv=a;io.observe(g);});}if(document.readyState==="complete")setTimeout(d,30);else window.addEventListener("load",function(){setTimeout(d,30);});})();</script>
+  </body></html>

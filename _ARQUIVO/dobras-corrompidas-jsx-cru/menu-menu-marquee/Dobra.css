@@ -1,0 +1,94 @@
+{`
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+        .app-container {
+          min-height: 100vh;
+          width: 100%;
+          color: var(--base-600);
+          background-color: var(--base-100);
+          font-size: clamp(1rem, 2vw + 0.5rem, 2rem);
+          font-family: var(--fonte-corpo);
+          
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          --row-height: 80px;
+        }
+
+        .wrapper {
+          width: 500px;
+          max-width: 90vw;
+          margin: 48px 24px;
+          position: relative;
+        }
+
+        .item {
+          position: relative;
+          height: var(--row-height);
+          
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          
+          cursor: pointer;
+          font-weight: 500;
+        }
+
+        .item input {
+          display: none;
+        }
+        
+        .item::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        .marquee-list {
+          position: absolute;
+          inset: 0;
+          background-color: var(--base-100);
+          
+          
+          -webkit-mask: linear-gradient(90deg, transparent, var(--base-600) 10% 90%, transparent);
+          mask: linear-gradient(90deg, transparent, var(--base-600) 10% 90%, transparent);
+          pointer-events: none;
+
+          transition: clip-path 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+          will-change: clip-path;
+        }
+
+        .marquee-row {
+          overflow: hidden;
+          height: var(--row-height);
+        }
+        
+        .marquee-row img {
+          width: 150px;
+          aspect-ratio: 3;
+          border-radius: 99px;
+          object-fit: cover;
+        }
+
+        .marquee-inner {
+          height: var(--row-height);
+          width: max-content;
+          display: flex;
+          align-items: center;
+          gap: 48px;
+          padding-left: 48px;
+
+          animation: marquee linear 12s infinite;
+        }
+
+        @keyframes marquee {
+          to {
+            transform: translateX(-50%);
+          }
+        }
+      `}
+

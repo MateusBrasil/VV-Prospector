@@ -1,0 +1,20 @@
+{
+  "slot": "botao",
+  "nome": "payment-button",
+  "scope": "botao-payment-button",
+  "origem": "bank/_componentes/botoes/payment-button",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [],
+  "precondicoes": {},
+  "_rever": [
+    "17 cor(es) mapeadas para tokens por luminância (acento da origem #399f20 → var(--acento)): confirmar no ecrã que o contraste se mantém"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

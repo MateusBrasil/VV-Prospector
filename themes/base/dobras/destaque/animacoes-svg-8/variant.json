@@ -1,0 +1,173 @@
+{
+  "slot": "destaque",
+  "nome": "animacoes-svg-8",
+  "scope": "destaque-animacoes-svg-8",
+  "origem": "bank/_componentes/animacoes-svg/animacoes-svg-8",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "imagesloaded"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "destino",
+      "tipo": "link",
+      "exemplo": "http://synd.co/2pHxJny"
+    },
+    {
+      "nome": "subtitulo",
+      "tipo": "texto",
+      "exemplo": "2x Faster Integration Time"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Embed contracts and agreements into your site or app with a few lines of code."
+    },
+    {
+      "nome": "subtitulo2",
+      "tipo": "texto",
+      "exemplo": "revert"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Gregory Mourisha"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Finding the heart when paradise is lost."
+    },
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Discover"
+    },
+    {
+      "nome": "subtitulo3",
+      "tipo": "texto",
+      "exemplo": "bunch"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Nikimo Westlane"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "The neverending quest, once and forever."
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Discover"
+    },
+    {
+      "nome": "subtitulo4",
+      "tipo": "texto",
+      "exemplo": "found"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Jane Westhall"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Lost or found? That's the question today."
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Discover"
+    },
+    {
+      "nome": "subtitulo5",
+      "tipo": "texto",
+      "exemplo": "east"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "Walter Mastricht"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "The outer bounds of the world, from within."
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Discover"
+    },
+    {
+      "nome": "subtitulo6",
+      "tipo": "texto",
+      "exemplo": "frank"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Frank Cherry"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Frank's work and nothing more."
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Discover"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "sponsor/hellosignapi.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "img/1.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "img/4.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "img/3.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "img/2.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "img/5.jpg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [
+    "17 cor(es) mapeadas para tokens por luminância (acento da origem #ff0 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "1 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (http://synd.co/2pHxJny)",
+    "1 link(s) apontavam para o site da ORIGEM e viraram slot (destino*): sem valor do cliente ficam em \"#\". Definir o destino real ou remover o link antes de aprovar"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

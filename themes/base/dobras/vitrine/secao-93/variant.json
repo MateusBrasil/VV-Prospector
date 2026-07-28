@@ -1,0 +1,118 @@
+{
+  "slot": "vitrine",
+  "nome": "secao-93",
+  "scope": "vitrine-secao-93",
+  "origem": "bank/_componentes/secoes/secao-93",
+  "registo": "editorial",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "scrolltrigger",
+    "splittext",
+    "three"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "global-duro",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Start Hiring"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Home"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "About"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Services"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Blog"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Start Hiring"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Get in Touch"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/HI.svg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/servicess-svg.svg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/email-svg.svg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/phone-svg.svg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "https://d173woph5zl366.cloudfront.net/hirely/images/location-svg.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 5,
+    "nomeMaxPalavras": 3
+  },
+  "_rever": [
+    "72 cor(es) mapeadas para tokens por luminância (acento da origem #0082f3 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"global-duro\": assume ser dono da página (window/document.body/listeners de load|resize|scroll); escopar não chega, precisa de reescrita",
+    "5 foto(s) de demonstração de host externo: o slot tem de as substituir. Confirmar que NENHUMA sobrevive ao build (https://d173woph5zl366.cloudfront.net/hirely/images/HI.svg https://d173woph5zl366.cloudfront.net/hirely/images/servicess-svg.svg)",
+    "2 url(...) de host externo AINDA no CSS — foto/vídeo de demonstração servida pela origem. NÃO foi removida sozinha porque apagar um background-image pode partir a peça. Substituir por asset local ou por slot antes de aprovar (https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg https://d173woph5zl366.cloudfront.net/hirely/images/404-image.svg)",
+    "1 atributo(s) de gancho da ORIGEM (bounce-enter): o React passa-os ao DOM tal e qual, não são erro de sintaxe. Ficam órfãos se o JS de origem não for reescrito"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

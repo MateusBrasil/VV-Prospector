@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>SVG Shape Overlays</title>
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <defs>
+<!--    orange crush -->
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ff8709"/>
+      <stop offset="100%" stop-color="#f7bdf8"/>
+    </linearGradient>
+    <!--     svg  gradient -->
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#ffd9b0"/>
+      <stop offset="100%" stop-color="#ff8709"/>
+    </linearGradient>
+  </defs>
+  <path class="shape-overlays__path" fill="url(#gradient2)"></path>
+  <path class="shape-overlays__path" fill="url(#gradient1)"></path>
+</svg>
+    <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script><script  src="./script.js"></script>
+
+  </body>
+  
+</html>

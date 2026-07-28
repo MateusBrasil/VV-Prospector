@@ -1,0 +1,5 @@
+/* Congra — Pricing
+   Sin overrides locales: todos los estilos de esta sección viven en el
+   cascade compartido /congra/styles.css (clases Client-First: .section_pricing,
+   .pricing_wrap, .pricing, .is-pro, .pricing_top, .pricing_list, .pricing_item,
+   .button + variantes w-variant-*). No duplicar estilos aquí. */

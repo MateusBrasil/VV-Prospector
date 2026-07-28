@@ -1,0 +1,8 @@
+/* hirely-team — local overrides only. The shared /hirely/styles.css carries the
+   section_team, team_grid, team_card, social_icon and token styles. This section
+   has no inlined sub-component (no Navbar/Button), so only a minimal body reset
+   lives here. The reveal of each .team_card is handled by scroll-reveal.js. */
+
+body {
+  margin: 0;
+}

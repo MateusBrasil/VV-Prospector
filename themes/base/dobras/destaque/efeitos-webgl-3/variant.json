@@ -1,0 +1,129 @@
+{
+  "slot": "destaque",
+  "nome": "efeitos-webgl-3",
+  "scope": "destaque-efeitos-webgl-3",
+  "origem": "bank/_componentes/webgl-threejs/efeitos-webgl-3",
+  "registo": "cinematografico",
+  "estado": "experimental",
+  "libs": [
+    "three",
+    "matter"
+  ],
+  "fontesDescartadas": 1,
+  "js": {
+    "categoria": "sem-js",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "destination?"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Forests"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "See more"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Mountains"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "See more"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Skylines"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "See more"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Deserts"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "See more"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Mountains"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "See more"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Woods & forests"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "In recent years people have realized the importance of proper diet and exercise, and recent surveys show that over the last 20 years people are eating better an"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Today most people get on average 4 to 6 hours of exercise every day, and make sure that everything they put in their mouths is not filled with sugars or preserv"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "In the end your physical health will suffer no matter how well you eat and how often you exercise. You will wind up with high blood pressure, stress and tension"
+    },
+    {
+      "nome": "imagem",
+      "tipo": "imagem",
+      "exemplo": "dist/img/tiles/woods/base.jpg"
+    },
+    {
+      "nome": "imagem2",
+      "tipo": "imagem",
+      "exemplo": "dist/img/tiles/rocks/base.jpg"
+    },
+    {
+      "nome": "imagem3",
+      "tipo": "imagem",
+      "exemplo": "dist/img/tiles/cities/base.jpg"
+    },
+    {
+      "nome": "imagem4",
+      "tipo": "imagem",
+      "exemplo": "dist/img/tiles/deserts/base.jpg"
+    },
+    {
+      "nome": "imagem5",
+      "tipo": "imagem",
+      "exemplo": "dist/img/tiles/snow/base.jpg"
+    },
+    {
+      "nome": "imagem6",
+      "tipo": "imagem",
+      "exemplo": "dist/img/back.svg"
+    }
+  ],
+  "precondicoes": {
+    "imagensMin": 6
+  },
+  "_rever": [],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

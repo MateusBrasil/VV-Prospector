@@ -1,0 +1,91 @@
+{
+  "slot": "menu",
+  "nome": "navegacao-menu-2",
+  "scope": "menu-navegacao-menu-2",
+  "origem": "bank/_componentes/menu/navegacao-menu-2",
+  "registo": "sobrio",
+  "estado": "revisar",
+  "libs": [
+    "gsap",
+    "flip"
+  ],
+  "fontesDescartadas": 2,
+  "js": {
+    "categoria": "dom-simples",
+    "escopadoAutomaticamente": true
+  },
+  "slots": [
+    {
+      "nome": "acao",
+      "tipo": "texto",
+      "exemplo": "Projects"
+    },
+    {
+      "nome": "acao2",
+      "tipo": "texto",
+      "exemplo": "Agency"
+    },
+    {
+      "nome": "acao3",
+      "tipo": "texto",
+      "exemplo": "Expertise"
+    },
+    {
+      "nome": "acao4",
+      "tipo": "texto",
+      "exemplo": "Careers"
+    },
+    {
+      "nome": "acao5",
+      "tipo": "texto",
+      "exemplo": "Contact"
+    },
+    {
+      "nome": "acao6",
+      "tipo": "texto",
+      "exemplo": "Facebook"
+    },
+    {
+      "nome": "acao7",
+      "tipo": "texto",
+      "exemplo": "LinkedIn"
+    },
+    {
+      "nome": "acao8",
+      "tipo": "texto",
+      "exemplo": "Instagram"
+    },
+    {
+      "nome": "acao9",
+      "tipo": "texto",
+      "exemplo": "Twitter"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "Close"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Close"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "3 cor(es) mapeadas para tokens por luminância (acento da origem #c9fd74 → var(--acento)): confirmar no ecrã que o contraste se mantém",
+    "JS de origem ESCOPADO automaticamente à raiz da dobra (era só-DOM): confirmar no ecrã que a animação corre no elemento certo",
+    "PÁGINA DE DEMONSTRAÇÃO detetada no escopo raiz (height 100vh/100% + provável centralização): no slot \"menu\" isto PODE ser estrutural (um hero ocupa mesmo o ecrã todo), por isso não foi removido. Confirmar à mão se é a origem a embrulhar a peça numa página de demo ou se é intencional"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

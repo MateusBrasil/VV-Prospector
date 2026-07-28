@@ -1,0 +1,381 @@
+{
+  "slot": "destaque",
+  "nome": "3d-animacao-3d-22",
+  "scope": "destaque-3d-animacao-3d-22",
+  "origem": "bank/_componentes/efeitos-3d/animacao-3d-22",
+  "registo": "cinematografico",
+  "estado": "revisar",
+  "libs": [
+    "scrolltrigger",
+    "lenis"
+  ],
+  "fontesDescartadas": 0,
+  "js": {
+    "categoria": "modulo-es",
+    "escopadoAutomaticamente": false
+  },
+  "slots": [
+    {
+      "nome": "rotulo",
+      "tipo": "texto",
+      "exemplo": "Site Logo"
+    },
+    {
+      "nome": "rotulo2",
+      "tipo": "texto",
+      "exemplo": "Menu"
+    },
+    {
+      "nome": "rotulo3",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo4",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo5",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo6",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo7",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo8",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "titulo",
+      "tipo": "texto",
+      "exemplo": "Keep scrolling — it gets good"
+    },
+    {
+      "nome": "titulo2",
+      "tipo": "texto",
+      "exemplo": "Stuff I make so you don’t have to"
+    },
+    {
+      "nome": "rotulo9",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo10",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo11",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "texto",
+      "tipo": "texto",
+      "exemplo": "Discovery"
+    },
+    {
+      "nome": "texto2",
+      "tipo": "texto",
+      "exemplo": "Audit"
+    },
+    {
+      "nome": "texto3",
+      "tipo": "texto",
+      "exemplo": "User Flow"
+    },
+    {
+      "nome": "texto4",
+      "tipo": "texto",
+      "exemplo": "Site Map"
+    },
+    {
+      "nome": "texto5",
+      "tipo": "texto",
+      "exemplo": "Personas"
+    },
+    {
+      "nome": "texto6",
+      "tipo": "texto",
+      "exemplo": "Strategy"
+    },
+    {
+      "nome": "rotulo12",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo13",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo14",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo15",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "texto7",
+      "tipo": "texto",
+      "exemplo": "Wireframes"
+    },
+    {
+      "nome": "texto8",
+      "tipo": "texto",
+      "exemplo": "UI Kits"
+    },
+    {
+      "nome": "texto9",
+      "tipo": "texto",
+      "exemplo": "Prototypes"
+    },
+    {
+      "nome": "texto10",
+      "tipo": "texto",
+      "exemplo": "Visual Style"
+    },
+    {
+      "nome": "texto11",
+      "tipo": "texto",
+      "exemplo": "Interaction"
+    },
+    {
+      "nome": "texto12",
+      "tipo": "texto",
+      "exemplo": "Design QA"
+    },
+    {
+      "nome": "rotulo16",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo17",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo18",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo19",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "texto13",
+      "tipo": "texto",
+      "exemplo": "HTML/CSS/JS"
+    },
+    {
+      "nome": "texto14",
+      "tipo": "texto",
+      "exemplo": "CMS Build"
+    },
+    {
+      "nome": "texto15",
+      "tipo": "texto",
+      "exemplo": "GSAP Motion"
+    },
+    {
+      "nome": "texto16",
+      "tipo": "texto",
+      "exemplo": "Responsive"
+    },
+    {
+      "nome": "texto17",
+      "tipo": "texto",
+      "exemplo": "Optimization"
+    },
+    {
+      "nome": "texto18",
+      "tipo": "texto",
+      "exemplo": "Launch"
+    },
+    {
+      "nome": "rotulo20",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo21",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo22",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo23",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "texto19",
+      "tipo": "texto",
+      "exemplo": "Discovery"
+    },
+    {
+      "nome": "texto20",
+      "tipo": "texto",
+      "exemplo": "Audit"
+    },
+    {
+      "nome": "texto21",
+      "tipo": "texto",
+      "exemplo": "User Flow"
+    },
+    {
+      "nome": "texto22",
+      "tipo": "texto",
+      "exemplo": "Site Map"
+    },
+    {
+      "nome": "texto23",
+      "tipo": "texto",
+      "exemplo": "Personas"
+    },
+    {
+      "nome": "texto24",
+      "tipo": "texto",
+      "exemplo": "Strategy"
+    },
+    {
+      "nome": "rotulo24",
+      "tipo": "texto",
+      "exemplo": "Plan"
+    },
+    {
+      "nome": "rotulo25",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo26",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo27",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "texto25",
+      "tipo": "texto",
+      "exemplo": "Wireframes"
+    },
+    {
+      "nome": "texto26",
+      "tipo": "texto",
+      "exemplo": "UI Kits"
+    },
+    {
+      "nome": "texto27",
+      "tipo": "texto",
+      "exemplo": "Prototypes"
+    },
+    {
+      "nome": "texto28",
+      "tipo": "texto",
+      "exemplo": "Visual Style"
+    },
+    {
+      "nome": "texto29",
+      "tipo": "texto",
+      "exemplo": "Interaction"
+    },
+    {
+      "nome": "texto30",
+      "tipo": "texto",
+      "exemplo": "Design QA"
+    },
+    {
+      "nome": "rotulo28",
+      "tipo": "texto",
+      "exemplo": "Design"
+    },
+    {
+      "nome": "rotulo29",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo30",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "rotulo31",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "texto31",
+      "tipo": "texto",
+      "exemplo": "HTML/CSS/JS"
+    },
+    {
+      "nome": "texto32",
+      "tipo": "texto",
+      "exemplo": "CMS Build"
+    },
+    {
+      "nome": "texto33",
+      "tipo": "texto",
+      "exemplo": "GSAP Motion"
+    },
+    {
+      "nome": "texto34",
+      "tipo": "texto",
+      "exemplo": "Responsive"
+    },
+    {
+      "nome": "texto35",
+      "tipo": "texto",
+      "exemplo": "Optimization"
+    },
+    {
+      "nome": "texto36",
+      "tipo": "texto",
+      "exemplo": "Launch"
+    },
+    {
+      "nome": "rotulo32",
+      "tipo": "texto",
+      "exemplo": "Develop"
+    },
+    {
+      "nome": "titulo3",
+      "tipo": "texto",
+      "exemplo": "The story’s not over yet"
+    }
+  ],
+  "precondicoes": {},
+  "_rever": [
+    "7 cor(es) mapeadas para tokens por luminância: confirmar no ecrã que o contraste se mantém",
+    "JS de origem comentado no Dobra.jsx — categoria \"modulo-es\": traz import/export, não corre como corpo de função; precisa de virar módulo a sério",
+    "1 @import de fonte de CDN removido(s) do CSS (o sistema fornece a fonte; CDN externo é proibido pelo gate E8)"
+  ],
+  "_nota": "Gerado por tools/tema/esteira.mjs. Estado inicial é experimental sem avisos e revisar com pontos em _rever; só revisão humana promove para aprovada/em-producao."
+}

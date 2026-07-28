@@ -1,0 +1,5 @@
+body { margin:0; min-height:100svh; }
+
+/* Full-screen home hero: prefer min-height so it fills the viewport but can grow
+   with content instead of a rigid fixed height. */
+.section_home-hero { min-height: 100svh; height: auto; }

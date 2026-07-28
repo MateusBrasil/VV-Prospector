@@ -1,0 +1,941 @@
+---
+// RecursosCoreChart — static, reusable extraction of the 4 chart variants
+// from SolutionRecursosVertical. Renders the chart at full size (26.8125rem
+// square) absolutely centered inside a relative parent. No scroll
+// animations: charts render in their final "lit" state.
+
+interface Props {
+  variant: "reporting" | "anomaly" | "trust" | "meter";
+  class?: string;
+}
+
+const { variant, class: className } = Astro.props;
+
+// ---- Deterministic LCG-based pattern generator (stable between renders) ----
+function pattern(cols: number, rows: number, density: number, seed: number) {
+  const total = cols * rows;
+  const target = Math.round(total * density);
+  const arr = new Array<boolean>(total).fill(false);
+  let s = seed;
+  let filled = 0;
+  for (let i = 0; i < total * 4 && filled < target; i++) {
+    s = (s * 9301 + 49297) % 233280;
+    const idx = s % total;
+    if (!arr[idx]) {
+      arr[idx] = true;
+      filled++;
+    }
+  }
+  return arr;
+}
+
+// ---- Reporting (3 monthly heatmaps 22×4) ----
+const january = pattern(22, 4, 0.7, 17);
+const february = pattern(22, 4, 0.84, 43);
+const march = pattern(22, 4, 0.9, 91);
+
+const reportingBlocks = [
+  { label: "Jan 2026", value: "+47.2K", grid: january },
+  { label: "Feb 2026", value: "+38.9K", grid: february },
+  { label: "Mar 2026", value: "+52.4K", grid: march },
+];
+
+// ---- Anomaly ----
+const anomalyTabs = ["7d", "30d", "1m", "6m"];
+const anomalyDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+const anomalyPoints = [0.18, 0.32, 0.22, 0.85, 0.42, 0.68, 0.31];
+const anomalySpikes = [3, 5];
+
+// ---- Trust / Lock pixel art (18×18) ----
+const lockRows = [
+  "000000011110000000",
+  "000000110011000000",
+  "000001100001100000",
+  "000011000000110000",
+  "000110000000011000",
+  "000110000000011000",
+  "000110000000011000",
+  "011111111111111110",
+  "111111111111111111",
+  "111111100001111111",
+  "111111100001111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111110011111111",
+  "111111111111111111",
+  "011111111111111110",
+];
+const lockGrid = lockRows.flatMap((r) => r.split("").map((c) => c === "1"));
+
+const trustRow1 = [
+  "SOC 2 Type II",
+  "256-bit Encryption",
+  "Zero Trust",
+  "GDPR Compliant",
+  "ISO 27001",
+];
+const trustRow2 = [
+  "End-to-End Encrypted",
+  "Audit-ready",
+  "Data Residency",
+  "mTLS Identity",
+  "HIPAA Aligned",
+];
+---
+
+<div class:list={["fcc-wrap", className]}>
+  {/* === Reporting === */}
+  {variant === "reporting" && (
+    <div class="chart chart-reporting" data-fcc-chart="reporting">
+      <span class="chart-eyebrow">Reporting Insights · Pipeline Throughput</span>
+      {reportingBlocks.map((b) => (
+        <div class="reporting-block" data-fcc-reporting-block>
+          <div class="reporting-header">
+            <span class="reporting-label">{b.label}</span>
+            <span
+              class="reporting-value"
+              data-fcc-reporting-value
+              style="opacity: 0;"
+            >
+              {b.value}
+            </span>
+          </div>
+          <div class="reporting-matrix">
+            {b.grid.map(() => (
+              <span class="cell" data-fcc-reporting-cell />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {/* === Anomaly === */}
+  {variant === "anomaly" && (
+    <div class="chart chart-anomaly" data-fcc-chart="anomaly">
+      <div class="anomaly-header">
+        <span class="ls-label">Live Detection</span>
+        <div class="ls-tabs">
+          {anomalyTabs.map((t, i) => (
+            <span class:list={["ls-tab", i === 0 && "is-active"]}>{t}</span>
+          ))}
+        </div>
+      </div>
+      <div class="anomaly-stat">
+        <span data-fcc-anomaly-num data-target="124">0</span>
+        <span class="anomaly-stat-lbl">Events / 7d</span>
+      </div>
+      <div class="anomaly-bars">
+        {anomalyPoints.map((p, i) => (
+          <div
+            class:list={["ano-bar", anomalySpikes.includes(i) && "is-spike"]}
+            data-fcc-ano-bar
+            data-target-h={p.toString()}
+            style="height: 0%"
+          />
+        ))}
+      </div>
+      <div class="anomaly-axis">
+        {anomalyDays.map((d) => (
+          <span
+            data-fcc-ls-axis
+            style="opacity: 0; transform: translateY(4px);"
+          >
+            {d}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* === Trust === */}
+  {variant === "trust" && (
+    <div class="chart chart-trust" data-fcc-chart="trust">
+      <div class="lock-wrap">
+        <div class="lock-grid">
+          {lockGrid.map((on) => (
+            on ? (
+              <span
+                class="lock-cell on"
+                data-fcc-lock-cell-on
+                style="opacity: 0; transform: scale(0.6); transform-origin: center;"
+              />
+            ) : (
+              <span class="lock-cell" />
+            )
+          ))}
+        </div>
+      </div>
+      <div class="trust-marquees">
+        <div
+          class="trust-marquee"
+          data-fcc-trust-marquee
+          style="opacity: 0; transform: translateY(12px);"
+        >
+          <div class="trust-track">
+            {[...trustRow1, ...trustRow1].map((b) => (
+              <span class="trust-badge">
+                <span class="trust-dot" />
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div
+          class="trust-marquee"
+          data-fcc-trust-marquee
+          style="opacity: 0; transform: translateY(12px);"
+        >
+          <div class="trust-track trust-track-reverse">
+            {[...trustRow2, ...trustRow2].map((b) => (
+              <span class="trust-badge">
+                <span class="trust-dot" />
+                {b}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+
+  {/* === Meter === */}
+  {variant === "meter" && (
+    <div class="chart chart-meter" data-fcc-chart="meter">
+      <div class="meter-top">
+        <span class="meter-top-label">Processing Requests</span>
+        <span class="meter-top-stat">
+          <span class="meter-top-num" data-fcc-meter-header-num data-target="48">0</span>
+          <span class="meter-top-meta">Tasks</span>
+        </span>
+      </div>
+
+      <div class="meter-mid">
+        <svg
+          class="meter-svg"
+          viewBox="0 0 402 320"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          <defs>
+            <mask id="fcc-meter-ring-revelar-mask">
+              <rect width="402" height="320" fill="black" />
+              <circle
+                class="meter-mask-circle"
+                data-fcc-meter-mask
+                cx="200"
+                cy="159"
+                r="113"
+                stroke="white"
+                stroke-width="80"
+                pathLength="100"
+                stroke-dasharray="100"
+                stroke-dashoffset="100"
+                fill="none"
+                transform="rotate(-135 200 159)"
+              />
+            </mask>
+          </defs>
+
+          <g transform="translate(0, 0)">
+            <path
+              d="M107.679 67.005C126.001 48.6838 149.343 36.2068 174.756 31.152C200.168 26.0971 226.509 28.6915 250.447 38.6069C274.385 48.5223 294.845 65.3134 309.24 86.8569C323.634 108.4 331.318 133.729 331.318 159.639C331.318 185.549 323.634 210.878 309.24 232.421C294.845 253.965 274.385 270.756 250.447 280.671C226.509 290.587 200.168 293.181 174.756 288.126C149.344 283.071 126.001 270.594 107.68 252.273L138.056 221.897C150.369 234.21 166.058 242.595 183.137 245.993C200.216 249.39 217.919 247.646 234.007 240.982C250.095 234.318 263.846 223.033 273.521 208.554C283.195 194.075 288.359 177.053 288.359 159.639C288.359 142.225 283.195 125.203 273.521 110.724C263.846 96.2447 250.095 84.9597 234.007 78.2957C217.919 71.6318 200.216 69.8882 183.137 73.2854C166.058 76.6827 150.369 85.0682 138.056 97.3816L107.679 67.005Z"
+              fill="#1C1C1C"
+            />
+
+            <g mask="url(#fcc-meter-ring-revelar-mask)">
+              <path
+                class="meter-ring-active"
+                d="M107.679 67.005C119.844 54.8402 134.286 45.1904 150.18 38.6069C166.075 32.0233 183.11 28.6348 200.314 28.6348C217.517 28.6348 234.553 32.0233 250.447 38.6069C266.341 45.1905 280.783 54.8402 292.948 67.0051C305.112 79.1699 314.762 93.6118 321.346 109.506C327.929 125.4 331.318 142.435 331.318 159.639C331.318 176.843 327.929 193.878 321.346 209.772C314.762 225.666 305.112 240.108 292.947 252.273L262.571 221.897C270.747 213.721 277.232 204.015 281.657 193.333C286.081 182.65 288.359 171.201 288.359 159.639C288.359 148.077 286.081 136.628 281.657 125.946C277.232 115.263 270.747 105.557 262.571 97.3816C254.395 89.2058 244.689 82.7204 234.007 78.2957C223.325 73.871 211.876 71.5937 200.314 71.5937C188.751 71.5937 177.302 73.871 166.62 78.2957C155.938 82.7204 146.232 89.2058 138.056 97.3816L107.679 67.005Z"
+                fill="#B5D2FF"
+              />
+            </g>
+
+            <path
+              d="M267.316 216.771L270.583 219.559C270.266 219.931 269.946 220.3 269.623 220.667L266.4 217.827L266.399 217.826C266.707 217.476 267.012 217.124 267.314 216.77L267.316 216.771ZM274.772 206.66L276.587 207.808L278.402 208.957C278.141 209.37 277.877 209.781 277.609 210.189L274.016 207.834L274.015 207.833C274.27 207.443 274.522 207.052 274.771 206.658L274.772 206.66ZM280.716 195.59L284.635 197.345C284.435 197.791 284.232 198.235 284.026 198.677L280.134 196.86L280.133 196.858C280.33 196.437 280.523 196.014 280.713 195.589L280.716 195.59ZM285.014 183.785L289.144 184.96C289.011 185.43 288.874 185.898 288.733 186.365L286.677 185.743L284.621 185.123L284.618 185.122C284.753 184.677 284.885 184.232 285.013 183.784L285.014 183.785ZM287.576 171.486L289.704 171.771L291.833 172.057C291.768 172.541 291.699 173.023 291.626 173.505L287.378 172.864L287.377 172.863C287.446 172.404 287.511 171.945 287.573 171.484L287.576 171.486ZM288.366 159.639C288.366 159.405 288.362 159.171 288.36 158.937H288.363L292.658 158.903C292.66 159.148 292.661 159.393 292.661 159.639C292.661 159.884 292.66 160.129 292.658 160.374L288.363 160.341L288.36 160.339C288.362 160.106 288.366 159.872 288.366 159.639ZM291.833 147.22L289.702 147.505L289.704 147.507L287.576 147.792H287.573C287.511 147.331 287.446 146.872 287.377 146.413L291.626 145.773C291.699 146.254 291.768 146.737 291.833 147.22ZM289.144 134.318L285.014 135.492C284.887 135.044 284.753 134.598 284.618 134.153H284.621L288.733 132.912C288.874 133.379 289.011 133.848 289.144 134.318ZM284.635 121.933L280.716 123.687H280.713C280.523 123.262 280.33 122.839 280.133 122.418L284.026 120.6C284.232 121.042 284.436 121.487 284.635 121.933ZM278.402 110.321L276.586 111.469L276.587 111.47L274.772 112.618C274.523 112.224 274.27 111.833 274.015 111.443L277.609 109.089C277.877 109.497 278.141 109.908 278.402 110.321ZM270.583 99.7182L267.316 102.506C267.013 102.152 266.707 101.8 266.399 101.451L269.623 98.6108C269.946 98.9772 270.266 99.3467 270.583 99.7182ZM261.341 90.3294L258.502 93.5522C258.152 93.2442 257.799 92.9388 257.445 92.6364L260.234 89.3688C260.606 89.6859 260.975 90.0066 261.341 90.3294ZM149.196 87.9357C148.779 88.2334 148.366 88.5356 147.954 88.8403L147.953 88.8389L145.396 85.3882C145.827 85.0687 146.262 84.7524 146.699 84.4402L149.196 87.9357ZM250.863 82.343L248.509 85.9363C248.12 85.6812 247.727 85.429 247.333 85.1799L249.632 81.5502C250.044 81.8113 250.455 82.0755 250.863 82.343ZM161.032 80.8133C160.573 81.0423 160.117 81.2757 159.663 81.5124L157.677 77.7024C158.153 77.4544 158.631 77.211 159.112 76.9711L161.032 80.8133ZM239.352 75.9267L237.535 79.8178C237.113 79.621 236.689 79.4279 236.264 79.2376L236.265 79.2362L238.02 75.3171C238.466 75.5168 238.91 75.7202 239.352 75.9267ZM173.837 75.6373C173.349 75.7912 172.862 75.9491 172.376 76.1112L171.015 72.0369C171.524 71.8667 172.035 71.7007 172.548 71.5392L173.837 75.6373ZM227.04 71.219L226.418 73.2743L226.419 73.2757L225.798 75.3311L225.797 75.3325C225.352 75.1982 224.906 75.0655 224.459 74.9382L225.635 70.8079C226.104 70.9416 226.573 71.0781 227.04 71.219ZM187.299 72.5417C186.792 72.6169 186.285 72.6956 185.781 72.7794L185.595 71.651L185.077 68.5429C185.607 68.455 186.138 68.3714 186.67 68.2926L187.299 72.5417ZM214.179 68.3262L213.539 72.5738C213.081 72.5048 212.62 72.44 212.159 72.3781L212.16 72.3767L212.732 68.1192C213.216 68.1842 213.698 68.2537 214.179 68.3262ZM201.049 67.2943L201.015 71.5895L201.014 71.5909C200.781 71.5891 200.547 71.5867 200.314 71.5867C200.057 71.5867 199.801 71.5887 199.545 71.5909L199.507 67.2943C199.775 67.292 200.044 67.2915 200.314 67.2915C200.559 67.2915 200.804 67.2924 201.049 67.2943Z"
+              fill="#010101"
+            />
+
+            <path
+              d="M201.015 247.688L201.049 251.983C200.804 251.985 200.559 251.986 200.313 251.986C200.068 251.986 199.823 251.985 199.578 251.983L199.612 247.688V247.685C199.845 247.687 200.079 247.691 200.313 247.691C200.547 247.691 200.781 247.687 201.014 247.685L201.015 247.688ZM187.088 246.702C187.546 246.772 188.006 246.836 188.467 246.898V246.901L187.895 251.158C187.411 251.093 186.929 251.024 186.448 250.952L187.088 246.702ZM213.539 246.704L214.179 250.952C213.698 251.024 213.216 251.093 212.732 251.158L212.16 246.901L212.159 246.898C212.62 246.836 213.079 246.772 213.537 246.702L213.539 246.704ZM174.829 243.944C175.273 244.078 175.719 244.211 176.167 244.338L174.992 248.47C174.523 248.336 174.054 248.2 173.587 248.059L174.829 243.947V243.944ZM225.8 243.947L227.04 248.059C226.573 248.2 226.104 248.336 225.635 248.47L224.46 244.34L224.459 244.338C224.907 244.211 225.353 244.078 225.798 243.944L225.8 243.947ZM163.092 239.458C163.514 239.655 163.937 239.848 164.362 240.039V240.042L162.607 243.961C162.161 243.761 161.717 243.558 161.275 243.351L163.092 239.458ZM237.535 239.46L239.352 243.351C238.91 243.558 238.466 243.761 238.02 243.961L236.265 240.042L236.264 240.039C236.688 239.848 237.112 239.655 237.533 239.458L237.535 239.46ZM152.118 233.34C152.507 233.595 152.899 233.847 153.293 234.096L150.995 237.728C150.583 237.466 150.172 237.202 149.764 236.935L152.118 233.34ZM248.509 233.341L250.863 236.935C250.455 237.202 250.044 237.466 249.632 237.728L247.334 234.098L247.333 234.096C247.727 233.847 248.118 233.595 248.507 233.34L248.509 233.341ZM142.125 225.724C142.475 226.032 142.826 226.337 143.181 226.64L140.393 229.909C140.021 229.592 139.652 229.271 139.286 228.948L142.125 225.724ZM258.502 225.726L261.341 228.948C260.975 229.271 260.606 229.592 260.234 229.909L257.446 226.641L257.445 226.64C257.799 226.337 258.151 226.032 258.5 225.724L258.502 225.726Z"
+              fill="white"
+              fill-opacity="0.12"
+            />
+          </g>
+        </svg>
+
+        <div class="meter-center-overlay">
+          <span class="meter-center-big">
+            <span data-fcc-meter-big data-target="28">0</span>%
+          </span>
+          <span class="meter-center-lbl">Avg Score</span>
+        </div>
+      </div>
+
+      <div class="meter-bottom">
+        <span class="meter-bot-stat">
+          <span class="meter-bot-num">85%</span>
+          <span class="meter-bot-lbl">Optimal</span>
+        </span>
+        <span class="meter-bot-stat meter-bot-stat-end">
+          <span class="meter-bot-num">
+            <span data-fcc-meter-foot-num data-target="84">0</span>%
+          </span>
+          <span class="meter-bot-lbl">Partial</span>
+        </span>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  :where(.fcc-wrap) {
+    --periwinkle: #b5d2ff;
+    --chart-bg: #141414;
+    --chart-border: #343434;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-mono);
+    color: var(--color-fg);
+  }
+
+  /* === Chart base === */
+  .chart {
+    width: 26.8125rem;
+    height: 26.8125rem;
+    background: var(--chart-bg);
+    border: 1px solid var(--chart-border);
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* === Reporting === */
+  .chart-reporting {
+    width: fit-content;
+    height: auto;
+    justify-content: flex-comeca;
+    gap: 1.5rem;
+  }
+  .reporting-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .reporting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7093rem;
+    line-height: 1.4;
+    letter-spacing: 1.3619px;
+    text-transform: uppercase;
+  }
+  .reporting-label {
+    color: var(--color-muted);
+  }
+  .reporting-value {
+    color: var(--color-accent);
+    text-shadow:
+      0 0 4px rgba(253, 255, 34, 0.9),
+      0 0 10px rgba(253, 255, 34, 0.45),
+      0 0 18px rgba(253, 255, 34, 0.18);
+  }
+  .reporting-matrix {
+    display: grid;
+    grid-template-columns: repeat(22, 0.851rem);
+    grid-auto-rows: 0.851rem;
+    gap: 0.2838rem;
+    width: fit-content;
+  }
+  .reporting-matrix .cell {
+    aspect-ratio: 1 / 1;
+    background: var(--chart-border);
+    transition: background-color 0.45s ease, box-shadow 0.45s ease;
+  }
+  .reporting-matrix .cell.is-lit {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 6px rgba(95, 92, 255, 0.95),
+      0 0 14px rgba(95, 92, 255, 0.6),
+      0 0 28px rgba(95, 92, 255, 0.35),
+      0 0 50px rgba(95, 92, 255, 0.15);
+  }
+
+  .chart-eyebrow {
+    font-size: 0.7093rem;
+    line-height: 1.4;
+    letter-spacing: 1.36px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* === Anomaly === */
+  .chart-anomaly {
+    justify-content: flex-comeca;
+    gap: 0.75rem;
+  }
+  .anomaly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ls-label {
+    font-size: 0.9931rem;
+    line-height: 1.286;
+    letter-spacing: 1.9067px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+  }
+  .ls-tabs {
+    display: flex;
+  }
+  .ls-tab {
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    padding: 0.3626rem 0.7253rem;
+    border: 1px solid var(--chart-border);
+    background: var(--chart-bg);
+    text-align: center;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .ls-tab.is-active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow:
+      0 0 4px 0 rgba(253, 255, 34, 0.55),
+      0 0 10px 0 rgba(253, 255, 34, 0.25);
+  }
+  .anomaly-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    margin-top: 0.25rem;
+  }
+  .anomaly-stat span:first-child {
+    font-size: 2.6rem;
+    line-height: 1;
+    letter-spacing: 4.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .anomaly-stat-lbl {
+    font-size: 0.6346rem;
+    line-height: 1.2;
+    letter-spacing: 0.6px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+  }
+  .anomaly-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex: 1;
+    min-height: 11rem;
+    width: 100%;
+    gap: 0.65rem;
+    padding: 0 0.25rem;
+  }
+  .ano-bar {
+    flex: 1;
+    background: var(--chart-border);
+    transform-origin: bottom;
+  }
+  .ano-bar.is-spike {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 6px rgba(95, 92, 255, 0.95),
+      0 0 14px rgba(95, 92, 255, 0.6),
+      0 0 28px rgba(95, 92, 255, 0.35),
+      0 0 50px rgba(95, 92, 255, 0.15);
+  }
+  .anomaly-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    color: #616161;
+    text-transform: uppercase;
+    padding: 0 0.25rem;
+  }
+
+  /* === Trust === */
+  .chart-trust {
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .lock-wrap {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 0.5rem 0;
+  }
+  .lock-grid {
+    width: 9.5rem;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    gap: 0.14rem;
+  }
+  .lock-cell {
+    aspect-ratio: 1 / 1;
+    background: transparent;
+  }
+  .lock-cell.on {
+    background: var(--periwinkle);
+    box-shadow:
+      0 0 8px rgba(95, 92, 255, 1),
+      0 0 18px rgba(95, 92, 255, 0.8),
+      0 0 36px rgba(95, 92, 255, 0.5),
+      0 0 64px rgba(95, 92, 255, 0.25),
+      0 0 100px rgba(95, 92, 255, 0.1);
+  }
+  .trust-marquees {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5674rem;
+    padding-bottom: 1.25rem;
+  }
+  .trust-marquee {
+    overflow: hidden;
+  }
+  .trust-track {
+    display: flex;
+    gap: 0.5674rem;
+    width: max-content;
+    animation: fcc-trust-scroll 22s linear infinite;
+  }
+  .trust-track-reverse {
+    animation-direction: reverse;
+  }
+  @keyframes fcc-trust-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5674rem;
+    padding: 0.5674rem 1.1349rem;
+    background: #050505;
+    border: 1px solid var(--chart-border);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    color: #ffffff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .trust-dot {
+    width: 0.32rem;
+    height: 0.32rem;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    box-shadow:
+      0 0 4px 0 rgba(253, 255, 34, 0.85),
+      0 0 10px 0 rgba(253, 255, 34, 0.4);
+    animation: fcc-trustDotPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes fcc-trustDotPulse {
+    0%, 100% {
+      box-shadow:
+        0 0 3px 0 rgba(253, 255, 34, 0.6),
+        0 0 8px 0 rgba(253, 255, 34, 0.25);
+    }
+    50% {
+      box-shadow:
+        0 0 5px 0 rgba(253, 255, 34, 1),
+        0 0 12px 0 rgba(253, 255, 34, 0.55),
+        0 0 22px 0 rgba(253, 255, 34, 0.25);
+    }
+  }
+
+  /* === Meter === */
+  .chart-meter {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  .meter-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .meter-top-label {
+    font-size: 0.7093rem;
+    line-height: 1.286;
+    letter-spacing: 1.36px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+  }
+  .meter-top-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .meter-top-num {
+    font-size: 1.4186rem;
+    line-height: 1;
+    letter-spacing: 2.72px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow:
+      0 0 0.375rem rgba(253, 255, 34, 0.85),
+      0 0 0.75rem rgba(253, 255, 34, 0.45),
+      0 0 1.5rem rgba(253, 255, 34, 0.18);
+  }
+  .meter-top-meta {
+    font-size: 0.7093rem;
+    line-height: 1.286;
+    letter-spacing: 1.36px;
+    color: #616161;
+    text-transform: uppercase;
+  }
+  .meter-mid {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    width: 100%;
+  }
+  .meter-svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+  .meter-ring-active {
+    filter:
+      drop-shadow(0 0 2px rgba(95, 92, 255, 0.55))
+      drop-shadow(0 0 6px rgba(95, 92, 255, 0.35))
+      drop-shadow(0 0 13px rgba(95, 92, 255, 0.18))
+      drop-shadow(0 0 22px rgba(95, 92, 255, 0.08));
+  }
+  .meter-center-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    pointer-events: none;
+    display: block;
+    text-align: center;
+    line-height: 1;
+  }
+  .meter-center-big {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 3.2rem;
+    line-height: 1;
+    letter-spacing: 6.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .meter-center-big > span {
+    color: inherit;
+  }
+  .meter-center-lbl {
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    letter-spacing: 1.5px;
+    color: #616161;
+    text-transform: uppercase;
+  }
+  .meter-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+  .meter-bot-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .meter-bot-stat-end {
+    align-items: flex-end;
+    text-align: right;
+  }
+  .meter-bot-num {
+    font-size: 1.1rem;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .meter-bot-lbl {
+    font-size: 0.6346rem;
+    line-height: 1.286;
+    letter-spacing: 0.9px;
+    color: #616161;
+    text-transform: uppercase;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { registerEagleEases } from "../lib/eases";
+
+  gsap.registerPlugin(ScrollTrigger);
+  registerEagleEases();
+
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- Jump to final state without animating (reduced motion / fallback) ----
+  function jumpToFinal(chartEl: HTMLElement) {
+    const type = chartEl.dataset.fccChart;
+    if (type === "reporting") {
+      const cells = chartEl.querySelectorAll<HTMLElement>("[data-fcc-reporting-cell]");
+      // Light ~70% so the chart looks alive
+      const litCount = Math.floor(cells.length * 0.7);
+      const arr = Array.from(cells).sort(() => Math.random() - 0.5).slice(0, litCount);
+      arr.forEach((c) => c.classList.add("is-lit"));
+      chartEl
+        .querySelectorAll<HTMLElement>("[data-fcc-reporting-value]")
+        .forEach((v) => (v.style.opacity = "1"));
+    } else if (type === "anomaly") {
+      const num = chartEl.querySelector<HTMLElement>("[data-fcc-anomaly-num]");
+      if (num) num.textContent = num.dataset.target || "124";
+      chartEl.querySelectorAll<HTMLElement>("[data-fcc-ano-bar]").forEach((bar) => {
+        const t = parseFloat(bar.dataset.targetH || "0.3");
+        bar.style.height = `${(t * 100).toFixed(2)}%`;
+      });
+      chartEl.querySelectorAll<HTMLElement>("[data-fcc-ls-axis]").forEach((s) => {
+        s.style.opacity = "1";
+        s.style.transform = "translateY(0)";
+      });
+    } else if (type === "trust") {
+      chartEl
+        .querySelectorAll<HTMLElement>("[data-fcc-lock-cell-on]")
+        .forEach((c) => {
+          c.style.opacity = "1";
+          c.style.transform = "scale(1)";
+        });
+      chartEl.querySelectorAll<HTMLElement>("[data-fcc-trust-marquee]").forEach((m) => {
+        m.style.opacity = "1";
+        m.style.transform = "translateY(0)";
+      });
+    } else if (type === "meter") {
+      const mask = chartEl.querySelector<SVGCircleElement>("[data-fcc-meter-mask]");
+      if (mask) mask.setAttribute("stroke-dashoffset", "0");
+      const big = chartEl.querySelector<HTMLElement>("[data-fcc-meter-big]");
+      if (big) big.textContent = big.dataset.target || "28";
+      const head = chartEl.querySelector<HTMLElement>("[data-fcc-meter-header-num]");
+      if (head) head.textContent = head.dataset.target || "48";
+      const foot = chartEl.querySelector<HTMLElement>("[data-fcc-meter-foot-num]");
+      if (foot) foot.textContent = foot.dataset.target || "84";
+    }
+  }
+
+  // ---- Per-variant animations (ported from SolutionRecursosVertical) ----
+  function animateReporting(chartEl: HTMLElement) {
+    const tl = gsap.timeline();
+    const blocks = chartEl.querySelectorAll<HTMLElement>("[data-fcc-reporting-block]");
+    blocks.forEach((block, blockIdx) => {
+      const value = block.querySelector<HTMLElement>("[data-fcc-reporting-value]");
+      const blockStart = blockIdx * 0.08;
+      if (value) {
+        tl.to(value, { opacity: 1, duration: 0.25, ease: "eagleReveal" }, blockStart + 0.15);
+      }
+    });
+
+    const allCells = Array.from(
+      chartEl.querySelectorAll<HTMLElement>(".reporting-matrix .cell")
+    );
+    const initialLitCount = Math.floor(allCells.length * 0.7);
+    const shuffled = [...allCells].sort(() => Math.random() - 0.5).slice(0, initialLitCount);
+    shuffled.forEach((cell, i) => {
+      gsap.delayedCall(0.05 + i * 0.003, () => {
+        cell.classList.add("is-lit");
+        gsap.delayedCall(1.4 + Math.random() * 2.0, () => cell.classList.remove("is-lit"));
+      });
+    });
+
+    // Ambient twinkle
+    gsap.delayedCall(0.7, () => {
+      setInterval(() => {
+        const n = 7 + Math.floor(Math.random() * 6);
+        for (let i = 0; i < n; i++) {
+          const cell = allCells[Math.floor(Math.random() * allCells.length)];
+          if (cell && !cell.classList.contains("is-lit")) {
+            cell.classList.add("is-lit");
+            const lifespan = 1400 + Math.random() * 2200;
+            setTimeout(() => cell.classList.remove("is-lit"), lifespan);
+          }
+        }
+      }, 80);
+    });
+  }
+
+  function animateAnomaly(chartEl: HTMLElement) {
+    const tl = gsap.timeline();
+    const num = chartEl.querySelector<HTMLElement>("[data-fcc-anomaly-num]");
+    if (num) {
+      const target = parseInt(num.dataset.target || "124", 10);
+      const proxy = { val: 0 };
+      tl.to(proxy, {
+        val: target,
+        duration: 0.6,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          num.textContent = proxy.val.toLocaleString("en-US");
+        },
+      }, 0);
+    }
+    const bars = chartEl.querySelectorAll<HTMLElement>("[data-fcc-ano-bar]");
+    bars.forEach((bar, i) => {
+      const targetH = parseFloat(bar.dataset.targetH || "0.3");
+      tl.to(bar, {
+        height: `${targetH * 100}%`,
+        duration: 0.55,
+        ease: "eagleStructure",
+      }, 0.15 + i * 0.08);
+    });
+    const axis = chartEl.querySelectorAll<HTMLElement>("[data-fcc-ls-axis]");
+    if (axis.length) {
+      tl.to(axis, {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "eagleReveal",
+        stagger: 0.03,
+      }, 0.85);
+    }
+  }
+
+  function animateSecurity(chartEl: HTMLElement) {
+    const tl = gsap.timeline();
+    const lockCells = chartEl.querySelectorAll<HTMLElement>("[data-fcc-lock-cell-on]");
+    const marquees = chartEl.querySelectorAll<HTMLElement>("[data-fcc-trust-marquee]");
+    if (lockCells.length) {
+      tl.to(lockCells, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.04,
+        ease: "eagleDecor",
+        stagger: { each: 0.003, from: "center" },
+      }, 0);
+    }
+    if (marquees.length) {
+      tl.to(marquees, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "eagleReveal",
+        stagger: 0.12,
+      }, 0.6);
+    }
+  }
+
+  function animateMeter(chartEl: HTMLElement) {
+    const tl = gsap.timeline();
+    const mask = chartEl.querySelector<SVGCircleElement>("[data-fcc-meter-mask]");
+    const big = chartEl.querySelector<HTMLElement>("[data-fcc-meter-big]");
+    const headerNum = chartEl.querySelector<HTMLElement>("[data-fcc-meter-header-num]");
+    const footNum = chartEl.querySelector<HTMLElement>("[data-fcc-meter-foot-num]");
+
+    if (mask) {
+      tl.to(mask, {
+        strokeDashoffset: 0,
+        duration: 0.95,
+        ease: "eagleStructure",
+      }, 0);
+    }
+    if (headerNum) {
+      const target = parseInt(headerNum.dataset.target || "48", 10);
+      const proxy = { val: 0 };
+      tl.to(proxy, {
+        val: target,
+        duration: 0.7,
+        ease: "eagleStructure",
+        snap: { val: 1 },
+        onUpdate: () => {
+          headerNum.textContent = String(proxy.val);
+        },
+      }, 0.05);
+    }
+    if (big) {
+      const target = parseInt(big.dataset.target || "28", 10);
+      const proxy = { val: 0 };
+      tl.to(proxy, {
+        val: target,
+        duration: 0.85,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          big.textContent = String(proxy.val);
+        },
+      }, 0.2);
+    }
+    if (footNum) {
+      const target = parseInt(footNum.dataset.target || "84", 10);
+      const proxy = { val: 0 };
+      tl.to(proxy, {
+        val: target,
+        duration: 0.7,
+        ease: "eagleReveal",
+        snap: { val: 1 },
+        onUpdate: () => {
+          footNum.textContent = String(proxy.val);
+        },
+      }, 0.35);
+    }
+  }
+
+  function animateChart(chartEl: HTMLElement) {
+    const type = chartEl.dataset.fccChart;
+    if (type === "reporting") animateReporting(chartEl);
+    else if (type === "anomaly") animateAnomaly(chartEl);
+    else if (type === "trust") animateSecurity(chartEl);
+    else if (type === "meter") animateMeter(chartEl);
+  }
+
+  // ---- Wire up ScrollTriggers ----
+  const charts = document.querySelectorAll<HTMLElement>("[data-fcc-chart]");
+  charts.forEach((chartEl) => {
+    if (prefersReducedMotion) {
+      jumpToFinal(chartEl);
+      return;
+    }
+    ScrollTrigger.create({
+      trigger: chartEl,
+      comeca: "top 75%",
+      once: true,
+      onEnter: () => animateChart(chartEl),
+    });
+  });
+</script>

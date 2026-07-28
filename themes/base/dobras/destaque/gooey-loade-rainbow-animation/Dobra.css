@@ -1,0 +1,56 @@
+[data-dobra="destaque-gooey-loade-rainbow-animation"] *,[data-dobra="destaque-gooey-loade-rainbow-animation"] *:after,[data-dobra="destaque-gooey-loade-rainbow-animation"] *:before{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"]{
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            background: var(--base-100);
+            margin: 0;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] svg{
+            width: 50vmin;
+            overflow: visible;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"]{
+            --speed: .875s;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(1){ --delay: 0.35; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(2){ --delay: 0.5; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(3){ --delay: 0.75; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(4){ --delay: 1; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(5){ --delay: 0.75; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(6){ --delay: 0.5; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] mask g:nth-of-type(7){ --delay: 0.35; }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] line{
+            transform-origin: 50% 50%;
+            translate: 0 -50%;
+            animation: drop var(--speed) calc((sin(var(--delay)) * -1s)) infinite alternate ease-in-out;
+        }
+@keyframes drop{
+            0%, 5% {
+                translate: 0 -50%;
+            }
+            95%, 100% {
+                translate: 0 50%;
+            }
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] line,[data-dobra="destaque-gooey-loade-rainbow-animation"] circle{
+            transform-box: fill-box;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] circle:first-of-type{
+            transform-origin: 50% 100%;
+            animation: pulse calc(var(--speed) * 2) calc((sin(var(--delay)) * -1s)) infinite ease-in-out;
+        }
+[data-dobra="destaque-gooey-loade-rainbow-animation"] circle:last-of-type{
+            transform-origin: 50% 0%;
+            animation: pulse calc(var(--speed) * 2) calc(((sin(var(--delay)) * -1s) + (var(--speed) * -1))) infinite ease-in-out;
+        }
+@keyframes pulse{
+            0%, 20% { transform: scale(1); }
+            50%, 100% { transform: scale(0); }
+        }
+
+    
