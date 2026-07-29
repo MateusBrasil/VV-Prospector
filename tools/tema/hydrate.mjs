@@ -27,6 +27,11 @@ import { validarConteudoDoTema } from './qualidade-conteudo.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
+const DIRECAO_POR_TEMA = Object.freeze({
+  'restaurante-noir': 'restaurante',
+  odontologia: 'odontologia',
+  'clinica-estetica': 'clinica-estetica',
+});
 
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i > -1 ? process.argv[i + 1] : d; };
 
@@ -36,13 +41,18 @@ export function hidratar(slug, temaNome) {
   if (!existsSync(fichaPath)) throw new Error(`não existe: clientes/${slug}/cliente.json`);
 
   const ficha = JSON.parse(readFileSync(fichaPath, 'utf8'));
+  const temaDeclarado = temaNome || String(ficha.tema || '').split('@')[0] || 'restaurante-noir';
+  const fichaComDirecao = ficha.direcao ? ficha : {
+    ...ficha,
+    ...(DIRECAO_POR_TEMA[temaDeclarado] ? { direcao: DIRECAO_POR_TEMA[temaDeclarado] } : {}),
+  };
   // A direção é a base visual de nicho; o cliente só declara o que precisa sobrescrever.
   // Isto impede que uma cópia parcial de `design` perca tokens (como tracking de display).
   const bruto = aplicarDirecao(
-    ficha,
+    fichaComDirecao,
     carregarDirecoes(join(ROOT, 'themes', 'base', 'direcoes.json')),
   );
-  const tema = temaNome || String(bruto.tema || '').split('@')[0] || 'restaurante-noir';
+  const tema = temaDeclarado;
   const dirTema = join(ROOT, 'themes', tema);
   if (!existsSync(dirTema)) throw new Error(`tema não existe: themes/${tema}`);
 

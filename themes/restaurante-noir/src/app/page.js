@@ -17,6 +17,7 @@ import CTA from "@/components/CTA/CTA";
 import ImageBanner from "@/components/ImageBanner/ImageBanner";
 import { blocos, identidade, imagens, paginas } from "@/theme/content";
 import MesaRevelada from "@/dobras/hero/mesa-revelada/Dobra";
+import RodaPratos from "@/dobras/vitrine/roda-pratos/Dobra";
 
 import "./home.css";
 
@@ -106,6 +107,7 @@ export default function Home() {
       </section>
 
       <DiningMenu />
+      <RodaPratos s={blocos.vitrine} />
       <Testimonials />
       <CTA />
       <ImageBanner />

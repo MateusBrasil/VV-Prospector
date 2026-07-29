@@ -55,6 +55,7 @@
     "diningMenu": {
       "titulo": "Carta sintética"
     }
+    ,"vitrine":{"rotulo":"Ambiente","titulo":"Vitrine sintética","itens":[{"titulo":"Prato 1","imagem":"/assets/hero.svg"},{"titulo":"Prato 2","imagem":"/assets/hero.svg"},{"titulo":"Prato 3","imagem":"/assets/hero.svg"},{"titulo":"Prato 4","imagem":"/assets/hero.svg"},{"titulo":"Prato 5","imagem":"/assets/hero.svg"}]}
   },
   "paginas": {
     "home": {
