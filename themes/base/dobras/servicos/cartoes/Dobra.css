@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 34ch;
+  max-width: 48rem;
 }
 
 [data-dobra="servicos-cartoes"] .cartoes__kicker {
@@ -61,18 +61,16 @@
    `margin-inline-start` negativo em vez do `margin-right: -200px` da origem, para o efeito
    respeitar a direção de leitura. */
 [data-dobra="servicos-cartoes"] .cartoes__fila {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
+  gap: 1rem;
 }
 
 [data-dobra="servicos-cartoes"] .cartao {
   position: relative;
   z-index: 1;
-  flex: 0 0 auto;
-  width: 22rem;
+  width: auto;
   min-height: 28rem;
   overflow: hidden;
   background-color: var(--base-200);
@@ -83,20 +81,11 @@
               background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-[data-dobra="servicos-cartoes"] .cartao + .cartao {
-  margin-inline-start: -7rem;
-}
-
 [data-dobra="servicos-cartoes"] .cartao:hover,
 [data-dobra="servicos-cartoes"] .cartao:focus-within {
   z-index: 10;
   transform: translateY(-0.5rem);
   background-color: var(--base-100);
-}
-
-[data-dobra="servicos-cartoes"] .cartao:hover + .cartao,
-[data-dobra="servicos-cartoes"] .cartao:focus-within + .cartao {
-  margin-inline-start: -1.5rem;
 }
 
 [data-dobra="servicos-cartoes"] .cartao__conteudo {
@@ -183,14 +172,19 @@
 /* No telemóvel a sobreposição não cabe: a fila passa a coluna e os cartões deixam de se
    encavalitar. A origem resolvia isto com `margin-bottom: -300px`, que empilhava os
    cartões quase por inteiro uns em cima dos outros e escondia o texto. */
-@media (max-width: 1000px) {
+@media (max-width: 1180px) {
+  [data-dobra="servicos-cartoes"] .cartoes__fila {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
   [data-dobra="servicos-cartoes"] .cartoes {
     padding: var(--respiro-compacto);
     gap: 2.5rem;
   }
   [data-dobra="servicos-cartoes"] .cartoes__fila {
-    flex-direction: column;
-    overflow-x: visible;
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
   [data-dobra="servicos-cartoes"] .cartao {
@@ -200,10 +194,5 @@
   [data-dobra="servicos-cartoes"] .cartao__conteudo {
     min-height: 0;
     padding: 2rem 1.5rem;
-  }
-  [data-dobra="servicos-cartoes"] .cartao + .cartao,
-  [data-dobra="servicos-cartoes"] .cartao:hover + .cartao,
-  [data-dobra="servicos-cartoes"] .cartao:focus-within + .cartao {
-    margin-inline-start: 0;
   }
 }
