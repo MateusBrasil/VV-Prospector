@@ -1,10 +1,12 @@
 {
   "_porque": "As dobras que este tema materializa dentro de cada obra. Todas foram portadas à mão em 2026-07-28 e promovidas a `aprovada` no acervo; o manifesto declara a expectativa para a decisão ficar auditável, e o materializador recusa se a fonte não estiver promovida.",
   "dobras": [
-    { "slot": "hero", "nome": "hero-9", "estado": "aprovada" },
-    { "slot": "servicos", "nome": "arcos", "estado": "aprovada" },
+    { "slot": "hero", "nome": "mesa-revelada", "estado": "aprovada" },
+    { "slot": "botao", "nome": "atlas-reserva", "estado": "aprovada" },
+    { "slot": "servicos", "nome": "cartoes", "estado": "aprovada" },
     { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada" },
     { "slot": "equipa", "nome": "secao-162", "estado": "aprovada" },
+    { "slot": "prova", "nome": "secao-192", "estado": "aprovada" },
     { "slot": "faq", "nome": "secao-21", "estado": "aprovada" },
     { "slot": "contacto", "nome": "secao-83", "estado": "aprovada" }
   ]

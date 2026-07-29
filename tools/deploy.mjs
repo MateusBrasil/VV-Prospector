@@ -156,7 +156,14 @@ if (!url) { console.error(`erro: a Vercel não devolveu URL.\n${r.stdout}\n${r.s
 async function vivo(u, tentativas = 5) {
   for (let i = 1; i <= tentativas; i++) {
     try {
-      const res = await fetch(u, { redirect: 'follow' });
+      // Nunca siga redirects aqui: uma preview protegida pela Vercel responde 302
+      // para uma página de SSO que devolve 200. Segui-la fazia o CRM registar como
+      // publicado um link que o cliente não consegue abrir.
+      const res = await fetch(u, { redirect: 'manual' });
+      const location = res.headers.get('location') || '';
+      if (res.status >= 300 && res.status < 400 && /vercel\.com\/sso-api/i.test(location)) {
+        return 'protegido por autenticação Vercel';
+      }
       if (res.ok) return res.status;
       if (i === tentativas) return res.status;
     } catch (e) { if (i === tentativas) return `sem resposta (${e.message})`; }

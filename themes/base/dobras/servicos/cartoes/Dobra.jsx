@@ -40,7 +40,12 @@ export default function Dobra({ slots: s = {}, id }) {
 
         <div className="cartoes__fila">
           {itens.map((item, i) => (
-            <article className="cartao" key={i}>
+            <article className="cartao" data-tem-imagem={item.imagem ? "true" : "false"} key={i}>
+              {item.imagem && (
+                <figure className="cartao__media">
+                  <img src={item.imagem} alt={item.imagemAlt || ""} />
+                </figure>
+              )}
               <div className="cartao__conteudo">
                 <h3>{item.titulo}</h3>
                 {item.texto && <p className="sm">{item.texto}</p>}

@@ -5,7 +5,10 @@ import gsap from "gsap";
 import "./Dobra.css";
 import AtlasReserva from "@/dobras/botao/atlas-reserva/Dobra";
 
-export default function MesaRevelada({ s }) {
+export default function MesaRevelada({ s, slots }) {
+  // `slots` is the theme-wide component contract. Keep `s` as an alias so the
+  // original restaurant composition remains backwards compatible.
+  s = s || slots || {};
   const raiz = useRef(null);
   const imagens = (s?.imagens || []).slice(0, 7);
   const titulo = String(s?.titulo || "").trim();

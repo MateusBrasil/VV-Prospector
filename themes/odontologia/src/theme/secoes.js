@@ -20,6 +20,7 @@ export const slotsHero = {
   acao: blocos.hero?.acao,
   destino: contactos.reservaUrl,
   imagem: imagens.hero,
+  imagens: blocos.hero?.imagens,
   imagemAlt: identidade.logoAlt,
   texto: morada.linhas?.[0],
   texto2: horarios?.[0] ? `${horarios[0].dias}, ${horarios[0].horas}` : undefined,
@@ -48,6 +49,13 @@ export const slotsEquipa = {
   titulo: blocos.equipa?.titulo,
   texto: blocos.equipa?.texto,
   membros: blocos.equipa?.membros,
+};
+
+export const slotsProva = {
+  rotulo: blocos.prova?.rotulo,
+  titulo: blocos.prova?.titulo,
+  itens: blocos.prova?.itens,
+  nota: blocos.prova?.nota,
 };
 
 export const slotsFaq = {
