@@ -22,7 +22,7 @@ import Hero from "@/dobras/hero/mesa-revelada/Dobra";
 import TratamentosComplementares from "@/dobras/servicos/cartoes/Dobra";
 import Vitrine from "@/dobras/vitrine/antes-depois/Dobra";
 import Equipa from "@/dobras/equipa/secao-162/Dobra";
-import Prova from "@/dobras/prova/secao-192/Dobra";
+import Prova from "@/dobras/prova/carrossel/Dobra";
 import Faq from "@/dobras/faq/secao-21/Dobra";
 import Contacto from "@/dobras/contacto/secao-83/Dobra";
 

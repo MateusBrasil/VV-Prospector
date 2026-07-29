@@ -72,7 +72,7 @@
         { "slot": "servicos", "fonte": "dobra", "componente": "cartoes" },
         { "slot": "vitrine", "fonte": "dobra", "componente": "antes-depois" },
         { "slot": "equipa", "fonte": "dobra", "componente": "secao-162" },
-        { "slot": "prova", "fonte": "dobra", "componente": "secao-192" },
+        { "slot": "prova", "fonte": "dobra", "componente": "carrossel" },
         { "slot": "faq", "fonte": "dobra", "componente": "secao-21" },
         { "slot": "contacto", "fonte": "dobra", "componente": "secao-83" }
       ],
@@ -82,7 +82,7 @@
         { "slot": "servicos", "nome": "cartoes", "estado": "aprovada", "uso": "pilha interativa Code Eagle para tratamentos complementares" },
         { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada", "uso": "resultados clínicos comparáveis, apenas com autorização documentada" },
         { "slot": "equipa", "nome": "secao-162", "estado": "aprovada", "uso": "credenciais e profissionais" },
-        { "slot": "prova", "nome": "secao-192", "estado": "aprovada", "uso": "testemunhos publicados pelo cliente" },
+        { "slot": "prova", "nome": "carrossel", "estado": "aprovada", "uso": "carrossel Code Eagle de testemunhos publicados pelo cliente" },
         { "slot": "faq", "nome": "secao-21", "estado": "aprovada", "uso": "dúvidas de marcação" },
         { "slot": "contacto", "nome": "secao-83", "estado": "aprovada", "uso": "marcação e contactos" }
       ],

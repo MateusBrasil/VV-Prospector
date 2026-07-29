@@ -6,7 +6,7 @@
     { "slot": "servicos", "nome": "cartoes", "estado": "aprovada" },
     { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada" },
     { "slot": "equipa", "nome": "secao-162", "estado": "aprovada" },
-    { "slot": "prova", "nome": "secao-192", "estado": "aprovada" },
+    { "slot": "prova", "nome": "carrossel", "estado": "aprovada" },
     { "slot": "faq", "nome": "secao-21", "estado": "aprovada" },
     { "slot": "contacto", "nome": "secao-83", "estado": "aprovada" }
   ]
