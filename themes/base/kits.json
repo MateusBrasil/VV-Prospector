@@ -21,7 +21,6 @@
       ],
       "candidatosRevisar": [
         { "slot": "prova", "nome": "star-rating", "estado": "revisar", "uso": "nota Google; requer reescrita do JS global e QA" },
-        { "slot": "faq", "nome": "secao-21", "estado": "revisar", "uso": "perguntas de reserva; requer reescrita do JS global e QA" },
         { "slot": "contacto", "nome": "secao-110", "estado": "revisar", "uso": "mapa e horários; trocar todos os assets externos antes de promover" }
       ],
       "riscos": [
@@ -36,8 +35,8 @@
     },
     {
       "nicho": "clinica-estetica",
-      "estado": "em-curadoria",
-      "tema": null,
+      "estado": "mvp-pronto",
+      "tema": "clinica-estetica",
       "estrutura": [
         { "slot": "hero", "fonte": "planeado", "componente": "Hero específico do nicho" },
         { "slot": "servicos", "fonte": "planeado", "componente": "Tratamentos e especialidades" },
@@ -45,19 +44,25 @@
         { "slot": "consulta", "fonte": "planeado", "componente": "CTA de marcação" },
         { "slot": "contacto", "fonte": "planeado", "componente": "Morada, horário e contactos" }
       ],
-      "componentesAprovados": [],
+      "componentesAprovados": [
+        { "slot": "hero", "nome": "hero-1", "estado": "aprovada", "uso": "entrada editorial do tema" },
+        { "slot": "servicos", "nome": "cartoes", "estado": "aprovada", "uso": "tratamentos com fotografia e CTA" },
+        { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada", "uso": "resultados com consentimento" },
+        { "slot": "prova", "nome": "secao-192", "estado": "aprovada", "uso": "testemunhos verificáveis" },
+        { "slot": "contacto", "nome": "secao-89", "estado": "aprovada", "uso": "marcação e contactos" }
+      ],
       "candidatosRevisar": [
         { "slot": "hero", "nome": "hero-24", "estado": "revisar", "uso": "alternativa editorial; JS módulo ES precisa adaptação" },
         { "slot": "servicos", "nome": "secao-65", "estado": "revisar", "uso": "serviços; requer QA e revisão de conteúdo" },
         { "slot": "contacto", "nome": "secao-110", "estado": "revisar", "uso": "contacto; requer trocar assets externos" }
       ],
-      "riscos": ["Não existe tema de clínica aprovado; este kit não pode ser vendido nem usado como produção."],
-      "criteriosPromocao": ["Criar tema próprio com contrato de conteúdo, integrar no máximo poucas dobras e concluir QA visual." ]
+      "riscos": ["O tema existe, mas só pode ser publicado com fotos próprias, consentimento para antes/depois e revisão visual humana."],
+      "criteriosPromocao": ["Manter mecânica das dobras de origem, validar material real e concluir build, gate e QA visual." ]
     },
     {
       "nicho": "clinica-dentaria",
-      "estado": "em-curadoria",
-      "tema": null,
+      "estado": "mvp-pronto",
+      "tema": "odontologia",
       "estrutura": [
         { "slot": "hero", "fonte": "planeado", "componente": "Proposta clínica" },
         { "slot": "especialidades", "fonte": "planeado", "componente": "Tratamentos" },
@@ -65,14 +70,19 @@
         { "slot": "faq", "fonte": "planeado", "componente": "Dúvidas frequentes" },
         { "slot": "marcacao", "fonte": "planeado", "componente": "CTA de consulta" }
       ],
-      "componentesAprovados": [],
+      "componentesAprovados": [
+        { "slot": "hero", "nome": "hero-9", "estado": "aprovada", "uso": "entrada clínica" },
+        { "slot": "servicos", "nome": "arcos", "estado": "aprovada", "uso": "narrativa visual, uma fotografia por tratamento" },
+        { "slot": "equipa", "nome": "secao-162", "estado": "aprovada", "uso": "credenciais e profissionais" },
+        { "slot": "faq", "nome": "secao-21", "estado": "aprovada", "uso": "dúvidas de marcação" },
+        { "slot": "contacto", "nome": "secao-83", "estado": "aprovada", "uso": "marcação e contactos" }
+      ],
       "candidatosRevisar": [
         { "slot": "servicos", "nome": "secao-65", "estado": "revisar", "uso": "tratamentos; revisar conteúdo e contraste" },
-        { "slot": "equipa", "nome": "secao-111", "estado": "revisar", "uso": "equipa; requer QA de fotos e ações" },
-        { "slot": "faq", "nome": "secao-21", "estado": "revisar", "uso": "dúvidas; JS global requer adaptação" }
+        { "slot": "equipa", "nome": "secao-111", "estado": "revisar", "uso": "equipa; requer QA de fotos e ações" }
       ],
-      "riscos": ["Não existe tema de clínica aprovado; este kit não pode ser vendido nem usado como produção."],
-      "criteriosPromocao": ["Validar fatos clínicos e legais, criar tema próprio e promover componentes após QA visual." ]
+      "riscos": ["Tratamentos sem fotografias próprias são bloqueados; informações clínicas e credenciais exigem revisão humana."],
+      "criteriosPromocao": ["Manter mecânica das dobras de origem, validar fotos por tratamento e concluir build, gate e QA visual." ]
     }
   ]
 }

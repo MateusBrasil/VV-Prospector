@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import test from 'node:test';
-import { validarRegistry } from '../tools/tema/kits.mjs';
+import { carregarEValidar, validarRegistry } from '../tools/tema/kits.mjs';
 
 function raiz() {
   const root = mkdtempSync(join(tmpdir(), 'prospector-kits-'));
@@ -18,6 +18,15 @@ test('kit mvp-pronto aceita apenas referência de dobra promovida', () => {
   const root = raiz();
   try { assert.equal(validarRegistry({ root, registry: base('mvp-pronto') }).ok, true); }
   finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('os três kits iniciais apontam para temas reais e dobras promovidas', () => {
+  const resultado = carregarEValidar();
+  assert.equal(resultado.ok, true, resultado.erros.join('\n'));
+  const porNicho = new Map(resultado.kits.map(kit => [kit.nicho, kit]));
+  assert.equal(porNicho.get('restaurante')?.tema, 'restaurante-noir');
+  assert.equal(porNicho.get('clinica-estetica')?.tema, 'clinica-estetica');
+  assert.equal(porNicho.get('clinica-dentaria')?.tema, 'odontologia');
 });
 
 test('kit mvp-pronto falha ao declarar dobra revisar como aprovada', () => {
