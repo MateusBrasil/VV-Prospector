@@ -1,6 +1,7 @@
 {
   "dobras": [
     { "slot": "hero", "nome": "mesa-revelada", "estado": "aprovada" },
-    { "slot": "vitrine", "nome": "roda-pratos", "estado": "aprovada" }
+    { "slot": "vitrine", "nome": "roda-pratos", "estado": "aprovada" },
+    { "slot": "botao", "nome": "atlas-reserva", "estado": "aprovada" }
   ]
 }

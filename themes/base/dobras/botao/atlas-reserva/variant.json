@@ -1,0 +1,23 @@
+{
+  "slot": "botao",
+  "nome": "atlas-reserva",
+  "scope": "hero-mesa-revelada",
+  "origem": "bank/_componentes/botoes/atlas-button",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": [],
+  "js": { "categoria": "css", "escopadoAutomaticamente": false },
+  "slots": [
+    { "nome": "children", "tipo": "texto", "exemplo": "Reservar mesa" },
+    { "nome": "href", "tipo": "link", "exemplo": "URL real de reserva" }
+  ],
+  "precondicoes": {},
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["troca do rótulo por marquee contínuo no hover"],
+    "adaptacoesPermitidas": ["tokens do tema substituem a cor rosa da demonstração", "link e rótulo entram pelo cliente"],
+    "materialObrigatorio": ["blocos.hero.acao", "blocos.hero.destino"]
+  },
+  "_rever": [],
+  "_nota": "Porte fiel do Atlas Button do Code Eagle; usado somente como ação principal do hero editorial de restaurante."
+}

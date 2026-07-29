@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import "./Dobra.css";
+import AtlasReserva from "@/dobras/botao/atlas-reserva/Dobra";
 
 export default function MesaRevelada({ s }) {
   const raiz = useRef(null);
@@ -46,7 +47,7 @@ export default function MesaRevelada({ s }) {
         </h1>
         <div className="mesa-revelada__footer">
           <p>{s.texto}</p>
-          <a href={s.destino}>{s.acao}</a>
+          <AtlasReserva href={s.destino}>{s.acao}</AtlasReserva>
         </div>
       </div>
     </section>

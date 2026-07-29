@@ -1,0 +1,42 @@
+[data-dobra="hero-mesa-revelada"] .atlas-reserva {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: .65rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+[data-dobra="hero-mesa-revelada"] .atlas-reserva__label { transition: opacity .3s ease; }
+[data-dobra="hero-mesa-revelada"] .atlas-reserva__marquee {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+[data-dobra="hero-mesa-revelada"] .atlas-reserva__track {
+  display: flex;
+  width: max-content;
+  opacity: 0;
+  transform: translate3d(-25%, 0, 0);
+}
+[data-dobra="hero-mesa-revelada"] .atlas-reserva__track span {
+  display: inline-block;
+  padding-inline: 1rem;
+  font-style: italic;
+}
+@keyframes atlas-reserva-marquee { to { transform: translate3d(-50%, 0, 0); } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  [data-dobra="hero-mesa-revelada"] .atlas-reserva:hover .atlas-reserva__label { opacity: 0; }
+  [data-dobra="hero-mesa-revelada"] .atlas-reserva:hover .atlas-reserva__track {
+    animation: atlas-reserva-marquee 1s linear infinite;
+    opacity: 1;
+  }
+}
+[data-dobra="hero-mesa-revelada"] .atlas-reserva:focus-visible { outline: 2px solid var(--base-100); outline-offset: 4px; }

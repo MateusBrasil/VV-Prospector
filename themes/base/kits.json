@@ -8,6 +8,7 @@
       "estrutura": [
         { "slot": "navegacao", "fonte": "tema", "componente": "Nav" },
         { "slot": "hero", "fonte": "dobra", "componente": "mesa-revelada" },
+        { "slot": "botao", "fonte": "dobra", "componente": "atlas-reserva" },
         { "slot": "vitrine", "fonte": "dobra", "componente": "roda-pratos" },
         { "slot": "sobre-galeria", "fonte": "tema", "componente": "HomeAboutGallery" },
         { "slot": "carta", "fonte": "tema", "componente": "DiningMenu" },
@@ -18,7 +19,8 @@
       ],
       "componentesAprovados": [
         { "slot": "hero", "nome": "mesa-revelada", "estado": "aprovada", "uso": "hero Code Eagle com reveal GSAP e 5 a 7 fotografias reais" },
-        { "slot": "vitrine", "nome": "roda-pratos", "estado": "aprovada", "uso": "pratos e ambiente em carrossel 3D com scroll" }
+        { "slot": "vitrine", "nome": "roda-pratos", "estado": "aprovada", "uso": "pratos e ambiente em carrossel 3D com scroll" },
+        { "slot": "botao", "nome": "atlas-reserva", "estado": "aprovada", "uso": "CTA do hero com marquee Code Eagle no hover" }
       ],
       "candidatosRevisar": [
         { "slot": "prova", "nome": "star-rating", "estado": "revisar", "uso": "nota Google; requer reescrita do JS global e QA" },
