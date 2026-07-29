@@ -42,15 +42,23 @@ export function validarConteudoDoTema(cliente, tema) {
   }
   if (tema === 'odontologia') {
     const tratamentos = lista(cliente, 'blocos.servicos.itens');
-    exigir(fatais, tratamentos.length >= 3, 'blocos.servicos.itens — odontologia premium exige pelo menos 3 tratamentos reais');
+    exigir(fatais, tratamentos.length >= 5, 'blocos.servicos.itens — odontologia premium exige pelo menos 5 tratamentos reais');
     if (tratamentos.length) exigirImagensDistintas(fatais, tratamentos, 'imagem', 'blocos.servicos.itens[].imagem (scroll-29)', cliente);
 
     const equipa = lista(cliente, 'blocos.equipa.membros');
-    exigir(fatais, equipa.length >= 2, 'blocos.equipa.membros — clínica dentária premium exige pelo menos 2 profissionais reais');
+    exigir(fatais, equipa.length >= 3, 'blocos.equipa.membros — clínica dentária premium exige pelo menos 3 profissionais reais');
     if (equipa.length) exigirImagensDistintas(fatais, equipa, 'imagem', 'blocos.equipa.membros[].imagem', cliente);
 
     const faq = lista(cliente, 'blocos.faq.itens');
     exigir(fatais, faq.length >= 3, 'blocos.faq.itens — clínica dentária premium exige pelo menos 3 dúvidas reais de pacientes');
+
+    const casos = lista(cliente, 'blocos.vitrine.itens');
+    exigir(fatais, casos.length >= 2, 'blocos.vitrine.itens — odontologia premium exige pelo menos 2 casos antes/depois autorizados');
+    if (casos.length) {
+      exigirImagensDistintas(fatais, casos, 'antes', 'blocos.vitrine.itens[].antes', cliente);
+      exigirImagensDistintas(fatais, casos, 'depois', 'blocos.vitrine.itens[].depois', cliente);
+      exigir(fatais, casos.every(caso => caso?.autorizado === true), 'blocos.vitrine.itens — cada antes/depois odontológico exige autorizado: true');
+    }
   }
 
   if (tema === 'clinica-estetica') {

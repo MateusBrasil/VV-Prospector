@@ -34,6 +34,16 @@ export const slotsServicos = {
   itens: blocos.servicos?.itens?.map(item => ({ ...item, imagem: item.imagem })),
 };
 
+/* Antes/depois é permitido em odontologia somente para casos autorizados. O gate
+ * confere o consentimento por item antes de qualquer obra ser materializada. */
+export const slotsVitrine = {
+  rotulo: blocos.vitrine?.rotulo,
+  titulo: blocos.vitrine?.titulo,
+  texto: blocos.vitrine?.texto,
+  rotuloControlo: blocos.vitrine?.rotuloControlo,
+  itens: blocos.vitrine?.itens,
+};
+
 export const slotsEquipa = {
   titulo: blocos.equipa?.titulo,
   texto: blocos.equipa?.texto,

@@ -69,6 +69,7 @@
       "estrutura": [
         { "slot": "hero", "fonte": "dobra", "componente": "hero-9" },
         { "slot": "servicos", "fonte": "dobra", "componente": "arcos" },
+        { "slot": "vitrine", "fonte": "dobra", "componente": "antes-depois" },
         { "slot": "equipa", "fonte": "dobra", "componente": "secao-162" },
         { "slot": "faq", "fonte": "dobra", "componente": "secao-21" },
         { "slot": "contacto", "fonte": "dobra", "componente": "secao-83" }
@@ -76,6 +77,7 @@
       "componentesAprovados": [
         { "slot": "hero", "nome": "hero-9", "estado": "aprovada", "uso": "entrada clínica" },
         { "slot": "servicos", "nome": "arcos", "estado": "aprovada", "uso": "narrativa visual, uma fotografia por tratamento" },
+        { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada", "uso": "resultados clínicos comparáveis, apenas com autorização documentada" },
         { "slot": "equipa", "nome": "secao-162", "estado": "aprovada", "uso": "credenciais e profissionais" },
         { "slot": "faq", "nome": "secao-21", "estado": "aprovada", "uso": "dúvidas de marcação" },
         { "slot": "contacto", "nome": "secao-83", "estado": "aprovada", "uso": "marcação e contactos" }

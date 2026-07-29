@@ -19,12 +19,13 @@
 
 import Hero from "@/dobras/hero/hero-9/Dobra";
 import Servicos from "@/dobras/servicos/arcos/Dobra";
+import Vitrine from "@/dobras/vitrine/antes-depois/Dobra";
 import Equipa from "@/dobras/equipa/secao-162/Dobra";
 import Faq from "@/dobras/faq/secao-21/Dobra";
 import Contacto from "@/dobras/contacto/secao-83/Dobra";
 
 import Lead from "@/components/Lead/Lead";
-import { slotsHero, slotsServicos, slotsEquipa, slotsFaq, slotsContacto } from "@/theme/secoes";
+import { slotsHero, slotsServicos, slotsVitrine, slotsEquipa, slotsFaq, slotsContacto } from "@/theme/secoes";
 import { tem } from "@/theme/content";
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
       <Hero slots={slotsHero} />
       <Lead />
       {tem("blocos.servicos.itens") && <Servicos slots={slotsServicos} id="servicos" />}
+      {tem("blocos.vitrine.itens") && <Vitrine slots={slotsVitrine} id="resultados" />}
       {tem("blocos.equipa.membros") && <Equipa slots={slotsEquipa} id="equipa" />}
       {tem("blocos.faq.itens") && <Faq slots={slotsFaq} id="faq" />}
       <Contacto slots={slotsContacto} id="contacto" />

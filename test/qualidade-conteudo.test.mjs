@@ -8,15 +8,22 @@ const odontologiaValida = () => ({
       { titulo: 'Implantes', imagem: '/assets/implantes.webp' },
       { titulo: 'Ortodontia', imagem: '/assets/ortodontia.webp' },
       { titulo: 'Clinica geral', imagem: '/assets/clinica-geral.webp' },
+      { titulo: 'Facetas', imagem: '/assets/facetas.webp' },
+      { titulo: 'Reabilitação', imagem: '/assets/reabilitacao.webp' },
     ] },
     equipa: { membros: [
       { nome: 'Dra. Ana', imagem: '/assets/dra-ana.webp' },
       { nome: 'Dr. Bruno', imagem: '/assets/dr-bruno.webp' },
+      { nome: 'Dra. Carla', imagem: '/assets/dra-carla.webp' },
     ] },
     faq: { itens: [
       { pergunta: 'Pergunta 1', resposta: 'Resposta 1' },
       { pergunta: 'Pergunta 2', resposta: 'Resposta 2' },
       { pergunta: 'Pergunta 3', resposta: 'Resposta 3' },
+    ] },
+    vitrine: { itens: [
+      { antes: '/assets/caso-1-antes.webp', depois: '/assets/caso-1-depois.webp', autorizado: true },
+      { antes: '/assets/caso-2-antes.webp', depois: '/assets/caso-2-depois.webp', autorizado: true },
     ] },
   },
 });
@@ -72,21 +79,25 @@ test('odontologia bloqueia tratamentos, equipa e FAQ insuficientes', () => {
   cliente.blocos.servicos.itens[1].imagem = '';
   cliente.blocos.equipa.membros = [];
   cliente.blocos.faq.itens = [];
+  cliente.blocos.vitrine.itens = [];
   const erros = validarConteudoDoTema(cliente, 'odontologia');
-  assert.equal(erros.length, 3);
+  assert.equal(erros.length, 4);
   assert.match(erros[0], /fotografia/);
-  assert.match(erros[1], /2 profissionais/);
+  assert.match(erros[1], /3 profissionais/);
   assert.match(erros[2], /faq\.itens/);
+  assert.match(erros[3], /antes\/depois/);
 });
 
 test('odontologia bloqueia fotos repetidas em tratamentos e equipa reais', () => {
   const cliente = odontologiaValida();
   cliente.blocos.servicos.itens[2].imagem = cliente.blocos.servicos.itens[0].imagem;
   cliente.blocos.equipa.membros[1].imagem = cliente.blocos.equipa.membros[0].imagem;
+  cliente.blocos.vitrine.itens[1].autorizado = false;
   const erros = validarConteudoDoTema(cliente, 'odontologia');
-  assert.equal(erros.length, 2);
+  assert.equal(erros.length, 3);
   assert.match(erros[0], /mesma fotografia/);
   assert.match(erros[1], /mesma fotografia/);
+  assert.match(erros[2], /autorizado/);
 });
 
 test('odontologia aceita um briefing visual completo', () => {

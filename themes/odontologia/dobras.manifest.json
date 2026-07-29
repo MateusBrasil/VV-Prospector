@@ -3,6 +3,7 @@
   "dobras": [
     { "slot": "hero", "nome": "hero-9", "estado": "aprovada" },
     { "slot": "servicos", "nome": "arcos", "estado": "aprovada" },
+    { "slot": "vitrine", "nome": "antes-depois", "estado": "aprovada" },
     { "slot": "equipa", "nome": "secao-162", "estado": "aprovada" },
     { "slot": "faq", "nome": "secao-21", "estado": "aprovada" },
     { "slot": "contacto", "nome": "secao-83", "estado": "aprovada" }
