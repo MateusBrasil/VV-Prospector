@@ -33,6 +33,7 @@ import { join, dirname, resolve, basename, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import { eSmokeRestaurante, validarExecucaoSmoke, validarRelatorioSmokeQa } from './run-smoke.mjs';
+import { escolherModoMontagem } from './tema/modo-montagem.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..');
@@ -325,7 +326,10 @@ async function ciclo(briefPath) {
    * vêm de sistemas de design diferentes e por isso brigam entre si; o tema tem um sistema só.
    * Quando os dois estão disponíveis para o mesmo lead, o tema é sempre a melhor entrega. */
   const fichaTema = join(ROOT, 'clientes', brief.slug || '', 'cliente.json');
-  const temTema = brief.tema === true || (brief.tema && typeof brief.tema === 'string') || existsSync(fichaTema);
+  // Um plano é a saída explícita da curadoria para nichos ainda sem kit. A mera
+  // existência de cliente.json não pode capturá-lo e forçar restaurante-noir:
+  // isso fazia uma mecânica com plano Code Eagle cair silenciosamente no tema errado.
+  // Tema declarado continua tendo precedência, pois é uma escolha explícita de kit.
   const temaDoCliente = existsSync(fichaTema)
     ? String(JSON.parse(readFileSync(fichaTema, 'utf8')).tema || '').split('@')[0]
     : '';
@@ -333,9 +337,11 @@ async function ciclo(briefPath) {
     ? brief.tema.split('@')[0]
     : temaDoCliente;
 
-  const modo = temTema ? 'tema'
-    : brief.plano ? 'compor'
-    : (brief.blocos?.length && !FORCAR_REMIX) ? 'assemble' : 'remix';
+  const modo = escolherModoMontagem({
+    brief,
+    temFichaTema: existsSync(fichaTema),
+    forcarRemix: FORCAR_REMIX,
+  });
   await passo(`Montar (${modo})`, () => {
     // Limpar artefactos DERIVADOS antes de montar. Não é higiene: o index-editor.html e o
     // proposta.html de uma corrida anterior ficam na pasta que o gate varre a seguir — e a camada
