@@ -326,6 +326,12 @@ async function ciclo(briefPath) {
    * Quando os dois estão disponíveis para o mesmo lead, o tema é sempre a melhor entrega. */
   const fichaTema = join(ROOT, 'clientes', brief.slug || '', 'cliente.json');
   const temTema = brief.tema === true || (brief.tema && typeof brief.tema === 'string') || existsSync(fichaTema);
+  const temaDoCliente = existsSync(fichaTema)
+    ? String(JSON.parse(readFileSync(fichaTema, 'utf8')).tema || '').split('@')[0]
+    : '';
+  const temaSolicitado = typeof brief.tema === 'string'
+    ? brief.tema.split('@')[0]
+    : temaDoCliente;
 
   const modo = temTema ? 'tema'
     : brief.plano ? 'compor'
@@ -339,12 +345,12 @@ async function ciclo(briefPath) {
       rmSync(join(outAbs, f), { force: true });
 
     if (modo === 'tema') {
-      const h = correTool('tema/hydrate.mjs', [brief.slug]);
+      const h = correTool('tema/hydrate.mjs', [brief.slug, ...(temaSolicitado ? ['--tema', temaSolicitado] : [])]);
       if (!h.ok) return h;
       // A obra é buildada onde ela vive (dentro do tema, para herdar node_modules por
       // resolução de diretório: um junction para fora é recusado pelo Turbopack e copiar
       // custa 378 MB por cliente). Depois só a pasta `out/` é publicada.
-      const nomeTema = (typeof brief.tema === 'string' ? brief.tema : 'restaurante-noir').split('@')[0];
+      const nomeTema = temaSolicitado || 'restaurante-noir';
       const obra = join(ROOT, 'themes', nomeTema, '.obras', brief.slug);
       const b = spawnSync('npx', ['next', 'build'], { cwd: obra, encoding: 'utf8', shell: true, maxBuffer: 32 * 1024 * 1024 });
       if (b.status !== 0) return { ok: false, err: 'next build falhou na obra do tema', out: (b.stdout || '') + (b.stderr || '') };

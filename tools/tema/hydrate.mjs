@@ -24,6 +24,7 @@ import { gerarFontes } from './fonts.mjs';
 import { materializarDobras } from './dobras-manifest.mjs';
 import { aplicarDirecao, carregarDirecoes } from './direcoes.mjs';
 import { validarConteudoDoTema } from './qualidade-conteudo.mjs';
+import { carregarEValidar } from './kits.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
@@ -35,13 +36,22 @@ const DIRECAO_POR_TEMA = Object.freeze({
 
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i > -1 ? process.argv[i + 1] : d; };
 
+export function resolverTemaDoKit(ficha, temaForcado = null) {
+  const solicitado = String(temaForcado || ficha?.tema || '').split('@')[0] || 'restaurante-noir';
+  const registry = carregarEValidar();
+  if (!registry.ok) throw new Error(`registry de kits inválido: ${registry.erros.join('; ')}`);
+  const kit = registry.kits.find(item => item.estado === 'mvp-pronto' && item.tema === solicitado);
+  if (!kit) throw new Error(`tema fora dos kits MVP liberados: ${solicitado}. Consulte node tools/tema/kits.mjs`);
+  return { tema: solicitado, kit };
+}
+
 export function hidratar(slug, temaNome) {
   const dirCliente = join(ROOT, 'clientes', slug);
   const fichaPath = join(dirCliente, 'cliente.json');
   if (!existsSync(fichaPath)) throw new Error(`não existe: clientes/${slug}/cliente.json`);
 
   const ficha = JSON.parse(readFileSync(fichaPath, 'utf8'));
-  const temaDeclarado = temaNome || String(ficha.tema || '').split('@')[0] || 'restaurante-noir';
+  const { tema: temaDeclarado } = resolverTemaDoKit(ficha, temaNome);
   const fichaComDirecao = ficha.direcao ? ficha : {
     ...ficha,
     ...(DIRECAO_POR_TEMA[temaDeclarado] ? { direcao: DIRECAO_POR_TEMA[temaDeclarado] } : {}),

@@ -59,7 +59,7 @@ node tools/tema/kits.mjs
 node tools/tema/kits.mjs --nicho restaurante --json
 ```
 
-O registro em `themes/base/kits.json` é a fonte de verdade sobre quais kits estão liberados. Antes de criar um cliente, consulte `node tools/tema/kits.mjs`; um kit só é utilizável em produção quando estiver `mvp-pronto` e todas as suas dobras estiverem promovidas no respetivo `variant.json`. Os temas iniciais são `restaurante-noir`, `odontologia` e `clinica-estetica`; a existência de uma pasta de tema não substitui a consulta ao registro.
+O registro em `themes/base/kits.json` é a fonte de verdade sobre quais kits estão liberados. Antes de criar um cliente, consulte `node tools/tema/kits.mjs`; um kit só é utilizável em produção quando estiver `mvp-pronto` e todas as suas dobras estiverem promovidas no respetivo `variant.json`. Os temas iniciais são `restaurante-noir`, `odontologia` e `clinica-estetica`; a existência de uma pasta de tema não substitui a consulta ao registro. O `hydrate.mjs` também aplica essa regra: ele recusa tema fora de um kit MVP e o `run.mjs` usa a mesma escolha para hidratar e para construir a obra.
 
 **Facto verificado**: o site do Kasablanca inteiro (`clientes/kasablanca/cliente.json` + `themes/restaurante-noir/`) foi regenerado a partir deste único ficheiro, e `tools/tema/regress.mjs --comparar` contra o baseline em `baseline/kasablanca/` só acusa as divergências intencionais da migração.
 

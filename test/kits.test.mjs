@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import test from 'node:test';
 import { carregarEValidar, validarRegistry } from '../tools/tema/kits.mjs';
+import { resolverTemaDoKit } from '../tools/tema/hydrate.mjs';
 
 function raiz() {
   const root = mkdtempSync(join(tmpdir(), 'prospector-kits-'));
@@ -36,6 +37,11 @@ test('os três kits iniciais apontam para temas reais e dobras promovidas', () =
   assert.equal(porNicho.get('restaurante')?.tema, 'restaurante-noir');
   assert.equal(porNicho.get('clinica-estetica')?.tema, 'clinica-estetica');
   assert.equal(porNicho.get('clinica-dentaria')?.tema, 'odontologia');
+});
+
+test('hidratação só aceita temas MVP do registry', () => {
+  assert.equal(resolverTemaDoKit({ tema: 'odontologia@1' }).tema, 'odontologia');
+  assert.throws(() => resolverTemaDoKit({ tema: 'tema-artesanal' }), /fora dos kits MVP/);
 });
 
 test('kit mvp-pronto falha ao declarar dobra revisar como aprovada', () => {
