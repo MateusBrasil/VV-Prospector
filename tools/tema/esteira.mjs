@@ -493,48 +493,14 @@ export function esteirar({ origem, slot, nome, registo = null }) {
     '',
   ].filter(l => l !== '').join('\n');
 
-  // ACHADO REAL (categoria Botões, 2026-07-24, 18 de 22 componentes processados no mesmo
-  // lote): o banco costuma embrulhar o componente numa PÁGINA DE DEMONSTRAÇÃO inteira —
-  // a regra do escopo raiz (`[data-dobra="x"]{...}`, sem combinador) centra o componente
-  // sozinho num "height:100vh" com fundo próprio. Isso vaza pra dentro de qualquer uso como
-  // peça embutida (herda altura/fundo de página).
-  //
-  // ATUALIZAÇÃO 2026-07-27: durante muito tempo a esteira só AVISAVA, com o argumento de que
-  // "isto é demo ou é intencional" era julgamento. Medido no acervo, esse aviso estava em 107
-  // das 157 dobras dos slots que os kits de nicho exigem, e era o maior bloqueio isolado.
-  //
-  // O julgamento existe, mas não é por dobra: é POR SLOT, e nesse nível é determinado. Uma
-  // secção de contacto, serviços, equipa, prova ou vitrine é sempre peça EMBUTIDA numa
-  // página que tem outras secções acima e abaixo — não há caso em que ela deva medir um ecrã
-  // inteiro por decisão de design da ORIGEM. Já um `hero` ou uma `transicao` pode legitimamente
-  // ocupar a viewport toda, e aí continua a ser julgamento humano.
-  const SLOTS_SEMPRE_EMBUTIDOS = new Set(['contacto', 'servicos', 'equipa', 'prova', 'vitrine',
-    'precos', 'faq', 'passos', 'numeros', 'logos', 'sobre', 'cta', 'diferenciais', 'botao']);
+  // A origem pode usar o viewport inteiro como parte da experiência (pin, máscara, entrada
+  // ou composição de imagens). A esteira não tenta adivinhar se isso é cromo de demonstração
+  // e não remove CSS de movimento: registra o sinal para revisão humana e deixa a dobra fora
+  // de produção até que alguém a aprove com evidência visual.
   const reRaiz = new RegExp(`(\\[data-dobra="${scope}"\\]\\s*\\{)([^}]*)(\\})`, 'i');
   const temAlturaDeEcra = /(?:min-)?height:\s*100(?:vh|%)/i;
   const mRaiz = css.match(reRaiz);
-  let paginaDeDemo = Boolean(mRaiz && temAlturaDeEcra.test(mRaiz[2]));
-  let demoRemovida = false;
-
-  // Fidelity policy: do not strip viewport/pinning mechanics automatically.
-  // The review record below keeps the component out of production until a human
-  // verifies that this is not merely demo chrome.
-  if (false && paginaDeDemo && SLOTS_SEMPRE_EMBUTIDOS.has(slot)) {
-    // Sai a altura de ecrã e a centragem que só existia para pousar a peça sozinha no meio
-    // da página de demonstração. O resto do bloco raiz (cor, fonte, radius) fica intacto.
-    css = css.replace(reRaiz, (_, abre, corpo, fecha) => {
-      const limpo = corpo
-        .split(';')
-        .filter(d => !/(?:min-)?height:\s*100(?:vh|%)/i.test(d))
-        .filter(d => !/place-items:\s*center/i.test(d))
-        .filter(d => !/align-items:\s*center/i.test(d))
-        .filter(d => !/justify-content:\s*center/i.test(d))
-        .join(';');
-      return `${abre}${limpo}${fecha}`;
-    });
-    paginaDeDemo = false;
-    demoRemovida = true;
-  }
+  const paginaDeDemo = Boolean(mRaiz && temAlturaDeEcra.test(mRaiz[2]));
 
   const pontosRever = [
     registo ? null : 'registo por definir (sobrio | editorial | cinematografico)',
