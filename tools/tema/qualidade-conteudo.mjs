@@ -24,6 +24,11 @@ function exigirImagensDistintas(erros, itens, chave, descricao, cliente) {
 
 export function validarConteudoDoTema(cliente, tema) {
   const fatais = [];
+  if (tema === 'restaurante-noir') {
+    const imagensHero = lista(cliente, 'blocos.hero.imagens');
+    exigir(fatais, imagensHero.length >= 5, 'blocos.hero.imagens — restaurante premium exige ao menos 5 fotografias reais para o hero Code Eagle');
+    if (imagensHero.length) exigirImagensDistintas(fatais, imagensHero, 'src', 'blocos.hero.imagens[].src', cliente);
+  }
   if (tema === 'odontologia') {
     const tratamentos = lista(cliente, 'blocos.servicos.itens');
     exigir(fatais, tratamentos.length >= 3, 'blocos.servicos.itens — odontologia premium exige pelo menos 3 tratamentos reais');

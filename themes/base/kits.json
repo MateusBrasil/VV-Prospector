@@ -16,6 +16,7 @@
         { "slot": "rodape", "fonte": "tema", "componente": "Footer" }
       ],
       "componentesAprovados": [
+        { "slot": "hero", "nome": "mesa-revelada", "estado": "aprovada", "uso": "hero Code Eagle com reveal GSAP e 5 a 7 fotografias reais" },
         { "slot": "vitrine", "nome": "grelha-hover", "estado": "aprovada", "uso": "opcional; pratos, ambiente ou eventos, após integração consciente no tema" },
         { "slot": "botao", "nome": "vidro", "estado": "aprovada", "uso": "opcional; CTA secundário, após integração consciente no tema" }
       ],

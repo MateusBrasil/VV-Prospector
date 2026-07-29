@@ -15,7 +15,8 @@ import DiningMenu from "@/components/DiningMenu/DiningMenu";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import CTA from "@/components/CTA/CTA";
 import ImageBanner from "@/components/ImageBanner/ImageBanner";
-import { identidade, imagens, paginas } from "@/theme/content";
+import { blocos, identidade, imagens, paginas } from "@/theme/content";
+import MesaRevelada from "@/dobras/hero/mesa-revelada/Dobra";
 
 import "./home.css";
 
@@ -64,46 +65,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-img">
-          <img src={imagens.hero} alt="" />
-        </div>
-
-        <div className="container">
-          <Copy
-            type="words"
-            animateOnScroll={false}
-            delay={0.2}
-          >
-            <h1>
-              {identidade.wordmark.length > 1 ? (
-                <>
-                  {identidade.wordmark[0]} <br /> {identidade.wordmark[1]}
-                </>
-              ) : (
-                identidade.wordmark[0]
-              )}
-            </h1>
-          </Copy>
-
-          <div className="section-footer">
-            <Copy
-              type="lines"
-              animateOnScroll={false}
-              delay={0.35}
-            >
-              <p className="sm">{identidade.tagline}</p>
-            </Copy>
-            <Copy
-              type="lines"
-              animateOnScroll={false}
-              delay={0.45}
-            >
-              <p className="sm">{identidade.localidadeCurta}</p>
-            </Copy>
-          </div>
-        </div>
-      </section>
+      <MesaRevelada s={blocos.hero} />
 
       <section className="about" ref={aboutSectionRef}>
         <div className="about-header">

@@ -1,3 +1,5 @@
 {
-  "dobras": []
+  "dobras": [
+    { "slot": "hero", "nome": "mesa-revelada", "estado": "aprovada" }
+  ]
 }

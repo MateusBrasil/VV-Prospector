@@ -35,6 +35,12 @@ const esteticaValida = () => ({
   },
 });
 
+test('restaurante bloqueia hero premium sem galeria real suficiente', () => {
+  const cliente = { blocos: { hero: { imagens: [{ src: '/a.webp' }, { src: '/b.webp' }] } } };
+  const erros = validarConteudoDoTema(cliente, 'restaurante-noir');
+  assert.match(erros.join('\n'), /5 fotografias/);
+});
+
 test('odontologia bloqueia tratamentos, equipa e FAQ insuficientes', () => {
   const cliente = odontologiaValida();
   cliente.blocos.servicos.itens[1].imagem = '';

@@ -27,6 +27,20 @@
     "diningMenu": "/assets/hero.svg"
   },
   "blocos": {
+    "hero": {
+      "rotulo": "Cozinha de teste",
+      "titulo": "Mesa de Ensaio",
+      "texto": "Ambiente de teste, PT",
+      "acao": "Contactar teste",
+      "destino": "#reserva-teste",
+      "imagens": [
+        { "src": "/assets/hero.svg", "alt": "Foto sintética 1" },
+        { "src": "/assets/hero.svg", "alt": "Foto sintética 2" },
+        { "src": "/assets/hero.svg", "alt": "Foto sintética 3" },
+        { "src": "/assets/hero.svg", "alt": "Foto sintética 4" },
+        { "src": "/assets/hero.svg", "alt": "Foto sintética 5" }
+      ]
+    },
     "nav": {
       "links": [
         { "label": "Início", "imagem": "/assets/hero.svg" },

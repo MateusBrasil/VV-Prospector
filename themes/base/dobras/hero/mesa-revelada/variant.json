@@ -1,0 +1,27 @@
+{
+  "slot": "hero",
+  "nome": "mesa-revelada",
+  "scope": "hero-mesa-revelada",
+  "origem": "bank/_componentes/hero-section/hero-23",
+  "registo": "editorial",
+  "estado": "aprovada",
+  "libs": ["gsap"],
+  "js": { "categoria": "gsap", "escopadoAutomaticamente": false },
+  "slots": [
+    { "nome": "titulo", "tipo": "texto", "exemplo": "nome ou assinatura do restaurante" },
+    { "nome": "rotulo", "tipo": "texto", "exemplo": "cozinha, localidade ou proposta" },
+    { "nome": "texto", "tipo": "texto", "exemplo": "uma linha de contexto" },
+    { "nome": "acao", "tipo": "texto", "exemplo": "Reservar mesa" },
+    { "nome": "destino", "tipo": "link", "exemplo": "URL real de reserva" },
+    { "nome": "imagens", "tipo": "lista", "exemplo": "5 a 7 fotografias reais de pratos, sala e equipa" }
+  ],
+  "precondicoes": { "imagensMin": 5 },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["reveal em cascata de fotografias", "reveal tipografico por caracteres", "composicao de galeria central"],
+    "adaptacoesPermitidas": ["navegacao de demonstracao removida", "identidade, fotos e CTA entram por slots", "tokens do tema substituem cores e fonte da origem"],
+    "materialObrigatorio": ["blocos.hero.imagens", "cinco fotografias distintas do negocio"]
+  },
+  "_rever": [],
+  "_nota": "Porte fiel do HERO 23 do Code Eagle para restaurante. A entrada GSAP, a composicao de sete imagens e o reveal por caracteres foram preservados; apenas navegacao e conteudo de demonstracao sairam."
+}
