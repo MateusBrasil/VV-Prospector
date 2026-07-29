@@ -7,7 +7,7 @@
       "tema": "restaurante-noir",
       "estrutura": [
         { "slot": "navegacao", "fonte": "tema", "componente": "Nav" },
-        { "slot": "hero", "fonte": "tema", "componente": "HomeHero" },
+        { "slot": "hero", "fonte": "dobra", "componente": "mesa-revelada" },
         { "slot": "sobre-galeria", "fonte": "tema", "componente": "HomeAboutGallery" },
         { "slot": "carta", "fonte": "tema", "componente": "DiningMenu" },
         { "slot": "prova", "fonte": "tema", "componente": "Testimonials" },
@@ -39,11 +39,11 @@
       "estado": "mvp-pronto",
       "tema": "clinica-estetica",
       "estrutura": [
-        { "slot": "hero", "fonte": "planeado", "componente": "Hero específico do nicho" },
-        { "slot": "servicos", "fonte": "planeado", "componente": "Tratamentos e especialidades" },
-        { "slot": "prova", "fonte": "planeado", "componente": "Avaliações verificadas" },
-        { "slot": "consulta", "fonte": "planeado", "componente": "CTA de marcação" },
-        { "slot": "contacto", "fonte": "planeado", "componente": "Morada, horário e contactos" }
+        { "slot": "hero", "fonte": "dobra", "componente": "hero-1" },
+        { "slot": "servicos", "fonte": "dobra", "componente": "cartoes" },
+        { "slot": "vitrine", "fonte": "dobra", "componente": "antes-depois" },
+        { "slot": "prova", "fonte": "dobra", "componente": "secao-192" },
+        { "slot": "contacto", "fonte": "dobra", "componente": "secao-89" }
       ],
       "componentesAprovados": [
         { "slot": "hero", "nome": "hero-1", "estado": "aprovada", "uso": "entrada editorial do tema" },
@@ -65,11 +65,11 @@
       "estado": "mvp-pronto",
       "tema": "odontologia",
       "estrutura": [
-        { "slot": "hero", "fonte": "planeado", "componente": "Proposta clínica" },
-        { "slot": "especialidades", "fonte": "planeado", "componente": "Tratamentos" },
-        { "slot": "equipa", "fonte": "planeado", "componente": "Profissionais e credenciais" },
-        { "slot": "faq", "fonte": "planeado", "componente": "Dúvidas frequentes" },
-        { "slot": "marcacao", "fonte": "planeado", "componente": "CTA de consulta" }
+        { "slot": "hero", "fonte": "dobra", "componente": "hero-9" },
+        { "slot": "servicos", "fonte": "dobra", "componente": "arcos" },
+        { "slot": "equipa", "fonte": "dobra", "componente": "secao-162" },
+        { "slot": "faq", "fonte": "dobra", "componente": "secao-21" },
+        { "slot": "contacto", "fonte": "dobra", "componente": "secao-83" }
       ],
       "componentesAprovados": [
         { "slot": "hero", "nome": "hero-9", "estado": "aprovada", "uso": "entrada clínica" },

@@ -56,6 +56,11 @@ export function validarRegistry({ root = ROOT, registry }) {
     for (const item of kit?.candidatosRevisar || []) {
       for (const erro of validarReferencia(root, item, 'candidato')) erros.push(`${prefixo}: ${erro}`);
     }
+    for (const item of kit?.estrutura || []) {
+      if (item?.fonte !== 'dobra') continue;
+      const declarada = (kit.componentesAprovados || []).some(d => d.slot === item.slot && d.nome === item.componente);
+      if (!declarada) erros.push(`${prefixo}: estrutura declara dobra não aprovada: ${item.slot}/${item.componente}`);
+    }
     if (kit?.estado === 'mvp-pronto' && (kit.componentesAprovados || []).some(x => x.estado === 'revisar')) erros.push(`${prefixo}: mvp-pronto não pode referenciar dobra revisar como aprovada`);
     if (kit?.estado === 'em-curadoria') avisos.push(`${prefixo}: não é kit de produção`);
   }

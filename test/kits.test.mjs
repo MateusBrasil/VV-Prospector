@@ -42,6 +42,15 @@ test('kit mvp-pronto falha ao declarar dobra revisar como aprovada', () => {
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
+test('estrutura não pode apontar para uma dobra fora da lista aprovada', () => {
+  const root = raiz();
+  try {
+    const registry = base('mvp-pronto');
+    registry.kits[0].estrutura = [{ slot: 'hero', fonte: 'dobra', componente: 'outra' }];
+    assert.equal(validarRegistry({ root, registry }).ok, false);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('kit mvp-pronto recusa peça sem origem Code Eagle ou contrato de slots', () => {
   const root = raiz();
   try {
