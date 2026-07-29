@@ -28,6 +28,9 @@ export function validarConteudoDoTema(cliente, tema) {
     const imagensHero = lista(cliente, 'blocos.hero.imagens');
     exigir(fatais, imagensHero.length >= 5, 'blocos.hero.imagens — restaurante premium exige ao menos 5 fotografias reais para o hero Code Eagle');
     if (imagensHero.length) exigirImagensDistintas(fatais, imagensHero, 'src', 'blocos.hero.imagens[].src', cliente);
+    const vitrine = lista(cliente, 'blocos.vitrine.itens');
+    exigir(fatais, vitrine.length >= 5, 'blocos.vitrine.itens — restaurante premium exige ao menos 5 pratos ou cenas reais para a vitrine Code Eagle');
+    if (vitrine.length) exigirImagensDistintas(fatais, vitrine, 'imagem', 'blocos.vitrine.itens[].imagem', cliente);
   }
   if (tema === 'odontologia') {
     const tratamentos = lista(cliente, 'blocos.servicos.itens');

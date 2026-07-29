@@ -41,6 +41,11 @@ test('restaurante bloqueia hero premium sem galeria real suficiente', () => {
   assert.match(erros.join('\n'), /5 fotografias/);
 });
 
+test('restaurante bloqueia vitrine Code Eagle sem cinco cenas reais', () => {
+  const cliente = { blocos: { hero: { imagens: Array.from({ length: 5 }, (_, i) => ({ src: `/${i}.webp` })) }, vitrine: { itens: [{ imagem: '/a.webp' }] } } };
+  assert.match(validarConteudoDoTema(cliente, 'restaurante-noir').join('\n'), /5 pratos ou cenas/);
+});
+
 test('odontologia bloqueia tratamentos, equipa e FAQ insuficientes', () => {
   const cliente = odontologiaValida();
   cliente.blocos.servicos.itens[1].imagem = '';
