@@ -9,7 +9,11 @@ function raiz() {
   const root = mkdtempSync(join(tmpdir(), 'prospector-kits-'));
   const dir = join(root, 'themes', 'base', 'dobras', 'hero', 'pronto');
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, 'variant.json'), JSON.stringify({ estado: 'aprovada' }));
+  writeFileSync(join(dir, 'variant.json'), JSON.stringify({
+    estado: 'aprovada',
+    origem: 'bank/_componentes/hero-section/hero-teste',
+    slots: [{ nome: 'titulo', tipo: 'texto' }],
+  }));
   return root;
 }
 const base = estado => ({ versao: 1, kits: [{ nicho: 'teste', estado, tema: estado === 'mvp-pronto' ? 'tema-teste' : null, estrutura: [{ slot: 'hero', fonte: 'tema', componente: 'Hero' }], componentesAprovados: [{ slot: 'hero', nome: 'pronto', estado: 'aprovada' }], candidatosRevisar: [], riscos: ['risco conhecido'], criteriosPromocao: ['QA visual'] }] });
@@ -35,6 +39,18 @@ test('kit mvp-pronto falha ao declarar dobra revisar como aprovada', () => {
     const registry = base('mvp-pronto');
     registry.kits[0].componentesAprovados[0].estado = 'revisar';
     assert.equal(validarRegistry({ root, registry }).ok, false);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('kit mvp-pronto recusa peça sem origem Code Eagle ou contrato de slots', () => {
+  const root = raiz();
+  try {
+    const variante = join(root, 'themes', 'base', 'dobras', 'hero', 'pronto', 'variant.json');
+    writeFileSync(variante, JSON.stringify({ estado: 'aprovada', origem: 'tema/artesanal', slots: [] }));
+    const resultado = validarRegistry({ root, registry: base('mvp-pronto') });
+    assert.equal(resultado.ok, false);
+    assert.match(resultado.erros.join('\n'), /origem rastreável/);
+    assert.match(resultado.erros.join('\n'), /contrato de conteúdo/);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 

@@ -22,7 +22,15 @@ function validarReferencia(root, entrada, papel) {
   if (!existsSync(caminho)) return [`dobra inexistente: ${entrada.slot}/${entrada.nome}`];
   const variante = JSON.parse(readFileSync(caminho, 'utf8'));
   if (variante.estado !== entrada.estado) erros.push(`estado divergente em ${entrada.slot}/${entrada.nome}: registry=${entrada.estado}, fonte=${variante.estado || 'sem estado'}`);
-  if (papel === 'aprovado' && !podeUsarDobra(variante, 'producao')) erros.push(`dobra aprovada não está elegível para produção: ${entrada.slot}/${entrada.nome}`);
+  if (papel === 'aprovado') {
+    if (!podeUsarDobra(variante, 'producao')) erros.push(`dobra aprovada não está elegível para produção: ${entrada.slot}/${entrada.nome}`);
+    if (typeof variante.origem !== 'string' || !variante.origem.startsWith('bank/_componentes/')) {
+      erros.push(`dobra aprovada sem origem rastreável no banco Code Eagle: ${entrada.slot}/${entrada.nome}`);
+    }
+    if (!Array.isArray(variante.slots) || !variante.slots.length) {
+      erros.push(`dobra aprovada sem contrato de conteúdo (slots): ${entrada.slot}/${entrada.nome}`);
+    }
+  }
   if (papel === 'candidato' && entrada.estado !== 'revisar') erros.push(`candidato deve permanecer em estado revisar: ${entrada.slot}/${entrada.nome}`);
   return erros;
 }
