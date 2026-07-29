@@ -35,6 +35,23 @@ function validarReferencia(root, entrada, papel) {
   return erros;
 }
 
+function validarMaterializacaoDoTema(root, kit) {
+  if (kit?.estado !== 'mvp-pronto') return [];
+  const caminho = join(root, 'themes', kit.tema, 'dobras.manifest.json');
+  if (!existsSync(caminho)) return [`manifesto de dobras ausente para o tema ${kit.tema}`];
+  let manifesto;
+  try {
+    manifesto = JSON.parse(readFileSync(caminho, 'utf8'));
+  } catch {
+    return [`manifesto de dobras inválido para o tema ${kit.tema}`];
+  }
+  if (!Array.isArray(manifesto.dobras)) return [`manifesto de dobras sem lista para o tema ${kit.tema}`];
+  return (kit.componentesAprovados || [])
+    .filter(item => !manifesto.dobras.some(dobra =>
+      dobra?.slot === item.slot && dobra?.nome === item.nome && dobra?.estado === item.estado))
+    .map(item => `dobra aprovada não materializada no tema ${kit.tema}: ${item.slot}/${item.nome}`);
+}
+
 export function validarRegistry({ root = ROOT, registry }) {
   const erros = [];
   const avisos = [];
@@ -61,6 +78,7 @@ export function validarRegistry({ root = ROOT, registry }) {
       const declarada = (kit.componentesAprovados || []).some(d => d.slot === item.slot && d.nome === item.componente);
       if (!declarada) erros.push(`${prefixo}: estrutura declara dobra não aprovada: ${item.slot}/${item.componente}`);
     }
+    for (const erro of validarMaterializacaoDoTema(root, kit)) erros.push(`${prefixo}: ${erro}`);
     if (kit?.estado === 'mvp-pronto' && (kit.componentesAprovados || []).some(x => x.estado === 'revisar')) erros.push(`${prefixo}: mvp-pronto não pode referenciar dobra revisar como aprovada`);
     if (kit?.estado === 'em-curadoria') avisos.push(`${prefixo}: não é kit de produção`);
   }

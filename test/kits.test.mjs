@@ -14,6 +14,11 @@ function raiz() {
     origem: 'bank/_componentes/hero-section/hero-teste',
     slots: [{ nome: 'titulo', tipo: 'texto' }],
   }));
+  const tema = join(root, 'themes', 'tema-teste');
+  mkdirSync(tema, { recursive: true });
+  writeFileSync(join(tema, 'dobras.manifest.json'), JSON.stringify({
+    dobras: [{ slot: 'hero', nome: 'pronto', estado: 'aprovada' }],
+  }));
   return root;
 }
 const base = estado => ({ versao: 1, kits: [{ nicho: 'teste', estado, tema: estado === 'mvp-pronto' ? 'tema-teste' : null, estrutura: [{ slot: 'hero', fonte: 'tema', componente: 'Hero' }], componentesAprovados: [{ slot: 'hero', nome: 'pronto', estado: 'aprovada' }], candidatosRevisar: [], riscos: ['risco conhecido'], criteriosPromocao: ['QA visual'] }] });
@@ -48,6 +53,16 @@ test('estrutura não pode apontar para uma dobra fora da lista aprovada', () => 
     const registry = base('mvp-pronto');
     registry.kits[0].estrutura = [{ slot: 'hero', fonte: 'dobra', componente: 'outra' }];
     assert.equal(validarRegistry({ root, registry }).ok, false);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('kit mvp-pronto recusa dobra aprovada que o tema não materializa', () => {
+  const root = raiz();
+  try {
+    writeFileSync(join(root, 'themes', 'tema-teste', 'dobras.manifest.json'), JSON.stringify({ dobras: [] }));
+    const resultado = validarRegistry({ root, registry: base('mvp-pronto') });
+    assert.equal(resultado.ok, false);
+    assert.match(resultado.erros.join('\n'), /não materializada/);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
