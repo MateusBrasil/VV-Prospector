@@ -35,7 +35,7 @@ const escrever = (obj, caminho, valor) => {
  * ------------------------------------------------------------------ */
 export const FATAIS = [
   ['slug', eString, 'identificador do cliente (pasta, projeto Vercel, chave no CRM)'],
-  ['tema', eString, 'ex. "restaurante-noir@1". Fixa a versão do tema que gerou este site.'],
+  ['tema', eString, 'ex. "restaurante-noir@1". Fixa a versão do kit/tema que gerou este site.'],
   ['locale', eString, 'ex. "pt-PT". Vai para <html lang> — o leitor de ecrã e o Google leem isto.'],
   ['identidade.nome', eString, 'o nome do negócio'],
   ['identidade.tagline', eString, 'a frase curta que diz o que o negócio é. Aparece em 4 sítios.'],
@@ -134,8 +134,8 @@ export const OMISSIVEIS = [
   ['paginas.sobre', 'a rota /about não é gerada e o link some do menu'],
   ['paginas.menu', 'a rota /menu não é gerada e o link some do menu'],
   ['paginas.reserva', 'a rota /reservation não é gerada e o link some do menu'],
-  // tema moda-editorial (genérico o bastante para qualquer tema que use as dobras de
-  // hero/grade e vitrine/grelha-hover; ver themes/moda-editorial):
+  // Os temas MVP são fechados por nicho; não use este contrato para inventar um quarto tema
+  // sem antes criar e promover seu kit em themes/base/kits.json.
   ['produtos', 'a vitrine de produtos desaparece da Home'],
   ['imagens.galeria', 'o hero de grelha usa a foto do herói repetida'],
 ];

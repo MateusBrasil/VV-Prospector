@@ -132,14 +132,11 @@ Antes de mexer em ferramentas ou temas, execute o gate local completo:
 npm.cmd run check
 ```
 
-Ele executa testes, sintaxe, acessibilidade estática e o orçamento local de performance. O último mede apenas `themes/<tema>/src` e `public`: ignora `node_modules`, `.next` e `.obras`, não usa rede e falha se código, payload público, asset individual ou quantidade de ficheiros ultrapassarem os limites. Para inspecionar apenas um tema: `node tools/orcamento-performance.mjs moda-editorial`.
+Ele executa testes, sintaxe, acessibilidade estática e o orçamento local de performance. O último mede apenas `themes/<tema>/src` e `public`: ignora `node_modules`, `.next` e `.obras`, não usa rede e falha se código, payload público, asset individual ou quantidade de ficheiros ultrapassarem os limites. Para inspecionar apenas um tema: `node tools/orcamento-performance.mjs restaurante-noir`.
 
 Para testar o motor de temas sem tocar num cliente, use a obra fictícia:
 
 ```bash
-node tools/tema/hydrate.mjs _smoke-test-moda
-cd themes/moda-editorial/.obras/_smoke-test-moda && npm.cmd run build
-
 node tools/tema/hydrate.mjs _smoke-test-restaurante
 cd themes/restaurante-noir/.obras/_smoke-test-restaurante && npm.cmd run build
 ```
