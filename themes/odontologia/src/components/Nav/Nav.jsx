@@ -34,6 +34,7 @@ export default function Nav() {
     <header className="nav" data-tom={tom} data-aberto={aberto ? "true" : "false"}>
       <div className="nav-inner">
         <a className="nav-marca" href="/" onClick={() => setAberto(false)}>
+          <span className="nav-marca-ponto" aria-hidden="true" />
           {identidade.nome}
         </a>
 
@@ -52,11 +53,7 @@ export default function Nav() {
         </nav>
 
         <div className="nav-acoes">
-          {blocos.nav?.acao && (
-            <a className="nav-cta" href={contactos.reservaUrl}>
-              {blocos.nav.acao}
-            </a>
-          )}
+          {blocos.nav?.acao && <a className="nav-cta" href={contactos.reservaUrl}>{blocos.nav.acao}</a>}
 
           <button
             type="button"
@@ -64,28 +61,23 @@ export default function Nav() {
             aria-expanded={aberto}
             onClick={() => setAberto(v => !v)}
           >
-            {aberto ? blocos.nav.toggleFechar : blocos.nav.toggleAbrir}
+            <span>{aberto ? blocos.nav.toggleFechar : blocos.nav.toggleAbrir}</span>
+            <span className="nav-toggle-icone" aria-hidden="true" />
           </button>
         </div>
       </div>
 
       {aberto && (
-        <div className="nav-painel">
-          {navegacao.map(link => (
-            <a
-              className="nav-painel-link"
-              href={link.href}
-              key={link.href}
-              onClick={() => setAberto(false)}
-            >
-              {link.rotulo}
-            </a>
-          ))}
-          {blocos.nav?.acao && (
-            <a className="nav-painel-cta" href={contactos.reservaUrl} onClick={() => setAberto(false)}>
-              {blocos.nav.acao}
-            </a>
-          )}
+        <div className="nav-painel" aria-label={blocos.nav?.rotuloMenu || undefined}>
+          <p className="nav-painel-rotulo">{identidade.nome}</p>
+          <nav className="nav-painel-links">
+            {navegacao.map((link, index) => (
+              <a className="nav-painel-link" href={link.href} key={link.href} onClick={() => setAberto(false)}>
+                <span>0{index + 1}</span>{link.rotulo}
+              </a>
+            ))}
+          </nav>
+          {blocos.nav?.acao && <a className="nav-painel-cta" href={contactos.reservaUrl} onClick={() => setAberto(false)}>{blocos.nav.acao}</a>}
         </div>
       )}
     </header>
