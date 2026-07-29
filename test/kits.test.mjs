@@ -41,6 +41,7 @@ test('os três kits iniciais apontam para temas reais e dobras promovidas', () =
 
 test('hidratação só aceita temas MVP do registry', () => {
   assert.equal(resolverTemaDoKit({ tema: 'odontologia@1' }).tema, 'odontologia');
+  assert.throws(() => resolverTemaDoKit({}), /tema obrigatório/);
   assert.throws(() => resolverTemaDoKit({ tema: 'tema-artesanal' }), /fora dos kits MVP/);
 });
 

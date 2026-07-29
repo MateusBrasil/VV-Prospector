@@ -37,7 +37,10 @@ const DIRECAO_POR_TEMA = Object.freeze({
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i > -1 ? process.argv[i + 1] : d; };
 
 export function resolverTemaDoKit(ficha, temaForcado = null) {
-  const solicitado = String(temaForcado || ficha?.tema || '').split('@')[0] || 'restaurante-noir';
+  const solicitado = String(temaForcado || ficha?.tema || '').split('@')[0];
+  if (!solicitado) {
+    throw new Error('tema obrigatório: escolha uma direção de kit ou use um plano Code Eagle curado');
+  }
   const registry = carregarEValidar();
   if (!registry.ok) throw new Error(`registry de kits inválido: ${registry.erros.join('; ')}`);
   const kit = registry.kits.find(item => item.estado === 'mvp-pronto' && item.tema === solicitado);
