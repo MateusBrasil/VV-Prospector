@@ -11,11 +11,12 @@
  *   hero      → hero/mesa-revelada (galeria e reveal GSAP)
  *   servicos  → servicos/cartoes (pilha visual com fotografia por tratamento)
  *   equipa    → equipa/secao-162
- *   prova     → prova/secao-192
+ *   prova     → prova/carrossel
  *   faq       → faq/secao-21
  *   contacto  → contacto/secao-83
- * Só o Nav e o Footer são escritos à mão, porque o slot `rodape` tem zero dobras no
- * acervo e o `receitas.json` classifica ambos como sistema do tema.
+ * O rodapé é um porte de `transicao-pagina-20` do Code Eagle, com os links de demonstração
+ * substituídos pelos contactos reais. O Nav continua a ser infraestrutura do tema; não é
+ * anunciado como uma dobra do catálogo.
  */
 
 import Hero from "@/dobras/hero/mesa-revelada/Dobra";
