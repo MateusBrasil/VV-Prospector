@@ -29,9 +29,9 @@ export const slotsHero = {
 export const slotsServicos = {
   rotulo: blocos.servicos?.rotulo,
   titulo: blocos.servicos?.titulo,
-  itens: blocos.servicos?.itens,
-  imagem: imagens.servicos || imagens.hero,
-  imagemAlt: blocos.servicos?.imagemAlt,
+  // `scroll-29` é uma narrativa de imagens, não uma lista com ilustração genérica.
+  // Cada tratamento precisa da sua fotografia real; não há fallback para o hero.
+  itens: blocos.servicos?.itens?.map(item => ({ ...item, imagem: item.imagem })),
 };
 
 export const slotsEquipa = {

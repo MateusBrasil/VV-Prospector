@@ -23,6 +23,7 @@ import { gerarTokens } from './tokens.mjs';
 import { gerarFontes } from './fonts.mjs';
 import { materializarDobras } from './dobras-manifest.mjs';
 import { aplicarDirecao, carregarDirecoes } from './direcoes.mjs';
+import { validarConteudoDoTema } from './qualidade-conteudo.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '..', '..');
@@ -49,6 +50,15 @@ export function hidratar(slug, temaNome) {
   const res = resolver(bruto);
   console.log(relatorio(res));
   if (!res.ok) { const e = new Error('cliente incompleto'); e.code = 'INCOMPLETO'; throw e; }
+
+  const fataisDeQualidade = validarConteudoDoTema(res.cliente, tema);
+  if (fataisDeQualidade.length) {
+    console.error('\n✗ material insuficiente para a dobra premium:');
+    fataisDeQualidade.forEach(f => console.error(`   × ${f}`));
+    const e = new Error('cliente sem material visual suficiente');
+    e.code = 'MATERIAL_INSUFICIENTE';
+    throw e;
+  }
 
   /* 2. materializar o tema ---------------------------------------------- */
   const obra = join(dirTema, '.obras', slug);

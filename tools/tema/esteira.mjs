@@ -516,7 +516,10 @@ export function esteirar({ origem, slot, nome, registo = null }) {
   let paginaDeDemo = Boolean(mRaiz && temAlturaDeEcra.test(mRaiz[2]));
   let demoRemovida = false;
 
-  if (paginaDeDemo && SLOTS_SEMPRE_EMBUTIDOS.has(slot)) {
+  // Fidelity policy: do not strip viewport/pinning mechanics automatically.
+  // The review record below keeps the component out of production until a human
+  // verifies that this is not merely demo chrome.
+  if (false && paginaDeDemo && SLOTS_SEMPRE_EMBUTIDOS.has(slot)) {
     // Sai a altura de ecrã e a centragem que só existia para pousar a peça sozinha no meio
     // da página de demonstração. O resto do bloco raiz (cor, fonte, radius) fica intacto.
     css = css.replace(reRaiz, (_, abre, corpo, fecha) => {

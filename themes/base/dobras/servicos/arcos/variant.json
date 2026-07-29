@@ -5,20 +5,24 @@
   "origem": "bank/_componentes/scroll/scroll-29",
   "registo": "sobrio",
   "estado": "aprovada",
-  "libs": [],
+  "libs": ["gsap"],
   "fontesDescartadas": 1,
   "js": {
-    "categoria": "sem-js",
+    "categoria": "gsap-scrolltrigger",
     "escopadoAutomaticamente": false
   },
   "slots": [
     { "nome": "rotulo", "tipo": "texto", "exemplo": "Tratamentos" },
     { "nome": "titulo", "tipo": "texto", "exemplo": "O que fazemos" },
-    { "nome": "itens", "tipo": "lista", "exemplo": "[{titulo, texto, acao, destino}] — um por tratamento, sem número fixo" },
-    { "nome": "imagem", "tipo": "imagem", "exemplo": "fotografia real do consultório ou do tratamento" },
-    { "nome": "imagemAlt", "tipo": "texto", "exemplo": "descrição da fotografia para leitor de ecrã" }
+    { "nome": "itens", "tipo": "lista", "exemplo": "[{titulo, texto, acao, destino, imagem}] — cada tratamento tem fotografia própria" }
   ],
-  "precondicoes": { "imagensMin": 1 },
+  "precondicoes": { "imagensMin": 4 },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["painel de imagens fixo", "máscara de revelação pelo scroll", "narrativa uma imagem por item", "tratamento mobile intercalado"],
+    "adaptacoesPermitidas": ["conteúdo e URLs de demonstração removidos", "fontes e cores recebidas por tokens", "itens deixam de estar limitados a quatro"],
+    "materialObrigatorio": ["blocos.servicos.itens[].imagem", "fotografias distintas em cliente real"]
+  },
   "_rever": [],
-  "_nota": "PORTADA À MÃO em 2026-07-28 para o tema odontologia, e MOVIDA de `destaque/scroll-29` para `servicos/arcos`. A mudança de slot é uma correção, não uma conveniência: a peça é uma lista de blocos título+descrição+link ao lado de uma fotografia, o que é uma secção de serviços. O receitas.json já documentava que o classificador de slot erra nos dois sentidos; este é o caso simétrico dos 7 rodapés que foram parar a `servicos`. Portes: os 4 blocos fixos com ids de cor viraram um map sobre `s.itens` (a dobra deixou de estar presa a quatro); saiu o `backgroundColor` inline que acentuava sempre o primeiro item; saiu o ícone de três círculos da marca de origem, substituído por seta SVG de linha; saíram as 4 fotografias de demonstração de imagekit.io, fica uma imagem vinda do cliente. Na CSS: linha 1 partida (@import de Google Fonts), uma regra `body{}` GLOBAL dentro da folha da dobra, a classe `.container` a colidir com o `.container` do sistema (renomeada `.arch-container`), `height:100vh` por bloco (quatro tratamentos ocupavam quatro ecrãs), e px/rgba fixos trocados por tokens."
+  "_nota": "Porte fiel em 2026-07-29. A peça não pode degradar para uma lista com foto única: as quatro imagens de demo foram substituídas por imagens reais do cliente, uma por tratamento; o painel fixo, a máscara e o scroll sincronizado da origem foram preservados com GSAP ScrollTrigger."
 }
