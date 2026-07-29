@@ -31,6 +31,14 @@ export function validarConteudoDoTema(cliente, tema) {
     const vitrine = lista(cliente, 'blocos.vitrine.itens');
     exigir(fatais, vitrine.length >= 5, 'blocos.vitrine.itens — restaurante premium exige ao menos 5 pratos ou cenas reais para a vitrine Code Eagle');
     if (vitrine.length) exigirImagensDistintas(fatais, vitrine, 'imagem', 'blocos.vitrine.itens[].imagem', cliente);
+    if (!cliente._smoke_test && imagensHero.length && vitrine.length) {
+      const imagensDaNarrativa = [
+        ...imagensHero.map(item => item?.src).filter(valor => typeof valor === 'string' && valor.trim()),
+        ...vitrine.map(item => item?.imagem).filter(valor => typeof valor === 'string' && valor.trim()),
+      ];
+      exigir(fatais, new Set(imagensDaNarrativa).size >= 8,
+        'hero e vitrine — restaurante premium exige ao menos 8 fotografias distintas entre atmosfera, pratos e sala');
+    }
   }
   if (tema === 'odontologia') {
     const tratamentos = lista(cliente, 'blocos.servicos.itens');

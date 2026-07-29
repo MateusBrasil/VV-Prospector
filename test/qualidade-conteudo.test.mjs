@@ -46,6 +46,27 @@ test('restaurante bloqueia vitrine Code Eagle sem cinco cenas reais', () => {
   assert.match(validarConteudoDoTema(cliente, 'restaurante-noir').join('\n'), /5 pratos ou cenas/);
 });
 
+test('restaurante bloqueia quando hero e vitrine repetem o mesmo ensaio', () => {
+  const imagens = Array.from({ length: 5 }, (_, i) => `/foto-${i}.webp`);
+  const cliente = {
+    blocos: {
+      hero: { imagens: imagens.map(src => ({ src })) },
+      vitrine: { itens: imagens.map(imagem => ({ imagem })) },
+    },
+  };
+  assert.match(validarConteudoDoTema(cliente, 'restaurante-noir').join('\n'), /8 fotografias distintas/);
+});
+
+test('restaurante aceita narrativa visual com cenas variadas', () => {
+  const cliente = {
+    blocos: {
+      hero: { imagens: Array.from({ length: 5 }, (_, i) => ({ src: `/ambiente-${i}.webp` })) },
+      vitrine: { itens: Array.from({ length: 5 }, (_, i) => ({ imagem: `/prato-${i}.webp` })) },
+    },
+  };
+  assert.deepEqual(validarConteudoDoTema(cliente, 'restaurante-noir'), []);
+});
+
 test('odontologia bloqueia tratamentos, equipa e FAQ insuficientes', () => {
   const cliente = odontologiaValida();
   cliente.blocos.servicos.itens[1].imagem = '';
