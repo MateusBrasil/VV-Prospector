@@ -6,28 +6,45 @@
 
 const caminho = (objeto, chave) => chave.split('.').reduce((valor, parte) => valor?.[parte], objeto);
 
+const lista = (cliente, chave) => {
+  const valor = caminho(cliente, chave);
+  return Array.isArray(valor) ? valor.filter(Boolean) : [];
+};
+
+const exigir = (erros, condicao, mensagem) => { if (!condicao) erros.push(mensagem); };
+
+function exigirImagensDistintas(erros, itens, chave, descricao, cliente) {
+  const semImagem = itens.filter(item => typeof item?.[chave] !== 'string' || !item[chave].trim());
+  exigir(erros, !semImagem.length, `${descricao} — cada item precisa de fotografia própria`);
+  if (!cliente._smoke_test && !semImagem.length) {
+    const imagens = itens.map(item => item[chave].trim());
+    exigir(erros, new Set(imagens).size === imagens.length, `${descricao} — não reutilize a mesma fotografia em itens diferentes`);
+  }
+}
+
 export function validarConteudoDoTema(cliente, tema) {
   const fatais = [];
-  if (tema !== 'odontologia') return fatais;
+  if (tema === 'odontologia') {
+    const tratamentos = lista(cliente, 'blocos.servicos.itens');
+    exigir(fatais, tratamentos.length >= 3, 'blocos.servicos.itens — odontologia premium exige pelo menos 3 tratamentos reais');
+    if (tratamentos.length) exigirImagensDistintas(fatais, tratamentos, 'imagem', 'blocos.servicos.itens[].imagem (scroll-29)', cliente);
 
-  const itens = caminho(cliente, 'blocos.servicos.itens');
-  if (!Array.isArray(itens) || !itens.length) return fatais;
+    const equipa = lista(cliente, 'blocos.equipa.membros');
+    exigir(fatais, equipa.length >= 2, 'blocos.equipa.membros — clínica dentária premium exige pelo menos 2 profissionais reais');
+    if (equipa.length) exigirImagensDistintas(fatais, equipa, 'imagem', 'blocos.equipa.membros[].imagem', cliente);
 
-  const semImagem = itens
-    .map((item, indice) => ({ titulo: item?.titulo || `tratamento ${indice + 1}`, imagem: item?.imagem }))
-    .filter(item => typeof item.imagem !== 'string' || !item.imagem.trim())
-    .map(item => item.titulo);
-  if (semImagem.length) {
-    fatais.push(`blocos.servicos.itens[].imagem — scroll-29 exige uma fotografia real por tratamento; faltam: ${semImagem.join(', ')}`);
+    const faq = lista(cliente, 'blocos.faq.itens');
+    exigir(fatais, faq.length >= 3, 'blocos.faq.itens — clínica dentária premium exige pelo menos 3 dúvidas reais de pacientes');
   }
 
-  // A fixture é técnica e usa um SVG repetido. Em cliente real, repetir o hero
-  // seria exatamente o empobrecimento que este gate existe para impedir.
-  if (!cliente._smoke_test && !semImagem.length) {
-    const imagens = itens.map(item => item.imagem.trim());
-    if (new Set(imagens).size !== imagens.length) {
-      fatais.push('blocos.servicos.itens[].imagem — cada tratamento precisa de uma fotografia diferente; imagem repetida transforma o componente premium em lista genérica');
-    }
+  if (tema === 'clinica-estetica') {
+    const casos = lista(cliente, 'blocos.vitrine.itens');
+    exigir(fatais, casos.length >= 2, 'blocos.vitrine.itens — clínica estética premium exige ao menos 2 casos antes/depois autorizados');
+    if (casos.length) exigirImagensDistintas(fatais, casos, 'antes', 'blocos.vitrine.itens[].antes', cliente);
+    if (casos.length) exigirImagensDistintas(fatais, casos, 'depois', 'blocos.vitrine.itens[].depois', cliente);
+
+    const prova = lista(cliente, 'blocos.prova.itens');
+    exigir(fatais, prova.length >= 3, 'blocos.prova.itens — clínica estética premium exige pelo menos 3 testemunhos verificáveis');
   }
   return fatais;
 }
