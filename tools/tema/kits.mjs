@@ -31,6 +31,15 @@ function validarReferencia(root, entrada, papel) {
       erros.push(`dobra aprovada sem contrato de conteúdo (slots): ${entrada.slot}/${entrada.nome}`);
     }
   }
+  if (papel === 'aprovado') {
+    const fidelidade = variante.fidelidade;
+    if (fidelidade?.modo !== 'porte-fiel'
+      || !Array.isArray(fidelidade?.mecanicasPreservadas) || !fidelidade.mecanicasPreservadas.length
+      || !Array.isArray(fidelidade?.adaptacoesPermitidas)
+      || !Array.isArray(fidelidade?.materialObrigatorio)) {
+      erros.push(`dobra aprovada sem contrato de fidelidade visual: ${entrada.slot}/${entrada.nome}`);
+    }
+  }
   if (papel === 'candidato' && entrada.estado !== 'revisar') erros.push(`candidato deve permanecer em estado revisar: ${entrada.slot}/${entrada.nome}`);
   return erros;
 }

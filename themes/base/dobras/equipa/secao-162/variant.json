@@ -17,6 +17,12 @@
     { "nome": "membros", "tipo": "lista", "exemplo": "[{nome, funcao, imagem}] — 1 a 8; acima de 8 o leque tapa-se a si próprio" }
   ],
   "precondicoes": { "imagensMin": 1 },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["painel de especialistas", "cartões de equipa responsivos", "hover de detalhe"],
+    "adaptacoesPermitidas": ["membros por slots", "alt deriva do profissional", "hover CSS no lugar de listener global"],
+    "materialObrigatorio": ["blocos.equipa.membros", "fotografia e credencial por profissional"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema odontologia. Revisão humana feita; estado promovido de `revisar` para `aprovada`. A origem é um painel de especialistas clínicos, por isso é a peça do acervo mais bem encaixada neste nicho. Portes: (1) os oito `alt` de demonstração eram literais de negócio de outra clínica dentro do componente (\"Dr. Sarah Jenkins, Cardiologist\" e sete iguais) — é a mesma classe de defeito que entregou \"Zaire Dorwart, CEO\" a um restaurante em Guimarães, e agora o alt deriva do nome e função do slot; (2) os 8 cartões escritos à mão mais um segundo baralho de 4 só para telemóvel com as MESMAS pessoas noutros slots (12 slots de imagem para 8 pessoas) viraram um map sobre `s.membros`, com o corte no telemóvel feito em CSS; (3) o hover era gsap.context com um cleanup pendurado num `beforeunload` que nunca dispara numa SPA — passou a hover CSS com height fixo (height:auto não é animável, era isso que obrigava ao JS) e a dobra deixou de depender de gsap. Título e subtítulo saíram de `var(--acento)` para os papéis de texto: num painel inteiro de acento, o acento deixa de acentuar."
 }

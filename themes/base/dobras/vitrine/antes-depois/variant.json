@@ -21,6 +21,12 @@
   "precondicoes": {
     "imagensMin": 2
   },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["comparador de imagens por clip-path", "controlo range nativo acessível", "comparação por instância sem estado global"],
+    "adaptacoesPermitidas": ["imagens, alt e textos por slots", "tokens do nicho substituem cores", "andaime debug da demonstração removido"],
+    "materialObrigatorio": ["blocos.vitrine.itens", "pares antes/depois autorizados"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. MUDOU DE SLOT: estava em `destaque`, passou para `vitrine`, porque a vitrine deste nicho é obrigatória e é o antes/depois (receitas.json: neste nicho o resultado visível É a oferta). Uma procura por before/after|comparison|compare em todos os variant.json do acervo devolve esta e nada mais utilizável: é a única peça de comparação de duas fotografias que existe, e estava classificada como decoração. Seis alterações: (1) o JS de origem inteiro removido, escrevia --compare e --xp/--yp em document.documentElement e registava pointermove no document.body; passou a estado de React por instância, sem tocar em nada fora da peça; (2) `@layer debug` completo removido (outline 4px dashed à volta de tudo, rotateX(-24deg) rotateY(50deg) e parallax de rato: era o andaime do CodePen); (3) linha 1 era `@import` de unpkg.com/normalize.css, CDN externa proibida, mais um `@property` e um `@layer` declarados fora do escopo da dobra; (4) `body::before` com grelha fixa a cobrir o viewport e `min-height:100vh` na raiz, removidos; (5) `alt=\"Vercel Home\"` e as duas fotos de assets.codepen.io saíram, o alt entra por slot e sem fotografias do cliente a peça devolve null; (6) `color-mix(in oklch, canvas, canvasText)`, `light-dark(...)`, `accent-color: red` e `hsl(0 0% 20%)` liam as cores do sistema operativo ou eram hex fora de token. A mecânica que veio do banco está intacta: clip-path inset movido por um <input type=range> nativo, que dá navegação por teclado de graça."
 }

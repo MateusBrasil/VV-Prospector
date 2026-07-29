@@ -18,6 +18,12 @@
     { "nome": "itens", "tipo": "lista", "exemplo": "[{ nome, funcao, imagem, imagemAlt, texto, sintese }]" }
   ],
   "precondicoes": {},
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["cartões editoriais de depoimento", "hierarquia de prova social", "ritmo em duas colunas"],
+    "adaptacoesPermitidas": ["lista de depoimentos por slots", "conteúdo e marca de demonstração removidos", "tokens substituem CSS global da origem"],
+    "materialObrigatorio": ["blocos.prova.itens", "depoimentos verificáveis"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Escolhida em vez de prova/star-rating, que é um formulário de 5 estrelas por radio button, ou seja um controlo para o visitante avaliar, e não prova social; e em vez de prova/carrossel e prova/secao-200, que trazem swiper e um marquee em JS `global-duro`. Cinco alterações: (1) todo o conteúdo de origem removido, dois nomes, duas funções, dois depoimentos e duas citações da marca 'Genovas' — é exatamente a classe de defeito que entregou o nome e o cargo de uma pessoa do template a um restaurante em Guimarães; (2) dois cartões fixos → lista `s.itens`; (3) a cadeia page-wrapper > main > section > padding-global > container-box do Webflow removida, cinco divs sem função, mais um <main> interno que é marcação inválida dentro do <main> do tema; (4) na CSS, linha 1 partida (metade de um @import do Google Fonts) e um `:root` GLOBAL com 30 variáveis próprias a competir com a paleta do documento; (5) três `transition: all 300ms`, proibidos no motor. A folha passou de 33 KB de Webflow para uma folha escopada que lê só tokens. A secção ficou em `--base-100` e o cartão em `--base-200`, e não o contrário: o rótulo da secção é o acento, que mede 4,70:1 sobre --base-100 e 4,00:1 sobre --base-200, e a 4,00 falhava AA em texto pequeno. `js` desce de `global-duro` para `sem-js`: a peça é estática, o JS de origem era reveal por scroll."
 }

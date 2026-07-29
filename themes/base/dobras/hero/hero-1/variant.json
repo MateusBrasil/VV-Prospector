@@ -22,6 +22,12 @@
   "precondicoes": {
     "imagensMin": 3
   },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["galeria editorial em sobreposição", "entrada CSS do hero", "hierarquia tipográfica central"],
+    "adaptacoesPermitidas": ["fotos e CTA por slots", "nav da origem removida", "tokens do nicho substituem cores e fontes"],
+    "materialObrigatorio": ["blocos.hero.imagens", "três fotografias reais distintas"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Verificada primeiro contra a regra do preloader: esta dobra NÃO tem ecrã de carregamento nem botão de \"entrar\" (foi por isso que hero-5, hero-15, hero-16, hero-20, hero-21 e hero-1-2 foram descartadas, todas recomendadas pelo seletor por custo baixo). Cinco correções, todas visíveis no diff: (1) `<header class=topbar>` com dois links `href=#` removido, o tema tem Nav próprio; (2) o `useGSAP` comentado removido por inteiro, era `global-duro` a registar DOMContentLoaded e a reescrever o textContent do h1; com ele caiu a dependência de gsap; (3) os cinco <figure> fixos deram lugar à lista `s.imagens`, para uma clínica com três fotografias reais mostrar três em vez de repetir; (4) na CSS, linha 1 partida (metade de um @import do Google Fonts) e um bloco `:root` GLOBAL que declarava duas famílias de fonte literais no documento inteiro; (5) `color: red` no título e `z-index: 9999` no palco, que punha o hero por cima do Nav do tema. O h1 passou a ler --h1/--display-peso/--display-caixa em vez de 15vw/700/uppercase fixos. O registo mantém-se `editorial`: sobra uma transição CSS de 0,8 s, que o prefers-reduced-motion do sistema já trava."
 }

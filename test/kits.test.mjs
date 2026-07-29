@@ -14,6 +14,7 @@ function raiz() {
     estado: 'aprovada',
     origem: 'bank/_componentes/hero-section/hero-teste',
     slots: [{ nome: 'titulo', tipo: 'texto' }],
+    fidelidade: { modo: 'porte-fiel', mecanicasPreservadas: ['layout'], adaptacoesPermitidas: [], materialObrigatorio: [] },
   }));
   const tema = join(root, 'themes', 'tema-teste');
   mkdirSync(tema, { recursive: true });

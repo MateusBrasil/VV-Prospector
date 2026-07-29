@@ -25,6 +25,12 @@
   "precondicoes": {
     "imagensMin": 1
   },
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["composição clínica de hero", "imagem de consultório em destaque", "entrada CSS de conteúdo"],
+    "adaptacoesPermitidas": ["preloader e navegação de demonstração removidos", "foto e contactos por slots", "tipografia e escala pelos tokens do nicho"],
+    "materialObrigatorio": ["imagens.hero", "fotografia real do consultório"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema odontologia. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Cinco correções, todas visíveis no diff: (1) `.preloader-counter` removido, preloader está proibido no motor; (2) `<nav>` interno com 5 links `href=#` removido, o tema tem Nav próprio e link sem destino real já foi reprovado ao vivo por cliente; (3) `.progress-bar` removida, media o preloader que já não existe; (4) o `useGSAP` inteiro removido: era a timeline do preloader, 9 segundos até o h1 aparecer, e com ela caiu a dependência de gsap desta dobra; (5) na CSS, uma linha 1 partida (metade de um @import de Google Fonts) e um bloco `:root` GLOBAL que reescrevia --base-200 e --base-300 do documento inteiro. Esse `:root` é o achado mais grave: bastava usar esta dobra para a cor de bordadura e de texto ténue de TODO o site mudarem. Vale procurar o mesmo padrão nas restantes dobras da esteira. O h1 passou a ler `var(--h1)` em vez de clamp(5rem,18.5vw,20rem): a escala é decisão de direção de arte do nicho, não da dobra. O registo baixou de `editorial` para `sobrio` porque a peça deixou de ter timeline: sobra uma transição CSS de 0,7 s que o prefers-reduced-motion do sistema já trava."
 }

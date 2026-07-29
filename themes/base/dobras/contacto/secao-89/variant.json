@@ -21,6 +21,12 @@
     { "nome": "nota", "tipo": "texto", "exemplo": "linha final da secção" }
   ],
   "precondicoes": {},
+  "fidelidade": {
+    "modo": "porte-fiel",
+    "mecanicasPreservadas": ["painel de contacto editorial", "hierarquia entre contactos e horário", "ações de marcação"],
+    "adaptacoesPermitidas": ["informações e ações por slots", "formulário sem backend removido", "ícones e tokens locais"],
+    "materialObrigatorio": ["contactos reais", "horários ou ação de marcação real"]
+  },
   "_rever": [],
   "_nota": "PORTADA À MÃO em 2026-07-28 para o tema clinica-estetica. Revisão humana feita; estado promovido de `revisar` para `aprovada`. Escolhida depois de contacto/secao-83 estar reservada pela odontologia e de contacto/secao-110 e secao-149 estarem MAL CLASSIFICADAS: não são secções de contacto, são uma navbar da marca 'Pipely' seguida de um hero. Cinco alterações: (1) `hello@relume.io`, `Los Angeles, CA 90001` e `+1 (555) 123-4567` estavam escritos no markup, contactos de outra entidade num site de cliente é o defeito mais grave que este motor já cometeu; entram todos por `s.informacoes`; (2) o <form> de nome/email/mensagem removido: o tema exporta estático (output: export), um formulário sem destino é um botão que não faz nada e deixa a pessoa à espera de resposta; no lugar dele fica o painel de horário e as acções com destino real; (3) `fill=\"white\"` nos três ícones SVG, substituídos por ícones de linha em currentColor; (4) a cadeia page-wrapper > main.main-wrapper > section > padding-section-medium > padding-global > container-small do Webflow removida, mais o <main> interno, marcação inválida dentro do <main> do tema; (5) na CSS, linha 1 partida (metade de um @import do Google Fonts), um `:root` GLOBAL com a paleta do template, `background: #0b0b0b`, `rgba(255,255,255,0.12)` e `transition: all .3s`. A folha passou de 181 KB de Webflow para uma folha escopada que lê só tokens."
 }
