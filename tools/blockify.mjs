@@ -309,17 +309,46 @@ function blockify(refBloco) {
 }
 
 /* ---------- CLI ---------- */
-const alvos = process.argv.slice(2);
-if (!alvos.length) {
+const args = process.argv.slice(2);
+const todos = args.includes('--todos');
+const pendentes = args.includes('--pendentes');
+const alvos = todos
+  ? (JSON.parse(readFileSync(join(BANK, '_catalogo.json'), 'utf8')).componentes || [])
+    .filter(c => c?.pasta && c.emDisco && c.temCodigo !== false && existsSync(join(BANK, c.pasta)))
+    .map(c => c.pasta)
+    .sort()
+  : args.filter(a => a !== '--todos' && a !== '--pendentes');
+const marcadorIndisponivel = ref => join(OUT, ref, '.indisponivel.json');
+function registarIndisponivel(ref, erro) {
+  const destino = join(OUT, ref);
+  mkdirSync(destino, { recursive: true });
+  writeFileSync(marcadorIndisponivel(ref), JSON.stringify({ ref, estado: 'indisponivel', erro }, null, 2), 'utf8');
+}
+const alvosPendentes = pendentes
+  ? alvos.filter(a => !existsSync(join(OUT, a, 'block.json')) && !existsSync(marcadorIndisponivel(a)))
+  : alvos;
+if (!alvosPendentes.length) {
+  if (todos && pendentes) {
+    console.log('Catálogo Code Eagle já está normalizado; não há componentes pendentes.');
+    process.exit(0);
+  }
   console.log(`uso: node blockify.mjs <categoria/id> [...]
   ex:  node blockify.mjs hero-section/hero-14 menu/navegacao-menu-20
   saída: blocks-ce/<categoria>/<id>/ (block.html, block.css, block.js, block.json)`);
   process.exit(0);
 }
 mkdirSync(OUT, { recursive: true });
-console.log(`\nA normalizar ${alvos.length} componente(s)...\n`);
-for (const a of alvos) {
-  const r = blockify(a);
+console.log(`\nA normalizar ${alvosPendentes.length} componente(s)...\n`);
+for (const a of alvosPendentes) {
+  let r;
+  try { r = blockify(a); }
+  catch (erro) {
+    const mensagem = erro instanceof Error ? erro.message : String(erro);
+    registarIndisponivel(a, mensagem);
+    console.log(`  [FALHA] ${a}: ${mensagem}`);
+    continue;
+  }
+  if (r.erro) registarIndisponivel(a, r.erro);
   if (r.erro) console.log(`  ✗ ${a} — ${r.erro}`);
   else console.log(`  ✓ ${r.ref}  scope="${r.scope}"  libs:${r.libs.join(',') || '—'}  ${r.nAssets} assets  css ${r.css_kb}kb  ${r.temJs ? 'js' : 'sem-js'}`);
 }

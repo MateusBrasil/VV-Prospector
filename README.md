@@ -29,9 +29,15 @@ Cada passo é cronometrado e reporta ✓/✗. Passo que falha **para** o ciclo, 
 
 ## Caminhos legados de montagem (fallback)
 
+### Catálogo Code Eagle local
+
+O catálogo local é a fonte visual da fábrica: execute `node tools/blockify.mjs --todos --pendentes` depois de importar ou atualizar o banco. O comando transforma cada componente que tem código local em `blocks-ce/`, preservando a estrutura, CSS, JavaScript e assets do Code Eagle, mas isolando-o para que vários componentes possam coexistir no mesmo site. O `compor.mjs` usa diretamente esses blocos; uma nova página não deve receber uma seção visual inventada quando houver uma referência Code Eagle adequada.
+
+Entradas que não trazem fonte local processável (preview, pacote npm ou estrutura inválida) são reportadas como indisponíveis. Elas não podem ser “aprovadas” por um estado JSON porque não existe código local para montar.
+
 O motor de temas tem precedência. Quando não existe tema para o lead, `run.mjs` usa os caminhos abaixo, pela ordem indicada:
 
-1. **`compor` (`tools/compor.mjs`)**, ganha sempre que o brief tem `"plano": "planos/<slug>.json"` e não declara um tema. É o caminho de curadoria para nichos ainda sem kit: lê um `plano.json` (blocos + slots + tokens) e monta a partir de `blocks-ce/`, o banco de 613 componentes do Code Eagle depois de passarem pela Camada 0 (`classificar.mjs`, etiqueta fluxo/contexto) e pela Camada 1 (`blockify.mjs`, isola CSS/JS/assets num scope próprio para não colidirem). **Hoje só 26 componentes estão normalizados e utilizáveis em `blocks-ce/`** dos 613 catalogados em `bank/_componentes/_catalogo.json`, o resto ainda precisa de passar por `blockify.mjs` antes de poder entrar num plano.
+1. **`compor` (`tools/compor.mjs`)**, ganha sempre que o brief tem `"plano": "planos/<slug>.json"` e não declara um tema. É o caminho de curadoria para nichos ainda sem kit: lê um `plano.json` (blocos + slots + tokens) e monta a partir de `blocks-ce/`, usando diretamente os componentes Code Eagle normalizados pela Camada 1 (`blockify.mjs`). Rode `node tools/blockify.mjs --todos --pendentes` para disponibilizar todo o código local que ainda não tenha sido processado.
 2. **`assemble` (`tools/assemble.mjs`)**, quando o brief tem `"blocos"` (e `compor` não se aplica). Monta a partir de `blocks/`, os blocos escritos à mão para este projeto.
 3. **`remix` (`tools/remix.mjs`)**, último recurso, quando o brief só tem `"remix": { "template": ... }`. Clona um template inteiro do banco Code Eagle e re-skina com a paleta/copy do cliente.
 
